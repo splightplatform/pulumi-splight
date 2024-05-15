@@ -1,0 +1,118 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "spl_alert": {
+                "current": "splight:index/alert:Alert",
+                "fields": {
+                    "alert_items": {
+                        "maxItemsOne": false
+                    },
+                    "related_assets": {
+                        "maxItemsOne": false
+                    },
+                    "thresholds": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "spl_asset": {
+                "current": "splight:index/asset:Asset",
+                "fields": {
+                    "related_assets": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "spl_asset_attribute": {
+                "current": "splight:index/assetAttribute:AssetAttribute"
+            },
+            "spl_asset_metadata": {
+                "current": "splight:index/assetMetadata:AssetMetadata"
+            },
+            "spl_component": {
+                "current": "splight:index/component:Component",
+                "fields": {
+                    "input": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "spl_component_routine": {
+                "current": "splight:index/componentRoutine:ComponentRoutine",
+                "fields": {
+                    "config": {
+                        "maxItemsOne": false
+                    },
+                    "input": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "value": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "output": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "value": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "spl_dashboard": {
+                "current": "splight:index/dashboard:Dashboard",
+                "fields": {
+                    "related_assets": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "spl_dashboard_chart": {
+                "current": "splight:index/dashboardChart:DashboardChart",
+                "fields": {
+                    "chart_items": {
+                        "maxItemsOne": false
+                    },
+                    "thresholds": {
+                        "maxItemsOne": false
+                    },
+                    "value_mappings": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "spl_dashboard_tab": {
+                "current": "splight:index/dashboardTab:DashboardTab"
+            },
+            "spl_file": {
+                "current": "splight:index/file:File",
+                "fields": {
+                    "related_assets": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "spl_file_folder": {
+                "current": "splight:index/fileFolder:FileFolder"
+            },
+            "spl_function": {
+                "current": "splight:index/function:Function",
+                "fields": {
+                    "function_items": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "spl_secret": {
+                "current": "splight:index/secret:Secret"
+            }
+        }
+    },
+    "auto-settings": {}
+}

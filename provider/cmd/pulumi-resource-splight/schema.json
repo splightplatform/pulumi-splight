@@ -1,0 +1,1843 @@
+{
+    "name": "splight",
+    "displayName": "splight",
+    "description": "A Pulumi package for creating and managing splight cloud resources.",
+    "keywords": [
+        "splight",
+        "splight",
+        "category/cloud"
+    ],
+    "homepage": "https://www.splight-ai.com",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`splight` Terraform Provider](https://github.com/splightplatform/terraform-provider-splight).",
+    "repository": "https://github.com/splightplatform/pulumi-splight",
+    "publisher": "splight",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "language": {
+        "csharp": {
+            "packageReferences": {
+                "Pulumi": "3.*"
+            },
+            "compatibility": "tfbridge20"
+        },
+        "go": {
+            "importBasePath": "github.com/splightplatform/pulumi-splight/sdk/go/splight",
+            "generateResourceContainerTypes": true,
+            "generateExtraInputTypes": true
+        },
+        "nodejs": {
+            "packageDescription": "A Pulumi package for creating and managing splight cloud resources.",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/splightplatform/terraform-provider-splight)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-splight` repo](https://github.com/splightplatform/pulumi-splight/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-splight` repo](https://github.com/splightplatform/terraform-provider-splight/issues).",
+            "dependencies": {
+                "@pulumi/pulumi": "^3.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^10.0.0"
+            },
+            "compatibility": "tfbridge20",
+            "disableUnionOutputTypes": true
+        },
+        "python": {
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            },
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/splightplatform/terraform-provider-splight)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-splight` repo](https://github.com/splightplatform/pulumi-splight/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-splight` repo](https://github.com/splightplatform/terraform-provider-splight/issues).",
+            "compatibility": "tfbridge20",
+            "pyproject": {}
+        }
+    },
+    "config": {
+        "variables": {
+            "hostname": {
+                "type": "string"
+            },
+            "token": {
+                "type": "string"
+            }
+        }
+    },
+    "types": {
+        "splight:index/AlertAlertItem:AlertAlertItem": {
+            "properties": {
+                "expressionPlain": {
+                    "type": "string"
+                },
+                "queryPlain": {
+                    "type": "string"
+                },
+                "refId": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "expressionPlain",
+                "queryPlain",
+                "refId",
+                "type"
+            ]
+        },
+        "splight:index/AlertThreshold:AlertThreshold": {
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "description": "[alert|warning|no_alert] status value for the threshold\n"
+                },
+                "statusText": {
+                    "type": "string",
+                    "description": "optional custom value to be displayed in the platform.\n"
+                },
+                "value": {
+                    "type": "number",
+                    "description": "value to be considered to compare\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "status",
+                "value"
+            ]
+        },
+        "splight:index/ComponentInput:ComponentInput": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "multiple": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "sensitive": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "multiple",
+                "name",
+                "required",
+                "sensitive",
+                "type",
+                "value"
+            ]
+        },
+        "splight:index/ComponentRoutineConfig:ComponentRoutineConfig": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "multiple": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "sensitive": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "multiple",
+                "name",
+                "required",
+                "sensitive",
+                "type",
+                "value"
+            ]
+        },
+        "splight:index/ComponentRoutineInput:ComponentRoutineInput": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "multiple": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "value": {
+                    "$ref": "#/types/splight:index/ComponentRoutineInputValue:ComponentRoutineInputValue"
+                },
+                "valueType": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "multiple",
+                "name",
+                "required",
+                "type",
+                "value",
+                "valueType"
+            ]
+        },
+        "splight:index/ComponentRoutineInputValue:ComponentRoutineInputValue": {
+            "properties": {
+                "asset": {
+                    "type": "string"
+                },
+                "attribute": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "asset",
+                "attribute"
+            ]
+        },
+        "splight:index/ComponentRoutineOutput:ComponentRoutineOutput": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "multiple": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "value": {
+                    "$ref": "#/types/splight:index/ComponentRoutineOutputValue:ComponentRoutineOutputValue"
+                },
+                "valueType": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "multiple",
+                "name",
+                "required",
+                "type",
+                "value",
+                "valueType"
+            ]
+        },
+        "splight:index/ComponentRoutineOutputValue:ComponentRoutineOutputValue": {
+            "properties": {
+                "asset": {
+                    "type": "string"
+                },
+                "attribute": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "asset",
+                "attribute"
+            ]
+        },
+        "splight:index/DashboardChartChartItem:DashboardChartChartItem": {
+            "properties": {
+                "color": {
+                    "type": "string"
+                },
+                "expressionPlain": {
+                    "type": "string"
+                },
+                "queryPlain": {
+                    "type": "string"
+                },
+                "refId": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "color",
+                "expressionPlain",
+                "queryPlain",
+                "refId",
+                "type"
+            ]
+        },
+        "splight:index/DashboardChartThreshold:DashboardChartThreshold": {
+            "properties": {
+                "color": {
+                    "type": "string"
+                },
+                "displayText": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "number"
+                }
+            },
+            "type": "object",
+            "required": [
+                "color",
+                "displayText",
+                "value"
+            ]
+        },
+        "splight:index/DashboardChartValueMapping:DashboardChartValueMapping": {
+            "properties": {
+                "displayText": {
+                    "type": "string"
+                },
+                "matchValue": {
+                    "type": "string"
+                },
+                "order": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "displayText",
+                "matchValue",
+                "order",
+                "type"
+            ]
+        },
+        "splight:index/FunctionFunctionItem:FunctionFunctionItem": {
+            "properties": {
+                "expressionPlain": {
+                    "type": "string"
+                },
+                "queryPlain": {
+                    "type": "string"
+                },
+                "refId": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "expressionPlain",
+                "queryPlain",
+                "refId",
+                "type"
+            ]
+        }
+    },
+    "provider": {
+        "description": "The provider type for the splight package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "properties": {
+            "hostname": {
+                "type": "string"
+            },
+            "token": {
+                "type": "string"
+            }
+        },
+        "inputProperties": {
+            "hostname": {
+                "type": "string"
+            },
+            "token": {
+                "type": "string"
+            }
+        }
+    },
+    "resources": {
+        "splight:index/alert:Alert": {
+            "properties": {
+                "aggregation": {
+                    "type": "string",
+                    "description": "aggregation to be applied to reads before comparisson\n"
+                },
+                "alertItems": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/AlertAlertItem:AlertAlertItem"
+                    },
+                    "description": "variables to be calculated for a complex comparisson.\n"
+                },
+                "cronDom": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "cronDow": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "cronHours": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "cronMinutes": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "cronMonth": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "cronYear": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the resource\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "operator to be used to compare the read value with the threshold value\n"
+                },
+                "rateUnit": {
+                    "type": "string",
+                    "description": "[day|hour|minute] schedule unit\n"
+                },
+                "rateValue": {
+                    "type": "integer",
+                    "description": "schedule value\n"
+                },
+                "relatedAssets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "related assets to be linked. In case one of these alerts triggers it will be reflected on each of these assets.\n"
+                },
+                "severity": {
+                    "type": "string",
+                    "description": "[sev1,...,sev8] severity for the alert\n"
+                },
+                "targetVariable": {
+                    "type": "string",
+                    "description": "variable to be used to compare with thresholds\n"
+                },
+                "thresholds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/AlertThreshold:AlertThreshold"
+                    }
+                },
+                "timeWindow": {
+                    "type": "integer",
+                    "description": "window to fetch data from. Data out of that window will not be considered for evaluation\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[cron|rate] type for the cron\n"
+                }
+            },
+            "required": [
+                "aggregation",
+                "alertItems",
+                "cronDom",
+                "cronDow",
+                "cronHours",
+                "cronMinutes",
+                "cronMonth",
+                "cronYear",
+                "description",
+                "name",
+                "operator",
+                "rateUnit",
+                "rateValue",
+                "severity",
+                "targetVariable",
+                "thresholds",
+                "timeWindow",
+                "type"
+            ],
+            "inputProperties": {
+                "aggregation": {
+                    "type": "string",
+                    "description": "aggregation to be applied to reads before comparisson\n"
+                },
+                "alertItems": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/AlertAlertItem:AlertAlertItem"
+                    },
+                    "description": "variables to be calculated for a complex comparisson.\n"
+                },
+                "cronDom": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "cronDow": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "cronHours": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "cronMinutes": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "cronMonth": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "cronYear": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the resource\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "operator to be used to compare the read value with the threshold value\n"
+                },
+                "rateUnit": {
+                    "type": "string",
+                    "description": "[day|hour|minute] schedule unit\n"
+                },
+                "rateValue": {
+                    "type": "integer",
+                    "description": "schedule value\n"
+                },
+                "relatedAssets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "related assets to be linked. In case one of these alerts triggers it will be reflected on each of these assets.\n"
+                },
+                "severity": {
+                    "type": "string",
+                    "description": "[sev1,...,sev8] severity for the alert\n"
+                },
+                "targetVariable": {
+                    "type": "string",
+                    "description": "variable to be used to compare with thresholds\n"
+                },
+                "thresholds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/AlertThreshold:AlertThreshold"
+                    }
+                },
+                "timeWindow": {
+                    "type": "integer",
+                    "description": "window to fetch data from. Data out of that window will not be considered for evaluation\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[cron|rate] type for the cron\n"
+                }
+            },
+            "requiredInputs": [
+                "aggregation",
+                "alertItems",
+                "description",
+                "operator",
+                "severity",
+                "targetVariable",
+                "thresholds",
+                "timeWindow",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Alert resources.\n",
+                "properties": {
+                    "aggregation": {
+                        "type": "string",
+                        "description": "aggregation to be applied to reads before comparisson\n"
+                    },
+                    "alertItems": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/AlertAlertItem:AlertAlertItem"
+                        },
+                        "description": "variables to be calculated for a complex comparisson.\n"
+                    },
+                    "cronDom": {
+                        "type": "integer",
+                        "description": "schedule value for cron\n"
+                    },
+                    "cronDow": {
+                        "type": "integer",
+                        "description": "schedule value for cron\n"
+                    },
+                    "cronHours": {
+                        "type": "integer",
+                        "description": "schedule value for cron\n"
+                    },
+                    "cronMinutes": {
+                        "type": "integer",
+                        "description": "schedule value for cron\n"
+                    },
+                    "cronMonth": {
+                        "type": "integer",
+                        "description": "schedule value for cron\n"
+                    },
+                    "cronYear": {
+                        "type": "integer",
+                        "description": "schedule value for cron\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the resource\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the resource\n"
+                    },
+                    "operator": {
+                        "type": "string",
+                        "description": "operator to be used to compare the read value with the threshold value\n"
+                    },
+                    "rateUnit": {
+                        "type": "string",
+                        "description": "[day|hour|minute] schedule unit\n"
+                    },
+                    "rateValue": {
+                        "type": "integer",
+                        "description": "schedule value\n"
+                    },
+                    "relatedAssets": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "related assets to be linked. In case one of these alerts triggers it will be reflected on each of these assets.\n"
+                    },
+                    "severity": {
+                        "type": "string",
+                        "description": "[sev1,...,sev8] severity for the alert\n"
+                    },
+                    "targetVariable": {
+                        "type": "string",
+                        "description": "variable to be used to compare with thresholds\n"
+                    },
+                    "thresholds": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/AlertThreshold:AlertThreshold"
+                        }
+                    },
+                    "timeWindow": {
+                        "type": "integer",
+                        "description": "window to fetch data from. Data out of that window will not be considered for evaluation\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "[cron|rate] type for the cron\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/asset:Asset": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "description of the resource\n"
+                },
+                "geometry": {
+                    "type": "string",
+                    "description": "geo position and shape of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "relatedAssets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "linked assets\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "description of the resource\n"
+                },
+                "geometry": {
+                    "type": "string",
+                    "description": "geo position and shape of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "relatedAssets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "linked assets\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Asset resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "description of the resource\n"
+                    },
+                    "geometry": {
+                        "type": "string",
+                        "description": "geo position and shape of the resource\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "name of the resource\n"
+                    },
+                    "relatedAssets": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "linked assets\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/assetAttribute:AssetAttribute": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[string|boolean|number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "optional reference to the unit of the measure\n"
+                }
+            },
+            "required": [
+                "asset",
+                "name",
+                "type"
+            ],
+            "inputProperties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[string|boolean|number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "optional reference to the unit of the measure\n"
+                }
+            },
+            "requiredInputs": [
+                "asset",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AssetAttribute resources.\n",
+                "properties": {
+                    "asset": {
+                        "type": "string",
+                        "description": "reference to the asset to be linked to\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "name of the resource\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "[string|boolean|number] type of the data to be ingested in this attribute\n"
+                    },
+                    "unit": {
+                        "type": "string",
+                        "description": "optional reference to the unit of the measure\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/assetMetadata:AssetMetadata": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[string|boolean|number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "optional reference to the unit of the measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "required": [
+                "asset",
+                "name",
+                "type",
+                "value"
+            ],
+            "inputProperties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[string|boolean|number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "optional reference to the unit of the measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "requiredInputs": [
+                "asset",
+                "type",
+                "value"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AssetMetadata resources.\n",
+                "properties": {
+                    "asset": {
+                        "type": "string",
+                        "description": "reference to the asset to be linked to\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "name of the resource\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "[string|boolean|number] type of the data to be ingested in this attribute\n"
+                    },
+                    "unit": {
+                        "type": "string",
+                        "description": "optional reference to the unit of the measure\n"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "metadata value\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/component:Component": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "optinal description to add details of the resource\n"
+                },
+                "inputs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ComponentInput:ComponentInput"
+                    },
+                    "description": "The input parameters based on hubcomponent spec\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "the name of the component to be created\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "[NAME-VERSION] the version of the hub component\n"
+                }
+            },
+            "required": [
+                "inputs",
+                "name",
+                "version"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "optinal description to add details of the resource\n"
+                },
+                "inputs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ComponentInput:ComponentInput"
+                    },
+                    "description": "The input parameters based on hubcomponent spec\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "the name of the component to be created\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "[NAME-VERSION] the version of the hub component\n"
+                }
+            },
+            "requiredInputs": [
+                "inputs",
+                "version"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Component resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "optinal description to add details of the resource\n"
+                    },
+                    "inputs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/ComponentInput:ComponentInput"
+                        },
+                        "description": "The input parameters based on hubcomponent spec\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "the name of the component to be created\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "[NAME-VERSION] the version of the hub component\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/componentRoutine:ComponentRoutine": {
+            "properties": {
+                "componentId": {
+                    "type": "string",
+                    "description": "reference to component to be attached\n"
+                },
+                "configs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ComponentRoutineConfig:ComponentRoutineConfig"
+                    },
+                    "description": "static config parameters of the routine\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "optional complementary information about the routine\n"
+                },
+                "inputs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ComponentRoutineInput:ComponentRoutineInput"
+                    },
+                    "description": "asset attribute where to read data. Only valid for OutgoingRoutine\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the routine\n"
+                },
+                "outputs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ComponentRoutineOutput:ComponentRoutineOutput"
+                    },
+                    "description": "asset attribute where to ingest data. Only valid for IncomingRoutine\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[IncomingRoutine|OutgoingRoutine] direction of the data flow (from device to system or from system to device)\n"
+                }
+            },
+            "required": [
+                "componentId",
+                "name",
+                "type"
+            ],
+            "inputProperties": {
+                "componentId": {
+                    "type": "string",
+                    "description": "reference to component to be attached\n"
+                },
+                "configs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ComponentRoutineConfig:ComponentRoutineConfig"
+                    },
+                    "description": "static config parameters of the routine\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "optional complementary information about the routine\n"
+                },
+                "inputs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ComponentRoutineInput:ComponentRoutineInput"
+                    },
+                    "description": "asset attribute where to read data. Only valid for OutgoingRoutine\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the routine\n"
+                },
+                "outputs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ComponentRoutineOutput:ComponentRoutineOutput"
+                    },
+                    "description": "asset attribute where to ingest data. Only valid for IncomingRoutine\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[IncomingRoutine|OutgoingRoutine] direction of the data flow (from device to system or from system to device)\n"
+                }
+            },
+            "requiredInputs": [
+                "componentId",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ComponentRoutine resources.\n",
+                "properties": {
+                    "componentId": {
+                        "type": "string",
+                        "description": "reference to component to be attached\n"
+                    },
+                    "configs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/ComponentRoutineConfig:ComponentRoutineConfig"
+                        },
+                        "description": "static config parameters of the routine\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "optional complementary information about the routine\n"
+                    },
+                    "inputs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/ComponentRoutineInput:ComponentRoutineInput"
+                        },
+                        "description": "asset attribute where to read data. Only valid for OutgoingRoutine\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "name of the routine\n"
+                    },
+                    "outputs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/ComponentRoutineOutput:ComponentRoutineOutput"
+                        },
+                        "description": "asset attribute where to ingest data. Only valid for IncomingRoutine\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "[IncomingRoutine|OutgoingRoutine] direction of the data flow (from device to system or from system to device)\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/dashboard:Dashboard": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "complementary information for the dashboard\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "dashboard name\n"
+                },
+                "relatedAssets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "assets linked\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "complementary information for the dashboard\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "dashboard name\n"
+                },
+                "relatedAssets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "assets linked\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Dashboard resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "complementary information for the dashboard\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "dashboard name\n"
+                    },
+                    "relatedAssets": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "assets linked\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/dashboardChart:DashboardChart": {
+            "properties": {
+                "chartItems": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/DashboardChartChartItem:DashboardChartChartItem"
+                    },
+                    "description": "chart traces to be included\n"
+                },
+                "height": {
+                    "type": "integer",
+                    "description": "chart height in px\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the chart\n"
+                },
+                "tab": {
+                    "type": "string",
+                    "description": "id for the tab where to place the chart\n"
+                },
+                "thresholds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/DashboardChartThreshold:DashboardChartThreshold"
+                    },
+                    "description": "optional static lines to be added to the chart as references\n"
+                },
+                "timestampGte": {
+                    "type": "string",
+                    "description": "date in isoformat or shortcut string where to end reading\n"
+                },
+                "timestampLte": {
+                    "type": "string",
+                    "description": "date in isoformat or shortcut string where to start reading\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[timeseries|bargauge|..] chart type\n"
+                },
+                "valueMappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/DashboardChartValueMapping:DashboardChartValueMapping"
+                    },
+                    "description": "optional mappings to transform data with rules\n"
+                },
+                "width": {
+                    "type": "integer",
+                    "description": "chart width in cols (max 20)\n"
+                }
+            },
+            "required": [
+                "chartItems",
+                "name",
+                "tab",
+                "timestampGte",
+                "timestampLte",
+                "type"
+            ],
+            "inputProperties": {
+                "chartItems": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/DashboardChartChartItem:DashboardChartChartItem"
+                    },
+                    "description": "chart traces to be included\n"
+                },
+                "height": {
+                    "type": "integer",
+                    "description": "chart height in px\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the chart\n"
+                },
+                "tab": {
+                    "type": "string",
+                    "description": "id for the tab where to place the chart\n"
+                },
+                "thresholds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/DashboardChartThreshold:DashboardChartThreshold"
+                    },
+                    "description": "optional static lines to be added to the chart as references\n"
+                },
+                "timestampGte": {
+                    "type": "string",
+                    "description": "date in isoformat or shortcut string where to end reading\n"
+                },
+                "timestampLte": {
+                    "type": "string",
+                    "description": "date in isoformat or shortcut string where to start reading\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[timeseries|bargauge|..] chart type\n"
+                },
+                "valueMappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/DashboardChartValueMapping:DashboardChartValueMapping"
+                    },
+                    "description": "optional mappings to transform data with rules\n"
+                },
+                "width": {
+                    "type": "integer",
+                    "description": "chart width in cols (max 20)\n"
+                }
+            },
+            "requiredInputs": [
+                "chartItems",
+                "tab",
+                "timestampGte",
+                "timestampLte",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DashboardChart resources.\n",
+                "properties": {
+                    "chartItems": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/DashboardChartChartItem:DashboardChartChartItem"
+                        },
+                        "description": "chart traces to be included\n"
+                    },
+                    "height": {
+                        "type": "integer",
+                        "description": "chart height in px\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "name of the chart\n"
+                    },
+                    "tab": {
+                        "type": "string",
+                        "description": "id for the tab where to place the chart\n"
+                    },
+                    "thresholds": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/DashboardChartThreshold:DashboardChartThreshold"
+                        },
+                        "description": "optional static lines to be added to the chart as references\n"
+                    },
+                    "timestampGte": {
+                        "type": "string",
+                        "description": "date in isoformat or shortcut string where to end reading\n"
+                    },
+                    "timestampLte": {
+                        "type": "string",
+                        "description": "date in isoformat or shortcut string where to start reading\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "[timeseries|bargauge|..] chart type\n"
+                    },
+                    "valueMappings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/DashboardChartValueMapping:DashboardChartValueMapping"
+                        },
+                        "description": "optional mappings to transform data with rules\n"
+                    },
+                    "width": {
+                        "type": "integer",
+                        "description": "chart width in cols (max 20)\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/dashboardTab:DashboardTab": {
+            "properties": {
+                "dashboard": {
+                    "type": "string",
+                    "description": "dashboard id where to place it\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name for the tab\n"
+                },
+                "order": {
+                    "type": "integer",
+                    "description": "order within the dashboard\n"
+                }
+            },
+            "required": [
+                "dashboard",
+                "name"
+            ],
+            "inputProperties": {
+                "dashboard": {
+                    "type": "string",
+                    "description": "dashboard id where to place it\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name for the tab\n"
+                },
+                "order": {
+                    "type": "integer",
+                    "description": "order within the dashboard\n"
+                }
+            },
+            "requiredInputs": [
+                "dashboard"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DashboardTab resources.\n",
+                "properties": {
+                    "dashboard": {
+                        "type": "string",
+                        "description": "dashboard id where to place it\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "name for the tab\n"
+                    },
+                    "order": {
+                        "type": "integer",
+                        "description": "order within the dashboard\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/file:File": {
+            "properties": {
+                "checksum": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "complementary information to describe the file\n"
+                },
+                "file": {
+                    "type": "string",
+                    "description": "the path for the file resource in your system\n"
+                },
+                "parent": {
+                    "type": "string",
+                    "description": "the id reference for a folder to be placed in\n"
+                },
+                "relatedAssets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "assets to be linked\n"
+                }
+            },
+            "required": [
+                "checksum",
+                "file"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "complementary information to describe the file\n"
+                },
+                "file": {
+                    "type": "string",
+                    "description": "the path for the file resource in your system\n",
+                    "willReplaceOnChanges": true
+                },
+                "parent": {
+                    "type": "string",
+                    "description": "the id reference for a folder to be placed in\n"
+                },
+                "relatedAssets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "assets to be linked\n"
+                }
+            },
+            "requiredInputs": [
+                "file"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering File resources.\n",
+                "properties": {
+                    "checksum": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "complementary information to describe the file\n"
+                    },
+                    "file": {
+                        "type": "string",
+                        "description": "the path for the file resource in your system\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "parent": {
+                        "type": "string",
+                        "description": "the id reference for a folder to be placed in\n"
+                    },
+                    "relatedAssets": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "assets to be linked\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/fileFolder:FileFolder": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "folder name\n"
+                },
+                "parent": {
+                    "type": "string",
+                    "description": "optional folder id where to place this folder\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "folder name\n",
+                    "willReplaceOnChanges": true
+                },
+                "parent": {
+                    "type": "string",
+                    "description": "optional folder id where to place this folder\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering FileFolder resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "folder name\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "parent": {
+                        "type": "string",
+                        "description": "optional folder id where to place this folder\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/function:Function": {
+            "properties": {
+                "cronDom": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "cronDow": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "cronHours": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "cronMinutes": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "cronMonth": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "cronYear": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the resource\n"
+                },
+                "functionItems": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/FunctionFunctionItem:FunctionFunctionItem"
+                    },
+                    "description": "traces to be used to compute the results\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the resource\n"
+                },
+                "rateUnit": {
+                    "type": "string",
+                    "description": "[day|hour|minute] schedule unit\n"
+                },
+                "rateValue": {
+                    "type": "integer",
+                    "description": "schedule value\n"
+                },
+                "targetAsset": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "asset where to ingest results\n"
+                },
+                "targetAttribute": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "attribute where to ingest results\n"
+                },
+                "targetVariable": {
+                    "type": "string",
+                    "description": "variable to be considered to be ingested\n"
+                },
+                "timeWindow": {
+                    "type": "integer",
+                    "description": "window to fetch data from. Data out of that window will not be considered for evaluation\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[cron|rate] type for the cron\n"
+                }
+            },
+            "required": [
+                "cronDom",
+                "cronDow",
+                "cronHours",
+                "cronMinutes",
+                "cronMonth",
+                "cronYear",
+                "description",
+                "functionItems",
+                "name",
+                "rateUnit",
+                "rateValue",
+                "targetAsset",
+                "targetAttribute",
+                "targetVariable",
+                "timeWindow",
+                "type"
+            ],
+            "inputProperties": {
+                "cronDom": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "cronDow": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "cronHours": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "cronMinutes": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "cronMonth": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "cronYear": {
+                    "type": "integer",
+                    "description": "schedule value for cron\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the resource\n"
+                },
+                "functionItems": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/FunctionFunctionItem:FunctionFunctionItem"
+                    },
+                    "description": "traces to be used to compute the results\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the resource\n"
+                },
+                "rateUnit": {
+                    "type": "string",
+                    "description": "[day|hour|minute] schedule unit\n"
+                },
+                "rateValue": {
+                    "type": "integer",
+                    "description": "schedule value\n"
+                },
+                "targetAsset": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "asset where to ingest results\n"
+                },
+                "targetAttribute": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "attribute where to ingest results\n"
+                },
+                "targetVariable": {
+                    "type": "string",
+                    "description": "variable to be considered to be ingested\n"
+                },
+                "timeWindow": {
+                    "type": "integer",
+                    "description": "window to fetch data from. Data out of that window will not be considered for evaluation\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[cron|rate] type for the cron\n"
+                }
+            },
+            "requiredInputs": [
+                "description",
+                "functionItems",
+                "targetAsset",
+                "targetAttribute",
+                "targetVariable",
+                "timeWindow",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Function resources.\n",
+                "properties": {
+                    "cronDom": {
+                        "type": "integer",
+                        "description": "schedule value for cron\n"
+                    },
+                    "cronDow": {
+                        "type": "integer",
+                        "description": "schedule value for cron\n"
+                    },
+                    "cronHours": {
+                        "type": "integer",
+                        "description": "schedule value for cron\n"
+                    },
+                    "cronMinutes": {
+                        "type": "integer",
+                        "description": "schedule value for cron\n"
+                    },
+                    "cronMonth": {
+                        "type": "integer",
+                        "description": "schedule value for cron\n"
+                    },
+                    "cronYear": {
+                        "type": "integer",
+                        "description": "schedule value for cron\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the resource\n"
+                    },
+                    "functionItems": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/FunctionFunctionItem:FunctionFunctionItem"
+                        },
+                        "description": "traces to be used to compute the results\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the resource\n"
+                    },
+                    "rateUnit": {
+                        "type": "string",
+                        "description": "[day|hour|minute] schedule unit\n"
+                    },
+                    "rateValue": {
+                        "type": "integer",
+                        "description": "schedule value\n"
+                    },
+                    "targetAsset": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "asset where to ingest results\n"
+                    },
+                    "targetAttribute": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "attribute where to ingest results\n"
+                    },
+                    "targetVariable": {
+                        "type": "string",
+                        "description": "variable to be considered to be ingested\n"
+                    },
+                    "timeWindow": {
+                        "type": "integer",
+                        "description": "window to fetch data from. Data out of that window will not be considered for evaluation\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "[cron|rate] type for the cron\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/secret:Secret": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "rawValue": {
+                    "type": "string",
+                    "secret": true
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "rawValue",
+                "value"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string"
+                },
+                "rawValue": {
+                    "type": "string",
+                    "secret": true
+                }
+            },
+            "requiredInputs": [
+                "rawValue"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Secret resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "rawValue": {
+                        "type": "string",
+                        "secret": true
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
