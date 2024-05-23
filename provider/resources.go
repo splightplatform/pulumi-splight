@@ -24,7 +24,6 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 
-	// Replace this provider with the provider you are bridging.
 	splight "github.com/splightplatform/terraform-provider-splight/provider"
 
 	"github.com/splightplatform/pulumi-splight/provider/pkg/version"
@@ -106,7 +105,6 @@ func Provider() tfbridge.ProviderInfo {
 		// - "github.com/hashicorp/terraform-plugin-framework/provider".Provider (for plugin-framework)
 		//
 		//nolint:lll
-		// FIXME: create a handle in the tf provider
 		P: shimv2.NewProvider(splight.Provider()),
 
 		Name:    "splight",
@@ -187,7 +185,7 @@ func Provider() tfbridge.ProviderInfo {
 	//
 	// You shouldn't need to override anything, but if you do, use the [tfbridge.ProviderInfo.Resources]
 	// and [tfbridge.ProviderInfo.DataSources].
-	prov.MustComputeTokens(tokens.SingleModule("spl_", mainMod,
+	prov.MustComputeTokens(tokens.SingleModule("splight_", mainMod,
 		tokens.MakeStandard(mainPkg)))
 
 	prov.MustApplyAutoAliases()
