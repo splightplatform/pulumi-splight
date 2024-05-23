@@ -1,7 +1,7 @@
 {
     "auto-aliasing": {
         "resources": {
-            "spl_alert": {
+            "splight_alert": {
                 "current": "splight:index/alert:Alert",
                 "fields": {
                     "alert_items": {
@@ -15,21 +15,24 @@
                     }
                 }
             },
-            "spl_asset": {
+            "splight_asset": {
                 "current": "splight:index/asset:Asset",
                 "fields": {
+                    "kind": {
+                        "maxItemsOne": false
+                    },
                     "related_assets": {
                         "maxItemsOne": false
                     }
                 }
             },
-            "spl_asset_attribute": {
+            "splight_asset_attribute": {
                 "current": "splight:index/assetAttribute:AssetAttribute"
             },
-            "spl_asset_metadata": {
+            "splight_asset_metadata": {
                 "current": "splight:index/assetMetadata:AssetMetadata"
             },
-            "spl_component": {
+            "splight_component": {
                 "current": "splight:index/component:Component",
                 "fields": {
                     "input": {
@@ -37,7 +40,7 @@
                     }
                 }
             },
-            "spl_component_routine": {
+            "splight_component_routine": {
                 "current": "splight:index/componentRoutine:ComponentRoutine",
                 "fields": {
                     "config": {
@@ -65,7 +68,7 @@
                     }
                 }
             },
-            "spl_dashboard": {
+            "splight_dashboard": {
                 "current": "splight:index/dashboard:Dashboard",
                 "fields": {
                     "related_assets": {
@@ -73,7 +76,7 @@
                     }
                 }
             },
-            "spl_dashboard_chart": {
+            "splight_dashboard_chart": {
                 "current": "splight:index/dashboardChart:DashboardChart",
                 "fields": {
                     "chart_items": {
@@ -87,10 +90,10 @@
                     }
                 }
             },
-            "spl_dashboard_tab": {
+            "splight_dashboard_tab": {
                 "current": "splight:index/dashboardTab:DashboardTab"
             },
-            "spl_file": {
+            "splight_file": {
                 "current": "splight:index/file:File",
                 "fields": {
                     "related_assets": {
@@ -98,10 +101,10 @@
                     }
                 }
             },
-            "spl_file_folder": {
+            "splight_file_folder": {
                 "current": "splight:index/fileFolder:FileFolder"
             },
-            "spl_function": {
+            "splight_function": {
                 "current": "splight:index/function:Function",
                 "fields": {
                     "function_items": {
@@ -109,8 +112,18 @@
                     }
                 }
             },
-            "spl_secret": {
+            "splight_secret": {
                 "current": "splight:index/secret:Secret"
+            }
+        },
+        "datasources": {
+            "splight_asset_kinds": {
+                "current": "splight:index/getAssetKinds:getAssetKinds",
+                "fields": {
+                    "kinds": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         }
     },
