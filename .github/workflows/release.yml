@@ -51,6 +51,8 @@ jobs:
     steps:
     - name: Publish SDKs
       uses: pulumi/pulumi-package-publisher@v0.0.6
+      with:
+        sdk: python
     strategy:
       fail-fast: true
       matrix:
@@ -61,7 +63,7 @@ jobs:
         # nodeversion:
         #   - 14.x
         pythonversion:
-          - "3.9"
+          - "3.11"
         language:
           # - nodejs
           # - dotnet
