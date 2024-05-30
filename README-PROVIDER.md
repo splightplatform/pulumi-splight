@@ -3,6 +3,7 @@
 The Foo Resource Provider lets you manage [Foo](http://example.com) resources.
 
 ## Installing
+# TODO: require pulumictl python3
 
 This package is available for several languages/platforms:
 
