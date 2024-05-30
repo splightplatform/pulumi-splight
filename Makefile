@@ -40,5 +40,4 @@ build:: provider build_nodejs build_python build_go build_dotnet
 
 clean::
 	rm -r $(WORKING_DIR)/bin
-	rm -f provider/cmd/${PROVIDER}/schema.go
 	rm -rf sdk/{dotnet,nodejs,go,python}
