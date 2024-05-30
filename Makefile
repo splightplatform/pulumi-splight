@@ -12,7 +12,7 @@ VERSION         := $(shell cat version)
 
 WORKING_DIR     := $(shell pwd)
 
-.PHONY: development provider build_sdks build_nodejs build_dotnet build_go build_python clean
+.PHONY: provider build_sdks build_nodejs build_dotnet build_go build_python clean
 
 tfgen::
 	@cd provider && \
