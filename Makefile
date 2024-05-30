@@ -45,4 +45,4 @@ build_python::
 clean::
 	rm -rf $(WORKING_DIR)/bin
 	rm -f provider/cmd/${PROVIDER}/schema.go
-	rm -rf sdk/{python}
+	rm -rf sdk/python

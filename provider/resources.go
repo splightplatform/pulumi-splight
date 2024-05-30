@@ -185,8 +185,7 @@ func Provider() tfbridge.ProviderInfo {
 	//
 	// You shouldn't need to override anything, but if you do, use the [tfbridge.ProviderInfo.Resources]
 	// and [tfbridge.ProviderInfo.DataSources].
-	prov.MustComputeTokens(tokens.SingleModule("splight_", mainMod,
-		tokens.MakeStandard(mainPkg)))
+	prov.MustComputeTokens(tokens.SingleModule("splight_", mainMod, tokens.MakeStandard(mainPkg)))
 
 	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
