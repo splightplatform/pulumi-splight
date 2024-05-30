@@ -12,37 +12,33 @@ VERSION         := $(shell cat version)
 
 WORKING_DIR     := $(shell pwd)
 
-OS := $(shell uname)
+.PHONY: development provider build_sdks build_nodejs build_dotnet build_go build_python clean
 
-.PHONY: tfgen provider build_python cleanup
+tfgen::
+	@cd provider && \
+	go mod tidy && \
+	go build -o $(WORKING_DIR)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN}
+	@$(WORKING_DIR)/bin/${TFGEN} schema --out provider/cmd/${PROVIDER}
 
-tfgen:: 
-	# Build the brigdge
-	# Set the value for the version at compile time
-	cd provider && go build -o $(WORKING_DIR)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN}
+provider:: tfgen
+	@cd provider && \
+	go build -o $(WORKING_DIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER}
 
-	# Run the bridge and generate/update the Pulumi schema from the Terraform schema
-	$(WORKING_DIR)/bin/${TFGEN} schema --out provider/cmd/${PROVIDER}
+build_nodejs::
+	@$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
 
-provider:: 
-	(cd provider && go build -o $(WORKING_DIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER})
-
-build_sdks:: install_plugins provider build_python
-
-build_python:: PYPI_VERSION := $(shell pulumictl convert-version --language python --version "$(VERSION)")
-
-# TODO: debug and see whats necessary
 build_python::
-	$(WORKING_DIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
-	cd sdk/python/ && \
-        cp ../../README.md . && \
-        python3 setup.py clean --all 2>/dev/null && \
-        rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
-        sed -i.bak -e 's/^VERSION = .*/VERSION = "$(PYPI_VERSION)"/g' -e 's/^PLUGIN_VERSION = .*/PLUGIN_VERSION = "$(VERSION)"/g' ./bin/setup.py && \
-        rm ./bin/setup.py.bak && \
-        cd ./bin && python3 setup.py build sdist
+	@$(WORKING_DIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
+
+build_dotnet::
+	@$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
+
+build_go::
+	@$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
+
+build:: provider build_nodejs build_python build_go build_dotnet
 
 clean::
-	rm -rf $(WORKING_DIR)/bin
+	rm -r $(WORKING_DIR)/bin
 	rm -f provider/cmd/${PROVIDER}/schema.go
-	rm -rf sdk/python
+	rm -rf sdk/{dotnet,nodejs,go,python}

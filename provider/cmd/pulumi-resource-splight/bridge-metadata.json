@@ -80,7 +80,17 @@
                 "current": "splight:index/dashboardChart:DashboardChart",
                 "fields": {
                     "chart_items": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "query_filter_asset": {
+                                    "maxItemsOne": true
+                                },
+                                "query_filter_attribute": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     },
                     "thresholds": {
                         "maxItemsOne": false
