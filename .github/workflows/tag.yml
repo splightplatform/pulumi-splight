@@ -9,11 +9,11 @@ jobs:
     name: Create tag version on github repository
     steps:
       - name: Checkout to feature branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Get version from feature branch
-        run: echo "CURRENT_VERSION=$(cat version)" >> "$GITHUB_ENV"
+        run: echo "CURRENT_VERSION=v$(cat version)" >> "$GITHUB_ENV"
       - name: Create tag
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
