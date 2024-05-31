@@ -11,33 +11,36 @@ PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell cat version)
 
 WORKING_DIR     := $(shell pwd)
+COVERAGE_OUTPUT_DIR = $(WORKING_DIR)/coverage
+
+COLOR_RESET     := \033[0m
+COLOR_INFO      := \033[0;32m
 
 .PHONY: provider build_sdks build_nodejs build_dotnet build_go build_python clean
 
-tfgen::
+tidy::
 	@cd provider && \
-	go mod tidy && \
+	go mod tidy
+
+tfgen:: tidy
+	@cd provider && \
 	go build -o $(WORKING_DIR)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN}
+
+schema-bridge:: tfgen
 	@$(WORKING_DIR)/bin/${TFGEN} schema --out provider/cmd/${PROVIDER}
 
-provider:: tfgen
+provider:: schema-bridge
 	@cd provider && \
 	go build -o $(WORKING_DIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER}
 
-build_nodejs::
-	@$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
-
-build_python::
-	@$(WORKING_DIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
-
-build_dotnet::
-	@$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
-
-build_go::
-	@$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
-
-build:: provider build_nodejs build_python build_go build_dotnet
+sdks:: tfgen
+	@for sdk in nodejs python; do \
+	 	echo -e "${COLOR_INFO}Building SDK for $$sdk${COLOR_RESET}"; \
+		$(WORKING_DIR)/bin/$(TFGEN) $$sdk --out sdk/$$sdk/; \
+	done
 
 clean::
 	rm -r $(WORKING_DIR)/bin
+	rm -f $(WORKING_DIR)/provider/cmd/${PROVIDER}/schema.json
+	echo "{}" > $(WORKING_DIR)/provider/cmd/${PROVIDER}/bridge-metadata.json
 	rm -rf sdk/{dotnet,nodejs,go,python}
