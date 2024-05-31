@@ -11,12 +11,13 @@ PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell cat version)
 
 WORKING_DIR     := $(shell pwd)
-COVERAGE_OUTPUT_DIR = $(WORKING_DIR)/coverage
+
+export COVERAGE_OUTPUT_DIR = $(WORKING_DIR)/coverage
 
 COLOR_RESET     := \033[0m
 COLOR_INFO      := \033[0;32m
 
-.PHONY: provider build_sdks build_nodejs build_dotnet build_go build_python clean
+.PHONY: tidy tfgen schema-bridge provider sdks clean
 
 tidy::
 	@cd provider && \
@@ -40,7 +41,7 @@ sdks:: tfgen
 	done
 
 clean::
-	rm -r $(WORKING_DIR)/bin
-	rm -f $(WORKING_DIR)/provider/cmd/${PROVIDER}/schema.json
-	echo "{}" > $(WORKING_DIR)/provider/cmd/${PROVIDER}/bridge-metadata.json
-	rm -rf sdk/{dotnet,nodejs,go,python}
+	@rm -rf $(WORKING_DIR)/bin
+	@rm -f $(WORKING_DIR)/provider/cmd/${PROVIDER}/schema.json
+	@echo "{}" > $(WORKING_DIR)/provider/cmd/${PROVIDER}/bridge-metadata.json
+	@rm -rf sdk/{dotnet,nodejs,go,python}

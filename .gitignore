@@ -28,7 +28,13 @@ sdk/java/gradle
 sdk/java/gradlew
 sdk/java/gradlew.bat
 
+Pulumi.yaml
 sdk/python/venv
 
 go.work
 go.work.sum
+
+/nodejs/bin/
+/nodejs/node_modules/
+/python/bin/
+coverage
