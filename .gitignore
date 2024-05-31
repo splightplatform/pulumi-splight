@@ -37,4 +37,4 @@ go.work.sum
 /nodejs/bin/
 /nodejs/node_modules/
 /python/bin/
-coverage
+.coverage

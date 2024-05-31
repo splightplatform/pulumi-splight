@@ -7,11 +7,8 @@ env:
   GITHUB_TOKEN: ${{ YOUR GITHUB TOKEN HERE }}
   # NPM_REGISTRY_URL: https://registry.npmjs.org
   # NODE_AUTH_TOKEN: ${{}}
-  # NPM_TOKEN: ${{}}
-  PUBLISH_NPM: false
-  # NUGET_PUBLISH_KEY: ${{}}
-  # NUGET_FEED_URL: https://api.nuget.org/v3/index.json
-  PUBLISH_NUGET: false
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  PUBLISH_NPM: true
   PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
   PYPI_USERNAME: "__token__"
   PUBLISH_PYPI: true
@@ -56,16 +53,10 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        # dotnetversion:
-          # - 3.1.301
-        # goversion:
-          # - 1.17.x
-        # nodeversion:
-        #   - 14.x
+        nodeversion:
+          - 14.x
         pythonversion:
           - "3.11"
         language:
-          # - nodejs
-          # - dotnet
-          # - go
+          - nodejs
           - python

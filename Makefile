@@ -12,7 +12,7 @@ VERSION         := $(shell cat version)
 
 WORKING_DIR     := $(shell pwd)
 
-export COVERAGE_OUTPUT_DIR = $(WORKING_DIR)/coverage
+export COVERAGE_OUTPUT_DIR = $(WORKING_DIR)/.coverage
 
 COLOR_RESET     := \033[0m
 COLOR_INFO      := \033[0;32m
