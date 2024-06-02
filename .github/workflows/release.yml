@@ -2,7 +2,6 @@ name: Release
 on: workflow_dispatch
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   PYPI_USERNAME: __token__
   PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
 jobs:
@@ -29,4 +28,4 @@ jobs:
     - name: Publish SDKs
       uses: pulumi/pulumi-package-publisher@v0.0.15
       with:
-        sdk: python,nodejs
+        sdk: python
