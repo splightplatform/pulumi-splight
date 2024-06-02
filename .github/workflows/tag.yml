@@ -1,4 +1,4 @@
-name: tag
+name: Tag version
 on:
   push:
     branches:
@@ -6,7 +6,7 @@ on:
 jobs:
   tag_version:
     runs-on: ubuntu-latest
-    name: Create tag version on github repository
+    name: Create Tag
     steps:
       - name: Checkout to feature branch
         uses: actions/checkout@v4

@@ -1,4 +1,4 @@
-name: release
+name: Release
 on: workflow_dispatch
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -7,7 +7,7 @@ env:
   PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
 jobs:
   publish_binary:
-    name: publish
+    name: Publish Provider
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -27,6 +27,6 @@ jobs:
     needs: publish_binary
     steps:
     - name: Publish SDKs
-      uses: pulumi/pulumi-package-publisher@v0.0.6
+      uses: pulumi/pulumi-package-publisher@v0.0.15
       with:
         sdk: python,nodejs
