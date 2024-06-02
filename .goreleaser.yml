@@ -1,11 +1,8 @@
 archives:
   - id: archive
     name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
-before:
-  hooks:
-    - make tfgen
 builds:
-  - binary: pulumi-resource-xyz
+  - binary: pulumi-resource-splight
     dir: provider
     env:
       - CGO_ENABLED=0
