@@ -38,7 +38,7 @@ sdk:: tfgen
 	@echo -e "${COLOR_INFO}Building SDK for Python${COLOR_RESET}"; \
 	$(WORKING_DIR)/bin/$(TFGEN) python --out sdk/python/; \
 
-build:
+build: # Used by CI/CD
 	@cd sdk/python && \
 	python3 setup.py sdist
 
