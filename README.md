@@ -8,12 +8,44 @@ Refer to the [Configuration](#Configuration) section for more details.
 
 ## Installing
 
-This package is available for Python.
+This package is available for several languages/platforms:
 
-Install using `pip`:
+### Node.js (JavaScript/TypeScript)
+
+To use from JavaScript or TypeScript in Node.js, install using either `npm`:
+
+```bash
+npm install @pulumi/splight
+```
+
+or `yarn`:
+
+```bash
+yarn add @pulumi/splight
+```
+
+### Python
+
+To use from Python, install using `pip`:
 
 ```bash
 pip install pulumi_splight
+```
+
+### Go
+
+To use from Go, use `go get` to grab the latest version of the library:
+
+```bash
+go get github.com/pulumi/pulumi-splight/sdk/go/...
+```
+
+### .NET
+
+To use from .NET, install using `dotnet add package`:
+
+```bash
+dotnet add package Pulumi.Splight
 ```
 
 ## Configuration

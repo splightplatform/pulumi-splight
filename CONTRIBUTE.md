@@ -1,10 +1,10 @@
 ## Splight Terraform Provider
 
-
 ### Requirements
 
 - Go (1.21.x)
 - Python (3.9.x)
+- Yarn (1.22.x)
 
 ### Generation
 
@@ -46,6 +46,12 @@ Use your favourite way of installing Python packages (i.e. `pip`):
 
 ```bash
 pip install sdk/python
+```
+
+Try to create infrastructure using the Pulumi CLI:
+
+```bash
+pulumi up
 ```
 
 You must generate the SDK and install it each time you make changes to the terraform provider.

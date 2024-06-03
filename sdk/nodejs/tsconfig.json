@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+        "outDir": "bin",
+        "target": "es2016",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "declaration": true,
+        "sourceMap": true,
+        "stripInternal": true,
+        "experimentalDecorators": true,
+        "noFallthroughCasesInSwitch": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true
+    },
+    "files": [
+        "alert.ts",
+        "asset.ts",
+        "assetAttribute.ts",
+        "assetMetadata.ts",
+        "component.ts",
+        "componentRoutine.ts",
+        "config/index.ts",
+        "config/vars.ts",
+        "dashboard.ts",
+        "dashboardChart.ts",
+        "dashboardTab.ts",
+        "file.ts",
+        "fileFolder.ts",
+        "function.ts",
+        "getAssetKinds.ts",
+        "index.ts",
+        "provider.ts",
+        "secret.ts",
+        "types/index.ts",
+        "types/input.ts",
+        "types/output.ts",
+        "utilities.ts"
+    ]
+}
