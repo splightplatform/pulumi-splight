@@ -17,7 +17,7 @@ export COVERAGE_OUTPUT_DIR = $(WORKING_DIR)/.coverage
 COLOR_RESET     := \033[0m
 COLOR_INFO      := \033[0;32m
 
-.PHONY: tidy tfgen schema-bridge provider sdks clean
+.PHONY: tidy tfgen schema-bridge provider sdk clean build
 
 tidy::
 	@cd provider && \
@@ -34,24 +34,16 @@ provider:: schema-bridge
 	@cd provider && \
 	go build -o $(WORKING_DIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER}
 
-sdks:: tfgen
-	@for sdk in nodejs python; do \
-	 	echo -e "${COLOR_INFO}Building SDK for $$sdk${COLOR_RESET}"; \
-		$(WORKING_DIR)/bin/$(TFGEN) $$sdk --out sdk/$$sdk/; \
-	done
+sdk:: tfgen
+	@echo -e "${COLOR_INFO}Building SDK for Python${COLOR_RESET}"; \
+	$(WORKING_DIR)/bin/$(TFGEN) python --out sdk/python/; \
 
-build-python:
+build:
 	@cd sdk/python && \
 	python3 setup.py sdist
-
-build-nodejs:
-	@cd sdk/nodejs && \
-	npm pack
-
-build: build-python build-nodejs
 
 clean::
 	@rm -rf $(WORKING_DIR)/bin
 	@rm -f $(WORKING_DIR)/provider/cmd/${PROVIDER}/schema.json
 	@echo "{}" > $(WORKING_DIR)/provider/cmd/${PROVIDER}/bridge-metadata.json
-	@rm -rf sdk/{nodejs,python}
+	@rm -rf sdk/python
