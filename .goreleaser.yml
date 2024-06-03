@@ -14,7 +14,7 @@ builds:
       - -X github.com/pulumi/pulumi-splight/provider/pkg/version.Version={{.Tag }}
     main: ./cmd/pulumi-resource-splight/
 changelog:
-  skip: true
+  disable: true
 release:
   disable: false
   prerelease: auto
