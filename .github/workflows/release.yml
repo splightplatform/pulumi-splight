@@ -3,6 +3,7 @@ on: workflow_dispatch
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 jobs:
   publish_binary:
     name: Publish Provider
