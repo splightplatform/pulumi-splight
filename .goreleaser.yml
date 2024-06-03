@@ -4,14 +4,11 @@ archives:
 builds:
   - binary: pulumi-resource-splight
     dir: provider
-    env:
-      - CGO_ENABLED=0
     goarch:
       - amd64
       - arm64
     goos:
       - darwin
-      - windows
       - linux
     ldflags:
       - -X github.com/pulumi/pulumi-splight/provider/pkg/version.Version={{.Tag }}
@@ -21,5 +18,3 @@ changelog:
 release:
   disable: false
   prerelease: auto
-snapshot:
-  name_template: '{{ .Tag }}-SNAPSHOT'

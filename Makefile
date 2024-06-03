@@ -40,8 +40,18 @@ sdks:: tfgen
 		$(WORKING_DIR)/bin/$(TFGEN) $$sdk --out sdk/$$sdk/; \
 	done
 
+build-python:
+	@cd sdk/python && \
+	python3 setup.py build sdist
+
+build-nodejs:
+	@cd sdk/nodejs && \
+	npm pack
+
+build: build-python build-nodejs
+
 clean::
 	@rm -rf $(WORKING_DIR)/bin
 	@rm -f $(WORKING_DIR)/provider/cmd/${PROVIDER}/schema.json
 	@echo "{}" > $(WORKING_DIR)/provider/cmd/${PROVIDER}/bridge-metadata.json
-	@rm -rf sdk/{dotnet,nodejs,go,python}
+	@rm -rf sdk/{nodejs,python}
