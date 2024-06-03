@@ -54,4 +54,4 @@ Try to create infrastructure using the Pulumi CLI:
 pulumi up
 ```
 
-You must generate the SDK and install it each time you make changes to the terraform provider.
+To implement changes to the Terraform provider, you need to regenerate the provider, update the SDK, and reinstall it each time.
