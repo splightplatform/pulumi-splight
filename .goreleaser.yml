@@ -11,7 +11,9 @@ builds:
       - darwin
       - linux
     ldflags:
-      - -X github.com/pulumi/pulumi-splight/provider/pkg/version.Version={{.Tag }}
+      # Notice that this version is of the form vX.Y.Z
+      # The SDKs use X.Y.Z
+      - -X github.com/pulumi/pulumi-splight/provider/pkg/version.Version={{ .Tag }}
     main: ./cmd/pulumi-resource-splight/
 changelog:
   disable: true
