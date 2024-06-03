@@ -42,7 +42,7 @@ sdks:: tfgen
 
 build-python:
 	@cd sdk/python && \
-	python3 setup.py build sdist
+	python3 setup.py sdist
 
 build-nodejs:
 	@cd sdk/nodejs && \
