@@ -50,7 +50,7 @@ dotnet add package Pulumi.Splight
 
 ## Configuration
 
-The following configuration points are available for the `splight` provider:
+The following configuration points are available for the `Splight` provider:
 
 - `splight:hostname` - the API endpoint for the Splight platform
 - `splight:token` - the API token to authenticate with the Splight platform (Splight <access_id> <secret_key>)
