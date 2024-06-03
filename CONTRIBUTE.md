@@ -8,7 +8,7 @@
 
 ### Generation
 
-Set the terraform-provider-splight version to the desired one in the go.mod file.
+Set the terraform-provider-splight version to the desired one in the `go.mod` file.
 
 Install it along with the dependencies:
 
@@ -42,7 +42,7 @@ Activate the virtual environment of the Pulumi project:
 source venv/bin/activate
 ```
 
-Use your favourite way of installing Python packages (i.e. pip):
+Use your favourite way of installing Python packages (i.e. `pip`):
 
 ```bash
 pip install sdk/python
