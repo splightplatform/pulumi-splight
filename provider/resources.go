@@ -61,6 +61,7 @@ func Provider() tfbridge.ProviderInfo {
 		MetadataInfo:      tfbridge.NewProviderMetadata(metadata),
 		Config:            map[string]*tfbridge.SchemaInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{
+			PackageName:          "@splightplatform/pulumi-splight",
 			RespectSchemaVersion: true,
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
@@ -71,6 +72,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Python: &tfbridge.PythonInfo{
+			PackageName:          "pulumi_splight",
 			RespectSchemaVersion: true,
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
