@@ -50,6 +50,7 @@ build-nodejs:
         yarn build && \
 	cp package.json yarn.lock bin/
 
+# TODO: missing readme for each package
 build: build-python build-nodejs # Used by CI/CD
 
 clean::

@@ -13,7 +13,7 @@ builds:
     ldflags:
       # Notice that this version is of the form vX.Y.Z
       # The SDKs use X.Y.Z
-      - -X github.com/pulumi/pulumi-splight/provider/pkg/version.Version={{ .Tag }}
+      - -X github.com/pulumi/pulumi-splight/provider/pkg/version.Version={{ .Version }}
     main: ./cmd/pulumi-resource-splight/
 changelog:
   disable: true
