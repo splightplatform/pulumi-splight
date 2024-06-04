@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as splight from "@pulumi/splight";
+ * import * as splight from "@splightplatform/pulumi-splight";
  *
  * const fileInnerTest = new splight.File("fileInnerTest", {
  *     description: "Sample file for testing inner file",

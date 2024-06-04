@@ -95,6 +95,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 	}
+
 	provider.MustComputeTokens(tokens.SingleModule("splight_", mainMod, tokens.MakeStandard(mainPkg)))
 	provider.MustApplyAutoAliases()
 	provider.SetAutonaming(255, "-")

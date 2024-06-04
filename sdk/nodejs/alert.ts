@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as splight from "@pulumi/splight";
+ * import * as splight from "@splightplatform/pulumi-splight";
  *
  * const alertTest = new splight.Alert("alertTest", {
  *     description: "Created with Terraform",
