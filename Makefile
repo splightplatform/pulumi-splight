@@ -48,7 +48,7 @@ build-nodejs:
 	@cd sdk/nodejs && \
 	yarn install && \
         yarn run tsc && \
-	cp package.json yarn.lock bin/package.json
+	cp package.json yarn.lock bin/
 
 build: build-python build-nodejs # Used by CI/CD
 

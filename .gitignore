@@ -20,6 +20,8 @@ ci-scripts
 provider/**/schema-embed.json
 **/version.txt
 **/nuget
+**/dist
+**/*.egg-info
 
 sdk/java/build
 sdk/java/.gradle
