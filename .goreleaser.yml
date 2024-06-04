@@ -18,3 +18,6 @@ changelog:
 release:
   disable: false
   prerelease: auto
+snapshot:
+  # This is set as the provider version
+  name_template: '{{ .Tag }}-snapshot'

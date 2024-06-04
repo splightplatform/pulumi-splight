@@ -17,7 +17,7 @@ export COVERAGE_OUTPUT_DIR = $(WORKING_DIR)/.coverage
 COLOR_RESET     := \033[0m
 COLOR_INFO      := \033[0;32m
 
-.PHONY: tidy tfgen schema-bridge provider sdks clean build build-nodejs build-python
+.PHONY: tidy tfgen schema-bridge provider sdks clean build build-nodejs build-python provider
 
 tidy::
 	@cd provider && \
@@ -53,8 +53,7 @@ build-nodejs:
 # TODO: missing readme for each package
 build: build-python build-nodejs # Used by CI/CD
 
-# Make sure to build the provider before creating the snapshot
-snapshot:
+snapshot: provider
 	@goreleaser --snapshot --clean
 
 clean::
