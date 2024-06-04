@@ -51,6 +51,7 @@ jobs:
         user: __token__
         password: ${{ env.PYPI_API_TOKEN }}
         packages-dir: ${{github.workspace}}/sdk/python/dist/
+        skip-existing: true
 
     - name: Publish package to NPM
       uses: JS-DevTools/npm-publish@v3
