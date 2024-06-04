@@ -53,6 +53,10 @@ build-nodejs:
 # TODO: missing readme for each package
 build: build-python build-nodejs # Used by CI/CD
 
+# Make sure to build the provider before creating the snapshot
+snapshot:
+	@goreleaser --snapshot --clean
+
 clean::
 	@rm -rf $(WORKING_DIR)/bin
 	@rm -f $(WORKING_DIR)/provider/cmd/${PROVIDER}/schema.json
