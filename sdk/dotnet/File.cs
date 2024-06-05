@@ -23,8 +23,8 @@ namespace Pulumi.Splight
     ///     var fileInnerTest = new Splight.File("fileInnerTest", new()
     ///     {
     ///         Description = "Sample file for testing inner file",
-    ///         File = "./variables.tf",
     ///         Parent = "1234-1234-1234-1234",
+    ///         Path = "./variables.tf",
     ///     });
     /// 
     /// });
@@ -49,16 +49,16 @@ namespace Pulumi.Splight
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// the path for the file resource in your system
-        /// </summary>
-        [Output("file")]
-        public Output<string> File { get; private set; } = null!;
-
-        /// <summary>
         /// the id reference for a folder to be placed in
         /// </summary>
         [Output("parent")]
         public Output<string?> Parent { get; private set; } = null!;
+
+        /// <summary>
+        /// the path for the file resource in your system
+        /// </summary>
+        [Output("path")]
+        public Output<string> Path { get; private set; } = null!;
 
         /// <summary>
         /// assets to be linked
@@ -119,16 +119,16 @@ namespace Pulumi.Splight
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// the path for the file resource in your system
-        /// </summary>
-        [Input("file", required: true)]
-        public Input<string> File { get; set; } = null!;
-
-        /// <summary>
         /// the id reference for a folder to be placed in
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
+
+        /// <summary>
+        /// the path for the file resource in your system
+        /// </summary>
+        [Input("path", required: true)]
+        public Input<string> Path { get; set; } = null!;
 
         [Input("relatedAssets")]
         private InputList<string>? _relatedAssets;
@@ -160,16 +160,16 @@ namespace Pulumi.Splight
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// the path for the file resource in your system
-        /// </summary>
-        [Input("file")]
-        public Input<string>? File { get; set; }
-
-        /// <summary>
         /// the id reference for a folder to be placed in
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
+
+        /// <summary>
+        /// the path for the file resource in your system
+        /// </summary>
+        [Input("path")]
+        public Input<string>? Path { get; set; }
 
         [Input("relatedAssets")]
         private InputList<string>? _relatedAssets;

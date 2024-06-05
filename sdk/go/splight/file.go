@@ -28,8 +28,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := splight.NewFile(ctx, "fileInnerTest", &splight.FileArgs{
 //				Description: pulumi.String("Sample file for testing inner file"),
-//				File:        pulumi.String("./variables.tf"),
 //				Parent:      pulumi.String("1234-1234-1234-1234"),
+//				Path:        pulumi.String("./variables.tf"),
 //			})
 //			if err != nil {
 //				return err
@@ -51,10 +51,10 @@ type File struct {
 	Checksum pulumi.StringOutput `pulumi:"checksum"`
 	// complementary information to describe the file
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// the path for the file resource in your system
-	File pulumi.StringOutput `pulumi:"file"`
 	// the id reference for a folder to be placed in
 	Parent pulumi.StringPtrOutput `pulumi:"parent"`
+	// the path for the file resource in your system
+	Path pulumi.StringOutput `pulumi:"path"`
 	// assets to be linked
 	RelatedAssets pulumi.StringArrayOutput `pulumi:"relatedAssets"`
 }
@@ -66,8 +66,8 @@ func NewFile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.File == nil {
-		return nil, errors.New("invalid value for required argument 'File'")
+	if args.Path == nil {
+		return nil, errors.New("invalid value for required argument 'Path'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource File
@@ -95,10 +95,10 @@ type fileState struct {
 	Checksum *string `pulumi:"checksum"`
 	// complementary information to describe the file
 	Description *string `pulumi:"description"`
-	// the path for the file resource in your system
-	File *string `pulumi:"file"`
 	// the id reference for a folder to be placed in
 	Parent *string `pulumi:"parent"`
+	// the path for the file resource in your system
+	Path *string `pulumi:"path"`
 	// assets to be linked
 	RelatedAssets []string `pulumi:"relatedAssets"`
 }
@@ -107,10 +107,10 @@ type FileState struct {
 	Checksum pulumi.StringPtrInput
 	// complementary information to describe the file
 	Description pulumi.StringPtrInput
-	// the path for the file resource in your system
-	File pulumi.StringPtrInput
 	// the id reference for a folder to be placed in
 	Parent pulumi.StringPtrInput
+	// the path for the file resource in your system
+	Path pulumi.StringPtrInput
 	// assets to be linked
 	RelatedAssets pulumi.StringArrayInput
 }
@@ -122,10 +122,10 @@ func (FileState) ElementType() reflect.Type {
 type fileArgs struct {
 	// complementary information to describe the file
 	Description *string `pulumi:"description"`
-	// the path for the file resource in your system
-	File string `pulumi:"file"`
 	// the id reference for a folder to be placed in
 	Parent *string `pulumi:"parent"`
+	// the path for the file resource in your system
+	Path string `pulumi:"path"`
 	// assets to be linked
 	RelatedAssets []string `pulumi:"relatedAssets"`
 }
@@ -134,10 +134,10 @@ type fileArgs struct {
 type FileArgs struct {
 	// complementary information to describe the file
 	Description pulumi.StringPtrInput
-	// the path for the file resource in your system
-	File pulumi.StringInput
 	// the id reference for a folder to be placed in
 	Parent pulumi.StringPtrInput
+	// the path for the file resource in your system
+	Path pulumi.StringInput
 	// assets to be linked
 	RelatedAssets pulumi.StringArrayInput
 }
@@ -238,14 +238,14 @@ func (o FileOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *File) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// the path for the file resource in your system
-func (o FileOutput) File() pulumi.StringOutput {
-	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.File }).(pulumi.StringOutput)
-}
-
 // the id reference for a folder to be placed in
 func (o FileOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *File) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
+}
+
+// the path for the file resource in your system
+func (o FileOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
 }
 
 // assets to be linked

@@ -14,18 +14,18 @@ __all__ = ['FileArgs', 'File']
 @pulumi.input_type
 class FileArgs:
     def __init__(__self__, *,
-                 file: pulumi.Input[str],
+                 path: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a File resource.
-        :param pulumi.Input[str] file: the path for the file resource in your system
+        :param pulumi.Input[str] path: the path for the file resource in your system
         :param pulumi.Input[str] description: complementary information to describe the file
         :param pulumi.Input[str] parent: the id reference for a folder to be placed in
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_assets: assets to be linked
         """
-        pulumi.set(__self__, "file", file)
+        pulumi.set(__self__, "path", path)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if parent is not None:
@@ -35,15 +35,15 @@ class FileArgs:
 
     @property
     @pulumi.getter
-    def file(self) -> pulumi.Input[str]:
+    def path(self) -> pulumi.Input[str]:
         """
         the path for the file resource in your system
         """
-        return pulumi.get(self, "file")
+        return pulumi.get(self, "path")
 
-    @file.setter
-    def file(self, value: pulumi.Input[str]):
-        pulumi.set(self, "file", value)
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
 
     @property
     @pulumi.getter
@@ -87,24 +87,24 @@ class _FileState:
     def __init__(__self__, *,
                  checksum: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 file: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
                  related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering File resources.
         :param pulumi.Input[str] description: complementary information to describe the file
-        :param pulumi.Input[str] file: the path for the file resource in your system
         :param pulumi.Input[str] parent: the id reference for a folder to be placed in
+        :param pulumi.Input[str] path: the path for the file resource in your system
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_assets: assets to be linked
         """
         if checksum is not None:
             pulumi.set(__self__, "checksum", checksum)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if file is not None:
-            pulumi.set(__self__, "file", file)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
         if related_assets is not None:
             pulumi.set(__self__, "related_assets", related_assets)
 
@@ -131,18 +131,6 @@ class _FileState:
 
     @property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input[str]]:
-        """
-        the path for the file resource in your system
-        """
-        return pulumi.get(self, "file")
-
-    @file.setter
-    def file(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "file", value)
-
-    @property
-    @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
         the id reference for a folder to be placed in
@@ -152,6 +140,18 @@ class _FileState:
     @parent.setter
     def parent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        the path for the file resource in your system
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
 
     @property
     @pulumi.getter(name="relatedAssets")
@@ -172,8 +172,8 @@ class File(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 file: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
                  related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -185,8 +185,8 @@ class File(pulumi.CustomResource):
 
         file_inner_test = splight.File("fileInnerTest",
             description="Sample file for testing inner file",
-            file="./variables.tf",
-            parent="1234-1234-1234-1234")
+            parent="1234-1234-1234-1234",
+            path="./variables.tf")
         ```
 
         ## Import
@@ -198,8 +198,8 @@ class File(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: complementary information to describe the file
-        :param pulumi.Input[str] file: the path for the file resource in your system
         :param pulumi.Input[str] parent: the id reference for a folder to be placed in
+        :param pulumi.Input[str] path: the path for the file resource in your system
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_assets: assets to be linked
         """
         ...
@@ -217,8 +217,8 @@ class File(pulumi.CustomResource):
 
         file_inner_test = splight.File("fileInnerTest",
             description="Sample file for testing inner file",
-            file="./variables.tf",
-            parent="1234-1234-1234-1234")
+            parent="1234-1234-1234-1234",
+            path="./variables.tf")
         ```
 
         ## Import
@@ -243,8 +243,8 @@ class File(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 file: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
                  related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -256,10 +256,10 @@ class File(pulumi.CustomResource):
             __props__ = FileArgs.__new__(FileArgs)
 
             __props__.__dict__["description"] = description
-            if file is None and not opts.urn:
-                raise TypeError("Missing required property 'file'")
-            __props__.__dict__["file"] = file
             __props__.__dict__["parent"] = parent
+            if path is None and not opts.urn:
+                raise TypeError("Missing required property 'path'")
+            __props__.__dict__["path"] = path
             __props__.__dict__["related_assets"] = related_assets
             __props__.__dict__["checksum"] = None
         super(File, __self__).__init__(
@@ -274,8 +274,8 @@ class File(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             checksum: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            file: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
+            path: Optional[pulumi.Input[str]] = None,
             related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'File':
         """
         Get an existing File resource's state with the given name, id, and optional extra
@@ -285,8 +285,8 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: complementary information to describe the file
-        :param pulumi.Input[str] file: the path for the file resource in your system
         :param pulumi.Input[str] parent: the id reference for a folder to be placed in
+        :param pulumi.Input[str] path: the path for the file resource in your system
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_assets: assets to be linked
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -295,8 +295,8 @@ class File(pulumi.CustomResource):
 
         __props__.__dict__["checksum"] = checksum
         __props__.__dict__["description"] = description
-        __props__.__dict__["file"] = file
         __props__.__dict__["parent"] = parent
+        __props__.__dict__["path"] = path
         __props__.__dict__["related_assets"] = related_assets
         return File(resource_name, opts=opts, __props__=__props__)
 
@@ -315,19 +315,19 @@ class File(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def file(self) -> pulumi.Output[str]:
-        """
-        the path for the file resource in your system
-        """
-        return pulumi.get(self, "file")
-
-    @property
-    @pulumi.getter
     def parent(self) -> pulumi.Output[Optional[str]]:
         """
         the id reference for a folder to be placed in
         """
         return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Output[str]:
+        """
+        the path for the file resource in your system
+        """
+        return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="relatedAssets")

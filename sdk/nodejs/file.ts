@@ -13,8 +13,8 @@ import * as utilities from "./utilities";
  *
  * const fileInnerTest = new splight.File("fileInnerTest", {
  *     description: "Sample file for testing inner file",
- *     file: "./variables.tf",
  *     parent: "1234-1234-1234-1234",
+ *     path: "./variables.tf",
  * });
  * ```
  *
@@ -58,13 +58,13 @@ export class File extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * the path for the file resource in your system
-     */
-    public readonly file!: pulumi.Output<string>;
-    /**
      * the id reference for a folder to be placed in
      */
     public readonly parent!: pulumi.Output<string | undefined>;
+    /**
+     * the path for the file resource in your system
+     */
+    public readonly path!: pulumi.Output<string>;
     /**
      * assets to be linked
      */
@@ -85,17 +85,17 @@ export class File extends pulumi.CustomResource {
             const state = argsOrState as FileState | undefined;
             resourceInputs["checksum"] = state ? state.checksum : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["file"] = state ? state.file : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["path"] = state ? state.path : undefined;
             resourceInputs["relatedAssets"] = state ? state.relatedAssets : undefined;
         } else {
             const args = argsOrState as FileArgs | undefined;
-            if ((!args || args.file === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'file'");
+            if ((!args || args.path === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'path'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["file"] = args ? args.file : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["path"] = args ? args.path : undefined;
             resourceInputs["relatedAssets"] = args ? args.relatedAssets : undefined;
             resourceInputs["checksum"] = undefined /*out*/;
         }
@@ -114,13 +114,13 @@ export interface FileState {
      */
     description?: pulumi.Input<string>;
     /**
-     * the path for the file resource in your system
-     */
-    file?: pulumi.Input<string>;
-    /**
      * the id reference for a folder to be placed in
      */
     parent?: pulumi.Input<string>;
+    /**
+     * the path for the file resource in your system
+     */
+    path?: pulumi.Input<string>;
     /**
      * assets to be linked
      */
@@ -136,13 +136,13 @@ export interface FileArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * the path for the file resource in your system
-     */
-    file: pulumi.Input<string>;
-    /**
      * the id reference for a folder to be placed in
      */
     parent?: pulumi.Input<string>;
+    /**
+     * the path for the file resource in your system
+     */
+    path: pulumi.Input<string>;
     /**
      * assets to be linked
      */
