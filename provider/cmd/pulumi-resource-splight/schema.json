@@ -1544,7 +1544,7 @@
             }
         },
         "splight:index/file:File": {
-            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as splight from \"@splightplatform/pulumi-splight\";\n\nconst fileInnerTest = new splight.File(\"fileInnerTest\", {\n    description: \"Sample file for testing inner file\",\n    file: \"./variables.tf\",\n    parent: \"1234-1234-1234-1234\",\n});\n```\n```python\nimport pulumi\nimport pulumi_splight as splight\n\nfile_inner_test = splight.File(\"fileInnerTest\",\n    description=\"Sample file for testing inner file\",\n    file=\"./variables.tf\",\n    parent=\"1234-1234-1234-1234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Splight = Pulumi.Splight;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var fileInnerTest = new Splight.File(\"fileInnerTest\", new()\n    {\n        Description = \"Sample file for testing inner file\",\n        File = \"./variables.tf\",\n        Parent = \"1234-1234-1234-1234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/splightplatform/pulumi-splight/sdk/go/splight\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := splight.NewFile(ctx, \"fileInnerTest\", \u0026splight.FileArgs{\n\t\t\tDescription: pulumi.String(\"Sample file for testing inner file\"),\n\t\t\tFile:        pulumi.String(\"./variables.tf\"),\n\t\t\tParent:      pulumi.String(\"1234-1234-1234-1234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.splight.File;\nimport com.pulumi.splight.FileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var fileInnerTest = new File(\"fileInnerTest\", FileArgs.builder()\n            .description(\"Sample file for testing inner file\")\n            .file(\"./variables.tf\")\n            .parent(\"1234-1234-1234-1234\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  fileInnerTest:\n    type: splight:File\n    properties:\n      description: Sample file for testing inner file\n      file: ./variables.tf\n      parent: 1234-1234-1234-1234\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import splight:index/file:File [options] splight_file.\u003cname\u003e \u003cfile_id\u003e\n```\n\n",
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as splight from \"@splightplatform/pulumi-splight\";\n\nconst fileInnerTest = new splight.File(\"fileInnerTest\", {\n    description: \"Sample file for testing inner file\",\n    parent: \"1234-1234-1234-1234\",\n    path: \"./variables.tf\",\n});\n```\n```python\nimport pulumi\nimport pulumi_splight as splight\n\nfile_inner_test = splight.File(\"fileInnerTest\",\n    description=\"Sample file for testing inner file\",\n    parent=\"1234-1234-1234-1234\",\n    path=\"./variables.tf\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Splight = Pulumi.Splight;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var fileInnerTest = new Splight.File(\"fileInnerTest\", new()\n    {\n        Description = \"Sample file for testing inner file\",\n        Parent = \"1234-1234-1234-1234\",\n        Path = \"./variables.tf\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/splightplatform/pulumi-splight/sdk/go/splight\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := splight.NewFile(ctx, \"fileInnerTest\", \u0026splight.FileArgs{\n\t\t\tDescription: pulumi.String(\"Sample file for testing inner file\"),\n\t\t\tParent:      pulumi.String(\"1234-1234-1234-1234\"),\n\t\t\tPath:        pulumi.String(\"./variables.tf\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.splight.File;\nimport com.pulumi.splight.FileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var fileInnerTest = new File(\"fileInnerTest\", FileArgs.builder()\n            .description(\"Sample file for testing inner file\")\n            .parent(\"1234-1234-1234-1234\")\n            .path(\"./variables.tf\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  fileInnerTest:\n    type: splight:File\n    properties:\n      description: Sample file for testing inner file\n      parent: 1234-1234-1234-1234\n      path: ./variables.tf\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import splight:index/file:File [options] splight_file.\u003cname\u003e \u003cfile_id\u003e\n```\n\n",
             "properties": {
                 "checksum": {
                     "type": "string"
@@ -1553,13 +1553,13 @@
                     "type": "string",
                     "description": "complementary information to describe the file\n"
                 },
-                "file": {
-                    "type": "string",
-                    "description": "the path for the file resource in your system\n"
-                },
                 "parent": {
                     "type": "string",
                     "description": "the id reference for a folder to be placed in\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "the path for the file resource in your system\n"
                 },
                 "relatedAssets": {
                     "type": "array",
@@ -1571,21 +1571,21 @@
             },
             "required": [
                 "checksum",
-                "file"
+                "path"
             ],
             "inputProperties": {
                 "description": {
                     "type": "string",
                     "description": "complementary information to describe the file\n"
                 },
-                "file": {
-                    "type": "string",
-                    "description": "the path for the file resource in your system\n",
-                    "willReplaceOnChanges": true
-                },
                 "parent": {
                     "type": "string",
                     "description": "the id reference for a folder to be placed in\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "the path for the file resource in your system\n",
+                    "willReplaceOnChanges": true
                 },
                 "relatedAssets": {
                     "type": "array",
@@ -1596,7 +1596,7 @@
                 }
             },
             "requiredInputs": [
-                "file"
+                "path"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering File resources.\n",
@@ -1608,14 +1608,14 @@
                         "type": "string",
                         "description": "complementary information to describe the file\n"
                     },
-                    "file": {
-                        "type": "string",
-                        "description": "the path for the file resource in your system\n",
-                        "willReplaceOnChanges": true
-                    },
                     "parent": {
                         "type": "string",
                         "description": "the id reference for a folder to be placed in\n"
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "the path for the file resource in your system\n",
+                        "willReplaceOnChanges": true
                     },
                     "relatedAssets": {
                         "type": "array",
