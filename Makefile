@@ -5,6 +5,7 @@ PACK             := splight
 PROJECT          := github.com/splightplatform/pulumi-splight
 PROVIDER_PATH    := provider
 VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
+LANGUAGES	 := nodejs python dotnet go
 
 TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
@@ -17,7 +18,7 @@ export COVERAGE_OUTPUT_DIR = $(WORKING_DIR)/.coverage
 COLOR_RESET     := \033[0m
 COLOR_INFO      := \033[0;32m
 
-.PHONY: tidy tfgen schema-bridge provider sdks clean build build-nodejs build-python provider
+.PHONY: tidy tfgen schema-bridge provider sdks clean build build-nodejs build-python build-dotnet provider
 
 tidy::
 	@cd provider && \
@@ -35,7 +36,7 @@ provider:: schema-bridge
 	go build -o $(WORKING_DIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER}
 
 sdks:: tfgen
-	@for sdk in nodejs python; do \
+	@for sdk in $(LANGUAGES); do \
 		echo -e "${COLOR_INFO}Generating SDK for $$sdk${COLOR_RESET}"; \
 		$(WORKING_DIR)/bin/$(TFGEN) $$sdk --out sdk/$$sdk/; \
 	done
@@ -50,8 +51,12 @@ build-nodejs:
         yarn build && \
 	cp package.json yarn.lock bin/
 
+build-dotnet:
+	@cd sdk/dotnet/ && \
+        dotnet build
+
 # TODO: missing readme for each package
-build: build-python build-nodejs # Used by CI/CD
+build: build-python build-nodejs build-dotnet # Used by CI/CD
 
 snapshot: provider
 	@goreleaser --snapshot --clean
