@@ -67,4 +67,4 @@ jobs:
 
     - name: Publish package to NuGet
       run: |
-        dotnet nuget push ${{github.workspace}}/sdk/dotnet/bin/Debug/*.nupkg -k ${{ env.NUGET_TOKEN }}
+        dotnet nuget push ${{github.workspace}}/sdk/dotnet/bin/Debug/*.nupkg -k ${{ env.NUGET_TOKEN }} --skip-duplicate
