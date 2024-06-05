@@ -42,6 +42,11 @@ jobs:
       with:
         node-version: "18"
 
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '6.0.x'
+
     - name: Build SDKs
       run: make build
 
@@ -59,3 +64,7 @@ jobs:
         access: "public"
         token: ${{ env.NPM_TOKEN }}
         package: ${{github.workspace}}/sdk/nodejs/bin/package.json
+
+    - name: Publish package to NuGet
+      run: |
+        dotnet nuget push ${{github.workspace}}/sdk/dotnet/bin/Debug/*.nupkg -k ${{ env.NUGET_TOKEN }}
