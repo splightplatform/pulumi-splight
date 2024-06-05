@@ -5,8 +5,8 @@
 - Go (1.21.x)
 - Python (3.9.x)
 - Yarn (1.22.x)
-- Goreleaser
-- Dotnet
+- Goreleaser (1.26.2)
+- Dotnet (8.0.104)
 
 ### Generation
 
