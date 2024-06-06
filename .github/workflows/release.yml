@@ -67,4 +67,4 @@ jobs:
 
     - name: Publish package to NuGet
       run: |
-        dotnet nuget push ${{github.workspace}}/sdk/dotnet/bin/Debug/*.nupkg --api-key ${{ env.NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json https://api.nuget.org/v3/index.json
+        dotnet nuget push ${{github.workspace}}/sdk/dotnet/bin/Debug/*.nupkg --api-key ${{ env.NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json
