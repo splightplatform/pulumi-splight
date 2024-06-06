@@ -89,7 +89,6 @@ export interface ComponentRoutineOutputValue {
 }
 
 export interface DashboardChartChartItem {
-    collection?: string;
     color: string;
     expressionPlain: string;
     hidden?: boolean;

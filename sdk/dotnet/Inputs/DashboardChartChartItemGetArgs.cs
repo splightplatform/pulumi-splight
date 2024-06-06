@@ -13,9 +13,6 @@ namespace Splight.Splight.Inputs
 
     public sealed class DashboardChartChartItemGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("collection")]
-        public Input<string>? Collection { get; set; }
-
         [Input("color", required: true)]
         public Input<string> Color { get; set; } = null!;
 

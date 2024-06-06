@@ -106,6 +106,9 @@ namespace Splight.Splight
         [Output("chartItems")]
         public Output<ImmutableArray<Outputs.DashboardChartChartItem>> ChartItems { get; private set; } = null!;
 
+        [Output("collection")]
+        public Output<string?> Collection { get; private set; } = null!;
+
         /// <summary>
         /// chart height in px
         /// </summary>
@@ -218,6 +221,9 @@ namespace Splight.Splight
             set => _chartItems = value;
         }
 
+        [Input("collection")]
+        public Input<string>? Collection { get; set; }
+
         /// <summary>
         /// chart height in px
         /// </summary>
@@ -303,6 +309,9 @@ namespace Splight.Splight
             get => _chartItems ?? (_chartItems = new InputList<Inputs.DashboardChartChartItemGetArgs>());
             set => _chartItems = value;
         }
+
+        [Input("collection")]
+        public Input<string>? Collection { get; set; }
 
         /// <summary>
         /// chart height in px

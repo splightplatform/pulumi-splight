@@ -108,6 +108,7 @@ type DashboardChart struct {
 
 	// chart traces to be included
 	ChartItems DashboardChartChartItemArrayOutput `pulumi:"chartItems"`
+	Collection pulumi.StringPtrOutput             `pulumi:"collection"`
 	// chart height in px
 	Height pulumi.IntPtrOutput `pulumi:"height"`
 	// name of the chart
@@ -175,6 +176,7 @@ func GetDashboardChart(ctx *pulumi.Context,
 type dashboardChartState struct {
 	// chart traces to be included
 	ChartItems []DashboardChartChartItem `pulumi:"chartItems"`
+	Collection *string                   `pulumi:"collection"`
 	// chart height in px
 	Height *int `pulumi:"height"`
 	// name of the chart
@@ -198,6 +200,7 @@ type dashboardChartState struct {
 type DashboardChartState struct {
 	// chart traces to be included
 	ChartItems DashboardChartChartItemArrayInput
+	Collection pulumi.StringPtrInput
 	// chart height in px
 	Height pulumi.IntPtrInput
 	// name of the chart
@@ -225,6 +228,7 @@ func (DashboardChartState) ElementType() reflect.Type {
 type dashboardChartArgs struct {
 	// chart traces to be included
 	ChartItems []DashboardChartChartItem `pulumi:"chartItems"`
+	Collection *string                   `pulumi:"collection"`
 	// chart height in px
 	Height *int `pulumi:"height"`
 	// name of the chart
@@ -249,6 +253,7 @@ type dashboardChartArgs struct {
 type DashboardChartArgs struct {
 	// chart traces to be included
 	ChartItems DashboardChartChartItemArrayInput
+	Collection pulumi.StringPtrInput
 	// chart height in px
 	Height pulumi.IntPtrInput
 	// name of the chart
@@ -359,6 +364,10 @@ func (o DashboardChartOutput) ToDashboardChartOutputWithContext(ctx context.Cont
 // chart traces to be included
 func (o DashboardChartOutput) ChartItems() DashboardChartChartItemArrayOutput {
 	return o.ApplyT(func(v *DashboardChart) DashboardChartChartItemArrayOutput { return v.ChartItems }).(DashboardChartChartItemArrayOutput)
+}
+
+func (o DashboardChartOutput) Collection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DashboardChart) pulumi.StringPtrOutput { return v.Collection }).(pulumi.StringPtrOutput)
 }
 
 // chart height in px

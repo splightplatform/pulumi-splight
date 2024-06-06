@@ -96,6 +96,7 @@ export class DashboardChart extends pulumi.CustomResource {
      * chart traces to be included
      */
     public readonly chartItems!: pulumi.Output<outputs.DashboardChartChartItem[]>;
+    public readonly collection!: pulumi.Output<string | undefined>;
     /**
      * chart height in px
      */
@@ -147,6 +148,7 @@ export class DashboardChart extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DashboardChartState | undefined;
             resourceInputs["chartItems"] = state ? state.chartItems : undefined;
+            resourceInputs["collection"] = state ? state.collection : undefined;
             resourceInputs["height"] = state ? state.height : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["tab"] = state ? state.tab : undefined;
@@ -174,6 +176,7 @@ export class DashboardChart extends pulumi.CustomResource {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["chartItems"] = args ? args.chartItems : undefined;
+            resourceInputs["collection"] = args ? args.collection : undefined;
             resourceInputs["height"] = args ? args.height : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tab"] = args ? args.tab : undefined;
@@ -197,6 +200,7 @@ export interface DashboardChartState {
      * chart traces to be included
      */
     chartItems?: pulumi.Input<pulumi.Input<inputs.DashboardChartChartItem>[]>;
+    collection?: pulumi.Input<string>;
     /**
      * chart height in px
      */
@@ -243,6 +247,7 @@ export interface DashboardChartArgs {
      * chart traces to be included
      */
     chartItems: pulumi.Input<pulumi.Input<inputs.DashboardChartChartItem>[]>;
+    collection?: pulumi.Input<string>;
     /**
      * chart height in px
      */

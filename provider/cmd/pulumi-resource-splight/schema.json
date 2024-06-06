@@ -299,9 +299,6 @@
         },
         "splight:index/DashboardChartChartItem:DashboardChartChartItem": {
             "properties": {
-                "collection": {
-                    "type": "string"
-                },
                 "color": {
                     "type": "string"
                 },
@@ -1322,6 +1319,9 @@
                     },
                     "description": "chart traces to be included\n"
                 },
+                "collection": {
+                    "type": "string"
+                },
                 "height": {
                     "type": "integer",
                     "description": "chart height in px\n"
@@ -1380,6 +1380,9 @@
                         "$ref": "#/types/splight:index/DashboardChartChartItem:DashboardChartChartItem"
                     },
                     "description": "chart traces to be included\n"
+                },
+                "collection": {
+                    "type": "string"
                 },
                 "height": {
                     "type": "integer",
@@ -1440,6 +1443,9 @@
                             "$ref": "#/types/splight:index/DashboardChartChartItem:DashboardChartChartItem"
                         },
                         "description": "chart traces to be included\n"
+                    },
+                    "collection": {
+                        "type": "string"
                     },
                     "height": {
                         "type": "integer",

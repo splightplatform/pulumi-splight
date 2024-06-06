@@ -89,7 +89,6 @@ export interface ComponentRoutineOutputValue {
 }
 
 export interface DashboardChartChartItem {
-    collection?: pulumi.Input<string>;
     color: pulumi.Input<string>;
     expressionPlain: pulumi.Input<string>;
     hidden?: pulumi.Input<boolean>;

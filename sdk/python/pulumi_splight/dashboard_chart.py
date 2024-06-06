@@ -21,6 +21,7 @@ class DashboardChartArgs:
                  timestamp_gte: pulumi.Input[str],
                  timestamp_lte: pulumi.Input[str],
                  type: pulumi.Input[str],
+                 collection: Optional[pulumi.Input[str]] = None,
                  height: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  thresholds: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartThresholdArgs']]]] = None,
@@ -44,6 +45,8 @@ class DashboardChartArgs:
         pulumi.set(__self__, "timestamp_gte", timestamp_gte)
         pulumi.set(__self__, "timestamp_lte", timestamp_lte)
         pulumi.set(__self__, "type", type)
+        if collection is not None:
+            pulumi.set(__self__, "collection", collection)
         if height is not None:
             pulumi.set(__self__, "height", height)
         if name is not None:
@@ -117,6 +120,15 @@ class DashboardChartArgs:
 
     @property
     @pulumi.getter
+    def collection(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "collection")
+
+    @collection.setter
+    def collection(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "collection", value)
+
+    @property
+    @pulumi.getter
     def height(self) -> Optional[pulumi.Input[int]]:
         """
         chart height in px
@@ -180,6 +192,7 @@ class DashboardChartArgs:
 class _DashboardChartState:
     def __init__(__self__, *,
                  chart_items: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartChartItemArgs']]]] = None,
+                 collection: Optional[pulumi.Input[str]] = None,
                  height: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tab: Optional[pulumi.Input[str]] = None,
@@ -204,6 +217,8 @@ class _DashboardChartState:
         """
         if chart_items is not None:
             pulumi.set(__self__, "chart_items", chart_items)
+        if collection is not None:
+            pulumi.set(__self__, "collection", collection)
         if height is not None:
             pulumi.set(__self__, "height", height)
         if name is not None:
@@ -234,6 +249,15 @@ class _DashboardChartState:
     @chart_items.setter
     def chart_items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartChartItemArgs']]]]):
         pulumi.set(self, "chart_items", value)
+
+    @property
+    @pulumi.getter
+    def collection(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "collection")
+
+    @collection.setter
+    def collection(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "collection", value)
 
     @property
     @pulumi.getter
@@ -350,6 +374,7 @@ class DashboardChart(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardChartChartItemArgs']]]]] = None,
+                 collection: Optional[pulumi.Input[str]] = None,
                  height: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tab: Optional[pulumi.Input[str]] = None,
@@ -511,6 +536,7 @@ class DashboardChart(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardChartChartItemArgs']]]]] = None,
+                 collection: Optional[pulumi.Input[str]] = None,
                  height: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tab: Optional[pulumi.Input[str]] = None,
@@ -532,6 +558,7 @@ class DashboardChart(pulumi.CustomResource):
             if chart_items is None and not opts.urn:
                 raise TypeError("Missing required property 'chart_items'")
             __props__.__dict__["chart_items"] = chart_items
+            __props__.__dict__["collection"] = collection
             __props__.__dict__["height"] = height
             __props__.__dict__["name"] = name
             if tab is None and not opts.urn:
@@ -560,6 +587,7 @@ class DashboardChart(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardChartChartItemArgs']]]]] = None,
+            collection: Optional[pulumi.Input[str]] = None,
             height: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             tab: Optional[pulumi.Input[str]] = None,
@@ -592,6 +620,7 @@ class DashboardChart(pulumi.CustomResource):
         __props__ = _DashboardChartState.__new__(_DashboardChartState)
 
         __props__.__dict__["chart_items"] = chart_items
+        __props__.__dict__["collection"] = collection
         __props__.__dict__["height"] = height
         __props__.__dict__["name"] = name
         __props__.__dict__["tab"] = tab
@@ -610,6 +639,11 @@ class DashboardChart(pulumi.CustomResource):
         chart traces to be included
         """
         return pulumi.get(self, "chart_items")
+
+    @property
+    @pulumi.getter
+    def collection(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "collection")
 
     @property
     @pulumi.getter

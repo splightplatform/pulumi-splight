@@ -556,7 +556,6 @@ class DashboardChartChartItemArgs:
                  query_plain: pulumi.Input[str],
                  ref_id: pulumi.Input[str],
                  type: pulumi.Input[str],
-                 collection: Optional[pulumi.Input[str]] = None,
                  hidden: Optional[pulumi.Input[bool]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  query_filter_asset: Optional[pulumi.Input['DashboardChartChartItemQueryFilterAssetArgs']] = None,
@@ -574,8 +573,6 @@ class DashboardChartChartItemArgs:
         pulumi.set(__self__, "query_plain", query_plain)
         pulumi.set(__self__, "ref_id", ref_id)
         pulumi.set(__self__, "type", type)
-        if collection is not None:
-            pulumi.set(__self__, "collection", collection)
         if hidden is not None:
             pulumi.set(__self__, "hidden", hidden)
         if label is not None:
@@ -637,15 +634,6 @@ class DashboardChartChartItemArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter
-    def collection(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "collection")
-
-    @collection.setter
-    def collection(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "collection", value)
 
     @property
     @pulumi.getter

@@ -977,7 +977,6 @@ func (o ComponentRoutineOutputValueOutput) Attribute() pulumi.StringOutput {
 }
 
 type DashboardChartChartItem struct {
-	Collection      *string `pulumi:"collection"`
 	Color           string  `pulumi:"color"`
 	ExpressionPlain string  `pulumi:"expressionPlain"`
 	Hidden          *bool   `pulumi:"hidden"`
@@ -1007,7 +1006,6 @@ type DashboardChartChartItemInput interface {
 }
 
 type DashboardChartChartItemArgs struct {
-	Collection      pulumi.StringPtrInput `pulumi:"collection"`
 	Color           pulumi.StringInput    `pulumi:"color"`
 	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
 	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
@@ -1074,10 +1072,6 @@ func (o DashboardChartChartItemOutput) ToDashboardChartChartItemOutput() Dashboa
 
 func (o DashboardChartChartItemOutput) ToDashboardChartChartItemOutputWithContext(ctx context.Context) DashboardChartChartItemOutput {
 	return o
-}
-
-func (o DashboardChartChartItemOutput) Collection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DashboardChartChartItem) *string { return v.Collection }).(pulumi.StringPtrOutput)
 }
 
 func (o DashboardChartChartItemOutput) Color() pulumi.StringOutput {

@@ -14,7 +14,6 @@ namespace Splight.Splight.Outputs
     [OutputType]
     public sealed class DashboardChartChartItem
     {
-        public readonly string? Collection;
         public readonly string Color;
         public readonly string ExpressionPlain;
         public readonly bool? Hidden;
@@ -37,8 +36,6 @@ namespace Splight.Splight.Outputs
 
         [OutputConstructor]
         private DashboardChartChartItem(
-            string? collection,
-
             string color,
 
             string expressionPlain,
@@ -65,7 +62,6 @@ namespace Splight.Splight.Outputs
 
             string type)
         {
-            Collection = collection;
             Color = color;
             ExpressionPlain = expressionPlain;
             Hidden = hidden;
