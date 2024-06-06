@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Splight
+namespace Splight.Splight
 {
     /// <summary>
     /// The provider type for the splight package. By default, resources use package-wide configuration

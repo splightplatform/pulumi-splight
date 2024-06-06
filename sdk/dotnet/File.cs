@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Splight
+namespace Splight.Splight
 {
     /// <summary>
     /// ## Example Usage
@@ -16,7 +17,7 @@ namespace Pulumi.Splight
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Splight = Pulumi.Splight;
+    /// using Splight = Splight.Splight;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {

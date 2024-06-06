@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>splight</Authors>
-    <Company>splight</Company>
+    <Authors>splightplatform</Authors>
+    <Company>splightplatform</Company>
     <Description>A Pulumi package for creating and managing splight cloud resources.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://www.splight-ai.com</PackageProjectUrl>
