@@ -1,6 +1,6 @@
 {
     "name": "@splightplatform/pulumi-splight",
-    "version": "0.1.19",
+    "version": "0.1.20",
     "description": "A Pulumi package for creating and managing splight cloud resources.",
     "keywords": [
         "splightplatform",
@@ -24,6 +24,6 @@
     "pulumi": {
         "resource": true,
         "name": "splight",
-        "version": "0.1.19"
+        "version": "0.1.20"
     }
 }
