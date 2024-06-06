@@ -23,7 +23,7 @@ setup(name='pulumi_splight',
       description="A Pulumi package for creating and managing splight cloud resources.",
       long_description=readme(),
       long_description_content_type='text/markdown',
-      keywords='splight splight category/cloud',
+      keywords='splightplatform splight category/cloud',
       url='https://www.splight-ai.com',
       project_urls={
           'Repository': 'https://github.com/splightplatform/pulumi-splight'
