@@ -53,7 +53,7 @@ build-nodejs:
 
 build-dotnet:
 	@cd sdk/dotnet/ && \
-        dotnet build
+        dotnet build /p:Version=${VERSION}
 
 # TODO: missing readme for each package
 build: build-python build-nodejs build-dotnet # Used by CI/CD
