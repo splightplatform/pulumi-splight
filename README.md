@@ -2,9 +2,9 @@
 
 The Splight provider enables seamless interaction with resources supported by Splight.
 
-To begin using the provider, you need to configure it with the appropriate credentials.
+To begin using the provider, you need to configure it with the appropriate credentials. Refer to the [Configuration](#configuration) section for more details.
 
-Refer to the [Configuration](#Configuration) section for more details.
+For information on development, please refer to the [Contribute Guide](CONTRIBUTE.md).
 
 ## Installing
 
@@ -15,13 +15,13 @@ This package is available for several languages/platforms:
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```bash
-npm install @pulumi/splight
+npm install @splightplatform/pulumi-splight
 ```
 
 or `yarn`:
 
 ```bash
-yarn add @pulumi/splight
+yarn add @splightplatform/pulumi-splight
 ```
 
 ### Python
@@ -37,7 +37,7 @@ pip install pulumi_splight
 To use from Go, use `go get` to grab the latest version of the library:
 
 ```bash
-go get github.com/pulumi/pulumi-splight/sdk/go/...
+go get github.com/splightplatform/pulumi-splight/sdk/go
 ```
 
 ### .NET
@@ -45,7 +45,7 @@ go get github.com/pulumi/pulumi-splight/sdk/go/...
 To use from .NET, install using `dotnet add package`:
 
 ```bash
-dotnet add package Pulumi.Splight
+dotnet add package Splight.Splight
 ```
 
 ## Configuration

@@ -45,6 +45,7 @@ build-python:
 	@cd sdk/python && \
 	python3 setup.py sdist
 
+# TODO: make 'yarn build' create the package.json and yarn.lock
 build-nodejs:
 	@cd sdk/nodejs && \
 	yarn install && \
@@ -53,7 +54,7 @@ build-nodejs:
 
 build-dotnet:
 	@cd sdk/dotnet/ && \
-        dotnet build /p:Version=${VERSION}
+        dotnet build
 
 # TODO: missing readme for each package
 build: build-python build-nodejs build-dotnet # Used by CI/CD
