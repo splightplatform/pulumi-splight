@@ -32,8 +32,9 @@ import (
 const (
 	// Default name of the package in the package
 	// registries for nodejs and python:
-	mainPkg = "splight"
-	mainMod = "index" // the splight module
+	mainPkg  = "splight"
+	mainMod  = "index" // the splight module
+	nugetOrg = "Splight"
 )
 
 //go:embed cmd/pulumi-resource-splight/bridge-metadata.json
@@ -48,12 +49,11 @@ func Provider() tfbridge.ProviderInfo {
 
 		Name:              "splight",
 		Version:           version.Version,
-		DisplayName:       "splight",
-		Publisher:         "splight",
+		Publisher:         "splightplatform",
 		LogoURL:           "",
 		PluginDownloadURL: "",
 		Description:       "A Pulumi package for creating and managing splight cloud resources.",
-		Keywords:          []string{"splight", "splight", "category/cloud"},
+		Keywords:          []string{"splightplatform", "splight", "category/cloud"},
 		License:           "Apache-2.0",
 		Homepage:          "https://www.splight-ai.com",
 		Repository:        "https://github.com/splightplatform/pulumi-splight",
@@ -61,6 +61,7 @@ func Provider() tfbridge.ProviderInfo {
 		MetadataInfo:      tfbridge.NewProviderMetadata(metadata),
 		Config:            map[string]*tfbridge.SchemaInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{
+			PackageName:          "@splightplatform/pulumi-splight",
 			RespectSchemaVersion: true,
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
@@ -71,6 +72,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Python: &tfbridge.PythonInfo{
+			PackageName:          "pulumi_splight",
 			RespectSchemaVersion: true,
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
@@ -91,8 +93,10 @@ func Provider() tfbridge.ProviderInfo {
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
+			RootNamespace: nugetOrg,
 		},
 	}
+
 	provider.MustComputeTokens(tokens.SingleModule("splight_", mainMod, tokens.MakeStandard(mainPkg)))
 	provider.MustApplyAutoAliases()
 	provider.SetAutonaming(255, "-")

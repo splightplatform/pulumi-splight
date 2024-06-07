@@ -5,6 +5,7 @@ PACK             := splight
 PROJECT          := github.com/splightplatform/pulumi-splight
 PROVIDER_PATH    := provider
 VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
+LANGUAGES	 := nodejs python dotnet go
 
 TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
@@ -12,33 +13,57 @@ VERSION         := $(shell cat version)
 
 WORKING_DIR     := $(shell pwd)
 
-.PHONY: provider build_sdks build_nodejs build_dotnet build_go build_python clean
+export COVERAGE_OUTPUT_DIR = $(WORKING_DIR)/.coverage
 
-tfgen::
+COLOR_RESET     := \033[0m
+COLOR_INFO      := \033[0;32m
+
+.PHONY: tidy tfgen schema-bridge provider sdks clean build build-nodejs build-python build-dotnet provider
+
+tidy::
 	@cd provider && \
-	go mod tidy && \
+	go mod tidy
+
+tfgen:: tidy
+	@cd provider && \
 	go build -o $(WORKING_DIR)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN}
+
+schema-bridge:: tfgen
 	@$(WORKING_DIR)/bin/${TFGEN} schema --out provider/cmd/${PROVIDER}
 
-provider:: tfgen
+provider:: schema-bridge
 	@cd provider && \
 	go build -o $(WORKING_DIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER}
 
-build_nodejs::
-	@$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
+sdks:: tfgen
+	@for sdk in $(LANGUAGES); do \
+		echo -e "${COLOR_INFO}Generating SDK for $$sdk${COLOR_RESET}"; \
+		$(WORKING_DIR)/bin/$(TFGEN) $$sdk --out sdk/$$sdk/; \
+	done
 
-build_python::
-	@$(WORKING_DIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
+build-python: 
+	@cd sdk/python && \
+	python3 setup.py sdist
 
-build_dotnet::
-	@$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
+# TODO: make 'yarn build' create the package.json and yarn.lock
+build-nodejs:
+	@cd sdk/nodejs && \
+	yarn install && \
+        yarn build && \
+	cp package.json yarn.lock bin/
 
-build_go::
-	@$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
+build-dotnet:
+	@cd sdk/dotnet/ && \
+        dotnet build
 
-build:: provider build_nodejs build_python build_go build_dotnet
+# TODO: missing readme for each package
+build: build-python build-nodejs build-dotnet # Used by CI/CD
+
+snapshot: provider
+	@goreleaser --snapshot --clean
 
 clean::
-	rm -r $(WORKING_DIR)/bin
-	rm -f provider/cmd/${PROVIDER}/schema.go
-	rm -rf sdk/{dotnet,nodejs,go,python}
+	@rm -rf $(WORKING_DIR)/bin
+	@rm -f $(WORKING_DIR)/provider/cmd/${PROVIDER}/schema.json
+	@echo "{}" > $(WORKING_DIR)/provider/cmd/${PROVIDER}/bridge-metadata.json
+	@rm -rf sdk/{nodejs,python}

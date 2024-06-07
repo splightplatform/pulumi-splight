@@ -4,22 +4,20 @@ archives:
 builds:
   - binary: pulumi-resource-splight
     dir: provider
-    env:
-      - CGO_ENABLED=0
     goarch:
       - amd64
       - arm64
     goos:
       - darwin
-      - windows
       - linux
     ldflags:
-      - -X github.com/pulumi/pulumi-splight/provider/pkg/version.Version={{.Tag }}
-    main: ./cmd/pulumi-resource-splight/
+      - -X github.com/splightplatform/pulumi-splight/provider/pkg/version.Version={{ .Version }}
+    main: ./cmd/pulumi-resource-splight
 changelog:
-  skip: true
+  disable: true
 release:
   disable: false
   prerelease: auto
 snapshot:
-  name_template: '{{ .Tag }}-SNAPSHOT'
+  # This is set as the provider version
+  name_template: '{{ .Tag }}-snapshot'
