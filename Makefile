@@ -18,7 +18,9 @@ export COVERAGE_OUTPUT_DIR = $(WORKING_DIR)/.coverage
 COLOR_RESET     := \033[0m
 COLOR_INFO      := \033[0;32m
 
-.PHONY: tidy tfgen schema-bridge provider sdks clean build build-nodejs build-python build-dotnet provider
+.PHONY: default tidy tfgen schema-bridge provider sdks build build-python build-nodejs build-dotnet provider build snapshot clean
+
+default:: tidy clean tfgen provider sdks
 
 tidy::
 	@cd provider && \
@@ -41,25 +43,25 @@ sdks:: tfgen
 		$(WORKING_DIR)/bin/$(TFGEN) $$sdk --out sdk/$$sdk/; \
 	done
 
-build-python: 
+build-python::
 	@cd sdk/python && \
 	python3 setup.py sdist
 
 # TODO: make 'yarn build' create the package.json and yarn.lock
-build-nodejs:
+build-nodejs::
 	@cd sdk/nodejs && \
 	yarn install && \
         yarn build && \
 	cp package.json yarn.lock bin/
 
-build-dotnet:
+build-dotnet::
 	@cd sdk/dotnet/ && \
         dotnet build
 
 # TODO: missing readme for each package
-build: build-python build-nodejs build-dotnet # Used by CI/CD
+build:: build-python build-nodejs build-dotnet # Used by CI/CD
 
-snapshot: provider
+snapshot:: provider
 	@goreleaser --snapshot --clean
 
 clean::
