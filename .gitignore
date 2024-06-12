@@ -38,3 +38,5 @@ go.work.sum
 /nodejs/node_modules/
 /python/bin/
 .coverage
+
+dist/
