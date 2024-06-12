@@ -18,7 +18,7 @@ export COVERAGE_OUTPUT_DIR = $(WORKING_DIR)/.coverage
 COLOR_RESET     := \033[0m
 COLOR_INFO      := \033[0;32m
 
-.PHONY: tidy tfgen schema-bridge provider sdks build build-python build-nodejs build-dotnet provider build snapshot clean
+.PHONY: default tidy tfgen schema-bridge provider sdks build build-python build-nodejs build-dotnet provider build snapshot clean
 
 default:: tidy clean tfgen provider sdks
 
