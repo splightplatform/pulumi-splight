@@ -79,13 +79,14 @@ python -m venv venv
 source venv/bin/activate
 ```
 
-Install the Python SDK:
+Go into the generated SDK directory and install the Python SDK:
 
 ```bash
-pip install pulumi-splight
+cd <splight-pulumi-repo>/sdk/python
+pip install .
 ```
 
-Create the Pulumi project files:
+Go back to the Pulumi project folder and create the following files:
 
 `Pulumi.yaml`
 
@@ -105,22 +106,19 @@ plugins:
 `__main__.py`
 
 ```python
+import geojson
 import pulumi_splight as splight
 
 
 splight.Asset(
     resource_name="MyAsset",
-    name="My Asset",
+    name="MyAsset",
     description="My Asset Description",
-    geometry=json.dumps({
-        "type": "LineString",
-        "coordinates": [
-            [0, 0],
-            [1, 1],
-            [2, 2],
-            [3, 3]
-        ]
-    })
+    geometry=geojson.dumps(
+        geojson.GeometryCollection(
+            geometries=[{"type": "Point", "coordinates": [0, 0]}]
+        )
+    ),
 )
 ```
 
