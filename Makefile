@@ -68,4 +68,6 @@ clean::
 	@rm -rf $(WORKING_DIR)/bin
 	@rm -f $(WORKING_DIR)/provider/cmd/${PROVIDER}/schema.json
 	@echo "{}" > $(WORKING_DIR)/provider/cmd/${PROVIDER}/bridge-metadata.json
-	@rm -rf sdk/{nodejs,python}
+	@for sdk in $(LANGUAGES); do \
+		rm -rf $(WORKING_DIR)/sdk/$$sdk; \
+	done
