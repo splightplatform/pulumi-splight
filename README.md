@@ -37,7 +37,7 @@ pip install pulumi-splight
 To use from Go, use `go get` to grab the latest version of the library:
 
 ```bash
-go get github.com/splightplatform/pulumi-splight/sdk/go
+go get github.com/splightplatform/pulumi-splight/sdk/go/splight
 ```
 
 ### .NET
