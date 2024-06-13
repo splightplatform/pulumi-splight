@@ -29,7 +29,7 @@ yarn add @splightplatform/pulumi-splight
 To use from Python, install using `pip`:
 
 ```bash
-pip install pulumi_splight
+pip install pulumi-splight
 ```
 
 ### Go

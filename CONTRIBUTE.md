@@ -82,7 +82,7 @@ source venv/bin/activate
 Install the Python SDK:
 
 ```bash
-pip install pulumi_splight
+pip install pulumi-splight
 ```
 
 Create the Pulumi project files:
