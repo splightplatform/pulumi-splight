@@ -2,7 +2,8 @@
 
 The Splight provider enables seamless interaction with resources supported by Splight.
 
-To begin using the provider, you need to configure it with the appropriate credentials. Refer to the [Configuration](#configuration) section for more details.
+To begin using the provider, you need to configure it with the appropriate credentials.
+Refer to the [Installation & Configuration](docs/installation-configuration.md) guide for more information.
 
 For information on development, please refer to the [Contribute Guide](CONTRIBUTE.md).
 
