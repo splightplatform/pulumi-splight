@@ -2,7 +2,8 @@
 
 The Splight provider enables seamless interaction with resources supported by Splight.
 
-To begin using the provider, you need to configure it with the appropriate credentials. Refer to the [Configuration](#configuration) section for more details.
+To begin using the provider, you need to configure it with the appropriate credentials.
+Refer to the [Installation & Configuration](docs/installation-configuration.md) guide for more information.
 
 For information on development, please refer to the [Contribute Guide](CONTRIBUTE.md).
 
@@ -47,20 +48,6 @@ To use from .NET, install using `dotnet add package`:
 ```bash
 dotnet add package Splight.Splight
 ```
-
-## Configuration
-
-The following configuration points are available for the `Splight` provider:
-
-- `splight:hostname` - the API endpoint for the Splight platform
-- `splight:token` - the API token to authenticate with the Splight platform (Splight <access_id> <secret_key>)
-
-If these are not provided, the provider will fall back to the environment variables:
-- `SPLIGHT_ACCESS_ID` - the access ID to authenticate with the Splight platform
-- `SPLIGHT_SECRET_KEY` - the secret key to authenticate with the Splight platform
-- `SPLIGHT_PLATFORM_API_HOST` - the API endpoint for the Splight platform
-
-and as a last resort, it will use the active workspace configuration from the Splight CLI.
 
 ## Reference
 

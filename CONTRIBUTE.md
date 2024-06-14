@@ -10,9 +10,13 @@
 
 ### Building locally
 
-Set the terraform-provider-splight version to the desired one in the `go.mod` file.
+Update the provider/go.mod file to specify the desired version of the [Splight Terraform Provider](https://github.com/splightplatform/terraform-provider-splight).
 
-TIP: Go mod also allows you to reference a local repository of the terraform provider.
+Use the same version number in the `version` file, formatted as X.Y.Z (without the 'v').
+
+By doing this, its easier to track which version of the Terraform provider is used by the Pulumi provider.
+
+TIP: Go mod also allows you to reference a local repository of the terraform provider. This makes development interactive.
 
 For each change to made to it, you will need to recompile the Pulumi provider and SDKs by following the steps below:
 
@@ -127,3 +131,16 @@ Try to create infrastructure using the Pulumi CLI:
 ```bash
 pulumi up --parallel 1 # Do not use concurrent requests
 ```
+
+### Release
+
+Create a tag that matches the version in the `version` file.
+
+```bash
+git tag -a vX.Y.Z -m "Release vX.Y.Z"
+git push origin vX.Y.Z
+```
+
+This will trigger the CI/CD pipeline to:
+- Use GoReleaser to build the provider and upload the binaries to a GitHub release.
+- Build the SDKs and publish them to their respective package managers.
