@@ -1,15 +1,16 @@
 {
     "name": "splight",
-    "description": "A Pulumi package for creating and managing splight cloud resources.",
+    "description": "A Pulumi package for creating and managing Splight resources.",
     "keywords": [
         "splightplatform",
         "splight",
-        "category/cloud"
+        "category/Infrastructure"
     ],
     "homepage": "https://www.splight-ai.com",
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`splight` Terraform Provider](https://github.com/splightplatform/terraform-provider-splight).",
     "repository": "https://github.com/splightplatform/pulumi-splight",
+    "logoUrl": "https://splight-logos.s3.us-east-1.amazonaws.com/splight.png?response-content-disposition=inline\u0026X-Amz-Security-Token=IQoJb3JpZ2luX2VjEAMaCXVzLWVhc3QtMSJHMEUCIH8TGLuih3jbzwNoLz%2FXm%2Bm%2F34tEf3flrlGy0XznSU4MAiEA6AaOBRggCgHFV6rBxcHOsIjJGqBt5ps4MheiiKOvEJ8qhAMInP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARACGgw2MDkwNjc1OTg4NzciDHT%2FJ2KGaR7rh9pTzyrYAk6t8C3hmWJ2ECrlDckzcgBgnVa3KtIEvakQjPWcZc2iJfV4yQsIVlxaCNGiu0L9IjQWXfBRJf1nGb2kMcnqkYXmkyuqsp9iQRdCe5hkC%2FhscAvlI50olc98Df159G3bx87aQlUCAHJkuupfK89MQulriKpRJeP4CxrI7nGaZap1tvSqPr0XAGLUoi%2FxIJOPnmtvgBR97ZgslOqtPD57kGlVnWirZOnJofmrrmgM0CohIR3QWxflbgNTiGcsUDIvxaIZDSKn%2FV1N3kJv8uLb6Q%2F1i3eFNzUEwpIxPROC2uG2B%2BTvId%2FDiVUiDA9AeX3HP2tosexL2gtKlKUPnJwpSQwNYnQCGeJu3aIzSZ%2F4fIAjkXN4ff01tEN5HCqwVXzeG%2BibOTRPWsICU%2F5Qn%2FX03P5UT8uCG1MupB02iyPpilic6%2BH8yqjBwp9VPre8jZLRNAwx8N7cE4KoMIPirrMGOrMCOo5MOQhSLKtrvQUrqAOaZa1YupPy%2BtbC%2FM8fTPe%2BD4JkBM86vmquZnRIfa1EOKB7gTH%2F3U8adSLjA8ZwzTEiZXB5%2B9hSHEIqeALcayydJfMAmFOBBTO%2Fs7K2nyNG4TACw9ZqdIVR0frafRU61CkzEgr2PTvxfwAZ2SHvy69almj2uutmjoX%2BoxmVsajWi9tFHKXnJymuMBX20%2FnQtV5IDrDA%2B3OUHJ5s%2FXs5Ket55VHzUxhe81Lma%2FJbaBhDnVLWMYq8W3ooKc%2B5cfEVTwmT%2BnHpMFzv56%2Bi3PFu%2Bm8vMUDqbp0CrRjzO%2BCJwJfeJByDe9yJx1iRAiSNMtROGJP2fRQzmVlulRAv7ERRuyZSbLfX5X6X11OTTYiz9l7REVf9410OHyI4Qa%2FIMtm5EwNfvRmzlQ%3D%3D\u0026X-Amz-Algorithm=AWS4-HMAC-SHA256\u0026X-Amz-Date=20240614T140820Z\u0026X-Amz-SignedHeaders=host\u0026X-Amz-Expires=300\u0026X-Amz-Credential=ASIAY3T2CAQOT7DTUQWW%2F20240614%2Fus-east-1%2Fs3%2Faws4_request\u0026X-Amz-Signature=1c5e607f016f3f27525dfc6b353545244610411fa62c25a92620d58a37a936d5",
     "publisher": "splightplatform",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
@@ -31,7 +32,7 @@
         },
         "nodejs": {
             "packageName": "@splightplatform/pulumi-splight",
-            "packageDescription": "A Pulumi package for creating and managing splight cloud resources.",
+            "packageDescription": "A Pulumi package for creating and managing Splight resources.",
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/splightplatform/terraform-provider-splight)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-splight` repo](https://github.com/splightplatform/pulumi-splight/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-splight` repo](https://github.com/splightplatform/terraform-provider-splight/issues).",
             "dependencies": {
                 "@pulumi/pulumi": "^3.0.0"

@@ -1,11 +1,11 @@
 {
     "name": "@splightplatform/pulumi-splight",
     "version": "0.1.21",
-    "description": "A Pulumi package for creating and managing splight cloud resources.",
+    "description": "A Pulumi package for creating and managing Splight resources.",
     "keywords": [
         "splightplatform",
         "splight",
-        "category/cloud"
+        "category/Infrastructure"
     ],
     "homepage": "https://www.splight-ai.com",
     "repository": "https://github.com/splightplatform/pulumi-splight",

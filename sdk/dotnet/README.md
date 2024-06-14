@@ -1,1 +1,1 @@
-A Pulumi package for creating and managing splight cloud resources.
+A Pulumi package for creating and managing Splight resources.

@@ -20,10 +20,10 @@ def readme():
 setup(name='pulumi_splight',
       python_requires='>=3.8',
       version=VERSION,
-      description="A Pulumi package for creating and managing splight cloud resources.",
+      description="A Pulumi package for creating and managing Splight resources.",
       long_description=readme(),
       long_description_content_type='text/markdown',
-      keywords='splightplatform splight category/cloud',
+      keywords='splightplatform splight category/Infrastructure',
       url='https://www.splight-ai.com',
       project_urls={
           'Repository': 'https://github.com/splightplatform/pulumi-splight'

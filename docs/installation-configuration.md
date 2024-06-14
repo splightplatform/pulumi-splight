@@ -26,3 +26,18 @@ If these are not provided, the provider will fall back to the environment variab
 - `SPLIGHT_PLATFORM_API_HOST` - the API endpoint for the Splight platform
 
 and as a last resort, it will use the active workspace configuration from the Splight CLI.
+
+Example: Configuring Pulumi using `pulumi config set`
+
+```bash
+pulumi config set splight:hostname https://api.splight-ai.com
+pulumi config set splight:token "Splight <access_id> <secret_key>"
+```
+
+Example: Configuring Pulumi using environment variables
+
+```bash
+export SPLIGHT_ACCESS_ID=<access_id>
+export SPLIGHT_SECRET_KEY=<secret_key>
+export SPLIGHT_PLATFORM_API_HOST=https://api.splight-ai.com
+```
