@@ -11,6 +11,7 @@
     "attribution": "This Pulumi package is based on the [`splight` Terraform Provider](https://github.com/splightplatform/terraform-provider-splight).",
     "repository": "https://github.com/splightplatform/pulumi-splight",
     "logoUrl": "https://raw.githubusercontent.com/splightplatform/pulumi-splight/main/docs/logo.png",
+    "pluginDownloadURL": "github://api.github.com/splightplatform",
     "publisher": "splightplatform",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"

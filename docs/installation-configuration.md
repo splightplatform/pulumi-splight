@@ -13,6 +13,16 @@ The Splight provider is available as a package in following Pulumi languages:
 * Go: [`github.com/splightplatform/pulumi-splight/sdk/go/splight`](https://pkg.go.dev/github.com/splightplatform/pulumi-splight/sdk/go/splight)
 * .NET: [`Splight.Splight`](https://www.nuget.org/packages/Splight.Splight)
 
+### Provider Binary
+
+The Splight provider binary is a third party binary. It can be installed using the `pulumi plugin` command.
+
+```bash
+pulumi plugin install resource splight <version> --server github://api.github.com/splightplatform
+```
+
+Replace the version string with your desired version.
+
 ## Setup
 
 The following configuration points are available for the `Splight` provider:
@@ -31,7 +41,7 @@ Example: Configuring Pulumi using `pulumi config set`
 
 ```bash
 pulumi config set splight:hostname https://api.splight-ai.com
-pulumi config set splight:token "Splight <access_id> <secret_key>"
+pulumi config set splight:token "Splight <access_id> <secret_key>" --secret
 ```
 
 Example: Configuring Pulumi using environment variables

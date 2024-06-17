@@ -72,6 +72,7 @@ namespace Splight.Splight
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                PluginDownloadURL = "github://api.github.com/splightplatform",
                 AdditionalSecretOutputs =
                 {
                     "rawValue",
