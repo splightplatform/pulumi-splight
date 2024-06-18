@@ -51,6 +51,7 @@ func Provider() tfbridge.ProviderInfo {
 		Version:           version.Version,
 		Publisher:         "splightplatform",
 		LogoURL:           "https://raw.githubusercontent.com/splightplatform/pulumi-splight/main/docs/logo.png",
+		PluginDownloadURL: "github://api.github.com/splightplatform",
 		Description:       "A Pulumi package for creating and managing Splight resources.",
 		Keywords:          []string{"splightplatform", "splight", "category/Infrastructure"},
 		License:           "Apache-2.0",
