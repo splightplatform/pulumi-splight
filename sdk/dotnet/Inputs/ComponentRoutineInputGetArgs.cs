@@ -13,26 +13,34 @@ namespace Splight.Splight.Inputs
 
     public sealed class ComponentRoutineInputGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("description", required: true)]
-        public Input<string> Description { get; set; } = null!;
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
-        [Input("multiple", required: true)]
-        public Input<bool> Multiple { get; set; } = null!;
+        [Input("multiple")]
+        public Input<bool>? Multiple { get; set; }
 
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        [Input("required", required: true)]
-        public Input<bool> Required { get; set; } = null!;
+        [Input("required")]
+        public Input<bool>? Required { get; set; }
 
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        [Input("sensitive")]
+        public Input<bool>? Sensitive { get; set; }
 
-        [Input("value", required: true)]
-        public Input<Inputs.ComponentRoutineInputValueGetArgs> Value { get; set; } = null!;
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
-        [Input("valueType", required: true)]
-        public Input<string> ValueType { get; set; } = null!;
+        [Input("valueType")]
+        public Input<string>? ValueType { get; set; }
+
+        [Input("values")]
+        private InputList<Inputs.ComponentRoutineInputValueGetArgs>? _values;
+        public InputList<Inputs.ComponentRoutineInputValueGetArgs> Values
+        {
+            get => _values ?? (_values = new InputList<Inputs.ComponentRoutineInputValueGetArgs>());
+            set => _values = value;
+        }
 
         public ComponentRoutineInputGetArgs()
         {

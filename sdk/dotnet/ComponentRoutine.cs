@@ -50,10 +50,10 @@ namespace Splight.Splight
     ///                 ValueType = "Number",
     ///                 Multiple = false,
     ///                 Required = true,
-    ///                 Value = new Splight.Inputs.ComponentRoutineOutputValueArgs
+    ///                 Values = 
     ///                 {
-    ///                     Asset = "1234-1234-1234-1234",
-    ///                     Attribute = "1234-1234-1234-1234",
+    ///                     { "asset", "1234-1234-1234-1234" },
+    ///                     { "attribute", "1234-1234-1234-1234" },
     ///                 },
     ///             },
     ///         },

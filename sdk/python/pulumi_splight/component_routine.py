@@ -292,10 +292,10 @@ class ComponentRoutine(pulumi.CustomResource):
                 value_type="Number",
                 multiple=False,
                 required=True,
-                value=splight.ComponentRoutineOutputValueArgs(
-                    asset="1234-1234-1234-1234",
-                    attribute="1234-1234-1234-1234",
-                ),
+                values={
+                    "asset": "1234-1234-1234-1234",
+                    "attribute": "1234-1234-1234-1234",
+                },
             )])
         ```
 
@@ -349,10 +349,10 @@ class ComponentRoutine(pulumi.CustomResource):
                 value_type="Number",
                 multiple=False,
                 required=True,
-                value=splight.ComponentRoutineOutputValueArgs(
-                    asset="1234-1234-1234-1234",
-                    attribute="1234-1234-1234-1234",
-                ),
+                values={
+                    "asset": "1234-1234-1234-1234",
+                    "attribute": "1234-1234-1234-1234",
+                },
             )])
         ```
 

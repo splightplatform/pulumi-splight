@@ -56,9 +56,9 @@ import (
 //						ValueType:   pulumi.String("Number"),
 //						Multiple:    pulumi.Bool(false),
 //						Required:    pulumi.Bool(true),
-//						Value: &splight.ComponentRoutineOutputValueArgs{
-//							Asset:     pulumi.String("1234-1234-1234-1234"),
-//							Attribute: pulumi.String("1234-1234-1234-1234"),
+//						Values: splight.ComponentRoutineOutputValueArray{
+//							Asset:     "1234-1234-1234-1234",
+//							Attribute: "1234-1234-1234-1234",
 //						},
 //					},
 //				},

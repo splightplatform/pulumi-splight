@@ -347,13 +347,13 @@ func (o AssetKindArrayOutput) Index(i pulumi.IntInput) AssetKindOutput {
 }
 
 type ComponentInputType struct {
-	Description string `pulumi:"description"`
-	Multiple    bool   `pulumi:"multiple"`
-	Name        string `pulumi:"name"`
-	Required    bool   `pulumi:"required"`
-	Sensitive   bool   `pulumi:"sensitive"`
-	Type        string `pulumi:"type"`
-	Value       string `pulumi:"value"`
+	Description *string `pulumi:"description"`
+	Multiple    *bool   `pulumi:"multiple"`
+	Name        string  `pulumi:"name"`
+	Required    *bool   `pulumi:"required"`
+	Sensitive   *bool   `pulumi:"sensitive"`
+	Type        string  `pulumi:"type"`
+	Value       *string `pulumi:"value"`
 }
 
 // ComponentInputTypeInput is an input type that accepts ComponentInputTypeArgs and ComponentInputTypeOutput values.
@@ -368,13 +368,13 @@ type ComponentInputTypeInput interface {
 }
 
 type ComponentInputTypeArgs struct {
-	Description pulumi.StringInput `pulumi:"description"`
-	Multiple    pulumi.BoolInput   `pulumi:"multiple"`
-	Name        pulumi.StringInput `pulumi:"name"`
-	Required    pulumi.BoolInput   `pulumi:"required"`
-	Sensitive   pulumi.BoolInput   `pulumi:"sensitive"`
-	Type        pulumi.StringInput `pulumi:"type"`
-	Value       pulumi.StringInput `pulumi:"value"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Multiple    pulumi.BoolPtrInput   `pulumi:"multiple"`
+	Name        pulumi.StringInput    `pulumi:"name"`
+	Required    pulumi.BoolPtrInput   `pulumi:"required"`
+	Sensitive   pulumi.BoolPtrInput   `pulumi:"sensitive"`
+	Type        pulumi.StringInput    `pulumi:"type"`
+	Value       pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (ComponentInputTypeArgs) ElementType() reflect.Type {
@@ -428,32 +428,32 @@ func (o ComponentInputTypeOutput) ToComponentInputTypeOutputWithContext(ctx cont
 	return o
 }
 
-func (o ComponentInputTypeOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v ComponentInputType) string { return v.Description }).(pulumi.StringOutput)
+func (o ComponentInputTypeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComponentInputType) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o ComponentInputTypeOutput) Multiple() pulumi.BoolOutput {
-	return o.ApplyT(func(v ComponentInputType) bool { return v.Multiple }).(pulumi.BoolOutput)
+func (o ComponentInputTypeOutput) Multiple() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ComponentInputType) *bool { return v.Multiple }).(pulumi.BoolPtrOutput)
 }
 
 func (o ComponentInputTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ComponentInputType) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o ComponentInputTypeOutput) Required() pulumi.BoolOutput {
-	return o.ApplyT(func(v ComponentInputType) bool { return v.Required }).(pulumi.BoolOutput)
+func (o ComponentInputTypeOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ComponentInputType) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
-func (o ComponentInputTypeOutput) Sensitive() pulumi.BoolOutput {
-	return o.ApplyT(func(v ComponentInputType) bool { return v.Sensitive }).(pulumi.BoolOutput)
+func (o ComponentInputTypeOutput) Sensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ComponentInputType) *bool { return v.Sensitive }).(pulumi.BoolPtrOutput)
 }
 
 func (o ComponentInputTypeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ComponentInputType) string { return v.Type }).(pulumi.StringOutput)
 }
 
-func (o ComponentInputTypeOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v ComponentInputType) string { return v.Value }).(pulumi.StringOutput)
+func (o ComponentInputTypeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComponentInputType) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type ComponentInputTypeArrayOutput struct{ *pulumi.OutputState }
@@ -477,13 +477,13 @@ func (o ComponentInputTypeArrayOutput) Index(i pulumi.IntInput) ComponentInputTy
 }
 
 type ComponentRoutineConfig struct {
-	Description string `pulumi:"description"`
-	Multiple    bool   `pulumi:"multiple"`
-	Name        string `pulumi:"name"`
-	Required    bool   `pulumi:"required"`
-	Sensitive   bool   `pulumi:"sensitive"`
-	Type        string `pulumi:"type"`
-	Value       string `pulumi:"value"`
+	Description *string `pulumi:"description"`
+	Multiple    *bool   `pulumi:"multiple"`
+	Name        string  `pulumi:"name"`
+	Required    *bool   `pulumi:"required"`
+	Sensitive   *bool   `pulumi:"sensitive"`
+	Type        string  `pulumi:"type"`
+	Value       *string `pulumi:"value"`
 }
 
 // ComponentRoutineConfigInput is an input type that accepts ComponentRoutineConfigArgs and ComponentRoutineConfigOutput values.
@@ -498,13 +498,13 @@ type ComponentRoutineConfigInput interface {
 }
 
 type ComponentRoutineConfigArgs struct {
-	Description pulumi.StringInput `pulumi:"description"`
-	Multiple    pulumi.BoolInput   `pulumi:"multiple"`
-	Name        pulumi.StringInput `pulumi:"name"`
-	Required    pulumi.BoolInput   `pulumi:"required"`
-	Sensitive   pulumi.BoolInput   `pulumi:"sensitive"`
-	Type        pulumi.StringInput `pulumi:"type"`
-	Value       pulumi.StringInput `pulumi:"value"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Multiple    pulumi.BoolPtrInput   `pulumi:"multiple"`
+	Name        pulumi.StringInput    `pulumi:"name"`
+	Required    pulumi.BoolPtrInput   `pulumi:"required"`
+	Sensitive   pulumi.BoolPtrInput   `pulumi:"sensitive"`
+	Type        pulumi.StringInput    `pulumi:"type"`
+	Value       pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (ComponentRoutineConfigArgs) ElementType() reflect.Type {
@@ -558,32 +558,32 @@ func (o ComponentRoutineConfigOutput) ToComponentRoutineConfigOutputWithContext(
 	return o
 }
 
-func (o ComponentRoutineConfigOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v ComponentRoutineConfig) string { return v.Description }).(pulumi.StringOutput)
+func (o ComponentRoutineConfigOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComponentRoutineConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o ComponentRoutineConfigOutput) Multiple() pulumi.BoolOutput {
-	return o.ApplyT(func(v ComponentRoutineConfig) bool { return v.Multiple }).(pulumi.BoolOutput)
+func (o ComponentRoutineConfigOutput) Multiple() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ComponentRoutineConfig) *bool { return v.Multiple }).(pulumi.BoolPtrOutput)
 }
 
 func (o ComponentRoutineConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ComponentRoutineConfig) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o ComponentRoutineConfigOutput) Required() pulumi.BoolOutput {
-	return o.ApplyT(func(v ComponentRoutineConfig) bool { return v.Required }).(pulumi.BoolOutput)
+func (o ComponentRoutineConfigOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ComponentRoutineConfig) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
-func (o ComponentRoutineConfigOutput) Sensitive() pulumi.BoolOutput {
-	return o.ApplyT(func(v ComponentRoutineConfig) bool { return v.Sensitive }).(pulumi.BoolOutput)
+func (o ComponentRoutineConfigOutput) Sensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ComponentRoutineConfig) *bool { return v.Sensitive }).(pulumi.BoolPtrOutput)
 }
 
 func (o ComponentRoutineConfigOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ComponentRoutineConfig) string { return v.Type }).(pulumi.StringOutput)
 }
 
-func (o ComponentRoutineConfigOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v ComponentRoutineConfig) string { return v.Value }).(pulumi.StringOutput)
+func (o ComponentRoutineConfigOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComponentRoutineConfig) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type ComponentRoutineConfigArrayOutput struct{ *pulumi.OutputState }
@@ -607,13 +607,14 @@ func (o ComponentRoutineConfigArrayOutput) Index(i pulumi.IntInput) ComponentRou
 }
 
 type ComponentRoutineInputType struct {
-	Description string                     `pulumi:"description"`
-	Multiple    bool                       `pulumi:"multiple"`
-	Name        string                     `pulumi:"name"`
-	Required    bool                       `pulumi:"required"`
-	Type        string                     `pulumi:"type"`
-	Value       ComponentRoutineInputValue `pulumi:"value"`
-	ValueType   string                     `pulumi:"valueType"`
+	Description *string                      `pulumi:"description"`
+	Multiple    *bool                        `pulumi:"multiple"`
+	Name        string                       `pulumi:"name"`
+	Required    *bool                        `pulumi:"required"`
+	Sensitive   *bool                        `pulumi:"sensitive"`
+	Type        *string                      `pulumi:"type"`
+	ValueType   *string                      `pulumi:"valueType"`
+	Values      []ComponentRoutineInputValue `pulumi:"values"`
 }
 
 // ComponentRoutineInputTypeInput is an input type that accepts ComponentRoutineInputTypeArgs and ComponentRoutineInputTypeOutput values.
@@ -628,13 +629,14 @@ type ComponentRoutineInputTypeInput interface {
 }
 
 type ComponentRoutineInputTypeArgs struct {
-	Description pulumi.StringInput              `pulumi:"description"`
-	Multiple    pulumi.BoolInput                `pulumi:"multiple"`
-	Name        pulumi.StringInput              `pulumi:"name"`
-	Required    pulumi.BoolInput                `pulumi:"required"`
-	Type        pulumi.StringInput              `pulumi:"type"`
-	Value       ComponentRoutineInputValueInput `pulumi:"value"`
-	ValueType   pulumi.StringInput              `pulumi:"valueType"`
+	Description pulumi.StringPtrInput                `pulumi:"description"`
+	Multiple    pulumi.BoolPtrInput                  `pulumi:"multiple"`
+	Name        pulumi.StringInput                   `pulumi:"name"`
+	Required    pulumi.BoolPtrInput                  `pulumi:"required"`
+	Sensitive   pulumi.BoolPtrInput                  `pulumi:"sensitive"`
+	Type        pulumi.StringPtrInput                `pulumi:"type"`
+	ValueType   pulumi.StringPtrInput                `pulumi:"valueType"`
+	Values      ComponentRoutineInputValueArrayInput `pulumi:"values"`
 }
 
 func (ComponentRoutineInputTypeArgs) ElementType() reflect.Type {
@@ -688,32 +690,36 @@ func (o ComponentRoutineInputTypeOutput) ToComponentRoutineInputTypeOutputWithCo
 	return o
 }
 
-func (o ComponentRoutineInputTypeOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v ComponentRoutineInputType) string { return v.Description }).(pulumi.StringOutput)
+func (o ComponentRoutineInputTypeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComponentRoutineInputType) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o ComponentRoutineInputTypeOutput) Multiple() pulumi.BoolOutput {
-	return o.ApplyT(func(v ComponentRoutineInputType) bool { return v.Multiple }).(pulumi.BoolOutput)
+func (o ComponentRoutineInputTypeOutput) Multiple() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ComponentRoutineInputType) *bool { return v.Multiple }).(pulumi.BoolPtrOutput)
 }
 
 func (o ComponentRoutineInputTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ComponentRoutineInputType) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o ComponentRoutineInputTypeOutput) Required() pulumi.BoolOutput {
-	return o.ApplyT(func(v ComponentRoutineInputType) bool { return v.Required }).(pulumi.BoolOutput)
+func (o ComponentRoutineInputTypeOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ComponentRoutineInputType) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
-func (o ComponentRoutineInputTypeOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ComponentRoutineInputType) string { return v.Type }).(pulumi.StringOutput)
+func (o ComponentRoutineInputTypeOutput) Sensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ComponentRoutineInputType) *bool { return v.Sensitive }).(pulumi.BoolPtrOutput)
 }
 
-func (o ComponentRoutineInputTypeOutput) Value() ComponentRoutineInputValueOutput {
-	return o.ApplyT(func(v ComponentRoutineInputType) ComponentRoutineInputValue { return v.Value }).(ComponentRoutineInputValueOutput)
+func (o ComponentRoutineInputTypeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComponentRoutineInputType) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-func (o ComponentRoutineInputTypeOutput) ValueType() pulumi.StringOutput {
-	return o.ApplyT(func(v ComponentRoutineInputType) string { return v.ValueType }).(pulumi.StringOutput)
+func (o ComponentRoutineInputTypeOutput) ValueType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComponentRoutineInputType) *string { return v.ValueType }).(pulumi.StringPtrOutput)
+}
+
+func (o ComponentRoutineInputTypeOutput) Values() ComponentRoutineInputValueArrayOutput {
+	return o.ApplyT(func(v ComponentRoutineInputType) []ComponentRoutineInputValue { return v.Values }).(ComponentRoutineInputValueArrayOutput)
 }
 
 type ComponentRoutineInputTypeArrayOutput struct{ *pulumi.OutputState }
@@ -769,6 +775,31 @@ func (i ComponentRoutineInputValueArgs) ToComponentRoutineInputValueOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ComponentRoutineInputValueOutput)
 }
 
+// ComponentRoutineInputValueArrayInput is an input type that accepts ComponentRoutineInputValueArray and ComponentRoutineInputValueArrayOutput values.
+// You can construct a concrete instance of `ComponentRoutineInputValueArrayInput` via:
+//
+//	ComponentRoutineInputValueArray{ ComponentRoutineInputValueArgs{...} }
+type ComponentRoutineInputValueArrayInput interface {
+	pulumi.Input
+
+	ToComponentRoutineInputValueArrayOutput() ComponentRoutineInputValueArrayOutput
+	ToComponentRoutineInputValueArrayOutputWithContext(context.Context) ComponentRoutineInputValueArrayOutput
+}
+
+type ComponentRoutineInputValueArray []ComponentRoutineInputValueInput
+
+func (ComponentRoutineInputValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComponentRoutineInputValue)(nil)).Elem()
+}
+
+func (i ComponentRoutineInputValueArray) ToComponentRoutineInputValueArrayOutput() ComponentRoutineInputValueArrayOutput {
+	return i.ToComponentRoutineInputValueArrayOutputWithContext(context.Background())
+}
+
+func (i ComponentRoutineInputValueArray) ToComponentRoutineInputValueArrayOutputWithContext(ctx context.Context) ComponentRoutineInputValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComponentRoutineInputValueArrayOutput)
+}
+
 type ComponentRoutineInputValueOutput struct{ *pulumi.OutputState }
 
 func (ComponentRoutineInputValueOutput) ElementType() reflect.Type {
@@ -791,14 +822,35 @@ func (o ComponentRoutineInputValueOutput) Attribute() pulumi.StringOutput {
 	return o.ApplyT(func(v ComponentRoutineInputValue) string { return v.Attribute }).(pulumi.StringOutput)
 }
 
+type ComponentRoutineInputValueArrayOutput struct{ *pulumi.OutputState }
+
+func (ComponentRoutineInputValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComponentRoutineInputValue)(nil)).Elem()
+}
+
+func (o ComponentRoutineInputValueArrayOutput) ToComponentRoutineInputValueArrayOutput() ComponentRoutineInputValueArrayOutput {
+	return o
+}
+
+func (o ComponentRoutineInputValueArrayOutput) ToComponentRoutineInputValueArrayOutputWithContext(ctx context.Context) ComponentRoutineInputValueArrayOutput {
+	return o
+}
+
+func (o ComponentRoutineInputValueArrayOutput) Index(i pulumi.IntInput) ComponentRoutineInputValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComponentRoutineInputValue {
+		return vs[0].([]ComponentRoutineInputValue)[vs[1].(int)]
+	}).(ComponentRoutineInputValueOutput)
+}
+
 type ComponentRoutineOutputType struct {
-	Description string                      `pulumi:"description"`
-	Multiple    bool                        `pulumi:"multiple"`
-	Name        string                      `pulumi:"name"`
-	Required    bool                        `pulumi:"required"`
-	Type        string                      `pulumi:"type"`
-	Value       ComponentRoutineOutputValue `pulumi:"value"`
-	ValueType   string                      `pulumi:"valueType"`
+	Description *string                       `pulumi:"description"`
+	Multiple    *bool                         `pulumi:"multiple"`
+	Name        string                        `pulumi:"name"`
+	Required    *bool                         `pulumi:"required"`
+	Sensitive   *bool                         `pulumi:"sensitive"`
+	Type        *string                       `pulumi:"type"`
+	ValueType   *string                       `pulumi:"valueType"`
+	Values      []ComponentRoutineOutputValue `pulumi:"values"`
 }
 
 // ComponentRoutineOutputTypeInput is an input type that accepts ComponentRoutineOutputTypeArgs and ComponentRoutineOutputTypeOutput values.
@@ -813,13 +865,14 @@ type ComponentRoutineOutputTypeInput interface {
 }
 
 type ComponentRoutineOutputTypeArgs struct {
-	Description pulumi.StringInput               `pulumi:"description"`
-	Multiple    pulumi.BoolInput                 `pulumi:"multiple"`
-	Name        pulumi.StringInput               `pulumi:"name"`
-	Required    pulumi.BoolInput                 `pulumi:"required"`
-	Type        pulumi.StringInput               `pulumi:"type"`
-	Value       ComponentRoutineOutputValueInput `pulumi:"value"`
-	ValueType   pulumi.StringInput               `pulumi:"valueType"`
+	Description pulumi.StringPtrInput                 `pulumi:"description"`
+	Multiple    pulumi.BoolPtrInput                   `pulumi:"multiple"`
+	Name        pulumi.StringInput                    `pulumi:"name"`
+	Required    pulumi.BoolPtrInput                   `pulumi:"required"`
+	Sensitive   pulumi.BoolPtrInput                   `pulumi:"sensitive"`
+	Type        pulumi.StringPtrInput                 `pulumi:"type"`
+	ValueType   pulumi.StringPtrInput                 `pulumi:"valueType"`
+	Values      ComponentRoutineOutputValueArrayInput `pulumi:"values"`
 }
 
 func (ComponentRoutineOutputTypeArgs) ElementType() reflect.Type {
@@ -873,32 +926,36 @@ func (o ComponentRoutineOutputTypeOutput) ToComponentRoutineOutputTypeOutputWith
 	return o
 }
 
-func (o ComponentRoutineOutputTypeOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v ComponentRoutineOutputType) string { return v.Description }).(pulumi.StringOutput)
+func (o ComponentRoutineOutputTypeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComponentRoutineOutputType) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o ComponentRoutineOutputTypeOutput) Multiple() pulumi.BoolOutput {
-	return o.ApplyT(func(v ComponentRoutineOutputType) bool { return v.Multiple }).(pulumi.BoolOutput)
+func (o ComponentRoutineOutputTypeOutput) Multiple() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ComponentRoutineOutputType) *bool { return v.Multiple }).(pulumi.BoolPtrOutput)
 }
 
 func (o ComponentRoutineOutputTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ComponentRoutineOutputType) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o ComponentRoutineOutputTypeOutput) Required() pulumi.BoolOutput {
-	return o.ApplyT(func(v ComponentRoutineOutputType) bool { return v.Required }).(pulumi.BoolOutput)
+func (o ComponentRoutineOutputTypeOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ComponentRoutineOutputType) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
-func (o ComponentRoutineOutputTypeOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ComponentRoutineOutputType) string { return v.Type }).(pulumi.StringOutput)
+func (o ComponentRoutineOutputTypeOutput) Sensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ComponentRoutineOutputType) *bool { return v.Sensitive }).(pulumi.BoolPtrOutput)
 }
 
-func (o ComponentRoutineOutputTypeOutput) Value() ComponentRoutineOutputValueOutput {
-	return o.ApplyT(func(v ComponentRoutineOutputType) ComponentRoutineOutputValue { return v.Value }).(ComponentRoutineOutputValueOutput)
+func (o ComponentRoutineOutputTypeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComponentRoutineOutputType) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-func (o ComponentRoutineOutputTypeOutput) ValueType() pulumi.StringOutput {
-	return o.ApplyT(func(v ComponentRoutineOutputType) string { return v.ValueType }).(pulumi.StringOutput)
+func (o ComponentRoutineOutputTypeOutput) ValueType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComponentRoutineOutputType) *string { return v.ValueType }).(pulumi.StringPtrOutput)
+}
+
+func (o ComponentRoutineOutputTypeOutput) Values() ComponentRoutineOutputValueArrayOutput {
+	return o.ApplyT(func(v ComponentRoutineOutputType) []ComponentRoutineOutputValue { return v.Values }).(ComponentRoutineOutputValueArrayOutput)
 }
 
 type ComponentRoutineOutputTypeArrayOutput struct{ *pulumi.OutputState }
@@ -954,6 +1011,31 @@ func (i ComponentRoutineOutputValueArgs) ToComponentRoutineOutputValueOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ComponentRoutineOutputValueOutput)
 }
 
+// ComponentRoutineOutputValueArrayInput is an input type that accepts ComponentRoutineOutputValueArray and ComponentRoutineOutputValueArrayOutput values.
+// You can construct a concrete instance of `ComponentRoutineOutputValueArrayInput` via:
+//
+//	ComponentRoutineOutputValueArray{ ComponentRoutineOutputValueArgs{...} }
+type ComponentRoutineOutputValueArrayInput interface {
+	pulumi.Input
+
+	ToComponentRoutineOutputValueArrayOutput() ComponentRoutineOutputValueArrayOutput
+	ToComponentRoutineOutputValueArrayOutputWithContext(context.Context) ComponentRoutineOutputValueArrayOutput
+}
+
+type ComponentRoutineOutputValueArray []ComponentRoutineOutputValueInput
+
+func (ComponentRoutineOutputValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComponentRoutineOutputValue)(nil)).Elem()
+}
+
+func (i ComponentRoutineOutputValueArray) ToComponentRoutineOutputValueArrayOutput() ComponentRoutineOutputValueArrayOutput {
+	return i.ToComponentRoutineOutputValueArrayOutputWithContext(context.Background())
+}
+
+func (i ComponentRoutineOutputValueArray) ToComponentRoutineOutputValueArrayOutputWithContext(ctx context.Context) ComponentRoutineOutputValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComponentRoutineOutputValueArrayOutput)
+}
+
 type ComponentRoutineOutputValueOutput struct{ *pulumi.OutputState }
 
 func (ComponentRoutineOutputValueOutput) ElementType() reflect.Type {
@@ -974,6 +1056,26 @@ func (o ComponentRoutineOutputValueOutput) Asset() pulumi.StringOutput {
 
 func (o ComponentRoutineOutputValueOutput) Attribute() pulumi.StringOutput {
 	return o.ApplyT(func(v ComponentRoutineOutputValue) string { return v.Attribute }).(pulumi.StringOutput)
+}
+
+type ComponentRoutineOutputValueArrayOutput struct{ *pulumi.OutputState }
+
+func (ComponentRoutineOutputValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComponentRoutineOutputValue)(nil)).Elem()
+}
+
+func (o ComponentRoutineOutputValueArrayOutput) ToComponentRoutineOutputValueArrayOutput() ComponentRoutineOutputValueArrayOutput {
+	return o
+}
+
+func (o ComponentRoutineOutputValueArrayOutput) ToComponentRoutineOutputValueArrayOutputWithContext(ctx context.Context) ComponentRoutineOutputValueArrayOutput {
+	return o
+}
+
+func (o ComponentRoutineOutputValueArrayOutput) Index(i pulumi.IntInput) ComponentRoutineOutputValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComponentRoutineOutputValue {
+		return vs[0].([]ComponentRoutineOutputValue)[vs[1].(int)]
+	}).(ComponentRoutineOutputValueOutput)
 }
 
 type DashboardChartChartItem struct {
@@ -1898,9 +2000,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineInputTypeInput)(nil)).Elem(), ComponentRoutineInputTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineInputTypeArrayInput)(nil)).Elem(), ComponentRoutineInputTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineInputValueInput)(nil)).Elem(), ComponentRoutineInputValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineInputValueArrayInput)(nil)).Elem(), ComponentRoutineInputValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineOutputTypeInput)(nil)).Elem(), ComponentRoutineOutputTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineOutputTypeArrayInput)(nil)).Elem(), ComponentRoutineOutputTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineOutputValueInput)(nil)).Elem(), ComponentRoutineOutputValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineOutputValueArrayInput)(nil)).Elem(), ComponentRoutineOutputValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardChartChartItemInput)(nil)).Elem(), DashboardChartChartItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardChartChartItemArrayInput)(nil)).Elem(), DashboardChartChartItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardChartChartItemQueryFilterAssetInput)(nil)).Elem(), DashboardChartChartItemQueryFilterAssetArgs{})
@@ -1928,9 +2032,11 @@ func init() {
 	pulumi.RegisterOutputType(ComponentRoutineInputTypeOutput{})
 	pulumi.RegisterOutputType(ComponentRoutineInputTypeArrayOutput{})
 	pulumi.RegisterOutputType(ComponentRoutineInputValueOutput{})
+	pulumi.RegisterOutputType(ComponentRoutineInputValueArrayOutput{})
 	pulumi.RegisterOutputType(ComponentRoutineOutputTypeOutput{})
 	pulumi.RegisterOutputType(ComponentRoutineOutputTypeArrayOutput{})
 	pulumi.RegisterOutputType(ComponentRoutineOutputValueOutput{})
+	pulumi.RegisterOutputType(ComponentRoutineOutputValueArrayOutput{})
 	pulumi.RegisterOutputType(DashboardChartChartItemOutput{})
 	pulumi.RegisterOutputType(DashboardChartChartItemArrayOutput{})
 	pulumi.RegisterOutputType(DashboardChartChartItemQueryFilterAssetOutput{})

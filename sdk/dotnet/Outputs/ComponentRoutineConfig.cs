@@ -14,29 +14,29 @@ namespace Splight.Splight.Outputs
     [OutputType]
     public sealed class ComponentRoutineConfig
     {
-        public readonly string Description;
-        public readonly bool Multiple;
+        public readonly string? Description;
+        public readonly bool? Multiple;
         public readonly string Name;
-        public readonly bool Required;
-        public readonly bool Sensitive;
+        public readonly bool? Required;
+        public readonly bool? Sensitive;
         public readonly string Type;
-        public readonly string Value;
+        public readonly string? Value;
 
         [OutputConstructor]
         private ComponentRoutineConfig(
-            string description,
+            string? description,
 
-            bool multiple,
+            bool? multiple,
 
             string name,
 
-            bool required,
+            bool? required,
 
-            bool sensitive,
+            bool? sensitive,
 
             string type,
 
-            string value)
+            string? value)
         {
             Description = description;
             Multiple = multiple;
