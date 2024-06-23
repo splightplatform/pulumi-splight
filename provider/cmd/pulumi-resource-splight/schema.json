@@ -155,13 +155,8 @@
             },
             "type": "object",
             "required": [
-                "description",
-                "multiple",
                 "name",
-                "required",
-                "sensitive",
-                "type",
-                "value"
+                "type"
             ]
         },
         "splight:index/ComponentRoutineConfig:ComponentRoutineConfig": {
@@ -190,13 +185,8 @@
             },
             "type": "object",
             "required": [
-                "description",
-                "multiple",
                 "name",
-                "required",
-                "sensitive",
-                "type",
-                "value"
+                "type"
             ]
         },
         "splight:index/ComponentRoutineInput:ComponentRoutineInput": {
@@ -213,25 +203,25 @@
                 "required": {
                     "type": "boolean"
                 },
+                "sensitive": {
+                    "type": "boolean"
+                },
                 "type": {
                     "type": "string"
                 },
-                "value": {
-                    "$ref": "#/types/splight:index/ComponentRoutineInputValue:ComponentRoutineInputValue"
-                },
                 "valueType": {
                     "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ComponentRoutineInputValue:ComponentRoutineInputValue"
+                    }
                 }
             },
             "type": "object",
             "required": [
-                "description",
-                "multiple",
-                "name",
-                "required",
-                "type",
-                "value",
-                "valueType"
+                "name"
             ]
         },
         "splight:index/ComponentRoutineInputValue:ComponentRoutineInputValue": {
@@ -263,25 +253,25 @@
                 "required": {
                     "type": "boolean"
                 },
+                "sensitive": {
+                    "type": "boolean"
+                },
                 "type": {
                     "type": "string"
                 },
-                "value": {
-                    "$ref": "#/types/splight:index/ComponentRoutineOutputValue:ComponentRoutineOutputValue"
-                },
                 "valueType": {
                     "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ComponentRoutineOutputValue:ComponentRoutineOutputValue"
+                    }
                 }
             },
             "type": "object",
             "required": [
-                "description",
-                "multiple",
-                "name",
-                "required",
-                "type",
-                "value",
-                "valueType"
+                "name"
             ]
         },
         "splight:index/ComponentRoutineOutputValue:ComponentRoutineOutputValue": {
@@ -1062,7 +1052,6 @@
                 }
             },
             "required": [
-                "inputs",
                 "name",
                 "version"
             ],
@@ -1088,7 +1077,6 @@
                 }
             },
             "requiredInputs": [
-                "inputs",
                 "version"
             ],
             "stateInputs": {
@@ -1118,7 +1106,7 @@
             }
         },
         "splight:index/componentRoutine:ComponentRoutine": {
-            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as splight from \"@splightplatform/pulumi-splight\";\n\nconst componentTestRoutine = new splight.ComponentRoutine(\"componentTestRoutine\", {\n    description: \"Created with Terraform\",\n    type: \"IncomingRoutine\",\n    componentId: \"1234-1234-1234-1234\",\n    configs: [{\n        name: \"config_param\",\n        type: \"bool\",\n        value: \"true\",\n        multiple: false,\n        required: true,\n        sensitive: false,\n        description: JSON.stringify(\"Created with Terraform123123\"),\n    }],\n    outputs: [{\n        name: \"address\",\n        description: \"destination address for data to be pushed\",\n        type: \"DataAddress\",\n        valueType: \"Number\",\n        multiple: false,\n        required: true,\n        value: {\n            asset: \"1234-1234-1234-1234\",\n            attribute: \"1234-1234-1234-1234\",\n        },\n    }],\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_splight as splight\n\ncomponent_test_routine = splight.ComponentRoutine(\"componentTestRoutine\",\n    description=\"Created with Terraform\",\n    type=\"IncomingRoutine\",\n    component_id=\"1234-1234-1234-1234\",\n    configs=[splight.ComponentRoutineConfigArgs(\n        name=\"config_param\",\n        type=\"bool\",\n        value=\"true\",\n        multiple=False,\n        required=True,\n        sensitive=False,\n        description=json.dumps(\"Created with Terraform123123\"),\n    )],\n    outputs=[splight.ComponentRoutineOutputArgs(\n        name=\"address\",\n        description=\"destination address for data to be pushed\",\n        type=\"DataAddress\",\n        value_type=\"Number\",\n        multiple=False,\n        required=True,\n        value=splight.ComponentRoutineOutputValueArgs(\n            asset=\"1234-1234-1234-1234\",\n            attribute=\"1234-1234-1234-1234\",\n        ),\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Splight = Splight.Splight;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var componentTestRoutine = new Splight.ComponentRoutine(\"componentTestRoutine\", new()\n    {\n        Description = \"Created with Terraform\",\n        Type = \"IncomingRoutine\",\n        ComponentId = \"1234-1234-1234-1234\",\n        Configs = new[]\n        {\n            new Splight.Inputs.ComponentRoutineConfigArgs\n            {\n                Name = \"config_param\",\n                Type = \"bool\",\n                Value = \"true\",\n                Multiple = false,\n                Required = true,\n                Sensitive = false,\n                Description = JsonSerializer.Serialize(\"Created with Terraform123123\"),\n            },\n        },\n        Outputs = new[]\n        {\n            new Splight.Inputs.ComponentRoutineOutputArgs\n            {\n                Name = \"address\",\n                Description = \"destination address for data to be pushed\",\n                Type = \"DataAddress\",\n                ValueType = \"Number\",\n                Multiple = false,\n                Required = true,\n                Value = new Splight.Inputs.ComponentRoutineOutputValueArgs\n                {\n                    Asset = \"1234-1234-1234-1234\",\n                    Attribute = \"1234-1234-1234-1234\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/splightplatform/pulumi-splight/sdk/go/splight\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(\"Created with Terraform123123\")\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = splight.NewComponentRoutine(ctx, \"componentTestRoutine\", \u0026splight.ComponentRoutineArgs{\n\t\t\tDescription: pulumi.String(\"Created with Terraform\"),\n\t\t\tType:        pulumi.String(\"IncomingRoutine\"),\n\t\t\tComponentId: pulumi.String(\"1234-1234-1234-1234\"),\n\t\t\tConfigs: splight.ComponentRoutineConfigArray{\n\t\t\t\t\u0026splight.ComponentRoutineConfigArgs{\n\t\t\t\t\tName:        pulumi.String(\"config_param\"),\n\t\t\t\t\tType:        pulumi.String(\"bool\"),\n\t\t\t\t\tValue:       pulumi.String(\"true\"),\n\t\t\t\t\tMultiple:    pulumi.Bool(false),\n\t\t\t\t\tRequired:    pulumi.Bool(true),\n\t\t\t\t\tSensitive:   pulumi.Bool(false),\n\t\t\t\t\tDescription: pulumi.String(json0),\n\t\t\t\t},\n\t\t\t},\n\t\t\tOutputs: splight.ComponentRoutineOutputTypeArray{\n\t\t\t\t\u0026splight.ComponentRoutineOutputTypeArgs{\n\t\t\t\t\tName:        pulumi.String(\"address\"),\n\t\t\t\t\tDescription: pulumi.String(\"destination address for data to be pushed\"),\n\t\t\t\t\tType:        pulumi.String(\"DataAddress\"),\n\t\t\t\t\tValueType:   pulumi.String(\"Number\"),\n\t\t\t\t\tMultiple:    pulumi.Bool(false),\n\t\t\t\t\tRequired:    pulumi.Bool(true),\n\t\t\t\t\tValue: \u0026splight.ComponentRoutineOutputValueArgs{\n\t\t\t\t\t\tAsset:     pulumi.String(\"1234-1234-1234-1234\"),\n\t\t\t\t\t\tAttribute: pulumi.String(\"1234-1234-1234-1234\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.splight.ComponentRoutine;\nimport com.pulumi.splight.ComponentRoutineArgs;\nimport com.pulumi.splight.inputs.ComponentRoutineConfigArgs;\nimport com.pulumi.splight.inputs.ComponentRoutineOutputArgs;\nimport com.pulumi.splight.inputs.ComponentRoutineOutputValueArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var componentTestRoutine = new ComponentRoutine(\"componentTestRoutine\", ComponentRoutineArgs.builder()\n            .description(\"Created with Terraform\")\n            .type(\"IncomingRoutine\")\n            .componentId(\"1234-1234-1234-1234\")\n            .configs(ComponentRoutineConfigArgs.builder()\n                .name(\"config_param\")\n                .type(\"bool\")\n                .value(\"true\")\n                .multiple(false)\n                .required(true)\n                .sensitive(false)\n                .description(serializeJson(\n                    \"Created with Terraform123123\"))\n                .build())\n            .outputs(ComponentRoutineOutputArgs.builder()\n                .name(\"address\")\n                .description(\"destination address for data to be pushed\")\n                .type(\"DataAddress\")\n                .valueType(\"Number\")\n                .multiple(false)\n                .required(true)\n                .value(ComponentRoutineOutputValueArgs.builder()\n                    .asset(\"1234-1234-1234-1234\")\n                    .attribute(\"1234-1234-1234-1234\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  componentTestRoutine:\n    type: splight:ComponentRoutine\n    properties:\n      description: Created with Terraform\n      type: IncomingRoutine\n      componentId: 1234-1234-1234-1234\n      configs:\n        - name: config_param\n          type: bool\n          value: 'true'\n          multiple: false\n          required: true\n          sensitive: false\n          description:\n            fn::toJSON: Created with Terraform123123\n      outputs:\n        - name: address\n          description: destination address for data to be pushed\n          type: DataAddress\n          valueType: Number\n          multiple: false\n          required: true\n          value:\n            asset: 1234-1234-1234-1234\n            attribute: 1234-1234-1234-1234\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import splight:index/componentRoutine:ComponentRoutine [options] splight_component_routine.\u003cname\u003e \u003ccomponent_routine_id\u003e\n```\n\n",
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as splight from \"@splightplatform/pulumi-splight\";\n\nconst componentTestRoutine = new splight.ComponentRoutine(\"componentTestRoutine\", {\n    description: \"Created with Terraform\",\n    type: \"IncomingRoutine\",\n    componentId: \"1234-1234-1234-1234\",\n    configs: [{\n        name: \"config_param\",\n        type: \"bool\",\n        value: \"true\",\n        multiple: false,\n        required: true,\n        sensitive: false,\n        description: JSON.stringify(\"Created with Terraform123123\"),\n    }],\n    outputs: [{\n        name: \"address\",\n        description: \"destination address for data to be pushed\",\n        type: \"DataAddress\",\n        valueType: \"Number\",\n        multiple: false,\n        required: true,\n        values: {\n            asset: \"1234-1234-1234-1234\",\n            attribute: \"1234-1234-1234-1234\",\n        },\n    }],\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_splight as splight\n\ncomponent_test_routine = splight.ComponentRoutine(\"componentTestRoutine\",\n    description=\"Created with Terraform\",\n    type=\"IncomingRoutine\",\n    component_id=\"1234-1234-1234-1234\",\n    configs=[splight.ComponentRoutineConfigArgs(\n        name=\"config_param\",\n        type=\"bool\",\n        value=\"true\",\n        multiple=False,\n        required=True,\n        sensitive=False,\n        description=json.dumps(\"Created with Terraform123123\"),\n    )],\n    outputs=[splight.ComponentRoutineOutputArgs(\n        name=\"address\",\n        description=\"destination address for data to be pushed\",\n        type=\"DataAddress\",\n        value_type=\"Number\",\n        multiple=False,\n        required=True,\n        values={\n            \"asset\": \"1234-1234-1234-1234\",\n            \"attribute\": \"1234-1234-1234-1234\",\n        },\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Splight = Splight.Splight;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var componentTestRoutine = new Splight.ComponentRoutine(\"componentTestRoutine\", new()\n    {\n        Description = \"Created with Terraform\",\n        Type = \"IncomingRoutine\",\n        ComponentId = \"1234-1234-1234-1234\",\n        Configs = new[]\n        {\n            new Splight.Inputs.ComponentRoutineConfigArgs\n            {\n                Name = \"config_param\",\n                Type = \"bool\",\n                Value = \"true\",\n                Multiple = false,\n                Required = true,\n                Sensitive = false,\n                Description = JsonSerializer.Serialize(\"Created with Terraform123123\"),\n            },\n        },\n        Outputs = new[]\n        {\n            new Splight.Inputs.ComponentRoutineOutputArgs\n            {\n                Name = \"address\",\n                Description = \"destination address for data to be pushed\",\n                Type = \"DataAddress\",\n                ValueType = \"Number\",\n                Multiple = false,\n                Required = true,\n                Values = \n                {\n                    { \"asset\", \"1234-1234-1234-1234\" },\n                    { \"attribute\", \"1234-1234-1234-1234\" },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/splightplatform/pulumi-splight/sdk/go/splight\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(\"Created with Terraform123123\")\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = splight.NewComponentRoutine(ctx, \"componentTestRoutine\", \u0026splight.ComponentRoutineArgs{\n\t\t\tDescription: pulumi.String(\"Created with Terraform\"),\n\t\t\tType:        pulumi.String(\"IncomingRoutine\"),\n\t\t\tComponentId: pulumi.String(\"1234-1234-1234-1234\"),\n\t\t\tConfigs: splight.ComponentRoutineConfigArray{\n\t\t\t\t\u0026splight.ComponentRoutineConfigArgs{\n\t\t\t\t\tName:        pulumi.String(\"config_param\"),\n\t\t\t\t\tType:        pulumi.String(\"bool\"),\n\t\t\t\t\tValue:       pulumi.String(\"true\"),\n\t\t\t\t\tMultiple:    pulumi.Bool(false),\n\t\t\t\t\tRequired:    pulumi.Bool(true),\n\t\t\t\t\tSensitive:   pulumi.Bool(false),\n\t\t\t\t\tDescription: pulumi.String(json0),\n\t\t\t\t},\n\t\t\t},\n\t\t\tOutputs: splight.ComponentRoutineOutputTypeArray{\n\t\t\t\t\u0026splight.ComponentRoutineOutputTypeArgs{\n\t\t\t\t\tName:        pulumi.String(\"address\"),\n\t\t\t\t\tDescription: pulumi.String(\"destination address for data to be pushed\"),\n\t\t\t\t\tType:        pulumi.String(\"DataAddress\"),\n\t\t\t\t\tValueType:   pulumi.String(\"Number\"),\n\t\t\t\t\tMultiple:    pulumi.Bool(false),\n\t\t\t\t\tRequired:    pulumi.Bool(true),\n\t\t\t\t\tValues: splight.ComponentRoutineOutputValueArray{\n\t\t\t\t\t\tAsset:     \"1234-1234-1234-1234\",\n\t\t\t\t\t\tAttribute: \"1234-1234-1234-1234\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.splight.ComponentRoutine;\nimport com.pulumi.splight.ComponentRoutineArgs;\nimport com.pulumi.splight.inputs.ComponentRoutineConfigArgs;\nimport com.pulumi.splight.inputs.ComponentRoutineOutputArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var componentTestRoutine = new ComponentRoutine(\"componentTestRoutine\", ComponentRoutineArgs.builder()\n            .description(\"Created with Terraform\")\n            .type(\"IncomingRoutine\")\n            .componentId(\"1234-1234-1234-1234\")\n            .configs(ComponentRoutineConfigArgs.builder()\n                .name(\"config_param\")\n                .type(\"bool\")\n                .value(\"true\")\n                .multiple(false)\n                .required(true)\n                .sensitive(false)\n                .description(serializeJson(\n                    \"Created with Terraform123123\"))\n                .build())\n            .outputs(ComponentRoutineOutputArgs.builder()\n                .name(\"address\")\n                .description(\"destination address for data to be pushed\")\n                .type(\"DataAddress\")\n                .valueType(\"Number\")\n                .multiple(false)\n                .required(true)\n                .values(ComponentRoutineOutputValueArgs.builder()\n                    .asset(\"1234-1234-1234-1234\")\n                    .attribute(\"1234-1234-1234-1234\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  componentTestRoutine:\n    type: splight:ComponentRoutine\n    properties:\n      description: Created with Terraform\n      type: IncomingRoutine\n      componentId: 1234-1234-1234-1234\n      configs:\n        - name: config_param\n          type: bool\n          value: 'true'\n          multiple: false\n          required: true\n          sensitive: false\n          description:\n            fn::toJSON: Created with Terraform123123\n      outputs:\n        - name: address\n          description: destination address for data to be pushed\n          type: DataAddress\n          valueType: Number\n          multiple: false\n          required: true\n          values:\n            asset: 1234-1234-1234-1234\n            attribute: 1234-1234-1234-1234\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import splight:index/componentRoutine:ComponentRoutine [options] splight_component_routine.\u003cname\u003e \u003ccomponent_routine_id\u003e\n```\n\n",
             "properties": {
                 "componentId": {
                     "type": "string",

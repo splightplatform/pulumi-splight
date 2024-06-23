@@ -39,33 +39,34 @@ export interface AssetKind {
 }
 
 export interface ComponentInput {
-    description: pulumi.Input<string>;
-    multiple: pulumi.Input<boolean>;
+    description?: pulumi.Input<string>;
+    multiple?: pulumi.Input<boolean>;
     name: pulumi.Input<string>;
-    required: pulumi.Input<boolean>;
-    sensitive: pulumi.Input<boolean>;
+    required?: pulumi.Input<boolean>;
+    sensitive?: pulumi.Input<boolean>;
     type: pulumi.Input<string>;
-    value: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface ComponentRoutineConfig {
-    description: pulumi.Input<string>;
-    multiple: pulumi.Input<boolean>;
+    description?: pulumi.Input<string>;
+    multiple?: pulumi.Input<boolean>;
     name: pulumi.Input<string>;
-    required: pulumi.Input<boolean>;
-    sensitive: pulumi.Input<boolean>;
+    required?: pulumi.Input<boolean>;
+    sensitive?: pulumi.Input<boolean>;
     type: pulumi.Input<string>;
-    value: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface ComponentRoutineInput {
-    description: pulumi.Input<string>;
-    multiple: pulumi.Input<boolean>;
+    description?: pulumi.Input<string>;
+    multiple?: pulumi.Input<boolean>;
     name: pulumi.Input<string>;
-    required: pulumi.Input<boolean>;
-    type: pulumi.Input<string>;
-    value: pulumi.Input<inputs.ComponentRoutineInputValue>;
-    valueType: pulumi.Input<string>;
+    required?: pulumi.Input<boolean>;
+    sensitive?: pulumi.Input<boolean>;
+    type?: pulumi.Input<string>;
+    valueType?: pulumi.Input<string>;
+    values?: pulumi.Input<pulumi.Input<inputs.ComponentRoutineInputValue>[]>;
 }
 
 export interface ComponentRoutineInputValue {
@@ -74,13 +75,14 @@ export interface ComponentRoutineInputValue {
 }
 
 export interface ComponentRoutineOutput {
-    description: pulumi.Input<string>;
-    multiple: pulumi.Input<boolean>;
+    description?: pulumi.Input<string>;
+    multiple?: pulumi.Input<boolean>;
     name: pulumi.Input<string>;
-    required: pulumi.Input<boolean>;
-    type: pulumi.Input<string>;
-    value: pulumi.Input<inputs.ComponentRoutineOutputValue>;
-    valueType: pulumi.Input<string>;
+    required?: pulumi.Input<boolean>;
+    sensitive?: pulumi.Input<boolean>;
+    type?: pulumi.Input<string>;
+    valueType?: pulumi.Input<string>;
+    values?: pulumi.Input<pulumi.Input<inputs.ComponentRoutineOutputValue>[]>;
 }
 
 export interface ComponentRoutineOutputValue {

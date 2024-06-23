@@ -51,7 +51,7 @@
                         "elem": {
                             "fields": {
                                 "value": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -61,7 +61,7 @@
                         "elem": {
                             "fields": {
                                 "value": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": false
                                 }
                             }
                         }

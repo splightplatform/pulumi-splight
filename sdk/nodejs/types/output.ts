@@ -39,33 +39,34 @@ export interface AssetKind {
 }
 
 export interface ComponentInput {
-    description: string;
-    multiple: boolean;
+    description?: string;
+    multiple?: boolean;
     name: string;
-    required: boolean;
-    sensitive: boolean;
+    required?: boolean;
+    sensitive?: boolean;
     type: string;
-    value: string;
+    value?: string;
 }
 
 export interface ComponentRoutineConfig {
-    description: string;
-    multiple: boolean;
+    description?: string;
+    multiple?: boolean;
     name: string;
-    required: boolean;
-    sensitive: boolean;
+    required?: boolean;
+    sensitive?: boolean;
     type: string;
-    value: string;
+    value?: string;
 }
 
 export interface ComponentRoutineInput {
-    description: string;
-    multiple: boolean;
+    description?: string;
+    multiple?: boolean;
     name: string;
-    required: boolean;
-    type: string;
-    value: outputs.ComponentRoutineInputValue;
-    valueType: string;
+    required?: boolean;
+    sensitive?: boolean;
+    type?: string;
+    valueType?: string;
+    values?: outputs.ComponentRoutineInputValue[];
 }
 
 export interface ComponentRoutineInputValue {
@@ -74,13 +75,14 @@ export interface ComponentRoutineInputValue {
 }
 
 export interface ComponentRoutineOutput {
-    description: string;
-    multiple: boolean;
+    description?: string;
+    multiple?: boolean;
     name: string;
-    required: boolean;
-    type: string;
-    value: outputs.ComponentRoutineOutputValue;
-    valueType: string;
+    required?: boolean;
+    sensitive?: boolean;
+    type?: string;
+    valueType?: string;
+    values?: outputs.ComponentRoutineOutputValue[];
 }
 
 export interface ComponentRoutineOutputValue {

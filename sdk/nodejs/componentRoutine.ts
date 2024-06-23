@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  *         valueType: "Number",
  *         multiple: false,
  *         required: true,
- *         value: {
+ *         values: {
  *             asset: "1234-1234-1234-1234",
  *             attribute: "1234-1234-1234-1234",
  *         },

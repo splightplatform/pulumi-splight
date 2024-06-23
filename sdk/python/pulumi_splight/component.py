@@ -16,35 +16,24 @@ __all__ = ['ComponentArgs', 'Component']
 @pulumi.input_type
 class ComponentArgs:
     def __init__(__self__, *,
-                 inputs: pulumi.Input[Sequence[pulumi.Input['ComponentInputArgs']]],
                  version: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input['ComponentInputArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Component resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ComponentInputArgs']]] inputs: The input parameters based on hubcomponent spec
         :param pulumi.Input[str] version: [NAME-VERSION] the version of the hub component
         :param pulumi.Input[str] description: optinal description to add details of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['ComponentInputArgs']]] inputs: The input parameters based on hubcomponent spec
         :param pulumi.Input[str] name: the name of the component to be created
         """
-        pulumi.set(__self__, "inputs", inputs)
         pulumi.set(__self__, "version", version)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if inputs is not None:
+            pulumi.set(__self__, "inputs", inputs)
         if name is not None:
             pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def inputs(self) -> pulumi.Input[Sequence[pulumi.Input['ComponentInputArgs']]]:
-        """
-        The input parameters based on hubcomponent spec
-        """
-        return pulumi.get(self, "inputs")
-
-    @inputs.setter
-    def inputs(self, value: pulumi.Input[Sequence[pulumi.Input['ComponentInputArgs']]]):
-        pulumi.set(self, "inputs", value)
 
     @property
     @pulumi.getter
@@ -69,6 +58,18 @@ class ComponentArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ComponentInputArgs']]]]:
+        """
+        The input parameters based on hubcomponent spec
+        """
+        return pulumi.get(self, "inputs")
+
+    @inputs.setter
+    def inputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ComponentInputArgs']]]]):
+        pulumi.set(self, "inputs", value)
 
     @property
     @pulumi.getter
@@ -339,8 +340,6 @@ class Component(pulumi.CustomResource):
             __props__ = ComponentArgs.__new__(ComponentArgs)
 
             __props__.__dict__["description"] = description
-            if inputs is None and not opts.urn:
-                raise TypeError("Missing required property 'inputs'")
             __props__.__dict__["inputs"] = inputs
             __props__.__dict__["name"] = name
             if version is None and not opts.urn:
@@ -392,7 +391,7 @@ class Component(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def inputs(self) -> pulumi.Output[Sequence['outputs.ComponentInput']]:
+    def inputs(self) -> pulumi.Output[Optional[Sequence['outputs.ComponentInput']]]:
         """
         The input parameters based on hubcomponent spec
         """

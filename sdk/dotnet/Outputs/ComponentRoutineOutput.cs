@@ -14,37 +14,41 @@ namespace Splight.Splight.Outputs
     [OutputType]
     public sealed class ComponentRoutineOutput
     {
-        public readonly string Description;
-        public readonly bool Multiple;
+        public readonly string? Description;
+        public readonly bool? Multiple;
         public readonly string Name;
-        public readonly bool Required;
-        public readonly string Type;
-        public readonly Outputs.ComponentRoutineOutputValue Value;
-        public readonly string ValueType;
+        public readonly bool? Required;
+        public readonly bool? Sensitive;
+        public readonly string? Type;
+        public readonly string? ValueType;
+        public readonly ImmutableArray<Outputs.ComponentRoutineOutputValue> Values;
 
         [OutputConstructor]
         private ComponentRoutineOutput(
-            string description,
+            string? description,
 
-            bool multiple,
+            bool? multiple,
 
             string name,
 
-            bool required,
+            bool? required,
 
-            string type,
+            bool? sensitive,
 
-            Outputs.ComponentRoutineOutputValue value,
+            string? type,
 
-            string valueType)
+            string? valueType,
+
+            ImmutableArray<Outputs.ComponentRoutineOutputValue> values)
         {
             Description = description;
             Multiple = multiple;
             Name = name;
             Required = required;
+            Sensitive = sensitive;
             Type = type;
-            Value = value;
             ValueType = valueType;
+            Values = values;
         }
     }
 }

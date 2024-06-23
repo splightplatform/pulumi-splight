@@ -170,7 +170,7 @@ namespace Splight.Splight
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("inputs", required: true)]
+        [Input("inputs")]
         private InputList<Inputs.ComponentInputArgs>? _inputs;
 
         /// <summary>

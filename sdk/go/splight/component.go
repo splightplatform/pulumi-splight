@@ -138,9 +138,6 @@ func NewComponent(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Inputs == nil {
-		return nil, errors.New("invalid value for required argument 'Inputs'")
-	}
 	if args.Version == nil {
 		return nil, errors.New("invalid value for required argument 'Version'")
 	}

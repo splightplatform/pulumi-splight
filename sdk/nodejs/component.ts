@@ -107,7 +107,7 @@ export class Component extends pulumi.CustomResource {
     /**
      * The input parameters based on hubcomponent spec
      */
-    public readonly inputs!: pulumi.Output<outputs.ComponentInput[]>;
+    public readonly inputs!: pulumi.Output<outputs.ComponentInput[] | undefined>;
     /**
      * the name of the component to be created
      */
@@ -136,9 +136,6 @@ export class Component extends pulumi.CustomResource {
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as ComponentArgs | undefined;
-            if ((!args || args.inputs === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'inputs'");
-            }
             if ((!args || args.version === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'version'");
             }
@@ -185,7 +182,7 @@ export interface ComponentArgs {
     /**
      * The input parameters based on hubcomponent spec
      */
-    inputs: pulumi.Input<pulumi.Input<inputs.ComponentInput>[]>;
+    inputs?: pulumi.Input<pulumi.Input<inputs.ComponentInput>[]>;
     /**
      * the name of the component to be created
      */
