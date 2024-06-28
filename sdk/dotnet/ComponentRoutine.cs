@@ -90,7 +90,7 @@ namespace Splight.Splight
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// asset attribute where to read data. Only valid for OutgoingRoutine
+        /// asset attribute where to ingest data. Only valid for IncomingRoutine
         /// </summary>
         [Output("inputs")]
         public Output<ImmutableArray<Outputs.ComponentRoutineInput>> Inputs { get; private set; } = null!;
@@ -188,7 +188,7 @@ namespace Splight.Splight
         private InputList<Inputs.ComponentRoutineInputArgs>? _inputs;
 
         /// <summary>
-        /// asset attribute where to read data. Only valid for OutgoingRoutine
+        /// asset attribute where to ingest data. Only valid for IncomingRoutine
         /// </summary>
         public InputList<Inputs.ComponentRoutineInputArgs> Inputs
         {
@@ -256,7 +256,7 @@ namespace Splight.Splight
         private InputList<Inputs.ComponentRoutineInputGetArgs>? _inputs;
 
         /// <summary>
-        /// asset attribute where to read data. Only valid for OutgoingRoutine
+        /// asset attribute where to ingest data. Only valid for IncomingRoutine
         /// </summary>
         public InputList<Inputs.ComponentRoutineInputGetArgs> Inputs
         {

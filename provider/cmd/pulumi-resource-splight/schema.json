@@ -4,7 +4,7 @@
     "keywords": [
         "splightplatform",
         "splight",
-        "category/Infrastructure"
+        "category/infrastructure"
     ],
     "homepage": "https://www.splight-ai.com",
     "license": "Apache-2.0",
@@ -221,7 +221,8 @@
             },
             "type": "object",
             "required": [
-                "name"
+                "name",
+                "valueType"
             ]
         },
         "splight:index/ComponentRoutineInputValue:ComponentRoutineInputValue": {
@@ -271,7 +272,8 @@
             },
             "type": "object",
             "required": [
-                "name"
+                "name",
+                "valueType"
             ]
         },
         "splight:index/ComponentRoutineOutputValue:ComponentRoutineOutputValue": {
@@ -1040,7 +1042,7 @@
                     "items": {
                         "$ref": "#/types/splight:index/ComponentInput:ComponentInput"
                     },
-                    "description": "The input parameters based on hubcomponent spec\n"
+                    "description": "static config parameters of the routine\n"
                 },
                 "name": {
                     "type": "string",
@@ -1065,7 +1067,7 @@
                     "items": {
                         "$ref": "#/types/splight:index/ComponentInput:ComponentInput"
                     },
-                    "description": "The input parameters based on hubcomponent spec\n"
+                    "description": "static config parameters of the routine\n"
                 },
                 "name": {
                     "type": "string",
@@ -1091,7 +1093,7 @@
                         "items": {
                             "$ref": "#/types/splight:index/ComponentInput:ComponentInput"
                         },
-                        "description": "The input parameters based on hubcomponent spec\n"
+                        "description": "static config parameters of the routine\n"
                     },
                     "name": {
                         "type": "string",
@@ -1128,7 +1130,7 @@
                     "items": {
                         "$ref": "#/types/splight:index/ComponentRoutineInput:ComponentRoutineInput"
                     },
-                    "description": "asset attribute where to read data. Only valid for OutgoingRoutine\n"
+                    "description": "asset attribute where to ingest data. Only valid for IncomingRoutine\n"
                 },
                 "name": {
                     "type": "string",
@@ -1172,7 +1174,7 @@
                     "items": {
                         "$ref": "#/types/splight:index/ComponentRoutineInput:ComponentRoutineInput"
                     },
-                    "description": "asset attribute where to read data. Only valid for OutgoingRoutine\n"
+                    "description": "asset attribute where to ingest data. Only valid for IncomingRoutine\n"
                 },
                 "name": {
                     "type": "string",
@@ -1217,7 +1219,7 @@
                         "items": {
                             "$ref": "#/types/splight:index/ComponentRoutineInput:ComponentRoutineInput"
                         },
-                        "description": "asset attribute where to read data. Only valid for OutgoingRoutine\n"
+                        "description": "asset attribute where to ingest data. Only valid for IncomingRoutine\n"
                     },
                     "name": {
                         "type": "string",
@@ -1920,6 +1922,80 @@
                     "type": {
                         "type": "string",
                         "description": "[cron|rate] type for the cron\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/node:Node": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as splight from \"@splightplatform/pulumi-splight\";\n\nconst myNode = new splight.Node(\"myNode\", {\n    instanceType: \"t2.micro\",\n    region: \"us-east-1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_splight as splight\n\nmy_node = splight.Node(\"myNode\",\n    instance_type=\"t2.micro\",\n    region=\"us-east-1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Splight = Splight.Splight;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myNode = new Splight.Node(\"myNode\", new()\n    {\n        InstanceType = \"t2.micro\",\n        Region = \"us-east-1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/splightplatform/pulumi-splight/sdk/go/splight\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := splight.NewNode(ctx, \"myNode\", \u0026splight.NodeArgs{\n\t\t\tInstanceType: pulumi.String(\"t2.micro\"),\n\t\t\tRegion:       pulumi.String(\"us-east-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.splight.Node;\nimport com.pulumi.splight.NodeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myNode = new Node(\"myNode\", NodeArgs.builder()\n            .instanceType(\"t2.micro\")\n            .region(\"us-east-1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myNode:\n    type: splight:Node\n    properties:\n      instanceType: t2.micro\n      region: us-east-1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import splight:index/node:Node [options] splight_node.\u003cname\u003e \u003cnode_id\u003e\n```\n\n",
+            "properties": {
+                "instanceType": {
+                    "type": "string",
+                    "description": "intance type\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "organization id\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "node region\n"
+                }
+            },
+            "required": [
+                "instanceType",
+                "name",
+                "organizationId",
+                "region"
+            ],
+            "inputProperties": {
+                "instanceType": {
+                    "type": "string",
+                    "description": "intance type\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n",
+                    "willReplaceOnChanges": true
+                },
+                "region": {
+                    "type": "string",
+                    "description": "node region\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "instanceType",
+                "region"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Node resources.\n",
+                "properties": {
+                    "instanceType": {
+                        "type": "string",
+                        "description": "intance type\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "name of the resource\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "organizationId": {
+                        "type": "string",
+                        "description": "organization id\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "node region\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"

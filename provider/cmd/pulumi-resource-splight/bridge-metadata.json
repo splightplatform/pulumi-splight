@@ -122,6 +122,9 @@
                     }
                 }
             },
+            "splight_node": {
+                "current": "splight:index/node:Node"
+            },
             "splight_secret": {
                 "current": "splight:index/secret:Secret"
             }

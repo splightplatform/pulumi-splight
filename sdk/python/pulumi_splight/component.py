@@ -24,7 +24,7 @@ class ComponentArgs:
         The set of arguments for constructing a Component resource.
         :param pulumi.Input[str] version: [NAME-VERSION] the version of the hub component
         :param pulumi.Input[str] description: optinal description to add details of the resource
-        :param pulumi.Input[Sequence[pulumi.Input['ComponentInputArgs']]] inputs: The input parameters based on hubcomponent spec
+        :param pulumi.Input[Sequence[pulumi.Input['ComponentInputArgs']]] inputs: static config parameters of the routine
         :param pulumi.Input[str] name: the name of the component to be created
         """
         pulumi.set(__self__, "version", version)
@@ -63,7 +63,7 @@ class ComponentArgs:
     @pulumi.getter
     def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ComponentInputArgs']]]]:
         """
-        The input parameters based on hubcomponent spec
+        static config parameters of the routine
         """
         return pulumi.get(self, "inputs")
 
@@ -94,7 +94,7 @@ class _ComponentState:
         """
         Input properties used for looking up and filtering Component resources.
         :param pulumi.Input[str] description: optinal description to add details of the resource
-        :param pulumi.Input[Sequence[pulumi.Input['ComponentInputArgs']]] inputs: The input parameters based on hubcomponent spec
+        :param pulumi.Input[Sequence[pulumi.Input['ComponentInputArgs']]] inputs: static config parameters of the routine
         :param pulumi.Input[str] name: the name of the component to be created
         :param pulumi.Input[str] version: [NAME-VERSION] the version of the hub component
         """
@@ -123,7 +123,7 @@ class _ComponentState:
     @pulumi.getter
     def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ComponentInputArgs']]]]:
         """
-        The input parameters based on hubcomponent spec
+        static config parameters of the routine
         """
         return pulumi.get(self, "inputs")
 
@@ -235,7 +235,7 @@ class Component(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: optinal description to add details of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentInputArgs']]]] inputs: The input parameters based on hubcomponent spec
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentInputArgs']]]] inputs: static config parameters of the routine
         :param pulumi.Input[str] name: the name of the component to be created
         :param pulumi.Input[str] version: [NAME-VERSION] the version of the hub component
         """
@@ -367,7 +367,7 @@ class Component(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: optinal description to add details of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentInputArgs']]]] inputs: The input parameters based on hubcomponent spec
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentInputArgs']]]] inputs: static config parameters of the routine
         :param pulumi.Input[str] name: the name of the component to be created
         :param pulumi.Input[str] version: [NAME-VERSION] the version of the hub component
         """
@@ -393,7 +393,7 @@ class Component(pulumi.CustomResource):
     @pulumi.getter
     def inputs(self) -> pulumi.Output[Optional[Sequence['outputs.ComponentInput']]]:
         """
-        The input parameters based on hubcomponent spec
+        static config parameters of the routine
         """
         return pulumi.get(self, "inputs")
 

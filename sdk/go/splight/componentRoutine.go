@@ -86,7 +86,7 @@ type ComponentRoutine struct {
 	Configs ComponentRoutineConfigArrayOutput `pulumi:"configs"`
 	// optional complementary information about the routine
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// asset attribute where to read data. Only valid for OutgoingRoutine
+	// asset attribute where to ingest data. Only valid for IncomingRoutine
 	Inputs ComponentRoutineInputTypeArrayOutput `pulumi:"inputs"`
 	// name of the routine
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -138,7 +138,7 @@ type componentRoutineState struct {
 	Configs []ComponentRoutineConfig `pulumi:"configs"`
 	// optional complementary information about the routine
 	Description *string `pulumi:"description"`
-	// asset attribute where to read data. Only valid for OutgoingRoutine
+	// asset attribute where to ingest data. Only valid for IncomingRoutine
 	Inputs []ComponentRoutineInputType `pulumi:"inputs"`
 	// name of the routine
 	Name *string `pulumi:"name"`
@@ -155,7 +155,7 @@ type ComponentRoutineState struct {
 	Configs ComponentRoutineConfigArrayInput
 	// optional complementary information about the routine
 	Description pulumi.StringPtrInput
-	// asset attribute where to read data. Only valid for OutgoingRoutine
+	// asset attribute where to ingest data. Only valid for IncomingRoutine
 	Inputs ComponentRoutineInputTypeArrayInput
 	// name of the routine
 	Name pulumi.StringPtrInput
@@ -176,7 +176,7 @@ type componentRoutineArgs struct {
 	Configs []ComponentRoutineConfig `pulumi:"configs"`
 	// optional complementary information about the routine
 	Description *string `pulumi:"description"`
-	// asset attribute where to read data. Only valid for OutgoingRoutine
+	// asset attribute where to ingest data. Only valid for IncomingRoutine
 	Inputs []ComponentRoutineInputType `pulumi:"inputs"`
 	// name of the routine
 	Name *string `pulumi:"name"`
@@ -194,7 +194,7 @@ type ComponentRoutineArgs struct {
 	Configs ComponentRoutineConfigArrayInput
 	// optional complementary information about the routine
 	Description pulumi.StringPtrInput
-	// asset attribute where to read data. Only valid for OutgoingRoutine
+	// asset attribute where to ingest data. Only valid for IncomingRoutine
 	Inputs ComponentRoutineInputTypeArrayInput
 	// name of the routine
 	Name pulumi.StringPtrInput
@@ -306,7 +306,7 @@ func (o ComponentRoutineOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComponentRoutine) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// asset attribute where to read data. Only valid for OutgoingRoutine
+// asset attribute where to ingest data. Only valid for IncomingRoutine
 func (o ComponentRoutineOutput) Inputs() ComponentRoutineInputTypeArrayOutput {
 	return o.ApplyT(func(v *ComponentRoutine) ComponentRoutineInputTypeArrayOutput { return v.Inputs }).(ComponentRoutineInputTypeArrayOutput)
 }

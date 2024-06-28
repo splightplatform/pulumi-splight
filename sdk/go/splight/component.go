@@ -123,7 +123,7 @@ type Component struct {
 
 	// optinal description to add details of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The input parameters based on hubcomponent spec
+	// static config parameters of the routine
 	Inputs ComponentInputTypeArrayOutput `pulumi:"inputs"`
 	// the name of the component to be created
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -166,7 +166,7 @@ func GetComponent(ctx *pulumi.Context,
 type componentState struct {
 	// optinal description to add details of the resource
 	Description *string `pulumi:"description"`
-	// The input parameters based on hubcomponent spec
+	// static config parameters of the routine
 	Inputs []ComponentInputType `pulumi:"inputs"`
 	// the name of the component to be created
 	Name *string `pulumi:"name"`
@@ -177,7 +177,7 @@ type componentState struct {
 type ComponentState struct {
 	// optinal description to add details of the resource
 	Description pulumi.StringPtrInput
-	// The input parameters based on hubcomponent spec
+	// static config parameters of the routine
 	Inputs ComponentInputTypeArrayInput
 	// the name of the component to be created
 	Name pulumi.StringPtrInput
@@ -192,7 +192,7 @@ func (ComponentState) ElementType() reflect.Type {
 type componentArgs struct {
 	// optinal description to add details of the resource
 	Description *string `pulumi:"description"`
-	// The input parameters based on hubcomponent spec
+	// static config parameters of the routine
 	Inputs []ComponentInputType `pulumi:"inputs"`
 	// the name of the component to be created
 	Name *string `pulumi:"name"`
@@ -204,7 +204,7 @@ type componentArgs struct {
 type ComponentArgs struct {
 	// optinal description to add details of the resource
 	Description pulumi.StringPtrInput
-	// The input parameters based on hubcomponent spec
+	// static config parameters of the routine
 	Inputs ComponentInputTypeArrayInput
 	// the name of the component to be created
 	Name pulumi.StringPtrInput
@@ -304,7 +304,7 @@ func (o ComponentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Component) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The input parameters based on hubcomponent spec
+// static config parameters of the routine
 func (o ComponentOutput) Inputs() ComponentInputTypeArrayOutput {
 	return o.ApplyT(func(v *Component) ComponentInputTypeArrayOutput { return v.Inputs }).(ComponentInputTypeArrayOutput)
 }

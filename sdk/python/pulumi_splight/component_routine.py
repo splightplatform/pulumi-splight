@@ -29,7 +29,7 @@ class ComponentRoutineArgs:
         :param pulumi.Input[str] type: [IncomingRoutine|OutgoingRoutine] direction of the data flow (from device to system or from system to device)
         :param pulumi.Input[Sequence[pulumi.Input['ComponentRoutineConfigArgs']]] configs: static config parameters of the routine
         :param pulumi.Input[str] description: optional complementary information about the routine
-        :param pulumi.Input[Sequence[pulumi.Input['ComponentRoutineInputArgs']]] inputs: asset attribute where to read data. Only valid for OutgoingRoutine
+        :param pulumi.Input[Sequence[pulumi.Input['ComponentRoutineInputArgs']]] inputs: asset attribute where to ingest data. Only valid for IncomingRoutine
         :param pulumi.Input[str] name: name of the routine
         :param pulumi.Input[Sequence[pulumi.Input['ComponentRoutineOutputArgs']]] outputs: asset attribute where to ingest data. Only valid for IncomingRoutine
         """
@@ -98,7 +98,7 @@ class ComponentRoutineArgs:
     @pulumi.getter
     def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ComponentRoutineInputArgs']]]]:
         """
-        asset attribute where to read data. Only valid for OutgoingRoutine
+        asset attribute where to ingest data. Only valid for IncomingRoutine
         """
         return pulumi.get(self, "inputs")
 
@@ -146,7 +146,7 @@ class _ComponentRoutineState:
         :param pulumi.Input[str] component_id: reference to component to be attached
         :param pulumi.Input[Sequence[pulumi.Input['ComponentRoutineConfigArgs']]] configs: static config parameters of the routine
         :param pulumi.Input[str] description: optional complementary information about the routine
-        :param pulumi.Input[Sequence[pulumi.Input['ComponentRoutineInputArgs']]] inputs: asset attribute where to read data. Only valid for OutgoingRoutine
+        :param pulumi.Input[Sequence[pulumi.Input['ComponentRoutineInputArgs']]] inputs: asset attribute where to ingest data. Only valid for IncomingRoutine
         :param pulumi.Input[str] name: name of the routine
         :param pulumi.Input[Sequence[pulumi.Input['ComponentRoutineOutputArgs']]] outputs: asset attribute where to ingest data. Only valid for IncomingRoutine
         :param pulumi.Input[str] type: [IncomingRoutine|OutgoingRoutine] direction of the data flow (from device to system or from system to device)
@@ -206,7 +206,7 @@ class _ComponentRoutineState:
     @pulumi.getter
     def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ComponentRoutineInputArgs']]]]:
         """
-        asset attribute where to read data. Only valid for OutgoingRoutine
+        asset attribute where to ingest data. Only valid for IncomingRoutine
         """
         return pulumi.get(self, "inputs")
 
@@ -310,7 +310,7 @@ class ComponentRoutine(pulumi.CustomResource):
         :param pulumi.Input[str] component_id: reference to component to be attached
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineConfigArgs']]]] configs: static config parameters of the routine
         :param pulumi.Input[str] description: optional complementary information about the routine
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineInputArgs']]]] inputs: asset attribute where to read data. Only valid for OutgoingRoutine
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineInputArgs']]]] inputs: asset attribute where to ingest data. Only valid for IncomingRoutine
         :param pulumi.Input[str] name: name of the routine
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineOutputArgs']]]] outputs: asset attribute where to ingest data. Only valid for IncomingRoutine
         :param pulumi.Input[str] type: [IncomingRoutine|OutgoingRoutine] direction of the data flow (from device to system or from system to device)
@@ -431,7 +431,7 @@ class ComponentRoutine(pulumi.CustomResource):
         :param pulumi.Input[str] component_id: reference to component to be attached
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineConfigArgs']]]] configs: static config parameters of the routine
         :param pulumi.Input[str] description: optional complementary information about the routine
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineInputArgs']]]] inputs: asset attribute where to read data. Only valid for OutgoingRoutine
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineInputArgs']]]] inputs: asset attribute where to ingest data. Only valid for IncomingRoutine
         :param pulumi.Input[str] name: name of the routine
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineOutputArgs']]]] outputs: asset attribute where to ingest data. Only valid for IncomingRoutine
         :param pulumi.Input[str] type: [IncomingRoutine|OutgoingRoutine] direction of the data flow (from device to system or from system to device)
@@ -477,7 +477,7 @@ class ComponentRoutine(pulumi.CustomResource):
     @pulumi.getter
     def inputs(self) -> pulumi.Output[Optional[Sequence['outputs.ComponentRoutineInput']]]:
         """
-        asset attribute where to read data. Only valid for OutgoingRoutine
+        asset attribute where to ingest data. Only valid for IncomingRoutine
         """
         return pulumi.get(self, "inputs")
 

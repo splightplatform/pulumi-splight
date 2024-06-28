@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FileFolder{}
 	case "splight:index/function:Function":
 		r = &Function{}
+	case "splight:index/node:Node":
+		r = &Node{}
 	case "splight:index/secret:Secret":
 		r = &Secret{}
 	default:
@@ -136,6 +138,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"splight",
 		"index/function",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/node",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
