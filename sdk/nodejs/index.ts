@@ -70,6 +70,11 @@ export const getAssetKinds: typeof import("./getAssetKinds").getAssetKinds = nul
 export const getAssetKindsOutput: typeof import("./getAssetKinds").getAssetKindsOutput = null as any;
 utilities.lazyLoad(exports, ["getAssetKinds","getAssetKindsOutput"], () => require("./getAssetKinds"));
 
+export { NodeArgs, NodeState } from "./node";
+export type Node = import("./node").Node;
+export const Node: typeof import("./node").Node = null as any;
+utilities.lazyLoad(exports, ["Node"], () => require("./node"));
+
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
@@ -118,6 +123,8 @@ const _module = {
                 return new FileFolder(name, <any>undefined, { urn })
             case "splight:index/function:Function":
                 return new Function(name, <any>undefined, { urn })
+            case "splight:index/node:Node":
+                return new Node(name, <any>undefined, { urn })
             case "splight:index/secret:Secret":
                 return new Secret(name, <any>undefined, { urn })
             default:
@@ -137,6 +144,7 @@ pulumi.runtime.registerResourceModule("splight", "index/dashboardTab", _module)
 pulumi.runtime.registerResourceModule("splight", "index/file", _module)
 pulumi.runtime.registerResourceModule("splight", "index/fileFolder", _module)
 pulumi.runtime.registerResourceModule("splight", "index/function", _module)
+pulumi.runtime.registerResourceModule("splight", "index/node", _module)
 pulumi.runtime.registerResourceModule("splight", "index/secret", _module)
 pulumi.runtime.registerResourcePackage("splight", {
     version: utilities.getVersion(),

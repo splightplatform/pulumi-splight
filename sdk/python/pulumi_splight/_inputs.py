@@ -344,14 +344,15 @@ class ComponentRoutineConfigArgs:
 class ComponentRoutineInputArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
+                 value_type: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  multiple: Optional[pulumi.Input[bool]] = None,
                  required: Optional[pulumi.Input[bool]] = None,
                  sensitive: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 value_type: Optional[pulumi.Input[str]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input['ComponentRoutineInputValueArgs']]]] = None):
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value_type", value_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if multiple is not None:
@@ -362,8 +363,6 @@ class ComponentRoutineInputArgs:
             pulumi.set(__self__, "sensitive", sensitive)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if value_type is not None:
-            pulumi.set(__self__, "value_type", value_type)
         if values is not None:
             pulumi.set(__self__, "values", values)
 
@@ -375,6 +374,15 @@ class ComponentRoutineInputArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "value_type")
+
+    @value_type.setter
+    def value_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value_type", value)
 
     @property
     @pulumi.getter
@@ -420,15 +428,6 @@ class ComponentRoutineInputArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter(name="valueType")
-    def value_type(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "value_type")
-
-    @value_type.setter
-    def value_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value_type", value)
 
     @property
     @pulumi.getter
@@ -471,14 +470,15 @@ class ComponentRoutineInputValueArgs:
 class ComponentRoutineOutputArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
+                 value_type: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  multiple: Optional[pulumi.Input[bool]] = None,
                  required: Optional[pulumi.Input[bool]] = None,
                  sensitive: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 value_type: Optional[pulumi.Input[str]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input['ComponentRoutineOutputValueArgs']]]] = None):
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value_type", value_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if multiple is not None:
@@ -489,8 +489,6 @@ class ComponentRoutineOutputArgs:
             pulumi.set(__self__, "sensitive", sensitive)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if value_type is not None:
-            pulumi.set(__self__, "value_type", value_type)
         if values is not None:
             pulumi.set(__self__, "values", values)
 
@@ -502,6 +500,15 @@ class ComponentRoutineOutputArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "value_type")
+
+    @value_type.setter
+    def value_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value_type", value)
 
     @property
     @pulumi.getter
@@ -547,15 +554,6 @@ class ComponentRoutineOutputArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter(name="valueType")
-    def value_type(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "value_type")
-
-    @value_type.setter
-    def value_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value_type", value)
 
     @property
     @pulumi.getter

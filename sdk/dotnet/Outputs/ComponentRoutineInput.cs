@@ -20,7 +20,7 @@ namespace Splight.Splight.Outputs
         public readonly bool? Required;
         public readonly bool? Sensitive;
         public readonly string? Type;
-        public readonly string? ValueType;
+        public readonly string ValueType;
         public readonly ImmutableArray<Outputs.ComponentRoutineInputValue> Values;
 
         [OutputConstructor]
@@ -37,7 +37,7 @@ namespace Splight.Splight.Outputs
 
             string? type,
 
-            string? valueType,
+            string valueType,
 
             ImmutableArray<Outputs.ComponentRoutineInputValue> values)
         {

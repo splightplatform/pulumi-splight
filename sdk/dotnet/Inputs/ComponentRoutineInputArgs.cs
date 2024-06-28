@@ -31,8 +31,8 @@ namespace Splight.Splight.Inputs
         [Input("type")]
         public Input<string>? Type { get; set; }
 
-        [Input("valueType")]
-        public Input<string>? ValueType { get; set; }
+        [Input("valueType", required: true)]
+        public Input<string> ValueType { get; set; } = null!;
 
         [Input("values")]
         private InputList<Inputs.ComponentRoutineInputValueArgs>? _values;

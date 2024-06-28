@@ -8,7 +8,7 @@ from setuptools.command.install import install
 from subprocess import check_call
 
 
-VERSION = "0.1.23"
+VERSION = "0.1.24"
 def readme():
     try:
         with open('README.md', encoding='utf-8') as f:
@@ -23,7 +23,7 @@ setup(name='pulumi_splight',
       description="A Pulumi package for creating and managing Splight resources.",
       long_description=readme(),
       long_description_content_type='text/markdown',
-      keywords='splightplatform splight category/Infrastructure',
+      keywords='splightplatform splight category/infrastructure',
       url='https://www.splight-ai.com',
       project_urls={
           'Repository': 'https://github.com/splightplatform/pulumi-splight'

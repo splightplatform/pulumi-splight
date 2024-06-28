@@ -29,6 +29,7 @@
         "function.ts",
         "getAssetKinds.ts",
         "index.ts",
+        "node.ts",
         "provider.ts",
         "secret.ts",
         "types/index.ts",

@@ -65,7 +65,7 @@ export interface ComponentRoutineInput {
     required?: boolean;
     sensitive?: boolean;
     type?: string;
-    valueType?: string;
+    valueType: string;
     values?: outputs.ComponentRoutineInputValue[];
 }
 
@@ -81,7 +81,7 @@ export interface ComponentRoutineOutput {
     required?: boolean;
     sensitive?: boolean;
     type?: string;
-    valueType?: string;
+    valueType: string;
     values?: outputs.ComponentRoutineOutputValue[];
 }
 

@@ -18,6 +18,7 @@ from .file import *
 from .file_folder import *
 from .function import *
 from .get_asset_kinds import *
+from .node import *
 from .provider import *
 from .secret import *
 from ._inputs import *
@@ -127,6 +128,14 @@ _utilities.register(
   "fqn": "pulumi_splight",
   "classes": {
    "splight:index/function:Function": "Function"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/node",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/node:Node": "Node"
   }
  },
  {

@@ -65,7 +65,7 @@ export interface ComponentRoutineInput {
     required?: pulumi.Input<boolean>;
     sensitive?: pulumi.Input<boolean>;
     type?: pulumi.Input<string>;
-    valueType?: pulumi.Input<string>;
+    valueType: pulumi.Input<string>;
     values?: pulumi.Input<pulumi.Input<inputs.ComponentRoutineInputValue>[]>;
 }
 
@@ -81,7 +81,7 @@ export interface ComponentRoutineOutput {
     required?: pulumi.Input<boolean>;
     sensitive?: pulumi.Input<boolean>;
     type?: pulumi.Input<string>;
-    valueType?: pulumi.Input<string>;
+    valueType: pulumi.Input<string>;
     values?: pulumi.Input<pulumi.Input<inputs.ComponentRoutineOutputValue>[]>;
 }
 

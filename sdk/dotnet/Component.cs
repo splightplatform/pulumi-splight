@@ -100,7 +100,7 @@ namespace Splight.Splight
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The input parameters based on hubcomponent spec
+        /// static config parameters of the routine
         /// </summary>
         [Output("inputs")]
         public Output<ImmutableArray<Outputs.ComponentInput>> Inputs { get; private set; } = null!;
@@ -174,7 +174,7 @@ namespace Splight.Splight
         private InputList<Inputs.ComponentInputArgs>? _inputs;
 
         /// <summary>
-        /// The input parameters based on hubcomponent spec
+        /// static config parameters of the routine
         /// </summary>
         public InputList<Inputs.ComponentInputArgs> Inputs
         {
@@ -212,7 +212,7 @@ namespace Splight.Splight
         private InputList<Inputs.ComponentInputGetArgs>? _inputs;
 
         /// <summary>
-        /// The input parameters based on hubcomponent spec
+        /// static config parameters of the routine
         /// </summary>
         public InputList<Inputs.ComponentInputGetArgs> Inputs
         {

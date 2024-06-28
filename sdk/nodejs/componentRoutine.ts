@@ -88,7 +88,7 @@ export class ComponentRoutine extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * asset attribute where to read data. Only valid for OutgoingRoutine
+     * asset attribute where to ingest data. Only valid for IncomingRoutine
      */
     public readonly inputs!: pulumi.Output<outputs.ComponentRoutineInput[] | undefined>;
     /**
@@ -162,7 +162,7 @@ export interface ComponentRoutineState {
      */
     description?: pulumi.Input<string>;
     /**
-     * asset attribute where to read data. Only valid for OutgoingRoutine
+     * asset attribute where to ingest data. Only valid for IncomingRoutine
      */
     inputs?: pulumi.Input<pulumi.Input<inputs.ComponentRoutineInput>[]>;
     /**
@@ -196,7 +196,7 @@ export interface ComponentRoutineArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * asset attribute where to read data. Only valid for OutgoingRoutine
+     * asset attribute where to ingest data. Only valid for IncomingRoutine
      */
     inputs?: pulumi.Input<pulumi.Input<inputs.ComponentRoutineInput>[]>;
     /**

@@ -309,14 +309,15 @@ class ComponentRoutineInput(dict):
 
     def __init__(__self__, *,
                  name: str,
+                 value_type: str,
                  description: Optional[str] = None,
                  multiple: Optional[bool] = None,
                  required: Optional[bool] = None,
                  sensitive: Optional[bool] = None,
                  type: Optional[str] = None,
-                 value_type: Optional[str] = None,
                  values: Optional[Sequence['outputs.ComponentRoutineInputValue']] = None):
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value_type", value_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if multiple is not None:
@@ -327,8 +328,6 @@ class ComponentRoutineInput(dict):
             pulumi.set(__self__, "sensitive", sensitive)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if value_type is not None:
-            pulumi.set(__self__, "value_type", value_type)
         if values is not None:
             pulumi.set(__self__, "values", values)
 
@@ -336,6 +335,11 @@ class ComponentRoutineInput(dict):
     @pulumi.getter
     def name(self) -> str:
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> str:
+        return pulumi.get(self, "value_type")
 
     @property
     @pulumi.getter
@@ -361,11 +365,6 @@ class ComponentRoutineInput(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter(name="valueType")
-    def value_type(self) -> Optional[str]:
-        return pulumi.get(self, "value_type")
 
     @property
     @pulumi.getter
@@ -413,14 +412,15 @@ class ComponentRoutineOutput(dict):
 
     def __init__(__self__, *,
                  name: str,
+                 value_type: str,
                  description: Optional[str] = None,
                  multiple: Optional[bool] = None,
                  required: Optional[bool] = None,
                  sensitive: Optional[bool] = None,
                  type: Optional[str] = None,
-                 value_type: Optional[str] = None,
                  values: Optional[Sequence['outputs.ComponentRoutineOutputValue']] = None):
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value_type", value_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if multiple is not None:
@@ -431,8 +431,6 @@ class ComponentRoutineOutput(dict):
             pulumi.set(__self__, "sensitive", sensitive)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if value_type is not None:
-            pulumi.set(__self__, "value_type", value_type)
         if values is not None:
             pulumi.set(__self__, "values", values)
 
@@ -440,6 +438,11 @@ class ComponentRoutineOutput(dict):
     @pulumi.getter
     def name(self) -> str:
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> str:
+        return pulumi.get(self, "value_type")
 
     @property
     @pulumi.getter
@@ -465,11 +468,6 @@ class ComponentRoutineOutput(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter(name="valueType")
-    def value_type(self) -> Optional[str]:
-        return pulumi.get(self, "value_type")
 
     @property
     @pulumi.getter

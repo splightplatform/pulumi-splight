@@ -105,7 +105,7 @@ export class Component extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The input parameters based on hubcomponent spec
+     * static config parameters of the routine
      */
     public readonly inputs!: pulumi.Output<outputs.ComponentInput[] | undefined>;
     /**
@@ -158,7 +158,7 @@ export interface ComponentState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The input parameters based on hubcomponent spec
+     * static config parameters of the routine
      */
     inputs?: pulumi.Input<pulumi.Input<inputs.ComponentInput>[]>;
     /**
@@ -180,7 +180,7 @@ export interface ComponentArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The input parameters based on hubcomponent spec
+     * static config parameters of the routine
      */
     inputs?: pulumi.Input<pulumi.Input<inputs.ComponentInput>[]>;
     /**
