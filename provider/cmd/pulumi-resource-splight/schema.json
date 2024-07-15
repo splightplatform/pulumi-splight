@@ -73,6 +73,10 @@
                 "expressionPlain": {
                     "type": "string"
                 },
+                "id": {
+                    "type": "string",
+                    "description": "optional id\n"
+                },
                 "queryPlain": {
                     "type": "string"
                 },
@@ -89,7 +93,18 @@
                 "queryPlain",
                 "refId",
                 "type"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "expressionPlain",
+                        "id",
+                        "queryPlain",
+                        "refId",
+                        "type"
+                    ]
+                }
+            }
         },
         "splight:index/AlertThreshold:AlertThreshold": {
             "properties": {
@@ -423,6 +438,10 @@
                 "expressionPlain": {
                     "type": "string"
                 },
+                "id": {
+                    "type": "string",
+                    "description": "optional id\n"
+                },
                 "queryPlain": {
                     "type": "string"
                 },
@@ -439,7 +458,18 @@
                 "queryPlain",
                 "refId",
                 "type"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "expressionPlain",
+                        "id",
+                        "queryPlain",
+                        "refId",
+                        "type"
+                    ]
+                }
+            }
         },
         "splight:index/getAssetKindsKind:getAssetKindsKind": {
             "properties": {

@@ -7,6 +7,10 @@ import * as outputs from "../types/output";
 
 export interface AlertAlertItem {
     expressionPlain: pulumi.Input<string>;
+    /**
+     * optional id
+     */
+    id?: pulumi.Input<string>;
     queryPlain: pulumi.Input<string>;
     refId: pulumi.Input<string>;
     type: pulumi.Input<string>;
@@ -143,6 +147,10 @@ export interface DashboardChartValueMapping {
 
 export interface FunctionFunctionItem {
     expressionPlain: pulumi.Input<string>;
+    /**
+     * optional id
+     */
+    id?: pulumi.Input<string>;
     queryPlain: pulumi.Input<string>;
     refId: pulumi.Input<string>;
     type: pulumi.Input<string>;

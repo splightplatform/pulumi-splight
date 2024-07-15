@@ -9,7 +9,7 @@
     <PackageProjectUrl>https://www.splight-ai.com</PackageProjectUrl>
     <RepositoryUrl>https://github.com/splightplatform/pulumi-splight</RepositoryUrl>
     <PackageIcon>logo.png</PackageIcon>
-    <Version>0.1.24</Version>
+    <Version>0.1.25</Version>
 
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
