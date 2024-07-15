@@ -56,11 +56,17 @@ class AlertAlertItem(dict):
                  expression_plain: str,
                  query_plain: str,
                  ref_id: str,
-                 type: str):
+                 type: str,
+                 id: Optional[str] = None):
+        """
+        :param str id: optional id
+        """
         pulumi.set(__self__, "expression_plain", expression_plain)
         pulumi.set(__self__, "query_plain", query_plain)
         pulumi.set(__self__, "ref_id", ref_id)
         pulumi.set(__self__, "type", type)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter(name="expressionPlain")
@@ -81,6 +87,14 @@ class AlertAlertItem(dict):
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        optional id
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type
@@ -813,11 +827,17 @@ class FunctionFunctionItem(dict):
                  expression_plain: str,
                  query_plain: str,
                  ref_id: str,
-                 type: str):
+                 type: str,
+                 id: Optional[str] = None):
+        """
+        :param str id: optional id
+        """
         pulumi.set(__self__, "expression_plain", expression_plain)
         pulumi.set(__self__, "query_plain", query_plain)
         pulumi.set(__self__, "ref_id", ref_id)
         pulumi.set(__self__, "type", type)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter(name="expressionPlain")
@@ -838,6 +858,14 @@ class FunctionFunctionItem(dict):
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        optional id
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type

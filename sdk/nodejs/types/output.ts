@@ -7,6 +7,10 @@ import * as outputs from "../types/output";
 
 export interface AlertAlertItem {
     expressionPlain: string;
+    /**
+     * optional id
+     */
+    id: string;
     queryPlain: string;
     refId: string;
     type: string;
@@ -143,6 +147,10 @@ export interface DashboardChartValueMapping {
 
 export interface FunctionFunctionItem {
     expressionPlain: string;
+    /**
+     * optional id
+     */
+    id: string;
     queryPlain: string;
     refId: string;
     type: string;

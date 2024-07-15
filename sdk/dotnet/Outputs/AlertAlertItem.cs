@@ -15,6 +15,10 @@ namespace Splight.Splight.Outputs
     public sealed class AlertAlertItem
     {
         public readonly string ExpressionPlain;
+        /// <summary>
+        /// optional id
+        /// </summary>
+        public readonly string? Id;
         public readonly string QueryPlain;
         public readonly string RefId;
         public readonly string Type;
@@ -23,6 +27,8 @@ namespace Splight.Splight.Outputs
         private AlertAlertItem(
             string expressionPlain,
 
+            string? id,
+
             string queryPlain,
 
             string refId,
@@ -30,6 +36,7 @@ namespace Splight.Splight.Outputs
             string type)
         {
             ExpressionPlain = expressionPlain;
+            Id = id;
             QueryPlain = queryPlain;
             RefId = refId;
             Type = type;

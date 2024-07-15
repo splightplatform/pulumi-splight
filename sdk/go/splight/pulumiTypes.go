@@ -15,9 +15,11 @@ var _ = internal.GetEnvOrDefault
 
 type AlertAlertItem struct {
 	ExpressionPlain string `pulumi:"expressionPlain"`
-	QueryPlain      string `pulumi:"queryPlain"`
-	RefId           string `pulumi:"refId"`
-	Type            string `pulumi:"type"`
+	// optional id
+	Id         *string `pulumi:"id"`
+	QueryPlain string  `pulumi:"queryPlain"`
+	RefId      string  `pulumi:"refId"`
+	Type       string  `pulumi:"type"`
 }
 
 // AlertAlertItemInput is an input type that accepts AlertAlertItemArgs and AlertAlertItemOutput values.
@@ -33,9 +35,11 @@ type AlertAlertItemInput interface {
 
 type AlertAlertItemArgs struct {
 	ExpressionPlain pulumi.StringInput `pulumi:"expressionPlain"`
-	QueryPlain      pulumi.StringInput `pulumi:"queryPlain"`
-	RefId           pulumi.StringInput `pulumi:"refId"`
-	Type            pulumi.StringInput `pulumi:"type"`
+	// optional id
+	Id         pulumi.StringPtrInput `pulumi:"id"`
+	QueryPlain pulumi.StringInput    `pulumi:"queryPlain"`
+	RefId      pulumi.StringInput    `pulumi:"refId"`
+	Type       pulumi.StringInput    `pulumi:"type"`
 }
 
 func (AlertAlertItemArgs) ElementType() reflect.Type {
@@ -91,6 +95,11 @@ func (o AlertAlertItemOutput) ToAlertAlertItemOutputWithContext(ctx context.Cont
 
 func (o AlertAlertItemOutput) ExpressionPlain() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertAlertItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
+}
+
+// optional id
+func (o AlertAlertItemOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertAlertItem) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 func (o AlertAlertItemOutput) QueryPlain() pulumi.StringOutput {
@@ -1776,9 +1785,11 @@ func (o DashboardChartValueMappingArrayOutput) Index(i pulumi.IntInput) Dashboar
 
 type FunctionFunctionItem struct {
 	ExpressionPlain string `pulumi:"expressionPlain"`
-	QueryPlain      string `pulumi:"queryPlain"`
-	RefId           string `pulumi:"refId"`
-	Type            string `pulumi:"type"`
+	// optional id
+	Id         *string `pulumi:"id"`
+	QueryPlain string  `pulumi:"queryPlain"`
+	RefId      string  `pulumi:"refId"`
+	Type       string  `pulumi:"type"`
 }
 
 // FunctionFunctionItemInput is an input type that accepts FunctionFunctionItemArgs and FunctionFunctionItemOutput values.
@@ -1794,9 +1805,11 @@ type FunctionFunctionItemInput interface {
 
 type FunctionFunctionItemArgs struct {
 	ExpressionPlain pulumi.StringInput `pulumi:"expressionPlain"`
-	QueryPlain      pulumi.StringInput `pulumi:"queryPlain"`
-	RefId           pulumi.StringInput `pulumi:"refId"`
-	Type            pulumi.StringInput `pulumi:"type"`
+	// optional id
+	Id         pulumi.StringPtrInput `pulumi:"id"`
+	QueryPlain pulumi.StringInput    `pulumi:"queryPlain"`
+	RefId      pulumi.StringInput    `pulumi:"refId"`
+	Type       pulumi.StringInput    `pulumi:"type"`
 }
 
 func (FunctionFunctionItemArgs) ElementType() reflect.Type {
@@ -1852,6 +1865,11 @@ func (o FunctionFunctionItemOutput) ToFunctionFunctionItemOutputWithContext(ctx 
 
 func (o FunctionFunctionItemOutput) ExpressionPlain() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionFunctionItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
+}
+
+// optional id
+func (o FunctionFunctionItemOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionFunctionItem) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 func (o FunctionFunctionItemOutput) QueryPlain() pulumi.StringOutput {

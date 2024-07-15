@@ -16,6 +16,12 @@ namespace Splight.Splight.Inputs
         [Input("expressionPlain", required: true)]
         public Input<string> ExpressionPlain { get; set; } = null!;
 
+        /// <summary>
+        /// optional id
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
         [Input("queryPlain", required: true)]
         public Input<string> QueryPlain { get; set; } = null!;
 

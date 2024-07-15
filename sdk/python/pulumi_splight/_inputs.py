@@ -33,11 +33,17 @@ class AlertAlertItemArgs:
                  expression_plain: pulumi.Input[str],
                  query_plain: pulumi.Input[str],
                  ref_id: pulumi.Input[str],
-                 type: pulumi.Input[str]):
+                 type: pulumi.Input[str],
+                 id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: optional id
+        """
         pulumi.set(__self__, "expression_plain", expression_plain)
         pulumi.set(__self__, "query_plain", query_plain)
         pulumi.set(__self__, "ref_id", ref_id)
         pulumi.set(__self__, "type", type)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter(name="expressionPlain")
@@ -74,6 +80,18 @@ class AlertAlertItemArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        optional id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
@@ -917,11 +935,17 @@ class FunctionFunctionItemArgs:
                  expression_plain: pulumi.Input[str],
                  query_plain: pulumi.Input[str],
                  ref_id: pulumi.Input[str],
-                 type: pulumi.Input[str]):
+                 type: pulumi.Input[str],
+                 id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: optional id
+        """
         pulumi.set(__self__, "expression_plain", expression_plain)
         pulumi.set(__self__, "query_plain", query_plain)
         pulumi.set(__self__, "ref_id", ref_id)
         pulumi.set(__self__, "type", type)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter(name="expressionPlain")
@@ -958,5 +982,17 @@ class FunctionFunctionItemArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        optional id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
 
 
