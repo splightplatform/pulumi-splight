@@ -6,14 +6,60 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface AlertAlertItem {
+    /**
+     * how the expression is shown (i.e 'A * 2')
+     */
+    expression: string;
+    /**
+     * actual mongo query containing the expression
+     */
     expressionPlain: string;
     /**
-     * optional id
+     * ID of the function item
      */
     id: string;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: outputs.AlertAlertItemQueryFilterAsset;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: outputs.AlertAlertItemQueryFilterAttribute;
+    /**
+     * actual mongo query
+     */
     queryPlain: string;
+    /**
+     * identifier of the variable (i.e 'A')
+     */
     refId: string;
+    /**
+     * either QUERY or EXPRESSION
+     */
     type: string;
+}
+
+export interface AlertAlertItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface AlertAlertItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
 }
 
 export interface AlertThreshold {
@@ -94,19 +140,19 @@ export interface ComponentRoutineOutputValue {
     attribute: string;
 }
 
-export interface DashboardChartChartItem {
+export interface DashboardActionlistChartChartItem {
     color: string;
     expressionPlain: string;
     hidden?: boolean;
     label?: string;
     /**
-     * asset filter
+     * Asset/Attribute filter
      */
-    queryFilterAsset?: outputs.DashboardChartChartItemQueryFilterAsset;
+    queryFilterAsset: outputs.DashboardActionlistChartChartItemQueryFilterAsset;
     /**
-     * Attribute filter
+     * Asset/Attribute filter
      */
-    queryFilterAttribute?: outputs.DashboardChartChartItemQueryFilterAttribute;
+    queryFilterAttribute: outputs.DashboardActionlistChartChartItemQueryFilterAttribute;
     queryGroupFunction?: string;
     queryGroupUnit?: string;
     queryLimit?: number;
@@ -116,29 +162,776 @@ export interface DashboardChartChartItem {
     type: string;
 }
 
-export interface DashboardChartChartItemQueryFilterAsset {
+export interface DashboardActionlistChartChartItemQueryFilterAsset {
     /**
-     * The ID of this resource.
+     * ID of the resource
      */
-    id: string;
-    name: string;
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
 }
 
-export interface DashboardChartChartItemQueryFilterAttribute {
+export interface DashboardActionlistChartChartItemQueryFilterAttribute {
     /**
-     * The ID of this resource.
+     * ID of the resource
      */
-    id: string;
-    name: string;
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
 }
 
-export interface DashboardChartThreshold {
+export interface DashboardActionlistChartThreshold {
     color: string;
     displayText: string;
     value: number;
 }
 
-export interface DashboardChartValueMapping {
+export interface DashboardActionlistChartValueMapping {
+    displayText: string;
+    matchValue: string;
+    order: number;
+    type: string;
+}
+
+export interface DashboardAlerteventsChartChartItem {
+    color: string;
+    expressionPlain: string;
+    hidden?: boolean;
+    label?: string;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: outputs.DashboardAlerteventsChartChartItemQueryFilterAsset;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: outputs.DashboardAlerteventsChartChartItemQueryFilterAttribute;
+    queryGroupFunction?: string;
+    queryGroupUnit?: string;
+    queryLimit?: number;
+    queryPlain: string;
+    querySortDirection?: number;
+    refId: string;
+    type: string;
+}
+
+export interface DashboardAlerteventsChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardAlerteventsChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardAlerteventsChartThreshold {
+    color: string;
+    displayText: string;
+    value: number;
+}
+
+export interface DashboardAlerteventsChartValueMapping {
+    displayText: string;
+    matchValue: string;
+    order: number;
+    type: string;
+}
+
+export interface DashboardAlertlistChartChartItem {
+    color: string;
+    expressionPlain: string;
+    hidden?: boolean;
+    label?: string;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: outputs.DashboardAlertlistChartChartItemQueryFilterAsset;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: outputs.DashboardAlertlistChartChartItemQueryFilterAttribute;
+    queryGroupFunction?: string;
+    queryGroupUnit?: string;
+    queryLimit?: number;
+    queryPlain: string;
+    querySortDirection?: number;
+    refId: string;
+    type: string;
+}
+
+export interface DashboardAlertlistChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardAlertlistChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardAlertlistChartThreshold {
+    color: string;
+    displayText: string;
+    value: number;
+}
+
+export interface DashboardAlertlistChartValueMapping {
+    displayText: string;
+    matchValue: string;
+    order: number;
+    type: string;
+}
+
+export interface DashboardAssetlistChartChartItem {
+    color: string;
+    expressionPlain: string;
+    hidden?: boolean;
+    label?: string;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: outputs.DashboardAssetlistChartChartItemQueryFilterAsset;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: outputs.DashboardAssetlistChartChartItemQueryFilterAttribute;
+    queryGroupFunction?: string;
+    queryGroupUnit?: string;
+    queryLimit?: number;
+    queryPlain: string;
+    querySortDirection?: number;
+    refId: string;
+    type: string;
+}
+
+export interface DashboardAssetlistChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardAssetlistChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardAssetlistChartThreshold {
+    color: string;
+    displayText: string;
+    value: number;
+}
+
+export interface DashboardAssetlistChartValueMapping {
+    displayText: string;
+    matchValue: string;
+    order: number;
+    type: string;
+}
+
+export interface DashboardBarChartChartItem {
+    color: string;
+    expressionPlain: string;
+    hidden?: boolean;
+    label?: string;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: outputs.DashboardBarChartChartItemQueryFilterAsset;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: outputs.DashboardBarChartChartItemQueryFilterAttribute;
+    queryGroupFunction?: string;
+    queryGroupUnit?: string;
+    queryLimit?: number;
+    queryPlain: string;
+    querySortDirection?: number;
+    refId: string;
+    type: string;
+}
+
+export interface DashboardBarChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardBarChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardBarChartThreshold {
+    color: string;
+    displayText: string;
+    value: number;
+}
+
+export interface DashboardBarChartValueMapping {
+    displayText: string;
+    matchValue: string;
+    order: number;
+    type: string;
+}
+
+export interface DashboardBargaugeChartChartItem {
+    color: string;
+    expressionPlain: string;
+    hidden?: boolean;
+    label?: string;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: outputs.DashboardBargaugeChartChartItemQueryFilterAsset;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: outputs.DashboardBargaugeChartChartItemQueryFilterAttribute;
+    queryGroupFunction?: string;
+    queryGroupUnit?: string;
+    queryLimit?: number;
+    queryPlain: string;
+    querySortDirection?: number;
+    refId: string;
+    type: string;
+}
+
+export interface DashboardBargaugeChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardBargaugeChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardBargaugeChartThreshold {
+    color: string;
+    displayText: string;
+    value: number;
+}
+
+export interface DashboardBargaugeChartValueMapping {
+    displayText: string;
+    matchValue: string;
+    order: number;
+    type: string;
+}
+
+export interface DashboardCommandlistChartChartItem {
+    color: string;
+    expressionPlain: string;
+    hidden?: boolean;
+    label?: string;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: outputs.DashboardCommandlistChartChartItemQueryFilterAsset;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: outputs.DashboardCommandlistChartChartItemQueryFilterAttribute;
+    queryGroupFunction?: string;
+    queryGroupUnit?: string;
+    queryLimit?: number;
+    queryPlain: string;
+    querySortDirection?: number;
+    refId: string;
+    type: string;
+}
+
+export interface DashboardCommandlistChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardCommandlistChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardCommandlistChartThreshold {
+    color: string;
+    displayText: string;
+    value: number;
+}
+
+export interface DashboardCommandlistChartValueMapping {
+    displayText: string;
+    matchValue: string;
+    order: number;
+    type: string;
+}
+
+export interface DashboardGaugeChartChartItem {
+    color: string;
+    expressionPlain: string;
+    hidden?: boolean;
+    label?: string;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: outputs.DashboardGaugeChartChartItemQueryFilterAsset;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: outputs.DashboardGaugeChartChartItemQueryFilterAttribute;
+    queryGroupFunction?: string;
+    queryGroupUnit?: string;
+    queryLimit?: number;
+    queryPlain: string;
+    querySortDirection?: number;
+    refId: string;
+    type: string;
+}
+
+export interface DashboardGaugeChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardGaugeChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardGaugeChartThreshold {
+    color: string;
+    displayText: string;
+    value: number;
+}
+
+export interface DashboardGaugeChartValueMapping {
+    displayText: string;
+    matchValue: string;
+    order: number;
+    type: string;
+}
+
+export interface DashboardHistogramChartChartItem {
+    color: string;
+    expressionPlain: string;
+    hidden?: boolean;
+    label?: string;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: outputs.DashboardHistogramChartChartItemQueryFilterAsset;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: outputs.DashboardHistogramChartChartItemQueryFilterAttribute;
+    queryGroupFunction?: string;
+    queryGroupUnit?: string;
+    queryLimit?: number;
+    queryPlain: string;
+    querySortDirection?: number;
+    refId: string;
+    type: string;
+}
+
+export interface DashboardHistogramChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardHistogramChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardHistogramChartThreshold {
+    color: string;
+    displayText: string;
+    value: number;
+}
+
+export interface DashboardHistogramChartValueMapping {
+    displayText: string;
+    matchValue: string;
+    order: number;
+    type: string;
+}
+
+export interface DashboardImageChartChartItem {
+    color: string;
+    expressionPlain: string;
+    hidden?: boolean;
+    label?: string;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: outputs.DashboardImageChartChartItemQueryFilterAsset;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: outputs.DashboardImageChartChartItemQueryFilterAttribute;
+    queryGroupFunction?: string;
+    queryGroupUnit?: string;
+    queryLimit?: number;
+    queryPlain: string;
+    querySortDirection?: number;
+    refId: string;
+    type: string;
+}
+
+export interface DashboardImageChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardImageChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardImageChartThreshold {
+    color: string;
+    displayText: string;
+    value: number;
+}
+
+export interface DashboardImageChartValueMapping {
+    displayText: string;
+    matchValue: string;
+    order: number;
+    type: string;
+}
+
+export interface DashboardStatChartChartItem {
+    color: string;
+    expressionPlain: string;
+    hidden?: boolean;
+    label?: string;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: outputs.DashboardStatChartChartItemQueryFilterAsset;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: outputs.DashboardStatChartChartItemQueryFilterAttribute;
+    queryGroupFunction?: string;
+    queryGroupUnit?: string;
+    queryLimit?: number;
+    queryPlain: string;
+    querySortDirection?: number;
+    refId: string;
+    type: string;
+}
+
+export interface DashboardStatChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardStatChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardStatChartThreshold {
+    color: string;
+    displayText: string;
+    value: number;
+}
+
+export interface DashboardStatChartValueMapping {
+    displayText: string;
+    matchValue: string;
+    order: number;
+    type: string;
+}
+
+export interface DashboardTableChartChartItem {
+    color: string;
+    expressionPlain: string;
+    hidden?: boolean;
+    label?: string;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: outputs.DashboardTableChartChartItemQueryFilterAsset;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: outputs.DashboardTableChartChartItemQueryFilterAttribute;
+    queryGroupFunction?: string;
+    queryGroupUnit?: string;
+    queryLimit?: number;
+    queryPlain: string;
+    querySortDirection?: number;
+    refId: string;
+    type: string;
+}
+
+export interface DashboardTableChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardTableChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardTableChartThreshold {
+    color: string;
+    displayText: string;
+    value: number;
+}
+
+export interface DashboardTableChartValueMapping {
+    displayText: string;
+    matchValue: string;
+    order: number;
+    type: string;
+}
+
+export interface DashboardTextChartChartItem {
+    color: string;
+    expressionPlain: string;
+    hidden?: boolean;
+    label?: string;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: outputs.DashboardTextChartChartItemQueryFilterAsset;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: outputs.DashboardTextChartChartItemQueryFilterAttribute;
+    queryGroupFunction?: string;
+    queryGroupUnit?: string;
+    queryLimit?: number;
+    queryPlain: string;
+    querySortDirection?: number;
+    refId: string;
+    type: string;
+}
+
+export interface DashboardTextChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardTextChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardTextChartThreshold {
+    color: string;
+    displayText: string;
+    value: number;
+}
+
+export interface DashboardTextChartValueMapping {
+    displayText: string;
+    matchValue: string;
+    order: number;
+    type: string;
+}
+
+export interface DashboardTimeseriesChartChartItem {
+    color: string;
+    expressionPlain: string;
+    hidden?: boolean;
+    label?: string;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: outputs.DashboardTimeseriesChartChartItemQueryFilterAsset;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: outputs.DashboardTimeseriesChartChartItemQueryFilterAttribute;
+    queryGroupFunction?: string;
+    queryGroupUnit?: string;
+    queryLimit?: number;
+    queryPlain: string;
+    querySortDirection?: number;
+    refId: string;
+    type: string;
+}
+
+export interface DashboardTimeseriesChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardTimeseriesChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface DashboardTimeseriesChartThreshold {
+    color: string;
+    displayText: string;
+    value: number;
+}
+
+export interface DashboardTimeseriesChartValueMapping {
     displayText: string;
     matchValue: string;
     order: number;
@@ -146,14 +939,82 @@ export interface DashboardChartValueMapping {
 }
 
 export interface FunctionFunctionItem {
+    /**
+     * how the expression is shown (i.e 'A * 2')
+     */
+    expression: string;
+    /**
+     * actual mongo query containing the expression
+     */
     expressionPlain: string;
     /**
-     * optional id
+     * ID of the function item
      */
     id: string;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: outputs.FunctionFunctionItemQueryFilterAsset;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: outputs.FunctionFunctionItemQueryFilterAttribute;
+    /**
+     * actual mongo query
+     */
     queryPlain: string;
+    /**
+     * identifier of the variable (i.e 'A')
+     */
     refId: string;
+    /**
+     * either QUERY or EXPRESSION
+     */
     type: string;
+}
+
+export interface FunctionFunctionItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface FunctionFunctionItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface FunctionTargetAsset {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
+}
+
+export interface FunctionTargetAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: string;
+    /**
+     * name of the resource
+     */
+    name?: string;
 }
 
 export interface GetAssetKindsKind {

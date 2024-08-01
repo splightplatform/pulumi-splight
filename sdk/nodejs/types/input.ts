@@ -6,14 +6,60 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface AlertAlertItem {
+    /**
+     * how the expression is shown (i.e 'A * 2')
+     */
+    expression: pulumi.Input<string>;
+    /**
+     * actual mongo query containing the expression
+     */
     expressionPlain: pulumi.Input<string>;
     /**
-     * optional id
+     * ID of the function item
      */
     id?: pulumi.Input<string>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: pulumi.Input<inputs.AlertAlertItemQueryFilterAsset>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: pulumi.Input<inputs.AlertAlertItemQueryFilterAttribute>;
+    /**
+     * actual mongo query
+     */
     queryPlain: pulumi.Input<string>;
+    /**
+     * identifier of the variable (i.e 'A')
+     */
     refId: pulumi.Input<string>;
+    /**
+     * either QUERY or EXPRESSION
+     */
     type: pulumi.Input<string>;
+}
+
+export interface AlertAlertItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface AlertAlertItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
 }
 
 export interface AlertThreshold {
@@ -94,19 +140,19 @@ export interface ComponentRoutineOutputValue {
     attribute: pulumi.Input<string>;
 }
 
-export interface DashboardChartChartItem {
+export interface DashboardActionlistChartChartItem {
     color: pulumi.Input<string>;
     expressionPlain: pulumi.Input<string>;
     hidden?: pulumi.Input<boolean>;
     label?: pulumi.Input<string>;
     /**
-     * asset filter
+     * Asset/Attribute filter
      */
-    queryFilterAsset?: pulumi.Input<inputs.DashboardChartChartItemQueryFilterAsset>;
+    queryFilterAsset: pulumi.Input<inputs.DashboardActionlistChartChartItemQueryFilterAsset>;
     /**
-     * Attribute filter
+     * Asset/Attribute filter
      */
-    queryFilterAttribute?: pulumi.Input<inputs.DashboardChartChartItemQueryFilterAttribute>;
+    queryFilterAttribute: pulumi.Input<inputs.DashboardActionlistChartChartItemQueryFilterAttribute>;
     queryGroupFunction?: pulumi.Input<string>;
     queryGroupUnit?: pulumi.Input<string>;
     queryLimit?: pulumi.Input<number>;
@@ -116,29 +162,776 @@ export interface DashboardChartChartItem {
     type: pulumi.Input<string>;
 }
 
-export interface DashboardChartChartItemQueryFilterAsset {
+export interface DashboardActionlistChartChartItemQueryFilterAsset {
     /**
-     * The ID of this resource.
+     * ID of the resource
      */
-    id: pulumi.Input<string>;
-    name: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
 }
 
-export interface DashboardChartChartItemQueryFilterAttribute {
+export interface DashboardActionlistChartChartItemQueryFilterAttribute {
     /**
-     * The ID of this resource.
+     * ID of the resource
      */
-    id: pulumi.Input<string>;
-    name: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
 }
 
-export interface DashboardChartThreshold {
+export interface DashboardActionlistChartThreshold {
     color: pulumi.Input<string>;
     displayText: pulumi.Input<string>;
     value: pulumi.Input<number>;
 }
 
-export interface DashboardChartValueMapping {
+export interface DashboardActionlistChartValueMapping {
+    displayText: pulumi.Input<string>;
+    matchValue: pulumi.Input<string>;
+    order: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardAlerteventsChartChartItem {
+    color: pulumi.Input<string>;
+    expressionPlain: pulumi.Input<string>;
+    hidden?: pulumi.Input<boolean>;
+    label?: pulumi.Input<string>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: pulumi.Input<inputs.DashboardAlerteventsChartChartItemQueryFilterAsset>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: pulumi.Input<inputs.DashboardAlerteventsChartChartItemQueryFilterAttribute>;
+    queryGroupFunction?: pulumi.Input<string>;
+    queryGroupUnit?: pulumi.Input<string>;
+    queryLimit?: pulumi.Input<number>;
+    queryPlain: pulumi.Input<string>;
+    querySortDirection?: pulumi.Input<number>;
+    refId: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardAlerteventsChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardAlerteventsChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardAlerteventsChartThreshold {
+    color: pulumi.Input<string>;
+    displayText: pulumi.Input<string>;
+    value: pulumi.Input<number>;
+}
+
+export interface DashboardAlerteventsChartValueMapping {
+    displayText: pulumi.Input<string>;
+    matchValue: pulumi.Input<string>;
+    order: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardAlertlistChartChartItem {
+    color: pulumi.Input<string>;
+    expressionPlain: pulumi.Input<string>;
+    hidden?: pulumi.Input<boolean>;
+    label?: pulumi.Input<string>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: pulumi.Input<inputs.DashboardAlertlistChartChartItemQueryFilterAsset>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: pulumi.Input<inputs.DashboardAlertlistChartChartItemQueryFilterAttribute>;
+    queryGroupFunction?: pulumi.Input<string>;
+    queryGroupUnit?: pulumi.Input<string>;
+    queryLimit?: pulumi.Input<number>;
+    queryPlain: pulumi.Input<string>;
+    querySortDirection?: pulumi.Input<number>;
+    refId: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardAlertlistChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardAlertlistChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardAlertlistChartThreshold {
+    color: pulumi.Input<string>;
+    displayText: pulumi.Input<string>;
+    value: pulumi.Input<number>;
+}
+
+export interface DashboardAlertlistChartValueMapping {
+    displayText: pulumi.Input<string>;
+    matchValue: pulumi.Input<string>;
+    order: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardAssetlistChartChartItem {
+    color: pulumi.Input<string>;
+    expressionPlain: pulumi.Input<string>;
+    hidden?: pulumi.Input<boolean>;
+    label?: pulumi.Input<string>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: pulumi.Input<inputs.DashboardAssetlistChartChartItemQueryFilterAsset>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: pulumi.Input<inputs.DashboardAssetlistChartChartItemQueryFilterAttribute>;
+    queryGroupFunction?: pulumi.Input<string>;
+    queryGroupUnit?: pulumi.Input<string>;
+    queryLimit?: pulumi.Input<number>;
+    queryPlain: pulumi.Input<string>;
+    querySortDirection?: pulumi.Input<number>;
+    refId: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardAssetlistChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardAssetlistChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardAssetlistChartThreshold {
+    color: pulumi.Input<string>;
+    displayText: pulumi.Input<string>;
+    value: pulumi.Input<number>;
+}
+
+export interface DashboardAssetlistChartValueMapping {
+    displayText: pulumi.Input<string>;
+    matchValue: pulumi.Input<string>;
+    order: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardBarChartChartItem {
+    color: pulumi.Input<string>;
+    expressionPlain: pulumi.Input<string>;
+    hidden?: pulumi.Input<boolean>;
+    label?: pulumi.Input<string>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: pulumi.Input<inputs.DashboardBarChartChartItemQueryFilterAsset>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: pulumi.Input<inputs.DashboardBarChartChartItemQueryFilterAttribute>;
+    queryGroupFunction?: pulumi.Input<string>;
+    queryGroupUnit?: pulumi.Input<string>;
+    queryLimit?: pulumi.Input<number>;
+    queryPlain: pulumi.Input<string>;
+    querySortDirection?: pulumi.Input<number>;
+    refId: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardBarChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardBarChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardBarChartThreshold {
+    color: pulumi.Input<string>;
+    displayText: pulumi.Input<string>;
+    value: pulumi.Input<number>;
+}
+
+export interface DashboardBarChartValueMapping {
+    displayText: pulumi.Input<string>;
+    matchValue: pulumi.Input<string>;
+    order: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardBargaugeChartChartItem {
+    color: pulumi.Input<string>;
+    expressionPlain: pulumi.Input<string>;
+    hidden?: pulumi.Input<boolean>;
+    label?: pulumi.Input<string>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: pulumi.Input<inputs.DashboardBargaugeChartChartItemQueryFilterAsset>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: pulumi.Input<inputs.DashboardBargaugeChartChartItemQueryFilterAttribute>;
+    queryGroupFunction?: pulumi.Input<string>;
+    queryGroupUnit?: pulumi.Input<string>;
+    queryLimit?: pulumi.Input<number>;
+    queryPlain: pulumi.Input<string>;
+    querySortDirection?: pulumi.Input<number>;
+    refId: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardBargaugeChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardBargaugeChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardBargaugeChartThreshold {
+    color: pulumi.Input<string>;
+    displayText: pulumi.Input<string>;
+    value: pulumi.Input<number>;
+}
+
+export interface DashboardBargaugeChartValueMapping {
+    displayText: pulumi.Input<string>;
+    matchValue: pulumi.Input<string>;
+    order: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardCommandlistChartChartItem {
+    color: pulumi.Input<string>;
+    expressionPlain: pulumi.Input<string>;
+    hidden?: pulumi.Input<boolean>;
+    label?: pulumi.Input<string>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: pulumi.Input<inputs.DashboardCommandlistChartChartItemQueryFilterAsset>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: pulumi.Input<inputs.DashboardCommandlistChartChartItemQueryFilterAttribute>;
+    queryGroupFunction?: pulumi.Input<string>;
+    queryGroupUnit?: pulumi.Input<string>;
+    queryLimit?: pulumi.Input<number>;
+    queryPlain: pulumi.Input<string>;
+    querySortDirection?: pulumi.Input<number>;
+    refId: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardCommandlistChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardCommandlistChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardCommandlistChartThreshold {
+    color: pulumi.Input<string>;
+    displayText: pulumi.Input<string>;
+    value: pulumi.Input<number>;
+}
+
+export interface DashboardCommandlistChartValueMapping {
+    displayText: pulumi.Input<string>;
+    matchValue: pulumi.Input<string>;
+    order: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardGaugeChartChartItem {
+    color: pulumi.Input<string>;
+    expressionPlain: pulumi.Input<string>;
+    hidden?: pulumi.Input<boolean>;
+    label?: pulumi.Input<string>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: pulumi.Input<inputs.DashboardGaugeChartChartItemQueryFilterAsset>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: pulumi.Input<inputs.DashboardGaugeChartChartItemQueryFilterAttribute>;
+    queryGroupFunction?: pulumi.Input<string>;
+    queryGroupUnit?: pulumi.Input<string>;
+    queryLimit?: pulumi.Input<number>;
+    queryPlain: pulumi.Input<string>;
+    querySortDirection?: pulumi.Input<number>;
+    refId: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardGaugeChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardGaugeChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardGaugeChartThreshold {
+    color: pulumi.Input<string>;
+    displayText: pulumi.Input<string>;
+    value: pulumi.Input<number>;
+}
+
+export interface DashboardGaugeChartValueMapping {
+    displayText: pulumi.Input<string>;
+    matchValue: pulumi.Input<string>;
+    order: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardHistogramChartChartItem {
+    color: pulumi.Input<string>;
+    expressionPlain: pulumi.Input<string>;
+    hidden?: pulumi.Input<boolean>;
+    label?: pulumi.Input<string>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: pulumi.Input<inputs.DashboardHistogramChartChartItemQueryFilterAsset>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: pulumi.Input<inputs.DashboardHistogramChartChartItemQueryFilterAttribute>;
+    queryGroupFunction?: pulumi.Input<string>;
+    queryGroupUnit?: pulumi.Input<string>;
+    queryLimit?: pulumi.Input<number>;
+    queryPlain: pulumi.Input<string>;
+    querySortDirection?: pulumi.Input<number>;
+    refId: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardHistogramChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardHistogramChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardHistogramChartThreshold {
+    color: pulumi.Input<string>;
+    displayText: pulumi.Input<string>;
+    value: pulumi.Input<number>;
+}
+
+export interface DashboardHistogramChartValueMapping {
+    displayText: pulumi.Input<string>;
+    matchValue: pulumi.Input<string>;
+    order: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardImageChartChartItem {
+    color: pulumi.Input<string>;
+    expressionPlain: pulumi.Input<string>;
+    hidden?: pulumi.Input<boolean>;
+    label?: pulumi.Input<string>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: pulumi.Input<inputs.DashboardImageChartChartItemQueryFilterAsset>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: pulumi.Input<inputs.DashboardImageChartChartItemQueryFilterAttribute>;
+    queryGroupFunction?: pulumi.Input<string>;
+    queryGroupUnit?: pulumi.Input<string>;
+    queryLimit?: pulumi.Input<number>;
+    queryPlain: pulumi.Input<string>;
+    querySortDirection?: pulumi.Input<number>;
+    refId: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardImageChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardImageChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardImageChartThreshold {
+    color: pulumi.Input<string>;
+    displayText: pulumi.Input<string>;
+    value: pulumi.Input<number>;
+}
+
+export interface DashboardImageChartValueMapping {
+    displayText: pulumi.Input<string>;
+    matchValue: pulumi.Input<string>;
+    order: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardStatChartChartItem {
+    color: pulumi.Input<string>;
+    expressionPlain: pulumi.Input<string>;
+    hidden?: pulumi.Input<boolean>;
+    label?: pulumi.Input<string>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: pulumi.Input<inputs.DashboardStatChartChartItemQueryFilterAsset>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: pulumi.Input<inputs.DashboardStatChartChartItemQueryFilterAttribute>;
+    queryGroupFunction?: pulumi.Input<string>;
+    queryGroupUnit?: pulumi.Input<string>;
+    queryLimit?: pulumi.Input<number>;
+    queryPlain: pulumi.Input<string>;
+    querySortDirection?: pulumi.Input<number>;
+    refId: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardStatChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardStatChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardStatChartThreshold {
+    color: pulumi.Input<string>;
+    displayText: pulumi.Input<string>;
+    value: pulumi.Input<number>;
+}
+
+export interface DashboardStatChartValueMapping {
+    displayText: pulumi.Input<string>;
+    matchValue: pulumi.Input<string>;
+    order: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardTableChartChartItem {
+    color: pulumi.Input<string>;
+    expressionPlain: pulumi.Input<string>;
+    hidden?: pulumi.Input<boolean>;
+    label?: pulumi.Input<string>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: pulumi.Input<inputs.DashboardTableChartChartItemQueryFilterAsset>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: pulumi.Input<inputs.DashboardTableChartChartItemQueryFilterAttribute>;
+    queryGroupFunction?: pulumi.Input<string>;
+    queryGroupUnit?: pulumi.Input<string>;
+    queryLimit?: pulumi.Input<number>;
+    queryPlain: pulumi.Input<string>;
+    querySortDirection?: pulumi.Input<number>;
+    refId: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardTableChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardTableChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardTableChartThreshold {
+    color: pulumi.Input<string>;
+    displayText: pulumi.Input<string>;
+    value: pulumi.Input<number>;
+}
+
+export interface DashboardTableChartValueMapping {
+    displayText: pulumi.Input<string>;
+    matchValue: pulumi.Input<string>;
+    order: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardTextChartChartItem {
+    color: pulumi.Input<string>;
+    expressionPlain: pulumi.Input<string>;
+    hidden?: pulumi.Input<boolean>;
+    label?: pulumi.Input<string>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: pulumi.Input<inputs.DashboardTextChartChartItemQueryFilterAsset>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: pulumi.Input<inputs.DashboardTextChartChartItemQueryFilterAttribute>;
+    queryGroupFunction?: pulumi.Input<string>;
+    queryGroupUnit?: pulumi.Input<string>;
+    queryLimit?: pulumi.Input<number>;
+    queryPlain: pulumi.Input<string>;
+    querySortDirection?: pulumi.Input<number>;
+    refId: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardTextChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardTextChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardTextChartThreshold {
+    color: pulumi.Input<string>;
+    displayText: pulumi.Input<string>;
+    value: pulumi.Input<number>;
+}
+
+export interface DashboardTextChartValueMapping {
+    displayText: pulumi.Input<string>;
+    matchValue: pulumi.Input<string>;
+    order: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardTimeseriesChartChartItem {
+    color: pulumi.Input<string>;
+    expressionPlain: pulumi.Input<string>;
+    hidden?: pulumi.Input<boolean>;
+    label?: pulumi.Input<string>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: pulumi.Input<inputs.DashboardTimeseriesChartChartItemQueryFilterAsset>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: pulumi.Input<inputs.DashboardTimeseriesChartChartItemQueryFilterAttribute>;
+    queryGroupFunction?: pulumi.Input<string>;
+    queryGroupUnit?: pulumi.Input<string>;
+    queryLimit?: pulumi.Input<number>;
+    queryPlain: pulumi.Input<string>;
+    querySortDirection?: pulumi.Input<number>;
+    refId: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
+export interface DashboardTimeseriesChartChartItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardTimeseriesChartChartItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardTimeseriesChartThreshold {
+    color: pulumi.Input<string>;
+    displayText: pulumi.Input<string>;
+    value: pulumi.Input<number>;
+}
+
+export interface DashboardTimeseriesChartValueMapping {
     displayText: pulumi.Input<string>;
     matchValue: pulumi.Input<string>;
     order: pulumi.Input<number>;
@@ -146,13 +939,81 @@ export interface DashboardChartValueMapping {
 }
 
 export interface FunctionFunctionItem {
+    /**
+     * how the expression is shown (i.e 'A * 2')
+     */
+    expression: pulumi.Input<string>;
+    /**
+     * actual mongo query containing the expression
+     */
     expressionPlain: pulumi.Input<string>;
     /**
-     * optional id
+     * ID of the function item
      */
     id?: pulumi.Input<string>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAsset: pulumi.Input<inputs.FunctionFunctionItemQueryFilterAsset>;
+    /**
+     * Asset/Attribute filter
+     */
+    queryFilterAttribute: pulumi.Input<inputs.FunctionFunctionItemQueryFilterAttribute>;
+    /**
+     * actual mongo query
+     */
     queryPlain: pulumi.Input<string>;
+    /**
+     * identifier of the variable (i.e 'A')
+     */
     refId: pulumi.Input<string>;
+    /**
+     * either QUERY or EXPRESSION
+     */
     type: pulumi.Input<string>;
+}
+
+export interface FunctionFunctionItemQueryFilterAsset {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface FunctionFunctionItemQueryFilterAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface FunctionTargetAsset {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface FunctionTargetAttribute {
+    /**
+     * ID of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
 }
 

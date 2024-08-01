@@ -22,25 +22,52 @@ namespace Splight.Splight
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var alertTest = new Splight.Alert("alertTest", new()
+    ///     var myAsset = new Splight.Asset("myAsset", new()
     ///     {
-    ///         Description = "Created with Terraform",
+    ///         Description = "My Asset Description",
+    ///         Geometry = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["type"] = "GeometryCollection",
+    ///             ["geometries"] = new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["type"] = "Point",
+    ///                     ["coordinates"] = new[]
+    ///                     {
+    ///                         0,
+    ///                         0,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    ///     var myAttribute = new Splight.AssetAttribute("myAttribute", new()
+    ///     {
+    ///         Type = "Number",
+    ///         Asset = myAsset.Id,
+    ///     });
+    /// 
+    ///     var myAlert = new Splight.Alert("myAlert", new()
+    ///     {
+    ///         Description = "My Alert Description",
     ///         Type = "rate",
     ///         RateUnit = "minute",
     ///         RateValue = 10,
-    ///         TimeWindow = 600,
+    ///         TimeWindow = 3600 * 12,
     ///         Thresholds = new[]
     ///         {
     ///             new Splight.Inputs.AlertThresholdArgs
     ///             {
-    ///                 Value = 4,
-    ///                 Status = "no_alert",
-    ///                 StatusText = "CustomStatusText",
+    ///                 Value = 1,
+    ///                 Status = "alert",
+    ///                 StatusText = "Some warning!",
     ///             },
     ///         },
-    ///         Severity = "sev8",
-    ///         Operator = "gt",
-    ///         Aggregation = "avg",
+    ///         Severity = "sev1",
+    ///         Operator = "lt",
+    ///         Aggregation = "max",
     ///         TargetVariable = "A",
     ///         AlertItems = new[]
     ///         {
@@ -48,40 +75,30 @@ namespace Splight.Splight
     ///             {
     ///                 RefId = "A",
     ///                 Type = "QUERY",
+    ///                 Expression = "",
     ///                 ExpressionPlain = "",
-    ///                 QueryPlain = JsonSerializer.Serialize(new[]
+    ///                 QueryFilterAsset = new Splight.Inputs.AlertAlertItemQueryFilterAssetArgs
+    ///                 {
+    ///                     Id = myAsset.Id,
+    ///                     Name = myAsset.Name,
+    ///                 },
+    ///                 QueryFilterAttribute = new Splight.Inputs.AlertAlertItemQueryFilterAttributeArgs
+    ///                 {
+    ///                     Id = myAttribute.Id,
+    ///                     Name = myAttribute.Name,
+    ///                 },
+    ///                 QueryPlain = Output.JsonSerialize(Output.Create(new[]
     ///                 {
     ///                     new Dictionary&lt;string, object?&gt;
     ///                     {
     ///                         ["$match"] = new Dictionary&lt;string, object?&gt;
     ///                         {
-    ///                             ["asset"] = "1234-1234-1234-1234",
-    ///                             ["attribute"] = "1234-1234-1234-1234",
+    ///                             ["asset"] = myAsset.Id,
+    ///                             ["attribute"] = myAttribute.Id,
     ///                         },
     ///                     },
-    ///                 }),
+    ///                 })),
     ///             },
-    ///             new Splight.Inputs.AlertAlertItemArgs
-    ///             {
-    ///                 RefId = "B",
-    ///                 Type = "QUERY",
-    ///                 ExpressionPlain = "",
-    ///                 QueryPlain = JsonSerializer.Serialize(new[]
-    ///                 {
-    ///                     new Dictionary&lt;string, object?&gt;
-    ///                     {
-    ///                         ["$match"] = new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             ["asset"] = "1234-1234-1234-1234",
-    ///                             ["attribute"] = "1234-1234-1234-1234",
-    ///                         },
-    ///                     },
-    ///                 }),
-    ///             },
-    ///         },
-    ///         RelatedAssets = new[]
-    ///         {
-    ///             "1234-1234-1234-1234",
     ///         },
     ///     });
     /// 
@@ -104,7 +121,7 @@ namespace Splight.Splight
         public Output<string> Aggregation { get; private set; } = null!;
 
         /// <summary>
-        /// variables to be calculated for a complex comparisson.
+        /// traces to be used to compute the results
         /// </summary>
         [Output("alertItems")]
         public Output<ImmutableArray<Outputs.AlertAlertItem>> AlertItems { get; private set; } = null!;
@@ -265,7 +282,7 @@ namespace Splight.Splight
         private InputList<Inputs.AlertAlertItemArgs>? _alertItems;
 
         /// <summary>
-        /// variables to be calculated for a complex comparisson.
+        /// traces to be used to compute the results
         /// </summary>
         public InputList<Inputs.AlertAlertItemArgs> AlertItems
         {
@@ -401,7 +418,7 @@ namespace Splight.Splight
         private InputList<Inputs.AlertAlertItemGetArgs>? _alertItems;
 
         /// <summary>
-        /// variables to be calculated for a complex comparisson.
+        /// traces to be used to compute the results
         /// </summary>
         public InputList<Inputs.AlertAlertItemGetArgs> AlertItems
         {

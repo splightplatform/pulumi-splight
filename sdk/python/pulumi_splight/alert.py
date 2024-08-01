@@ -38,7 +38,7 @@ class AlertArgs:
         """
         The set of arguments for constructing a Alert resource.
         :param pulumi.Input[str] aggregation: aggregation to be applied to reads before comparisson
-        :param pulumi.Input[Sequence[pulumi.Input['AlertAlertItemArgs']]] alert_items: variables to be calculated for a complex comparisson.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertAlertItemArgs']]] alert_items: traces to be used to compute the results
         :param pulumi.Input[str] description: The description of the resource
         :param pulumi.Input[str] operator: operator to be used to compare the read value with the threshold value
         :param pulumi.Input[str] severity: [sev1,...,sev8] severity for the alert
@@ -102,7 +102,7 @@ class AlertArgs:
     @pulumi.getter(name="alertItems")
     def alert_items(self) -> pulumi.Input[Sequence[pulumi.Input['AlertAlertItemArgs']]]:
         """
-        variables to be calculated for a complex comparisson.
+        traces to be used to compute the results
         """
         return pulumi.get(self, "alert_items")
 
@@ -337,7 +337,7 @@ class _AlertState:
         """
         Input properties used for looking up and filtering Alert resources.
         :param pulumi.Input[str] aggregation: aggregation to be applied to reads before comparisson
-        :param pulumi.Input[Sequence[pulumi.Input['AlertAlertItemArgs']]] alert_items: variables to be calculated for a complex comparisson.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertAlertItemArgs']]] alert_items: traces to be used to compute the results
         :param pulumi.Input[int] cron_dom: schedule value for cron
         :param pulumi.Input[int] cron_dow: schedule value for cron
         :param pulumi.Input[int] cron_hours: schedule value for cron
@@ -410,7 +410,7 @@ class _AlertState:
     @pulumi.getter(name="alertItems")
     def alert_items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertAlertItemArgs']]]]:
         """
-        variables to be calculated for a complex comparisson.
+        traces to be used to compute the results
         """
         return pulumi.get(self, "alert_items")
 
@@ -653,46 +653,56 @@ class Alert(pulumi.CustomResource):
         import json
         import pulumi_splight as splight
 
-        alert_test = splight.Alert("alertTest",
-            description="Created with Terraform",
+        my_asset = splight.Asset("myAsset",
+            description="My Asset Description",
+            geometry=json.dumps({
+                "type": "GeometryCollection",
+                "geometries": [{
+                    "type": "Point",
+                    "coordinates": [
+                        0,
+                        0,
+                    ],
+                }],
+            }))
+        my_attribute = splight.AssetAttribute("myAttribute",
+            type="Number",
+            asset=my_asset.id)
+        my_alert = splight.Alert("myAlert",
+            description="My Alert Description",
             type="rate",
             rate_unit="minute",
             rate_value=10,
-            time_window=600,
+            time_window=3600 * 12,
             thresholds=[splight.AlertThresholdArgs(
-                value=4,
-                status="no_alert",
-                status_text="CustomStatusText",
+                value=1,
+                status="alert",
+                status_text="Some warning!",
             )],
-            severity="sev8",
-            operator="gt",
-            aggregation="avg",
+            severity="sev1",
+            operator="lt",
+            aggregation="max",
             target_variable="A",
-            alert_items=[
-                splight.AlertAlertItemArgs(
-                    ref_id="A",
-                    type="QUERY",
-                    expression_plain="",
-                    query_plain=json.dumps([{
-                        "$match": {
-                            "asset": "1234-1234-1234-1234",
-                            "attribute": "1234-1234-1234-1234",
-                        },
-                    }]),
+            alert_items=[splight.AlertAlertItemArgs(
+                ref_id="A",
+                type="QUERY",
+                expression="",
+                expression_plain="",
+                query_filter_asset=splight.AlertAlertItemQueryFilterAssetArgs(
+                    id=my_asset.id,
+                    name=my_asset.name,
                 ),
-                splight.AlertAlertItemArgs(
-                    ref_id="B",
-                    type="QUERY",
-                    expression_plain="",
-                    query_plain=json.dumps([{
-                        "$match": {
-                            "asset": "1234-1234-1234-1234",
-                            "attribute": "1234-1234-1234-1234",
-                        },
-                    }]),
+                query_filter_attribute=splight.AlertAlertItemQueryFilterAttributeArgs(
+                    id=my_attribute.id,
+                    name=my_attribute.name,
                 ),
-            ],
-            related_assets=["1234-1234-1234-1234"])
+                query_plain=pulumi.Output.json_dumps([{
+                    "$match": {
+                        "asset": my_asset.id,
+                        "attribute": my_attribute.id,
+                    },
+                }]),
+            )])
         ```
 
         ## Import
@@ -704,7 +714,7 @@ class Alert(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] aggregation: aggregation to be applied to reads before comparisson
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertAlertItemArgs']]]] alert_items: variables to be calculated for a complex comparisson.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertAlertItemArgs']]]] alert_items: traces to be used to compute the results
         :param pulumi.Input[int] cron_dom: schedule value for cron
         :param pulumi.Input[int] cron_dow: schedule value for cron
         :param pulumi.Input[int] cron_hours: schedule value for cron
@@ -736,46 +746,56 @@ class Alert(pulumi.CustomResource):
         import json
         import pulumi_splight as splight
 
-        alert_test = splight.Alert("alertTest",
-            description="Created with Terraform",
+        my_asset = splight.Asset("myAsset",
+            description="My Asset Description",
+            geometry=json.dumps({
+                "type": "GeometryCollection",
+                "geometries": [{
+                    "type": "Point",
+                    "coordinates": [
+                        0,
+                        0,
+                    ],
+                }],
+            }))
+        my_attribute = splight.AssetAttribute("myAttribute",
+            type="Number",
+            asset=my_asset.id)
+        my_alert = splight.Alert("myAlert",
+            description="My Alert Description",
             type="rate",
             rate_unit="minute",
             rate_value=10,
-            time_window=600,
+            time_window=3600 * 12,
             thresholds=[splight.AlertThresholdArgs(
-                value=4,
-                status="no_alert",
-                status_text="CustomStatusText",
+                value=1,
+                status="alert",
+                status_text="Some warning!",
             )],
-            severity="sev8",
-            operator="gt",
-            aggregation="avg",
+            severity="sev1",
+            operator="lt",
+            aggregation="max",
             target_variable="A",
-            alert_items=[
-                splight.AlertAlertItemArgs(
-                    ref_id="A",
-                    type="QUERY",
-                    expression_plain="",
-                    query_plain=json.dumps([{
-                        "$match": {
-                            "asset": "1234-1234-1234-1234",
-                            "attribute": "1234-1234-1234-1234",
-                        },
-                    }]),
+            alert_items=[splight.AlertAlertItemArgs(
+                ref_id="A",
+                type="QUERY",
+                expression="",
+                expression_plain="",
+                query_filter_asset=splight.AlertAlertItemQueryFilterAssetArgs(
+                    id=my_asset.id,
+                    name=my_asset.name,
                 ),
-                splight.AlertAlertItemArgs(
-                    ref_id="B",
-                    type="QUERY",
-                    expression_plain="",
-                    query_plain=json.dumps([{
-                        "$match": {
-                            "asset": "1234-1234-1234-1234",
-                            "attribute": "1234-1234-1234-1234",
-                        },
-                    }]),
+                query_filter_attribute=splight.AlertAlertItemQueryFilterAttributeArgs(
+                    id=my_attribute.id,
+                    name=my_attribute.name,
                 ),
-            ],
-            related_assets=["1234-1234-1234-1234"])
+                query_plain=pulumi.Output.json_dumps([{
+                    "$match": {
+                        "asset": my_asset.id,
+                        "attribute": my_attribute.id,
+                    },
+                }]),
+            )])
         ```
 
         ## Import
@@ -901,7 +921,7 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] aggregation: aggregation to be applied to reads before comparisson
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertAlertItemArgs']]]] alert_items: variables to be calculated for a complex comparisson.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertAlertItemArgs']]]] alert_items: traces to be used to compute the results
         :param pulumi.Input[int] cron_dom: schedule value for cron
         :param pulumi.Input[int] cron_dow: schedule value for cron
         :param pulumi.Input[int] cron_hours: schedule value for cron
@@ -956,7 +976,7 @@ class Alert(pulumi.CustomResource):
     @pulumi.getter(name="alertItems")
     def alert_items(self) -> pulumi.Output[Sequence['outputs.AlertAlertItem']]:
         """
-        variables to be calculated for a complex comparisson.
+        traces to be used to compute the results
         """
         return pulumi.get(self, "alert_items")
 

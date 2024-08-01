@@ -13,46 +13,58 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as splight from "@splightplatform/pulumi-splight";
  *
- * const alertTest = new splight.Alert("alertTest", {
- *     description: "Created with Terraform",
+ * const myAsset = new splight.Asset("myAsset", {
+ *     description: "My Asset Description",
+ *     geometry: JSON.stringify({
+ *         type: "GeometryCollection",
+ *         geometries: [{
+ *             type: "Point",
+ *             coordinates: [
+ *                 0,
+ *                 0,
+ *             ],
+ *         }],
+ *     }),
+ * });
+ * const myAttribute = new splight.AssetAttribute("myAttribute", {
+ *     type: "Number",
+ *     asset: myAsset.id,
+ * });
+ * const myAlert = new splight.Alert("myAlert", {
+ *     description: "My Alert Description",
  *     type: "rate",
  *     rateUnit: "minute",
  *     rateValue: 10,
- *     timeWindow: 600,
+ *     timeWindow: 3600 * 12,
  *     thresholds: [{
- *         value: 4,
- *         status: "no_alert",
- *         statusText: "CustomStatusText",
+ *         value: 1,
+ *         status: "alert",
+ *         statusText: "Some warning!",
  *     }],
- *     severity: "sev8",
- *     operator: "gt",
- *     aggregation: "avg",
+ *     severity: "sev1",
+ *     operator: "lt",
+ *     aggregation: "max",
  *     targetVariable: "A",
- *     alertItems: [
- *         {
- *             refId: "A",
- *             type: "QUERY",
- *             expressionPlain: "",
- *             queryPlain: JSON.stringify([{
- *                 $match: {
- *                     asset: "1234-1234-1234-1234",
- *                     attribute: "1234-1234-1234-1234",
- *                 },
- *             }]),
+ *     alertItems: [{
+ *         refId: "A",
+ *         type: "QUERY",
+ *         expression: "",
+ *         expressionPlain: "",
+ *         queryFilterAsset: {
+ *             id: myAsset.id,
+ *             name: myAsset.name,
  *         },
- *         {
- *             refId: "B",
- *             type: "QUERY",
- *             expressionPlain: "",
- *             queryPlain: JSON.stringify([{
- *                 $match: {
- *                     asset: "1234-1234-1234-1234",
- *                     attribute: "1234-1234-1234-1234",
- *                 },
- *             }]),
+ *         queryFilterAttribute: {
+ *             id: myAttribute.id,
+ *             name: myAttribute.name,
  *         },
- *     ],
- *     relatedAssets: ["1234-1234-1234-1234"],
+ *         queryPlain: pulumi.jsonStringify([{
+ *             $match: {
+ *                 asset: myAsset.id,
+ *                 attribute: myAttribute.id,
+ *             },
+ *         }]),
+ *     }],
  * });
  * ```
  *
@@ -95,7 +107,7 @@ export class Alert extends pulumi.CustomResource {
      */
     public readonly aggregation!: pulumi.Output<string>;
     /**
-     * variables to be calculated for a complex comparisson.
+     * traces to be used to compute the results
      */
     public readonly alertItems!: pulumi.Output<outputs.AlertAlertItem[]>;
     /**
@@ -259,7 +271,7 @@ export interface AlertState {
      */
     aggregation?: pulumi.Input<string>;
     /**
-     * variables to be calculated for a complex comparisson.
+     * traces to be used to compute the results
      */
     alertItems?: pulumi.Input<pulumi.Input<inputs.AlertAlertItem>[]>;
     /**
@@ -338,7 +350,7 @@ export interface AlertArgs {
      */
     aggregation: pulumi.Input<string>;
     /**
-     * variables to be calculated for a complex comparisson.
+     * traces to be used to compute the results
      */
     alertItems: pulumi.Input<pulumi.Input<inputs.AlertAlertItem>[]>;
     /**

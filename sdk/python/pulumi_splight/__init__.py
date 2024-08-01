@@ -12,8 +12,21 @@ from .asset_metadata import *
 from .component import *
 from .component_routine import *
 from .dashboard import *
-from .dashboard_chart import *
+from .dashboard_actionlist_chart import *
+from .dashboard_alertevents_chart import *
+from .dashboard_alertlist_chart import *
+from .dashboard_assetlist_chart import *
+from .dashboard_bar_chart import *
+from .dashboard_bargauge_chart import *
+from .dashboard_commandlist_chart import *
+from .dashboard_gauge_chart import *
+from .dashboard_histogram_chart import *
+from .dashboard_image_chart import *
+from .dashboard_stat_chart import *
 from .dashboard_tab import *
+from .dashboard_table_chart import *
+from .dashboard_text_chart import *
+from .dashboard_timeseries_chart import *
 from .file import *
 from .file_folder import *
 from .function import *
@@ -92,10 +105,90 @@ _utilities.register(
  },
  {
   "pkg": "splight",
-  "mod": "index/dashboardChart",
+  "mod": "index/dashboardActionlistChart",
   "fqn": "pulumi_splight",
   "classes": {
-   "splight:index/dashboardChart:DashboardChart": "DashboardChart"
+   "splight:index/dashboardActionlistChart:DashboardActionlistChart": "DashboardActionlistChart"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/dashboardAlerteventsChart",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/dashboardAlerteventsChart:DashboardAlerteventsChart": "DashboardAlerteventsChart"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/dashboardAlertlistChart",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/dashboardAlertlistChart:DashboardAlertlistChart": "DashboardAlertlistChart"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/dashboardAssetlistChart",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/dashboardAssetlistChart:DashboardAssetlistChart": "DashboardAssetlistChart"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/dashboardBarChart",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/dashboardBarChart:DashboardBarChart": "DashboardBarChart"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/dashboardBargaugeChart",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/dashboardBargaugeChart:DashboardBargaugeChart": "DashboardBargaugeChart"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/dashboardCommandlistChart",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/dashboardCommandlistChart:DashboardCommandlistChart": "DashboardCommandlistChart"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/dashboardGaugeChart",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/dashboardGaugeChart:DashboardGaugeChart": "DashboardGaugeChart"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/dashboardHistogramChart",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/dashboardHistogramChart:DashboardHistogramChart": "DashboardHistogramChart"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/dashboardImageChart",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/dashboardImageChart:DashboardImageChart": "DashboardImageChart"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/dashboardStatChart",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/dashboardStatChart:DashboardStatChart": "DashboardStatChart"
   }
  },
  {
@@ -104,6 +197,30 @@ _utilities.register(
   "fqn": "pulumi_splight",
   "classes": {
    "splight:index/dashboardTab:DashboardTab": "DashboardTab"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/dashboardTableChart",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/dashboardTableChart:DashboardTableChart": "DashboardTableChart"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/dashboardTextChart",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/dashboardTextChart:DashboardTextChart": "DashboardTextChart"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/dashboardTimeseriesChart",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/dashboardTimeseriesChart:DashboardTimeseriesChart": "DashboardTimeseriesChart"
   }
  },
  {

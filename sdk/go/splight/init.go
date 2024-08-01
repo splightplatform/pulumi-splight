@@ -35,10 +35,36 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ComponentRoutine{}
 	case "splight:index/dashboard:Dashboard":
 		r = &Dashboard{}
-	case "splight:index/dashboardChart:DashboardChart":
-		r = &DashboardChart{}
+	case "splight:index/dashboardActionlistChart:DashboardActionlistChart":
+		r = &DashboardActionlistChart{}
+	case "splight:index/dashboardAlerteventsChart:DashboardAlerteventsChart":
+		r = &DashboardAlerteventsChart{}
+	case "splight:index/dashboardAlertlistChart:DashboardAlertlistChart":
+		r = &DashboardAlertlistChart{}
+	case "splight:index/dashboardAssetlistChart:DashboardAssetlistChart":
+		r = &DashboardAssetlistChart{}
+	case "splight:index/dashboardBarChart:DashboardBarChart":
+		r = &DashboardBarChart{}
+	case "splight:index/dashboardBargaugeChart:DashboardBargaugeChart":
+		r = &DashboardBargaugeChart{}
+	case "splight:index/dashboardCommandlistChart:DashboardCommandlistChart":
+		r = &DashboardCommandlistChart{}
+	case "splight:index/dashboardGaugeChart:DashboardGaugeChart":
+		r = &DashboardGaugeChart{}
+	case "splight:index/dashboardHistogramChart:DashboardHistogramChart":
+		r = &DashboardHistogramChart{}
+	case "splight:index/dashboardImageChart:DashboardImageChart":
+		r = &DashboardImageChart{}
+	case "splight:index/dashboardStatChart:DashboardStatChart":
+		r = &DashboardStatChart{}
 	case "splight:index/dashboardTab:DashboardTab":
 		r = &DashboardTab{}
+	case "splight:index/dashboardTableChart:DashboardTableChart":
+		r = &DashboardTableChart{}
+	case "splight:index/dashboardTextChart:DashboardTextChart":
+		r = &DashboardTextChart{}
+	case "splight:index/dashboardTimeseriesChart:DashboardTimeseriesChart":
+		r = &DashboardTimeseriesChart{}
 	case "splight:index/file:File":
 		r = &File{}
 	case "splight:index/fileFolder:FileFolder":
@@ -117,12 +143,77 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"splight",
-		"index/dashboardChart",
+		"index/dashboardActionlistChart",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/dashboardAlerteventsChart",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/dashboardAlertlistChart",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/dashboardAssetlistChart",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/dashboardBarChart",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/dashboardBargaugeChart",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/dashboardCommandlistChart",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/dashboardGaugeChart",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/dashboardHistogramChart",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/dashboardImageChart",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/dashboardStatChart",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"splight",
 		"index/dashboardTab",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/dashboardTableChart",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/dashboardTextChart",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/dashboardTimeseriesChart",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
