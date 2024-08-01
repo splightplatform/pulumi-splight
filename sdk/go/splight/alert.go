@@ -28,11 +28,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal([]map[string]interface{}{
-//				map[string]interface{}{
-//					"$match": map[string]interface{}{
-//						"asset":     "1234-1234-1234-1234",
-//						"attribute": "1234-1234-1234-1234",
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"type": "GeometryCollection",
+//				"geometries": []map[string]interface{}{
+//					map[string]interface{}{
+//						"type": "Point",
+//						"coordinates": []float64{
+//							0,
+//							0,
+//						},
 //					},
 //				},
 //			})
@@ -40,51 +44,70 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal([]map[string]interface{}{
-//				map[string]interface{}{
-//					"$match": map[string]interface{}{
-//						"asset":     "1234-1234-1234-1234",
-//						"attribute": "1234-1234-1234-1234",
-//					},
-//				},
+//			myAsset, err := splight.NewAsset(ctx, "myAsset", &splight.AssetArgs{
+//				Description: pulumi.String("My Asset Description"),
+//				Geometry:    pulumi.String(json0),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			json1 := string(tmpJSON1)
-//			_, err = splight.NewAlert(ctx, "alertTest", &splight.AlertArgs{
-//				Description: pulumi.String("Created with Terraform"),
+//			myAttribute, err := splight.NewAssetAttribute(ctx, "myAttribute", &splight.AssetAttributeArgs{
+//				Type:  pulumi.String("Number"),
+//				Asset: myAsset.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = splight.NewAlert(ctx, "myAlert", &splight.AlertArgs{
+//				Description: pulumi.String("My Alert Description"),
 //				Type:        pulumi.String("rate"),
 //				RateUnit:    pulumi.String("minute"),
 //				RateValue:   pulumi.Int(10),
-//				TimeWindow:  pulumi.Int(600),
+//				TimeWindow:  3600 * 12,
 //				Thresholds: splight.AlertThresholdArray{
 //					&splight.AlertThresholdArgs{
-//						Value:      pulumi.Float64(4),
-//						Status:     pulumi.String("no_alert"),
-//						StatusText: pulumi.String("CustomStatusText"),
+//						Value:      pulumi.Float64(1),
+//						Status:     pulumi.String("alert"),
+//						StatusText: pulumi.String("Some warning!"),
 //					},
 //				},
-//				Severity:       pulumi.String("sev8"),
-//				Operator:       pulumi.String("gt"),
-//				Aggregation:    pulumi.String("avg"),
+//				Severity:       pulumi.String("sev1"),
+//				Operator:       pulumi.String("lt"),
+//				Aggregation:    pulumi.String("max"),
 //				TargetVariable: pulumi.String("A"),
 //				AlertItems: splight.AlertAlertItemArray{
 //					&splight.AlertAlertItemArgs{
 //						RefId:           pulumi.String("A"),
 //						Type:            pulumi.String("QUERY"),
+//						Expression:      pulumi.String(""),
 //						ExpressionPlain: pulumi.String(""),
-//						QueryPlain:      pulumi.String(json0),
+//						QueryFilterAsset: &splight.AlertAlertItemQueryFilterAssetArgs{
+//							Id:   myAsset.ID(),
+//							Name: myAsset.Name,
+//						},
+//						QueryFilterAttribute: &splight.AlertAlertItemQueryFilterAttributeArgs{
+//							Id:   myAttribute.ID(),
+//							Name: myAttribute.Name,
+//						},
+//						QueryPlain: pulumi.All(myAsset.ID(), myAttribute.ID()).ApplyT(func(_args []interface{}) (string, error) {
+//							myAssetId := _args[0].(string)
+//							myAttributeId := _args[1].(string)
+//							var _zero string
+//							tmpJSON1, err := json.Marshal([]map[string]interface{}{
+//								map[string]interface{}{
+//									"$match": map[string]interface{}{
+//										"asset":     myAssetId,
+//										"attribute": myAttributeId,
+//									},
+//								},
+//							})
+//							if err != nil {
+//								return _zero, err
+//							}
+//							json1 := string(tmpJSON1)
+//							return json1, nil
+//						}).(pulumi.StringOutput),
 //					},
-//					&splight.AlertAlertItemArgs{
-//						RefId:           pulumi.String("B"),
-//						Type:            pulumi.String("QUERY"),
-//						ExpressionPlain: pulumi.String(""),
-//						QueryPlain:      pulumi.String(json1),
-//					},
-//				},
-//				RelatedAssets: pulumi.StringArray{
-//					pulumi.String("1234-1234-1234-1234"),
 //				},
 //			})
 //			if err != nil {
@@ -106,7 +129,7 @@ type Alert struct {
 
 	// aggregation to be applied to reads before comparisson
 	Aggregation pulumi.StringOutput `pulumi:"aggregation"`
-	// variables to be calculated for a complex comparisson.
+	// traces to be used to compute the results
 	AlertItems AlertAlertItemArrayOutput `pulumi:"alertItems"`
 	// schedule value for cron
 	CronDom pulumi.IntOutput `pulumi:"cronDom"`
@@ -202,7 +225,7 @@ func GetAlert(ctx *pulumi.Context,
 type alertState struct {
 	// aggregation to be applied to reads before comparisson
 	Aggregation *string `pulumi:"aggregation"`
-	// variables to be calculated for a complex comparisson.
+	// traces to be used to compute the results
 	AlertItems []AlertAlertItem `pulumi:"alertItems"`
 	// schedule value for cron
 	CronDom *int `pulumi:"cronDom"`
@@ -242,7 +265,7 @@ type alertState struct {
 type AlertState struct {
 	// aggregation to be applied to reads before comparisson
 	Aggregation pulumi.StringPtrInput
-	// variables to be calculated for a complex comparisson.
+	// traces to be used to compute the results
 	AlertItems AlertAlertItemArrayInput
 	// schedule value for cron
 	CronDom pulumi.IntPtrInput
@@ -286,7 +309,7 @@ func (AlertState) ElementType() reflect.Type {
 type alertArgs struct {
 	// aggregation to be applied to reads before comparisson
 	Aggregation string `pulumi:"aggregation"`
-	// variables to be calculated for a complex comparisson.
+	// traces to be used to compute the results
 	AlertItems []AlertAlertItem `pulumi:"alertItems"`
 	// schedule value for cron
 	CronDom *int `pulumi:"cronDom"`
@@ -327,7 +350,7 @@ type alertArgs struct {
 type AlertArgs struct {
 	// aggregation to be applied to reads before comparisson
 	Aggregation pulumi.StringInput
-	// variables to be calculated for a complex comparisson.
+	// traces to be used to compute the results
 	AlertItems AlertAlertItemArrayInput
 	// schedule value for cron
 	CronDom pulumi.IntPtrInput
@@ -456,7 +479,7 @@ func (o AlertOutput) Aggregation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringOutput { return v.Aggregation }).(pulumi.StringOutput)
 }
 
-// variables to be calculated for a complex comparisson.
+// traces to be used to compute the results
 func (o AlertOutput) AlertItems() AlertAlertItemArrayOutput {
 	return o.ApplyT(func(v *Alert) AlertAlertItemArrayOutput { return v.AlertItems }).(AlertAlertItemArrayOutput)
 }

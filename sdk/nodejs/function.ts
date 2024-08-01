@@ -13,43 +13,90 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as splight from "@splightplatform/pulumi-splight";
  *
+ * const myAsset = new splight.Asset("myAsset", {
+ *     description: "My Asset Description",
+ *     geometry: JSON.stringify({
+ *         type: "GeometryCollection",
+ *         geometries: [{
+ *             type: "Point",
+ *             coordinates: [
+ *                 0,
+ *                 0,
+ *             ],
+ *         }],
+ *     }),
+ * });
+ * const myAttribute = new splight.AssetAttribute("myAttribute", {
+ *     type: "Number",
+ *     asset: myAsset.id,
+ * });
+ * const myTargetAsset = new splight.Asset("myTargetAsset", {
+ *     description: "My Target Asset Description",
+ *     geometry: JSON.stringify({
+ *         type: "GeometryCollection",
+ *         geometries: [{
+ *             type: "Point",
+ *             coordinates: [
+ *                 0,
+ *                 0,
+ *             ],
+ *         }],
+ *     }),
+ * });
+ * const myTargetAttribute = new splight.AssetAttribute("myTargetAttribute", {
+ *     type: "Number",
+ *     asset: myTargetAsset.id,
+ * });
  * const functionTest = new splight.Function("functionTest", {
- *     description: "Created with Terraform",
+ *     description: "My Function Description",
  *     type: "rate",
- *     timeWindow: 600,
- *     rateValue: 10,
  *     rateUnit: "minute",
- *     targetVariable: "A",
+ *     rateValue: 10,
+ *     timeWindow: 3600 * 12,
+ *     targetVariable: "B",
  *     targetAsset: {
- *         id: "49551a15-d79b-40dc-9434-1b33d6b2fcb2",
- *         name: "An asset",
+ *         id: myTargetAsset.id,
+ *         name: myTargetAsset.name,
  *     },
  *     targetAttribute: {
- *         id: "49551a15-d79b-40dc-9434-1b33d6b2fcb2",
- *         name: "An attribute",
+ *         id: myTargetAttribute.id,
+ *         name: myTargetAttribute.name,
  *     },
  *     functionItems: [
  *         {
  *             refId: "A",
  *             type: "QUERY",
+ *             expression: "",
  *             expressionPlain: "",
- *             queryPlain: JSON.stringify([{
+ *             queryFilterAsset: {
+ *                 id: myAsset.id,
+ *                 name: myAsset.name,
+ *             },
+ *             queryFilterAttribute: {
+ *                 id: myAttribute.id,
+ *                 name: myAttribute.name,
+ *             },
+ *             queryPlain: pulumi.jsonStringify([{
  *                 $match: {
- *                     asset: "49551a15-d79b-40dc-9434-1b33d6b2fcb2",
- *                     attribute: "c1d0d94b-5feb-4ebb-a527-0b0a34196252",
+ *                     asset: myAsset.id,
+ *                     attribute: myAttribute.id,
  *                 },
  *             }]),
  *         },
  *         {
  *             refId: "B",
- *             type: "QUERY",
- *             expressionPlain: "",
- *             queryPlain: JSON.stringify([{
- *                 $match: {
- *                     asset: "49551a15-d79b-40dc-9434-1b33d6b2fcb2",
- *                     attribute: "c1d0d94b-5feb-4ebb-a527-0b0a34196252",
+ *             type: "EXPRESSION",
+ *             expression: "A * 2",
+ *             expressionPlain: JSON.stringify({
+ *                 $function: {
+ *                     body: "function () { return A * 2 }",
+ *                     args: [],
+ *                     lang: "js",
  *                 },
- *             }]),
+ *             }),
+ *             queryFilterAsset: {},
+ *             queryFilterAttribute: {},
+ *             queryPlain: "",
  *         },
  *     ],
  * });
@@ -134,13 +181,13 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly rateValue!: pulumi.Output<number>;
     /**
-     * asset where to ingest results
+     * Asset/Attribute filter
      */
-    public readonly targetAsset!: pulumi.Output<{[key: string]: string}>;
+    public readonly targetAsset!: pulumi.Output<outputs.FunctionTargetAsset>;
     /**
-     * attribute where to ingest results
+     * Asset/Attribute filter
      */
-    public readonly targetAttribute!: pulumi.Output<{[key: string]: string}>;
+    public readonly targetAttribute!: pulumi.Output<outputs.FunctionTargetAttribute>;
     /**
      * variable to be considered to be ingested
      */
@@ -277,13 +324,13 @@ export interface FunctionState {
      */
     rateValue?: pulumi.Input<number>;
     /**
-     * asset where to ingest results
+     * Asset/Attribute filter
      */
-    targetAsset?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    targetAsset?: pulumi.Input<inputs.FunctionTargetAsset>;
     /**
-     * attribute where to ingest results
+     * Asset/Attribute filter
      */
-    targetAttribute?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    targetAttribute?: pulumi.Input<inputs.FunctionTargetAttribute>;
     /**
      * variable to be considered to be ingested
      */
@@ -347,13 +394,13 @@ export interface FunctionArgs {
      */
     rateValue?: pulumi.Input<number>;
     /**
-     * asset where to ingest results
+     * Asset/Attribute filter
      */
-    targetAsset: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    targetAsset: pulumi.Input<inputs.FunctionTargetAsset>;
     /**
-     * attribute where to ingest results
+     * Asset/Attribute filter
      */
-    targetAttribute: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    targetAttribute: pulumi.Input<inputs.FunctionTargetAttribute>;
     /**
      * variable to be considered to be ingested
      */

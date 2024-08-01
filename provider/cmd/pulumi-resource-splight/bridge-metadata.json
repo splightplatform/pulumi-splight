@@ -5,7 +5,17 @@
                 "current": "splight:index/alert:Alert",
                 "fields": {
                     "alert_items": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "query_filter_asset": {
+                                    "maxItemsOne": true
+                                },
+                                "query_filter_attribute": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     },
                     "related_assets": {
                         "maxItemsOne": false
@@ -76,8 +86,260 @@
                     }
                 }
             },
-            "splight_dashboard_chart": {
-                "current": "splight:index/dashboardChart:DashboardChart",
+            "splight_dashboard_actionlist_chart": {
+                "current": "splight:index/dashboardActionlistChart:DashboardActionlistChart",
+                "fields": {
+                    "chart_items": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "query_filter_asset": {
+                                    "maxItemsOne": true
+                                },
+                                "query_filter_attribute": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "thresholds": {
+                        "maxItemsOne": false
+                    },
+                    "value_mappings": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "splight_dashboard_alertevents_chart": {
+                "current": "splight:index/dashboardAlerteventsChart:DashboardAlerteventsChart",
+                "fields": {
+                    "chart_items": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "query_filter_asset": {
+                                    "maxItemsOne": true
+                                },
+                                "query_filter_attribute": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "filter_new_status": {
+                        "maxItemsOne": false
+                    },
+                    "filter_old_status": {
+                        "maxItemsOne": false
+                    },
+                    "thresholds": {
+                        "maxItemsOne": false
+                    },
+                    "value_mappings": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "splight_dashboard_alertlist_chart": {
+                "current": "splight:index/dashboardAlertlistChart:DashboardAlertlistChart",
+                "fields": {
+                    "chart_items": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "query_filter_asset": {
+                                    "maxItemsOne": true
+                                },
+                                "query_filter_attribute": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "filter_status": {
+                        "maxItemsOne": false
+                    },
+                    "thresholds": {
+                        "maxItemsOne": false
+                    },
+                    "value_mappings": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "splight_dashboard_assetlist_chart": {
+                "current": "splight:index/dashboardAssetlistChart:DashboardAssetlistChart",
+                "fields": {
+                    "chart_items": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "query_filter_asset": {
+                                    "maxItemsOne": true
+                                },
+                                "query_filter_attribute": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "filter_status": {
+                        "maxItemsOne": false
+                    },
+                    "thresholds": {
+                        "maxItemsOne": false
+                    },
+                    "value_mappings": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "splight_dashboard_bar_chart": {
+                "current": "splight:index/dashboardBarChart:DashboardBarChart",
+                "fields": {
+                    "chart_items": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "query_filter_asset": {
+                                    "maxItemsOne": true
+                                },
+                                "query_filter_attribute": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "thresholds": {
+                        "maxItemsOne": false
+                    },
+                    "value_mappings": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "splight_dashboard_bargauge_chart": {
+                "current": "splight:index/dashboardBargaugeChart:DashboardBargaugeChart",
+                "fields": {
+                    "chart_items": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "query_filter_asset": {
+                                    "maxItemsOne": true
+                                },
+                                "query_filter_attribute": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "thresholds": {
+                        "maxItemsOne": false
+                    },
+                    "value_mappings": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "splight_dashboard_commandlist_chart": {
+                "current": "splight:index/dashboardCommandlistChart:DashboardCommandlistChart",
+                "fields": {
+                    "chart_items": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "query_filter_asset": {
+                                    "maxItemsOne": true
+                                },
+                                "query_filter_attribute": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "thresholds": {
+                        "maxItemsOne": false
+                    },
+                    "value_mappings": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "splight_dashboard_gauge_chart": {
+                "current": "splight:index/dashboardGaugeChart:DashboardGaugeChart",
+                "fields": {
+                    "chart_items": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "query_filter_asset": {
+                                    "maxItemsOne": true
+                                },
+                                "query_filter_attribute": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "thresholds": {
+                        "maxItemsOne": false
+                    },
+                    "value_mappings": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "splight_dashboard_histogram_chart": {
+                "current": "splight:index/dashboardHistogramChart:DashboardHistogramChart",
+                "fields": {
+                    "chart_items": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "query_filter_asset": {
+                                    "maxItemsOne": true
+                                },
+                                "query_filter_attribute": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "thresholds": {
+                        "maxItemsOne": false
+                    },
+                    "value_mappings": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "splight_dashboard_image_chart": {
+                "current": "splight:index/dashboardImageChart:DashboardImageChart",
+                "fields": {
+                    "chart_items": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "query_filter_asset": {
+                                    "maxItemsOne": true
+                                },
+                                "query_filter_attribute": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "thresholds": {
+                        "maxItemsOne": false
+                    },
+                    "value_mappings": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "splight_dashboard_stat_chart": {
+                "current": "splight:index/dashboardStatChart:DashboardStatChart",
                 "fields": {
                     "chart_items": {
                         "maxItemsOne": false,
@@ -103,6 +365,78 @@
             "splight_dashboard_tab": {
                 "current": "splight:index/dashboardTab:DashboardTab"
             },
+            "splight_dashboard_table_chart": {
+                "current": "splight:index/dashboardTableChart:DashboardTableChart",
+                "fields": {
+                    "chart_items": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "query_filter_asset": {
+                                    "maxItemsOne": true
+                                },
+                                "query_filter_attribute": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "thresholds": {
+                        "maxItemsOne": false
+                    },
+                    "value_mappings": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "splight_dashboard_text_chart": {
+                "current": "splight:index/dashboardTextChart:DashboardTextChart",
+                "fields": {
+                    "chart_items": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "query_filter_asset": {
+                                    "maxItemsOne": true
+                                },
+                                "query_filter_attribute": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "thresholds": {
+                        "maxItemsOne": false
+                    },
+                    "value_mappings": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "splight_dashboard_timeseries_chart": {
+                "current": "splight:index/dashboardTimeseriesChart:DashboardTimeseriesChart",
+                "fields": {
+                    "chart_items": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "query_filter_asset": {
+                                    "maxItemsOne": true
+                                },
+                                "query_filter_attribute": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "thresholds": {
+                        "maxItemsOne": false
+                    },
+                    "value_mappings": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "splight_file": {
                 "current": "splight:index/file:File",
                 "fields": {
@@ -118,7 +452,23 @@
                 "current": "splight:index/function:Function",
                 "fields": {
                     "function_items": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "query_filter_asset": {
+                                    "maxItemsOne": true
+                                },
+                                "query_filter_attribute": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "target_asset": {
+                        "maxItemsOne": true
+                    },
+                    "target_attribute": {
+                        "maxItemsOne": true
                     }
                 }
             },

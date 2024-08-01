@@ -14,20 +14,50 @@ namespace Splight.Splight.Outputs
     [OutputType]
     public sealed class FunctionFunctionItem
     {
+        /// <summary>
+        /// how the expression is shown (i.e 'A * 2')
+        /// </summary>
+        public readonly string Expression;
+        /// <summary>
+        /// actual mongo query containing the expression
+        /// </summary>
         public readonly string ExpressionPlain;
         /// <summary>
-        /// optional id
+        /// ID of the function item
         /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// Asset/Attribute filter
+        /// </summary>
+        public readonly Outputs.FunctionFunctionItemQueryFilterAsset QueryFilterAsset;
+        /// <summary>
+        /// Asset/Attribute filter
+        /// </summary>
+        public readonly Outputs.FunctionFunctionItemQueryFilterAttribute QueryFilterAttribute;
+        /// <summary>
+        /// actual mongo query
+        /// </summary>
         public readonly string QueryPlain;
+        /// <summary>
+        /// identifier of the variable (i.e 'A')
+        /// </summary>
         public readonly string RefId;
+        /// <summary>
+        /// either QUERY or EXPRESSION
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]
         private FunctionFunctionItem(
+            string expression,
+
             string expressionPlain,
 
             string? id,
+
+            Outputs.FunctionFunctionItemQueryFilterAsset queryFilterAsset,
+
+            Outputs.FunctionFunctionItemQueryFilterAttribute queryFilterAttribute,
 
             string queryPlain,
 
@@ -35,8 +65,11 @@ namespace Splight.Splight.Outputs
 
             string type)
         {
+            Expression = expression;
             ExpressionPlain = expressionPlain;
             Id = id;
+            QueryFilterAsset = queryFilterAsset;
+            QueryFilterAttribute = queryFilterAttribute;
             QueryPlain = queryPlain;
             RefId = refId;
             Type = type;

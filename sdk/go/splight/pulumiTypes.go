@@ -14,12 +14,22 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type AlertAlertItem struct {
+	// how the expression is shown (i.e 'A * 2')
+	Expression string `pulumi:"expression"`
+	// actual mongo query containing the expression
 	ExpressionPlain string `pulumi:"expressionPlain"`
-	// optional id
-	Id         *string `pulumi:"id"`
-	QueryPlain string  `pulumi:"queryPlain"`
-	RefId      string  `pulumi:"refId"`
-	Type       string  `pulumi:"type"`
+	// ID of the function item
+	Id *string `pulumi:"id"`
+	// Asset/Attribute filter
+	QueryFilterAsset AlertAlertItemQueryFilterAsset `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute AlertAlertItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
+	// actual mongo query
+	QueryPlain string `pulumi:"queryPlain"`
+	// identifier of the variable (i.e 'A')
+	RefId string `pulumi:"refId"`
+	// either QUERY or EXPRESSION
+	Type string `pulumi:"type"`
 }
 
 // AlertAlertItemInput is an input type that accepts AlertAlertItemArgs and AlertAlertItemOutput values.
@@ -34,12 +44,22 @@ type AlertAlertItemInput interface {
 }
 
 type AlertAlertItemArgs struct {
+	// how the expression is shown (i.e 'A * 2')
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// actual mongo query containing the expression
 	ExpressionPlain pulumi.StringInput `pulumi:"expressionPlain"`
-	// optional id
-	Id         pulumi.StringPtrInput `pulumi:"id"`
-	QueryPlain pulumi.StringInput    `pulumi:"queryPlain"`
-	RefId      pulumi.StringInput    `pulumi:"refId"`
-	Type       pulumi.StringInput    `pulumi:"type"`
+	// ID of the function item
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Asset/Attribute filter
+	QueryFilterAsset AlertAlertItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute AlertAlertItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
+	// actual mongo query
+	QueryPlain pulumi.StringInput `pulumi:"queryPlain"`
+	// identifier of the variable (i.e 'A')
+	RefId pulumi.StringInput `pulumi:"refId"`
+	// either QUERY or EXPRESSION
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (AlertAlertItemArgs) ElementType() reflect.Type {
@@ -93,23 +113,42 @@ func (o AlertAlertItemOutput) ToAlertAlertItemOutputWithContext(ctx context.Cont
 	return o
 }
 
+// how the expression is shown (i.e 'A * 2')
+func (o AlertAlertItemOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertAlertItem) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// actual mongo query containing the expression
 func (o AlertAlertItemOutput) ExpressionPlain() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertAlertItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
 }
 
-// optional id
+// ID of the function item
 func (o AlertAlertItemOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertAlertItem) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Asset/Attribute filter
+func (o AlertAlertItemOutput) QueryFilterAsset() AlertAlertItemQueryFilterAssetOutput {
+	return o.ApplyT(func(v AlertAlertItem) AlertAlertItemQueryFilterAsset { return v.QueryFilterAsset }).(AlertAlertItemQueryFilterAssetOutput)
+}
+
+// Asset/Attribute filter
+func (o AlertAlertItemOutput) QueryFilterAttribute() AlertAlertItemQueryFilterAttributeOutput {
+	return o.ApplyT(func(v AlertAlertItem) AlertAlertItemQueryFilterAttribute { return v.QueryFilterAttribute }).(AlertAlertItemQueryFilterAttributeOutput)
+}
+
+// actual mongo query
 func (o AlertAlertItemOutput) QueryPlain() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertAlertItem) string { return v.QueryPlain }).(pulumi.StringOutput)
 }
 
+// identifier of the variable (i.e 'A')
 func (o AlertAlertItemOutput) RefId() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertAlertItem) string { return v.RefId }).(pulumi.StringOutput)
 }
 
+// either QUERY or EXPRESSION
 func (o AlertAlertItemOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertAlertItem) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -132,6 +171,128 @@ func (o AlertAlertItemArrayOutput) Index(i pulumi.IntInput) AlertAlertItemOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertAlertItem {
 		return vs[0].([]AlertAlertItem)[vs[1].(int)]
 	}).(AlertAlertItemOutput)
+}
+
+type AlertAlertItemQueryFilterAsset struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// AlertAlertItemQueryFilterAssetInput is an input type that accepts AlertAlertItemQueryFilterAssetArgs and AlertAlertItemQueryFilterAssetOutput values.
+// You can construct a concrete instance of `AlertAlertItemQueryFilterAssetInput` via:
+//
+//	AlertAlertItemQueryFilterAssetArgs{...}
+type AlertAlertItemQueryFilterAssetInput interface {
+	pulumi.Input
+
+	ToAlertAlertItemQueryFilterAssetOutput() AlertAlertItemQueryFilterAssetOutput
+	ToAlertAlertItemQueryFilterAssetOutputWithContext(context.Context) AlertAlertItemQueryFilterAssetOutput
+}
+
+type AlertAlertItemQueryFilterAssetArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AlertAlertItemQueryFilterAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertAlertItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (i AlertAlertItemQueryFilterAssetArgs) ToAlertAlertItemQueryFilterAssetOutput() AlertAlertItemQueryFilterAssetOutput {
+	return i.ToAlertAlertItemQueryFilterAssetOutputWithContext(context.Background())
+}
+
+func (i AlertAlertItemQueryFilterAssetArgs) ToAlertAlertItemQueryFilterAssetOutputWithContext(ctx context.Context) AlertAlertItemQueryFilterAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertAlertItemQueryFilterAssetOutput)
+}
+
+type AlertAlertItemQueryFilterAssetOutput struct{ *pulumi.OutputState }
+
+func (AlertAlertItemQueryFilterAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertAlertItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (o AlertAlertItemQueryFilterAssetOutput) ToAlertAlertItemQueryFilterAssetOutput() AlertAlertItemQueryFilterAssetOutput {
+	return o
+}
+
+func (o AlertAlertItemQueryFilterAssetOutput) ToAlertAlertItemQueryFilterAssetOutputWithContext(ctx context.Context) AlertAlertItemQueryFilterAssetOutput {
+	return o
+}
+
+// ID of the resource
+func (o AlertAlertItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertAlertItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o AlertAlertItemQueryFilterAssetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertAlertItemQueryFilterAsset) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AlertAlertItemQueryFilterAttribute struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// AlertAlertItemQueryFilterAttributeInput is an input type that accepts AlertAlertItemQueryFilterAttributeArgs and AlertAlertItemQueryFilterAttributeOutput values.
+// You can construct a concrete instance of `AlertAlertItemQueryFilterAttributeInput` via:
+//
+//	AlertAlertItemQueryFilterAttributeArgs{...}
+type AlertAlertItemQueryFilterAttributeInput interface {
+	pulumi.Input
+
+	ToAlertAlertItemQueryFilterAttributeOutput() AlertAlertItemQueryFilterAttributeOutput
+	ToAlertAlertItemQueryFilterAttributeOutputWithContext(context.Context) AlertAlertItemQueryFilterAttributeOutput
+}
+
+type AlertAlertItemQueryFilterAttributeArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AlertAlertItemQueryFilterAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertAlertItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (i AlertAlertItemQueryFilterAttributeArgs) ToAlertAlertItemQueryFilterAttributeOutput() AlertAlertItemQueryFilterAttributeOutput {
+	return i.ToAlertAlertItemQueryFilterAttributeOutputWithContext(context.Background())
+}
+
+func (i AlertAlertItemQueryFilterAttributeArgs) ToAlertAlertItemQueryFilterAttributeOutputWithContext(ctx context.Context) AlertAlertItemQueryFilterAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertAlertItemQueryFilterAttributeOutput)
+}
+
+type AlertAlertItemQueryFilterAttributeOutput struct{ *pulumi.OutputState }
+
+func (AlertAlertItemQueryFilterAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertAlertItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (o AlertAlertItemQueryFilterAttributeOutput) ToAlertAlertItemQueryFilterAttributeOutput() AlertAlertItemQueryFilterAttributeOutput {
+	return o
+}
+
+func (o AlertAlertItemQueryFilterAttributeOutput) ToAlertAlertItemQueryFilterAttributeOutputWithContext(ctx context.Context) AlertAlertItemQueryFilterAttributeOutput {
+	return o
+}
+
+// ID of the resource
+func (o AlertAlertItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertAlertItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o AlertAlertItemQueryFilterAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertAlertItemQueryFilterAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 type AlertThreshold struct {
@@ -1087,44 +1248,2108 @@ func (o ComponentRoutineOutputValueArrayOutput) Index(i pulumi.IntInput) Compone
 	}).(ComponentRoutineOutputValueOutput)
 }
 
-type DashboardChartChartItem struct {
+type DashboardActionlistChartChartItem struct {
 	Color           string  `pulumi:"color"`
 	ExpressionPlain string  `pulumi:"expressionPlain"`
 	Hidden          *bool   `pulumi:"hidden"`
 	Label           *string `pulumi:"label"`
-	// asset filter
-	QueryFilterAsset *DashboardChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
-	// Attribute filter
-	QueryFilterAttribute *DashboardChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
-	QueryGroupFunction   *string                                      `pulumi:"queryGroupFunction"`
-	QueryGroupUnit       *string                                      `pulumi:"queryGroupUnit"`
-	QueryLimit           *int                                         `pulumi:"queryLimit"`
-	QueryPlain           string                                       `pulumi:"queryPlain"`
-	QuerySortDirection   *int                                         `pulumi:"querySortDirection"`
-	RefId                string                                       `pulumi:"refId"`
-	Type                 string                                       `pulumi:"type"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardActionlistChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardActionlistChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   *string                                               `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       *string                                               `pulumi:"queryGroupUnit"`
+	QueryLimit           *int                                                  `pulumi:"queryLimit"`
+	QueryPlain           string                                                `pulumi:"queryPlain"`
+	QuerySortDirection   *int                                                  `pulumi:"querySortDirection"`
+	RefId                string                                                `pulumi:"refId"`
+	Type                 string                                                `pulumi:"type"`
 }
 
-// DashboardChartChartItemInput is an input type that accepts DashboardChartChartItemArgs and DashboardChartChartItemOutput values.
-// You can construct a concrete instance of `DashboardChartChartItemInput` via:
+// DashboardActionlistChartChartItemInput is an input type that accepts DashboardActionlistChartChartItemArgs and DashboardActionlistChartChartItemOutput values.
+// You can construct a concrete instance of `DashboardActionlistChartChartItemInput` via:
 //
-//	DashboardChartChartItemArgs{...}
-type DashboardChartChartItemInput interface {
+//	DashboardActionlistChartChartItemArgs{...}
+type DashboardActionlistChartChartItemInput interface {
 	pulumi.Input
 
-	ToDashboardChartChartItemOutput() DashboardChartChartItemOutput
-	ToDashboardChartChartItemOutputWithContext(context.Context) DashboardChartChartItemOutput
+	ToDashboardActionlistChartChartItemOutput() DashboardActionlistChartChartItemOutput
+	ToDashboardActionlistChartChartItemOutputWithContext(context.Context) DashboardActionlistChartChartItemOutput
 }
 
-type DashboardChartChartItemArgs struct {
+type DashboardActionlistChartChartItemArgs struct {
 	Color           pulumi.StringInput    `pulumi:"color"`
 	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
 	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
 	Label           pulumi.StringPtrInput `pulumi:"label"`
-	// asset filter
-	QueryFilterAsset DashboardChartChartItemQueryFilterAssetPtrInput `pulumi:"queryFilterAsset"`
-	// Attribute filter
-	QueryFilterAttribute DashboardChartChartItemQueryFilterAttributePtrInput `pulumi:"queryFilterAttribute"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardActionlistChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardActionlistChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   pulumi.StringPtrInput                                      `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       pulumi.StringPtrInput                                      `pulumi:"queryGroupUnit"`
+	QueryLimit           pulumi.IntPtrInput                                         `pulumi:"queryLimit"`
+	QueryPlain           pulumi.StringInput                                         `pulumi:"queryPlain"`
+	QuerySortDirection   pulumi.IntPtrInput                                         `pulumi:"querySortDirection"`
+	RefId                pulumi.StringInput                                         `pulumi:"refId"`
+	Type                 pulumi.StringInput                                         `pulumi:"type"`
+}
+
+func (DashboardActionlistChartChartItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardActionlistChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardActionlistChartChartItemArgs) ToDashboardActionlistChartChartItemOutput() DashboardActionlistChartChartItemOutput {
+	return i.ToDashboardActionlistChartChartItemOutputWithContext(context.Background())
+}
+
+func (i DashboardActionlistChartChartItemArgs) ToDashboardActionlistChartChartItemOutputWithContext(ctx context.Context) DashboardActionlistChartChartItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardActionlistChartChartItemOutput)
+}
+
+// DashboardActionlistChartChartItemArrayInput is an input type that accepts DashboardActionlistChartChartItemArray and DashboardActionlistChartChartItemArrayOutput values.
+// You can construct a concrete instance of `DashboardActionlistChartChartItemArrayInput` via:
+//
+//	DashboardActionlistChartChartItemArray{ DashboardActionlistChartChartItemArgs{...} }
+type DashboardActionlistChartChartItemArrayInput interface {
+	pulumi.Input
+
+	ToDashboardActionlistChartChartItemArrayOutput() DashboardActionlistChartChartItemArrayOutput
+	ToDashboardActionlistChartChartItemArrayOutputWithContext(context.Context) DashboardActionlistChartChartItemArrayOutput
+}
+
+type DashboardActionlistChartChartItemArray []DashboardActionlistChartChartItemInput
+
+func (DashboardActionlistChartChartItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardActionlistChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardActionlistChartChartItemArray) ToDashboardActionlistChartChartItemArrayOutput() DashboardActionlistChartChartItemArrayOutput {
+	return i.ToDashboardActionlistChartChartItemArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardActionlistChartChartItemArray) ToDashboardActionlistChartChartItemArrayOutputWithContext(ctx context.Context) DashboardActionlistChartChartItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardActionlistChartChartItemArrayOutput)
+}
+
+type DashboardActionlistChartChartItemOutput struct{ *pulumi.OutputState }
+
+func (DashboardActionlistChartChartItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardActionlistChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardActionlistChartChartItemOutput) ToDashboardActionlistChartChartItemOutput() DashboardActionlistChartChartItemOutput {
+	return o
+}
+
+func (o DashboardActionlistChartChartItemOutput) ToDashboardActionlistChartChartItemOutputWithContext(ctx context.Context) DashboardActionlistChartChartItemOutput {
+	return o
+}
+
+func (o DashboardActionlistChartChartItemOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardActionlistChartChartItem) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardActionlistChartChartItemOutput) ExpressionPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardActionlistChartChartItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardActionlistChartChartItemOutput) Hidden() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DashboardActionlistChartChartItem) *bool { return v.Hidden }).(pulumi.BoolPtrOutput)
+}
+
+func (o DashboardActionlistChartChartItemOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardActionlistChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardActionlistChartChartItemOutput) QueryFilterAsset() DashboardActionlistChartChartItemQueryFilterAssetOutput {
+	return o.ApplyT(func(v DashboardActionlistChartChartItem) DashboardActionlistChartChartItemQueryFilterAsset {
+		return v.QueryFilterAsset
+	}).(DashboardActionlistChartChartItemQueryFilterAssetOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardActionlistChartChartItemOutput) QueryFilterAttribute() DashboardActionlistChartChartItemQueryFilterAttributeOutput {
+	return o.ApplyT(func(v DashboardActionlistChartChartItem) DashboardActionlistChartChartItemQueryFilterAttribute {
+		return v.QueryFilterAttribute
+	}).(DashboardActionlistChartChartItemQueryFilterAttributeOutput)
+}
+
+func (o DashboardActionlistChartChartItemOutput) QueryGroupFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardActionlistChartChartItem) *string { return v.QueryGroupFunction }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardActionlistChartChartItemOutput) QueryGroupUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardActionlistChartChartItem) *string { return v.QueryGroupUnit }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardActionlistChartChartItemOutput) QueryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardActionlistChartChartItem) *int { return v.QueryLimit }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardActionlistChartChartItemOutput) QueryPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardActionlistChartChartItem) string { return v.QueryPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardActionlistChartChartItemOutput) QuerySortDirection() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardActionlistChartChartItem) *int { return v.QuerySortDirection }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardActionlistChartChartItemOutput) RefId() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardActionlistChartChartItem) string { return v.RefId }).(pulumi.StringOutput)
+}
+
+func (o DashboardActionlistChartChartItemOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardActionlistChartChartItem) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardActionlistChartChartItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardActionlistChartChartItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardActionlistChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardActionlistChartChartItemArrayOutput) ToDashboardActionlistChartChartItemArrayOutput() DashboardActionlistChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardActionlistChartChartItemArrayOutput) ToDashboardActionlistChartChartItemArrayOutputWithContext(ctx context.Context) DashboardActionlistChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardActionlistChartChartItemArrayOutput) Index(i pulumi.IntInput) DashboardActionlistChartChartItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardActionlistChartChartItem {
+		return vs[0].([]DashboardActionlistChartChartItem)[vs[1].(int)]
+	}).(DashboardActionlistChartChartItemOutput)
+}
+
+type DashboardActionlistChartChartItemQueryFilterAsset struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardActionlistChartChartItemQueryFilterAssetInput is an input type that accepts DashboardActionlistChartChartItemQueryFilterAssetArgs and DashboardActionlistChartChartItemQueryFilterAssetOutput values.
+// You can construct a concrete instance of `DashboardActionlistChartChartItemQueryFilterAssetInput` via:
+//
+//	DashboardActionlistChartChartItemQueryFilterAssetArgs{...}
+type DashboardActionlistChartChartItemQueryFilterAssetInput interface {
+	pulumi.Input
+
+	ToDashboardActionlistChartChartItemQueryFilterAssetOutput() DashboardActionlistChartChartItemQueryFilterAssetOutput
+	ToDashboardActionlistChartChartItemQueryFilterAssetOutputWithContext(context.Context) DashboardActionlistChartChartItemQueryFilterAssetOutput
+}
+
+type DashboardActionlistChartChartItemQueryFilterAssetArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardActionlistChartChartItemQueryFilterAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardActionlistChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (i DashboardActionlistChartChartItemQueryFilterAssetArgs) ToDashboardActionlistChartChartItemQueryFilterAssetOutput() DashboardActionlistChartChartItemQueryFilterAssetOutput {
+	return i.ToDashboardActionlistChartChartItemQueryFilterAssetOutputWithContext(context.Background())
+}
+
+func (i DashboardActionlistChartChartItemQueryFilterAssetArgs) ToDashboardActionlistChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardActionlistChartChartItemQueryFilterAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardActionlistChartChartItemQueryFilterAssetOutput)
+}
+
+type DashboardActionlistChartChartItemQueryFilterAssetOutput struct{ *pulumi.OutputState }
+
+func (DashboardActionlistChartChartItemQueryFilterAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardActionlistChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (o DashboardActionlistChartChartItemQueryFilterAssetOutput) ToDashboardActionlistChartChartItemQueryFilterAssetOutput() DashboardActionlistChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+func (o DashboardActionlistChartChartItemQueryFilterAssetOutput) ToDashboardActionlistChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardActionlistChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardActionlistChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardActionlistChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardActionlistChartChartItemQueryFilterAssetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardActionlistChartChartItemQueryFilterAsset) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardActionlistChartChartItemQueryFilterAttribute struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardActionlistChartChartItemQueryFilterAttributeInput is an input type that accepts DashboardActionlistChartChartItemQueryFilterAttributeArgs and DashboardActionlistChartChartItemQueryFilterAttributeOutput values.
+// You can construct a concrete instance of `DashboardActionlistChartChartItemQueryFilterAttributeInput` via:
+//
+//	DashboardActionlistChartChartItemQueryFilterAttributeArgs{...}
+type DashboardActionlistChartChartItemQueryFilterAttributeInput interface {
+	pulumi.Input
+
+	ToDashboardActionlistChartChartItemQueryFilterAttributeOutput() DashboardActionlistChartChartItemQueryFilterAttributeOutput
+	ToDashboardActionlistChartChartItemQueryFilterAttributeOutputWithContext(context.Context) DashboardActionlistChartChartItemQueryFilterAttributeOutput
+}
+
+type DashboardActionlistChartChartItemQueryFilterAttributeArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardActionlistChartChartItemQueryFilterAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardActionlistChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (i DashboardActionlistChartChartItemQueryFilterAttributeArgs) ToDashboardActionlistChartChartItemQueryFilterAttributeOutput() DashboardActionlistChartChartItemQueryFilterAttributeOutput {
+	return i.ToDashboardActionlistChartChartItemQueryFilterAttributeOutputWithContext(context.Background())
+}
+
+func (i DashboardActionlistChartChartItemQueryFilterAttributeArgs) ToDashboardActionlistChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardActionlistChartChartItemQueryFilterAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardActionlistChartChartItemQueryFilterAttributeOutput)
+}
+
+type DashboardActionlistChartChartItemQueryFilterAttributeOutput struct{ *pulumi.OutputState }
+
+func (DashboardActionlistChartChartItemQueryFilterAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardActionlistChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (o DashboardActionlistChartChartItemQueryFilterAttributeOutput) ToDashboardActionlistChartChartItemQueryFilterAttributeOutput() DashboardActionlistChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+func (o DashboardActionlistChartChartItemQueryFilterAttributeOutput) ToDashboardActionlistChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardActionlistChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardActionlistChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardActionlistChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardActionlistChartChartItemQueryFilterAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardActionlistChartChartItemQueryFilterAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardActionlistChartThreshold struct {
+	Color       string  `pulumi:"color"`
+	DisplayText string  `pulumi:"displayText"`
+	Value       float64 `pulumi:"value"`
+}
+
+// DashboardActionlistChartThresholdInput is an input type that accepts DashboardActionlistChartThresholdArgs and DashboardActionlistChartThresholdOutput values.
+// You can construct a concrete instance of `DashboardActionlistChartThresholdInput` via:
+//
+//	DashboardActionlistChartThresholdArgs{...}
+type DashboardActionlistChartThresholdInput interface {
+	pulumi.Input
+
+	ToDashboardActionlistChartThresholdOutput() DashboardActionlistChartThresholdOutput
+	ToDashboardActionlistChartThresholdOutputWithContext(context.Context) DashboardActionlistChartThresholdOutput
+}
+
+type DashboardActionlistChartThresholdArgs struct {
+	Color       pulumi.StringInput  `pulumi:"color"`
+	DisplayText pulumi.StringInput  `pulumi:"displayText"`
+	Value       pulumi.Float64Input `pulumi:"value"`
+}
+
+func (DashboardActionlistChartThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardActionlistChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardActionlistChartThresholdArgs) ToDashboardActionlistChartThresholdOutput() DashboardActionlistChartThresholdOutput {
+	return i.ToDashboardActionlistChartThresholdOutputWithContext(context.Background())
+}
+
+func (i DashboardActionlistChartThresholdArgs) ToDashboardActionlistChartThresholdOutputWithContext(ctx context.Context) DashboardActionlistChartThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardActionlistChartThresholdOutput)
+}
+
+// DashboardActionlistChartThresholdArrayInput is an input type that accepts DashboardActionlistChartThresholdArray and DashboardActionlistChartThresholdArrayOutput values.
+// You can construct a concrete instance of `DashboardActionlistChartThresholdArrayInput` via:
+//
+//	DashboardActionlistChartThresholdArray{ DashboardActionlistChartThresholdArgs{...} }
+type DashboardActionlistChartThresholdArrayInput interface {
+	pulumi.Input
+
+	ToDashboardActionlistChartThresholdArrayOutput() DashboardActionlistChartThresholdArrayOutput
+	ToDashboardActionlistChartThresholdArrayOutputWithContext(context.Context) DashboardActionlistChartThresholdArrayOutput
+}
+
+type DashboardActionlistChartThresholdArray []DashboardActionlistChartThresholdInput
+
+func (DashboardActionlistChartThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardActionlistChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardActionlistChartThresholdArray) ToDashboardActionlistChartThresholdArrayOutput() DashboardActionlistChartThresholdArrayOutput {
+	return i.ToDashboardActionlistChartThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardActionlistChartThresholdArray) ToDashboardActionlistChartThresholdArrayOutputWithContext(ctx context.Context) DashboardActionlistChartThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardActionlistChartThresholdArrayOutput)
+}
+
+type DashboardActionlistChartThresholdOutput struct{ *pulumi.OutputState }
+
+func (DashboardActionlistChartThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardActionlistChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardActionlistChartThresholdOutput) ToDashboardActionlistChartThresholdOutput() DashboardActionlistChartThresholdOutput {
+	return o
+}
+
+func (o DashboardActionlistChartThresholdOutput) ToDashboardActionlistChartThresholdOutputWithContext(ctx context.Context) DashboardActionlistChartThresholdOutput {
+	return o
+}
+
+func (o DashboardActionlistChartThresholdOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardActionlistChartThreshold) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardActionlistChartThresholdOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardActionlistChartThreshold) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardActionlistChartThresholdOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v DashboardActionlistChartThreshold) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type DashboardActionlistChartThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardActionlistChartThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardActionlistChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardActionlistChartThresholdArrayOutput) ToDashboardActionlistChartThresholdArrayOutput() DashboardActionlistChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardActionlistChartThresholdArrayOutput) ToDashboardActionlistChartThresholdArrayOutputWithContext(ctx context.Context) DashboardActionlistChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardActionlistChartThresholdArrayOutput) Index(i pulumi.IntInput) DashboardActionlistChartThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardActionlistChartThreshold {
+		return vs[0].([]DashboardActionlistChartThreshold)[vs[1].(int)]
+	}).(DashboardActionlistChartThresholdOutput)
+}
+
+type DashboardActionlistChartValueMapping struct {
+	DisplayText string `pulumi:"displayText"`
+	MatchValue  string `pulumi:"matchValue"`
+	Order       int    `pulumi:"order"`
+	Type        string `pulumi:"type"`
+}
+
+// DashboardActionlistChartValueMappingInput is an input type that accepts DashboardActionlistChartValueMappingArgs and DashboardActionlistChartValueMappingOutput values.
+// You can construct a concrete instance of `DashboardActionlistChartValueMappingInput` via:
+//
+//	DashboardActionlistChartValueMappingArgs{...}
+type DashboardActionlistChartValueMappingInput interface {
+	pulumi.Input
+
+	ToDashboardActionlistChartValueMappingOutput() DashboardActionlistChartValueMappingOutput
+	ToDashboardActionlistChartValueMappingOutputWithContext(context.Context) DashboardActionlistChartValueMappingOutput
+}
+
+type DashboardActionlistChartValueMappingArgs struct {
+	DisplayText pulumi.StringInput `pulumi:"displayText"`
+	MatchValue  pulumi.StringInput `pulumi:"matchValue"`
+	Order       pulumi.IntInput    `pulumi:"order"`
+	Type        pulumi.StringInput `pulumi:"type"`
+}
+
+func (DashboardActionlistChartValueMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardActionlistChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardActionlistChartValueMappingArgs) ToDashboardActionlistChartValueMappingOutput() DashboardActionlistChartValueMappingOutput {
+	return i.ToDashboardActionlistChartValueMappingOutputWithContext(context.Background())
+}
+
+func (i DashboardActionlistChartValueMappingArgs) ToDashboardActionlistChartValueMappingOutputWithContext(ctx context.Context) DashboardActionlistChartValueMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardActionlistChartValueMappingOutput)
+}
+
+// DashboardActionlistChartValueMappingArrayInput is an input type that accepts DashboardActionlistChartValueMappingArray and DashboardActionlistChartValueMappingArrayOutput values.
+// You can construct a concrete instance of `DashboardActionlistChartValueMappingArrayInput` via:
+//
+//	DashboardActionlistChartValueMappingArray{ DashboardActionlistChartValueMappingArgs{...} }
+type DashboardActionlistChartValueMappingArrayInput interface {
+	pulumi.Input
+
+	ToDashboardActionlistChartValueMappingArrayOutput() DashboardActionlistChartValueMappingArrayOutput
+	ToDashboardActionlistChartValueMappingArrayOutputWithContext(context.Context) DashboardActionlistChartValueMappingArrayOutput
+}
+
+type DashboardActionlistChartValueMappingArray []DashboardActionlistChartValueMappingInput
+
+func (DashboardActionlistChartValueMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardActionlistChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardActionlistChartValueMappingArray) ToDashboardActionlistChartValueMappingArrayOutput() DashboardActionlistChartValueMappingArrayOutput {
+	return i.ToDashboardActionlistChartValueMappingArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardActionlistChartValueMappingArray) ToDashboardActionlistChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardActionlistChartValueMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardActionlistChartValueMappingArrayOutput)
+}
+
+type DashboardActionlistChartValueMappingOutput struct{ *pulumi.OutputState }
+
+func (DashboardActionlistChartValueMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardActionlistChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardActionlistChartValueMappingOutput) ToDashboardActionlistChartValueMappingOutput() DashboardActionlistChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardActionlistChartValueMappingOutput) ToDashboardActionlistChartValueMappingOutputWithContext(ctx context.Context) DashboardActionlistChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardActionlistChartValueMappingOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardActionlistChartValueMapping) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardActionlistChartValueMappingOutput) MatchValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardActionlistChartValueMapping) string { return v.MatchValue }).(pulumi.StringOutput)
+}
+
+func (o DashboardActionlistChartValueMappingOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v DashboardActionlistChartValueMapping) int { return v.Order }).(pulumi.IntOutput)
+}
+
+func (o DashboardActionlistChartValueMappingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardActionlistChartValueMapping) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardActionlistChartValueMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardActionlistChartValueMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardActionlistChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardActionlistChartValueMappingArrayOutput) ToDashboardActionlistChartValueMappingArrayOutput() DashboardActionlistChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardActionlistChartValueMappingArrayOutput) ToDashboardActionlistChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardActionlistChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardActionlistChartValueMappingArrayOutput) Index(i pulumi.IntInput) DashboardActionlistChartValueMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardActionlistChartValueMapping {
+		return vs[0].([]DashboardActionlistChartValueMapping)[vs[1].(int)]
+	}).(DashboardActionlistChartValueMappingOutput)
+}
+
+type DashboardAlerteventsChartChartItem struct {
+	Color           string  `pulumi:"color"`
+	ExpressionPlain string  `pulumi:"expressionPlain"`
+	Hidden          *bool   `pulumi:"hidden"`
+	Label           *string `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardAlerteventsChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardAlerteventsChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   *string                                                `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       *string                                                `pulumi:"queryGroupUnit"`
+	QueryLimit           *int                                                   `pulumi:"queryLimit"`
+	QueryPlain           string                                                 `pulumi:"queryPlain"`
+	QuerySortDirection   *int                                                   `pulumi:"querySortDirection"`
+	RefId                string                                                 `pulumi:"refId"`
+	Type                 string                                                 `pulumi:"type"`
+}
+
+// DashboardAlerteventsChartChartItemInput is an input type that accepts DashboardAlerteventsChartChartItemArgs and DashboardAlerteventsChartChartItemOutput values.
+// You can construct a concrete instance of `DashboardAlerteventsChartChartItemInput` via:
+//
+//	DashboardAlerteventsChartChartItemArgs{...}
+type DashboardAlerteventsChartChartItemInput interface {
+	pulumi.Input
+
+	ToDashboardAlerteventsChartChartItemOutput() DashboardAlerteventsChartChartItemOutput
+	ToDashboardAlerteventsChartChartItemOutputWithContext(context.Context) DashboardAlerteventsChartChartItemOutput
+}
+
+type DashboardAlerteventsChartChartItemArgs struct {
+	Color           pulumi.StringInput    `pulumi:"color"`
+	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
+	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
+	Label           pulumi.StringPtrInput `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardAlerteventsChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardAlerteventsChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   pulumi.StringPtrInput                                       `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       pulumi.StringPtrInput                                       `pulumi:"queryGroupUnit"`
+	QueryLimit           pulumi.IntPtrInput                                          `pulumi:"queryLimit"`
+	QueryPlain           pulumi.StringInput                                          `pulumi:"queryPlain"`
+	QuerySortDirection   pulumi.IntPtrInput                                          `pulumi:"querySortDirection"`
+	RefId                pulumi.StringInput                                          `pulumi:"refId"`
+	Type                 pulumi.StringInput                                          `pulumi:"type"`
+}
+
+func (DashboardAlerteventsChartChartItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAlerteventsChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardAlerteventsChartChartItemArgs) ToDashboardAlerteventsChartChartItemOutput() DashboardAlerteventsChartChartItemOutput {
+	return i.ToDashboardAlerteventsChartChartItemOutputWithContext(context.Background())
+}
+
+func (i DashboardAlerteventsChartChartItemArgs) ToDashboardAlerteventsChartChartItemOutputWithContext(ctx context.Context) DashboardAlerteventsChartChartItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAlerteventsChartChartItemOutput)
+}
+
+// DashboardAlerteventsChartChartItemArrayInput is an input type that accepts DashboardAlerteventsChartChartItemArray and DashboardAlerteventsChartChartItemArrayOutput values.
+// You can construct a concrete instance of `DashboardAlerteventsChartChartItemArrayInput` via:
+//
+//	DashboardAlerteventsChartChartItemArray{ DashboardAlerteventsChartChartItemArgs{...} }
+type DashboardAlerteventsChartChartItemArrayInput interface {
+	pulumi.Input
+
+	ToDashboardAlerteventsChartChartItemArrayOutput() DashboardAlerteventsChartChartItemArrayOutput
+	ToDashboardAlerteventsChartChartItemArrayOutputWithContext(context.Context) DashboardAlerteventsChartChartItemArrayOutput
+}
+
+type DashboardAlerteventsChartChartItemArray []DashboardAlerteventsChartChartItemInput
+
+func (DashboardAlerteventsChartChartItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardAlerteventsChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardAlerteventsChartChartItemArray) ToDashboardAlerteventsChartChartItemArrayOutput() DashboardAlerteventsChartChartItemArrayOutput {
+	return i.ToDashboardAlerteventsChartChartItemArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardAlerteventsChartChartItemArray) ToDashboardAlerteventsChartChartItemArrayOutputWithContext(ctx context.Context) DashboardAlerteventsChartChartItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAlerteventsChartChartItemArrayOutput)
+}
+
+type DashboardAlerteventsChartChartItemOutput struct{ *pulumi.OutputState }
+
+func (DashboardAlerteventsChartChartItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAlerteventsChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardAlerteventsChartChartItemOutput) ToDashboardAlerteventsChartChartItemOutput() DashboardAlerteventsChartChartItemOutput {
+	return o
+}
+
+func (o DashboardAlerteventsChartChartItemOutput) ToDashboardAlerteventsChartChartItemOutputWithContext(ctx context.Context) DashboardAlerteventsChartChartItemOutput {
+	return o
+}
+
+func (o DashboardAlerteventsChartChartItemOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartChartItem) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardAlerteventsChartChartItemOutput) ExpressionPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartChartItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardAlerteventsChartChartItemOutput) Hidden() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartChartItem) *bool { return v.Hidden }).(pulumi.BoolPtrOutput)
+}
+
+func (o DashboardAlerteventsChartChartItemOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardAlerteventsChartChartItemOutput) QueryFilterAsset() DashboardAlerteventsChartChartItemQueryFilterAssetOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartChartItem) DashboardAlerteventsChartChartItemQueryFilterAsset {
+		return v.QueryFilterAsset
+	}).(DashboardAlerteventsChartChartItemQueryFilterAssetOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardAlerteventsChartChartItemOutput) QueryFilterAttribute() DashboardAlerteventsChartChartItemQueryFilterAttributeOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartChartItem) DashboardAlerteventsChartChartItemQueryFilterAttribute {
+		return v.QueryFilterAttribute
+	}).(DashboardAlerteventsChartChartItemQueryFilterAttributeOutput)
+}
+
+func (o DashboardAlerteventsChartChartItemOutput) QueryGroupFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartChartItem) *string { return v.QueryGroupFunction }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardAlerteventsChartChartItemOutput) QueryGroupUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartChartItem) *string { return v.QueryGroupUnit }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardAlerteventsChartChartItemOutput) QueryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartChartItem) *int { return v.QueryLimit }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardAlerteventsChartChartItemOutput) QueryPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartChartItem) string { return v.QueryPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardAlerteventsChartChartItemOutput) QuerySortDirection() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartChartItem) *int { return v.QuerySortDirection }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardAlerteventsChartChartItemOutput) RefId() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartChartItem) string { return v.RefId }).(pulumi.StringOutput)
+}
+
+func (o DashboardAlerteventsChartChartItemOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartChartItem) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardAlerteventsChartChartItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardAlerteventsChartChartItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardAlerteventsChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardAlerteventsChartChartItemArrayOutput) ToDashboardAlerteventsChartChartItemArrayOutput() DashboardAlerteventsChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardAlerteventsChartChartItemArrayOutput) ToDashboardAlerteventsChartChartItemArrayOutputWithContext(ctx context.Context) DashboardAlerteventsChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardAlerteventsChartChartItemArrayOutput) Index(i pulumi.IntInput) DashboardAlerteventsChartChartItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardAlerteventsChartChartItem {
+		return vs[0].([]DashboardAlerteventsChartChartItem)[vs[1].(int)]
+	}).(DashboardAlerteventsChartChartItemOutput)
+}
+
+type DashboardAlerteventsChartChartItemQueryFilterAsset struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardAlerteventsChartChartItemQueryFilterAssetInput is an input type that accepts DashboardAlerteventsChartChartItemQueryFilterAssetArgs and DashboardAlerteventsChartChartItemQueryFilterAssetOutput values.
+// You can construct a concrete instance of `DashboardAlerteventsChartChartItemQueryFilterAssetInput` via:
+//
+//	DashboardAlerteventsChartChartItemQueryFilterAssetArgs{...}
+type DashboardAlerteventsChartChartItemQueryFilterAssetInput interface {
+	pulumi.Input
+
+	ToDashboardAlerteventsChartChartItemQueryFilterAssetOutput() DashboardAlerteventsChartChartItemQueryFilterAssetOutput
+	ToDashboardAlerteventsChartChartItemQueryFilterAssetOutputWithContext(context.Context) DashboardAlerteventsChartChartItemQueryFilterAssetOutput
+}
+
+type DashboardAlerteventsChartChartItemQueryFilterAssetArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardAlerteventsChartChartItemQueryFilterAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAlerteventsChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (i DashboardAlerteventsChartChartItemQueryFilterAssetArgs) ToDashboardAlerteventsChartChartItemQueryFilterAssetOutput() DashboardAlerteventsChartChartItemQueryFilterAssetOutput {
+	return i.ToDashboardAlerteventsChartChartItemQueryFilterAssetOutputWithContext(context.Background())
+}
+
+func (i DashboardAlerteventsChartChartItemQueryFilterAssetArgs) ToDashboardAlerteventsChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardAlerteventsChartChartItemQueryFilterAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAlerteventsChartChartItemQueryFilterAssetOutput)
+}
+
+type DashboardAlerteventsChartChartItemQueryFilterAssetOutput struct{ *pulumi.OutputState }
+
+func (DashboardAlerteventsChartChartItemQueryFilterAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAlerteventsChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (o DashboardAlerteventsChartChartItemQueryFilterAssetOutput) ToDashboardAlerteventsChartChartItemQueryFilterAssetOutput() DashboardAlerteventsChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+func (o DashboardAlerteventsChartChartItemQueryFilterAssetOutput) ToDashboardAlerteventsChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardAlerteventsChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardAlerteventsChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardAlerteventsChartChartItemQueryFilterAssetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartChartItemQueryFilterAsset) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardAlerteventsChartChartItemQueryFilterAttribute struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardAlerteventsChartChartItemQueryFilterAttributeInput is an input type that accepts DashboardAlerteventsChartChartItemQueryFilterAttributeArgs and DashboardAlerteventsChartChartItemQueryFilterAttributeOutput values.
+// You can construct a concrete instance of `DashboardAlerteventsChartChartItemQueryFilterAttributeInput` via:
+//
+//	DashboardAlerteventsChartChartItemQueryFilterAttributeArgs{...}
+type DashboardAlerteventsChartChartItemQueryFilterAttributeInput interface {
+	pulumi.Input
+
+	ToDashboardAlerteventsChartChartItemQueryFilterAttributeOutput() DashboardAlerteventsChartChartItemQueryFilterAttributeOutput
+	ToDashboardAlerteventsChartChartItemQueryFilterAttributeOutputWithContext(context.Context) DashboardAlerteventsChartChartItemQueryFilterAttributeOutput
+}
+
+type DashboardAlerteventsChartChartItemQueryFilterAttributeArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardAlerteventsChartChartItemQueryFilterAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAlerteventsChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (i DashboardAlerteventsChartChartItemQueryFilterAttributeArgs) ToDashboardAlerteventsChartChartItemQueryFilterAttributeOutput() DashboardAlerteventsChartChartItemQueryFilterAttributeOutput {
+	return i.ToDashboardAlerteventsChartChartItemQueryFilterAttributeOutputWithContext(context.Background())
+}
+
+func (i DashboardAlerteventsChartChartItemQueryFilterAttributeArgs) ToDashboardAlerteventsChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardAlerteventsChartChartItemQueryFilterAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAlerteventsChartChartItemQueryFilterAttributeOutput)
+}
+
+type DashboardAlerteventsChartChartItemQueryFilterAttributeOutput struct{ *pulumi.OutputState }
+
+func (DashboardAlerteventsChartChartItemQueryFilterAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAlerteventsChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (o DashboardAlerteventsChartChartItemQueryFilterAttributeOutput) ToDashboardAlerteventsChartChartItemQueryFilterAttributeOutput() DashboardAlerteventsChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+func (o DashboardAlerteventsChartChartItemQueryFilterAttributeOutput) ToDashboardAlerteventsChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardAlerteventsChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardAlerteventsChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardAlerteventsChartChartItemQueryFilterAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartChartItemQueryFilterAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardAlerteventsChartThreshold struct {
+	Color       string  `pulumi:"color"`
+	DisplayText string  `pulumi:"displayText"`
+	Value       float64 `pulumi:"value"`
+}
+
+// DashboardAlerteventsChartThresholdInput is an input type that accepts DashboardAlerteventsChartThresholdArgs and DashboardAlerteventsChartThresholdOutput values.
+// You can construct a concrete instance of `DashboardAlerteventsChartThresholdInput` via:
+//
+//	DashboardAlerteventsChartThresholdArgs{...}
+type DashboardAlerteventsChartThresholdInput interface {
+	pulumi.Input
+
+	ToDashboardAlerteventsChartThresholdOutput() DashboardAlerteventsChartThresholdOutput
+	ToDashboardAlerteventsChartThresholdOutputWithContext(context.Context) DashboardAlerteventsChartThresholdOutput
+}
+
+type DashboardAlerteventsChartThresholdArgs struct {
+	Color       pulumi.StringInput  `pulumi:"color"`
+	DisplayText pulumi.StringInput  `pulumi:"displayText"`
+	Value       pulumi.Float64Input `pulumi:"value"`
+}
+
+func (DashboardAlerteventsChartThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAlerteventsChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardAlerteventsChartThresholdArgs) ToDashboardAlerteventsChartThresholdOutput() DashboardAlerteventsChartThresholdOutput {
+	return i.ToDashboardAlerteventsChartThresholdOutputWithContext(context.Background())
+}
+
+func (i DashboardAlerteventsChartThresholdArgs) ToDashboardAlerteventsChartThresholdOutputWithContext(ctx context.Context) DashboardAlerteventsChartThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAlerteventsChartThresholdOutput)
+}
+
+// DashboardAlerteventsChartThresholdArrayInput is an input type that accepts DashboardAlerteventsChartThresholdArray and DashboardAlerteventsChartThresholdArrayOutput values.
+// You can construct a concrete instance of `DashboardAlerteventsChartThresholdArrayInput` via:
+//
+//	DashboardAlerteventsChartThresholdArray{ DashboardAlerteventsChartThresholdArgs{...} }
+type DashboardAlerteventsChartThresholdArrayInput interface {
+	pulumi.Input
+
+	ToDashboardAlerteventsChartThresholdArrayOutput() DashboardAlerteventsChartThresholdArrayOutput
+	ToDashboardAlerteventsChartThresholdArrayOutputWithContext(context.Context) DashboardAlerteventsChartThresholdArrayOutput
+}
+
+type DashboardAlerteventsChartThresholdArray []DashboardAlerteventsChartThresholdInput
+
+func (DashboardAlerteventsChartThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardAlerteventsChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardAlerteventsChartThresholdArray) ToDashboardAlerteventsChartThresholdArrayOutput() DashboardAlerteventsChartThresholdArrayOutput {
+	return i.ToDashboardAlerteventsChartThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardAlerteventsChartThresholdArray) ToDashboardAlerteventsChartThresholdArrayOutputWithContext(ctx context.Context) DashboardAlerteventsChartThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAlerteventsChartThresholdArrayOutput)
+}
+
+type DashboardAlerteventsChartThresholdOutput struct{ *pulumi.OutputState }
+
+func (DashboardAlerteventsChartThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAlerteventsChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardAlerteventsChartThresholdOutput) ToDashboardAlerteventsChartThresholdOutput() DashboardAlerteventsChartThresholdOutput {
+	return o
+}
+
+func (o DashboardAlerteventsChartThresholdOutput) ToDashboardAlerteventsChartThresholdOutputWithContext(ctx context.Context) DashboardAlerteventsChartThresholdOutput {
+	return o
+}
+
+func (o DashboardAlerteventsChartThresholdOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartThreshold) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardAlerteventsChartThresholdOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartThreshold) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardAlerteventsChartThresholdOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v DashboardAlerteventsChartThreshold) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type DashboardAlerteventsChartThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardAlerteventsChartThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardAlerteventsChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardAlerteventsChartThresholdArrayOutput) ToDashboardAlerteventsChartThresholdArrayOutput() DashboardAlerteventsChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardAlerteventsChartThresholdArrayOutput) ToDashboardAlerteventsChartThresholdArrayOutputWithContext(ctx context.Context) DashboardAlerteventsChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardAlerteventsChartThresholdArrayOutput) Index(i pulumi.IntInput) DashboardAlerteventsChartThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardAlerteventsChartThreshold {
+		return vs[0].([]DashboardAlerteventsChartThreshold)[vs[1].(int)]
+	}).(DashboardAlerteventsChartThresholdOutput)
+}
+
+type DashboardAlerteventsChartValueMapping struct {
+	DisplayText string `pulumi:"displayText"`
+	MatchValue  string `pulumi:"matchValue"`
+	Order       int    `pulumi:"order"`
+	Type        string `pulumi:"type"`
+}
+
+// DashboardAlerteventsChartValueMappingInput is an input type that accepts DashboardAlerteventsChartValueMappingArgs and DashboardAlerteventsChartValueMappingOutput values.
+// You can construct a concrete instance of `DashboardAlerteventsChartValueMappingInput` via:
+//
+//	DashboardAlerteventsChartValueMappingArgs{...}
+type DashboardAlerteventsChartValueMappingInput interface {
+	pulumi.Input
+
+	ToDashboardAlerteventsChartValueMappingOutput() DashboardAlerteventsChartValueMappingOutput
+	ToDashboardAlerteventsChartValueMappingOutputWithContext(context.Context) DashboardAlerteventsChartValueMappingOutput
+}
+
+type DashboardAlerteventsChartValueMappingArgs struct {
+	DisplayText pulumi.StringInput `pulumi:"displayText"`
+	MatchValue  pulumi.StringInput `pulumi:"matchValue"`
+	Order       pulumi.IntInput    `pulumi:"order"`
+	Type        pulumi.StringInput `pulumi:"type"`
+}
+
+func (DashboardAlerteventsChartValueMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAlerteventsChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardAlerteventsChartValueMappingArgs) ToDashboardAlerteventsChartValueMappingOutput() DashboardAlerteventsChartValueMappingOutput {
+	return i.ToDashboardAlerteventsChartValueMappingOutputWithContext(context.Background())
+}
+
+func (i DashboardAlerteventsChartValueMappingArgs) ToDashboardAlerteventsChartValueMappingOutputWithContext(ctx context.Context) DashboardAlerteventsChartValueMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAlerteventsChartValueMappingOutput)
+}
+
+// DashboardAlerteventsChartValueMappingArrayInput is an input type that accepts DashboardAlerteventsChartValueMappingArray and DashboardAlerteventsChartValueMappingArrayOutput values.
+// You can construct a concrete instance of `DashboardAlerteventsChartValueMappingArrayInput` via:
+//
+//	DashboardAlerteventsChartValueMappingArray{ DashboardAlerteventsChartValueMappingArgs{...} }
+type DashboardAlerteventsChartValueMappingArrayInput interface {
+	pulumi.Input
+
+	ToDashboardAlerteventsChartValueMappingArrayOutput() DashboardAlerteventsChartValueMappingArrayOutput
+	ToDashboardAlerteventsChartValueMappingArrayOutputWithContext(context.Context) DashboardAlerteventsChartValueMappingArrayOutput
+}
+
+type DashboardAlerteventsChartValueMappingArray []DashboardAlerteventsChartValueMappingInput
+
+func (DashboardAlerteventsChartValueMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardAlerteventsChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardAlerteventsChartValueMappingArray) ToDashboardAlerteventsChartValueMappingArrayOutput() DashboardAlerteventsChartValueMappingArrayOutput {
+	return i.ToDashboardAlerteventsChartValueMappingArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardAlerteventsChartValueMappingArray) ToDashboardAlerteventsChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardAlerteventsChartValueMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAlerteventsChartValueMappingArrayOutput)
+}
+
+type DashboardAlerteventsChartValueMappingOutput struct{ *pulumi.OutputState }
+
+func (DashboardAlerteventsChartValueMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAlerteventsChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardAlerteventsChartValueMappingOutput) ToDashboardAlerteventsChartValueMappingOutput() DashboardAlerteventsChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardAlerteventsChartValueMappingOutput) ToDashboardAlerteventsChartValueMappingOutputWithContext(ctx context.Context) DashboardAlerteventsChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardAlerteventsChartValueMappingOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartValueMapping) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardAlerteventsChartValueMappingOutput) MatchValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartValueMapping) string { return v.MatchValue }).(pulumi.StringOutput)
+}
+
+func (o DashboardAlerteventsChartValueMappingOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartValueMapping) int { return v.Order }).(pulumi.IntOutput)
+}
+
+func (o DashboardAlerteventsChartValueMappingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAlerteventsChartValueMapping) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardAlerteventsChartValueMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardAlerteventsChartValueMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardAlerteventsChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardAlerteventsChartValueMappingArrayOutput) ToDashboardAlerteventsChartValueMappingArrayOutput() DashboardAlerteventsChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardAlerteventsChartValueMappingArrayOutput) ToDashboardAlerteventsChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardAlerteventsChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardAlerteventsChartValueMappingArrayOutput) Index(i pulumi.IntInput) DashboardAlerteventsChartValueMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardAlerteventsChartValueMapping {
+		return vs[0].([]DashboardAlerteventsChartValueMapping)[vs[1].(int)]
+	}).(DashboardAlerteventsChartValueMappingOutput)
+}
+
+type DashboardAlertlistChartChartItem struct {
+	Color           string  `pulumi:"color"`
+	ExpressionPlain string  `pulumi:"expressionPlain"`
+	Hidden          *bool   `pulumi:"hidden"`
+	Label           *string `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardAlertlistChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardAlertlistChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   *string                                              `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       *string                                              `pulumi:"queryGroupUnit"`
+	QueryLimit           *int                                                 `pulumi:"queryLimit"`
+	QueryPlain           string                                               `pulumi:"queryPlain"`
+	QuerySortDirection   *int                                                 `pulumi:"querySortDirection"`
+	RefId                string                                               `pulumi:"refId"`
+	Type                 string                                               `pulumi:"type"`
+}
+
+// DashboardAlertlistChartChartItemInput is an input type that accepts DashboardAlertlistChartChartItemArgs and DashboardAlertlistChartChartItemOutput values.
+// You can construct a concrete instance of `DashboardAlertlistChartChartItemInput` via:
+//
+//	DashboardAlertlistChartChartItemArgs{...}
+type DashboardAlertlistChartChartItemInput interface {
+	pulumi.Input
+
+	ToDashboardAlertlistChartChartItemOutput() DashboardAlertlistChartChartItemOutput
+	ToDashboardAlertlistChartChartItemOutputWithContext(context.Context) DashboardAlertlistChartChartItemOutput
+}
+
+type DashboardAlertlistChartChartItemArgs struct {
+	Color           pulumi.StringInput    `pulumi:"color"`
+	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
+	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
+	Label           pulumi.StringPtrInput `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardAlertlistChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardAlertlistChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   pulumi.StringPtrInput                                     `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       pulumi.StringPtrInput                                     `pulumi:"queryGroupUnit"`
+	QueryLimit           pulumi.IntPtrInput                                        `pulumi:"queryLimit"`
+	QueryPlain           pulumi.StringInput                                        `pulumi:"queryPlain"`
+	QuerySortDirection   pulumi.IntPtrInput                                        `pulumi:"querySortDirection"`
+	RefId                pulumi.StringInput                                        `pulumi:"refId"`
+	Type                 pulumi.StringInput                                        `pulumi:"type"`
+}
+
+func (DashboardAlertlistChartChartItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAlertlistChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardAlertlistChartChartItemArgs) ToDashboardAlertlistChartChartItemOutput() DashboardAlertlistChartChartItemOutput {
+	return i.ToDashboardAlertlistChartChartItemOutputWithContext(context.Background())
+}
+
+func (i DashboardAlertlistChartChartItemArgs) ToDashboardAlertlistChartChartItemOutputWithContext(ctx context.Context) DashboardAlertlistChartChartItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAlertlistChartChartItemOutput)
+}
+
+// DashboardAlertlistChartChartItemArrayInput is an input type that accepts DashboardAlertlistChartChartItemArray and DashboardAlertlistChartChartItemArrayOutput values.
+// You can construct a concrete instance of `DashboardAlertlistChartChartItemArrayInput` via:
+//
+//	DashboardAlertlistChartChartItemArray{ DashboardAlertlistChartChartItemArgs{...} }
+type DashboardAlertlistChartChartItemArrayInput interface {
+	pulumi.Input
+
+	ToDashboardAlertlistChartChartItemArrayOutput() DashboardAlertlistChartChartItemArrayOutput
+	ToDashboardAlertlistChartChartItemArrayOutputWithContext(context.Context) DashboardAlertlistChartChartItemArrayOutput
+}
+
+type DashboardAlertlistChartChartItemArray []DashboardAlertlistChartChartItemInput
+
+func (DashboardAlertlistChartChartItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardAlertlistChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardAlertlistChartChartItemArray) ToDashboardAlertlistChartChartItemArrayOutput() DashboardAlertlistChartChartItemArrayOutput {
+	return i.ToDashboardAlertlistChartChartItemArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardAlertlistChartChartItemArray) ToDashboardAlertlistChartChartItemArrayOutputWithContext(ctx context.Context) DashboardAlertlistChartChartItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAlertlistChartChartItemArrayOutput)
+}
+
+type DashboardAlertlistChartChartItemOutput struct{ *pulumi.OutputState }
+
+func (DashboardAlertlistChartChartItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAlertlistChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardAlertlistChartChartItemOutput) ToDashboardAlertlistChartChartItemOutput() DashboardAlertlistChartChartItemOutput {
+	return o
+}
+
+func (o DashboardAlertlistChartChartItemOutput) ToDashboardAlertlistChartChartItemOutputWithContext(ctx context.Context) DashboardAlertlistChartChartItemOutput {
+	return o
+}
+
+func (o DashboardAlertlistChartChartItemOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartChartItem) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardAlertlistChartChartItemOutput) ExpressionPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartChartItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardAlertlistChartChartItemOutput) Hidden() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartChartItem) *bool { return v.Hidden }).(pulumi.BoolPtrOutput)
+}
+
+func (o DashboardAlertlistChartChartItemOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardAlertlistChartChartItemOutput) QueryFilterAsset() DashboardAlertlistChartChartItemQueryFilterAssetOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartChartItem) DashboardAlertlistChartChartItemQueryFilterAsset {
+		return v.QueryFilterAsset
+	}).(DashboardAlertlistChartChartItemQueryFilterAssetOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardAlertlistChartChartItemOutput) QueryFilterAttribute() DashboardAlertlistChartChartItemQueryFilterAttributeOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartChartItem) DashboardAlertlistChartChartItemQueryFilterAttribute {
+		return v.QueryFilterAttribute
+	}).(DashboardAlertlistChartChartItemQueryFilterAttributeOutput)
+}
+
+func (o DashboardAlertlistChartChartItemOutput) QueryGroupFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartChartItem) *string { return v.QueryGroupFunction }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardAlertlistChartChartItemOutput) QueryGroupUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartChartItem) *string { return v.QueryGroupUnit }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardAlertlistChartChartItemOutput) QueryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartChartItem) *int { return v.QueryLimit }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardAlertlistChartChartItemOutput) QueryPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartChartItem) string { return v.QueryPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardAlertlistChartChartItemOutput) QuerySortDirection() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartChartItem) *int { return v.QuerySortDirection }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardAlertlistChartChartItemOutput) RefId() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartChartItem) string { return v.RefId }).(pulumi.StringOutput)
+}
+
+func (o DashboardAlertlistChartChartItemOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartChartItem) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardAlertlistChartChartItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardAlertlistChartChartItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardAlertlistChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardAlertlistChartChartItemArrayOutput) ToDashboardAlertlistChartChartItemArrayOutput() DashboardAlertlistChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardAlertlistChartChartItemArrayOutput) ToDashboardAlertlistChartChartItemArrayOutputWithContext(ctx context.Context) DashboardAlertlistChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardAlertlistChartChartItemArrayOutput) Index(i pulumi.IntInput) DashboardAlertlistChartChartItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardAlertlistChartChartItem {
+		return vs[0].([]DashboardAlertlistChartChartItem)[vs[1].(int)]
+	}).(DashboardAlertlistChartChartItemOutput)
+}
+
+type DashboardAlertlistChartChartItemQueryFilterAsset struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardAlertlistChartChartItemQueryFilterAssetInput is an input type that accepts DashboardAlertlistChartChartItemQueryFilterAssetArgs and DashboardAlertlistChartChartItemQueryFilterAssetOutput values.
+// You can construct a concrete instance of `DashboardAlertlistChartChartItemQueryFilterAssetInput` via:
+//
+//	DashboardAlertlistChartChartItemQueryFilterAssetArgs{...}
+type DashboardAlertlistChartChartItemQueryFilterAssetInput interface {
+	pulumi.Input
+
+	ToDashboardAlertlistChartChartItemQueryFilterAssetOutput() DashboardAlertlistChartChartItemQueryFilterAssetOutput
+	ToDashboardAlertlistChartChartItemQueryFilterAssetOutputWithContext(context.Context) DashboardAlertlistChartChartItemQueryFilterAssetOutput
+}
+
+type DashboardAlertlistChartChartItemQueryFilterAssetArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardAlertlistChartChartItemQueryFilterAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAlertlistChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (i DashboardAlertlistChartChartItemQueryFilterAssetArgs) ToDashboardAlertlistChartChartItemQueryFilterAssetOutput() DashboardAlertlistChartChartItemQueryFilterAssetOutput {
+	return i.ToDashboardAlertlistChartChartItemQueryFilterAssetOutputWithContext(context.Background())
+}
+
+func (i DashboardAlertlistChartChartItemQueryFilterAssetArgs) ToDashboardAlertlistChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardAlertlistChartChartItemQueryFilterAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAlertlistChartChartItemQueryFilterAssetOutput)
+}
+
+type DashboardAlertlistChartChartItemQueryFilterAssetOutput struct{ *pulumi.OutputState }
+
+func (DashboardAlertlistChartChartItemQueryFilterAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAlertlistChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (o DashboardAlertlistChartChartItemQueryFilterAssetOutput) ToDashboardAlertlistChartChartItemQueryFilterAssetOutput() DashboardAlertlistChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+func (o DashboardAlertlistChartChartItemQueryFilterAssetOutput) ToDashboardAlertlistChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardAlertlistChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardAlertlistChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardAlertlistChartChartItemQueryFilterAssetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartChartItemQueryFilterAsset) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardAlertlistChartChartItemQueryFilterAttribute struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardAlertlistChartChartItemQueryFilterAttributeInput is an input type that accepts DashboardAlertlistChartChartItemQueryFilterAttributeArgs and DashboardAlertlistChartChartItemQueryFilterAttributeOutput values.
+// You can construct a concrete instance of `DashboardAlertlistChartChartItemQueryFilterAttributeInput` via:
+//
+//	DashboardAlertlistChartChartItemQueryFilterAttributeArgs{...}
+type DashboardAlertlistChartChartItemQueryFilterAttributeInput interface {
+	pulumi.Input
+
+	ToDashboardAlertlistChartChartItemQueryFilterAttributeOutput() DashboardAlertlistChartChartItemQueryFilterAttributeOutput
+	ToDashboardAlertlistChartChartItemQueryFilterAttributeOutputWithContext(context.Context) DashboardAlertlistChartChartItemQueryFilterAttributeOutput
+}
+
+type DashboardAlertlistChartChartItemQueryFilterAttributeArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardAlertlistChartChartItemQueryFilterAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAlertlistChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (i DashboardAlertlistChartChartItemQueryFilterAttributeArgs) ToDashboardAlertlistChartChartItemQueryFilterAttributeOutput() DashboardAlertlistChartChartItemQueryFilterAttributeOutput {
+	return i.ToDashboardAlertlistChartChartItemQueryFilterAttributeOutputWithContext(context.Background())
+}
+
+func (i DashboardAlertlistChartChartItemQueryFilterAttributeArgs) ToDashboardAlertlistChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardAlertlistChartChartItemQueryFilterAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAlertlistChartChartItemQueryFilterAttributeOutput)
+}
+
+type DashboardAlertlistChartChartItemQueryFilterAttributeOutput struct{ *pulumi.OutputState }
+
+func (DashboardAlertlistChartChartItemQueryFilterAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAlertlistChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (o DashboardAlertlistChartChartItemQueryFilterAttributeOutput) ToDashboardAlertlistChartChartItemQueryFilterAttributeOutput() DashboardAlertlistChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+func (o DashboardAlertlistChartChartItemQueryFilterAttributeOutput) ToDashboardAlertlistChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardAlertlistChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardAlertlistChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardAlertlistChartChartItemQueryFilterAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartChartItemQueryFilterAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardAlertlistChartThreshold struct {
+	Color       string  `pulumi:"color"`
+	DisplayText string  `pulumi:"displayText"`
+	Value       float64 `pulumi:"value"`
+}
+
+// DashboardAlertlistChartThresholdInput is an input type that accepts DashboardAlertlistChartThresholdArgs and DashboardAlertlistChartThresholdOutput values.
+// You can construct a concrete instance of `DashboardAlertlistChartThresholdInput` via:
+//
+//	DashboardAlertlistChartThresholdArgs{...}
+type DashboardAlertlistChartThresholdInput interface {
+	pulumi.Input
+
+	ToDashboardAlertlistChartThresholdOutput() DashboardAlertlistChartThresholdOutput
+	ToDashboardAlertlistChartThresholdOutputWithContext(context.Context) DashboardAlertlistChartThresholdOutput
+}
+
+type DashboardAlertlistChartThresholdArgs struct {
+	Color       pulumi.StringInput  `pulumi:"color"`
+	DisplayText pulumi.StringInput  `pulumi:"displayText"`
+	Value       pulumi.Float64Input `pulumi:"value"`
+}
+
+func (DashboardAlertlistChartThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAlertlistChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardAlertlistChartThresholdArgs) ToDashboardAlertlistChartThresholdOutput() DashboardAlertlistChartThresholdOutput {
+	return i.ToDashboardAlertlistChartThresholdOutputWithContext(context.Background())
+}
+
+func (i DashboardAlertlistChartThresholdArgs) ToDashboardAlertlistChartThresholdOutputWithContext(ctx context.Context) DashboardAlertlistChartThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAlertlistChartThresholdOutput)
+}
+
+// DashboardAlertlistChartThresholdArrayInput is an input type that accepts DashboardAlertlistChartThresholdArray and DashboardAlertlistChartThresholdArrayOutput values.
+// You can construct a concrete instance of `DashboardAlertlistChartThresholdArrayInput` via:
+//
+//	DashboardAlertlistChartThresholdArray{ DashboardAlertlistChartThresholdArgs{...} }
+type DashboardAlertlistChartThresholdArrayInput interface {
+	pulumi.Input
+
+	ToDashboardAlertlistChartThresholdArrayOutput() DashboardAlertlistChartThresholdArrayOutput
+	ToDashboardAlertlistChartThresholdArrayOutputWithContext(context.Context) DashboardAlertlistChartThresholdArrayOutput
+}
+
+type DashboardAlertlistChartThresholdArray []DashboardAlertlistChartThresholdInput
+
+func (DashboardAlertlistChartThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardAlertlistChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardAlertlistChartThresholdArray) ToDashboardAlertlistChartThresholdArrayOutput() DashboardAlertlistChartThresholdArrayOutput {
+	return i.ToDashboardAlertlistChartThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardAlertlistChartThresholdArray) ToDashboardAlertlistChartThresholdArrayOutputWithContext(ctx context.Context) DashboardAlertlistChartThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAlertlistChartThresholdArrayOutput)
+}
+
+type DashboardAlertlistChartThresholdOutput struct{ *pulumi.OutputState }
+
+func (DashboardAlertlistChartThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAlertlistChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardAlertlistChartThresholdOutput) ToDashboardAlertlistChartThresholdOutput() DashboardAlertlistChartThresholdOutput {
+	return o
+}
+
+func (o DashboardAlertlistChartThresholdOutput) ToDashboardAlertlistChartThresholdOutputWithContext(ctx context.Context) DashboardAlertlistChartThresholdOutput {
+	return o
+}
+
+func (o DashboardAlertlistChartThresholdOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartThreshold) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardAlertlistChartThresholdOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartThreshold) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardAlertlistChartThresholdOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v DashboardAlertlistChartThreshold) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type DashboardAlertlistChartThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardAlertlistChartThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardAlertlistChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardAlertlistChartThresholdArrayOutput) ToDashboardAlertlistChartThresholdArrayOutput() DashboardAlertlistChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardAlertlistChartThresholdArrayOutput) ToDashboardAlertlistChartThresholdArrayOutputWithContext(ctx context.Context) DashboardAlertlistChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardAlertlistChartThresholdArrayOutput) Index(i pulumi.IntInput) DashboardAlertlistChartThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardAlertlistChartThreshold {
+		return vs[0].([]DashboardAlertlistChartThreshold)[vs[1].(int)]
+	}).(DashboardAlertlistChartThresholdOutput)
+}
+
+type DashboardAlertlistChartValueMapping struct {
+	DisplayText string `pulumi:"displayText"`
+	MatchValue  string `pulumi:"matchValue"`
+	Order       int    `pulumi:"order"`
+	Type        string `pulumi:"type"`
+}
+
+// DashboardAlertlistChartValueMappingInput is an input type that accepts DashboardAlertlistChartValueMappingArgs and DashboardAlertlistChartValueMappingOutput values.
+// You can construct a concrete instance of `DashboardAlertlistChartValueMappingInput` via:
+//
+//	DashboardAlertlistChartValueMappingArgs{...}
+type DashboardAlertlistChartValueMappingInput interface {
+	pulumi.Input
+
+	ToDashboardAlertlistChartValueMappingOutput() DashboardAlertlistChartValueMappingOutput
+	ToDashboardAlertlistChartValueMappingOutputWithContext(context.Context) DashboardAlertlistChartValueMappingOutput
+}
+
+type DashboardAlertlistChartValueMappingArgs struct {
+	DisplayText pulumi.StringInput `pulumi:"displayText"`
+	MatchValue  pulumi.StringInput `pulumi:"matchValue"`
+	Order       pulumi.IntInput    `pulumi:"order"`
+	Type        pulumi.StringInput `pulumi:"type"`
+}
+
+func (DashboardAlertlistChartValueMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAlertlistChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardAlertlistChartValueMappingArgs) ToDashboardAlertlistChartValueMappingOutput() DashboardAlertlistChartValueMappingOutput {
+	return i.ToDashboardAlertlistChartValueMappingOutputWithContext(context.Background())
+}
+
+func (i DashboardAlertlistChartValueMappingArgs) ToDashboardAlertlistChartValueMappingOutputWithContext(ctx context.Context) DashboardAlertlistChartValueMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAlertlistChartValueMappingOutput)
+}
+
+// DashboardAlertlistChartValueMappingArrayInput is an input type that accepts DashboardAlertlistChartValueMappingArray and DashboardAlertlistChartValueMappingArrayOutput values.
+// You can construct a concrete instance of `DashboardAlertlistChartValueMappingArrayInput` via:
+//
+//	DashboardAlertlistChartValueMappingArray{ DashboardAlertlistChartValueMappingArgs{...} }
+type DashboardAlertlistChartValueMappingArrayInput interface {
+	pulumi.Input
+
+	ToDashboardAlertlistChartValueMappingArrayOutput() DashboardAlertlistChartValueMappingArrayOutput
+	ToDashboardAlertlistChartValueMappingArrayOutputWithContext(context.Context) DashboardAlertlistChartValueMappingArrayOutput
+}
+
+type DashboardAlertlistChartValueMappingArray []DashboardAlertlistChartValueMappingInput
+
+func (DashboardAlertlistChartValueMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardAlertlistChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardAlertlistChartValueMappingArray) ToDashboardAlertlistChartValueMappingArrayOutput() DashboardAlertlistChartValueMappingArrayOutput {
+	return i.ToDashboardAlertlistChartValueMappingArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardAlertlistChartValueMappingArray) ToDashboardAlertlistChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardAlertlistChartValueMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAlertlistChartValueMappingArrayOutput)
+}
+
+type DashboardAlertlistChartValueMappingOutput struct{ *pulumi.OutputState }
+
+func (DashboardAlertlistChartValueMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAlertlistChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardAlertlistChartValueMappingOutput) ToDashboardAlertlistChartValueMappingOutput() DashboardAlertlistChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardAlertlistChartValueMappingOutput) ToDashboardAlertlistChartValueMappingOutputWithContext(ctx context.Context) DashboardAlertlistChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardAlertlistChartValueMappingOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartValueMapping) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardAlertlistChartValueMappingOutput) MatchValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartValueMapping) string { return v.MatchValue }).(pulumi.StringOutput)
+}
+
+func (o DashboardAlertlistChartValueMappingOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartValueMapping) int { return v.Order }).(pulumi.IntOutput)
+}
+
+func (o DashboardAlertlistChartValueMappingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAlertlistChartValueMapping) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardAlertlistChartValueMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardAlertlistChartValueMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardAlertlistChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardAlertlistChartValueMappingArrayOutput) ToDashboardAlertlistChartValueMappingArrayOutput() DashboardAlertlistChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardAlertlistChartValueMappingArrayOutput) ToDashboardAlertlistChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardAlertlistChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardAlertlistChartValueMappingArrayOutput) Index(i pulumi.IntInput) DashboardAlertlistChartValueMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardAlertlistChartValueMapping {
+		return vs[0].([]DashboardAlertlistChartValueMapping)[vs[1].(int)]
+	}).(DashboardAlertlistChartValueMappingOutput)
+}
+
+type DashboardAssetlistChartChartItem struct {
+	Color           string  `pulumi:"color"`
+	ExpressionPlain string  `pulumi:"expressionPlain"`
+	Hidden          *bool   `pulumi:"hidden"`
+	Label           *string `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardAssetlistChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardAssetlistChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   *string                                              `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       *string                                              `pulumi:"queryGroupUnit"`
+	QueryLimit           *int                                                 `pulumi:"queryLimit"`
+	QueryPlain           string                                               `pulumi:"queryPlain"`
+	QuerySortDirection   *int                                                 `pulumi:"querySortDirection"`
+	RefId                string                                               `pulumi:"refId"`
+	Type                 string                                               `pulumi:"type"`
+}
+
+// DashboardAssetlistChartChartItemInput is an input type that accepts DashboardAssetlistChartChartItemArgs and DashboardAssetlistChartChartItemOutput values.
+// You can construct a concrete instance of `DashboardAssetlistChartChartItemInput` via:
+//
+//	DashboardAssetlistChartChartItemArgs{...}
+type DashboardAssetlistChartChartItemInput interface {
+	pulumi.Input
+
+	ToDashboardAssetlistChartChartItemOutput() DashboardAssetlistChartChartItemOutput
+	ToDashboardAssetlistChartChartItemOutputWithContext(context.Context) DashboardAssetlistChartChartItemOutput
+}
+
+type DashboardAssetlistChartChartItemArgs struct {
+	Color           pulumi.StringInput    `pulumi:"color"`
+	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
+	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
+	Label           pulumi.StringPtrInput `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardAssetlistChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardAssetlistChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   pulumi.StringPtrInput                                     `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       pulumi.StringPtrInput                                     `pulumi:"queryGroupUnit"`
+	QueryLimit           pulumi.IntPtrInput                                        `pulumi:"queryLimit"`
+	QueryPlain           pulumi.StringInput                                        `pulumi:"queryPlain"`
+	QuerySortDirection   pulumi.IntPtrInput                                        `pulumi:"querySortDirection"`
+	RefId                pulumi.StringInput                                        `pulumi:"refId"`
+	Type                 pulumi.StringInput                                        `pulumi:"type"`
+}
+
+func (DashboardAssetlistChartChartItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAssetlistChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardAssetlistChartChartItemArgs) ToDashboardAssetlistChartChartItemOutput() DashboardAssetlistChartChartItemOutput {
+	return i.ToDashboardAssetlistChartChartItemOutputWithContext(context.Background())
+}
+
+func (i DashboardAssetlistChartChartItemArgs) ToDashboardAssetlistChartChartItemOutputWithContext(ctx context.Context) DashboardAssetlistChartChartItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAssetlistChartChartItemOutput)
+}
+
+// DashboardAssetlistChartChartItemArrayInput is an input type that accepts DashboardAssetlistChartChartItemArray and DashboardAssetlistChartChartItemArrayOutput values.
+// You can construct a concrete instance of `DashboardAssetlistChartChartItemArrayInput` via:
+//
+//	DashboardAssetlistChartChartItemArray{ DashboardAssetlistChartChartItemArgs{...} }
+type DashboardAssetlistChartChartItemArrayInput interface {
+	pulumi.Input
+
+	ToDashboardAssetlistChartChartItemArrayOutput() DashboardAssetlistChartChartItemArrayOutput
+	ToDashboardAssetlistChartChartItemArrayOutputWithContext(context.Context) DashboardAssetlistChartChartItemArrayOutput
+}
+
+type DashboardAssetlistChartChartItemArray []DashboardAssetlistChartChartItemInput
+
+func (DashboardAssetlistChartChartItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardAssetlistChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardAssetlistChartChartItemArray) ToDashboardAssetlistChartChartItemArrayOutput() DashboardAssetlistChartChartItemArrayOutput {
+	return i.ToDashboardAssetlistChartChartItemArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardAssetlistChartChartItemArray) ToDashboardAssetlistChartChartItemArrayOutputWithContext(ctx context.Context) DashboardAssetlistChartChartItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAssetlistChartChartItemArrayOutput)
+}
+
+type DashboardAssetlistChartChartItemOutput struct{ *pulumi.OutputState }
+
+func (DashboardAssetlistChartChartItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAssetlistChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardAssetlistChartChartItemOutput) ToDashboardAssetlistChartChartItemOutput() DashboardAssetlistChartChartItemOutput {
+	return o
+}
+
+func (o DashboardAssetlistChartChartItemOutput) ToDashboardAssetlistChartChartItemOutputWithContext(ctx context.Context) DashboardAssetlistChartChartItemOutput {
+	return o
+}
+
+func (o DashboardAssetlistChartChartItemOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartChartItem) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardAssetlistChartChartItemOutput) ExpressionPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartChartItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardAssetlistChartChartItemOutput) Hidden() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartChartItem) *bool { return v.Hidden }).(pulumi.BoolPtrOutput)
+}
+
+func (o DashboardAssetlistChartChartItemOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardAssetlistChartChartItemOutput) QueryFilterAsset() DashboardAssetlistChartChartItemQueryFilterAssetOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartChartItem) DashboardAssetlistChartChartItemQueryFilterAsset {
+		return v.QueryFilterAsset
+	}).(DashboardAssetlistChartChartItemQueryFilterAssetOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardAssetlistChartChartItemOutput) QueryFilterAttribute() DashboardAssetlistChartChartItemQueryFilterAttributeOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartChartItem) DashboardAssetlistChartChartItemQueryFilterAttribute {
+		return v.QueryFilterAttribute
+	}).(DashboardAssetlistChartChartItemQueryFilterAttributeOutput)
+}
+
+func (o DashboardAssetlistChartChartItemOutput) QueryGroupFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartChartItem) *string { return v.QueryGroupFunction }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardAssetlistChartChartItemOutput) QueryGroupUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartChartItem) *string { return v.QueryGroupUnit }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardAssetlistChartChartItemOutput) QueryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartChartItem) *int { return v.QueryLimit }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardAssetlistChartChartItemOutput) QueryPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartChartItem) string { return v.QueryPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardAssetlistChartChartItemOutput) QuerySortDirection() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartChartItem) *int { return v.QuerySortDirection }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardAssetlistChartChartItemOutput) RefId() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartChartItem) string { return v.RefId }).(pulumi.StringOutput)
+}
+
+func (o DashboardAssetlistChartChartItemOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartChartItem) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardAssetlistChartChartItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardAssetlistChartChartItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardAssetlistChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardAssetlistChartChartItemArrayOutput) ToDashboardAssetlistChartChartItemArrayOutput() DashboardAssetlistChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardAssetlistChartChartItemArrayOutput) ToDashboardAssetlistChartChartItemArrayOutputWithContext(ctx context.Context) DashboardAssetlistChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardAssetlistChartChartItemArrayOutput) Index(i pulumi.IntInput) DashboardAssetlistChartChartItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardAssetlistChartChartItem {
+		return vs[0].([]DashboardAssetlistChartChartItem)[vs[1].(int)]
+	}).(DashboardAssetlistChartChartItemOutput)
+}
+
+type DashboardAssetlistChartChartItemQueryFilterAsset struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardAssetlistChartChartItemQueryFilterAssetInput is an input type that accepts DashboardAssetlistChartChartItemQueryFilterAssetArgs and DashboardAssetlistChartChartItemQueryFilterAssetOutput values.
+// You can construct a concrete instance of `DashboardAssetlistChartChartItemQueryFilterAssetInput` via:
+//
+//	DashboardAssetlistChartChartItemQueryFilterAssetArgs{...}
+type DashboardAssetlistChartChartItemQueryFilterAssetInput interface {
+	pulumi.Input
+
+	ToDashboardAssetlistChartChartItemQueryFilterAssetOutput() DashboardAssetlistChartChartItemQueryFilterAssetOutput
+	ToDashboardAssetlistChartChartItemQueryFilterAssetOutputWithContext(context.Context) DashboardAssetlistChartChartItemQueryFilterAssetOutput
+}
+
+type DashboardAssetlistChartChartItemQueryFilterAssetArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardAssetlistChartChartItemQueryFilterAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAssetlistChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (i DashboardAssetlistChartChartItemQueryFilterAssetArgs) ToDashboardAssetlistChartChartItemQueryFilterAssetOutput() DashboardAssetlistChartChartItemQueryFilterAssetOutput {
+	return i.ToDashboardAssetlistChartChartItemQueryFilterAssetOutputWithContext(context.Background())
+}
+
+func (i DashboardAssetlistChartChartItemQueryFilterAssetArgs) ToDashboardAssetlistChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardAssetlistChartChartItemQueryFilterAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAssetlistChartChartItemQueryFilterAssetOutput)
+}
+
+type DashboardAssetlistChartChartItemQueryFilterAssetOutput struct{ *pulumi.OutputState }
+
+func (DashboardAssetlistChartChartItemQueryFilterAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAssetlistChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (o DashboardAssetlistChartChartItemQueryFilterAssetOutput) ToDashboardAssetlistChartChartItemQueryFilterAssetOutput() DashboardAssetlistChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+func (o DashboardAssetlistChartChartItemQueryFilterAssetOutput) ToDashboardAssetlistChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardAssetlistChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardAssetlistChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardAssetlistChartChartItemQueryFilterAssetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartChartItemQueryFilterAsset) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardAssetlistChartChartItemQueryFilterAttribute struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardAssetlistChartChartItemQueryFilterAttributeInput is an input type that accepts DashboardAssetlistChartChartItemQueryFilterAttributeArgs and DashboardAssetlistChartChartItemQueryFilterAttributeOutput values.
+// You can construct a concrete instance of `DashboardAssetlistChartChartItemQueryFilterAttributeInput` via:
+//
+//	DashboardAssetlistChartChartItemQueryFilterAttributeArgs{...}
+type DashboardAssetlistChartChartItemQueryFilterAttributeInput interface {
+	pulumi.Input
+
+	ToDashboardAssetlistChartChartItemQueryFilterAttributeOutput() DashboardAssetlistChartChartItemQueryFilterAttributeOutput
+	ToDashboardAssetlistChartChartItemQueryFilterAttributeOutputWithContext(context.Context) DashboardAssetlistChartChartItemQueryFilterAttributeOutput
+}
+
+type DashboardAssetlistChartChartItemQueryFilterAttributeArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardAssetlistChartChartItemQueryFilterAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAssetlistChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (i DashboardAssetlistChartChartItemQueryFilterAttributeArgs) ToDashboardAssetlistChartChartItemQueryFilterAttributeOutput() DashboardAssetlistChartChartItemQueryFilterAttributeOutput {
+	return i.ToDashboardAssetlistChartChartItemQueryFilterAttributeOutputWithContext(context.Background())
+}
+
+func (i DashboardAssetlistChartChartItemQueryFilterAttributeArgs) ToDashboardAssetlistChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardAssetlistChartChartItemQueryFilterAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAssetlistChartChartItemQueryFilterAttributeOutput)
+}
+
+type DashboardAssetlistChartChartItemQueryFilterAttributeOutput struct{ *pulumi.OutputState }
+
+func (DashboardAssetlistChartChartItemQueryFilterAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAssetlistChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (o DashboardAssetlistChartChartItemQueryFilterAttributeOutput) ToDashboardAssetlistChartChartItemQueryFilterAttributeOutput() DashboardAssetlistChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+func (o DashboardAssetlistChartChartItemQueryFilterAttributeOutput) ToDashboardAssetlistChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardAssetlistChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardAssetlistChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardAssetlistChartChartItemQueryFilterAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartChartItemQueryFilterAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardAssetlistChartThreshold struct {
+	Color       string  `pulumi:"color"`
+	DisplayText string  `pulumi:"displayText"`
+	Value       float64 `pulumi:"value"`
+}
+
+// DashboardAssetlistChartThresholdInput is an input type that accepts DashboardAssetlistChartThresholdArgs and DashboardAssetlistChartThresholdOutput values.
+// You can construct a concrete instance of `DashboardAssetlistChartThresholdInput` via:
+//
+//	DashboardAssetlistChartThresholdArgs{...}
+type DashboardAssetlistChartThresholdInput interface {
+	pulumi.Input
+
+	ToDashboardAssetlistChartThresholdOutput() DashboardAssetlistChartThresholdOutput
+	ToDashboardAssetlistChartThresholdOutputWithContext(context.Context) DashboardAssetlistChartThresholdOutput
+}
+
+type DashboardAssetlistChartThresholdArgs struct {
+	Color       pulumi.StringInput  `pulumi:"color"`
+	DisplayText pulumi.StringInput  `pulumi:"displayText"`
+	Value       pulumi.Float64Input `pulumi:"value"`
+}
+
+func (DashboardAssetlistChartThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAssetlistChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardAssetlistChartThresholdArgs) ToDashboardAssetlistChartThresholdOutput() DashboardAssetlistChartThresholdOutput {
+	return i.ToDashboardAssetlistChartThresholdOutputWithContext(context.Background())
+}
+
+func (i DashboardAssetlistChartThresholdArgs) ToDashboardAssetlistChartThresholdOutputWithContext(ctx context.Context) DashboardAssetlistChartThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAssetlistChartThresholdOutput)
+}
+
+// DashboardAssetlistChartThresholdArrayInput is an input type that accepts DashboardAssetlistChartThresholdArray and DashboardAssetlistChartThresholdArrayOutput values.
+// You can construct a concrete instance of `DashboardAssetlistChartThresholdArrayInput` via:
+//
+//	DashboardAssetlistChartThresholdArray{ DashboardAssetlistChartThresholdArgs{...} }
+type DashboardAssetlistChartThresholdArrayInput interface {
+	pulumi.Input
+
+	ToDashboardAssetlistChartThresholdArrayOutput() DashboardAssetlistChartThresholdArrayOutput
+	ToDashboardAssetlistChartThresholdArrayOutputWithContext(context.Context) DashboardAssetlistChartThresholdArrayOutput
+}
+
+type DashboardAssetlistChartThresholdArray []DashboardAssetlistChartThresholdInput
+
+func (DashboardAssetlistChartThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardAssetlistChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardAssetlistChartThresholdArray) ToDashboardAssetlistChartThresholdArrayOutput() DashboardAssetlistChartThresholdArrayOutput {
+	return i.ToDashboardAssetlistChartThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardAssetlistChartThresholdArray) ToDashboardAssetlistChartThresholdArrayOutputWithContext(ctx context.Context) DashboardAssetlistChartThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAssetlistChartThresholdArrayOutput)
+}
+
+type DashboardAssetlistChartThresholdOutput struct{ *pulumi.OutputState }
+
+func (DashboardAssetlistChartThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAssetlistChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardAssetlistChartThresholdOutput) ToDashboardAssetlistChartThresholdOutput() DashboardAssetlistChartThresholdOutput {
+	return o
+}
+
+func (o DashboardAssetlistChartThresholdOutput) ToDashboardAssetlistChartThresholdOutputWithContext(ctx context.Context) DashboardAssetlistChartThresholdOutput {
+	return o
+}
+
+func (o DashboardAssetlistChartThresholdOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartThreshold) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardAssetlistChartThresholdOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartThreshold) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardAssetlistChartThresholdOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v DashboardAssetlistChartThreshold) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type DashboardAssetlistChartThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardAssetlistChartThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardAssetlistChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardAssetlistChartThresholdArrayOutput) ToDashboardAssetlistChartThresholdArrayOutput() DashboardAssetlistChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardAssetlistChartThresholdArrayOutput) ToDashboardAssetlistChartThresholdArrayOutputWithContext(ctx context.Context) DashboardAssetlistChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardAssetlistChartThresholdArrayOutput) Index(i pulumi.IntInput) DashboardAssetlistChartThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardAssetlistChartThreshold {
+		return vs[0].([]DashboardAssetlistChartThreshold)[vs[1].(int)]
+	}).(DashboardAssetlistChartThresholdOutput)
+}
+
+type DashboardAssetlistChartValueMapping struct {
+	DisplayText string `pulumi:"displayText"`
+	MatchValue  string `pulumi:"matchValue"`
+	Order       int    `pulumi:"order"`
+	Type        string `pulumi:"type"`
+}
+
+// DashboardAssetlistChartValueMappingInput is an input type that accepts DashboardAssetlistChartValueMappingArgs and DashboardAssetlistChartValueMappingOutput values.
+// You can construct a concrete instance of `DashboardAssetlistChartValueMappingInput` via:
+//
+//	DashboardAssetlistChartValueMappingArgs{...}
+type DashboardAssetlistChartValueMappingInput interface {
+	pulumi.Input
+
+	ToDashboardAssetlistChartValueMappingOutput() DashboardAssetlistChartValueMappingOutput
+	ToDashboardAssetlistChartValueMappingOutputWithContext(context.Context) DashboardAssetlistChartValueMappingOutput
+}
+
+type DashboardAssetlistChartValueMappingArgs struct {
+	DisplayText pulumi.StringInput `pulumi:"displayText"`
+	MatchValue  pulumi.StringInput `pulumi:"matchValue"`
+	Order       pulumi.IntInput    `pulumi:"order"`
+	Type        pulumi.StringInput `pulumi:"type"`
+}
+
+func (DashboardAssetlistChartValueMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAssetlistChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardAssetlistChartValueMappingArgs) ToDashboardAssetlistChartValueMappingOutput() DashboardAssetlistChartValueMappingOutput {
+	return i.ToDashboardAssetlistChartValueMappingOutputWithContext(context.Background())
+}
+
+func (i DashboardAssetlistChartValueMappingArgs) ToDashboardAssetlistChartValueMappingOutputWithContext(ctx context.Context) DashboardAssetlistChartValueMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAssetlistChartValueMappingOutput)
+}
+
+// DashboardAssetlistChartValueMappingArrayInput is an input type that accepts DashboardAssetlistChartValueMappingArray and DashboardAssetlistChartValueMappingArrayOutput values.
+// You can construct a concrete instance of `DashboardAssetlistChartValueMappingArrayInput` via:
+//
+//	DashboardAssetlistChartValueMappingArray{ DashboardAssetlistChartValueMappingArgs{...} }
+type DashboardAssetlistChartValueMappingArrayInput interface {
+	pulumi.Input
+
+	ToDashboardAssetlistChartValueMappingArrayOutput() DashboardAssetlistChartValueMappingArrayOutput
+	ToDashboardAssetlistChartValueMappingArrayOutputWithContext(context.Context) DashboardAssetlistChartValueMappingArrayOutput
+}
+
+type DashboardAssetlistChartValueMappingArray []DashboardAssetlistChartValueMappingInput
+
+func (DashboardAssetlistChartValueMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardAssetlistChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardAssetlistChartValueMappingArray) ToDashboardAssetlistChartValueMappingArrayOutput() DashboardAssetlistChartValueMappingArrayOutput {
+	return i.ToDashboardAssetlistChartValueMappingArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardAssetlistChartValueMappingArray) ToDashboardAssetlistChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardAssetlistChartValueMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardAssetlistChartValueMappingArrayOutput)
+}
+
+type DashboardAssetlistChartValueMappingOutput struct{ *pulumi.OutputState }
+
+func (DashboardAssetlistChartValueMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardAssetlistChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardAssetlistChartValueMappingOutput) ToDashboardAssetlistChartValueMappingOutput() DashboardAssetlistChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardAssetlistChartValueMappingOutput) ToDashboardAssetlistChartValueMappingOutputWithContext(ctx context.Context) DashboardAssetlistChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardAssetlistChartValueMappingOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartValueMapping) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardAssetlistChartValueMappingOutput) MatchValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartValueMapping) string { return v.MatchValue }).(pulumi.StringOutput)
+}
+
+func (o DashboardAssetlistChartValueMappingOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartValueMapping) int { return v.Order }).(pulumi.IntOutput)
+}
+
+func (o DashboardAssetlistChartValueMappingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardAssetlistChartValueMapping) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardAssetlistChartValueMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardAssetlistChartValueMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardAssetlistChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardAssetlistChartValueMappingArrayOutput) ToDashboardAssetlistChartValueMappingArrayOutput() DashboardAssetlistChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardAssetlistChartValueMappingArrayOutput) ToDashboardAssetlistChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardAssetlistChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardAssetlistChartValueMappingArrayOutput) Index(i pulumi.IntInput) DashboardAssetlistChartValueMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardAssetlistChartValueMapping {
+		return vs[0].([]DashboardAssetlistChartValueMapping)[vs[1].(int)]
+	}).(DashboardAssetlistChartValueMappingOutput)
+}
+
+type DashboardBarChartChartItem struct {
+	Color           string  `pulumi:"color"`
+	ExpressionPlain string  `pulumi:"expressionPlain"`
+	Hidden          *bool   `pulumi:"hidden"`
+	Label           *string `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardBarChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardBarChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   *string                                        `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       *string                                        `pulumi:"queryGroupUnit"`
+	QueryLimit           *int                                           `pulumi:"queryLimit"`
+	QueryPlain           string                                         `pulumi:"queryPlain"`
+	QuerySortDirection   *int                                           `pulumi:"querySortDirection"`
+	RefId                string                                         `pulumi:"refId"`
+	Type                 string                                         `pulumi:"type"`
+}
+
+// DashboardBarChartChartItemInput is an input type that accepts DashboardBarChartChartItemArgs and DashboardBarChartChartItemOutput values.
+// You can construct a concrete instance of `DashboardBarChartChartItemInput` via:
+//
+//	DashboardBarChartChartItemArgs{...}
+type DashboardBarChartChartItemInput interface {
+	pulumi.Input
+
+	ToDashboardBarChartChartItemOutput() DashboardBarChartChartItemOutput
+	ToDashboardBarChartChartItemOutputWithContext(context.Context) DashboardBarChartChartItemOutput
+}
+
+type DashboardBarChartChartItemArgs struct {
+	Color           pulumi.StringInput    `pulumi:"color"`
+	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
+	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
+	Label           pulumi.StringPtrInput `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardBarChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardBarChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   pulumi.StringPtrInput                               `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       pulumi.StringPtrInput                               `pulumi:"queryGroupUnit"`
 	QueryLimit           pulumi.IntPtrInput                                  `pulumi:"queryLimit"`
@@ -1134,662 +3359,5136 @@ type DashboardChartChartItemArgs struct {
 	Type                 pulumi.StringInput                                  `pulumi:"type"`
 }
 
-func (DashboardChartChartItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DashboardChartChartItem)(nil)).Elem()
+func (DashboardBarChartChartItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardBarChartChartItem)(nil)).Elem()
 }
 
-func (i DashboardChartChartItemArgs) ToDashboardChartChartItemOutput() DashboardChartChartItemOutput {
-	return i.ToDashboardChartChartItemOutputWithContext(context.Background())
+func (i DashboardBarChartChartItemArgs) ToDashboardBarChartChartItemOutput() DashboardBarChartChartItemOutput {
+	return i.ToDashboardBarChartChartItemOutputWithContext(context.Background())
 }
 
-func (i DashboardChartChartItemArgs) ToDashboardChartChartItemOutputWithContext(ctx context.Context) DashboardChartChartItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DashboardChartChartItemOutput)
+func (i DashboardBarChartChartItemArgs) ToDashboardBarChartChartItemOutputWithContext(ctx context.Context) DashboardBarChartChartItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardBarChartChartItemOutput)
 }
 
-// DashboardChartChartItemArrayInput is an input type that accepts DashboardChartChartItemArray and DashboardChartChartItemArrayOutput values.
-// You can construct a concrete instance of `DashboardChartChartItemArrayInput` via:
+// DashboardBarChartChartItemArrayInput is an input type that accepts DashboardBarChartChartItemArray and DashboardBarChartChartItemArrayOutput values.
+// You can construct a concrete instance of `DashboardBarChartChartItemArrayInput` via:
 //
-//	DashboardChartChartItemArray{ DashboardChartChartItemArgs{...} }
-type DashboardChartChartItemArrayInput interface {
+//	DashboardBarChartChartItemArray{ DashboardBarChartChartItemArgs{...} }
+type DashboardBarChartChartItemArrayInput interface {
 	pulumi.Input
 
-	ToDashboardChartChartItemArrayOutput() DashboardChartChartItemArrayOutput
-	ToDashboardChartChartItemArrayOutputWithContext(context.Context) DashboardChartChartItemArrayOutput
+	ToDashboardBarChartChartItemArrayOutput() DashboardBarChartChartItemArrayOutput
+	ToDashboardBarChartChartItemArrayOutputWithContext(context.Context) DashboardBarChartChartItemArrayOutput
 }
 
-type DashboardChartChartItemArray []DashboardChartChartItemInput
+type DashboardBarChartChartItemArray []DashboardBarChartChartItemInput
 
-func (DashboardChartChartItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DashboardChartChartItem)(nil)).Elem()
+func (DashboardBarChartChartItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardBarChartChartItem)(nil)).Elem()
 }
 
-func (i DashboardChartChartItemArray) ToDashboardChartChartItemArrayOutput() DashboardChartChartItemArrayOutput {
-	return i.ToDashboardChartChartItemArrayOutputWithContext(context.Background())
+func (i DashboardBarChartChartItemArray) ToDashboardBarChartChartItemArrayOutput() DashboardBarChartChartItemArrayOutput {
+	return i.ToDashboardBarChartChartItemArrayOutputWithContext(context.Background())
 }
 
-func (i DashboardChartChartItemArray) ToDashboardChartChartItemArrayOutputWithContext(ctx context.Context) DashboardChartChartItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DashboardChartChartItemArrayOutput)
+func (i DashboardBarChartChartItemArray) ToDashboardBarChartChartItemArrayOutputWithContext(ctx context.Context) DashboardBarChartChartItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardBarChartChartItemArrayOutput)
 }
 
-type DashboardChartChartItemOutput struct{ *pulumi.OutputState }
+type DashboardBarChartChartItemOutput struct{ *pulumi.OutputState }
 
-func (DashboardChartChartItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DashboardChartChartItem)(nil)).Elem()
+func (DashboardBarChartChartItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardBarChartChartItem)(nil)).Elem()
 }
 
-func (o DashboardChartChartItemOutput) ToDashboardChartChartItemOutput() DashboardChartChartItemOutput {
+func (o DashboardBarChartChartItemOutput) ToDashboardBarChartChartItemOutput() DashboardBarChartChartItemOutput {
 	return o
 }
 
-func (o DashboardChartChartItemOutput) ToDashboardChartChartItemOutputWithContext(ctx context.Context) DashboardChartChartItemOutput {
+func (o DashboardBarChartChartItemOutput) ToDashboardBarChartChartItemOutputWithContext(ctx context.Context) DashboardBarChartChartItemOutput {
 	return o
 }
 
-func (o DashboardChartChartItemOutput) Color() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardChartChartItem) string { return v.Color }).(pulumi.StringOutput)
+func (o DashboardBarChartChartItemOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardBarChartChartItem) string { return v.Color }).(pulumi.StringOutput)
 }
 
-func (o DashboardChartChartItemOutput) ExpressionPlain() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardChartChartItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
+func (o DashboardBarChartChartItemOutput) ExpressionPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardBarChartChartItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
 }
 
-func (o DashboardChartChartItemOutput) Hidden() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DashboardChartChartItem) *bool { return v.Hidden }).(pulumi.BoolPtrOutput)
+func (o DashboardBarChartChartItemOutput) Hidden() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DashboardBarChartChartItem) *bool { return v.Hidden }).(pulumi.BoolPtrOutput)
 }
 
-func (o DashboardChartChartItemOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DashboardChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
+func (o DashboardBarChartChartItemOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardBarChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// asset filter
-func (o DashboardChartChartItemOutput) QueryFilterAsset() DashboardChartChartItemQueryFilterAssetPtrOutput {
-	return o.ApplyT(func(v DashboardChartChartItem) *DashboardChartChartItemQueryFilterAsset { return v.QueryFilterAsset }).(DashboardChartChartItemQueryFilterAssetPtrOutput)
+// Asset/Attribute filter
+func (o DashboardBarChartChartItemOutput) QueryFilterAsset() DashboardBarChartChartItemQueryFilterAssetOutput {
+	return o.ApplyT(func(v DashboardBarChartChartItem) DashboardBarChartChartItemQueryFilterAsset {
+		return v.QueryFilterAsset
+	}).(DashboardBarChartChartItemQueryFilterAssetOutput)
 }
 
-// Attribute filter
-func (o DashboardChartChartItemOutput) QueryFilterAttribute() DashboardChartChartItemQueryFilterAttributePtrOutput {
-	return o.ApplyT(func(v DashboardChartChartItem) *DashboardChartChartItemQueryFilterAttribute {
+// Asset/Attribute filter
+func (o DashboardBarChartChartItemOutput) QueryFilterAttribute() DashboardBarChartChartItemQueryFilterAttributeOutput {
+	return o.ApplyT(func(v DashboardBarChartChartItem) DashboardBarChartChartItemQueryFilterAttribute {
 		return v.QueryFilterAttribute
-	}).(DashboardChartChartItemQueryFilterAttributePtrOutput)
+	}).(DashboardBarChartChartItemQueryFilterAttributeOutput)
 }
 
-func (o DashboardChartChartItemOutput) QueryGroupFunction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DashboardChartChartItem) *string { return v.QueryGroupFunction }).(pulumi.StringPtrOutput)
+func (o DashboardBarChartChartItemOutput) QueryGroupFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardBarChartChartItem) *string { return v.QueryGroupFunction }).(pulumi.StringPtrOutput)
 }
 
-func (o DashboardChartChartItemOutput) QueryGroupUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DashboardChartChartItem) *string { return v.QueryGroupUnit }).(pulumi.StringPtrOutput)
+func (o DashboardBarChartChartItemOutput) QueryGroupUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardBarChartChartItem) *string { return v.QueryGroupUnit }).(pulumi.StringPtrOutput)
 }
 
-func (o DashboardChartChartItemOutput) QueryLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DashboardChartChartItem) *int { return v.QueryLimit }).(pulumi.IntPtrOutput)
+func (o DashboardBarChartChartItemOutput) QueryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardBarChartChartItem) *int { return v.QueryLimit }).(pulumi.IntPtrOutput)
 }
 
-func (o DashboardChartChartItemOutput) QueryPlain() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardChartChartItem) string { return v.QueryPlain }).(pulumi.StringOutput)
+func (o DashboardBarChartChartItemOutput) QueryPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardBarChartChartItem) string { return v.QueryPlain }).(pulumi.StringOutput)
 }
 
-func (o DashboardChartChartItemOutput) QuerySortDirection() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DashboardChartChartItem) *int { return v.QuerySortDirection }).(pulumi.IntPtrOutput)
+func (o DashboardBarChartChartItemOutput) QuerySortDirection() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardBarChartChartItem) *int { return v.QuerySortDirection }).(pulumi.IntPtrOutput)
 }
 
-func (o DashboardChartChartItemOutput) RefId() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardChartChartItem) string { return v.RefId }).(pulumi.StringOutput)
+func (o DashboardBarChartChartItemOutput) RefId() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardBarChartChartItem) string { return v.RefId }).(pulumi.StringOutput)
 }
 
-func (o DashboardChartChartItemOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardChartChartItem) string { return v.Type }).(pulumi.StringOutput)
+func (o DashboardBarChartChartItemOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardBarChartChartItem) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type DashboardChartChartItemArrayOutput struct{ *pulumi.OutputState }
+type DashboardBarChartChartItemArrayOutput struct{ *pulumi.OutputState }
 
-func (DashboardChartChartItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DashboardChartChartItem)(nil)).Elem()
+func (DashboardBarChartChartItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardBarChartChartItem)(nil)).Elem()
 }
 
-func (o DashboardChartChartItemArrayOutput) ToDashboardChartChartItemArrayOutput() DashboardChartChartItemArrayOutput {
+func (o DashboardBarChartChartItemArrayOutput) ToDashboardBarChartChartItemArrayOutput() DashboardBarChartChartItemArrayOutput {
 	return o
 }
 
-func (o DashboardChartChartItemArrayOutput) ToDashboardChartChartItemArrayOutputWithContext(ctx context.Context) DashboardChartChartItemArrayOutput {
+func (o DashboardBarChartChartItemArrayOutput) ToDashboardBarChartChartItemArrayOutputWithContext(ctx context.Context) DashboardBarChartChartItemArrayOutput {
 	return o
 }
 
-func (o DashboardChartChartItemArrayOutput) Index(i pulumi.IntInput) DashboardChartChartItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardChartChartItem {
-		return vs[0].([]DashboardChartChartItem)[vs[1].(int)]
-	}).(DashboardChartChartItemOutput)
+func (o DashboardBarChartChartItemArrayOutput) Index(i pulumi.IntInput) DashboardBarChartChartItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardBarChartChartItem {
+		return vs[0].([]DashboardBarChartChartItem)[vs[1].(int)]
+	}).(DashboardBarChartChartItemOutput)
 }
 
-type DashboardChartChartItemQueryFilterAsset struct {
-	// The ID of this resource.
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
+type DashboardBarChartChartItemQueryFilterAsset struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
 }
 
-// DashboardChartChartItemQueryFilterAssetInput is an input type that accepts DashboardChartChartItemQueryFilterAssetArgs and DashboardChartChartItemQueryFilterAssetOutput values.
-// You can construct a concrete instance of `DashboardChartChartItemQueryFilterAssetInput` via:
+// DashboardBarChartChartItemQueryFilterAssetInput is an input type that accepts DashboardBarChartChartItemQueryFilterAssetArgs and DashboardBarChartChartItemQueryFilterAssetOutput values.
+// You can construct a concrete instance of `DashboardBarChartChartItemQueryFilterAssetInput` via:
 //
-//	DashboardChartChartItemQueryFilterAssetArgs{...}
-type DashboardChartChartItemQueryFilterAssetInput interface {
+//	DashboardBarChartChartItemQueryFilterAssetArgs{...}
+type DashboardBarChartChartItemQueryFilterAssetInput interface {
 	pulumi.Input
 
-	ToDashboardChartChartItemQueryFilterAssetOutput() DashboardChartChartItemQueryFilterAssetOutput
-	ToDashboardChartChartItemQueryFilterAssetOutputWithContext(context.Context) DashboardChartChartItemQueryFilterAssetOutput
+	ToDashboardBarChartChartItemQueryFilterAssetOutput() DashboardBarChartChartItemQueryFilterAssetOutput
+	ToDashboardBarChartChartItemQueryFilterAssetOutputWithContext(context.Context) DashboardBarChartChartItemQueryFilterAssetOutput
 }
 
-type DashboardChartChartItemQueryFilterAssetArgs struct {
-	// The ID of this resource.
-	Id   pulumi.StringInput `pulumi:"id"`
-	Name pulumi.StringInput `pulumi:"name"`
+type DashboardBarChartChartItemQueryFilterAssetArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
-func (DashboardChartChartItemQueryFilterAssetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DashboardChartChartItemQueryFilterAsset)(nil)).Elem()
+func (DashboardBarChartChartItemQueryFilterAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardBarChartChartItemQueryFilterAsset)(nil)).Elem()
 }
 
-func (i DashboardChartChartItemQueryFilterAssetArgs) ToDashboardChartChartItemQueryFilterAssetOutput() DashboardChartChartItemQueryFilterAssetOutput {
-	return i.ToDashboardChartChartItemQueryFilterAssetOutputWithContext(context.Background())
+func (i DashboardBarChartChartItemQueryFilterAssetArgs) ToDashboardBarChartChartItemQueryFilterAssetOutput() DashboardBarChartChartItemQueryFilterAssetOutput {
+	return i.ToDashboardBarChartChartItemQueryFilterAssetOutputWithContext(context.Background())
 }
 
-func (i DashboardChartChartItemQueryFilterAssetArgs) ToDashboardChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardChartChartItemQueryFilterAssetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DashboardChartChartItemQueryFilterAssetOutput)
+func (i DashboardBarChartChartItemQueryFilterAssetArgs) ToDashboardBarChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardBarChartChartItemQueryFilterAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardBarChartChartItemQueryFilterAssetOutput)
 }
 
-func (i DashboardChartChartItemQueryFilterAssetArgs) ToDashboardChartChartItemQueryFilterAssetPtrOutput() DashboardChartChartItemQueryFilterAssetPtrOutput {
-	return i.ToDashboardChartChartItemQueryFilterAssetPtrOutputWithContext(context.Background())
+type DashboardBarChartChartItemQueryFilterAssetOutput struct{ *pulumi.OutputState }
+
+func (DashboardBarChartChartItemQueryFilterAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardBarChartChartItemQueryFilterAsset)(nil)).Elem()
 }
 
-func (i DashboardChartChartItemQueryFilterAssetArgs) ToDashboardChartChartItemQueryFilterAssetPtrOutputWithContext(ctx context.Context) DashboardChartChartItemQueryFilterAssetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DashboardChartChartItemQueryFilterAssetOutput).ToDashboardChartChartItemQueryFilterAssetPtrOutputWithContext(ctx)
+func (o DashboardBarChartChartItemQueryFilterAssetOutput) ToDashboardBarChartChartItemQueryFilterAssetOutput() DashboardBarChartChartItemQueryFilterAssetOutput {
+	return o
 }
 
-// DashboardChartChartItemQueryFilterAssetPtrInput is an input type that accepts DashboardChartChartItemQueryFilterAssetArgs, DashboardChartChartItemQueryFilterAssetPtr and DashboardChartChartItemQueryFilterAssetPtrOutput values.
-// You can construct a concrete instance of `DashboardChartChartItemQueryFilterAssetPtrInput` via:
+func (o DashboardBarChartChartItemQueryFilterAssetOutput) ToDashboardBarChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardBarChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardBarChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardBarChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardBarChartChartItemQueryFilterAssetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardBarChartChartItemQueryFilterAsset) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardBarChartChartItemQueryFilterAttribute struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardBarChartChartItemQueryFilterAttributeInput is an input type that accepts DashboardBarChartChartItemQueryFilterAttributeArgs and DashboardBarChartChartItemQueryFilterAttributeOutput values.
+// You can construct a concrete instance of `DashboardBarChartChartItemQueryFilterAttributeInput` via:
 //
-//	        DashboardChartChartItemQueryFilterAssetArgs{...}
-//
-//	or:
-//
-//	        nil
-type DashboardChartChartItemQueryFilterAssetPtrInput interface {
+//	DashboardBarChartChartItemQueryFilterAttributeArgs{...}
+type DashboardBarChartChartItemQueryFilterAttributeInput interface {
 	pulumi.Input
 
-	ToDashboardChartChartItemQueryFilterAssetPtrOutput() DashboardChartChartItemQueryFilterAssetPtrOutput
-	ToDashboardChartChartItemQueryFilterAssetPtrOutputWithContext(context.Context) DashboardChartChartItemQueryFilterAssetPtrOutput
+	ToDashboardBarChartChartItemQueryFilterAttributeOutput() DashboardBarChartChartItemQueryFilterAttributeOutput
+	ToDashboardBarChartChartItemQueryFilterAttributeOutputWithContext(context.Context) DashboardBarChartChartItemQueryFilterAttributeOutput
 }
 
-type dashboardChartChartItemQueryFilterAssetPtrType DashboardChartChartItemQueryFilterAssetArgs
-
-func DashboardChartChartItemQueryFilterAssetPtr(v *DashboardChartChartItemQueryFilterAssetArgs) DashboardChartChartItemQueryFilterAssetPtrInput {
-	return (*dashboardChartChartItemQueryFilterAssetPtrType)(v)
+type DashboardBarChartChartItemQueryFilterAttributeArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
-func (*dashboardChartChartItemQueryFilterAssetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DashboardChartChartItemQueryFilterAsset)(nil)).Elem()
+func (DashboardBarChartChartItemQueryFilterAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardBarChartChartItemQueryFilterAttribute)(nil)).Elem()
 }
 
-func (i *dashboardChartChartItemQueryFilterAssetPtrType) ToDashboardChartChartItemQueryFilterAssetPtrOutput() DashboardChartChartItemQueryFilterAssetPtrOutput {
-	return i.ToDashboardChartChartItemQueryFilterAssetPtrOutputWithContext(context.Background())
+func (i DashboardBarChartChartItemQueryFilterAttributeArgs) ToDashboardBarChartChartItemQueryFilterAttributeOutput() DashboardBarChartChartItemQueryFilterAttributeOutput {
+	return i.ToDashboardBarChartChartItemQueryFilterAttributeOutputWithContext(context.Background())
 }
 
-func (i *dashboardChartChartItemQueryFilterAssetPtrType) ToDashboardChartChartItemQueryFilterAssetPtrOutputWithContext(ctx context.Context) DashboardChartChartItemQueryFilterAssetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DashboardChartChartItemQueryFilterAssetPtrOutput)
+func (i DashboardBarChartChartItemQueryFilterAttributeArgs) ToDashboardBarChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardBarChartChartItemQueryFilterAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardBarChartChartItemQueryFilterAttributeOutput)
 }
 
-type DashboardChartChartItemQueryFilterAssetOutput struct{ *pulumi.OutputState }
+type DashboardBarChartChartItemQueryFilterAttributeOutput struct{ *pulumi.OutputState }
 
-func (DashboardChartChartItemQueryFilterAssetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DashboardChartChartItemQueryFilterAsset)(nil)).Elem()
+func (DashboardBarChartChartItemQueryFilterAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardBarChartChartItemQueryFilterAttribute)(nil)).Elem()
 }
 
-func (o DashboardChartChartItemQueryFilterAssetOutput) ToDashboardChartChartItemQueryFilterAssetOutput() DashboardChartChartItemQueryFilterAssetOutput {
+func (o DashboardBarChartChartItemQueryFilterAttributeOutput) ToDashboardBarChartChartItemQueryFilterAttributeOutput() DashboardBarChartChartItemQueryFilterAttributeOutput {
 	return o
 }
 
-func (o DashboardChartChartItemQueryFilterAssetOutput) ToDashboardChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardChartChartItemQueryFilterAssetOutput {
+func (o DashboardBarChartChartItemQueryFilterAttributeOutput) ToDashboardBarChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardBarChartChartItemQueryFilterAttributeOutput {
 	return o
 }
 
-func (o DashboardChartChartItemQueryFilterAssetOutput) ToDashboardChartChartItemQueryFilterAssetPtrOutput() DashboardChartChartItemQueryFilterAssetPtrOutput {
-	return o.ToDashboardChartChartItemQueryFilterAssetPtrOutputWithContext(context.Background())
+// ID of the resource
+func (o DashboardBarChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardBarChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-func (o DashboardChartChartItemQueryFilterAssetOutput) ToDashboardChartChartItemQueryFilterAssetPtrOutputWithContext(ctx context.Context) DashboardChartChartItemQueryFilterAssetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardChartChartItemQueryFilterAsset) *DashboardChartChartItemQueryFilterAsset {
-		return &v
-	}).(DashboardChartChartItemQueryFilterAssetPtrOutput)
+// name of the resource
+func (o DashboardBarChartChartItemQueryFilterAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardBarChartChartItemQueryFilterAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The ID of this resource.
-func (o DashboardChartChartItemQueryFilterAssetOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardChartChartItemQueryFilterAsset) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o DashboardChartChartItemQueryFilterAssetOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardChartChartItemQueryFilterAsset) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type DashboardChartChartItemQueryFilterAssetPtrOutput struct{ *pulumi.OutputState }
-
-func (DashboardChartChartItemQueryFilterAssetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DashboardChartChartItemQueryFilterAsset)(nil)).Elem()
-}
-
-func (o DashboardChartChartItemQueryFilterAssetPtrOutput) ToDashboardChartChartItemQueryFilterAssetPtrOutput() DashboardChartChartItemQueryFilterAssetPtrOutput {
-	return o
-}
-
-func (o DashboardChartChartItemQueryFilterAssetPtrOutput) ToDashboardChartChartItemQueryFilterAssetPtrOutputWithContext(ctx context.Context) DashboardChartChartItemQueryFilterAssetPtrOutput {
-	return o
-}
-
-func (o DashboardChartChartItemQueryFilterAssetPtrOutput) Elem() DashboardChartChartItemQueryFilterAssetOutput {
-	return o.ApplyT(func(v *DashboardChartChartItemQueryFilterAsset) DashboardChartChartItemQueryFilterAsset {
-		if v != nil {
-			return *v
-		}
-		var ret DashboardChartChartItemQueryFilterAsset
-		return ret
-	}).(DashboardChartChartItemQueryFilterAssetOutput)
-}
-
-// The ID of this resource.
-func (o DashboardChartChartItemQueryFilterAssetPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DashboardChartChartItemQueryFilterAsset) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o DashboardChartChartItemQueryFilterAssetPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DashboardChartChartItemQueryFilterAsset) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-type DashboardChartChartItemQueryFilterAttribute struct {
-	// The ID of this resource.
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
-}
-
-// DashboardChartChartItemQueryFilterAttributeInput is an input type that accepts DashboardChartChartItemQueryFilterAttributeArgs and DashboardChartChartItemQueryFilterAttributeOutput values.
-// You can construct a concrete instance of `DashboardChartChartItemQueryFilterAttributeInput` via:
-//
-//	DashboardChartChartItemQueryFilterAttributeArgs{...}
-type DashboardChartChartItemQueryFilterAttributeInput interface {
-	pulumi.Input
-
-	ToDashboardChartChartItemQueryFilterAttributeOutput() DashboardChartChartItemQueryFilterAttributeOutput
-	ToDashboardChartChartItemQueryFilterAttributeOutputWithContext(context.Context) DashboardChartChartItemQueryFilterAttributeOutput
-}
-
-type DashboardChartChartItemQueryFilterAttributeArgs struct {
-	// The ID of this resource.
-	Id   pulumi.StringInput `pulumi:"id"`
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (DashboardChartChartItemQueryFilterAttributeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DashboardChartChartItemQueryFilterAttribute)(nil)).Elem()
-}
-
-func (i DashboardChartChartItemQueryFilterAttributeArgs) ToDashboardChartChartItemQueryFilterAttributeOutput() DashboardChartChartItemQueryFilterAttributeOutput {
-	return i.ToDashboardChartChartItemQueryFilterAttributeOutputWithContext(context.Background())
-}
-
-func (i DashboardChartChartItemQueryFilterAttributeArgs) ToDashboardChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardChartChartItemQueryFilterAttributeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DashboardChartChartItemQueryFilterAttributeOutput)
-}
-
-func (i DashboardChartChartItemQueryFilterAttributeArgs) ToDashboardChartChartItemQueryFilterAttributePtrOutput() DashboardChartChartItemQueryFilterAttributePtrOutput {
-	return i.ToDashboardChartChartItemQueryFilterAttributePtrOutputWithContext(context.Background())
-}
-
-func (i DashboardChartChartItemQueryFilterAttributeArgs) ToDashboardChartChartItemQueryFilterAttributePtrOutputWithContext(ctx context.Context) DashboardChartChartItemQueryFilterAttributePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DashboardChartChartItemQueryFilterAttributeOutput).ToDashboardChartChartItemQueryFilterAttributePtrOutputWithContext(ctx)
-}
-
-// DashboardChartChartItemQueryFilterAttributePtrInput is an input type that accepts DashboardChartChartItemQueryFilterAttributeArgs, DashboardChartChartItemQueryFilterAttributePtr and DashboardChartChartItemQueryFilterAttributePtrOutput values.
-// You can construct a concrete instance of `DashboardChartChartItemQueryFilterAttributePtrInput` via:
-//
-//	        DashboardChartChartItemQueryFilterAttributeArgs{...}
-//
-//	or:
-//
-//	        nil
-type DashboardChartChartItemQueryFilterAttributePtrInput interface {
-	pulumi.Input
-
-	ToDashboardChartChartItemQueryFilterAttributePtrOutput() DashboardChartChartItemQueryFilterAttributePtrOutput
-	ToDashboardChartChartItemQueryFilterAttributePtrOutputWithContext(context.Context) DashboardChartChartItemQueryFilterAttributePtrOutput
-}
-
-type dashboardChartChartItemQueryFilterAttributePtrType DashboardChartChartItemQueryFilterAttributeArgs
-
-func DashboardChartChartItemQueryFilterAttributePtr(v *DashboardChartChartItemQueryFilterAttributeArgs) DashboardChartChartItemQueryFilterAttributePtrInput {
-	return (*dashboardChartChartItemQueryFilterAttributePtrType)(v)
-}
-
-func (*dashboardChartChartItemQueryFilterAttributePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DashboardChartChartItemQueryFilterAttribute)(nil)).Elem()
-}
-
-func (i *dashboardChartChartItemQueryFilterAttributePtrType) ToDashboardChartChartItemQueryFilterAttributePtrOutput() DashboardChartChartItemQueryFilterAttributePtrOutput {
-	return i.ToDashboardChartChartItemQueryFilterAttributePtrOutputWithContext(context.Background())
-}
-
-func (i *dashboardChartChartItemQueryFilterAttributePtrType) ToDashboardChartChartItemQueryFilterAttributePtrOutputWithContext(ctx context.Context) DashboardChartChartItemQueryFilterAttributePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DashboardChartChartItemQueryFilterAttributePtrOutput)
-}
-
-type DashboardChartChartItemQueryFilterAttributeOutput struct{ *pulumi.OutputState }
-
-func (DashboardChartChartItemQueryFilterAttributeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DashboardChartChartItemQueryFilterAttribute)(nil)).Elem()
-}
-
-func (o DashboardChartChartItemQueryFilterAttributeOutput) ToDashboardChartChartItemQueryFilterAttributeOutput() DashboardChartChartItemQueryFilterAttributeOutput {
-	return o
-}
-
-func (o DashboardChartChartItemQueryFilterAttributeOutput) ToDashboardChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardChartChartItemQueryFilterAttributeOutput {
-	return o
-}
-
-func (o DashboardChartChartItemQueryFilterAttributeOutput) ToDashboardChartChartItemQueryFilterAttributePtrOutput() DashboardChartChartItemQueryFilterAttributePtrOutput {
-	return o.ToDashboardChartChartItemQueryFilterAttributePtrOutputWithContext(context.Background())
-}
-
-func (o DashboardChartChartItemQueryFilterAttributeOutput) ToDashboardChartChartItemQueryFilterAttributePtrOutputWithContext(ctx context.Context) DashboardChartChartItemQueryFilterAttributePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardChartChartItemQueryFilterAttribute) *DashboardChartChartItemQueryFilterAttribute {
-		return &v
-	}).(DashboardChartChartItemQueryFilterAttributePtrOutput)
-}
-
-// The ID of this resource.
-func (o DashboardChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardChartChartItemQueryFilterAttribute) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o DashboardChartChartItemQueryFilterAttributeOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardChartChartItemQueryFilterAttribute) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type DashboardChartChartItemQueryFilterAttributePtrOutput struct{ *pulumi.OutputState }
-
-func (DashboardChartChartItemQueryFilterAttributePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DashboardChartChartItemQueryFilterAttribute)(nil)).Elem()
-}
-
-func (o DashboardChartChartItemQueryFilterAttributePtrOutput) ToDashboardChartChartItemQueryFilterAttributePtrOutput() DashboardChartChartItemQueryFilterAttributePtrOutput {
-	return o
-}
-
-func (o DashboardChartChartItemQueryFilterAttributePtrOutput) ToDashboardChartChartItemQueryFilterAttributePtrOutputWithContext(ctx context.Context) DashboardChartChartItemQueryFilterAttributePtrOutput {
-	return o
-}
-
-func (o DashboardChartChartItemQueryFilterAttributePtrOutput) Elem() DashboardChartChartItemQueryFilterAttributeOutput {
-	return o.ApplyT(func(v *DashboardChartChartItemQueryFilterAttribute) DashboardChartChartItemQueryFilterAttribute {
-		if v != nil {
-			return *v
-		}
-		var ret DashboardChartChartItemQueryFilterAttribute
-		return ret
-	}).(DashboardChartChartItemQueryFilterAttributeOutput)
-}
-
-// The ID of this resource.
-func (o DashboardChartChartItemQueryFilterAttributePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DashboardChartChartItemQueryFilterAttribute) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o DashboardChartChartItemQueryFilterAttributePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DashboardChartChartItemQueryFilterAttribute) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-type DashboardChartThreshold struct {
+type DashboardBarChartThreshold struct {
 	Color       string  `pulumi:"color"`
 	DisplayText string  `pulumi:"displayText"`
 	Value       float64 `pulumi:"value"`
 }
 
-// DashboardChartThresholdInput is an input type that accepts DashboardChartThresholdArgs and DashboardChartThresholdOutput values.
-// You can construct a concrete instance of `DashboardChartThresholdInput` via:
+// DashboardBarChartThresholdInput is an input type that accepts DashboardBarChartThresholdArgs and DashboardBarChartThresholdOutput values.
+// You can construct a concrete instance of `DashboardBarChartThresholdInput` via:
 //
-//	DashboardChartThresholdArgs{...}
-type DashboardChartThresholdInput interface {
+//	DashboardBarChartThresholdArgs{...}
+type DashboardBarChartThresholdInput interface {
 	pulumi.Input
 
-	ToDashboardChartThresholdOutput() DashboardChartThresholdOutput
-	ToDashboardChartThresholdOutputWithContext(context.Context) DashboardChartThresholdOutput
+	ToDashboardBarChartThresholdOutput() DashboardBarChartThresholdOutput
+	ToDashboardBarChartThresholdOutputWithContext(context.Context) DashboardBarChartThresholdOutput
 }
 
-type DashboardChartThresholdArgs struct {
+type DashboardBarChartThresholdArgs struct {
 	Color       pulumi.StringInput  `pulumi:"color"`
 	DisplayText pulumi.StringInput  `pulumi:"displayText"`
 	Value       pulumi.Float64Input `pulumi:"value"`
 }
 
-func (DashboardChartThresholdArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DashboardChartThreshold)(nil)).Elem()
+func (DashboardBarChartThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardBarChartThreshold)(nil)).Elem()
 }
 
-func (i DashboardChartThresholdArgs) ToDashboardChartThresholdOutput() DashboardChartThresholdOutput {
-	return i.ToDashboardChartThresholdOutputWithContext(context.Background())
+func (i DashboardBarChartThresholdArgs) ToDashboardBarChartThresholdOutput() DashboardBarChartThresholdOutput {
+	return i.ToDashboardBarChartThresholdOutputWithContext(context.Background())
 }
 
-func (i DashboardChartThresholdArgs) ToDashboardChartThresholdOutputWithContext(ctx context.Context) DashboardChartThresholdOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DashboardChartThresholdOutput)
+func (i DashboardBarChartThresholdArgs) ToDashboardBarChartThresholdOutputWithContext(ctx context.Context) DashboardBarChartThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardBarChartThresholdOutput)
 }
 
-// DashboardChartThresholdArrayInput is an input type that accepts DashboardChartThresholdArray and DashboardChartThresholdArrayOutput values.
-// You can construct a concrete instance of `DashboardChartThresholdArrayInput` via:
+// DashboardBarChartThresholdArrayInput is an input type that accepts DashboardBarChartThresholdArray and DashboardBarChartThresholdArrayOutput values.
+// You can construct a concrete instance of `DashboardBarChartThresholdArrayInput` via:
 //
-//	DashboardChartThresholdArray{ DashboardChartThresholdArgs{...} }
-type DashboardChartThresholdArrayInput interface {
+//	DashboardBarChartThresholdArray{ DashboardBarChartThresholdArgs{...} }
+type DashboardBarChartThresholdArrayInput interface {
 	pulumi.Input
 
-	ToDashboardChartThresholdArrayOutput() DashboardChartThresholdArrayOutput
-	ToDashboardChartThresholdArrayOutputWithContext(context.Context) DashboardChartThresholdArrayOutput
+	ToDashboardBarChartThresholdArrayOutput() DashboardBarChartThresholdArrayOutput
+	ToDashboardBarChartThresholdArrayOutputWithContext(context.Context) DashboardBarChartThresholdArrayOutput
 }
 
-type DashboardChartThresholdArray []DashboardChartThresholdInput
+type DashboardBarChartThresholdArray []DashboardBarChartThresholdInput
 
-func (DashboardChartThresholdArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DashboardChartThreshold)(nil)).Elem()
+func (DashboardBarChartThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardBarChartThreshold)(nil)).Elem()
 }
 
-func (i DashboardChartThresholdArray) ToDashboardChartThresholdArrayOutput() DashboardChartThresholdArrayOutput {
-	return i.ToDashboardChartThresholdArrayOutputWithContext(context.Background())
+func (i DashboardBarChartThresholdArray) ToDashboardBarChartThresholdArrayOutput() DashboardBarChartThresholdArrayOutput {
+	return i.ToDashboardBarChartThresholdArrayOutputWithContext(context.Background())
 }
 
-func (i DashboardChartThresholdArray) ToDashboardChartThresholdArrayOutputWithContext(ctx context.Context) DashboardChartThresholdArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DashboardChartThresholdArrayOutput)
+func (i DashboardBarChartThresholdArray) ToDashboardBarChartThresholdArrayOutputWithContext(ctx context.Context) DashboardBarChartThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardBarChartThresholdArrayOutput)
 }
 
-type DashboardChartThresholdOutput struct{ *pulumi.OutputState }
+type DashboardBarChartThresholdOutput struct{ *pulumi.OutputState }
 
-func (DashboardChartThresholdOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DashboardChartThreshold)(nil)).Elem()
+func (DashboardBarChartThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardBarChartThreshold)(nil)).Elem()
 }
 
-func (o DashboardChartThresholdOutput) ToDashboardChartThresholdOutput() DashboardChartThresholdOutput {
+func (o DashboardBarChartThresholdOutput) ToDashboardBarChartThresholdOutput() DashboardBarChartThresholdOutput {
 	return o
 }
 
-func (o DashboardChartThresholdOutput) ToDashboardChartThresholdOutputWithContext(ctx context.Context) DashboardChartThresholdOutput {
+func (o DashboardBarChartThresholdOutput) ToDashboardBarChartThresholdOutputWithContext(ctx context.Context) DashboardBarChartThresholdOutput {
 	return o
 }
 
-func (o DashboardChartThresholdOutput) Color() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardChartThreshold) string { return v.Color }).(pulumi.StringOutput)
+func (o DashboardBarChartThresholdOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardBarChartThreshold) string { return v.Color }).(pulumi.StringOutput)
 }
 
-func (o DashboardChartThresholdOutput) DisplayText() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardChartThreshold) string { return v.DisplayText }).(pulumi.StringOutput)
+func (o DashboardBarChartThresholdOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardBarChartThreshold) string { return v.DisplayText }).(pulumi.StringOutput)
 }
 
-func (o DashboardChartThresholdOutput) Value() pulumi.Float64Output {
-	return o.ApplyT(func(v DashboardChartThreshold) float64 { return v.Value }).(pulumi.Float64Output)
+func (o DashboardBarChartThresholdOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v DashboardBarChartThreshold) float64 { return v.Value }).(pulumi.Float64Output)
 }
 
-type DashboardChartThresholdArrayOutput struct{ *pulumi.OutputState }
+type DashboardBarChartThresholdArrayOutput struct{ *pulumi.OutputState }
 
-func (DashboardChartThresholdArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DashboardChartThreshold)(nil)).Elem()
+func (DashboardBarChartThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardBarChartThreshold)(nil)).Elem()
 }
 
-func (o DashboardChartThresholdArrayOutput) ToDashboardChartThresholdArrayOutput() DashboardChartThresholdArrayOutput {
+func (o DashboardBarChartThresholdArrayOutput) ToDashboardBarChartThresholdArrayOutput() DashboardBarChartThresholdArrayOutput {
 	return o
 }
 
-func (o DashboardChartThresholdArrayOutput) ToDashboardChartThresholdArrayOutputWithContext(ctx context.Context) DashboardChartThresholdArrayOutput {
+func (o DashboardBarChartThresholdArrayOutput) ToDashboardBarChartThresholdArrayOutputWithContext(ctx context.Context) DashboardBarChartThresholdArrayOutput {
 	return o
 }
 
-func (o DashboardChartThresholdArrayOutput) Index(i pulumi.IntInput) DashboardChartThresholdOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardChartThreshold {
-		return vs[0].([]DashboardChartThreshold)[vs[1].(int)]
-	}).(DashboardChartThresholdOutput)
+func (o DashboardBarChartThresholdArrayOutput) Index(i pulumi.IntInput) DashboardBarChartThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardBarChartThreshold {
+		return vs[0].([]DashboardBarChartThreshold)[vs[1].(int)]
+	}).(DashboardBarChartThresholdOutput)
 }
 
-type DashboardChartValueMapping struct {
+type DashboardBarChartValueMapping struct {
 	DisplayText string `pulumi:"displayText"`
 	MatchValue  string `pulumi:"matchValue"`
 	Order       int    `pulumi:"order"`
 	Type        string `pulumi:"type"`
 }
 
-// DashboardChartValueMappingInput is an input type that accepts DashboardChartValueMappingArgs and DashboardChartValueMappingOutput values.
-// You can construct a concrete instance of `DashboardChartValueMappingInput` via:
+// DashboardBarChartValueMappingInput is an input type that accepts DashboardBarChartValueMappingArgs and DashboardBarChartValueMappingOutput values.
+// You can construct a concrete instance of `DashboardBarChartValueMappingInput` via:
 //
-//	DashboardChartValueMappingArgs{...}
-type DashboardChartValueMappingInput interface {
+//	DashboardBarChartValueMappingArgs{...}
+type DashboardBarChartValueMappingInput interface {
 	pulumi.Input
 
-	ToDashboardChartValueMappingOutput() DashboardChartValueMappingOutput
-	ToDashboardChartValueMappingOutputWithContext(context.Context) DashboardChartValueMappingOutput
+	ToDashboardBarChartValueMappingOutput() DashboardBarChartValueMappingOutput
+	ToDashboardBarChartValueMappingOutputWithContext(context.Context) DashboardBarChartValueMappingOutput
 }
 
-type DashboardChartValueMappingArgs struct {
+type DashboardBarChartValueMappingArgs struct {
 	DisplayText pulumi.StringInput `pulumi:"displayText"`
 	MatchValue  pulumi.StringInput `pulumi:"matchValue"`
 	Order       pulumi.IntInput    `pulumi:"order"`
 	Type        pulumi.StringInput `pulumi:"type"`
 }
 
-func (DashboardChartValueMappingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DashboardChartValueMapping)(nil)).Elem()
+func (DashboardBarChartValueMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardBarChartValueMapping)(nil)).Elem()
 }
 
-func (i DashboardChartValueMappingArgs) ToDashboardChartValueMappingOutput() DashboardChartValueMappingOutput {
-	return i.ToDashboardChartValueMappingOutputWithContext(context.Background())
+func (i DashboardBarChartValueMappingArgs) ToDashboardBarChartValueMappingOutput() DashboardBarChartValueMappingOutput {
+	return i.ToDashboardBarChartValueMappingOutputWithContext(context.Background())
 }
 
-func (i DashboardChartValueMappingArgs) ToDashboardChartValueMappingOutputWithContext(ctx context.Context) DashboardChartValueMappingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DashboardChartValueMappingOutput)
+func (i DashboardBarChartValueMappingArgs) ToDashboardBarChartValueMappingOutputWithContext(ctx context.Context) DashboardBarChartValueMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardBarChartValueMappingOutput)
 }
 
-// DashboardChartValueMappingArrayInput is an input type that accepts DashboardChartValueMappingArray and DashboardChartValueMappingArrayOutput values.
-// You can construct a concrete instance of `DashboardChartValueMappingArrayInput` via:
+// DashboardBarChartValueMappingArrayInput is an input type that accepts DashboardBarChartValueMappingArray and DashboardBarChartValueMappingArrayOutput values.
+// You can construct a concrete instance of `DashboardBarChartValueMappingArrayInput` via:
 //
-//	DashboardChartValueMappingArray{ DashboardChartValueMappingArgs{...} }
-type DashboardChartValueMappingArrayInput interface {
+//	DashboardBarChartValueMappingArray{ DashboardBarChartValueMappingArgs{...} }
+type DashboardBarChartValueMappingArrayInput interface {
 	pulumi.Input
 
-	ToDashboardChartValueMappingArrayOutput() DashboardChartValueMappingArrayOutput
-	ToDashboardChartValueMappingArrayOutputWithContext(context.Context) DashboardChartValueMappingArrayOutput
+	ToDashboardBarChartValueMappingArrayOutput() DashboardBarChartValueMappingArrayOutput
+	ToDashboardBarChartValueMappingArrayOutputWithContext(context.Context) DashboardBarChartValueMappingArrayOutput
 }
 
-type DashboardChartValueMappingArray []DashboardChartValueMappingInput
+type DashboardBarChartValueMappingArray []DashboardBarChartValueMappingInput
 
-func (DashboardChartValueMappingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DashboardChartValueMapping)(nil)).Elem()
+func (DashboardBarChartValueMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardBarChartValueMapping)(nil)).Elem()
 }
 
-func (i DashboardChartValueMappingArray) ToDashboardChartValueMappingArrayOutput() DashboardChartValueMappingArrayOutput {
-	return i.ToDashboardChartValueMappingArrayOutputWithContext(context.Background())
+func (i DashboardBarChartValueMappingArray) ToDashboardBarChartValueMappingArrayOutput() DashboardBarChartValueMappingArrayOutput {
+	return i.ToDashboardBarChartValueMappingArrayOutputWithContext(context.Background())
 }
 
-func (i DashboardChartValueMappingArray) ToDashboardChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardChartValueMappingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DashboardChartValueMappingArrayOutput)
+func (i DashboardBarChartValueMappingArray) ToDashboardBarChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardBarChartValueMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardBarChartValueMappingArrayOutput)
 }
 
-type DashboardChartValueMappingOutput struct{ *pulumi.OutputState }
+type DashboardBarChartValueMappingOutput struct{ *pulumi.OutputState }
 
-func (DashboardChartValueMappingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DashboardChartValueMapping)(nil)).Elem()
+func (DashboardBarChartValueMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardBarChartValueMapping)(nil)).Elem()
 }
 
-func (o DashboardChartValueMappingOutput) ToDashboardChartValueMappingOutput() DashboardChartValueMappingOutput {
+func (o DashboardBarChartValueMappingOutput) ToDashboardBarChartValueMappingOutput() DashboardBarChartValueMappingOutput {
 	return o
 }
 
-func (o DashboardChartValueMappingOutput) ToDashboardChartValueMappingOutputWithContext(ctx context.Context) DashboardChartValueMappingOutput {
+func (o DashboardBarChartValueMappingOutput) ToDashboardBarChartValueMappingOutputWithContext(ctx context.Context) DashboardBarChartValueMappingOutput {
 	return o
 }
 
-func (o DashboardChartValueMappingOutput) DisplayText() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardChartValueMapping) string { return v.DisplayText }).(pulumi.StringOutput)
+func (o DashboardBarChartValueMappingOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardBarChartValueMapping) string { return v.DisplayText }).(pulumi.StringOutput)
 }
 
-func (o DashboardChartValueMappingOutput) MatchValue() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardChartValueMapping) string { return v.MatchValue }).(pulumi.StringOutput)
+func (o DashboardBarChartValueMappingOutput) MatchValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardBarChartValueMapping) string { return v.MatchValue }).(pulumi.StringOutput)
 }
 
-func (o DashboardChartValueMappingOutput) Order() pulumi.IntOutput {
-	return o.ApplyT(func(v DashboardChartValueMapping) int { return v.Order }).(pulumi.IntOutput)
+func (o DashboardBarChartValueMappingOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v DashboardBarChartValueMapping) int { return v.Order }).(pulumi.IntOutput)
 }
 
-func (o DashboardChartValueMappingOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardChartValueMapping) string { return v.Type }).(pulumi.StringOutput)
+func (o DashboardBarChartValueMappingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardBarChartValueMapping) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type DashboardChartValueMappingArrayOutput struct{ *pulumi.OutputState }
+type DashboardBarChartValueMappingArrayOutput struct{ *pulumi.OutputState }
 
-func (DashboardChartValueMappingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DashboardChartValueMapping)(nil)).Elem()
+func (DashboardBarChartValueMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardBarChartValueMapping)(nil)).Elem()
 }
 
-func (o DashboardChartValueMappingArrayOutput) ToDashboardChartValueMappingArrayOutput() DashboardChartValueMappingArrayOutput {
+func (o DashboardBarChartValueMappingArrayOutput) ToDashboardBarChartValueMappingArrayOutput() DashboardBarChartValueMappingArrayOutput {
 	return o
 }
 
-func (o DashboardChartValueMappingArrayOutput) ToDashboardChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardChartValueMappingArrayOutput {
+func (o DashboardBarChartValueMappingArrayOutput) ToDashboardBarChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardBarChartValueMappingArrayOutput {
 	return o
 }
 
-func (o DashboardChartValueMappingArrayOutput) Index(i pulumi.IntInput) DashboardChartValueMappingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardChartValueMapping {
-		return vs[0].([]DashboardChartValueMapping)[vs[1].(int)]
-	}).(DashboardChartValueMappingOutput)
+func (o DashboardBarChartValueMappingArrayOutput) Index(i pulumi.IntInput) DashboardBarChartValueMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardBarChartValueMapping {
+		return vs[0].([]DashboardBarChartValueMapping)[vs[1].(int)]
+	}).(DashboardBarChartValueMappingOutput)
+}
+
+type DashboardBargaugeChartChartItem struct {
+	Color           string  `pulumi:"color"`
+	ExpressionPlain string  `pulumi:"expressionPlain"`
+	Hidden          *bool   `pulumi:"hidden"`
+	Label           *string `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardBargaugeChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardBargaugeChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   *string                                             `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       *string                                             `pulumi:"queryGroupUnit"`
+	QueryLimit           *int                                                `pulumi:"queryLimit"`
+	QueryPlain           string                                              `pulumi:"queryPlain"`
+	QuerySortDirection   *int                                                `pulumi:"querySortDirection"`
+	RefId                string                                              `pulumi:"refId"`
+	Type                 string                                              `pulumi:"type"`
+}
+
+// DashboardBargaugeChartChartItemInput is an input type that accepts DashboardBargaugeChartChartItemArgs and DashboardBargaugeChartChartItemOutput values.
+// You can construct a concrete instance of `DashboardBargaugeChartChartItemInput` via:
+//
+//	DashboardBargaugeChartChartItemArgs{...}
+type DashboardBargaugeChartChartItemInput interface {
+	pulumi.Input
+
+	ToDashboardBargaugeChartChartItemOutput() DashboardBargaugeChartChartItemOutput
+	ToDashboardBargaugeChartChartItemOutputWithContext(context.Context) DashboardBargaugeChartChartItemOutput
+}
+
+type DashboardBargaugeChartChartItemArgs struct {
+	Color           pulumi.StringInput    `pulumi:"color"`
+	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
+	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
+	Label           pulumi.StringPtrInput `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardBargaugeChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardBargaugeChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   pulumi.StringPtrInput                                    `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       pulumi.StringPtrInput                                    `pulumi:"queryGroupUnit"`
+	QueryLimit           pulumi.IntPtrInput                                       `pulumi:"queryLimit"`
+	QueryPlain           pulumi.StringInput                                       `pulumi:"queryPlain"`
+	QuerySortDirection   pulumi.IntPtrInput                                       `pulumi:"querySortDirection"`
+	RefId                pulumi.StringInput                                       `pulumi:"refId"`
+	Type                 pulumi.StringInput                                       `pulumi:"type"`
+}
+
+func (DashboardBargaugeChartChartItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardBargaugeChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardBargaugeChartChartItemArgs) ToDashboardBargaugeChartChartItemOutput() DashboardBargaugeChartChartItemOutput {
+	return i.ToDashboardBargaugeChartChartItemOutputWithContext(context.Background())
+}
+
+func (i DashboardBargaugeChartChartItemArgs) ToDashboardBargaugeChartChartItemOutputWithContext(ctx context.Context) DashboardBargaugeChartChartItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardBargaugeChartChartItemOutput)
+}
+
+// DashboardBargaugeChartChartItemArrayInput is an input type that accepts DashboardBargaugeChartChartItemArray and DashboardBargaugeChartChartItemArrayOutput values.
+// You can construct a concrete instance of `DashboardBargaugeChartChartItemArrayInput` via:
+//
+//	DashboardBargaugeChartChartItemArray{ DashboardBargaugeChartChartItemArgs{...} }
+type DashboardBargaugeChartChartItemArrayInput interface {
+	pulumi.Input
+
+	ToDashboardBargaugeChartChartItemArrayOutput() DashboardBargaugeChartChartItemArrayOutput
+	ToDashboardBargaugeChartChartItemArrayOutputWithContext(context.Context) DashboardBargaugeChartChartItemArrayOutput
+}
+
+type DashboardBargaugeChartChartItemArray []DashboardBargaugeChartChartItemInput
+
+func (DashboardBargaugeChartChartItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardBargaugeChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardBargaugeChartChartItemArray) ToDashboardBargaugeChartChartItemArrayOutput() DashboardBargaugeChartChartItemArrayOutput {
+	return i.ToDashboardBargaugeChartChartItemArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardBargaugeChartChartItemArray) ToDashboardBargaugeChartChartItemArrayOutputWithContext(ctx context.Context) DashboardBargaugeChartChartItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardBargaugeChartChartItemArrayOutput)
+}
+
+type DashboardBargaugeChartChartItemOutput struct{ *pulumi.OutputState }
+
+func (DashboardBargaugeChartChartItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardBargaugeChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardBargaugeChartChartItemOutput) ToDashboardBargaugeChartChartItemOutput() DashboardBargaugeChartChartItemOutput {
+	return o
+}
+
+func (o DashboardBargaugeChartChartItemOutput) ToDashboardBargaugeChartChartItemOutputWithContext(ctx context.Context) DashboardBargaugeChartChartItemOutput {
+	return o
+}
+
+func (o DashboardBargaugeChartChartItemOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartChartItem) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardBargaugeChartChartItemOutput) ExpressionPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartChartItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardBargaugeChartChartItemOutput) Hidden() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartChartItem) *bool { return v.Hidden }).(pulumi.BoolPtrOutput)
+}
+
+func (o DashboardBargaugeChartChartItemOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardBargaugeChartChartItemOutput) QueryFilterAsset() DashboardBargaugeChartChartItemQueryFilterAssetOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartChartItem) DashboardBargaugeChartChartItemQueryFilterAsset {
+		return v.QueryFilterAsset
+	}).(DashboardBargaugeChartChartItemQueryFilterAssetOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardBargaugeChartChartItemOutput) QueryFilterAttribute() DashboardBargaugeChartChartItemQueryFilterAttributeOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartChartItem) DashboardBargaugeChartChartItemQueryFilterAttribute {
+		return v.QueryFilterAttribute
+	}).(DashboardBargaugeChartChartItemQueryFilterAttributeOutput)
+}
+
+func (o DashboardBargaugeChartChartItemOutput) QueryGroupFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartChartItem) *string { return v.QueryGroupFunction }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardBargaugeChartChartItemOutput) QueryGroupUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartChartItem) *string { return v.QueryGroupUnit }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardBargaugeChartChartItemOutput) QueryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartChartItem) *int { return v.QueryLimit }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardBargaugeChartChartItemOutput) QueryPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartChartItem) string { return v.QueryPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardBargaugeChartChartItemOutput) QuerySortDirection() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartChartItem) *int { return v.QuerySortDirection }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardBargaugeChartChartItemOutput) RefId() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartChartItem) string { return v.RefId }).(pulumi.StringOutput)
+}
+
+func (o DashboardBargaugeChartChartItemOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartChartItem) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardBargaugeChartChartItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardBargaugeChartChartItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardBargaugeChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardBargaugeChartChartItemArrayOutput) ToDashboardBargaugeChartChartItemArrayOutput() DashboardBargaugeChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardBargaugeChartChartItemArrayOutput) ToDashboardBargaugeChartChartItemArrayOutputWithContext(ctx context.Context) DashboardBargaugeChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardBargaugeChartChartItemArrayOutput) Index(i pulumi.IntInput) DashboardBargaugeChartChartItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardBargaugeChartChartItem {
+		return vs[0].([]DashboardBargaugeChartChartItem)[vs[1].(int)]
+	}).(DashboardBargaugeChartChartItemOutput)
+}
+
+type DashboardBargaugeChartChartItemQueryFilterAsset struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardBargaugeChartChartItemQueryFilterAssetInput is an input type that accepts DashboardBargaugeChartChartItemQueryFilterAssetArgs and DashboardBargaugeChartChartItemQueryFilterAssetOutput values.
+// You can construct a concrete instance of `DashboardBargaugeChartChartItemQueryFilterAssetInput` via:
+//
+//	DashboardBargaugeChartChartItemQueryFilterAssetArgs{...}
+type DashboardBargaugeChartChartItemQueryFilterAssetInput interface {
+	pulumi.Input
+
+	ToDashboardBargaugeChartChartItemQueryFilterAssetOutput() DashboardBargaugeChartChartItemQueryFilterAssetOutput
+	ToDashboardBargaugeChartChartItemQueryFilterAssetOutputWithContext(context.Context) DashboardBargaugeChartChartItemQueryFilterAssetOutput
+}
+
+type DashboardBargaugeChartChartItemQueryFilterAssetArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardBargaugeChartChartItemQueryFilterAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardBargaugeChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (i DashboardBargaugeChartChartItemQueryFilterAssetArgs) ToDashboardBargaugeChartChartItemQueryFilterAssetOutput() DashboardBargaugeChartChartItemQueryFilterAssetOutput {
+	return i.ToDashboardBargaugeChartChartItemQueryFilterAssetOutputWithContext(context.Background())
+}
+
+func (i DashboardBargaugeChartChartItemQueryFilterAssetArgs) ToDashboardBargaugeChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardBargaugeChartChartItemQueryFilterAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardBargaugeChartChartItemQueryFilterAssetOutput)
+}
+
+type DashboardBargaugeChartChartItemQueryFilterAssetOutput struct{ *pulumi.OutputState }
+
+func (DashboardBargaugeChartChartItemQueryFilterAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardBargaugeChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (o DashboardBargaugeChartChartItemQueryFilterAssetOutput) ToDashboardBargaugeChartChartItemQueryFilterAssetOutput() DashboardBargaugeChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+func (o DashboardBargaugeChartChartItemQueryFilterAssetOutput) ToDashboardBargaugeChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardBargaugeChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardBargaugeChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardBargaugeChartChartItemQueryFilterAssetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartChartItemQueryFilterAsset) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardBargaugeChartChartItemQueryFilterAttribute struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardBargaugeChartChartItemQueryFilterAttributeInput is an input type that accepts DashboardBargaugeChartChartItemQueryFilterAttributeArgs and DashboardBargaugeChartChartItemQueryFilterAttributeOutput values.
+// You can construct a concrete instance of `DashboardBargaugeChartChartItemQueryFilterAttributeInput` via:
+//
+//	DashboardBargaugeChartChartItemQueryFilterAttributeArgs{...}
+type DashboardBargaugeChartChartItemQueryFilterAttributeInput interface {
+	pulumi.Input
+
+	ToDashboardBargaugeChartChartItemQueryFilterAttributeOutput() DashboardBargaugeChartChartItemQueryFilterAttributeOutput
+	ToDashboardBargaugeChartChartItemQueryFilterAttributeOutputWithContext(context.Context) DashboardBargaugeChartChartItemQueryFilterAttributeOutput
+}
+
+type DashboardBargaugeChartChartItemQueryFilterAttributeArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardBargaugeChartChartItemQueryFilterAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardBargaugeChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (i DashboardBargaugeChartChartItemQueryFilterAttributeArgs) ToDashboardBargaugeChartChartItemQueryFilterAttributeOutput() DashboardBargaugeChartChartItemQueryFilterAttributeOutput {
+	return i.ToDashboardBargaugeChartChartItemQueryFilterAttributeOutputWithContext(context.Background())
+}
+
+func (i DashboardBargaugeChartChartItemQueryFilterAttributeArgs) ToDashboardBargaugeChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardBargaugeChartChartItemQueryFilterAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardBargaugeChartChartItemQueryFilterAttributeOutput)
+}
+
+type DashboardBargaugeChartChartItemQueryFilterAttributeOutput struct{ *pulumi.OutputState }
+
+func (DashboardBargaugeChartChartItemQueryFilterAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardBargaugeChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (o DashboardBargaugeChartChartItemQueryFilterAttributeOutput) ToDashboardBargaugeChartChartItemQueryFilterAttributeOutput() DashboardBargaugeChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+func (o DashboardBargaugeChartChartItemQueryFilterAttributeOutput) ToDashboardBargaugeChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardBargaugeChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardBargaugeChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardBargaugeChartChartItemQueryFilterAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartChartItemQueryFilterAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardBargaugeChartThreshold struct {
+	Color       string  `pulumi:"color"`
+	DisplayText string  `pulumi:"displayText"`
+	Value       float64 `pulumi:"value"`
+}
+
+// DashboardBargaugeChartThresholdInput is an input type that accepts DashboardBargaugeChartThresholdArgs and DashboardBargaugeChartThresholdOutput values.
+// You can construct a concrete instance of `DashboardBargaugeChartThresholdInput` via:
+//
+//	DashboardBargaugeChartThresholdArgs{...}
+type DashboardBargaugeChartThresholdInput interface {
+	pulumi.Input
+
+	ToDashboardBargaugeChartThresholdOutput() DashboardBargaugeChartThresholdOutput
+	ToDashboardBargaugeChartThresholdOutputWithContext(context.Context) DashboardBargaugeChartThresholdOutput
+}
+
+type DashboardBargaugeChartThresholdArgs struct {
+	Color       pulumi.StringInput  `pulumi:"color"`
+	DisplayText pulumi.StringInput  `pulumi:"displayText"`
+	Value       pulumi.Float64Input `pulumi:"value"`
+}
+
+func (DashboardBargaugeChartThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardBargaugeChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardBargaugeChartThresholdArgs) ToDashboardBargaugeChartThresholdOutput() DashboardBargaugeChartThresholdOutput {
+	return i.ToDashboardBargaugeChartThresholdOutputWithContext(context.Background())
+}
+
+func (i DashboardBargaugeChartThresholdArgs) ToDashboardBargaugeChartThresholdOutputWithContext(ctx context.Context) DashboardBargaugeChartThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardBargaugeChartThresholdOutput)
+}
+
+// DashboardBargaugeChartThresholdArrayInput is an input type that accepts DashboardBargaugeChartThresholdArray and DashboardBargaugeChartThresholdArrayOutput values.
+// You can construct a concrete instance of `DashboardBargaugeChartThresholdArrayInput` via:
+//
+//	DashboardBargaugeChartThresholdArray{ DashboardBargaugeChartThresholdArgs{...} }
+type DashboardBargaugeChartThresholdArrayInput interface {
+	pulumi.Input
+
+	ToDashboardBargaugeChartThresholdArrayOutput() DashboardBargaugeChartThresholdArrayOutput
+	ToDashboardBargaugeChartThresholdArrayOutputWithContext(context.Context) DashboardBargaugeChartThresholdArrayOutput
+}
+
+type DashboardBargaugeChartThresholdArray []DashboardBargaugeChartThresholdInput
+
+func (DashboardBargaugeChartThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardBargaugeChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardBargaugeChartThresholdArray) ToDashboardBargaugeChartThresholdArrayOutput() DashboardBargaugeChartThresholdArrayOutput {
+	return i.ToDashboardBargaugeChartThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardBargaugeChartThresholdArray) ToDashboardBargaugeChartThresholdArrayOutputWithContext(ctx context.Context) DashboardBargaugeChartThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardBargaugeChartThresholdArrayOutput)
+}
+
+type DashboardBargaugeChartThresholdOutput struct{ *pulumi.OutputState }
+
+func (DashboardBargaugeChartThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardBargaugeChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardBargaugeChartThresholdOutput) ToDashboardBargaugeChartThresholdOutput() DashboardBargaugeChartThresholdOutput {
+	return o
+}
+
+func (o DashboardBargaugeChartThresholdOutput) ToDashboardBargaugeChartThresholdOutputWithContext(ctx context.Context) DashboardBargaugeChartThresholdOutput {
+	return o
+}
+
+func (o DashboardBargaugeChartThresholdOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartThreshold) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardBargaugeChartThresholdOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartThreshold) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardBargaugeChartThresholdOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v DashboardBargaugeChartThreshold) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type DashboardBargaugeChartThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardBargaugeChartThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardBargaugeChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardBargaugeChartThresholdArrayOutput) ToDashboardBargaugeChartThresholdArrayOutput() DashboardBargaugeChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardBargaugeChartThresholdArrayOutput) ToDashboardBargaugeChartThresholdArrayOutputWithContext(ctx context.Context) DashboardBargaugeChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardBargaugeChartThresholdArrayOutput) Index(i pulumi.IntInput) DashboardBargaugeChartThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardBargaugeChartThreshold {
+		return vs[0].([]DashboardBargaugeChartThreshold)[vs[1].(int)]
+	}).(DashboardBargaugeChartThresholdOutput)
+}
+
+type DashboardBargaugeChartValueMapping struct {
+	DisplayText string `pulumi:"displayText"`
+	MatchValue  string `pulumi:"matchValue"`
+	Order       int    `pulumi:"order"`
+	Type        string `pulumi:"type"`
+}
+
+// DashboardBargaugeChartValueMappingInput is an input type that accepts DashboardBargaugeChartValueMappingArgs and DashboardBargaugeChartValueMappingOutput values.
+// You can construct a concrete instance of `DashboardBargaugeChartValueMappingInput` via:
+//
+//	DashboardBargaugeChartValueMappingArgs{...}
+type DashboardBargaugeChartValueMappingInput interface {
+	pulumi.Input
+
+	ToDashboardBargaugeChartValueMappingOutput() DashboardBargaugeChartValueMappingOutput
+	ToDashboardBargaugeChartValueMappingOutputWithContext(context.Context) DashboardBargaugeChartValueMappingOutput
+}
+
+type DashboardBargaugeChartValueMappingArgs struct {
+	DisplayText pulumi.StringInput `pulumi:"displayText"`
+	MatchValue  pulumi.StringInput `pulumi:"matchValue"`
+	Order       pulumi.IntInput    `pulumi:"order"`
+	Type        pulumi.StringInput `pulumi:"type"`
+}
+
+func (DashboardBargaugeChartValueMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardBargaugeChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardBargaugeChartValueMappingArgs) ToDashboardBargaugeChartValueMappingOutput() DashboardBargaugeChartValueMappingOutput {
+	return i.ToDashboardBargaugeChartValueMappingOutputWithContext(context.Background())
+}
+
+func (i DashboardBargaugeChartValueMappingArgs) ToDashboardBargaugeChartValueMappingOutputWithContext(ctx context.Context) DashboardBargaugeChartValueMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardBargaugeChartValueMappingOutput)
+}
+
+// DashboardBargaugeChartValueMappingArrayInput is an input type that accepts DashboardBargaugeChartValueMappingArray and DashboardBargaugeChartValueMappingArrayOutput values.
+// You can construct a concrete instance of `DashboardBargaugeChartValueMappingArrayInput` via:
+//
+//	DashboardBargaugeChartValueMappingArray{ DashboardBargaugeChartValueMappingArgs{...} }
+type DashboardBargaugeChartValueMappingArrayInput interface {
+	pulumi.Input
+
+	ToDashboardBargaugeChartValueMappingArrayOutput() DashboardBargaugeChartValueMappingArrayOutput
+	ToDashboardBargaugeChartValueMappingArrayOutputWithContext(context.Context) DashboardBargaugeChartValueMappingArrayOutput
+}
+
+type DashboardBargaugeChartValueMappingArray []DashboardBargaugeChartValueMappingInput
+
+func (DashboardBargaugeChartValueMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardBargaugeChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardBargaugeChartValueMappingArray) ToDashboardBargaugeChartValueMappingArrayOutput() DashboardBargaugeChartValueMappingArrayOutput {
+	return i.ToDashboardBargaugeChartValueMappingArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardBargaugeChartValueMappingArray) ToDashboardBargaugeChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardBargaugeChartValueMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardBargaugeChartValueMappingArrayOutput)
+}
+
+type DashboardBargaugeChartValueMappingOutput struct{ *pulumi.OutputState }
+
+func (DashboardBargaugeChartValueMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardBargaugeChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardBargaugeChartValueMappingOutput) ToDashboardBargaugeChartValueMappingOutput() DashboardBargaugeChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardBargaugeChartValueMappingOutput) ToDashboardBargaugeChartValueMappingOutputWithContext(ctx context.Context) DashboardBargaugeChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardBargaugeChartValueMappingOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartValueMapping) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardBargaugeChartValueMappingOutput) MatchValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartValueMapping) string { return v.MatchValue }).(pulumi.StringOutput)
+}
+
+func (o DashboardBargaugeChartValueMappingOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartValueMapping) int { return v.Order }).(pulumi.IntOutput)
+}
+
+func (o DashboardBargaugeChartValueMappingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardBargaugeChartValueMapping) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardBargaugeChartValueMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardBargaugeChartValueMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardBargaugeChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardBargaugeChartValueMappingArrayOutput) ToDashboardBargaugeChartValueMappingArrayOutput() DashboardBargaugeChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardBargaugeChartValueMappingArrayOutput) ToDashboardBargaugeChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardBargaugeChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardBargaugeChartValueMappingArrayOutput) Index(i pulumi.IntInput) DashboardBargaugeChartValueMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardBargaugeChartValueMapping {
+		return vs[0].([]DashboardBargaugeChartValueMapping)[vs[1].(int)]
+	}).(DashboardBargaugeChartValueMappingOutput)
+}
+
+type DashboardCommandlistChartChartItem struct {
+	Color           string  `pulumi:"color"`
+	ExpressionPlain string  `pulumi:"expressionPlain"`
+	Hidden          *bool   `pulumi:"hidden"`
+	Label           *string `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardCommandlistChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardCommandlistChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   *string                                                `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       *string                                                `pulumi:"queryGroupUnit"`
+	QueryLimit           *int                                                   `pulumi:"queryLimit"`
+	QueryPlain           string                                                 `pulumi:"queryPlain"`
+	QuerySortDirection   *int                                                   `pulumi:"querySortDirection"`
+	RefId                string                                                 `pulumi:"refId"`
+	Type                 string                                                 `pulumi:"type"`
+}
+
+// DashboardCommandlistChartChartItemInput is an input type that accepts DashboardCommandlistChartChartItemArgs and DashboardCommandlistChartChartItemOutput values.
+// You can construct a concrete instance of `DashboardCommandlistChartChartItemInput` via:
+//
+//	DashboardCommandlistChartChartItemArgs{...}
+type DashboardCommandlistChartChartItemInput interface {
+	pulumi.Input
+
+	ToDashboardCommandlistChartChartItemOutput() DashboardCommandlistChartChartItemOutput
+	ToDashboardCommandlistChartChartItemOutputWithContext(context.Context) DashboardCommandlistChartChartItemOutput
+}
+
+type DashboardCommandlistChartChartItemArgs struct {
+	Color           pulumi.StringInput    `pulumi:"color"`
+	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
+	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
+	Label           pulumi.StringPtrInput `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardCommandlistChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardCommandlistChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   pulumi.StringPtrInput                                       `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       pulumi.StringPtrInput                                       `pulumi:"queryGroupUnit"`
+	QueryLimit           pulumi.IntPtrInput                                          `pulumi:"queryLimit"`
+	QueryPlain           pulumi.StringInput                                          `pulumi:"queryPlain"`
+	QuerySortDirection   pulumi.IntPtrInput                                          `pulumi:"querySortDirection"`
+	RefId                pulumi.StringInput                                          `pulumi:"refId"`
+	Type                 pulumi.StringInput                                          `pulumi:"type"`
+}
+
+func (DashboardCommandlistChartChartItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardCommandlistChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardCommandlistChartChartItemArgs) ToDashboardCommandlistChartChartItemOutput() DashboardCommandlistChartChartItemOutput {
+	return i.ToDashboardCommandlistChartChartItemOutputWithContext(context.Background())
+}
+
+func (i DashboardCommandlistChartChartItemArgs) ToDashboardCommandlistChartChartItemOutputWithContext(ctx context.Context) DashboardCommandlistChartChartItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardCommandlistChartChartItemOutput)
+}
+
+// DashboardCommandlistChartChartItemArrayInput is an input type that accepts DashboardCommandlistChartChartItemArray and DashboardCommandlistChartChartItemArrayOutput values.
+// You can construct a concrete instance of `DashboardCommandlistChartChartItemArrayInput` via:
+//
+//	DashboardCommandlistChartChartItemArray{ DashboardCommandlistChartChartItemArgs{...} }
+type DashboardCommandlistChartChartItemArrayInput interface {
+	pulumi.Input
+
+	ToDashboardCommandlistChartChartItemArrayOutput() DashboardCommandlistChartChartItemArrayOutput
+	ToDashboardCommandlistChartChartItemArrayOutputWithContext(context.Context) DashboardCommandlistChartChartItemArrayOutput
+}
+
+type DashboardCommandlistChartChartItemArray []DashboardCommandlistChartChartItemInput
+
+func (DashboardCommandlistChartChartItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardCommandlistChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardCommandlistChartChartItemArray) ToDashboardCommandlistChartChartItemArrayOutput() DashboardCommandlistChartChartItemArrayOutput {
+	return i.ToDashboardCommandlistChartChartItemArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardCommandlistChartChartItemArray) ToDashboardCommandlistChartChartItemArrayOutputWithContext(ctx context.Context) DashboardCommandlistChartChartItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardCommandlistChartChartItemArrayOutput)
+}
+
+type DashboardCommandlistChartChartItemOutput struct{ *pulumi.OutputState }
+
+func (DashboardCommandlistChartChartItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardCommandlistChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardCommandlistChartChartItemOutput) ToDashboardCommandlistChartChartItemOutput() DashboardCommandlistChartChartItemOutput {
+	return o
+}
+
+func (o DashboardCommandlistChartChartItemOutput) ToDashboardCommandlistChartChartItemOutputWithContext(ctx context.Context) DashboardCommandlistChartChartItemOutput {
+	return o
+}
+
+func (o DashboardCommandlistChartChartItemOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartChartItem) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardCommandlistChartChartItemOutput) ExpressionPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartChartItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardCommandlistChartChartItemOutput) Hidden() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartChartItem) *bool { return v.Hidden }).(pulumi.BoolPtrOutput)
+}
+
+func (o DashboardCommandlistChartChartItemOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardCommandlistChartChartItemOutput) QueryFilterAsset() DashboardCommandlistChartChartItemQueryFilterAssetOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartChartItem) DashboardCommandlistChartChartItemQueryFilterAsset {
+		return v.QueryFilterAsset
+	}).(DashboardCommandlistChartChartItemQueryFilterAssetOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardCommandlistChartChartItemOutput) QueryFilterAttribute() DashboardCommandlistChartChartItemQueryFilterAttributeOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartChartItem) DashboardCommandlistChartChartItemQueryFilterAttribute {
+		return v.QueryFilterAttribute
+	}).(DashboardCommandlistChartChartItemQueryFilterAttributeOutput)
+}
+
+func (o DashboardCommandlistChartChartItemOutput) QueryGroupFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartChartItem) *string { return v.QueryGroupFunction }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardCommandlistChartChartItemOutput) QueryGroupUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartChartItem) *string { return v.QueryGroupUnit }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardCommandlistChartChartItemOutput) QueryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartChartItem) *int { return v.QueryLimit }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardCommandlistChartChartItemOutput) QueryPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartChartItem) string { return v.QueryPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardCommandlistChartChartItemOutput) QuerySortDirection() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartChartItem) *int { return v.QuerySortDirection }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardCommandlistChartChartItemOutput) RefId() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartChartItem) string { return v.RefId }).(pulumi.StringOutput)
+}
+
+func (o DashboardCommandlistChartChartItemOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartChartItem) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardCommandlistChartChartItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardCommandlistChartChartItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardCommandlistChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardCommandlistChartChartItemArrayOutput) ToDashboardCommandlistChartChartItemArrayOutput() DashboardCommandlistChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardCommandlistChartChartItemArrayOutput) ToDashboardCommandlistChartChartItemArrayOutputWithContext(ctx context.Context) DashboardCommandlistChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardCommandlistChartChartItemArrayOutput) Index(i pulumi.IntInput) DashboardCommandlistChartChartItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardCommandlistChartChartItem {
+		return vs[0].([]DashboardCommandlistChartChartItem)[vs[1].(int)]
+	}).(DashboardCommandlistChartChartItemOutput)
+}
+
+type DashboardCommandlistChartChartItemQueryFilterAsset struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardCommandlistChartChartItemQueryFilterAssetInput is an input type that accepts DashboardCommandlistChartChartItemQueryFilterAssetArgs and DashboardCommandlistChartChartItemQueryFilterAssetOutput values.
+// You can construct a concrete instance of `DashboardCommandlistChartChartItemQueryFilterAssetInput` via:
+//
+//	DashboardCommandlistChartChartItemQueryFilterAssetArgs{...}
+type DashboardCommandlistChartChartItemQueryFilterAssetInput interface {
+	pulumi.Input
+
+	ToDashboardCommandlistChartChartItemQueryFilterAssetOutput() DashboardCommandlistChartChartItemQueryFilterAssetOutput
+	ToDashboardCommandlistChartChartItemQueryFilterAssetOutputWithContext(context.Context) DashboardCommandlistChartChartItemQueryFilterAssetOutput
+}
+
+type DashboardCommandlistChartChartItemQueryFilterAssetArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardCommandlistChartChartItemQueryFilterAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardCommandlistChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (i DashboardCommandlistChartChartItemQueryFilterAssetArgs) ToDashboardCommandlistChartChartItemQueryFilterAssetOutput() DashboardCommandlistChartChartItemQueryFilterAssetOutput {
+	return i.ToDashboardCommandlistChartChartItemQueryFilterAssetOutputWithContext(context.Background())
+}
+
+func (i DashboardCommandlistChartChartItemQueryFilterAssetArgs) ToDashboardCommandlistChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardCommandlistChartChartItemQueryFilterAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardCommandlistChartChartItemQueryFilterAssetOutput)
+}
+
+type DashboardCommandlistChartChartItemQueryFilterAssetOutput struct{ *pulumi.OutputState }
+
+func (DashboardCommandlistChartChartItemQueryFilterAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardCommandlistChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (o DashboardCommandlistChartChartItemQueryFilterAssetOutput) ToDashboardCommandlistChartChartItemQueryFilterAssetOutput() DashboardCommandlistChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+func (o DashboardCommandlistChartChartItemQueryFilterAssetOutput) ToDashboardCommandlistChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardCommandlistChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardCommandlistChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardCommandlistChartChartItemQueryFilterAssetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartChartItemQueryFilterAsset) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardCommandlistChartChartItemQueryFilterAttribute struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardCommandlistChartChartItemQueryFilterAttributeInput is an input type that accepts DashboardCommandlistChartChartItemQueryFilterAttributeArgs and DashboardCommandlistChartChartItemQueryFilterAttributeOutput values.
+// You can construct a concrete instance of `DashboardCommandlistChartChartItemQueryFilterAttributeInput` via:
+//
+//	DashboardCommandlistChartChartItemQueryFilterAttributeArgs{...}
+type DashboardCommandlistChartChartItemQueryFilterAttributeInput interface {
+	pulumi.Input
+
+	ToDashboardCommandlistChartChartItemQueryFilterAttributeOutput() DashboardCommandlistChartChartItemQueryFilterAttributeOutput
+	ToDashboardCommandlistChartChartItemQueryFilterAttributeOutputWithContext(context.Context) DashboardCommandlistChartChartItemQueryFilterAttributeOutput
+}
+
+type DashboardCommandlistChartChartItemQueryFilterAttributeArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardCommandlistChartChartItemQueryFilterAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardCommandlistChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (i DashboardCommandlistChartChartItemQueryFilterAttributeArgs) ToDashboardCommandlistChartChartItemQueryFilterAttributeOutput() DashboardCommandlistChartChartItemQueryFilterAttributeOutput {
+	return i.ToDashboardCommandlistChartChartItemQueryFilterAttributeOutputWithContext(context.Background())
+}
+
+func (i DashboardCommandlistChartChartItemQueryFilterAttributeArgs) ToDashboardCommandlistChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardCommandlistChartChartItemQueryFilterAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardCommandlistChartChartItemQueryFilterAttributeOutput)
+}
+
+type DashboardCommandlistChartChartItemQueryFilterAttributeOutput struct{ *pulumi.OutputState }
+
+func (DashboardCommandlistChartChartItemQueryFilterAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardCommandlistChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (o DashboardCommandlistChartChartItemQueryFilterAttributeOutput) ToDashboardCommandlistChartChartItemQueryFilterAttributeOutput() DashboardCommandlistChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+func (o DashboardCommandlistChartChartItemQueryFilterAttributeOutput) ToDashboardCommandlistChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardCommandlistChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardCommandlistChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardCommandlistChartChartItemQueryFilterAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartChartItemQueryFilterAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardCommandlistChartThreshold struct {
+	Color       string  `pulumi:"color"`
+	DisplayText string  `pulumi:"displayText"`
+	Value       float64 `pulumi:"value"`
+}
+
+// DashboardCommandlistChartThresholdInput is an input type that accepts DashboardCommandlistChartThresholdArgs and DashboardCommandlistChartThresholdOutput values.
+// You can construct a concrete instance of `DashboardCommandlistChartThresholdInput` via:
+//
+//	DashboardCommandlistChartThresholdArgs{...}
+type DashboardCommandlistChartThresholdInput interface {
+	pulumi.Input
+
+	ToDashboardCommandlistChartThresholdOutput() DashboardCommandlistChartThresholdOutput
+	ToDashboardCommandlistChartThresholdOutputWithContext(context.Context) DashboardCommandlistChartThresholdOutput
+}
+
+type DashboardCommandlistChartThresholdArgs struct {
+	Color       pulumi.StringInput  `pulumi:"color"`
+	DisplayText pulumi.StringInput  `pulumi:"displayText"`
+	Value       pulumi.Float64Input `pulumi:"value"`
+}
+
+func (DashboardCommandlistChartThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardCommandlistChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardCommandlistChartThresholdArgs) ToDashboardCommandlistChartThresholdOutput() DashboardCommandlistChartThresholdOutput {
+	return i.ToDashboardCommandlistChartThresholdOutputWithContext(context.Background())
+}
+
+func (i DashboardCommandlistChartThresholdArgs) ToDashboardCommandlistChartThresholdOutputWithContext(ctx context.Context) DashboardCommandlistChartThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardCommandlistChartThresholdOutput)
+}
+
+// DashboardCommandlistChartThresholdArrayInput is an input type that accepts DashboardCommandlistChartThresholdArray and DashboardCommandlistChartThresholdArrayOutput values.
+// You can construct a concrete instance of `DashboardCommandlistChartThresholdArrayInput` via:
+//
+//	DashboardCommandlistChartThresholdArray{ DashboardCommandlistChartThresholdArgs{...} }
+type DashboardCommandlistChartThresholdArrayInput interface {
+	pulumi.Input
+
+	ToDashboardCommandlistChartThresholdArrayOutput() DashboardCommandlistChartThresholdArrayOutput
+	ToDashboardCommandlistChartThresholdArrayOutputWithContext(context.Context) DashboardCommandlistChartThresholdArrayOutput
+}
+
+type DashboardCommandlistChartThresholdArray []DashboardCommandlistChartThresholdInput
+
+func (DashboardCommandlistChartThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardCommandlistChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardCommandlistChartThresholdArray) ToDashboardCommandlistChartThresholdArrayOutput() DashboardCommandlistChartThresholdArrayOutput {
+	return i.ToDashboardCommandlistChartThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardCommandlistChartThresholdArray) ToDashboardCommandlistChartThresholdArrayOutputWithContext(ctx context.Context) DashboardCommandlistChartThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardCommandlistChartThresholdArrayOutput)
+}
+
+type DashboardCommandlistChartThresholdOutput struct{ *pulumi.OutputState }
+
+func (DashboardCommandlistChartThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardCommandlistChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardCommandlistChartThresholdOutput) ToDashboardCommandlistChartThresholdOutput() DashboardCommandlistChartThresholdOutput {
+	return o
+}
+
+func (o DashboardCommandlistChartThresholdOutput) ToDashboardCommandlistChartThresholdOutputWithContext(ctx context.Context) DashboardCommandlistChartThresholdOutput {
+	return o
+}
+
+func (o DashboardCommandlistChartThresholdOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartThreshold) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardCommandlistChartThresholdOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartThreshold) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardCommandlistChartThresholdOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v DashboardCommandlistChartThreshold) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type DashboardCommandlistChartThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardCommandlistChartThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardCommandlistChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardCommandlistChartThresholdArrayOutput) ToDashboardCommandlistChartThresholdArrayOutput() DashboardCommandlistChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardCommandlistChartThresholdArrayOutput) ToDashboardCommandlistChartThresholdArrayOutputWithContext(ctx context.Context) DashboardCommandlistChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardCommandlistChartThresholdArrayOutput) Index(i pulumi.IntInput) DashboardCommandlistChartThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardCommandlistChartThreshold {
+		return vs[0].([]DashboardCommandlistChartThreshold)[vs[1].(int)]
+	}).(DashboardCommandlistChartThresholdOutput)
+}
+
+type DashboardCommandlistChartValueMapping struct {
+	DisplayText string `pulumi:"displayText"`
+	MatchValue  string `pulumi:"matchValue"`
+	Order       int    `pulumi:"order"`
+	Type        string `pulumi:"type"`
+}
+
+// DashboardCommandlistChartValueMappingInput is an input type that accepts DashboardCommandlistChartValueMappingArgs and DashboardCommandlistChartValueMappingOutput values.
+// You can construct a concrete instance of `DashboardCommandlistChartValueMappingInput` via:
+//
+//	DashboardCommandlistChartValueMappingArgs{...}
+type DashboardCommandlistChartValueMappingInput interface {
+	pulumi.Input
+
+	ToDashboardCommandlistChartValueMappingOutput() DashboardCommandlistChartValueMappingOutput
+	ToDashboardCommandlistChartValueMappingOutputWithContext(context.Context) DashboardCommandlistChartValueMappingOutput
+}
+
+type DashboardCommandlistChartValueMappingArgs struct {
+	DisplayText pulumi.StringInput `pulumi:"displayText"`
+	MatchValue  pulumi.StringInput `pulumi:"matchValue"`
+	Order       pulumi.IntInput    `pulumi:"order"`
+	Type        pulumi.StringInput `pulumi:"type"`
+}
+
+func (DashboardCommandlistChartValueMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardCommandlistChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardCommandlistChartValueMappingArgs) ToDashboardCommandlistChartValueMappingOutput() DashboardCommandlistChartValueMappingOutput {
+	return i.ToDashboardCommandlistChartValueMappingOutputWithContext(context.Background())
+}
+
+func (i DashboardCommandlistChartValueMappingArgs) ToDashboardCommandlistChartValueMappingOutputWithContext(ctx context.Context) DashboardCommandlistChartValueMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardCommandlistChartValueMappingOutput)
+}
+
+// DashboardCommandlistChartValueMappingArrayInput is an input type that accepts DashboardCommandlistChartValueMappingArray and DashboardCommandlistChartValueMappingArrayOutput values.
+// You can construct a concrete instance of `DashboardCommandlistChartValueMappingArrayInput` via:
+//
+//	DashboardCommandlistChartValueMappingArray{ DashboardCommandlistChartValueMappingArgs{...} }
+type DashboardCommandlistChartValueMappingArrayInput interface {
+	pulumi.Input
+
+	ToDashboardCommandlistChartValueMappingArrayOutput() DashboardCommandlistChartValueMappingArrayOutput
+	ToDashboardCommandlistChartValueMappingArrayOutputWithContext(context.Context) DashboardCommandlistChartValueMappingArrayOutput
+}
+
+type DashboardCommandlistChartValueMappingArray []DashboardCommandlistChartValueMappingInput
+
+func (DashboardCommandlistChartValueMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardCommandlistChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardCommandlistChartValueMappingArray) ToDashboardCommandlistChartValueMappingArrayOutput() DashboardCommandlistChartValueMappingArrayOutput {
+	return i.ToDashboardCommandlistChartValueMappingArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardCommandlistChartValueMappingArray) ToDashboardCommandlistChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardCommandlistChartValueMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardCommandlistChartValueMappingArrayOutput)
+}
+
+type DashboardCommandlistChartValueMappingOutput struct{ *pulumi.OutputState }
+
+func (DashboardCommandlistChartValueMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardCommandlistChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardCommandlistChartValueMappingOutput) ToDashboardCommandlistChartValueMappingOutput() DashboardCommandlistChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardCommandlistChartValueMappingOutput) ToDashboardCommandlistChartValueMappingOutputWithContext(ctx context.Context) DashboardCommandlistChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardCommandlistChartValueMappingOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartValueMapping) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardCommandlistChartValueMappingOutput) MatchValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartValueMapping) string { return v.MatchValue }).(pulumi.StringOutput)
+}
+
+func (o DashboardCommandlistChartValueMappingOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartValueMapping) int { return v.Order }).(pulumi.IntOutput)
+}
+
+func (o DashboardCommandlistChartValueMappingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardCommandlistChartValueMapping) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardCommandlistChartValueMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardCommandlistChartValueMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardCommandlistChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardCommandlistChartValueMappingArrayOutput) ToDashboardCommandlistChartValueMappingArrayOutput() DashboardCommandlistChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardCommandlistChartValueMappingArrayOutput) ToDashboardCommandlistChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardCommandlistChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardCommandlistChartValueMappingArrayOutput) Index(i pulumi.IntInput) DashboardCommandlistChartValueMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardCommandlistChartValueMapping {
+		return vs[0].([]DashboardCommandlistChartValueMapping)[vs[1].(int)]
+	}).(DashboardCommandlistChartValueMappingOutput)
+}
+
+type DashboardGaugeChartChartItem struct {
+	Color           string  `pulumi:"color"`
+	ExpressionPlain string  `pulumi:"expressionPlain"`
+	Hidden          *bool   `pulumi:"hidden"`
+	Label           *string `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardGaugeChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardGaugeChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   *string                                          `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       *string                                          `pulumi:"queryGroupUnit"`
+	QueryLimit           *int                                             `pulumi:"queryLimit"`
+	QueryPlain           string                                           `pulumi:"queryPlain"`
+	QuerySortDirection   *int                                             `pulumi:"querySortDirection"`
+	RefId                string                                           `pulumi:"refId"`
+	Type                 string                                           `pulumi:"type"`
+}
+
+// DashboardGaugeChartChartItemInput is an input type that accepts DashboardGaugeChartChartItemArgs and DashboardGaugeChartChartItemOutput values.
+// You can construct a concrete instance of `DashboardGaugeChartChartItemInput` via:
+//
+//	DashboardGaugeChartChartItemArgs{...}
+type DashboardGaugeChartChartItemInput interface {
+	pulumi.Input
+
+	ToDashboardGaugeChartChartItemOutput() DashboardGaugeChartChartItemOutput
+	ToDashboardGaugeChartChartItemOutputWithContext(context.Context) DashboardGaugeChartChartItemOutput
+}
+
+type DashboardGaugeChartChartItemArgs struct {
+	Color           pulumi.StringInput    `pulumi:"color"`
+	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
+	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
+	Label           pulumi.StringPtrInput `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardGaugeChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardGaugeChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   pulumi.StringPtrInput                                 `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       pulumi.StringPtrInput                                 `pulumi:"queryGroupUnit"`
+	QueryLimit           pulumi.IntPtrInput                                    `pulumi:"queryLimit"`
+	QueryPlain           pulumi.StringInput                                    `pulumi:"queryPlain"`
+	QuerySortDirection   pulumi.IntPtrInput                                    `pulumi:"querySortDirection"`
+	RefId                pulumi.StringInput                                    `pulumi:"refId"`
+	Type                 pulumi.StringInput                                    `pulumi:"type"`
+}
+
+func (DashboardGaugeChartChartItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardGaugeChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardGaugeChartChartItemArgs) ToDashboardGaugeChartChartItemOutput() DashboardGaugeChartChartItemOutput {
+	return i.ToDashboardGaugeChartChartItemOutputWithContext(context.Background())
+}
+
+func (i DashboardGaugeChartChartItemArgs) ToDashboardGaugeChartChartItemOutputWithContext(ctx context.Context) DashboardGaugeChartChartItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardGaugeChartChartItemOutput)
+}
+
+// DashboardGaugeChartChartItemArrayInput is an input type that accepts DashboardGaugeChartChartItemArray and DashboardGaugeChartChartItemArrayOutput values.
+// You can construct a concrete instance of `DashboardGaugeChartChartItemArrayInput` via:
+//
+//	DashboardGaugeChartChartItemArray{ DashboardGaugeChartChartItemArgs{...} }
+type DashboardGaugeChartChartItemArrayInput interface {
+	pulumi.Input
+
+	ToDashboardGaugeChartChartItemArrayOutput() DashboardGaugeChartChartItemArrayOutput
+	ToDashboardGaugeChartChartItemArrayOutputWithContext(context.Context) DashboardGaugeChartChartItemArrayOutput
+}
+
+type DashboardGaugeChartChartItemArray []DashboardGaugeChartChartItemInput
+
+func (DashboardGaugeChartChartItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardGaugeChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardGaugeChartChartItemArray) ToDashboardGaugeChartChartItemArrayOutput() DashboardGaugeChartChartItemArrayOutput {
+	return i.ToDashboardGaugeChartChartItemArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardGaugeChartChartItemArray) ToDashboardGaugeChartChartItemArrayOutputWithContext(ctx context.Context) DashboardGaugeChartChartItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardGaugeChartChartItemArrayOutput)
+}
+
+type DashboardGaugeChartChartItemOutput struct{ *pulumi.OutputState }
+
+func (DashboardGaugeChartChartItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardGaugeChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardGaugeChartChartItemOutput) ToDashboardGaugeChartChartItemOutput() DashboardGaugeChartChartItemOutput {
+	return o
+}
+
+func (o DashboardGaugeChartChartItemOutput) ToDashboardGaugeChartChartItemOutputWithContext(ctx context.Context) DashboardGaugeChartChartItemOutput {
+	return o
+}
+
+func (o DashboardGaugeChartChartItemOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardGaugeChartChartItem) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardGaugeChartChartItemOutput) ExpressionPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardGaugeChartChartItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardGaugeChartChartItemOutput) Hidden() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DashboardGaugeChartChartItem) *bool { return v.Hidden }).(pulumi.BoolPtrOutput)
+}
+
+func (o DashboardGaugeChartChartItemOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardGaugeChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardGaugeChartChartItemOutput) QueryFilterAsset() DashboardGaugeChartChartItemQueryFilterAssetOutput {
+	return o.ApplyT(func(v DashboardGaugeChartChartItem) DashboardGaugeChartChartItemQueryFilterAsset {
+		return v.QueryFilterAsset
+	}).(DashboardGaugeChartChartItemQueryFilterAssetOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardGaugeChartChartItemOutput) QueryFilterAttribute() DashboardGaugeChartChartItemQueryFilterAttributeOutput {
+	return o.ApplyT(func(v DashboardGaugeChartChartItem) DashboardGaugeChartChartItemQueryFilterAttribute {
+		return v.QueryFilterAttribute
+	}).(DashboardGaugeChartChartItemQueryFilterAttributeOutput)
+}
+
+func (o DashboardGaugeChartChartItemOutput) QueryGroupFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardGaugeChartChartItem) *string { return v.QueryGroupFunction }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardGaugeChartChartItemOutput) QueryGroupUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardGaugeChartChartItem) *string { return v.QueryGroupUnit }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardGaugeChartChartItemOutput) QueryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardGaugeChartChartItem) *int { return v.QueryLimit }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardGaugeChartChartItemOutput) QueryPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardGaugeChartChartItem) string { return v.QueryPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardGaugeChartChartItemOutput) QuerySortDirection() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardGaugeChartChartItem) *int { return v.QuerySortDirection }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardGaugeChartChartItemOutput) RefId() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardGaugeChartChartItem) string { return v.RefId }).(pulumi.StringOutput)
+}
+
+func (o DashboardGaugeChartChartItemOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardGaugeChartChartItem) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardGaugeChartChartItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardGaugeChartChartItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardGaugeChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardGaugeChartChartItemArrayOutput) ToDashboardGaugeChartChartItemArrayOutput() DashboardGaugeChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardGaugeChartChartItemArrayOutput) ToDashboardGaugeChartChartItemArrayOutputWithContext(ctx context.Context) DashboardGaugeChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardGaugeChartChartItemArrayOutput) Index(i pulumi.IntInput) DashboardGaugeChartChartItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardGaugeChartChartItem {
+		return vs[0].([]DashboardGaugeChartChartItem)[vs[1].(int)]
+	}).(DashboardGaugeChartChartItemOutput)
+}
+
+type DashboardGaugeChartChartItemQueryFilterAsset struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardGaugeChartChartItemQueryFilterAssetInput is an input type that accepts DashboardGaugeChartChartItemQueryFilterAssetArgs and DashboardGaugeChartChartItemQueryFilterAssetOutput values.
+// You can construct a concrete instance of `DashboardGaugeChartChartItemQueryFilterAssetInput` via:
+//
+//	DashboardGaugeChartChartItemQueryFilterAssetArgs{...}
+type DashboardGaugeChartChartItemQueryFilterAssetInput interface {
+	pulumi.Input
+
+	ToDashboardGaugeChartChartItemQueryFilterAssetOutput() DashboardGaugeChartChartItemQueryFilterAssetOutput
+	ToDashboardGaugeChartChartItemQueryFilterAssetOutputWithContext(context.Context) DashboardGaugeChartChartItemQueryFilterAssetOutput
+}
+
+type DashboardGaugeChartChartItemQueryFilterAssetArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardGaugeChartChartItemQueryFilterAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardGaugeChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (i DashboardGaugeChartChartItemQueryFilterAssetArgs) ToDashboardGaugeChartChartItemQueryFilterAssetOutput() DashboardGaugeChartChartItemQueryFilterAssetOutput {
+	return i.ToDashboardGaugeChartChartItemQueryFilterAssetOutputWithContext(context.Background())
+}
+
+func (i DashboardGaugeChartChartItemQueryFilterAssetArgs) ToDashboardGaugeChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardGaugeChartChartItemQueryFilterAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardGaugeChartChartItemQueryFilterAssetOutput)
+}
+
+type DashboardGaugeChartChartItemQueryFilterAssetOutput struct{ *pulumi.OutputState }
+
+func (DashboardGaugeChartChartItemQueryFilterAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardGaugeChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (o DashboardGaugeChartChartItemQueryFilterAssetOutput) ToDashboardGaugeChartChartItemQueryFilterAssetOutput() DashboardGaugeChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+func (o DashboardGaugeChartChartItemQueryFilterAssetOutput) ToDashboardGaugeChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardGaugeChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardGaugeChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardGaugeChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardGaugeChartChartItemQueryFilterAssetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardGaugeChartChartItemQueryFilterAsset) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardGaugeChartChartItemQueryFilterAttribute struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardGaugeChartChartItemQueryFilterAttributeInput is an input type that accepts DashboardGaugeChartChartItemQueryFilterAttributeArgs and DashboardGaugeChartChartItemQueryFilterAttributeOutput values.
+// You can construct a concrete instance of `DashboardGaugeChartChartItemQueryFilterAttributeInput` via:
+//
+//	DashboardGaugeChartChartItemQueryFilterAttributeArgs{...}
+type DashboardGaugeChartChartItemQueryFilterAttributeInput interface {
+	pulumi.Input
+
+	ToDashboardGaugeChartChartItemQueryFilterAttributeOutput() DashboardGaugeChartChartItemQueryFilterAttributeOutput
+	ToDashboardGaugeChartChartItemQueryFilterAttributeOutputWithContext(context.Context) DashboardGaugeChartChartItemQueryFilterAttributeOutput
+}
+
+type DashboardGaugeChartChartItemQueryFilterAttributeArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardGaugeChartChartItemQueryFilterAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardGaugeChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (i DashboardGaugeChartChartItemQueryFilterAttributeArgs) ToDashboardGaugeChartChartItemQueryFilterAttributeOutput() DashboardGaugeChartChartItemQueryFilterAttributeOutput {
+	return i.ToDashboardGaugeChartChartItemQueryFilterAttributeOutputWithContext(context.Background())
+}
+
+func (i DashboardGaugeChartChartItemQueryFilterAttributeArgs) ToDashboardGaugeChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardGaugeChartChartItemQueryFilterAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardGaugeChartChartItemQueryFilterAttributeOutput)
+}
+
+type DashboardGaugeChartChartItemQueryFilterAttributeOutput struct{ *pulumi.OutputState }
+
+func (DashboardGaugeChartChartItemQueryFilterAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardGaugeChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (o DashboardGaugeChartChartItemQueryFilterAttributeOutput) ToDashboardGaugeChartChartItemQueryFilterAttributeOutput() DashboardGaugeChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+func (o DashboardGaugeChartChartItemQueryFilterAttributeOutput) ToDashboardGaugeChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardGaugeChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardGaugeChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardGaugeChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardGaugeChartChartItemQueryFilterAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardGaugeChartChartItemQueryFilterAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardGaugeChartThreshold struct {
+	Color       string  `pulumi:"color"`
+	DisplayText string  `pulumi:"displayText"`
+	Value       float64 `pulumi:"value"`
+}
+
+// DashboardGaugeChartThresholdInput is an input type that accepts DashboardGaugeChartThresholdArgs and DashboardGaugeChartThresholdOutput values.
+// You can construct a concrete instance of `DashboardGaugeChartThresholdInput` via:
+//
+//	DashboardGaugeChartThresholdArgs{...}
+type DashboardGaugeChartThresholdInput interface {
+	pulumi.Input
+
+	ToDashboardGaugeChartThresholdOutput() DashboardGaugeChartThresholdOutput
+	ToDashboardGaugeChartThresholdOutputWithContext(context.Context) DashboardGaugeChartThresholdOutput
+}
+
+type DashboardGaugeChartThresholdArgs struct {
+	Color       pulumi.StringInput  `pulumi:"color"`
+	DisplayText pulumi.StringInput  `pulumi:"displayText"`
+	Value       pulumi.Float64Input `pulumi:"value"`
+}
+
+func (DashboardGaugeChartThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardGaugeChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardGaugeChartThresholdArgs) ToDashboardGaugeChartThresholdOutput() DashboardGaugeChartThresholdOutput {
+	return i.ToDashboardGaugeChartThresholdOutputWithContext(context.Background())
+}
+
+func (i DashboardGaugeChartThresholdArgs) ToDashboardGaugeChartThresholdOutputWithContext(ctx context.Context) DashboardGaugeChartThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardGaugeChartThresholdOutput)
+}
+
+// DashboardGaugeChartThresholdArrayInput is an input type that accepts DashboardGaugeChartThresholdArray and DashboardGaugeChartThresholdArrayOutput values.
+// You can construct a concrete instance of `DashboardGaugeChartThresholdArrayInput` via:
+//
+//	DashboardGaugeChartThresholdArray{ DashboardGaugeChartThresholdArgs{...} }
+type DashboardGaugeChartThresholdArrayInput interface {
+	pulumi.Input
+
+	ToDashboardGaugeChartThresholdArrayOutput() DashboardGaugeChartThresholdArrayOutput
+	ToDashboardGaugeChartThresholdArrayOutputWithContext(context.Context) DashboardGaugeChartThresholdArrayOutput
+}
+
+type DashboardGaugeChartThresholdArray []DashboardGaugeChartThresholdInput
+
+func (DashboardGaugeChartThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardGaugeChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardGaugeChartThresholdArray) ToDashboardGaugeChartThresholdArrayOutput() DashboardGaugeChartThresholdArrayOutput {
+	return i.ToDashboardGaugeChartThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardGaugeChartThresholdArray) ToDashboardGaugeChartThresholdArrayOutputWithContext(ctx context.Context) DashboardGaugeChartThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardGaugeChartThresholdArrayOutput)
+}
+
+type DashboardGaugeChartThresholdOutput struct{ *pulumi.OutputState }
+
+func (DashboardGaugeChartThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardGaugeChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardGaugeChartThresholdOutput) ToDashboardGaugeChartThresholdOutput() DashboardGaugeChartThresholdOutput {
+	return o
+}
+
+func (o DashboardGaugeChartThresholdOutput) ToDashboardGaugeChartThresholdOutputWithContext(ctx context.Context) DashboardGaugeChartThresholdOutput {
+	return o
+}
+
+func (o DashboardGaugeChartThresholdOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardGaugeChartThreshold) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardGaugeChartThresholdOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardGaugeChartThreshold) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardGaugeChartThresholdOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v DashboardGaugeChartThreshold) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type DashboardGaugeChartThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardGaugeChartThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardGaugeChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardGaugeChartThresholdArrayOutput) ToDashboardGaugeChartThresholdArrayOutput() DashboardGaugeChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardGaugeChartThresholdArrayOutput) ToDashboardGaugeChartThresholdArrayOutputWithContext(ctx context.Context) DashboardGaugeChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardGaugeChartThresholdArrayOutput) Index(i pulumi.IntInput) DashboardGaugeChartThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardGaugeChartThreshold {
+		return vs[0].([]DashboardGaugeChartThreshold)[vs[1].(int)]
+	}).(DashboardGaugeChartThresholdOutput)
+}
+
+type DashboardGaugeChartValueMapping struct {
+	DisplayText string `pulumi:"displayText"`
+	MatchValue  string `pulumi:"matchValue"`
+	Order       int    `pulumi:"order"`
+	Type        string `pulumi:"type"`
+}
+
+// DashboardGaugeChartValueMappingInput is an input type that accepts DashboardGaugeChartValueMappingArgs and DashboardGaugeChartValueMappingOutput values.
+// You can construct a concrete instance of `DashboardGaugeChartValueMappingInput` via:
+//
+//	DashboardGaugeChartValueMappingArgs{...}
+type DashboardGaugeChartValueMappingInput interface {
+	pulumi.Input
+
+	ToDashboardGaugeChartValueMappingOutput() DashboardGaugeChartValueMappingOutput
+	ToDashboardGaugeChartValueMappingOutputWithContext(context.Context) DashboardGaugeChartValueMappingOutput
+}
+
+type DashboardGaugeChartValueMappingArgs struct {
+	DisplayText pulumi.StringInput `pulumi:"displayText"`
+	MatchValue  pulumi.StringInput `pulumi:"matchValue"`
+	Order       pulumi.IntInput    `pulumi:"order"`
+	Type        pulumi.StringInput `pulumi:"type"`
+}
+
+func (DashboardGaugeChartValueMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardGaugeChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardGaugeChartValueMappingArgs) ToDashboardGaugeChartValueMappingOutput() DashboardGaugeChartValueMappingOutput {
+	return i.ToDashboardGaugeChartValueMappingOutputWithContext(context.Background())
+}
+
+func (i DashboardGaugeChartValueMappingArgs) ToDashboardGaugeChartValueMappingOutputWithContext(ctx context.Context) DashboardGaugeChartValueMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardGaugeChartValueMappingOutput)
+}
+
+// DashboardGaugeChartValueMappingArrayInput is an input type that accepts DashboardGaugeChartValueMappingArray and DashboardGaugeChartValueMappingArrayOutput values.
+// You can construct a concrete instance of `DashboardGaugeChartValueMappingArrayInput` via:
+//
+//	DashboardGaugeChartValueMappingArray{ DashboardGaugeChartValueMappingArgs{...} }
+type DashboardGaugeChartValueMappingArrayInput interface {
+	pulumi.Input
+
+	ToDashboardGaugeChartValueMappingArrayOutput() DashboardGaugeChartValueMappingArrayOutput
+	ToDashboardGaugeChartValueMappingArrayOutputWithContext(context.Context) DashboardGaugeChartValueMappingArrayOutput
+}
+
+type DashboardGaugeChartValueMappingArray []DashboardGaugeChartValueMappingInput
+
+func (DashboardGaugeChartValueMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardGaugeChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardGaugeChartValueMappingArray) ToDashboardGaugeChartValueMappingArrayOutput() DashboardGaugeChartValueMappingArrayOutput {
+	return i.ToDashboardGaugeChartValueMappingArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardGaugeChartValueMappingArray) ToDashboardGaugeChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardGaugeChartValueMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardGaugeChartValueMappingArrayOutput)
+}
+
+type DashboardGaugeChartValueMappingOutput struct{ *pulumi.OutputState }
+
+func (DashboardGaugeChartValueMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardGaugeChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardGaugeChartValueMappingOutput) ToDashboardGaugeChartValueMappingOutput() DashboardGaugeChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardGaugeChartValueMappingOutput) ToDashboardGaugeChartValueMappingOutputWithContext(ctx context.Context) DashboardGaugeChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardGaugeChartValueMappingOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardGaugeChartValueMapping) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardGaugeChartValueMappingOutput) MatchValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardGaugeChartValueMapping) string { return v.MatchValue }).(pulumi.StringOutput)
+}
+
+func (o DashboardGaugeChartValueMappingOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v DashboardGaugeChartValueMapping) int { return v.Order }).(pulumi.IntOutput)
+}
+
+func (o DashboardGaugeChartValueMappingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardGaugeChartValueMapping) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardGaugeChartValueMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardGaugeChartValueMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardGaugeChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardGaugeChartValueMappingArrayOutput) ToDashboardGaugeChartValueMappingArrayOutput() DashboardGaugeChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardGaugeChartValueMappingArrayOutput) ToDashboardGaugeChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardGaugeChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardGaugeChartValueMappingArrayOutput) Index(i pulumi.IntInput) DashboardGaugeChartValueMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardGaugeChartValueMapping {
+		return vs[0].([]DashboardGaugeChartValueMapping)[vs[1].(int)]
+	}).(DashboardGaugeChartValueMappingOutput)
+}
+
+type DashboardHistogramChartChartItem struct {
+	Color           string  `pulumi:"color"`
+	ExpressionPlain string  `pulumi:"expressionPlain"`
+	Hidden          *bool   `pulumi:"hidden"`
+	Label           *string `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardHistogramChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardHistogramChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   *string                                              `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       *string                                              `pulumi:"queryGroupUnit"`
+	QueryLimit           *int                                                 `pulumi:"queryLimit"`
+	QueryPlain           string                                               `pulumi:"queryPlain"`
+	QuerySortDirection   *int                                                 `pulumi:"querySortDirection"`
+	RefId                string                                               `pulumi:"refId"`
+	Type                 string                                               `pulumi:"type"`
+}
+
+// DashboardHistogramChartChartItemInput is an input type that accepts DashboardHistogramChartChartItemArgs and DashboardHistogramChartChartItemOutput values.
+// You can construct a concrete instance of `DashboardHistogramChartChartItemInput` via:
+//
+//	DashboardHistogramChartChartItemArgs{...}
+type DashboardHistogramChartChartItemInput interface {
+	pulumi.Input
+
+	ToDashboardHistogramChartChartItemOutput() DashboardHistogramChartChartItemOutput
+	ToDashboardHistogramChartChartItemOutputWithContext(context.Context) DashboardHistogramChartChartItemOutput
+}
+
+type DashboardHistogramChartChartItemArgs struct {
+	Color           pulumi.StringInput    `pulumi:"color"`
+	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
+	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
+	Label           pulumi.StringPtrInput `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardHistogramChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardHistogramChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   pulumi.StringPtrInput                                     `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       pulumi.StringPtrInput                                     `pulumi:"queryGroupUnit"`
+	QueryLimit           pulumi.IntPtrInput                                        `pulumi:"queryLimit"`
+	QueryPlain           pulumi.StringInput                                        `pulumi:"queryPlain"`
+	QuerySortDirection   pulumi.IntPtrInput                                        `pulumi:"querySortDirection"`
+	RefId                pulumi.StringInput                                        `pulumi:"refId"`
+	Type                 pulumi.StringInput                                        `pulumi:"type"`
+}
+
+func (DashboardHistogramChartChartItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardHistogramChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardHistogramChartChartItemArgs) ToDashboardHistogramChartChartItemOutput() DashboardHistogramChartChartItemOutput {
+	return i.ToDashboardHistogramChartChartItemOutputWithContext(context.Background())
+}
+
+func (i DashboardHistogramChartChartItemArgs) ToDashboardHistogramChartChartItemOutputWithContext(ctx context.Context) DashboardHistogramChartChartItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardHistogramChartChartItemOutput)
+}
+
+// DashboardHistogramChartChartItemArrayInput is an input type that accepts DashboardHistogramChartChartItemArray and DashboardHistogramChartChartItemArrayOutput values.
+// You can construct a concrete instance of `DashboardHistogramChartChartItemArrayInput` via:
+//
+//	DashboardHistogramChartChartItemArray{ DashboardHistogramChartChartItemArgs{...} }
+type DashboardHistogramChartChartItemArrayInput interface {
+	pulumi.Input
+
+	ToDashboardHistogramChartChartItemArrayOutput() DashboardHistogramChartChartItemArrayOutput
+	ToDashboardHistogramChartChartItemArrayOutputWithContext(context.Context) DashboardHistogramChartChartItemArrayOutput
+}
+
+type DashboardHistogramChartChartItemArray []DashboardHistogramChartChartItemInput
+
+func (DashboardHistogramChartChartItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardHistogramChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardHistogramChartChartItemArray) ToDashboardHistogramChartChartItemArrayOutput() DashboardHistogramChartChartItemArrayOutput {
+	return i.ToDashboardHistogramChartChartItemArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardHistogramChartChartItemArray) ToDashboardHistogramChartChartItemArrayOutputWithContext(ctx context.Context) DashboardHistogramChartChartItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardHistogramChartChartItemArrayOutput)
+}
+
+type DashboardHistogramChartChartItemOutput struct{ *pulumi.OutputState }
+
+func (DashboardHistogramChartChartItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardHistogramChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardHistogramChartChartItemOutput) ToDashboardHistogramChartChartItemOutput() DashboardHistogramChartChartItemOutput {
+	return o
+}
+
+func (o DashboardHistogramChartChartItemOutput) ToDashboardHistogramChartChartItemOutputWithContext(ctx context.Context) DashboardHistogramChartChartItemOutput {
+	return o
+}
+
+func (o DashboardHistogramChartChartItemOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardHistogramChartChartItem) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardHistogramChartChartItemOutput) ExpressionPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardHistogramChartChartItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardHistogramChartChartItemOutput) Hidden() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DashboardHistogramChartChartItem) *bool { return v.Hidden }).(pulumi.BoolPtrOutput)
+}
+
+func (o DashboardHistogramChartChartItemOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardHistogramChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardHistogramChartChartItemOutput) QueryFilterAsset() DashboardHistogramChartChartItemQueryFilterAssetOutput {
+	return o.ApplyT(func(v DashboardHistogramChartChartItem) DashboardHistogramChartChartItemQueryFilterAsset {
+		return v.QueryFilterAsset
+	}).(DashboardHistogramChartChartItemQueryFilterAssetOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardHistogramChartChartItemOutput) QueryFilterAttribute() DashboardHistogramChartChartItemQueryFilterAttributeOutput {
+	return o.ApplyT(func(v DashboardHistogramChartChartItem) DashboardHistogramChartChartItemQueryFilterAttribute {
+		return v.QueryFilterAttribute
+	}).(DashboardHistogramChartChartItemQueryFilterAttributeOutput)
+}
+
+func (o DashboardHistogramChartChartItemOutput) QueryGroupFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardHistogramChartChartItem) *string { return v.QueryGroupFunction }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardHistogramChartChartItemOutput) QueryGroupUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardHistogramChartChartItem) *string { return v.QueryGroupUnit }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardHistogramChartChartItemOutput) QueryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardHistogramChartChartItem) *int { return v.QueryLimit }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardHistogramChartChartItemOutput) QueryPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardHistogramChartChartItem) string { return v.QueryPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardHistogramChartChartItemOutput) QuerySortDirection() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardHistogramChartChartItem) *int { return v.QuerySortDirection }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardHistogramChartChartItemOutput) RefId() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardHistogramChartChartItem) string { return v.RefId }).(pulumi.StringOutput)
+}
+
+func (o DashboardHistogramChartChartItemOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardHistogramChartChartItem) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardHistogramChartChartItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardHistogramChartChartItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardHistogramChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardHistogramChartChartItemArrayOutput) ToDashboardHistogramChartChartItemArrayOutput() DashboardHistogramChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardHistogramChartChartItemArrayOutput) ToDashboardHistogramChartChartItemArrayOutputWithContext(ctx context.Context) DashboardHistogramChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardHistogramChartChartItemArrayOutput) Index(i pulumi.IntInput) DashboardHistogramChartChartItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardHistogramChartChartItem {
+		return vs[0].([]DashboardHistogramChartChartItem)[vs[1].(int)]
+	}).(DashboardHistogramChartChartItemOutput)
+}
+
+type DashboardHistogramChartChartItemQueryFilterAsset struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardHistogramChartChartItemQueryFilterAssetInput is an input type that accepts DashboardHistogramChartChartItemQueryFilterAssetArgs and DashboardHistogramChartChartItemQueryFilterAssetOutput values.
+// You can construct a concrete instance of `DashboardHistogramChartChartItemQueryFilterAssetInput` via:
+//
+//	DashboardHistogramChartChartItemQueryFilterAssetArgs{...}
+type DashboardHistogramChartChartItemQueryFilterAssetInput interface {
+	pulumi.Input
+
+	ToDashboardHistogramChartChartItemQueryFilterAssetOutput() DashboardHistogramChartChartItemQueryFilterAssetOutput
+	ToDashboardHistogramChartChartItemQueryFilterAssetOutputWithContext(context.Context) DashboardHistogramChartChartItemQueryFilterAssetOutput
+}
+
+type DashboardHistogramChartChartItemQueryFilterAssetArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardHistogramChartChartItemQueryFilterAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardHistogramChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (i DashboardHistogramChartChartItemQueryFilterAssetArgs) ToDashboardHistogramChartChartItemQueryFilterAssetOutput() DashboardHistogramChartChartItemQueryFilterAssetOutput {
+	return i.ToDashboardHistogramChartChartItemQueryFilterAssetOutputWithContext(context.Background())
+}
+
+func (i DashboardHistogramChartChartItemQueryFilterAssetArgs) ToDashboardHistogramChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardHistogramChartChartItemQueryFilterAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardHistogramChartChartItemQueryFilterAssetOutput)
+}
+
+type DashboardHistogramChartChartItemQueryFilterAssetOutput struct{ *pulumi.OutputState }
+
+func (DashboardHistogramChartChartItemQueryFilterAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardHistogramChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (o DashboardHistogramChartChartItemQueryFilterAssetOutput) ToDashboardHistogramChartChartItemQueryFilterAssetOutput() DashboardHistogramChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+func (o DashboardHistogramChartChartItemQueryFilterAssetOutput) ToDashboardHistogramChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardHistogramChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardHistogramChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardHistogramChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardHistogramChartChartItemQueryFilterAssetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardHistogramChartChartItemQueryFilterAsset) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardHistogramChartChartItemQueryFilterAttribute struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardHistogramChartChartItemQueryFilterAttributeInput is an input type that accepts DashboardHistogramChartChartItemQueryFilterAttributeArgs and DashboardHistogramChartChartItemQueryFilterAttributeOutput values.
+// You can construct a concrete instance of `DashboardHistogramChartChartItemQueryFilterAttributeInput` via:
+//
+//	DashboardHistogramChartChartItemQueryFilterAttributeArgs{...}
+type DashboardHistogramChartChartItemQueryFilterAttributeInput interface {
+	pulumi.Input
+
+	ToDashboardHistogramChartChartItemQueryFilterAttributeOutput() DashboardHistogramChartChartItemQueryFilterAttributeOutput
+	ToDashboardHistogramChartChartItemQueryFilterAttributeOutputWithContext(context.Context) DashboardHistogramChartChartItemQueryFilterAttributeOutput
+}
+
+type DashboardHistogramChartChartItemQueryFilterAttributeArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardHistogramChartChartItemQueryFilterAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardHistogramChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (i DashboardHistogramChartChartItemQueryFilterAttributeArgs) ToDashboardHistogramChartChartItemQueryFilterAttributeOutput() DashboardHistogramChartChartItemQueryFilterAttributeOutput {
+	return i.ToDashboardHistogramChartChartItemQueryFilterAttributeOutputWithContext(context.Background())
+}
+
+func (i DashboardHistogramChartChartItemQueryFilterAttributeArgs) ToDashboardHistogramChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardHistogramChartChartItemQueryFilterAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardHistogramChartChartItemQueryFilterAttributeOutput)
+}
+
+type DashboardHistogramChartChartItemQueryFilterAttributeOutput struct{ *pulumi.OutputState }
+
+func (DashboardHistogramChartChartItemQueryFilterAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardHistogramChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (o DashboardHistogramChartChartItemQueryFilterAttributeOutput) ToDashboardHistogramChartChartItemQueryFilterAttributeOutput() DashboardHistogramChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+func (o DashboardHistogramChartChartItemQueryFilterAttributeOutput) ToDashboardHistogramChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardHistogramChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardHistogramChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardHistogramChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardHistogramChartChartItemQueryFilterAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardHistogramChartChartItemQueryFilterAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardHistogramChartThreshold struct {
+	Color       string  `pulumi:"color"`
+	DisplayText string  `pulumi:"displayText"`
+	Value       float64 `pulumi:"value"`
+}
+
+// DashboardHistogramChartThresholdInput is an input type that accepts DashboardHistogramChartThresholdArgs and DashboardHistogramChartThresholdOutput values.
+// You can construct a concrete instance of `DashboardHistogramChartThresholdInput` via:
+//
+//	DashboardHistogramChartThresholdArgs{...}
+type DashboardHistogramChartThresholdInput interface {
+	pulumi.Input
+
+	ToDashboardHistogramChartThresholdOutput() DashboardHistogramChartThresholdOutput
+	ToDashboardHistogramChartThresholdOutputWithContext(context.Context) DashboardHistogramChartThresholdOutput
+}
+
+type DashboardHistogramChartThresholdArgs struct {
+	Color       pulumi.StringInput  `pulumi:"color"`
+	DisplayText pulumi.StringInput  `pulumi:"displayText"`
+	Value       pulumi.Float64Input `pulumi:"value"`
+}
+
+func (DashboardHistogramChartThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardHistogramChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardHistogramChartThresholdArgs) ToDashboardHistogramChartThresholdOutput() DashboardHistogramChartThresholdOutput {
+	return i.ToDashboardHistogramChartThresholdOutputWithContext(context.Background())
+}
+
+func (i DashboardHistogramChartThresholdArgs) ToDashboardHistogramChartThresholdOutputWithContext(ctx context.Context) DashboardHistogramChartThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardHistogramChartThresholdOutput)
+}
+
+// DashboardHistogramChartThresholdArrayInput is an input type that accepts DashboardHistogramChartThresholdArray and DashboardHistogramChartThresholdArrayOutput values.
+// You can construct a concrete instance of `DashboardHistogramChartThresholdArrayInput` via:
+//
+//	DashboardHistogramChartThresholdArray{ DashboardHistogramChartThresholdArgs{...} }
+type DashboardHistogramChartThresholdArrayInput interface {
+	pulumi.Input
+
+	ToDashboardHistogramChartThresholdArrayOutput() DashboardHistogramChartThresholdArrayOutput
+	ToDashboardHistogramChartThresholdArrayOutputWithContext(context.Context) DashboardHistogramChartThresholdArrayOutput
+}
+
+type DashboardHistogramChartThresholdArray []DashboardHistogramChartThresholdInput
+
+func (DashboardHistogramChartThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardHistogramChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardHistogramChartThresholdArray) ToDashboardHistogramChartThresholdArrayOutput() DashboardHistogramChartThresholdArrayOutput {
+	return i.ToDashboardHistogramChartThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardHistogramChartThresholdArray) ToDashboardHistogramChartThresholdArrayOutputWithContext(ctx context.Context) DashboardHistogramChartThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardHistogramChartThresholdArrayOutput)
+}
+
+type DashboardHistogramChartThresholdOutput struct{ *pulumi.OutputState }
+
+func (DashboardHistogramChartThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardHistogramChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardHistogramChartThresholdOutput) ToDashboardHistogramChartThresholdOutput() DashboardHistogramChartThresholdOutput {
+	return o
+}
+
+func (o DashboardHistogramChartThresholdOutput) ToDashboardHistogramChartThresholdOutputWithContext(ctx context.Context) DashboardHistogramChartThresholdOutput {
+	return o
+}
+
+func (o DashboardHistogramChartThresholdOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardHistogramChartThreshold) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardHistogramChartThresholdOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardHistogramChartThreshold) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardHistogramChartThresholdOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v DashboardHistogramChartThreshold) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type DashboardHistogramChartThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardHistogramChartThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardHistogramChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardHistogramChartThresholdArrayOutput) ToDashboardHistogramChartThresholdArrayOutput() DashboardHistogramChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardHistogramChartThresholdArrayOutput) ToDashboardHistogramChartThresholdArrayOutputWithContext(ctx context.Context) DashboardHistogramChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardHistogramChartThresholdArrayOutput) Index(i pulumi.IntInput) DashboardHistogramChartThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardHistogramChartThreshold {
+		return vs[0].([]DashboardHistogramChartThreshold)[vs[1].(int)]
+	}).(DashboardHistogramChartThresholdOutput)
+}
+
+type DashboardHistogramChartValueMapping struct {
+	DisplayText string `pulumi:"displayText"`
+	MatchValue  string `pulumi:"matchValue"`
+	Order       int    `pulumi:"order"`
+	Type        string `pulumi:"type"`
+}
+
+// DashboardHistogramChartValueMappingInput is an input type that accepts DashboardHistogramChartValueMappingArgs and DashboardHistogramChartValueMappingOutput values.
+// You can construct a concrete instance of `DashboardHistogramChartValueMappingInput` via:
+//
+//	DashboardHistogramChartValueMappingArgs{...}
+type DashboardHistogramChartValueMappingInput interface {
+	pulumi.Input
+
+	ToDashboardHistogramChartValueMappingOutput() DashboardHistogramChartValueMappingOutput
+	ToDashboardHistogramChartValueMappingOutputWithContext(context.Context) DashboardHistogramChartValueMappingOutput
+}
+
+type DashboardHistogramChartValueMappingArgs struct {
+	DisplayText pulumi.StringInput `pulumi:"displayText"`
+	MatchValue  pulumi.StringInput `pulumi:"matchValue"`
+	Order       pulumi.IntInput    `pulumi:"order"`
+	Type        pulumi.StringInput `pulumi:"type"`
+}
+
+func (DashboardHistogramChartValueMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardHistogramChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardHistogramChartValueMappingArgs) ToDashboardHistogramChartValueMappingOutput() DashboardHistogramChartValueMappingOutput {
+	return i.ToDashboardHistogramChartValueMappingOutputWithContext(context.Background())
+}
+
+func (i DashboardHistogramChartValueMappingArgs) ToDashboardHistogramChartValueMappingOutputWithContext(ctx context.Context) DashboardHistogramChartValueMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardHistogramChartValueMappingOutput)
+}
+
+// DashboardHistogramChartValueMappingArrayInput is an input type that accepts DashboardHistogramChartValueMappingArray and DashboardHistogramChartValueMappingArrayOutput values.
+// You can construct a concrete instance of `DashboardHistogramChartValueMappingArrayInput` via:
+//
+//	DashboardHistogramChartValueMappingArray{ DashboardHistogramChartValueMappingArgs{...} }
+type DashboardHistogramChartValueMappingArrayInput interface {
+	pulumi.Input
+
+	ToDashboardHistogramChartValueMappingArrayOutput() DashboardHistogramChartValueMappingArrayOutput
+	ToDashboardHistogramChartValueMappingArrayOutputWithContext(context.Context) DashboardHistogramChartValueMappingArrayOutput
+}
+
+type DashboardHistogramChartValueMappingArray []DashboardHistogramChartValueMappingInput
+
+func (DashboardHistogramChartValueMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardHistogramChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardHistogramChartValueMappingArray) ToDashboardHistogramChartValueMappingArrayOutput() DashboardHistogramChartValueMappingArrayOutput {
+	return i.ToDashboardHistogramChartValueMappingArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardHistogramChartValueMappingArray) ToDashboardHistogramChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardHistogramChartValueMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardHistogramChartValueMappingArrayOutput)
+}
+
+type DashboardHistogramChartValueMappingOutput struct{ *pulumi.OutputState }
+
+func (DashboardHistogramChartValueMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardHistogramChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardHistogramChartValueMappingOutput) ToDashboardHistogramChartValueMappingOutput() DashboardHistogramChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardHistogramChartValueMappingOutput) ToDashboardHistogramChartValueMappingOutputWithContext(ctx context.Context) DashboardHistogramChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardHistogramChartValueMappingOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardHistogramChartValueMapping) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardHistogramChartValueMappingOutput) MatchValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardHistogramChartValueMapping) string { return v.MatchValue }).(pulumi.StringOutput)
+}
+
+func (o DashboardHistogramChartValueMappingOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v DashboardHistogramChartValueMapping) int { return v.Order }).(pulumi.IntOutput)
+}
+
+func (o DashboardHistogramChartValueMappingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardHistogramChartValueMapping) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardHistogramChartValueMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardHistogramChartValueMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardHistogramChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardHistogramChartValueMappingArrayOutput) ToDashboardHistogramChartValueMappingArrayOutput() DashboardHistogramChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardHistogramChartValueMappingArrayOutput) ToDashboardHistogramChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardHistogramChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardHistogramChartValueMappingArrayOutput) Index(i pulumi.IntInput) DashboardHistogramChartValueMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardHistogramChartValueMapping {
+		return vs[0].([]DashboardHistogramChartValueMapping)[vs[1].(int)]
+	}).(DashboardHistogramChartValueMappingOutput)
+}
+
+type DashboardImageChartChartItem struct {
+	Color           string  `pulumi:"color"`
+	ExpressionPlain string  `pulumi:"expressionPlain"`
+	Hidden          *bool   `pulumi:"hidden"`
+	Label           *string `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardImageChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardImageChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   *string                                          `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       *string                                          `pulumi:"queryGroupUnit"`
+	QueryLimit           *int                                             `pulumi:"queryLimit"`
+	QueryPlain           string                                           `pulumi:"queryPlain"`
+	QuerySortDirection   *int                                             `pulumi:"querySortDirection"`
+	RefId                string                                           `pulumi:"refId"`
+	Type                 string                                           `pulumi:"type"`
+}
+
+// DashboardImageChartChartItemInput is an input type that accepts DashboardImageChartChartItemArgs and DashboardImageChartChartItemOutput values.
+// You can construct a concrete instance of `DashboardImageChartChartItemInput` via:
+//
+//	DashboardImageChartChartItemArgs{...}
+type DashboardImageChartChartItemInput interface {
+	pulumi.Input
+
+	ToDashboardImageChartChartItemOutput() DashboardImageChartChartItemOutput
+	ToDashboardImageChartChartItemOutputWithContext(context.Context) DashboardImageChartChartItemOutput
+}
+
+type DashboardImageChartChartItemArgs struct {
+	Color           pulumi.StringInput    `pulumi:"color"`
+	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
+	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
+	Label           pulumi.StringPtrInput `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardImageChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardImageChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   pulumi.StringPtrInput                                 `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       pulumi.StringPtrInput                                 `pulumi:"queryGroupUnit"`
+	QueryLimit           pulumi.IntPtrInput                                    `pulumi:"queryLimit"`
+	QueryPlain           pulumi.StringInput                                    `pulumi:"queryPlain"`
+	QuerySortDirection   pulumi.IntPtrInput                                    `pulumi:"querySortDirection"`
+	RefId                pulumi.StringInput                                    `pulumi:"refId"`
+	Type                 pulumi.StringInput                                    `pulumi:"type"`
+}
+
+func (DashboardImageChartChartItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardImageChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardImageChartChartItemArgs) ToDashboardImageChartChartItemOutput() DashboardImageChartChartItemOutput {
+	return i.ToDashboardImageChartChartItemOutputWithContext(context.Background())
+}
+
+func (i DashboardImageChartChartItemArgs) ToDashboardImageChartChartItemOutputWithContext(ctx context.Context) DashboardImageChartChartItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardImageChartChartItemOutput)
+}
+
+// DashboardImageChartChartItemArrayInput is an input type that accepts DashboardImageChartChartItemArray and DashboardImageChartChartItemArrayOutput values.
+// You can construct a concrete instance of `DashboardImageChartChartItemArrayInput` via:
+//
+//	DashboardImageChartChartItemArray{ DashboardImageChartChartItemArgs{...} }
+type DashboardImageChartChartItemArrayInput interface {
+	pulumi.Input
+
+	ToDashboardImageChartChartItemArrayOutput() DashboardImageChartChartItemArrayOutput
+	ToDashboardImageChartChartItemArrayOutputWithContext(context.Context) DashboardImageChartChartItemArrayOutput
+}
+
+type DashboardImageChartChartItemArray []DashboardImageChartChartItemInput
+
+func (DashboardImageChartChartItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardImageChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardImageChartChartItemArray) ToDashboardImageChartChartItemArrayOutput() DashboardImageChartChartItemArrayOutput {
+	return i.ToDashboardImageChartChartItemArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardImageChartChartItemArray) ToDashboardImageChartChartItemArrayOutputWithContext(ctx context.Context) DashboardImageChartChartItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardImageChartChartItemArrayOutput)
+}
+
+type DashboardImageChartChartItemOutput struct{ *pulumi.OutputState }
+
+func (DashboardImageChartChartItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardImageChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardImageChartChartItemOutput) ToDashboardImageChartChartItemOutput() DashboardImageChartChartItemOutput {
+	return o
+}
+
+func (o DashboardImageChartChartItemOutput) ToDashboardImageChartChartItemOutputWithContext(ctx context.Context) DashboardImageChartChartItemOutput {
+	return o
+}
+
+func (o DashboardImageChartChartItemOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardImageChartChartItem) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardImageChartChartItemOutput) ExpressionPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardImageChartChartItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardImageChartChartItemOutput) Hidden() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DashboardImageChartChartItem) *bool { return v.Hidden }).(pulumi.BoolPtrOutput)
+}
+
+func (o DashboardImageChartChartItemOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardImageChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardImageChartChartItemOutput) QueryFilterAsset() DashboardImageChartChartItemQueryFilterAssetOutput {
+	return o.ApplyT(func(v DashboardImageChartChartItem) DashboardImageChartChartItemQueryFilterAsset {
+		return v.QueryFilterAsset
+	}).(DashboardImageChartChartItemQueryFilterAssetOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardImageChartChartItemOutput) QueryFilterAttribute() DashboardImageChartChartItemQueryFilterAttributeOutput {
+	return o.ApplyT(func(v DashboardImageChartChartItem) DashboardImageChartChartItemQueryFilterAttribute {
+		return v.QueryFilterAttribute
+	}).(DashboardImageChartChartItemQueryFilterAttributeOutput)
+}
+
+func (o DashboardImageChartChartItemOutput) QueryGroupFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardImageChartChartItem) *string { return v.QueryGroupFunction }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardImageChartChartItemOutput) QueryGroupUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardImageChartChartItem) *string { return v.QueryGroupUnit }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardImageChartChartItemOutput) QueryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardImageChartChartItem) *int { return v.QueryLimit }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardImageChartChartItemOutput) QueryPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardImageChartChartItem) string { return v.QueryPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardImageChartChartItemOutput) QuerySortDirection() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardImageChartChartItem) *int { return v.QuerySortDirection }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardImageChartChartItemOutput) RefId() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardImageChartChartItem) string { return v.RefId }).(pulumi.StringOutput)
+}
+
+func (o DashboardImageChartChartItemOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardImageChartChartItem) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardImageChartChartItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardImageChartChartItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardImageChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardImageChartChartItemArrayOutput) ToDashboardImageChartChartItemArrayOutput() DashboardImageChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardImageChartChartItemArrayOutput) ToDashboardImageChartChartItemArrayOutputWithContext(ctx context.Context) DashboardImageChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardImageChartChartItemArrayOutput) Index(i pulumi.IntInput) DashboardImageChartChartItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardImageChartChartItem {
+		return vs[0].([]DashboardImageChartChartItem)[vs[1].(int)]
+	}).(DashboardImageChartChartItemOutput)
+}
+
+type DashboardImageChartChartItemQueryFilterAsset struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardImageChartChartItemQueryFilterAssetInput is an input type that accepts DashboardImageChartChartItemQueryFilterAssetArgs and DashboardImageChartChartItemQueryFilterAssetOutput values.
+// You can construct a concrete instance of `DashboardImageChartChartItemQueryFilterAssetInput` via:
+//
+//	DashboardImageChartChartItemQueryFilterAssetArgs{...}
+type DashboardImageChartChartItemQueryFilterAssetInput interface {
+	pulumi.Input
+
+	ToDashboardImageChartChartItemQueryFilterAssetOutput() DashboardImageChartChartItemQueryFilterAssetOutput
+	ToDashboardImageChartChartItemQueryFilterAssetOutputWithContext(context.Context) DashboardImageChartChartItemQueryFilterAssetOutput
+}
+
+type DashboardImageChartChartItemQueryFilterAssetArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardImageChartChartItemQueryFilterAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardImageChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (i DashboardImageChartChartItemQueryFilterAssetArgs) ToDashboardImageChartChartItemQueryFilterAssetOutput() DashboardImageChartChartItemQueryFilterAssetOutput {
+	return i.ToDashboardImageChartChartItemQueryFilterAssetOutputWithContext(context.Background())
+}
+
+func (i DashboardImageChartChartItemQueryFilterAssetArgs) ToDashboardImageChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardImageChartChartItemQueryFilterAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardImageChartChartItemQueryFilterAssetOutput)
+}
+
+type DashboardImageChartChartItemQueryFilterAssetOutput struct{ *pulumi.OutputState }
+
+func (DashboardImageChartChartItemQueryFilterAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardImageChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (o DashboardImageChartChartItemQueryFilterAssetOutput) ToDashboardImageChartChartItemQueryFilterAssetOutput() DashboardImageChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+func (o DashboardImageChartChartItemQueryFilterAssetOutput) ToDashboardImageChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardImageChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardImageChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardImageChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardImageChartChartItemQueryFilterAssetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardImageChartChartItemQueryFilterAsset) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardImageChartChartItemQueryFilterAttribute struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardImageChartChartItemQueryFilterAttributeInput is an input type that accepts DashboardImageChartChartItemQueryFilterAttributeArgs and DashboardImageChartChartItemQueryFilterAttributeOutput values.
+// You can construct a concrete instance of `DashboardImageChartChartItemQueryFilterAttributeInput` via:
+//
+//	DashboardImageChartChartItemQueryFilterAttributeArgs{...}
+type DashboardImageChartChartItemQueryFilterAttributeInput interface {
+	pulumi.Input
+
+	ToDashboardImageChartChartItemQueryFilterAttributeOutput() DashboardImageChartChartItemQueryFilterAttributeOutput
+	ToDashboardImageChartChartItemQueryFilterAttributeOutputWithContext(context.Context) DashboardImageChartChartItemQueryFilterAttributeOutput
+}
+
+type DashboardImageChartChartItemQueryFilterAttributeArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardImageChartChartItemQueryFilterAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardImageChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (i DashboardImageChartChartItemQueryFilterAttributeArgs) ToDashboardImageChartChartItemQueryFilterAttributeOutput() DashboardImageChartChartItemQueryFilterAttributeOutput {
+	return i.ToDashboardImageChartChartItemQueryFilterAttributeOutputWithContext(context.Background())
+}
+
+func (i DashboardImageChartChartItemQueryFilterAttributeArgs) ToDashboardImageChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardImageChartChartItemQueryFilterAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardImageChartChartItemQueryFilterAttributeOutput)
+}
+
+type DashboardImageChartChartItemQueryFilterAttributeOutput struct{ *pulumi.OutputState }
+
+func (DashboardImageChartChartItemQueryFilterAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardImageChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (o DashboardImageChartChartItemQueryFilterAttributeOutput) ToDashboardImageChartChartItemQueryFilterAttributeOutput() DashboardImageChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+func (o DashboardImageChartChartItemQueryFilterAttributeOutput) ToDashboardImageChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardImageChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardImageChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardImageChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardImageChartChartItemQueryFilterAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardImageChartChartItemQueryFilterAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardImageChartThreshold struct {
+	Color       string  `pulumi:"color"`
+	DisplayText string  `pulumi:"displayText"`
+	Value       float64 `pulumi:"value"`
+}
+
+// DashboardImageChartThresholdInput is an input type that accepts DashboardImageChartThresholdArgs and DashboardImageChartThresholdOutput values.
+// You can construct a concrete instance of `DashboardImageChartThresholdInput` via:
+//
+//	DashboardImageChartThresholdArgs{...}
+type DashboardImageChartThresholdInput interface {
+	pulumi.Input
+
+	ToDashboardImageChartThresholdOutput() DashboardImageChartThresholdOutput
+	ToDashboardImageChartThresholdOutputWithContext(context.Context) DashboardImageChartThresholdOutput
+}
+
+type DashboardImageChartThresholdArgs struct {
+	Color       pulumi.StringInput  `pulumi:"color"`
+	DisplayText pulumi.StringInput  `pulumi:"displayText"`
+	Value       pulumi.Float64Input `pulumi:"value"`
+}
+
+func (DashboardImageChartThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardImageChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardImageChartThresholdArgs) ToDashboardImageChartThresholdOutput() DashboardImageChartThresholdOutput {
+	return i.ToDashboardImageChartThresholdOutputWithContext(context.Background())
+}
+
+func (i DashboardImageChartThresholdArgs) ToDashboardImageChartThresholdOutputWithContext(ctx context.Context) DashboardImageChartThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardImageChartThresholdOutput)
+}
+
+// DashboardImageChartThresholdArrayInput is an input type that accepts DashboardImageChartThresholdArray and DashboardImageChartThresholdArrayOutput values.
+// You can construct a concrete instance of `DashboardImageChartThresholdArrayInput` via:
+//
+//	DashboardImageChartThresholdArray{ DashboardImageChartThresholdArgs{...} }
+type DashboardImageChartThresholdArrayInput interface {
+	pulumi.Input
+
+	ToDashboardImageChartThresholdArrayOutput() DashboardImageChartThresholdArrayOutput
+	ToDashboardImageChartThresholdArrayOutputWithContext(context.Context) DashboardImageChartThresholdArrayOutput
+}
+
+type DashboardImageChartThresholdArray []DashboardImageChartThresholdInput
+
+func (DashboardImageChartThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardImageChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardImageChartThresholdArray) ToDashboardImageChartThresholdArrayOutput() DashboardImageChartThresholdArrayOutput {
+	return i.ToDashboardImageChartThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardImageChartThresholdArray) ToDashboardImageChartThresholdArrayOutputWithContext(ctx context.Context) DashboardImageChartThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardImageChartThresholdArrayOutput)
+}
+
+type DashboardImageChartThresholdOutput struct{ *pulumi.OutputState }
+
+func (DashboardImageChartThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardImageChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardImageChartThresholdOutput) ToDashboardImageChartThresholdOutput() DashboardImageChartThresholdOutput {
+	return o
+}
+
+func (o DashboardImageChartThresholdOutput) ToDashboardImageChartThresholdOutputWithContext(ctx context.Context) DashboardImageChartThresholdOutput {
+	return o
+}
+
+func (o DashboardImageChartThresholdOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardImageChartThreshold) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardImageChartThresholdOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardImageChartThreshold) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardImageChartThresholdOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v DashboardImageChartThreshold) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type DashboardImageChartThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardImageChartThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardImageChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardImageChartThresholdArrayOutput) ToDashboardImageChartThresholdArrayOutput() DashboardImageChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardImageChartThresholdArrayOutput) ToDashboardImageChartThresholdArrayOutputWithContext(ctx context.Context) DashboardImageChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardImageChartThresholdArrayOutput) Index(i pulumi.IntInput) DashboardImageChartThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardImageChartThreshold {
+		return vs[0].([]DashboardImageChartThreshold)[vs[1].(int)]
+	}).(DashboardImageChartThresholdOutput)
+}
+
+type DashboardImageChartValueMapping struct {
+	DisplayText string `pulumi:"displayText"`
+	MatchValue  string `pulumi:"matchValue"`
+	Order       int    `pulumi:"order"`
+	Type        string `pulumi:"type"`
+}
+
+// DashboardImageChartValueMappingInput is an input type that accepts DashboardImageChartValueMappingArgs and DashboardImageChartValueMappingOutput values.
+// You can construct a concrete instance of `DashboardImageChartValueMappingInput` via:
+//
+//	DashboardImageChartValueMappingArgs{...}
+type DashboardImageChartValueMappingInput interface {
+	pulumi.Input
+
+	ToDashboardImageChartValueMappingOutput() DashboardImageChartValueMappingOutput
+	ToDashboardImageChartValueMappingOutputWithContext(context.Context) DashboardImageChartValueMappingOutput
+}
+
+type DashboardImageChartValueMappingArgs struct {
+	DisplayText pulumi.StringInput `pulumi:"displayText"`
+	MatchValue  pulumi.StringInput `pulumi:"matchValue"`
+	Order       pulumi.IntInput    `pulumi:"order"`
+	Type        pulumi.StringInput `pulumi:"type"`
+}
+
+func (DashboardImageChartValueMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardImageChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardImageChartValueMappingArgs) ToDashboardImageChartValueMappingOutput() DashboardImageChartValueMappingOutput {
+	return i.ToDashboardImageChartValueMappingOutputWithContext(context.Background())
+}
+
+func (i DashboardImageChartValueMappingArgs) ToDashboardImageChartValueMappingOutputWithContext(ctx context.Context) DashboardImageChartValueMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardImageChartValueMappingOutput)
+}
+
+// DashboardImageChartValueMappingArrayInput is an input type that accepts DashboardImageChartValueMappingArray and DashboardImageChartValueMappingArrayOutput values.
+// You can construct a concrete instance of `DashboardImageChartValueMappingArrayInput` via:
+//
+//	DashboardImageChartValueMappingArray{ DashboardImageChartValueMappingArgs{...} }
+type DashboardImageChartValueMappingArrayInput interface {
+	pulumi.Input
+
+	ToDashboardImageChartValueMappingArrayOutput() DashboardImageChartValueMappingArrayOutput
+	ToDashboardImageChartValueMappingArrayOutputWithContext(context.Context) DashboardImageChartValueMappingArrayOutput
+}
+
+type DashboardImageChartValueMappingArray []DashboardImageChartValueMappingInput
+
+func (DashboardImageChartValueMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardImageChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardImageChartValueMappingArray) ToDashboardImageChartValueMappingArrayOutput() DashboardImageChartValueMappingArrayOutput {
+	return i.ToDashboardImageChartValueMappingArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardImageChartValueMappingArray) ToDashboardImageChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardImageChartValueMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardImageChartValueMappingArrayOutput)
+}
+
+type DashboardImageChartValueMappingOutput struct{ *pulumi.OutputState }
+
+func (DashboardImageChartValueMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardImageChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardImageChartValueMappingOutput) ToDashboardImageChartValueMappingOutput() DashboardImageChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardImageChartValueMappingOutput) ToDashboardImageChartValueMappingOutputWithContext(ctx context.Context) DashboardImageChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardImageChartValueMappingOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardImageChartValueMapping) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardImageChartValueMappingOutput) MatchValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardImageChartValueMapping) string { return v.MatchValue }).(pulumi.StringOutput)
+}
+
+func (o DashboardImageChartValueMappingOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v DashboardImageChartValueMapping) int { return v.Order }).(pulumi.IntOutput)
+}
+
+func (o DashboardImageChartValueMappingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardImageChartValueMapping) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardImageChartValueMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardImageChartValueMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardImageChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardImageChartValueMappingArrayOutput) ToDashboardImageChartValueMappingArrayOutput() DashboardImageChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardImageChartValueMappingArrayOutput) ToDashboardImageChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardImageChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardImageChartValueMappingArrayOutput) Index(i pulumi.IntInput) DashboardImageChartValueMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardImageChartValueMapping {
+		return vs[0].([]DashboardImageChartValueMapping)[vs[1].(int)]
+	}).(DashboardImageChartValueMappingOutput)
+}
+
+type DashboardStatChartChartItem struct {
+	Color           string  `pulumi:"color"`
+	ExpressionPlain string  `pulumi:"expressionPlain"`
+	Hidden          *bool   `pulumi:"hidden"`
+	Label           *string `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardStatChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardStatChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   *string                                         `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       *string                                         `pulumi:"queryGroupUnit"`
+	QueryLimit           *int                                            `pulumi:"queryLimit"`
+	QueryPlain           string                                          `pulumi:"queryPlain"`
+	QuerySortDirection   *int                                            `pulumi:"querySortDirection"`
+	RefId                string                                          `pulumi:"refId"`
+	Type                 string                                          `pulumi:"type"`
+}
+
+// DashboardStatChartChartItemInput is an input type that accepts DashboardStatChartChartItemArgs and DashboardStatChartChartItemOutput values.
+// You can construct a concrete instance of `DashboardStatChartChartItemInput` via:
+//
+//	DashboardStatChartChartItemArgs{...}
+type DashboardStatChartChartItemInput interface {
+	pulumi.Input
+
+	ToDashboardStatChartChartItemOutput() DashboardStatChartChartItemOutput
+	ToDashboardStatChartChartItemOutputWithContext(context.Context) DashboardStatChartChartItemOutput
+}
+
+type DashboardStatChartChartItemArgs struct {
+	Color           pulumi.StringInput    `pulumi:"color"`
+	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
+	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
+	Label           pulumi.StringPtrInput `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardStatChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardStatChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   pulumi.StringPtrInput                                `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       pulumi.StringPtrInput                                `pulumi:"queryGroupUnit"`
+	QueryLimit           pulumi.IntPtrInput                                   `pulumi:"queryLimit"`
+	QueryPlain           pulumi.StringInput                                   `pulumi:"queryPlain"`
+	QuerySortDirection   pulumi.IntPtrInput                                   `pulumi:"querySortDirection"`
+	RefId                pulumi.StringInput                                   `pulumi:"refId"`
+	Type                 pulumi.StringInput                                   `pulumi:"type"`
+}
+
+func (DashboardStatChartChartItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardStatChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardStatChartChartItemArgs) ToDashboardStatChartChartItemOutput() DashboardStatChartChartItemOutput {
+	return i.ToDashboardStatChartChartItemOutputWithContext(context.Background())
+}
+
+func (i DashboardStatChartChartItemArgs) ToDashboardStatChartChartItemOutputWithContext(ctx context.Context) DashboardStatChartChartItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardStatChartChartItemOutput)
+}
+
+// DashboardStatChartChartItemArrayInput is an input type that accepts DashboardStatChartChartItemArray and DashboardStatChartChartItemArrayOutput values.
+// You can construct a concrete instance of `DashboardStatChartChartItemArrayInput` via:
+//
+//	DashboardStatChartChartItemArray{ DashboardStatChartChartItemArgs{...} }
+type DashboardStatChartChartItemArrayInput interface {
+	pulumi.Input
+
+	ToDashboardStatChartChartItemArrayOutput() DashboardStatChartChartItemArrayOutput
+	ToDashboardStatChartChartItemArrayOutputWithContext(context.Context) DashboardStatChartChartItemArrayOutput
+}
+
+type DashboardStatChartChartItemArray []DashboardStatChartChartItemInput
+
+func (DashboardStatChartChartItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardStatChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardStatChartChartItemArray) ToDashboardStatChartChartItemArrayOutput() DashboardStatChartChartItemArrayOutput {
+	return i.ToDashboardStatChartChartItemArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardStatChartChartItemArray) ToDashboardStatChartChartItemArrayOutputWithContext(ctx context.Context) DashboardStatChartChartItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardStatChartChartItemArrayOutput)
+}
+
+type DashboardStatChartChartItemOutput struct{ *pulumi.OutputState }
+
+func (DashboardStatChartChartItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardStatChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardStatChartChartItemOutput) ToDashboardStatChartChartItemOutput() DashboardStatChartChartItemOutput {
+	return o
+}
+
+func (o DashboardStatChartChartItemOutput) ToDashboardStatChartChartItemOutputWithContext(ctx context.Context) DashboardStatChartChartItemOutput {
+	return o
+}
+
+func (o DashboardStatChartChartItemOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardStatChartChartItem) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardStatChartChartItemOutput) ExpressionPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardStatChartChartItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardStatChartChartItemOutput) Hidden() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DashboardStatChartChartItem) *bool { return v.Hidden }).(pulumi.BoolPtrOutput)
+}
+
+func (o DashboardStatChartChartItemOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardStatChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardStatChartChartItemOutput) QueryFilterAsset() DashboardStatChartChartItemQueryFilterAssetOutput {
+	return o.ApplyT(func(v DashboardStatChartChartItem) DashboardStatChartChartItemQueryFilterAsset {
+		return v.QueryFilterAsset
+	}).(DashboardStatChartChartItemQueryFilterAssetOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardStatChartChartItemOutput) QueryFilterAttribute() DashboardStatChartChartItemQueryFilterAttributeOutput {
+	return o.ApplyT(func(v DashboardStatChartChartItem) DashboardStatChartChartItemQueryFilterAttribute {
+		return v.QueryFilterAttribute
+	}).(DashboardStatChartChartItemQueryFilterAttributeOutput)
+}
+
+func (o DashboardStatChartChartItemOutput) QueryGroupFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardStatChartChartItem) *string { return v.QueryGroupFunction }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardStatChartChartItemOutput) QueryGroupUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardStatChartChartItem) *string { return v.QueryGroupUnit }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardStatChartChartItemOutput) QueryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardStatChartChartItem) *int { return v.QueryLimit }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardStatChartChartItemOutput) QueryPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardStatChartChartItem) string { return v.QueryPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardStatChartChartItemOutput) QuerySortDirection() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardStatChartChartItem) *int { return v.QuerySortDirection }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardStatChartChartItemOutput) RefId() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardStatChartChartItem) string { return v.RefId }).(pulumi.StringOutput)
+}
+
+func (o DashboardStatChartChartItemOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardStatChartChartItem) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardStatChartChartItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardStatChartChartItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardStatChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardStatChartChartItemArrayOutput) ToDashboardStatChartChartItemArrayOutput() DashboardStatChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardStatChartChartItemArrayOutput) ToDashboardStatChartChartItemArrayOutputWithContext(ctx context.Context) DashboardStatChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardStatChartChartItemArrayOutput) Index(i pulumi.IntInput) DashboardStatChartChartItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardStatChartChartItem {
+		return vs[0].([]DashboardStatChartChartItem)[vs[1].(int)]
+	}).(DashboardStatChartChartItemOutput)
+}
+
+type DashboardStatChartChartItemQueryFilterAsset struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardStatChartChartItemQueryFilterAssetInput is an input type that accepts DashboardStatChartChartItemQueryFilterAssetArgs and DashboardStatChartChartItemQueryFilterAssetOutput values.
+// You can construct a concrete instance of `DashboardStatChartChartItemQueryFilterAssetInput` via:
+//
+//	DashboardStatChartChartItemQueryFilterAssetArgs{...}
+type DashboardStatChartChartItemQueryFilterAssetInput interface {
+	pulumi.Input
+
+	ToDashboardStatChartChartItemQueryFilterAssetOutput() DashboardStatChartChartItemQueryFilterAssetOutput
+	ToDashboardStatChartChartItemQueryFilterAssetOutputWithContext(context.Context) DashboardStatChartChartItemQueryFilterAssetOutput
+}
+
+type DashboardStatChartChartItemQueryFilterAssetArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardStatChartChartItemQueryFilterAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardStatChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (i DashboardStatChartChartItemQueryFilterAssetArgs) ToDashboardStatChartChartItemQueryFilterAssetOutput() DashboardStatChartChartItemQueryFilterAssetOutput {
+	return i.ToDashboardStatChartChartItemQueryFilterAssetOutputWithContext(context.Background())
+}
+
+func (i DashboardStatChartChartItemQueryFilterAssetArgs) ToDashboardStatChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardStatChartChartItemQueryFilterAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardStatChartChartItemQueryFilterAssetOutput)
+}
+
+type DashboardStatChartChartItemQueryFilterAssetOutput struct{ *pulumi.OutputState }
+
+func (DashboardStatChartChartItemQueryFilterAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardStatChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (o DashboardStatChartChartItemQueryFilterAssetOutput) ToDashboardStatChartChartItemQueryFilterAssetOutput() DashboardStatChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+func (o DashboardStatChartChartItemQueryFilterAssetOutput) ToDashboardStatChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardStatChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardStatChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardStatChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardStatChartChartItemQueryFilterAssetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardStatChartChartItemQueryFilterAsset) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardStatChartChartItemQueryFilterAttribute struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardStatChartChartItemQueryFilterAttributeInput is an input type that accepts DashboardStatChartChartItemQueryFilterAttributeArgs and DashboardStatChartChartItemQueryFilterAttributeOutput values.
+// You can construct a concrete instance of `DashboardStatChartChartItemQueryFilterAttributeInput` via:
+//
+//	DashboardStatChartChartItemQueryFilterAttributeArgs{...}
+type DashboardStatChartChartItemQueryFilterAttributeInput interface {
+	pulumi.Input
+
+	ToDashboardStatChartChartItemQueryFilterAttributeOutput() DashboardStatChartChartItemQueryFilterAttributeOutput
+	ToDashboardStatChartChartItemQueryFilterAttributeOutputWithContext(context.Context) DashboardStatChartChartItemQueryFilterAttributeOutput
+}
+
+type DashboardStatChartChartItemQueryFilterAttributeArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardStatChartChartItemQueryFilterAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardStatChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (i DashboardStatChartChartItemQueryFilterAttributeArgs) ToDashboardStatChartChartItemQueryFilterAttributeOutput() DashboardStatChartChartItemQueryFilterAttributeOutput {
+	return i.ToDashboardStatChartChartItemQueryFilterAttributeOutputWithContext(context.Background())
+}
+
+func (i DashboardStatChartChartItemQueryFilterAttributeArgs) ToDashboardStatChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardStatChartChartItemQueryFilterAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardStatChartChartItemQueryFilterAttributeOutput)
+}
+
+type DashboardStatChartChartItemQueryFilterAttributeOutput struct{ *pulumi.OutputState }
+
+func (DashboardStatChartChartItemQueryFilterAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardStatChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (o DashboardStatChartChartItemQueryFilterAttributeOutput) ToDashboardStatChartChartItemQueryFilterAttributeOutput() DashboardStatChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+func (o DashboardStatChartChartItemQueryFilterAttributeOutput) ToDashboardStatChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardStatChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardStatChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardStatChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardStatChartChartItemQueryFilterAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardStatChartChartItemQueryFilterAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardStatChartThreshold struct {
+	Color       string  `pulumi:"color"`
+	DisplayText string  `pulumi:"displayText"`
+	Value       float64 `pulumi:"value"`
+}
+
+// DashboardStatChartThresholdInput is an input type that accepts DashboardStatChartThresholdArgs and DashboardStatChartThresholdOutput values.
+// You can construct a concrete instance of `DashboardStatChartThresholdInput` via:
+//
+//	DashboardStatChartThresholdArgs{...}
+type DashboardStatChartThresholdInput interface {
+	pulumi.Input
+
+	ToDashboardStatChartThresholdOutput() DashboardStatChartThresholdOutput
+	ToDashboardStatChartThresholdOutputWithContext(context.Context) DashboardStatChartThresholdOutput
+}
+
+type DashboardStatChartThresholdArgs struct {
+	Color       pulumi.StringInput  `pulumi:"color"`
+	DisplayText pulumi.StringInput  `pulumi:"displayText"`
+	Value       pulumi.Float64Input `pulumi:"value"`
+}
+
+func (DashboardStatChartThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardStatChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardStatChartThresholdArgs) ToDashboardStatChartThresholdOutput() DashboardStatChartThresholdOutput {
+	return i.ToDashboardStatChartThresholdOutputWithContext(context.Background())
+}
+
+func (i DashboardStatChartThresholdArgs) ToDashboardStatChartThresholdOutputWithContext(ctx context.Context) DashboardStatChartThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardStatChartThresholdOutput)
+}
+
+// DashboardStatChartThresholdArrayInput is an input type that accepts DashboardStatChartThresholdArray and DashboardStatChartThresholdArrayOutput values.
+// You can construct a concrete instance of `DashboardStatChartThresholdArrayInput` via:
+//
+//	DashboardStatChartThresholdArray{ DashboardStatChartThresholdArgs{...} }
+type DashboardStatChartThresholdArrayInput interface {
+	pulumi.Input
+
+	ToDashboardStatChartThresholdArrayOutput() DashboardStatChartThresholdArrayOutput
+	ToDashboardStatChartThresholdArrayOutputWithContext(context.Context) DashboardStatChartThresholdArrayOutput
+}
+
+type DashboardStatChartThresholdArray []DashboardStatChartThresholdInput
+
+func (DashboardStatChartThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardStatChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardStatChartThresholdArray) ToDashboardStatChartThresholdArrayOutput() DashboardStatChartThresholdArrayOutput {
+	return i.ToDashboardStatChartThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardStatChartThresholdArray) ToDashboardStatChartThresholdArrayOutputWithContext(ctx context.Context) DashboardStatChartThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardStatChartThresholdArrayOutput)
+}
+
+type DashboardStatChartThresholdOutput struct{ *pulumi.OutputState }
+
+func (DashboardStatChartThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardStatChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardStatChartThresholdOutput) ToDashboardStatChartThresholdOutput() DashboardStatChartThresholdOutput {
+	return o
+}
+
+func (o DashboardStatChartThresholdOutput) ToDashboardStatChartThresholdOutputWithContext(ctx context.Context) DashboardStatChartThresholdOutput {
+	return o
+}
+
+func (o DashboardStatChartThresholdOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardStatChartThreshold) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardStatChartThresholdOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardStatChartThreshold) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardStatChartThresholdOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v DashboardStatChartThreshold) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type DashboardStatChartThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardStatChartThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardStatChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardStatChartThresholdArrayOutput) ToDashboardStatChartThresholdArrayOutput() DashboardStatChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardStatChartThresholdArrayOutput) ToDashboardStatChartThresholdArrayOutputWithContext(ctx context.Context) DashboardStatChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardStatChartThresholdArrayOutput) Index(i pulumi.IntInput) DashboardStatChartThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardStatChartThreshold {
+		return vs[0].([]DashboardStatChartThreshold)[vs[1].(int)]
+	}).(DashboardStatChartThresholdOutput)
+}
+
+type DashboardStatChartValueMapping struct {
+	DisplayText string `pulumi:"displayText"`
+	MatchValue  string `pulumi:"matchValue"`
+	Order       int    `pulumi:"order"`
+	Type        string `pulumi:"type"`
+}
+
+// DashboardStatChartValueMappingInput is an input type that accepts DashboardStatChartValueMappingArgs and DashboardStatChartValueMappingOutput values.
+// You can construct a concrete instance of `DashboardStatChartValueMappingInput` via:
+//
+//	DashboardStatChartValueMappingArgs{...}
+type DashboardStatChartValueMappingInput interface {
+	pulumi.Input
+
+	ToDashboardStatChartValueMappingOutput() DashboardStatChartValueMappingOutput
+	ToDashboardStatChartValueMappingOutputWithContext(context.Context) DashboardStatChartValueMappingOutput
+}
+
+type DashboardStatChartValueMappingArgs struct {
+	DisplayText pulumi.StringInput `pulumi:"displayText"`
+	MatchValue  pulumi.StringInput `pulumi:"matchValue"`
+	Order       pulumi.IntInput    `pulumi:"order"`
+	Type        pulumi.StringInput `pulumi:"type"`
+}
+
+func (DashboardStatChartValueMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardStatChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardStatChartValueMappingArgs) ToDashboardStatChartValueMappingOutput() DashboardStatChartValueMappingOutput {
+	return i.ToDashboardStatChartValueMappingOutputWithContext(context.Background())
+}
+
+func (i DashboardStatChartValueMappingArgs) ToDashboardStatChartValueMappingOutputWithContext(ctx context.Context) DashboardStatChartValueMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardStatChartValueMappingOutput)
+}
+
+// DashboardStatChartValueMappingArrayInput is an input type that accepts DashboardStatChartValueMappingArray and DashboardStatChartValueMappingArrayOutput values.
+// You can construct a concrete instance of `DashboardStatChartValueMappingArrayInput` via:
+//
+//	DashboardStatChartValueMappingArray{ DashboardStatChartValueMappingArgs{...} }
+type DashboardStatChartValueMappingArrayInput interface {
+	pulumi.Input
+
+	ToDashboardStatChartValueMappingArrayOutput() DashboardStatChartValueMappingArrayOutput
+	ToDashboardStatChartValueMappingArrayOutputWithContext(context.Context) DashboardStatChartValueMappingArrayOutput
+}
+
+type DashboardStatChartValueMappingArray []DashboardStatChartValueMappingInput
+
+func (DashboardStatChartValueMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardStatChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardStatChartValueMappingArray) ToDashboardStatChartValueMappingArrayOutput() DashboardStatChartValueMappingArrayOutput {
+	return i.ToDashboardStatChartValueMappingArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardStatChartValueMappingArray) ToDashboardStatChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardStatChartValueMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardStatChartValueMappingArrayOutput)
+}
+
+type DashboardStatChartValueMappingOutput struct{ *pulumi.OutputState }
+
+func (DashboardStatChartValueMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardStatChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardStatChartValueMappingOutput) ToDashboardStatChartValueMappingOutput() DashboardStatChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardStatChartValueMappingOutput) ToDashboardStatChartValueMappingOutputWithContext(ctx context.Context) DashboardStatChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardStatChartValueMappingOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardStatChartValueMapping) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardStatChartValueMappingOutput) MatchValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardStatChartValueMapping) string { return v.MatchValue }).(pulumi.StringOutput)
+}
+
+func (o DashboardStatChartValueMappingOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v DashboardStatChartValueMapping) int { return v.Order }).(pulumi.IntOutput)
+}
+
+func (o DashboardStatChartValueMappingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardStatChartValueMapping) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardStatChartValueMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardStatChartValueMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardStatChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardStatChartValueMappingArrayOutput) ToDashboardStatChartValueMappingArrayOutput() DashboardStatChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardStatChartValueMappingArrayOutput) ToDashboardStatChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardStatChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardStatChartValueMappingArrayOutput) Index(i pulumi.IntInput) DashboardStatChartValueMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardStatChartValueMapping {
+		return vs[0].([]DashboardStatChartValueMapping)[vs[1].(int)]
+	}).(DashboardStatChartValueMappingOutput)
+}
+
+type DashboardTableChartChartItem struct {
+	Color           string  `pulumi:"color"`
+	ExpressionPlain string  `pulumi:"expressionPlain"`
+	Hidden          *bool   `pulumi:"hidden"`
+	Label           *string `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardTableChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardTableChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   *string                                          `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       *string                                          `pulumi:"queryGroupUnit"`
+	QueryLimit           *int                                             `pulumi:"queryLimit"`
+	QueryPlain           string                                           `pulumi:"queryPlain"`
+	QuerySortDirection   *int                                             `pulumi:"querySortDirection"`
+	RefId                string                                           `pulumi:"refId"`
+	Type                 string                                           `pulumi:"type"`
+}
+
+// DashboardTableChartChartItemInput is an input type that accepts DashboardTableChartChartItemArgs and DashboardTableChartChartItemOutput values.
+// You can construct a concrete instance of `DashboardTableChartChartItemInput` via:
+//
+//	DashboardTableChartChartItemArgs{...}
+type DashboardTableChartChartItemInput interface {
+	pulumi.Input
+
+	ToDashboardTableChartChartItemOutput() DashboardTableChartChartItemOutput
+	ToDashboardTableChartChartItemOutputWithContext(context.Context) DashboardTableChartChartItemOutput
+}
+
+type DashboardTableChartChartItemArgs struct {
+	Color           pulumi.StringInput    `pulumi:"color"`
+	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
+	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
+	Label           pulumi.StringPtrInput `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardTableChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardTableChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   pulumi.StringPtrInput                                 `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       pulumi.StringPtrInput                                 `pulumi:"queryGroupUnit"`
+	QueryLimit           pulumi.IntPtrInput                                    `pulumi:"queryLimit"`
+	QueryPlain           pulumi.StringInput                                    `pulumi:"queryPlain"`
+	QuerySortDirection   pulumi.IntPtrInput                                    `pulumi:"querySortDirection"`
+	RefId                pulumi.StringInput                                    `pulumi:"refId"`
+	Type                 pulumi.StringInput                                    `pulumi:"type"`
+}
+
+func (DashboardTableChartChartItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTableChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardTableChartChartItemArgs) ToDashboardTableChartChartItemOutput() DashboardTableChartChartItemOutput {
+	return i.ToDashboardTableChartChartItemOutputWithContext(context.Background())
+}
+
+func (i DashboardTableChartChartItemArgs) ToDashboardTableChartChartItemOutputWithContext(ctx context.Context) DashboardTableChartChartItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTableChartChartItemOutput)
+}
+
+// DashboardTableChartChartItemArrayInput is an input type that accepts DashboardTableChartChartItemArray and DashboardTableChartChartItemArrayOutput values.
+// You can construct a concrete instance of `DashboardTableChartChartItemArrayInput` via:
+//
+//	DashboardTableChartChartItemArray{ DashboardTableChartChartItemArgs{...} }
+type DashboardTableChartChartItemArrayInput interface {
+	pulumi.Input
+
+	ToDashboardTableChartChartItemArrayOutput() DashboardTableChartChartItemArrayOutput
+	ToDashboardTableChartChartItemArrayOutputWithContext(context.Context) DashboardTableChartChartItemArrayOutput
+}
+
+type DashboardTableChartChartItemArray []DashboardTableChartChartItemInput
+
+func (DashboardTableChartChartItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardTableChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardTableChartChartItemArray) ToDashboardTableChartChartItemArrayOutput() DashboardTableChartChartItemArrayOutput {
+	return i.ToDashboardTableChartChartItemArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardTableChartChartItemArray) ToDashboardTableChartChartItemArrayOutputWithContext(ctx context.Context) DashboardTableChartChartItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTableChartChartItemArrayOutput)
+}
+
+type DashboardTableChartChartItemOutput struct{ *pulumi.OutputState }
+
+func (DashboardTableChartChartItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTableChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardTableChartChartItemOutput) ToDashboardTableChartChartItemOutput() DashboardTableChartChartItemOutput {
+	return o
+}
+
+func (o DashboardTableChartChartItemOutput) ToDashboardTableChartChartItemOutputWithContext(ctx context.Context) DashboardTableChartChartItemOutput {
+	return o
+}
+
+func (o DashboardTableChartChartItemOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTableChartChartItem) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardTableChartChartItemOutput) ExpressionPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTableChartChartItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardTableChartChartItemOutput) Hidden() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DashboardTableChartChartItem) *bool { return v.Hidden }).(pulumi.BoolPtrOutput)
+}
+
+func (o DashboardTableChartChartItemOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTableChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardTableChartChartItemOutput) QueryFilterAsset() DashboardTableChartChartItemQueryFilterAssetOutput {
+	return o.ApplyT(func(v DashboardTableChartChartItem) DashboardTableChartChartItemQueryFilterAsset {
+		return v.QueryFilterAsset
+	}).(DashboardTableChartChartItemQueryFilterAssetOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardTableChartChartItemOutput) QueryFilterAttribute() DashboardTableChartChartItemQueryFilterAttributeOutput {
+	return o.ApplyT(func(v DashboardTableChartChartItem) DashboardTableChartChartItemQueryFilterAttribute {
+		return v.QueryFilterAttribute
+	}).(DashboardTableChartChartItemQueryFilterAttributeOutput)
+}
+
+func (o DashboardTableChartChartItemOutput) QueryGroupFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTableChartChartItem) *string { return v.QueryGroupFunction }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardTableChartChartItemOutput) QueryGroupUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTableChartChartItem) *string { return v.QueryGroupUnit }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardTableChartChartItemOutput) QueryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardTableChartChartItem) *int { return v.QueryLimit }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardTableChartChartItemOutput) QueryPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTableChartChartItem) string { return v.QueryPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardTableChartChartItemOutput) QuerySortDirection() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardTableChartChartItem) *int { return v.QuerySortDirection }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardTableChartChartItemOutput) RefId() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTableChartChartItem) string { return v.RefId }).(pulumi.StringOutput)
+}
+
+func (o DashboardTableChartChartItemOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTableChartChartItem) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardTableChartChartItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardTableChartChartItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardTableChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardTableChartChartItemArrayOutput) ToDashboardTableChartChartItemArrayOutput() DashboardTableChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardTableChartChartItemArrayOutput) ToDashboardTableChartChartItemArrayOutputWithContext(ctx context.Context) DashboardTableChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardTableChartChartItemArrayOutput) Index(i pulumi.IntInput) DashboardTableChartChartItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardTableChartChartItem {
+		return vs[0].([]DashboardTableChartChartItem)[vs[1].(int)]
+	}).(DashboardTableChartChartItemOutput)
+}
+
+type DashboardTableChartChartItemQueryFilterAsset struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardTableChartChartItemQueryFilterAssetInput is an input type that accepts DashboardTableChartChartItemQueryFilterAssetArgs and DashboardTableChartChartItemQueryFilterAssetOutput values.
+// You can construct a concrete instance of `DashboardTableChartChartItemQueryFilterAssetInput` via:
+//
+//	DashboardTableChartChartItemQueryFilterAssetArgs{...}
+type DashboardTableChartChartItemQueryFilterAssetInput interface {
+	pulumi.Input
+
+	ToDashboardTableChartChartItemQueryFilterAssetOutput() DashboardTableChartChartItemQueryFilterAssetOutput
+	ToDashboardTableChartChartItemQueryFilterAssetOutputWithContext(context.Context) DashboardTableChartChartItemQueryFilterAssetOutput
+}
+
+type DashboardTableChartChartItemQueryFilterAssetArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardTableChartChartItemQueryFilterAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTableChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (i DashboardTableChartChartItemQueryFilterAssetArgs) ToDashboardTableChartChartItemQueryFilterAssetOutput() DashboardTableChartChartItemQueryFilterAssetOutput {
+	return i.ToDashboardTableChartChartItemQueryFilterAssetOutputWithContext(context.Background())
+}
+
+func (i DashboardTableChartChartItemQueryFilterAssetArgs) ToDashboardTableChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardTableChartChartItemQueryFilterAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTableChartChartItemQueryFilterAssetOutput)
+}
+
+type DashboardTableChartChartItemQueryFilterAssetOutput struct{ *pulumi.OutputState }
+
+func (DashboardTableChartChartItemQueryFilterAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTableChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (o DashboardTableChartChartItemQueryFilterAssetOutput) ToDashboardTableChartChartItemQueryFilterAssetOutput() DashboardTableChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+func (o DashboardTableChartChartItemQueryFilterAssetOutput) ToDashboardTableChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardTableChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardTableChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTableChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardTableChartChartItemQueryFilterAssetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTableChartChartItemQueryFilterAsset) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardTableChartChartItemQueryFilterAttribute struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardTableChartChartItemQueryFilterAttributeInput is an input type that accepts DashboardTableChartChartItemQueryFilterAttributeArgs and DashboardTableChartChartItemQueryFilterAttributeOutput values.
+// You can construct a concrete instance of `DashboardTableChartChartItemQueryFilterAttributeInput` via:
+//
+//	DashboardTableChartChartItemQueryFilterAttributeArgs{...}
+type DashboardTableChartChartItemQueryFilterAttributeInput interface {
+	pulumi.Input
+
+	ToDashboardTableChartChartItemQueryFilterAttributeOutput() DashboardTableChartChartItemQueryFilterAttributeOutput
+	ToDashboardTableChartChartItemQueryFilterAttributeOutputWithContext(context.Context) DashboardTableChartChartItemQueryFilterAttributeOutput
+}
+
+type DashboardTableChartChartItemQueryFilterAttributeArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardTableChartChartItemQueryFilterAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTableChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (i DashboardTableChartChartItemQueryFilterAttributeArgs) ToDashboardTableChartChartItemQueryFilterAttributeOutput() DashboardTableChartChartItemQueryFilterAttributeOutput {
+	return i.ToDashboardTableChartChartItemQueryFilterAttributeOutputWithContext(context.Background())
+}
+
+func (i DashboardTableChartChartItemQueryFilterAttributeArgs) ToDashboardTableChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardTableChartChartItemQueryFilterAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTableChartChartItemQueryFilterAttributeOutput)
+}
+
+type DashboardTableChartChartItemQueryFilterAttributeOutput struct{ *pulumi.OutputState }
+
+func (DashboardTableChartChartItemQueryFilterAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTableChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (o DashboardTableChartChartItemQueryFilterAttributeOutput) ToDashboardTableChartChartItemQueryFilterAttributeOutput() DashboardTableChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+func (o DashboardTableChartChartItemQueryFilterAttributeOutput) ToDashboardTableChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardTableChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardTableChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTableChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardTableChartChartItemQueryFilterAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTableChartChartItemQueryFilterAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardTableChartThreshold struct {
+	Color       string  `pulumi:"color"`
+	DisplayText string  `pulumi:"displayText"`
+	Value       float64 `pulumi:"value"`
+}
+
+// DashboardTableChartThresholdInput is an input type that accepts DashboardTableChartThresholdArgs and DashboardTableChartThresholdOutput values.
+// You can construct a concrete instance of `DashboardTableChartThresholdInput` via:
+//
+//	DashboardTableChartThresholdArgs{...}
+type DashboardTableChartThresholdInput interface {
+	pulumi.Input
+
+	ToDashboardTableChartThresholdOutput() DashboardTableChartThresholdOutput
+	ToDashboardTableChartThresholdOutputWithContext(context.Context) DashboardTableChartThresholdOutput
+}
+
+type DashboardTableChartThresholdArgs struct {
+	Color       pulumi.StringInput  `pulumi:"color"`
+	DisplayText pulumi.StringInput  `pulumi:"displayText"`
+	Value       pulumi.Float64Input `pulumi:"value"`
+}
+
+func (DashboardTableChartThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTableChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardTableChartThresholdArgs) ToDashboardTableChartThresholdOutput() DashboardTableChartThresholdOutput {
+	return i.ToDashboardTableChartThresholdOutputWithContext(context.Background())
+}
+
+func (i DashboardTableChartThresholdArgs) ToDashboardTableChartThresholdOutputWithContext(ctx context.Context) DashboardTableChartThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTableChartThresholdOutput)
+}
+
+// DashboardTableChartThresholdArrayInput is an input type that accepts DashboardTableChartThresholdArray and DashboardTableChartThresholdArrayOutput values.
+// You can construct a concrete instance of `DashboardTableChartThresholdArrayInput` via:
+//
+//	DashboardTableChartThresholdArray{ DashboardTableChartThresholdArgs{...} }
+type DashboardTableChartThresholdArrayInput interface {
+	pulumi.Input
+
+	ToDashboardTableChartThresholdArrayOutput() DashboardTableChartThresholdArrayOutput
+	ToDashboardTableChartThresholdArrayOutputWithContext(context.Context) DashboardTableChartThresholdArrayOutput
+}
+
+type DashboardTableChartThresholdArray []DashboardTableChartThresholdInput
+
+func (DashboardTableChartThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardTableChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardTableChartThresholdArray) ToDashboardTableChartThresholdArrayOutput() DashboardTableChartThresholdArrayOutput {
+	return i.ToDashboardTableChartThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardTableChartThresholdArray) ToDashboardTableChartThresholdArrayOutputWithContext(ctx context.Context) DashboardTableChartThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTableChartThresholdArrayOutput)
+}
+
+type DashboardTableChartThresholdOutput struct{ *pulumi.OutputState }
+
+func (DashboardTableChartThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTableChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardTableChartThresholdOutput) ToDashboardTableChartThresholdOutput() DashboardTableChartThresholdOutput {
+	return o
+}
+
+func (o DashboardTableChartThresholdOutput) ToDashboardTableChartThresholdOutputWithContext(ctx context.Context) DashboardTableChartThresholdOutput {
+	return o
+}
+
+func (o DashboardTableChartThresholdOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTableChartThreshold) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardTableChartThresholdOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTableChartThreshold) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardTableChartThresholdOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v DashboardTableChartThreshold) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type DashboardTableChartThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardTableChartThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardTableChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardTableChartThresholdArrayOutput) ToDashboardTableChartThresholdArrayOutput() DashboardTableChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardTableChartThresholdArrayOutput) ToDashboardTableChartThresholdArrayOutputWithContext(ctx context.Context) DashboardTableChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardTableChartThresholdArrayOutput) Index(i pulumi.IntInput) DashboardTableChartThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardTableChartThreshold {
+		return vs[0].([]DashboardTableChartThreshold)[vs[1].(int)]
+	}).(DashboardTableChartThresholdOutput)
+}
+
+type DashboardTableChartValueMapping struct {
+	DisplayText string `pulumi:"displayText"`
+	MatchValue  string `pulumi:"matchValue"`
+	Order       int    `pulumi:"order"`
+	Type        string `pulumi:"type"`
+}
+
+// DashboardTableChartValueMappingInput is an input type that accepts DashboardTableChartValueMappingArgs and DashboardTableChartValueMappingOutput values.
+// You can construct a concrete instance of `DashboardTableChartValueMappingInput` via:
+//
+//	DashboardTableChartValueMappingArgs{...}
+type DashboardTableChartValueMappingInput interface {
+	pulumi.Input
+
+	ToDashboardTableChartValueMappingOutput() DashboardTableChartValueMappingOutput
+	ToDashboardTableChartValueMappingOutputWithContext(context.Context) DashboardTableChartValueMappingOutput
+}
+
+type DashboardTableChartValueMappingArgs struct {
+	DisplayText pulumi.StringInput `pulumi:"displayText"`
+	MatchValue  pulumi.StringInput `pulumi:"matchValue"`
+	Order       pulumi.IntInput    `pulumi:"order"`
+	Type        pulumi.StringInput `pulumi:"type"`
+}
+
+func (DashboardTableChartValueMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTableChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardTableChartValueMappingArgs) ToDashboardTableChartValueMappingOutput() DashboardTableChartValueMappingOutput {
+	return i.ToDashboardTableChartValueMappingOutputWithContext(context.Background())
+}
+
+func (i DashboardTableChartValueMappingArgs) ToDashboardTableChartValueMappingOutputWithContext(ctx context.Context) DashboardTableChartValueMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTableChartValueMappingOutput)
+}
+
+// DashboardTableChartValueMappingArrayInput is an input type that accepts DashboardTableChartValueMappingArray and DashboardTableChartValueMappingArrayOutput values.
+// You can construct a concrete instance of `DashboardTableChartValueMappingArrayInput` via:
+//
+//	DashboardTableChartValueMappingArray{ DashboardTableChartValueMappingArgs{...} }
+type DashboardTableChartValueMappingArrayInput interface {
+	pulumi.Input
+
+	ToDashboardTableChartValueMappingArrayOutput() DashboardTableChartValueMappingArrayOutput
+	ToDashboardTableChartValueMappingArrayOutputWithContext(context.Context) DashboardTableChartValueMappingArrayOutput
+}
+
+type DashboardTableChartValueMappingArray []DashboardTableChartValueMappingInput
+
+func (DashboardTableChartValueMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardTableChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardTableChartValueMappingArray) ToDashboardTableChartValueMappingArrayOutput() DashboardTableChartValueMappingArrayOutput {
+	return i.ToDashboardTableChartValueMappingArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardTableChartValueMappingArray) ToDashboardTableChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardTableChartValueMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTableChartValueMappingArrayOutput)
+}
+
+type DashboardTableChartValueMappingOutput struct{ *pulumi.OutputState }
+
+func (DashboardTableChartValueMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTableChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardTableChartValueMappingOutput) ToDashboardTableChartValueMappingOutput() DashboardTableChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardTableChartValueMappingOutput) ToDashboardTableChartValueMappingOutputWithContext(ctx context.Context) DashboardTableChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardTableChartValueMappingOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTableChartValueMapping) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardTableChartValueMappingOutput) MatchValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTableChartValueMapping) string { return v.MatchValue }).(pulumi.StringOutput)
+}
+
+func (o DashboardTableChartValueMappingOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v DashboardTableChartValueMapping) int { return v.Order }).(pulumi.IntOutput)
+}
+
+func (o DashboardTableChartValueMappingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTableChartValueMapping) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardTableChartValueMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardTableChartValueMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardTableChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardTableChartValueMappingArrayOutput) ToDashboardTableChartValueMappingArrayOutput() DashboardTableChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardTableChartValueMappingArrayOutput) ToDashboardTableChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardTableChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardTableChartValueMappingArrayOutput) Index(i pulumi.IntInput) DashboardTableChartValueMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardTableChartValueMapping {
+		return vs[0].([]DashboardTableChartValueMapping)[vs[1].(int)]
+	}).(DashboardTableChartValueMappingOutput)
+}
+
+type DashboardTextChartChartItem struct {
+	Color           string  `pulumi:"color"`
+	ExpressionPlain string  `pulumi:"expressionPlain"`
+	Hidden          *bool   `pulumi:"hidden"`
+	Label           *string `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardTextChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardTextChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   *string                                         `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       *string                                         `pulumi:"queryGroupUnit"`
+	QueryLimit           *int                                            `pulumi:"queryLimit"`
+	QueryPlain           string                                          `pulumi:"queryPlain"`
+	QuerySortDirection   *int                                            `pulumi:"querySortDirection"`
+	RefId                string                                          `pulumi:"refId"`
+	Type                 string                                          `pulumi:"type"`
+}
+
+// DashboardTextChartChartItemInput is an input type that accepts DashboardTextChartChartItemArgs and DashboardTextChartChartItemOutput values.
+// You can construct a concrete instance of `DashboardTextChartChartItemInput` via:
+//
+//	DashboardTextChartChartItemArgs{...}
+type DashboardTextChartChartItemInput interface {
+	pulumi.Input
+
+	ToDashboardTextChartChartItemOutput() DashboardTextChartChartItemOutput
+	ToDashboardTextChartChartItemOutputWithContext(context.Context) DashboardTextChartChartItemOutput
+}
+
+type DashboardTextChartChartItemArgs struct {
+	Color           pulumi.StringInput    `pulumi:"color"`
+	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
+	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
+	Label           pulumi.StringPtrInput `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardTextChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardTextChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   pulumi.StringPtrInput                                `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       pulumi.StringPtrInput                                `pulumi:"queryGroupUnit"`
+	QueryLimit           pulumi.IntPtrInput                                   `pulumi:"queryLimit"`
+	QueryPlain           pulumi.StringInput                                   `pulumi:"queryPlain"`
+	QuerySortDirection   pulumi.IntPtrInput                                   `pulumi:"querySortDirection"`
+	RefId                pulumi.StringInput                                   `pulumi:"refId"`
+	Type                 pulumi.StringInput                                   `pulumi:"type"`
+}
+
+func (DashboardTextChartChartItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTextChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardTextChartChartItemArgs) ToDashboardTextChartChartItemOutput() DashboardTextChartChartItemOutput {
+	return i.ToDashboardTextChartChartItemOutputWithContext(context.Background())
+}
+
+func (i DashboardTextChartChartItemArgs) ToDashboardTextChartChartItemOutputWithContext(ctx context.Context) DashboardTextChartChartItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTextChartChartItemOutput)
+}
+
+// DashboardTextChartChartItemArrayInput is an input type that accepts DashboardTextChartChartItemArray and DashboardTextChartChartItemArrayOutput values.
+// You can construct a concrete instance of `DashboardTextChartChartItemArrayInput` via:
+//
+//	DashboardTextChartChartItemArray{ DashboardTextChartChartItemArgs{...} }
+type DashboardTextChartChartItemArrayInput interface {
+	pulumi.Input
+
+	ToDashboardTextChartChartItemArrayOutput() DashboardTextChartChartItemArrayOutput
+	ToDashboardTextChartChartItemArrayOutputWithContext(context.Context) DashboardTextChartChartItemArrayOutput
+}
+
+type DashboardTextChartChartItemArray []DashboardTextChartChartItemInput
+
+func (DashboardTextChartChartItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardTextChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardTextChartChartItemArray) ToDashboardTextChartChartItemArrayOutput() DashboardTextChartChartItemArrayOutput {
+	return i.ToDashboardTextChartChartItemArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardTextChartChartItemArray) ToDashboardTextChartChartItemArrayOutputWithContext(ctx context.Context) DashboardTextChartChartItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTextChartChartItemArrayOutput)
+}
+
+type DashboardTextChartChartItemOutput struct{ *pulumi.OutputState }
+
+func (DashboardTextChartChartItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTextChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardTextChartChartItemOutput) ToDashboardTextChartChartItemOutput() DashboardTextChartChartItemOutput {
+	return o
+}
+
+func (o DashboardTextChartChartItemOutput) ToDashboardTextChartChartItemOutputWithContext(ctx context.Context) DashboardTextChartChartItemOutput {
+	return o
+}
+
+func (o DashboardTextChartChartItemOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTextChartChartItem) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardTextChartChartItemOutput) ExpressionPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTextChartChartItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardTextChartChartItemOutput) Hidden() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DashboardTextChartChartItem) *bool { return v.Hidden }).(pulumi.BoolPtrOutput)
+}
+
+func (o DashboardTextChartChartItemOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTextChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardTextChartChartItemOutput) QueryFilterAsset() DashboardTextChartChartItemQueryFilterAssetOutput {
+	return o.ApplyT(func(v DashboardTextChartChartItem) DashboardTextChartChartItemQueryFilterAsset {
+		return v.QueryFilterAsset
+	}).(DashboardTextChartChartItemQueryFilterAssetOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardTextChartChartItemOutput) QueryFilterAttribute() DashboardTextChartChartItemQueryFilterAttributeOutput {
+	return o.ApplyT(func(v DashboardTextChartChartItem) DashboardTextChartChartItemQueryFilterAttribute {
+		return v.QueryFilterAttribute
+	}).(DashboardTextChartChartItemQueryFilterAttributeOutput)
+}
+
+func (o DashboardTextChartChartItemOutput) QueryGroupFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTextChartChartItem) *string { return v.QueryGroupFunction }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardTextChartChartItemOutput) QueryGroupUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTextChartChartItem) *string { return v.QueryGroupUnit }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardTextChartChartItemOutput) QueryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardTextChartChartItem) *int { return v.QueryLimit }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardTextChartChartItemOutput) QueryPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTextChartChartItem) string { return v.QueryPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardTextChartChartItemOutput) QuerySortDirection() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardTextChartChartItem) *int { return v.QuerySortDirection }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardTextChartChartItemOutput) RefId() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTextChartChartItem) string { return v.RefId }).(pulumi.StringOutput)
+}
+
+func (o DashboardTextChartChartItemOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTextChartChartItem) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardTextChartChartItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardTextChartChartItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardTextChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardTextChartChartItemArrayOutput) ToDashboardTextChartChartItemArrayOutput() DashboardTextChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardTextChartChartItemArrayOutput) ToDashboardTextChartChartItemArrayOutputWithContext(ctx context.Context) DashboardTextChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardTextChartChartItemArrayOutput) Index(i pulumi.IntInput) DashboardTextChartChartItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardTextChartChartItem {
+		return vs[0].([]DashboardTextChartChartItem)[vs[1].(int)]
+	}).(DashboardTextChartChartItemOutput)
+}
+
+type DashboardTextChartChartItemQueryFilterAsset struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardTextChartChartItemQueryFilterAssetInput is an input type that accepts DashboardTextChartChartItemQueryFilterAssetArgs and DashboardTextChartChartItemQueryFilterAssetOutput values.
+// You can construct a concrete instance of `DashboardTextChartChartItemQueryFilterAssetInput` via:
+//
+//	DashboardTextChartChartItemQueryFilterAssetArgs{...}
+type DashboardTextChartChartItemQueryFilterAssetInput interface {
+	pulumi.Input
+
+	ToDashboardTextChartChartItemQueryFilterAssetOutput() DashboardTextChartChartItemQueryFilterAssetOutput
+	ToDashboardTextChartChartItemQueryFilterAssetOutputWithContext(context.Context) DashboardTextChartChartItemQueryFilterAssetOutput
+}
+
+type DashboardTextChartChartItemQueryFilterAssetArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardTextChartChartItemQueryFilterAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTextChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (i DashboardTextChartChartItemQueryFilterAssetArgs) ToDashboardTextChartChartItemQueryFilterAssetOutput() DashboardTextChartChartItemQueryFilterAssetOutput {
+	return i.ToDashboardTextChartChartItemQueryFilterAssetOutputWithContext(context.Background())
+}
+
+func (i DashboardTextChartChartItemQueryFilterAssetArgs) ToDashboardTextChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardTextChartChartItemQueryFilterAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTextChartChartItemQueryFilterAssetOutput)
+}
+
+type DashboardTextChartChartItemQueryFilterAssetOutput struct{ *pulumi.OutputState }
+
+func (DashboardTextChartChartItemQueryFilterAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTextChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (o DashboardTextChartChartItemQueryFilterAssetOutput) ToDashboardTextChartChartItemQueryFilterAssetOutput() DashboardTextChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+func (o DashboardTextChartChartItemQueryFilterAssetOutput) ToDashboardTextChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardTextChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardTextChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTextChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardTextChartChartItemQueryFilterAssetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTextChartChartItemQueryFilterAsset) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardTextChartChartItemQueryFilterAttribute struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardTextChartChartItemQueryFilterAttributeInput is an input type that accepts DashboardTextChartChartItemQueryFilterAttributeArgs and DashboardTextChartChartItemQueryFilterAttributeOutput values.
+// You can construct a concrete instance of `DashboardTextChartChartItemQueryFilterAttributeInput` via:
+//
+//	DashboardTextChartChartItemQueryFilterAttributeArgs{...}
+type DashboardTextChartChartItemQueryFilterAttributeInput interface {
+	pulumi.Input
+
+	ToDashboardTextChartChartItemQueryFilterAttributeOutput() DashboardTextChartChartItemQueryFilterAttributeOutput
+	ToDashboardTextChartChartItemQueryFilterAttributeOutputWithContext(context.Context) DashboardTextChartChartItemQueryFilterAttributeOutput
+}
+
+type DashboardTextChartChartItemQueryFilterAttributeArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardTextChartChartItemQueryFilterAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTextChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (i DashboardTextChartChartItemQueryFilterAttributeArgs) ToDashboardTextChartChartItemQueryFilterAttributeOutput() DashboardTextChartChartItemQueryFilterAttributeOutput {
+	return i.ToDashboardTextChartChartItemQueryFilterAttributeOutputWithContext(context.Background())
+}
+
+func (i DashboardTextChartChartItemQueryFilterAttributeArgs) ToDashboardTextChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardTextChartChartItemQueryFilterAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTextChartChartItemQueryFilterAttributeOutput)
+}
+
+type DashboardTextChartChartItemQueryFilterAttributeOutput struct{ *pulumi.OutputState }
+
+func (DashboardTextChartChartItemQueryFilterAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTextChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (o DashboardTextChartChartItemQueryFilterAttributeOutput) ToDashboardTextChartChartItemQueryFilterAttributeOutput() DashboardTextChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+func (o DashboardTextChartChartItemQueryFilterAttributeOutput) ToDashboardTextChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardTextChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardTextChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTextChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardTextChartChartItemQueryFilterAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTextChartChartItemQueryFilterAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardTextChartThreshold struct {
+	Color       string  `pulumi:"color"`
+	DisplayText string  `pulumi:"displayText"`
+	Value       float64 `pulumi:"value"`
+}
+
+// DashboardTextChartThresholdInput is an input type that accepts DashboardTextChartThresholdArgs and DashboardTextChartThresholdOutput values.
+// You can construct a concrete instance of `DashboardTextChartThresholdInput` via:
+//
+//	DashboardTextChartThresholdArgs{...}
+type DashboardTextChartThresholdInput interface {
+	pulumi.Input
+
+	ToDashboardTextChartThresholdOutput() DashboardTextChartThresholdOutput
+	ToDashboardTextChartThresholdOutputWithContext(context.Context) DashboardTextChartThresholdOutput
+}
+
+type DashboardTextChartThresholdArgs struct {
+	Color       pulumi.StringInput  `pulumi:"color"`
+	DisplayText pulumi.StringInput  `pulumi:"displayText"`
+	Value       pulumi.Float64Input `pulumi:"value"`
+}
+
+func (DashboardTextChartThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTextChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardTextChartThresholdArgs) ToDashboardTextChartThresholdOutput() DashboardTextChartThresholdOutput {
+	return i.ToDashboardTextChartThresholdOutputWithContext(context.Background())
+}
+
+func (i DashboardTextChartThresholdArgs) ToDashboardTextChartThresholdOutputWithContext(ctx context.Context) DashboardTextChartThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTextChartThresholdOutput)
+}
+
+// DashboardTextChartThresholdArrayInput is an input type that accepts DashboardTextChartThresholdArray and DashboardTextChartThresholdArrayOutput values.
+// You can construct a concrete instance of `DashboardTextChartThresholdArrayInput` via:
+//
+//	DashboardTextChartThresholdArray{ DashboardTextChartThresholdArgs{...} }
+type DashboardTextChartThresholdArrayInput interface {
+	pulumi.Input
+
+	ToDashboardTextChartThresholdArrayOutput() DashboardTextChartThresholdArrayOutput
+	ToDashboardTextChartThresholdArrayOutputWithContext(context.Context) DashboardTextChartThresholdArrayOutput
+}
+
+type DashboardTextChartThresholdArray []DashboardTextChartThresholdInput
+
+func (DashboardTextChartThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardTextChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardTextChartThresholdArray) ToDashboardTextChartThresholdArrayOutput() DashboardTextChartThresholdArrayOutput {
+	return i.ToDashboardTextChartThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardTextChartThresholdArray) ToDashboardTextChartThresholdArrayOutputWithContext(ctx context.Context) DashboardTextChartThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTextChartThresholdArrayOutput)
+}
+
+type DashboardTextChartThresholdOutput struct{ *pulumi.OutputState }
+
+func (DashboardTextChartThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTextChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardTextChartThresholdOutput) ToDashboardTextChartThresholdOutput() DashboardTextChartThresholdOutput {
+	return o
+}
+
+func (o DashboardTextChartThresholdOutput) ToDashboardTextChartThresholdOutputWithContext(ctx context.Context) DashboardTextChartThresholdOutput {
+	return o
+}
+
+func (o DashboardTextChartThresholdOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTextChartThreshold) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardTextChartThresholdOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTextChartThreshold) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardTextChartThresholdOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v DashboardTextChartThreshold) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type DashboardTextChartThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardTextChartThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardTextChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardTextChartThresholdArrayOutput) ToDashboardTextChartThresholdArrayOutput() DashboardTextChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardTextChartThresholdArrayOutput) ToDashboardTextChartThresholdArrayOutputWithContext(ctx context.Context) DashboardTextChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardTextChartThresholdArrayOutput) Index(i pulumi.IntInput) DashboardTextChartThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardTextChartThreshold {
+		return vs[0].([]DashboardTextChartThreshold)[vs[1].(int)]
+	}).(DashboardTextChartThresholdOutput)
+}
+
+type DashboardTextChartValueMapping struct {
+	DisplayText string `pulumi:"displayText"`
+	MatchValue  string `pulumi:"matchValue"`
+	Order       int    `pulumi:"order"`
+	Type        string `pulumi:"type"`
+}
+
+// DashboardTextChartValueMappingInput is an input type that accepts DashboardTextChartValueMappingArgs and DashboardTextChartValueMappingOutput values.
+// You can construct a concrete instance of `DashboardTextChartValueMappingInput` via:
+//
+//	DashboardTextChartValueMappingArgs{...}
+type DashboardTextChartValueMappingInput interface {
+	pulumi.Input
+
+	ToDashboardTextChartValueMappingOutput() DashboardTextChartValueMappingOutput
+	ToDashboardTextChartValueMappingOutputWithContext(context.Context) DashboardTextChartValueMappingOutput
+}
+
+type DashboardTextChartValueMappingArgs struct {
+	DisplayText pulumi.StringInput `pulumi:"displayText"`
+	MatchValue  pulumi.StringInput `pulumi:"matchValue"`
+	Order       pulumi.IntInput    `pulumi:"order"`
+	Type        pulumi.StringInput `pulumi:"type"`
+}
+
+func (DashboardTextChartValueMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTextChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardTextChartValueMappingArgs) ToDashboardTextChartValueMappingOutput() DashboardTextChartValueMappingOutput {
+	return i.ToDashboardTextChartValueMappingOutputWithContext(context.Background())
+}
+
+func (i DashboardTextChartValueMappingArgs) ToDashboardTextChartValueMappingOutputWithContext(ctx context.Context) DashboardTextChartValueMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTextChartValueMappingOutput)
+}
+
+// DashboardTextChartValueMappingArrayInput is an input type that accepts DashboardTextChartValueMappingArray and DashboardTextChartValueMappingArrayOutput values.
+// You can construct a concrete instance of `DashboardTextChartValueMappingArrayInput` via:
+//
+//	DashboardTextChartValueMappingArray{ DashboardTextChartValueMappingArgs{...} }
+type DashboardTextChartValueMappingArrayInput interface {
+	pulumi.Input
+
+	ToDashboardTextChartValueMappingArrayOutput() DashboardTextChartValueMappingArrayOutput
+	ToDashboardTextChartValueMappingArrayOutputWithContext(context.Context) DashboardTextChartValueMappingArrayOutput
+}
+
+type DashboardTextChartValueMappingArray []DashboardTextChartValueMappingInput
+
+func (DashboardTextChartValueMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardTextChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardTextChartValueMappingArray) ToDashboardTextChartValueMappingArrayOutput() DashboardTextChartValueMappingArrayOutput {
+	return i.ToDashboardTextChartValueMappingArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardTextChartValueMappingArray) ToDashboardTextChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardTextChartValueMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTextChartValueMappingArrayOutput)
+}
+
+type DashboardTextChartValueMappingOutput struct{ *pulumi.OutputState }
+
+func (DashboardTextChartValueMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTextChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardTextChartValueMappingOutput) ToDashboardTextChartValueMappingOutput() DashboardTextChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardTextChartValueMappingOutput) ToDashboardTextChartValueMappingOutputWithContext(ctx context.Context) DashboardTextChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardTextChartValueMappingOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTextChartValueMapping) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardTextChartValueMappingOutput) MatchValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTextChartValueMapping) string { return v.MatchValue }).(pulumi.StringOutput)
+}
+
+func (o DashboardTextChartValueMappingOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v DashboardTextChartValueMapping) int { return v.Order }).(pulumi.IntOutput)
+}
+
+func (o DashboardTextChartValueMappingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTextChartValueMapping) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardTextChartValueMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardTextChartValueMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardTextChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardTextChartValueMappingArrayOutput) ToDashboardTextChartValueMappingArrayOutput() DashboardTextChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardTextChartValueMappingArrayOutput) ToDashboardTextChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardTextChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardTextChartValueMappingArrayOutput) Index(i pulumi.IntInput) DashboardTextChartValueMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardTextChartValueMapping {
+		return vs[0].([]DashboardTextChartValueMapping)[vs[1].(int)]
+	}).(DashboardTextChartValueMappingOutput)
+}
+
+type DashboardTimeseriesChartChartItem struct {
+	Color           string  `pulumi:"color"`
+	ExpressionPlain string  `pulumi:"expressionPlain"`
+	Hidden          *bool   `pulumi:"hidden"`
+	Label           *string `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardTimeseriesChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardTimeseriesChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   *string                                               `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       *string                                               `pulumi:"queryGroupUnit"`
+	QueryLimit           *int                                                  `pulumi:"queryLimit"`
+	QueryPlain           string                                                `pulumi:"queryPlain"`
+	QuerySortDirection   *int                                                  `pulumi:"querySortDirection"`
+	RefId                string                                                `pulumi:"refId"`
+	Type                 string                                                `pulumi:"type"`
+}
+
+// DashboardTimeseriesChartChartItemInput is an input type that accepts DashboardTimeseriesChartChartItemArgs and DashboardTimeseriesChartChartItemOutput values.
+// You can construct a concrete instance of `DashboardTimeseriesChartChartItemInput` via:
+//
+//	DashboardTimeseriesChartChartItemArgs{...}
+type DashboardTimeseriesChartChartItemInput interface {
+	pulumi.Input
+
+	ToDashboardTimeseriesChartChartItemOutput() DashboardTimeseriesChartChartItemOutput
+	ToDashboardTimeseriesChartChartItemOutputWithContext(context.Context) DashboardTimeseriesChartChartItemOutput
+}
+
+type DashboardTimeseriesChartChartItemArgs struct {
+	Color           pulumi.StringInput    `pulumi:"color"`
+	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
+	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
+	Label           pulumi.StringPtrInput `pulumi:"label"`
+	// Asset/Attribute filter
+	QueryFilterAsset DashboardTimeseriesChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute DashboardTimeseriesChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
+	QueryGroupFunction   pulumi.StringPtrInput                                      `pulumi:"queryGroupFunction"`
+	QueryGroupUnit       pulumi.StringPtrInput                                      `pulumi:"queryGroupUnit"`
+	QueryLimit           pulumi.IntPtrInput                                         `pulumi:"queryLimit"`
+	QueryPlain           pulumi.StringInput                                         `pulumi:"queryPlain"`
+	QuerySortDirection   pulumi.IntPtrInput                                         `pulumi:"querySortDirection"`
+	RefId                pulumi.StringInput                                         `pulumi:"refId"`
+	Type                 pulumi.StringInput                                         `pulumi:"type"`
+}
+
+func (DashboardTimeseriesChartChartItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTimeseriesChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardTimeseriesChartChartItemArgs) ToDashboardTimeseriesChartChartItemOutput() DashboardTimeseriesChartChartItemOutput {
+	return i.ToDashboardTimeseriesChartChartItemOutputWithContext(context.Background())
+}
+
+func (i DashboardTimeseriesChartChartItemArgs) ToDashboardTimeseriesChartChartItemOutputWithContext(ctx context.Context) DashboardTimeseriesChartChartItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTimeseriesChartChartItemOutput)
+}
+
+// DashboardTimeseriesChartChartItemArrayInput is an input type that accepts DashboardTimeseriesChartChartItemArray and DashboardTimeseriesChartChartItemArrayOutput values.
+// You can construct a concrete instance of `DashboardTimeseriesChartChartItemArrayInput` via:
+//
+//	DashboardTimeseriesChartChartItemArray{ DashboardTimeseriesChartChartItemArgs{...} }
+type DashboardTimeseriesChartChartItemArrayInput interface {
+	pulumi.Input
+
+	ToDashboardTimeseriesChartChartItemArrayOutput() DashboardTimeseriesChartChartItemArrayOutput
+	ToDashboardTimeseriesChartChartItemArrayOutputWithContext(context.Context) DashboardTimeseriesChartChartItemArrayOutput
+}
+
+type DashboardTimeseriesChartChartItemArray []DashboardTimeseriesChartChartItemInput
+
+func (DashboardTimeseriesChartChartItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardTimeseriesChartChartItem)(nil)).Elem()
+}
+
+func (i DashboardTimeseriesChartChartItemArray) ToDashboardTimeseriesChartChartItemArrayOutput() DashboardTimeseriesChartChartItemArrayOutput {
+	return i.ToDashboardTimeseriesChartChartItemArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardTimeseriesChartChartItemArray) ToDashboardTimeseriesChartChartItemArrayOutputWithContext(ctx context.Context) DashboardTimeseriesChartChartItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTimeseriesChartChartItemArrayOutput)
+}
+
+type DashboardTimeseriesChartChartItemOutput struct{ *pulumi.OutputState }
+
+func (DashboardTimeseriesChartChartItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTimeseriesChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardTimeseriesChartChartItemOutput) ToDashboardTimeseriesChartChartItemOutput() DashboardTimeseriesChartChartItemOutput {
+	return o
+}
+
+func (o DashboardTimeseriesChartChartItemOutput) ToDashboardTimeseriesChartChartItemOutputWithContext(ctx context.Context) DashboardTimeseriesChartChartItemOutput {
+	return o
+}
+
+func (o DashboardTimeseriesChartChartItemOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartChartItem) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardTimeseriesChartChartItemOutput) ExpressionPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartChartItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardTimeseriesChartChartItemOutput) Hidden() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartChartItem) *bool { return v.Hidden }).(pulumi.BoolPtrOutput)
+}
+
+func (o DashboardTimeseriesChartChartItemOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardTimeseriesChartChartItemOutput) QueryFilterAsset() DashboardTimeseriesChartChartItemQueryFilterAssetOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartChartItem) DashboardTimeseriesChartChartItemQueryFilterAsset {
+		return v.QueryFilterAsset
+	}).(DashboardTimeseriesChartChartItemQueryFilterAssetOutput)
+}
+
+// Asset/Attribute filter
+func (o DashboardTimeseriesChartChartItemOutput) QueryFilterAttribute() DashboardTimeseriesChartChartItemQueryFilterAttributeOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartChartItem) DashboardTimeseriesChartChartItemQueryFilterAttribute {
+		return v.QueryFilterAttribute
+	}).(DashboardTimeseriesChartChartItemQueryFilterAttributeOutput)
+}
+
+func (o DashboardTimeseriesChartChartItemOutput) QueryGroupFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartChartItem) *string { return v.QueryGroupFunction }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardTimeseriesChartChartItemOutput) QueryGroupUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartChartItem) *string { return v.QueryGroupUnit }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardTimeseriesChartChartItemOutput) QueryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartChartItem) *int { return v.QueryLimit }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardTimeseriesChartChartItemOutput) QueryPlain() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartChartItem) string { return v.QueryPlain }).(pulumi.StringOutput)
+}
+
+func (o DashboardTimeseriesChartChartItemOutput) QuerySortDirection() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartChartItem) *int { return v.QuerySortDirection }).(pulumi.IntPtrOutput)
+}
+
+func (o DashboardTimeseriesChartChartItemOutput) RefId() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartChartItem) string { return v.RefId }).(pulumi.StringOutput)
+}
+
+func (o DashboardTimeseriesChartChartItemOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartChartItem) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardTimeseriesChartChartItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardTimeseriesChartChartItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardTimeseriesChartChartItem)(nil)).Elem()
+}
+
+func (o DashboardTimeseriesChartChartItemArrayOutput) ToDashboardTimeseriesChartChartItemArrayOutput() DashboardTimeseriesChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardTimeseriesChartChartItemArrayOutput) ToDashboardTimeseriesChartChartItemArrayOutputWithContext(ctx context.Context) DashboardTimeseriesChartChartItemArrayOutput {
+	return o
+}
+
+func (o DashboardTimeseriesChartChartItemArrayOutput) Index(i pulumi.IntInput) DashboardTimeseriesChartChartItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardTimeseriesChartChartItem {
+		return vs[0].([]DashboardTimeseriesChartChartItem)[vs[1].(int)]
+	}).(DashboardTimeseriesChartChartItemOutput)
+}
+
+type DashboardTimeseriesChartChartItemQueryFilterAsset struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardTimeseriesChartChartItemQueryFilterAssetInput is an input type that accepts DashboardTimeseriesChartChartItemQueryFilterAssetArgs and DashboardTimeseriesChartChartItemQueryFilterAssetOutput values.
+// You can construct a concrete instance of `DashboardTimeseriesChartChartItemQueryFilterAssetInput` via:
+//
+//	DashboardTimeseriesChartChartItemQueryFilterAssetArgs{...}
+type DashboardTimeseriesChartChartItemQueryFilterAssetInput interface {
+	pulumi.Input
+
+	ToDashboardTimeseriesChartChartItemQueryFilterAssetOutput() DashboardTimeseriesChartChartItemQueryFilterAssetOutput
+	ToDashboardTimeseriesChartChartItemQueryFilterAssetOutputWithContext(context.Context) DashboardTimeseriesChartChartItemQueryFilterAssetOutput
+}
+
+type DashboardTimeseriesChartChartItemQueryFilterAssetArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardTimeseriesChartChartItemQueryFilterAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTimeseriesChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (i DashboardTimeseriesChartChartItemQueryFilterAssetArgs) ToDashboardTimeseriesChartChartItemQueryFilterAssetOutput() DashboardTimeseriesChartChartItemQueryFilterAssetOutput {
+	return i.ToDashboardTimeseriesChartChartItemQueryFilterAssetOutputWithContext(context.Background())
+}
+
+func (i DashboardTimeseriesChartChartItemQueryFilterAssetArgs) ToDashboardTimeseriesChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardTimeseriesChartChartItemQueryFilterAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTimeseriesChartChartItemQueryFilterAssetOutput)
+}
+
+type DashboardTimeseriesChartChartItemQueryFilterAssetOutput struct{ *pulumi.OutputState }
+
+func (DashboardTimeseriesChartChartItemQueryFilterAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTimeseriesChartChartItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (o DashboardTimeseriesChartChartItemQueryFilterAssetOutput) ToDashboardTimeseriesChartChartItemQueryFilterAssetOutput() DashboardTimeseriesChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+func (o DashboardTimeseriesChartChartItemQueryFilterAssetOutput) ToDashboardTimeseriesChartChartItemQueryFilterAssetOutputWithContext(ctx context.Context) DashboardTimeseriesChartChartItemQueryFilterAssetOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardTimeseriesChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardTimeseriesChartChartItemQueryFilterAssetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartChartItemQueryFilterAsset) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardTimeseriesChartChartItemQueryFilterAttribute struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// DashboardTimeseriesChartChartItemQueryFilterAttributeInput is an input type that accepts DashboardTimeseriesChartChartItemQueryFilterAttributeArgs and DashboardTimeseriesChartChartItemQueryFilterAttributeOutput values.
+// You can construct a concrete instance of `DashboardTimeseriesChartChartItemQueryFilterAttributeInput` via:
+//
+//	DashboardTimeseriesChartChartItemQueryFilterAttributeArgs{...}
+type DashboardTimeseriesChartChartItemQueryFilterAttributeInput interface {
+	pulumi.Input
+
+	ToDashboardTimeseriesChartChartItemQueryFilterAttributeOutput() DashboardTimeseriesChartChartItemQueryFilterAttributeOutput
+	ToDashboardTimeseriesChartChartItemQueryFilterAttributeOutputWithContext(context.Context) DashboardTimeseriesChartChartItemQueryFilterAttributeOutput
+}
+
+type DashboardTimeseriesChartChartItemQueryFilterAttributeArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DashboardTimeseriesChartChartItemQueryFilterAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTimeseriesChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (i DashboardTimeseriesChartChartItemQueryFilterAttributeArgs) ToDashboardTimeseriesChartChartItemQueryFilterAttributeOutput() DashboardTimeseriesChartChartItemQueryFilterAttributeOutput {
+	return i.ToDashboardTimeseriesChartChartItemQueryFilterAttributeOutputWithContext(context.Background())
+}
+
+func (i DashboardTimeseriesChartChartItemQueryFilterAttributeArgs) ToDashboardTimeseriesChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardTimeseriesChartChartItemQueryFilterAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTimeseriesChartChartItemQueryFilterAttributeOutput)
+}
+
+type DashboardTimeseriesChartChartItemQueryFilterAttributeOutput struct{ *pulumi.OutputState }
+
+func (DashboardTimeseriesChartChartItemQueryFilterAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTimeseriesChartChartItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (o DashboardTimeseriesChartChartItemQueryFilterAttributeOutput) ToDashboardTimeseriesChartChartItemQueryFilterAttributeOutput() DashboardTimeseriesChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+func (o DashboardTimeseriesChartChartItemQueryFilterAttributeOutput) ToDashboardTimeseriesChartChartItemQueryFilterAttributeOutputWithContext(ctx context.Context) DashboardTimeseriesChartChartItemQueryFilterAttributeOutput {
+	return o
+}
+
+// ID of the resource
+func (o DashboardTimeseriesChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o DashboardTimeseriesChartChartItemQueryFilterAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartChartItemQueryFilterAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DashboardTimeseriesChartThreshold struct {
+	Color       string  `pulumi:"color"`
+	DisplayText string  `pulumi:"displayText"`
+	Value       float64 `pulumi:"value"`
+}
+
+// DashboardTimeseriesChartThresholdInput is an input type that accepts DashboardTimeseriesChartThresholdArgs and DashboardTimeseriesChartThresholdOutput values.
+// You can construct a concrete instance of `DashboardTimeseriesChartThresholdInput` via:
+//
+//	DashboardTimeseriesChartThresholdArgs{...}
+type DashboardTimeseriesChartThresholdInput interface {
+	pulumi.Input
+
+	ToDashboardTimeseriesChartThresholdOutput() DashboardTimeseriesChartThresholdOutput
+	ToDashboardTimeseriesChartThresholdOutputWithContext(context.Context) DashboardTimeseriesChartThresholdOutput
+}
+
+type DashboardTimeseriesChartThresholdArgs struct {
+	Color       pulumi.StringInput  `pulumi:"color"`
+	DisplayText pulumi.StringInput  `pulumi:"displayText"`
+	Value       pulumi.Float64Input `pulumi:"value"`
+}
+
+func (DashboardTimeseriesChartThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTimeseriesChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardTimeseriesChartThresholdArgs) ToDashboardTimeseriesChartThresholdOutput() DashboardTimeseriesChartThresholdOutput {
+	return i.ToDashboardTimeseriesChartThresholdOutputWithContext(context.Background())
+}
+
+func (i DashboardTimeseriesChartThresholdArgs) ToDashboardTimeseriesChartThresholdOutputWithContext(ctx context.Context) DashboardTimeseriesChartThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTimeseriesChartThresholdOutput)
+}
+
+// DashboardTimeseriesChartThresholdArrayInput is an input type that accepts DashboardTimeseriesChartThresholdArray and DashboardTimeseriesChartThresholdArrayOutput values.
+// You can construct a concrete instance of `DashboardTimeseriesChartThresholdArrayInput` via:
+//
+//	DashboardTimeseriesChartThresholdArray{ DashboardTimeseriesChartThresholdArgs{...} }
+type DashboardTimeseriesChartThresholdArrayInput interface {
+	pulumi.Input
+
+	ToDashboardTimeseriesChartThresholdArrayOutput() DashboardTimeseriesChartThresholdArrayOutput
+	ToDashboardTimeseriesChartThresholdArrayOutputWithContext(context.Context) DashboardTimeseriesChartThresholdArrayOutput
+}
+
+type DashboardTimeseriesChartThresholdArray []DashboardTimeseriesChartThresholdInput
+
+func (DashboardTimeseriesChartThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardTimeseriesChartThreshold)(nil)).Elem()
+}
+
+func (i DashboardTimeseriesChartThresholdArray) ToDashboardTimeseriesChartThresholdArrayOutput() DashboardTimeseriesChartThresholdArrayOutput {
+	return i.ToDashboardTimeseriesChartThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardTimeseriesChartThresholdArray) ToDashboardTimeseriesChartThresholdArrayOutputWithContext(ctx context.Context) DashboardTimeseriesChartThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTimeseriesChartThresholdArrayOutput)
+}
+
+type DashboardTimeseriesChartThresholdOutput struct{ *pulumi.OutputState }
+
+func (DashboardTimeseriesChartThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTimeseriesChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardTimeseriesChartThresholdOutput) ToDashboardTimeseriesChartThresholdOutput() DashboardTimeseriesChartThresholdOutput {
+	return o
+}
+
+func (o DashboardTimeseriesChartThresholdOutput) ToDashboardTimeseriesChartThresholdOutputWithContext(ctx context.Context) DashboardTimeseriesChartThresholdOutput {
+	return o
+}
+
+func (o DashboardTimeseriesChartThresholdOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartThreshold) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o DashboardTimeseriesChartThresholdOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartThreshold) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardTimeseriesChartThresholdOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v DashboardTimeseriesChartThreshold) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type DashboardTimeseriesChartThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardTimeseriesChartThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardTimeseriesChartThreshold)(nil)).Elem()
+}
+
+func (o DashboardTimeseriesChartThresholdArrayOutput) ToDashboardTimeseriesChartThresholdArrayOutput() DashboardTimeseriesChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardTimeseriesChartThresholdArrayOutput) ToDashboardTimeseriesChartThresholdArrayOutputWithContext(ctx context.Context) DashboardTimeseriesChartThresholdArrayOutput {
+	return o
+}
+
+func (o DashboardTimeseriesChartThresholdArrayOutput) Index(i pulumi.IntInput) DashboardTimeseriesChartThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardTimeseriesChartThreshold {
+		return vs[0].([]DashboardTimeseriesChartThreshold)[vs[1].(int)]
+	}).(DashboardTimeseriesChartThresholdOutput)
+}
+
+type DashboardTimeseriesChartValueMapping struct {
+	DisplayText string `pulumi:"displayText"`
+	MatchValue  string `pulumi:"matchValue"`
+	Order       int    `pulumi:"order"`
+	Type        string `pulumi:"type"`
+}
+
+// DashboardTimeseriesChartValueMappingInput is an input type that accepts DashboardTimeseriesChartValueMappingArgs and DashboardTimeseriesChartValueMappingOutput values.
+// You can construct a concrete instance of `DashboardTimeseriesChartValueMappingInput` via:
+//
+//	DashboardTimeseriesChartValueMappingArgs{...}
+type DashboardTimeseriesChartValueMappingInput interface {
+	pulumi.Input
+
+	ToDashboardTimeseriesChartValueMappingOutput() DashboardTimeseriesChartValueMappingOutput
+	ToDashboardTimeseriesChartValueMappingOutputWithContext(context.Context) DashboardTimeseriesChartValueMappingOutput
+}
+
+type DashboardTimeseriesChartValueMappingArgs struct {
+	DisplayText pulumi.StringInput `pulumi:"displayText"`
+	MatchValue  pulumi.StringInput `pulumi:"matchValue"`
+	Order       pulumi.IntInput    `pulumi:"order"`
+	Type        pulumi.StringInput `pulumi:"type"`
+}
+
+func (DashboardTimeseriesChartValueMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTimeseriesChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardTimeseriesChartValueMappingArgs) ToDashboardTimeseriesChartValueMappingOutput() DashboardTimeseriesChartValueMappingOutput {
+	return i.ToDashboardTimeseriesChartValueMappingOutputWithContext(context.Background())
+}
+
+func (i DashboardTimeseriesChartValueMappingArgs) ToDashboardTimeseriesChartValueMappingOutputWithContext(ctx context.Context) DashboardTimeseriesChartValueMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTimeseriesChartValueMappingOutput)
+}
+
+// DashboardTimeseriesChartValueMappingArrayInput is an input type that accepts DashboardTimeseriesChartValueMappingArray and DashboardTimeseriesChartValueMappingArrayOutput values.
+// You can construct a concrete instance of `DashboardTimeseriesChartValueMappingArrayInput` via:
+//
+//	DashboardTimeseriesChartValueMappingArray{ DashboardTimeseriesChartValueMappingArgs{...} }
+type DashboardTimeseriesChartValueMappingArrayInput interface {
+	pulumi.Input
+
+	ToDashboardTimeseriesChartValueMappingArrayOutput() DashboardTimeseriesChartValueMappingArrayOutput
+	ToDashboardTimeseriesChartValueMappingArrayOutputWithContext(context.Context) DashboardTimeseriesChartValueMappingArrayOutput
+}
+
+type DashboardTimeseriesChartValueMappingArray []DashboardTimeseriesChartValueMappingInput
+
+func (DashboardTimeseriesChartValueMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardTimeseriesChartValueMapping)(nil)).Elem()
+}
+
+func (i DashboardTimeseriesChartValueMappingArray) ToDashboardTimeseriesChartValueMappingArrayOutput() DashboardTimeseriesChartValueMappingArrayOutput {
+	return i.ToDashboardTimeseriesChartValueMappingArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardTimeseriesChartValueMappingArray) ToDashboardTimeseriesChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardTimeseriesChartValueMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTimeseriesChartValueMappingArrayOutput)
+}
+
+type DashboardTimeseriesChartValueMappingOutput struct{ *pulumi.OutputState }
+
+func (DashboardTimeseriesChartValueMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTimeseriesChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardTimeseriesChartValueMappingOutput) ToDashboardTimeseriesChartValueMappingOutput() DashboardTimeseriesChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardTimeseriesChartValueMappingOutput) ToDashboardTimeseriesChartValueMappingOutputWithContext(ctx context.Context) DashboardTimeseriesChartValueMappingOutput {
+	return o
+}
+
+func (o DashboardTimeseriesChartValueMappingOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartValueMapping) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+func (o DashboardTimeseriesChartValueMappingOutput) MatchValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartValueMapping) string { return v.MatchValue }).(pulumi.StringOutput)
+}
+
+func (o DashboardTimeseriesChartValueMappingOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartValueMapping) int { return v.Order }).(pulumi.IntOutput)
+}
+
+func (o DashboardTimeseriesChartValueMappingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTimeseriesChartValueMapping) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DashboardTimeseriesChartValueMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardTimeseriesChartValueMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardTimeseriesChartValueMapping)(nil)).Elem()
+}
+
+func (o DashboardTimeseriesChartValueMappingArrayOutput) ToDashboardTimeseriesChartValueMappingArrayOutput() DashboardTimeseriesChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardTimeseriesChartValueMappingArrayOutput) ToDashboardTimeseriesChartValueMappingArrayOutputWithContext(ctx context.Context) DashboardTimeseriesChartValueMappingArrayOutput {
+	return o
+}
+
+func (o DashboardTimeseriesChartValueMappingArrayOutput) Index(i pulumi.IntInput) DashboardTimeseriesChartValueMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardTimeseriesChartValueMapping {
+		return vs[0].([]DashboardTimeseriesChartValueMapping)[vs[1].(int)]
+	}).(DashboardTimeseriesChartValueMappingOutput)
 }
 
 type FunctionFunctionItem struct {
+	// how the expression is shown (i.e 'A * 2')
+	Expression string `pulumi:"expression"`
+	// actual mongo query containing the expression
 	ExpressionPlain string `pulumi:"expressionPlain"`
-	// optional id
-	Id         *string `pulumi:"id"`
-	QueryPlain string  `pulumi:"queryPlain"`
-	RefId      string  `pulumi:"refId"`
-	Type       string  `pulumi:"type"`
+	// ID of the function item
+	Id *string `pulumi:"id"`
+	// Asset/Attribute filter
+	QueryFilterAsset FunctionFunctionItemQueryFilterAsset `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute FunctionFunctionItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
+	// actual mongo query
+	QueryPlain string `pulumi:"queryPlain"`
+	// identifier of the variable (i.e 'A')
+	RefId string `pulumi:"refId"`
+	// either QUERY or EXPRESSION
+	Type string `pulumi:"type"`
 }
 
 // FunctionFunctionItemInput is an input type that accepts FunctionFunctionItemArgs and FunctionFunctionItemOutput values.
@@ -1804,12 +8503,22 @@ type FunctionFunctionItemInput interface {
 }
 
 type FunctionFunctionItemArgs struct {
+	// how the expression is shown (i.e 'A * 2')
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// actual mongo query containing the expression
 	ExpressionPlain pulumi.StringInput `pulumi:"expressionPlain"`
-	// optional id
-	Id         pulumi.StringPtrInput `pulumi:"id"`
-	QueryPlain pulumi.StringInput    `pulumi:"queryPlain"`
-	RefId      pulumi.StringInput    `pulumi:"refId"`
-	Type       pulumi.StringInput    `pulumi:"type"`
+	// ID of the function item
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Asset/Attribute filter
+	QueryFilterAsset FunctionFunctionItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
+	// Asset/Attribute filter
+	QueryFilterAttribute FunctionFunctionItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
+	// actual mongo query
+	QueryPlain pulumi.StringInput `pulumi:"queryPlain"`
+	// identifier of the variable (i.e 'A')
+	RefId pulumi.StringInput `pulumi:"refId"`
+	// either QUERY or EXPRESSION
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (FunctionFunctionItemArgs) ElementType() reflect.Type {
@@ -1863,23 +8572,42 @@ func (o FunctionFunctionItemOutput) ToFunctionFunctionItemOutputWithContext(ctx 
 	return o
 }
 
+// how the expression is shown (i.e 'A * 2')
+func (o FunctionFunctionItemOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionFunctionItem) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// actual mongo query containing the expression
 func (o FunctionFunctionItemOutput) ExpressionPlain() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionFunctionItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
 }
 
-// optional id
+// ID of the function item
 func (o FunctionFunctionItemOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionFunctionItem) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Asset/Attribute filter
+func (o FunctionFunctionItemOutput) QueryFilterAsset() FunctionFunctionItemQueryFilterAssetOutput {
+	return o.ApplyT(func(v FunctionFunctionItem) FunctionFunctionItemQueryFilterAsset { return v.QueryFilterAsset }).(FunctionFunctionItemQueryFilterAssetOutput)
+}
+
+// Asset/Attribute filter
+func (o FunctionFunctionItemOutput) QueryFilterAttribute() FunctionFunctionItemQueryFilterAttributeOutput {
+	return o.ApplyT(func(v FunctionFunctionItem) FunctionFunctionItemQueryFilterAttribute { return v.QueryFilterAttribute }).(FunctionFunctionItemQueryFilterAttributeOutput)
+}
+
+// actual mongo query
 func (o FunctionFunctionItemOutput) QueryPlain() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionFunctionItem) string { return v.QueryPlain }).(pulumi.StringOutput)
 }
 
+// identifier of the variable (i.e 'A')
 func (o FunctionFunctionItemOutput) RefId() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionFunctionItem) string { return v.RefId }).(pulumi.StringOutput)
 }
 
+// either QUERY or EXPRESSION
 func (o FunctionFunctionItemOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionFunctionItem) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1902,6 +8630,440 @@ func (o FunctionFunctionItemArrayOutput) Index(i pulumi.IntInput) FunctionFuncti
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FunctionFunctionItem {
 		return vs[0].([]FunctionFunctionItem)[vs[1].(int)]
 	}).(FunctionFunctionItemOutput)
+}
+
+type FunctionFunctionItemQueryFilterAsset struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// FunctionFunctionItemQueryFilterAssetInput is an input type that accepts FunctionFunctionItemQueryFilterAssetArgs and FunctionFunctionItemQueryFilterAssetOutput values.
+// You can construct a concrete instance of `FunctionFunctionItemQueryFilterAssetInput` via:
+//
+//	FunctionFunctionItemQueryFilterAssetArgs{...}
+type FunctionFunctionItemQueryFilterAssetInput interface {
+	pulumi.Input
+
+	ToFunctionFunctionItemQueryFilterAssetOutput() FunctionFunctionItemQueryFilterAssetOutput
+	ToFunctionFunctionItemQueryFilterAssetOutputWithContext(context.Context) FunctionFunctionItemQueryFilterAssetOutput
+}
+
+type FunctionFunctionItemQueryFilterAssetArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (FunctionFunctionItemQueryFilterAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionFunctionItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (i FunctionFunctionItemQueryFilterAssetArgs) ToFunctionFunctionItemQueryFilterAssetOutput() FunctionFunctionItemQueryFilterAssetOutput {
+	return i.ToFunctionFunctionItemQueryFilterAssetOutputWithContext(context.Background())
+}
+
+func (i FunctionFunctionItemQueryFilterAssetArgs) ToFunctionFunctionItemQueryFilterAssetOutputWithContext(ctx context.Context) FunctionFunctionItemQueryFilterAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionFunctionItemQueryFilterAssetOutput)
+}
+
+type FunctionFunctionItemQueryFilterAssetOutput struct{ *pulumi.OutputState }
+
+func (FunctionFunctionItemQueryFilterAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionFunctionItemQueryFilterAsset)(nil)).Elem()
+}
+
+func (o FunctionFunctionItemQueryFilterAssetOutput) ToFunctionFunctionItemQueryFilterAssetOutput() FunctionFunctionItemQueryFilterAssetOutput {
+	return o
+}
+
+func (o FunctionFunctionItemQueryFilterAssetOutput) ToFunctionFunctionItemQueryFilterAssetOutputWithContext(ctx context.Context) FunctionFunctionItemQueryFilterAssetOutput {
+	return o
+}
+
+// ID of the resource
+func (o FunctionFunctionItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionFunctionItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o FunctionFunctionItemQueryFilterAssetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionFunctionItemQueryFilterAsset) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type FunctionFunctionItemQueryFilterAttribute struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// FunctionFunctionItemQueryFilterAttributeInput is an input type that accepts FunctionFunctionItemQueryFilterAttributeArgs and FunctionFunctionItemQueryFilterAttributeOutput values.
+// You can construct a concrete instance of `FunctionFunctionItemQueryFilterAttributeInput` via:
+//
+//	FunctionFunctionItemQueryFilterAttributeArgs{...}
+type FunctionFunctionItemQueryFilterAttributeInput interface {
+	pulumi.Input
+
+	ToFunctionFunctionItemQueryFilterAttributeOutput() FunctionFunctionItemQueryFilterAttributeOutput
+	ToFunctionFunctionItemQueryFilterAttributeOutputWithContext(context.Context) FunctionFunctionItemQueryFilterAttributeOutput
+}
+
+type FunctionFunctionItemQueryFilterAttributeArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (FunctionFunctionItemQueryFilterAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionFunctionItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (i FunctionFunctionItemQueryFilterAttributeArgs) ToFunctionFunctionItemQueryFilterAttributeOutput() FunctionFunctionItemQueryFilterAttributeOutput {
+	return i.ToFunctionFunctionItemQueryFilterAttributeOutputWithContext(context.Background())
+}
+
+func (i FunctionFunctionItemQueryFilterAttributeArgs) ToFunctionFunctionItemQueryFilterAttributeOutputWithContext(ctx context.Context) FunctionFunctionItemQueryFilterAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionFunctionItemQueryFilterAttributeOutput)
+}
+
+type FunctionFunctionItemQueryFilterAttributeOutput struct{ *pulumi.OutputState }
+
+func (FunctionFunctionItemQueryFilterAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionFunctionItemQueryFilterAttribute)(nil)).Elem()
+}
+
+func (o FunctionFunctionItemQueryFilterAttributeOutput) ToFunctionFunctionItemQueryFilterAttributeOutput() FunctionFunctionItemQueryFilterAttributeOutput {
+	return o
+}
+
+func (o FunctionFunctionItemQueryFilterAttributeOutput) ToFunctionFunctionItemQueryFilterAttributeOutputWithContext(ctx context.Context) FunctionFunctionItemQueryFilterAttributeOutput {
+	return o
+}
+
+// ID of the resource
+func (o FunctionFunctionItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionFunctionItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o FunctionFunctionItemQueryFilterAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionFunctionItemQueryFilterAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type FunctionTargetAsset struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// FunctionTargetAssetInput is an input type that accepts FunctionTargetAssetArgs and FunctionTargetAssetOutput values.
+// You can construct a concrete instance of `FunctionTargetAssetInput` via:
+//
+//	FunctionTargetAssetArgs{...}
+type FunctionTargetAssetInput interface {
+	pulumi.Input
+
+	ToFunctionTargetAssetOutput() FunctionTargetAssetOutput
+	ToFunctionTargetAssetOutputWithContext(context.Context) FunctionTargetAssetOutput
+}
+
+type FunctionTargetAssetArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (FunctionTargetAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionTargetAsset)(nil)).Elem()
+}
+
+func (i FunctionTargetAssetArgs) ToFunctionTargetAssetOutput() FunctionTargetAssetOutput {
+	return i.ToFunctionTargetAssetOutputWithContext(context.Background())
+}
+
+func (i FunctionTargetAssetArgs) ToFunctionTargetAssetOutputWithContext(ctx context.Context) FunctionTargetAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionTargetAssetOutput)
+}
+
+func (i FunctionTargetAssetArgs) ToFunctionTargetAssetPtrOutput() FunctionTargetAssetPtrOutput {
+	return i.ToFunctionTargetAssetPtrOutputWithContext(context.Background())
+}
+
+func (i FunctionTargetAssetArgs) ToFunctionTargetAssetPtrOutputWithContext(ctx context.Context) FunctionTargetAssetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionTargetAssetOutput).ToFunctionTargetAssetPtrOutputWithContext(ctx)
+}
+
+// FunctionTargetAssetPtrInput is an input type that accepts FunctionTargetAssetArgs, FunctionTargetAssetPtr and FunctionTargetAssetPtrOutput values.
+// You can construct a concrete instance of `FunctionTargetAssetPtrInput` via:
+//
+//	        FunctionTargetAssetArgs{...}
+//
+//	or:
+//
+//	        nil
+type FunctionTargetAssetPtrInput interface {
+	pulumi.Input
+
+	ToFunctionTargetAssetPtrOutput() FunctionTargetAssetPtrOutput
+	ToFunctionTargetAssetPtrOutputWithContext(context.Context) FunctionTargetAssetPtrOutput
+}
+
+type functionTargetAssetPtrType FunctionTargetAssetArgs
+
+func FunctionTargetAssetPtr(v *FunctionTargetAssetArgs) FunctionTargetAssetPtrInput {
+	return (*functionTargetAssetPtrType)(v)
+}
+
+func (*functionTargetAssetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionTargetAsset)(nil)).Elem()
+}
+
+func (i *functionTargetAssetPtrType) ToFunctionTargetAssetPtrOutput() FunctionTargetAssetPtrOutput {
+	return i.ToFunctionTargetAssetPtrOutputWithContext(context.Background())
+}
+
+func (i *functionTargetAssetPtrType) ToFunctionTargetAssetPtrOutputWithContext(ctx context.Context) FunctionTargetAssetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionTargetAssetPtrOutput)
+}
+
+type FunctionTargetAssetOutput struct{ *pulumi.OutputState }
+
+func (FunctionTargetAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionTargetAsset)(nil)).Elem()
+}
+
+func (o FunctionTargetAssetOutput) ToFunctionTargetAssetOutput() FunctionTargetAssetOutput {
+	return o
+}
+
+func (o FunctionTargetAssetOutput) ToFunctionTargetAssetOutputWithContext(ctx context.Context) FunctionTargetAssetOutput {
+	return o
+}
+
+func (o FunctionTargetAssetOutput) ToFunctionTargetAssetPtrOutput() FunctionTargetAssetPtrOutput {
+	return o.ToFunctionTargetAssetPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionTargetAssetOutput) ToFunctionTargetAssetPtrOutputWithContext(ctx context.Context) FunctionTargetAssetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionTargetAsset) *FunctionTargetAsset {
+		return &v
+	}).(FunctionTargetAssetPtrOutput)
+}
+
+// ID of the resource
+func (o FunctionTargetAssetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionTargetAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o FunctionTargetAssetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionTargetAsset) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type FunctionTargetAssetPtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionTargetAssetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionTargetAsset)(nil)).Elem()
+}
+
+func (o FunctionTargetAssetPtrOutput) ToFunctionTargetAssetPtrOutput() FunctionTargetAssetPtrOutput {
+	return o
+}
+
+func (o FunctionTargetAssetPtrOutput) ToFunctionTargetAssetPtrOutputWithContext(ctx context.Context) FunctionTargetAssetPtrOutput {
+	return o
+}
+
+func (o FunctionTargetAssetPtrOutput) Elem() FunctionTargetAssetOutput {
+	return o.ApplyT(func(v *FunctionTargetAsset) FunctionTargetAsset {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionTargetAsset
+		return ret
+	}).(FunctionTargetAssetOutput)
+}
+
+// ID of the resource
+func (o FunctionTargetAssetPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionTargetAsset) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o FunctionTargetAssetPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionTargetAsset) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type FunctionTargetAttribute struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+}
+
+// FunctionTargetAttributeInput is an input type that accepts FunctionTargetAttributeArgs and FunctionTargetAttributeOutput values.
+// You can construct a concrete instance of `FunctionTargetAttributeInput` via:
+//
+//	FunctionTargetAttributeArgs{...}
+type FunctionTargetAttributeInput interface {
+	pulumi.Input
+
+	ToFunctionTargetAttributeOutput() FunctionTargetAttributeOutput
+	ToFunctionTargetAttributeOutputWithContext(context.Context) FunctionTargetAttributeOutput
+}
+
+type FunctionTargetAttributeArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (FunctionTargetAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionTargetAttribute)(nil)).Elem()
+}
+
+func (i FunctionTargetAttributeArgs) ToFunctionTargetAttributeOutput() FunctionTargetAttributeOutput {
+	return i.ToFunctionTargetAttributeOutputWithContext(context.Background())
+}
+
+func (i FunctionTargetAttributeArgs) ToFunctionTargetAttributeOutputWithContext(ctx context.Context) FunctionTargetAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionTargetAttributeOutput)
+}
+
+func (i FunctionTargetAttributeArgs) ToFunctionTargetAttributePtrOutput() FunctionTargetAttributePtrOutput {
+	return i.ToFunctionTargetAttributePtrOutputWithContext(context.Background())
+}
+
+func (i FunctionTargetAttributeArgs) ToFunctionTargetAttributePtrOutputWithContext(ctx context.Context) FunctionTargetAttributePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionTargetAttributeOutput).ToFunctionTargetAttributePtrOutputWithContext(ctx)
+}
+
+// FunctionTargetAttributePtrInput is an input type that accepts FunctionTargetAttributeArgs, FunctionTargetAttributePtr and FunctionTargetAttributePtrOutput values.
+// You can construct a concrete instance of `FunctionTargetAttributePtrInput` via:
+//
+//	        FunctionTargetAttributeArgs{...}
+//
+//	or:
+//
+//	        nil
+type FunctionTargetAttributePtrInput interface {
+	pulumi.Input
+
+	ToFunctionTargetAttributePtrOutput() FunctionTargetAttributePtrOutput
+	ToFunctionTargetAttributePtrOutputWithContext(context.Context) FunctionTargetAttributePtrOutput
+}
+
+type functionTargetAttributePtrType FunctionTargetAttributeArgs
+
+func FunctionTargetAttributePtr(v *FunctionTargetAttributeArgs) FunctionTargetAttributePtrInput {
+	return (*functionTargetAttributePtrType)(v)
+}
+
+func (*functionTargetAttributePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionTargetAttribute)(nil)).Elem()
+}
+
+func (i *functionTargetAttributePtrType) ToFunctionTargetAttributePtrOutput() FunctionTargetAttributePtrOutput {
+	return i.ToFunctionTargetAttributePtrOutputWithContext(context.Background())
+}
+
+func (i *functionTargetAttributePtrType) ToFunctionTargetAttributePtrOutputWithContext(ctx context.Context) FunctionTargetAttributePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionTargetAttributePtrOutput)
+}
+
+type FunctionTargetAttributeOutput struct{ *pulumi.OutputState }
+
+func (FunctionTargetAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionTargetAttribute)(nil)).Elem()
+}
+
+func (o FunctionTargetAttributeOutput) ToFunctionTargetAttributeOutput() FunctionTargetAttributeOutput {
+	return o
+}
+
+func (o FunctionTargetAttributeOutput) ToFunctionTargetAttributeOutputWithContext(ctx context.Context) FunctionTargetAttributeOutput {
+	return o
+}
+
+func (o FunctionTargetAttributeOutput) ToFunctionTargetAttributePtrOutput() FunctionTargetAttributePtrOutput {
+	return o.ToFunctionTargetAttributePtrOutputWithContext(context.Background())
+}
+
+func (o FunctionTargetAttributeOutput) ToFunctionTargetAttributePtrOutputWithContext(ctx context.Context) FunctionTargetAttributePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionTargetAttribute) *FunctionTargetAttribute {
+		return &v
+	}).(FunctionTargetAttributePtrOutput)
+}
+
+// ID of the resource
+func (o FunctionTargetAttributeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionTargetAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o FunctionTargetAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionTargetAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type FunctionTargetAttributePtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionTargetAttributePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionTargetAttribute)(nil)).Elem()
+}
+
+func (o FunctionTargetAttributePtrOutput) ToFunctionTargetAttributePtrOutput() FunctionTargetAttributePtrOutput {
+	return o
+}
+
+func (o FunctionTargetAttributePtrOutput) ToFunctionTargetAttributePtrOutputWithContext(ctx context.Context) FunctionTargetAttributePtrOutput {
+	return o
+}
+
+func (o FunctionTargetAttributePtrOutput) Elem() FunctionTargetAttributeOutput {
+	return o.ApplyT(func(v *FunctionTargetAttribute) FunctionTargetAttribute {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionTargetAttribute
+		return ret
+	}).(FunctionTargetAttributeOutput)
+}
+
+// ID of the resource
+func (o FunctionTargetAttributePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionTargetAttribute) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o FunctionTargetAttributePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionTargetAttribute) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetAssetKindsKind struct {
@@ -2007,6 +9169,8 @@ func (o GetAssetKindsKindArrayOutput) Index(i pulumi.IntInput) GetAssetKindsKind
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertAlertItemInput)(nil)).Elem(), AlertAlertItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertAlertItemArrayInput)(nil)).Elem(), AlertAlertItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertAlertItemQueryFilterAssetInput)(nil)).Elem(), AlertAlertItemQueryFilterAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertAlertItemQueryFilterAttributeInput)(nil)).Elem(), AlertAlertItemQueryFilterAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertThresholdInput)(nil)).Elem(), AlertThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertThresholdArrayInput)(nil)).Elem(), AlertThresholdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetKindInput)(nil)).Elem(), AssetKindArgs{})
@@ -2023,22 +9187,132 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineOutputTypeArrayInput)(nil)).Elem(), ComponentRoutineOutputTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineOutputValueInput)(nil)).Elem(), ComponentRoutineOutputValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineOutputValueArrayInput)(nil)).Elem(), ComponentRoutineOutputValueArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DashboardChartChartItemInput)(nil)).Elem(), DashboardChartChartItemArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DashboardChartChartItemArrayInput)(nil)).Elem(), DashboardChartChartItemArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DashboardChartChartItemQueryFilterAssetInput)(nil)).Elem(), DashboardChartChartItemQueryFilterAssetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DashboardChartChartItemQueryFilterAssetPtrInput)(nil)).Elem(), DashboardChartChartItemQueryFilterAssetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DashboardChartChartItemQueryFilterAttributeInput)(nil)).Elem(), DashboardChartChartItemQueryFilterAttributeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DashboardChartChartItemQueryFilterAttributePtrInput)(nil)).Elem(), DashboardChartChartItemQueryFilterAttributeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DashboardChartThresholdInput)(nil)).Elem(), DashboardChartThresholdArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DashboardChartThresholdArrayInput)(nil)).Elem(), DashboardChartThresholdArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DashboardChartValueMappingInput)(nil)).Elem(), DashboardChartValueMappingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DashboardChartValueMappingArrayInput)(nil)).Elem(), DashboardChartValueMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardActionlistChartChartItemInput)(nil)).Elem(), DashboardActionlistChartChartItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardActionlistChartChartItemArrayInput)(nil)).Elem(), DashboardActionlistChartChartItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardActionlistChartChartItemQueryFilterAssetInput)(nil)).Elem(), DashboardActionlistChartChartItemQueryFilterAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardActionlistChartChartItemQueryFilterAttributeInput)(nil)).Elem(), DashboardActionlistChartChartItemQueryFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardActionlistChartThresholdInput)(nil)).Elem(), DashboardActionlistChartThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardActionlistChartThresholdArrayInput)(nil)).Elem(), DashboardActionlistChartThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardActionlistChartValueMappingInput)(nil)).Elem(), DashboardActionlistChartValueMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardActionlistChartValueMappingArrayInput)(nil)).Elem(), DashboardActionlistChartValueMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAlerteventsChartChartItemInput)(nil)).Elem(), DashboardAlerteventsChartChartItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAlerteventsChartChartItemArrayInput)(nil)).Elem(), DashboardAlerteventsChartChartItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAlerteventsChartChartItemQueryFilterAssetInput)(nil)).Elem(), DashboardAlerteventsChartChartItemQueryFilterAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAlerteventsChartChartItemQueryFilterAttributeInput)(nil)).Elem(), DashboardAlerteventsChartChartItemQueryFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAlerteventsChartThresholdInput)(nil)).Elem(), DashboardAlerteventsChartThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAlerteventsChartThresholdArrayInput)(nil)).Elem(), DashboardAlerteventsChartThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAlerteventsChartValueMappingInput)(nil)).Elem(), DashboardAlerteventsChartValueMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAlerteventsChartValueMappingArrayInput)(nil)).Elem(), DashboardAlerteventsChartValueMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAlertlistChartChartItemInput)(nil)).Elem(), DashboardAlertlistChartChartItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAlertlistChartChartItemArrayInput)(nil)).Elem(), DashboardAlertlistChartChartItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAlertlistChartChartItemQueryFilterAssetInput)(nil)).Elem(), DashboardAlertlistChartChartItemQueryFilterAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAlertlistChartChartItemQueryFilterAttributeInput)(nil)).Elem(), DashboardAlertlistChartChartItemQueryFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAlertlistChartThresholdInput)(nil)).Elem(), DashboardAlertlistChartThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAlertlistChartThresholdArrayInput)(nil)).Elem(), DashboardAlertlistChartThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAlertlistChartValueMappingInput)(nil)).Elem(), DashboardAlertlistChartValueMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAlertlistChartValueMappingArrayInput)(nil)).Elem(), DashboardAlertlistChartValueMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAssetlistChartChartItemInput)(nil)).Elem(), DashboardAssetlistChartChartItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAssetlistChartChartItemArrayInput)(nil)).Elem(), DashboardAssetlistChartChartItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAssetlistChartChartItemQueryFilterAssetInput)(nil)).Elem(), DashboardAssetlistChartChartItemQueryFilterAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAssetlistChartChartItemQueryFilterAttributeInput)(nil)).Elem(), DashboardAssetlistChartChartItemQueryFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAssetlistChartThresholdInput)(nil)).Elem(), DashboardAssetlistChartThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAssetlistChartThresholdArrayInput)(nil)).Elem(), DashboardAssetlistChartThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAssetlistChartValueMappingInput)(nil)).Elem(), DashboardAssetlistChartValueMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardAssetlistChartValueMappingArrayInput)(nil)).Elem(), DashboardAssetlistChartValueMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardBarChartChartItemInput)(nil)).Elem(), DashboardBarChartChartItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardBarChartChartItemArrayInput)(nil)).Elem(), DashboardBarChartChartItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardBarChartChartItemQueryFilterAssetInput)(nil)).Elem(), DashboardBarChartChartItemQueryFilterAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardBarChartChartItemQueryFilterAttributeInput)(nil)).Elem(), DashboardBarChartChartItemQueryFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardBarChartThresholdInput)(nil)).Elem(), DashboardBarChartThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardBarChartThresholdArrayInput)(nil)).Elem(), DashboardBarChartThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardBarChartValueMappingInput)(nil)).Elem(), DashboardBarChartValueMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardBarChartValueMappingArrayInput)(nil)).Elem(), DashboardBarChartValueMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardBargaugeChartChartItemInput)(nil)).Elem(), DashboardBargaugeChartChartItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardBargaugeChartChartItemArrayInput)(nil)).Elem(), DashboardBargaugeChartChartItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardBargaugeChartChartItemQueryFilterAssetInput)(nil)).Elem(), DashboardBargaugeChartChartItemQueryFilterAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardBargaugeChartChartItemQueryFilterAttributeInput)(nil)).Elem(), DashboardBargaugeChartChartItemQueryFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardBargaugeChartThresholdInput)(nil)).Elem(), DashboardBargaugeChartThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardBargaugeChartThresholdArrayInput)(nil)).Elem(), DashboardBargaugeChartThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardBargaugeChartValueMappingInput)(nil)).Elem(), DashboardBargaugeChartValueMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardBargaugeChartValueMappingArrayInput)(nil)).Elem(), DashboardBargaugeChartValueMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardCommandlistChartChartItemInput)(nil)).Elem(), DashboardCommandlistChartChartItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardCommandlistChartChartItemArrayInput)(nil)).Elem(), DashboardCommandlistChartChartItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardCommandlistChartChartItemQueryFilterAssetInput)(nil)).Elem(), DashboardCommandlistChartChartItemQueryFilterAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardCommandlistChartChartItemQueryFilterAttributeInput)(nil)).Elem(), DashboardCommandlistChartChartItemQueryFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardCommandlistChartThresholdInput)(nil)).Elem(), DashboardCommandlistChartThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardCommandlistChartThresholdArrayInput)(nil)).Elem(), DashboardCommandlistChartThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardCommandlistChartValueMappingInput)(nil)).Elem(), DashboardCommandlistChartValueMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardCommandlistChartValueMappingArrayInput)(nil)).Elem(), DashboardCommandlistChartValueMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGaugeChartChartItemInput)(nil)).Elem(), DashboardGaugeChartChartItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGaugeChartChartItemArrayInput)(nil)).Elem(), DashboardGaugeChartChartItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGaugeChartChartItemQueryFilterAssetInput)(nil)).Elem(), DashboardGaugeChartChartItemQueryFilterAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGaugeChartChartItemQueryFilterAttributeInput)(nil)).Elem(), DashboardGaugeChartChartItemQueryFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGaugeChartThresholdInput)(nil)).Elem(), DashboardGaugeChartThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGaugeChartThresholdArrayInput)(nil)).Elem(), DashboardGaugeChartThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGaugeChartValueMappingInput)(nil)).Elem(), DashboardGaugeChartValueMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGaugeChartValueMappingArrayInput)(nil)).Elem(), DashboardGaugeChartValueMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardHistogramChartChartItemInput)(nil)).Elem(), DashboardHistogramChartChartItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardHistogramChartChartItemArrayInput)(nil)).Elem(), DashboardHistogramChartChartItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardHistogramChartChartItemQueryFilterAssetInput)(nil)).Elem(), DashboardHistogramChartChartItemQueryFilterAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardHistogramChartChartItemQueryFilterAttributeInput)(nil)).Elem(), DashboardHistogramChartChartItemQueryFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardHistogramChartThresholdInput)(nil)).Elem(), DashboardHistogramChartThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardHistogramChartThresholdArrayInput)(nil)).Elem(), DashboardHistogramChartThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardHistogramChartValueMappingInput)(nil)).Elem(), DashboardHistogramChartValueMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardHistogramChartValueMappingArrayInput)(nil)).Elem(), DashboardHistogramChartValueMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardImageChartChartItemInput)(nil)).Elem(), DashboardImageChartChartItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardImageChartChartItemArrayInput)(nil)).Elem(), DashboardImageChartChartItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardImageChartChartItemQueryFilterAssetInput)(nil)).Elem(), DashboardImageChartChartItemQueryFilterAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardImageChartChartItemQueryFilterAttributeInput)(nil)).Elem(), DashboardImageChartChartItemQueryFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardImageChartThresholdInput)(nil)).Elem(), DashboardImageChartThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardImageChartThresholdArrayInput)(nil)).Elem(), DashboardImageChartThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardImageChartValueMappingInput)(nil)).Elem(), DashboardImageChartValueMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardImageChartValueMappingArrayInput)(nil)).Elem(), DashboardImageChartValueMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardStatChartChartItemInput)(nil)).Elem(), DashboardStatChartChartItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardStatChartChartItemArrayInput)(nil)).Elem(), DashboardStatChartChartItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardStatChartChartItemQueryFilterAssetInput)(nil)).Elem(), DashboardStatChartChartItemQueryFilterAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardStatChartChartItemQueryFilterAttributeInput)(nil)).Elem(), DashboardStatChartChartItemQueryFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardStatChartThresholdInput)(nil)).Elem(), DashboardStatChartThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardStatChartThresholdArrayInput)(nil)).Elem(), DashboardStatChartThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardStatChartValueMappingInput)(nil)).Elem(), DashboardStatChartValueMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardStatChartValueMappingArrayInput)(nil)).Elem(), DashboardStatChartValueMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTableChartChartItemInput)(nil)).Elem(), DashboardTableChartChartItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTableChartChartItemArrayInput)(nil)).Elem(), DashboardTableChartChartItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTableChartChartItemQueryFilterAssetInput)(nil)).Elem(), DashboardTableChartChartItemQueryFilterAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTableChartChartItemQueryFilterAttributeInput)(nil)).Elem(), DashboardTableChartChartItemQueryFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTableChartThresholdInput)(nil)).Elem(), DashboardTableChartThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTableChartThresholdArrayInput)(nil)).Elem(), DashboardTableChartThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTableChartValueMappingInput)(nil)).Elem(), DashboardTableChartValueMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTableChartValueMappingArrayInput)(nil)).Elem(), DashboardTableChartValueMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTextChartChartItemInput)(nil)).Elem(), DashboardTextChartChartItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTextChartChartItemArrayInput)(nil)).Elem(), DashboardTextChartChartItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTextChartChartItemQueryFilterAssetInput)(nil)).Elem(), DashboardTextChartChartItemQueryFilterAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTextChartChartItemQueryFilterAttributeInput)(nil)).Elem(), DashboardTextChartChartItemQueryFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTextChartThresholdInput)(nil)).Elem(), DashboardTextChartThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTextChartThresholdArrayInput)(nil)).Elem(), DashboardTextChartThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTextChartValueMappingInput)(nil)).Elem(), DashboardTextChartValueMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTextChartValueMappingArrayInput)(nil)).Elem(), DashboardTextChartValueMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeseriesChartChartItemInput)(nil)).Elem(), DashboardTimeseriesChartChartItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeseriesChartChartItemArrayInput)(nil)).Elem(), DashboardTimeseriesChartChartItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeseriesChartChartItemQueryFilterAssetInput)(nil)).Elem(), DashboardTimeseriesChartChartItemQueryFilterAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeseriesChartChartItemQueryFilterAttributeInput)(nil)).Elem(), DashboardTimeseriesChartChartItemQueryFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeseriesChartThresholdInput)(nil)).Elem(), DashboardTimeseriesChartThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeseriesChartThresholdArrayInput)(nil)).Elem(), DashboardTimeseriesChartThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeseriesChartValueMappingInput)(nil)).Elem(), DashboardTimeseriesChartValueMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeseriesChartValueMappingArrayInput)(nil)).Elem(), DashboardTimeseriesChartValueMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionFunctionItemInput)(nil)).Elem(), FunctionFunctionItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionFunctionItemArrayInput)(nil)).Elem(), FunctionFunctionItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionFunctionItemQueryFilterAssetInput)(nil)).Elem(), FunctionFunctionItemQueryFilterAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionFunctionItemQueryFilterAttributeInput)(nil)).Elem(), FunctionFunctionItemQueryFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTargetAssetInput)(nil)).Elem(), FunctionTargetAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTargetAssetPtrInput)(nil)).Elem(), FunctionTargetAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTargetAttributeInput)(nil)).Elem(), FunctionTargetAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTargetAttributePtrInput)(nil)).Elem(), FunctionTargetAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAssetKindsKindInput)(nil)).Elem(), GetAssetKindsKindArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAssetKindsKindArrayInput)(nil)).Elem(), GetAssetKindsKindArray{})
 	pulumi.RegisterOutputType(AlertAlertItemOutput{})
 	pulumi.RegisterOutputType(AlertAlertItemArrayOutput{})
+	pulumi.RegisterOutputType(AlertAlertItemQueryFilterAssetOutput{})
+	pulumi.RegisterOutputType(AlertAlertItemQueryFilterAttributeOutput{})
 	pulumi.RegisterOutputType(AlertThresholdOutput{})
 	pulumi.RegisterOutputType(AlertThresholdArrayOutput{})
 	pulumi.RegisterOutputType(AssetKindOutput{})
@@ -2055,18 +9329,126 @@ func init() {
 	pulumi.RegisterOutputType(ComponentRoutineOutputTypeArrayOutput{})
 	pulumi.RegisterOutputType(ComponentRoutineOutputValueOutput{})
 	pulumi.RegisterOutputType(ComponentRoutineOutputValueArrayOutput{})
-	pulumi.RegisterOutputType(DashboardChartChartItemOutput{})
-	pulumi.RegisterOutputType(DashboardChartChartItemArrayOutput{})
-	pulumi.RegisterOutputType(DashboardChartChartItemQueryFilterAssetOutput{})
-	pulumi.RegisterOutputType(DashboardChartChartItemQueryFilterAssetPtrOutput{})
-	pulumi.RegisterOutputType(DashboardChartChartItemQueryFilterAttributeOutput{})
-	pulumi.RegisterOutputType(DashboardChartChartItemQueryFilterAttributePtrOutput{})
-	pulumi.RegisterOutputType(DashboardChartThresholdOutput{})
-	pulumi.RegisterOutputType(DashboardChartThresholdArrayOutput{})
-	pulumi.RegisterOutputType(DashboardChartValueMappingOutput{})
-	pulumi.RegisterOutputType(DashboardChartValueMappingArrayOutput{})
+	pulumi.RegisterOutputType(DashboardActionlistChartChartItemOutput{})
+	pulumi.RegisterOutputType(DashboardActionlistChartChartItemArrayOutput{})
+	pulumi.RegisterOutputType(DashboardActionlistChartChartItemQueryFilterAssetOutput{})
+	pulumi.RegisterOutputType(DashboardActionlistChartChartItemQueryFilterAttributeOutput{})
+	pulumi.RegisterOutputType(DashboardActionlistChartThresholdOutput{})
+	pulumi.RegisterOutputType(DashboardActionlistChartThresholdArrayOutput{})
+	pulumi.RegisterOutputType(DashboardActionlistChartValueMappingOutput{})
+	pulumi.RegisterOutputType(DashboardActionlistChartValueMappingArrayOutput{})
+	pulumi.RegisterOutputType(DashboardAlerteventsChartChartItemOutput{})
+	pulumi.RegisterOutputType(DashboardAlerteventsChartChartItemArrayOutput{})
+	pulumi.RegisterOutputType(DashboardAlerteventsChartChartItemQueryFilterAssetOutput{})
+	pulumi.RegisterOutputType(DashboardAlerteventsChartChartItemQueryFilterAttributeOutput{})
+	pulumi.RegisterOutputType(DashboardAlerteventsChartThresholdOutput{})
+	pulumi.RegisterOutputType(DashboardAlerteventsChartThresholdArrayOutput{})
+	pulumi.RegisterOutputType(DashboardAlerteventsChartValueMappingOutput{})
+	pulumi.RegisterOutputType(DashboardAlerteventsChartValueMappingArrayOutput{})
+	pulumi.RegisterOutputType(DashboardAlertlistChartChartItemOutput{})
+	pulumi.RegisterOutputType(DashboardAlertlistChartChartItemArrayOutput{})
+	pulumi.RegisterOutputType(DashboardAlertlistChartChartItemQueryFilterAssetOutput{})
+	pulumi.RegisterOutputType(DashboardAlertlistChartChartItemQueryFilterAttributeOutput{})
+	pulumi.RegisterOutputType(DashboardAlertlistChartThresholdOutput{})
+	pulumi.RegisterOutputType(DashboardAlertlistChartThresholdArrayOutput{})
+	pulumi.RegisterOutputType(DashboardAlertlistChartValueMappingOutput{})
+	pulumi.RegisterOutputType(DashboardAlertlistChartValueMappingArrayOutput{})
+	pulumi.RegisterOutputType(DashboardAssetlistChartChartItemOutput{})
+	pulumi.RegisterOutputType(DashboardAssetlistChartChartItemArrayOutput{})
+	pulumi.RegisterOutputType(DashboardAssetlistChartChartItemQueryFilterAssetOutput{})
+	pulumi.RegisterOutputType(DashboardAssetlistChartChartItemQueryFilterAttributeOutput{})
+	pulumi.RegisterOutputType(DashboardAssetlistChartThresholdOutput{})
+	pulumi.RegisterOutputType(DashboardAssetlistChartThresholdArrayOutput{})
+	pulumi.RegisterOutputType(DashboardAssetlistChartValueMappingOutput{})
+	pulumi.RegisterOutputType(DashboardAssetlistChartValueMappingArrayOutput{})
+	pulumi.RegisterOutputType(DashboardBarChartChartItemOutput{})
+	pulumi.RegisterOutputType(DashboardBarChartChartItemArrayOutput{})
+	pulumi.RegisterOutputType(DashboardBarChartChartItemQueryFilterAssetOutput{})
+	pulumi.RegisterOutputType(DashboardBarChartChartItemQueryFilterAttributeOutput{})
+	pulumi.RegisterOutputType(DashboardBarChartThresholdOutput{})
+	pulumi.RegisterOutputType(DashboardBarChartThresholdArrayOutput{})
+	pulumi.RegisterOutputType(DashboardBarChartValueMappingOutput{})
+	pulumi.RegisterOutputType(DashboardBarChartValueMappingArrayOutput{})
+	pulumi.RegisterOutputType(DashboardBargaugeChartChartItemOutput{})
+	pulumi.RegisterOutputType(DashboardBargaugeChartChartItemArrayOutput{})
+	pulumi.RegisterOutputType(DashboardBargaugeChartChartItemQueryFilterAssetOutput{})
+	pulumi.RegisterOutputType(DashboardBargaugeChartChartItemQueryFilterAttributeOutput{})
+	pulumi.RegisterOutputType(DashboardBargaugeChartThresholdOutput{})
+	pulumi.RegisterOutputType(DashboardBargaugeChartThresholdArrayOutput{})
+	pulumi.RegisterOutputType(DashboardBargaugeChartValueMappingOutput{})
+	pulumi.RegisterOutputType(DashboardBargaugeChartValueMappingArrayOutput{})
+	pulumi.RegisterOutputType(DashboardCommandlistChartChartItemOutput{})
+	pulumi.RegisterOutputType(DashboardCommandlistChartChartItemArrayOutput{})
+	pulumi.RegisterOutputType(DashboardCommandlistChartChartItemQueryFilterAssetOutput{})
+	pulumi.RegisterOutputType(DashboardCommandlistChartChartItemQueryFilterAttributeOutput{})
+	pulumi.RegisterOutputType(DashboardCommandlistChartThresholdOutput{})
+	pulumi.RegisterOutputType(DashboardCommandlistChartThresholdArrayOutput{})
+	pulumi.RegisterOutputType(DashboardCommandlistChartValueMappingOutput{})
+	pulumi.RegisterOutputType(DashboardCommandlistChartValueMappingArrayOutput{})
+	pulumi.RegisterOutputType(DashboardGaugeChartChartItemOutput{})
+	pulumi.RegisterOutputType(DashboardGaugeChartChartItemArrayOutput{})
+	pulumi.RegisterOutputType(DashboardGaugeChartChartItemQueryFilterAssetOutput{})
+	pulumi.RegisterOutputType(DashboardGaugeChartChartItemQueryFilterAttributeOutput{})
+	pulumi.RegisterOutputType(DashboardGaugeChartThresholdOutput{})
+	pulumi.RegisterOutputType(DashboardGaugeChartThresholdArrayOutput{})
+	pulumi.RegisterOutputType(DashboardGaugeChartValueMappingOutput{})
+	pulumi.RegisterOutputType(DashboardGaugeChartValueMappingArrayOutput{})
+	pulumi.RegisterOutputType(DashboardHistogramChartChartItemOutput{})
+	pulumi.RegisterOutputType(DashboardHistogramChartChartItemArrayOutput{})
+	pulumi.RegisterOutputType(DashboardHistogramChartChartItemQueryFilterAssetOutput{})
+	pulumi.RegisterOutputType(DashboardHistogramChartChartItemQueryFilterAttributeOutput{})
+	pulumi.RegisterOutputType(DashboardHistogramChartThresholdOutput{})
+	pulumi.RegisterOutputType(DashboardHistogramChartThresholdArrayOutput{})
+	pulumi.RegisterOutputType(DashboardHistogramChartValueMappingOutput{})
+	pulumi.RegisterOutputType(DashboardHistogramChartValueMappingArrayOutput{})
+	pulumi.RegisterOutputType(DashboardImageChartChartItemOutput{})
+	pulumi.RegisterOutputType(DashboardImageChartChartItemArrayOutput{})
+	pulumi.RegisterOutputType(DashboardImageChartChartItemQueryFilterAssetOutput{})
+	pulumi.RegisterOutputType(DashboardImageChartChartItemQueryFilterAttributeOutput{})
+	pulumi.RegisterOutputType(DashboardImageChartThresholdOutput{})
+	pulumi.RegisterOutputType(DashboardImageChartThresholdArrayOutput{})
+	pulumi.RegisterOutputType(DashboardImageChartValueMappingOutput{})
+	pulumi.RegisterOutputType(DashboardImageChartValueMappingArrayOutput{})
+	pulumi.RegisterOutputType(DashboardStatChartChartItemOutput{})
+	pulumi.RegisterOutputType(DashboardStatChartChartItemArrayOutput{})
+	pulumi.RegisterOutputType(DashboardStatChartChartItemQueryFilterAssetOutput{})
+	pulumi.RegisterOutputType(DashboardStatChartChartItemQueryFilterAttributeOutput{})
+	pulumi.RegisterOutputType(DashboardStatChartThresholdOutput{})
+	pulumi.RegisterOutputType(DashboardStatChartThresholdArrayOutput{})
+	pulumi.RegisterOutputType(DashboardStatChartValueMappingOutput{})
+	pulumi.RegisterOutputType(DashboardStatChartValueMappingArrayOutput{})
+	pulumi.RegisterOutputType(DashboardTableChartChartItemOutput{})
+	pulumi.RegisterOutputType(DashboardTableChartChartItemArrayOutput{})
+	pulumi.RegisterOutputType(DashboardTableChartChartItemQueryFilterAssetOutput{})
+	pulumi.RegisterOutputType(DashboardTableChartChartItemQueryFilterAttributeOutput{})
+	pulumi.RegisterOutputType(DashboardTableChartThresholdOutput{})
+	pulumi.RegisterOutputType(DashboardTableChartThresholdArrayOutput{})
+	pulumi.RegisterOutputType(DashboardTableChartValueMappingOutput{})
+	pulumi.RegisterOutputType(DashboardTableChartValueMappingArrayOutput{})
+	pulumi.RegisterOutputType(DashboardTextChartChartItemOutput{})
+	pulumi.RegisterOutputType(DashboardTextChartChartItemArrayOutput{})
+	pulumi.RegisterOutputType(DashboardTextChartChartItemQueryFilterAssetOutput{})
+	pulumi.RegisterOutputType(DashboardTextChartChartItemQueryFilterAttributeOutput{})
+	pulumi.RegisterOutputType(DashboardTextChartThresholdOutput{})
+	pulumi.RegisterOutputType(DashboardTextChartThresholdArrayOutput{})
+	pulumi.RegisterOutputType(DashboardTextChartValueMappingOutput{})
+	pulumi.RegisterOutputType(DashboardTextChartValueMappingArrayOutput{})
+	pulumi.RegisterOutputType(DashboardTimeseriesChartChartItemOutput{})
+	pulumi.RegisterOutputType(DashboardTimeseriesChartChartItemArrayOutput{})
+	pulumi.RegisterOutputType(DashboardTimeseriesChartChartItemQueryFilterAssetOutput{})
+	pulumi.RegisterOutputType(DashboardTimeseriesChartChartItemQueryFilterAttributeOutput{})
+	pulumi.RegisterOutputType(DashboardTimeseriesChartThresholdOutput{})
+	pulumi.RegisterOutputType(DashboardTimeseriesChartThresholdArrayOutput{})
+	pulumi.RegisterOutputType(DashboardTimeseriesChartValueMappingOutput{})
+	pulumi.RegisterOutputType(DashboardTimeseriesChartValueMappingArrayOutput{})
 	pulumi.RegisterOutputType(FunctionFunctionItemOutput{})
 	pulumi.RegisterOutputType(FunctionFunctionItemArrayOutput{})
+	pulumi.RegisterOutputType(FunctionFunctionItemQueryFilterAssetOutput{})
+	pulumi.RegisterOutputType(FunctionFunctionItemQueryFilterAttributeOutput{})
+	pulumi.RegisterOutputType(FunctionTargetAssetOutput{})
+	pulumi.RegisterOutputType(FunctionTargetAssetPtrOutput{})
+	pulumi.RegisterOutputType(FunctionTargetAttributeOutput{})
+	pulumi.RegisterOutputType(FunctionTargetAttributePtrOutput{})
 	pulumi.RegisterOutputType(GetAssetKindsKindOutput{})
 	pulumi.RegisterOutputType(GetAssetKindsKindArrayOutput{})
 }

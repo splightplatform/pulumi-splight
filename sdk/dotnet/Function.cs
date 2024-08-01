@@ -22,23 +22,77 @@ namespace Splight.Splight
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var myAsset = new Splight.Asset("myAsset", new()
+    ///     {
+    ///         Description = "My Asset Description",
+    ///         Geometry = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["type"] = "GeometryCollection",
+    ///             ["geometries"] = new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["type"] = "Point",
+    ///                     ["coordinates"] = new[]
+    ///                     {
+    ///                         0,
+    ///                         0,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    ///     var myAttribute = new Splight.AssetAttribute("myAttribute", new()
+    ///     {
+    ///         Type = "Number",
+    ///         Asset = myAsset.Id,
+    ///     });
+    /// 
+    ///     var myTargetAsset = new Splight.Asset("myTargetAsset", new()
+    ///     {
+    ///         Description = "My Target Asset Description",
+    ///         Geometry = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["type"] = "GeometryCollection",
+    ///             ["geometries"] = new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["type"] = "Point",
+    ///                     ["coordinates"] = new[]
+    ///                     {
+    ///                         0,
+    ///                         0,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    ///     var myTargetAttribute = new Splight.AssetAttribute("myTargetAttribute", new()
+    ///     {
+    ///         Type = "Number",
+    ///         Asset = myTargetAsset.Id,
+    ///     });
+    /// 
     ///     var functionTest = new Splight.Function("functionTest", new()
     ///     {
-    ///         Description = "Created with Terraform",
+    ///         Description = "My Function Description",
     ///         Type = "rate",
-    ///         TimeWindow = 600,
-    ///         RateValue = 10,
     ///         RateUnit = "minute",
-    ///         TargetVariable = "A",
-    ///         TargetAsset = 
+    ///         RateValue = 10,
+    ///         TimeWindow = 3600 * 12,
+    ///         TargetVariable = "B",
+    ///         TargetAsset = new Splight.Inputs.FunctionTargetAssetArgs
     ///         {
-    ///             { "id", "49551a15-d79b-40dc-9434-1b33d6b2fcb2" },
-    ///             { "name", "An asset" },
+    ///             Id = myTargetAsset.Id,
+    ///             Name = myTargetAsset.Name,
     ///         },
-    ///         TargetAttribute = 
+    ///         TargetAttribute = new Splight.Inputs.FunctionTargetAttributeArgs
     ///         {
-    ///             { "id", "49551a15-d79b-40dc-9434-1b33d6b2fcb2" },
-    ///             { "name", "An attribute" },
+    ///             Id = myTargetAttribute.Id,
+    ///             Name = myTargetAttribute.Name,
     ///         },
     ///         FunctionItems = new[]
     ///         {
@@ -46,35 +100,49 @@ namespace Splight.Splight
     ///             {
     ///                 RefId = "A",
     ///                 Type = "QUERY",
+    ///                 Expression = "",
     ///                 ExpressionPlain = "",
-    ///                 QueryPlain = JsonSerializer.Serialize(new[]
+    ///                 QueryFilterAsset = new Splight.Inputs.FunctionFunctionItemQueryFilterAssetArgs
+    ///                 {
+    ///                     Id = myAsset.Id,
+    ///                     Name = myAsset.Name,
+    ///                 },
+    ///                 QueryFilterAttribute = new Splight.Inputs.FunctionFunctionItemQueryFilterAttributeArgs
+    ///                 {
+    ///                     Id = myAttribute.Id,
+    ///                     Name = myAttribute.Name,
+    ///                 },
+    ///                 QueryPlain = Output.JsonSerialize(Output.Create(new[]
     ///                 {
     ///                     new Dictionary&lt;string, object?&gt;
     ///                     {
     ///                         ["$match"] = new Dictionary&lt;string, object?&gt;
     ///                         {
-    ///                             ["asset"] = "49551a15-d79b-40dc-9434-1b33d6b2fcb2",
-    ///                             ["attribute"] = "c1d0d94b-5feb-4ebb-a527-0b0a34196252",
+    ///                             ["asset"] = myAsset.Id,
+    ///                             ["attribute"] = myAttribute.Id,
     ///                         },
     ///                     },
-    ///                 }),
+    ///                 })),
     ///             },
     ///             new Splight.Inputs.FunctionFunctionItemArgs
     ///             {
     ///                 RefId = "B",
-    ///                 Type = "QUERY",
-    ///                 ExpressionPlain = "",
-    ///                 QueryPlain = JsonSerializer.Serialize(new[]
+    ///                 Type = "EXPRESSION",
+    ///                 Expression = "A * 2",
+    ///                 ExpressionPlain = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///                 {
-    ///                     new Dictionary&lt;string, object?&gt;
+    ///                     ["$function"] = new Dictionary&lt;string, object?&gt;
     ///                     {
-    ///                         ["$match"] = new Dictionary&lt;string, object?&gt;
+    ///                         ["body"] = "function () { return A * 2 }",
+    ///                         ["args"] = new[]
     ///                         {
-    ///                             ["asset"] = "49551a15-d79b-40dc-9434-1b33d6b2fcb2",
-    ///                             ["attribute"] = "c1d0d94b-5feb-4ebb-a527-0b0a34196252",
     ///                         },
+    ///                         ["lang"] = "js",
     ///                     },
     ///                 }),
+    ///                 QueryFilterAsset = null,
+    ///                 QueryFilterAttribute = null,
+    ///                 QueryPlain = "",
     ///             },
     ///         },
     ///     });
@@ -158,16 +226,16 @@ namespace Splight.Splight
         public Output<int> RateValue { get; private set; } = null!;
 
         /// <summary>
-        /// asset where to ingest results
+        /// Asset/Attribute filter
         /// </summary>
         [Output("targetAsset")]
-        public Output<ImmutableDictionary<string, string>> TargetAsset { get; private set; } = null!;
+        public Output<Outputs.FunctionTargetAsset> TargetAsset { get; private set; } = null!;
 
         /// <summary>
-        /// attribute where to ingest results
+        /// Asset/Attribute filter
         /// </summary>
         [Output("targetAttribute")]
-        public Output<ImmutableDictionary<string, string>> TargetAttribute { get; private set; } = null!;
+        public Output<Outputs.FunctionTargetAttribute> TargetAttribute { get; private set; } = null!;
 
         /// <summary>
         /// variable to be considered to be ingested
@@ -306,29 +374,17 @@ namespace Splight.Splight
         [Input("rateValue")]
         public Input<int>? RateValue { get; set; }
 
+        /// <summary>
+        /// Asset/Attribute filter
+        /// </summary>
         [Input("targetAsset", required: true)]
-        private InputMap<string>? _targetAsset;
+        public Input<Inputs.FunctionTargetAssetArgs> TargetAsset { get; set; } = null!;
 
         /// <summary>
-        /// asset where to ingest results
+        /// Asset/Attribute filter
         /// </summary>
-        public InputMap<string> TargetAsset
-        {
-            get => _targetAsset ?? (_targetAsset = new InputMap<string>());
-            set => _targetAsset = value;
-        }
-
         [Input("targetAttribute", required: true)]
-        private InputMap<string>? _targetAttribute;
-
-        /// <summary>
-        /// attribute where to ingest results
-        /// </summary>
-        public InputMap<string> TargetAttribute
-        {
-            get => _targetAttribute ?? (_targetAttribute = new InputMap<string>());
-            set => _targetAttribute = value;
-        }
+        public Input<Inputs.FunctionTargetAttributeArgs> TargetAttribute { get; set; } = null!;
 
         /// <summary>
         /// variable to be considered to be ingested
@@ -428,29 +484,17 @@ namespace Splight.Splight
         [Input("rateValue")]
         public Input<int>? RateValue { get; set; }
 
+        /// <summary>
+        /// Asset/Attribute filter
+        /// </summary>
         [Input("targetAsset")]
-        private InputMap<string>? _targetAsset;
+        public Input<Inputs.FunctionTargetAssetGetArgs>? TargetAsset { get; set; }
 
         /// <summary>
-        /// asset where to ingest results
+        /// Asset/Attribute filter
         /// </summary>
-        public InputMap<string> TargetAsset
-        {
-            get => _targetAsset ?? (_targetAsset = new InputMap<string>());
-            set => _targetAsset = value;
-        }
-
         [Input("targetAttribute")]
-        private InputMap<string>? _targetAttribute;
-
-        /// <summary>
-        /// attribute where to ingest results
-        /// </summary>
-        public InputMap<string> TargetAttribute
-        {
-            get => _targetAttribute ?? (_targetAttribute = new InputMap<string>());
-            set => _targetAttribute = value;
-        }
+        public Input<Inputs.FunctionTargetAttributeGetArgs>? TargetAttribute { get; set; }
 
         /// <summary>
         /// variable to be considered to be ingested

@@ -12,6 +12,8 @@ from . import outputs
 
 __all__ = [
     'AlertAlertItem',
+    'AlertAlertItemQueryFilterAsset',
+    'AlertAlertItemQueryFilterAttribute',
     'AlertThreshold',
     'AssetKind',
     'ComponentInput',
@@ -20,12 +22,81 @@ __all__ = [
     'ComponentRoutineInputValue',
     'ComponentRoutineOutput',
     'ComponentRoutineOutputValue',
-    'DashboardChartChartItem',
-    'DashboardChartChartItemQueryFilterAsset',
-    'DashboardChartChartItemQueryFilterAttribute',
-    'DashboardChartThreshold',
-    'DashboardChartValueMapping',
+    'DashboardActionlistChartChartItem',
+    'DashboardActionlistChartChartItemQueryFilterAsset',
+    'DashboardActionlistChartChartItemQueryFilterAttribute',
+    'DashboardActionlistChartThreshold',
+    'DashboardActionlistChartValueMapping',
+    'DashboardAlerteventsChartChartItem',
+    'DashboardAlerteventsChartChartItemQueryFilterAsset',
+    'DashboardAlerteventsChartChartItemQueryFilterAttribute',
+    'DashboardAlerteventsChartThreshold',
+    'DashboardAlerteventsChartValueMapping',
+    'DashboardAlertlistChartChartItem',
+    'DashboardAlertlistChartChartItemQueryFilterAsset',
+    'DashboardAlertlistChartChartItemQueryFilterAttribute',
+    'DashboardAlertlistChartThreshold',
+    'DashboardAlertlistChartValueMapping',
+    'DashboardAssetlistChartChartItem',
+    'DashboardAssetlistChartChartItemQueryFilterAsset',
+    'DashboardAssetlistChartChartItemQueryFilterAttribute',
+    'DashboardAssetlistChartThreshold',
+    'DashboardAssetlistChartValueMapping',
+    'DashboardBarChartChartItem',
+    'DashboardBarChartChartItemQueryFilterAsset',
+    'DashboardBarChartChartItemQueryFilterAttribute',
+    'DashboardBarChartThreshold',
+    'DashboardBarChartValueMapping',
+    'DashboardBargaugeChartChartItem',
+    'DashboardBargaugeChartChartItemQueryFilterAsset',
+    'DashboardBargaugeChartChartItemQueryFilterAttribute',
+    'DashboardBargaugeChartThreshold',
+    'DashboardBargaugeChartValueMapping',
+    'DashboardCommandlistChartChartItem',
+    'DashboardCommandlistChartChartItemQueryFilterAsset',
+    'DashboardCommandlistChartChartItemQueryFilterAttribute',
+    'DashboardCommandlistChartThreshold',
+    'DashboardCommandlistChartValueMapping',
+    'DashboardGaugeChartChartItem',
+    'DashboardGaugeChartChartItemQueryFilterAsset',
+    'DashboardGaugeChartChartItemQueryFilterAttribute',
+    'DashboardGaugeChartThreshold',
+    'DashboardGaugeChartValueMapping',
+    'DashboardHistogramChartChartItem',
+    'DashboardHistogramChartChartItemQueryFilterAsset',
+    'DashboardHistogramChartChartItemQueryFilterAttribute',
+    'DashboardHistogramChartThreshold',
+    'DashboardHistogramChartValueMapping',
+    'DashboardImageChartChartItem',
+    'DashboardImageChartChartItemQueryFilterAsset',
+    'DashboardImageChartChartItemQueryFilterAttribute',
+    'DashboardImageChartThreshold',
+    'DashboardImageChartValueMapping',
+    'DashboardStatChartChartItem',
+    'DashboardStatChartChartItemQueryFilterAsset',
+    'DashboardStatChartChartItemQueryFilterAttribute',
+    'DashboardStatChartThreshold',
+    'DashboardStatChartValueMapping',
+    'DashboardTableChartChartItem',
+    'DashboardTableChartChartItemQueryFilterAsset',
+    'DashboardTableChartChartItemQueryFilterAttribute',
+    'DashboardTableChartThreshold',
+    'DashboardTableChartValueMapping',
+    'DashboardTextChartChartItem',
+    'DashboardTextChartChartItemQueryFilterAsset',
+    'DashboardTextChartChartItemQueryFilterAttribute',
+    'DashboardTextChartThreshold',
+    'DashboardTextChartValueMapping',
+    'DashboardTimeseriesChartChartItem',
+    'DashboardTimeseriesChartChartItemQueryFilterAsset',
+    'DashboardTimeseriesChartChartItemQueryFilterAttribute',
+    'DashboardTimeseriesChartThreshold',
+    'DashboardTimeseriesChartValueMapping',
     'FunctionFunctionItem',
+    'FunctionFunctionItemQueryFilterAsset',
+    'FunctionFunctionItemQueryFilterAttribute',
+    'FunctionTargetAsset',
+    'FunctionTargetAttribute',
     'GetAssetKindsKindResult',
 ]
 
@@ -36,6 +107,10 @@ class AlertAlertItem(dict):
         suggest = None
         if key == "expressionPlain":
             suggest = "expression_plain"
+        elif key == "queryFilterAsset":
+            suggest = "query_filter_asset"
+        elif key == "queryFilterAttribute":
+            suggest = "query_filter_attribute"
         elif key == "queryPlain":
             suggest = "query_plain"
         elif key == "refId":
@@ -53,15 +128,28 @@ class AlertAlertItem(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 expression: str,
                  expression_plain: str,
+                 query_filter_asset: 'outputs.AlertAlertItemQueryFilterAsset',
+                 query_filter_attribute: 'outputs.AlertAlertItemQueryFilterAttribute',
                  query_plain: str,
                  ref_id: str,
                  type: str,
                  id: Optional[str] = None):
         """
-        :param str id: optional id
+        :param str expression: how the expression is shown (i.e 'A * 2')
+        :param str expression_plain: actual mongo query containing the expression
+        :param 'AlertAlertItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
+        :param 'AlertAlertItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        :param str query_plain: actual mongo query
+        :param str ref_id: identifier of the variable (i.e 'A')
+        :param str type: either QUERY or EXPRESSION
+        :param str id: ID of the function item
         """
+        pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "expression_plain", expression_plain)
+        pulumi.set(__self__, "query_filter_asset", query_filter_asset)
+        pulumi.set(__self__, "query_filter_attribute", query_filter_attribute)
         pulumi.set(__self__, "query_plain", query_plain)
         pulumi.set(__self__, "ref_id", ref_id)
         pulumi.set(__self__, "type", type)
@@ -69,32 +157,130 @@ class AlertAlertItem(dict):
             pulumi.set(__self__, "id", id)
 
     @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        how the expression is shown (i.e 'A * 2')
+        """
+        return pulumi.get(self, "expression")
+
+    @property
     @pulumi.getter(name="expressionPlain")
     def expression_plain(self) -> str:
+        """
+        actual mongo query containing the expression
+        """
         return pulumi.get(self, "expression_plain")
+
+    @property
+    @pulumi.getter(name="queryFilterAsset")
+    def query_filter_asset(self) -> 'outputs.AlertAlertItemQueryFilterAsset':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_asset")
+
+    @property
+    @pulumi.getter(name="queryFilterAttribute")
+    def query_filter_attribute(self) -> 'outputs.AlertAlertItemQueryFilterAttribute':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_attribute")
 
     @property
     @pulumi.getter(name="queryPlain")
     def query_plain(self) -> str:
+        """
+        actual mongo query
+        """
         return pulumi.get(self, "query_plain")
 
     @property
     @pulumi.getter(name="refId")
     def ref_id(self) -> str:
+        """
+        identifier of the variable (i.e 'A')
+        """
         return pulumi.get(self, "ref_id")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        either QUERY or EXPRESSION
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        optional id
+        ID of the function item
         """
         return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class AlertAlertItemQueryFilterAsset(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class AlertAlertItemQueryFilterAttribute(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -509,20 +695,20 @@ class ComponentRoutineOutputValue(dict):
 
 
 @pulumi.output_type
-class DashboardChartChartItem(dict):
+class DashboardActionlistChartChartItem(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
         if key == "expressionPlain":
             suggest = "expression_plain"
-        elif key == "queryPlain":
-            suggest = "query_plain"
-        elif key == "refId":
-            suggest = "ref_id"
         elif key == "queryFilterAsset":
             suggest = "query_filter_asset"
         elif key == "queryFilterAttribute":
             suggest = "query_filter_attribute"
+        elif key == "queryPlain":
+            suggest = "query_plain"
+        elif key == "refId":
+            suggest = "ref_id"
         elif key == "queryGroupFunction":
             suggest = "query_group_function"
         elif key == "queryGroupUnit":
@@ -533,36 +719,38 @@ class DashboardChartChartItem(dict):
             suggest = "query_sort_direction"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DashboardChartChartItem. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in DashboardActionlistChartChartItem. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        DashboardChartChartItem.__key_warning(key)
+        DashboardActionlistChartChartItem.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        DashboardChartChartItem.__key_warning(key)
+        DashboardActionlistChartChartItem.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
                  color: str,
                  expression_plain: str,
+                 query_filter_asset: 'outputs.DashboardActionlistChartChartItemQueryFilterAsset',
+                 query_filter_attribute: 'outputs.DashboardActionlistChartChartItemQueryFilterAttribute',
                  query_plain: str,
                  ref_id: str,
                  type: str,
                  hidden: Optional[bool] = None,
                  label: Optional[str] = None,
-                 query_filter_asset: Optional['outputs.DashboardChartChartItemQueryFilterAsset'] = None,
-                 query_filter_attribute: Optional['outputs.DashboardChartChartItemQueryFilterAttribute'] = None,
                  query_group_function: Optional[str] = None,
                  query_group_unit: Optional[str] = None,
                  query_limit: Optional[int] = None,
                  query_sort_direction: Optional[int] = None):
         """
-        :param 'DashboardChartChartItemQueryFilterAssetArgs' query_filter_asset: asset filter
-        :param 'DashboardChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Attribute filter
+        :param 'DashboardActionlistChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
+        :param 'DashboardActionlistChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
         """
         pulumi.set(__self__, "color", color)
         pulumi.set(__self__, "expression_plain", expression_plain)
+        pulumi.set(__self__, "query_filter_asset", query_filter_asset)
+        pulumi.set(__self__, "query_filter_attribute", query_filter_attribute)
         pulumi.set(__self__, "query_plain", query_plain)
         pulumi.set(__self__, "ref_id", ref_id)
         pulumi.set(__self__, "type", type)
@@ -570,10 +758,6 @@ class DashboardChartChartItem(dict):
             pulumi.set(__self__, "hidden", hidden)
         if label is not None:
             pulumi.set(__self__, "label", label)
-        if query_filter_asset is not None:
-            pulumi.set(__self__, "query_filter_asset", query_filter_asset)
-        if query_filter_attribute is not None:
-            pulumi.set(__self__, "query_filter_attribute", query_filter_attribute)
         if query_group_function is not None:
             pulumi.set(__self__, "query_group_function", query_group_function)
         if query_group_unit is not None:
@@ -592,6 +776,22 @@ class DashboardChartChartItem(dict):
     @pulumi.getter(name="expressionPlain")
     def expression_plain(self) -> str:
         return pulumi.get(self, "expression_plain")
+
+    @property
+    @pulumi.getter(name="queryFilterAsset")
+    def query_filter_asset(self) -> 'outputs.DashboardActionlistChartChartItemQueryFilterAsset':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_asset")
+
+    @property
+    @pulumi.getter(name="queryFilterAttribute")
+    def query_filter_attribute(self) -> 'outputs.DashboardActionlistChartChartItemQueryFilterAttribute':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_attribute")
 
     @property
     @pulumi.getter(name="queryPlain")
@@ -619,22 +819,6 @@ class DashboardChartChartItem(dict):
         return pulumi.get(self, "label")
 
     @property
-    @pulumi.getter(name="queryFilterAsset")
-    def query_filter_asset(self) -> Optional['outputs.DashboardChartChartItemQueryFilterAsset']:
-        """
-        asset filter
-        """
-        return pulumi.get(self, "query_filter_asset")
-
-    @property
-    @pulumi.getter(name="queryFilterAttribute")
-    def query_filter_attribute(self) -> Optional['outputs.DashboardChartChartItemQueryFilterAttribute']:
-        """
-        Attribute filter
-        """
-        return pulumi.get(self, "query_filter_attribute")
-
-    @property
     @pulumi.getter(name="queryGroupFunction")
     def query_group_function(self) -> Optional[str]:
         return pulumi.get(self, "query_group_function")
@@ -656,57 +840,69 @@ class DashboardChartChartItem(dict):
 
 
 @pulumi.output_type
-class DashboardChartChartItemQueryFilterAsset(dict):
+class DashboardActionlistChartChartItemQueryFilterAsset(dict):
     def __init__(__self__, *,
-                 id: str,
-                 name: str):
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
         """
-        :param str id: The ID of this resource.
+        :param str id: ID of the resource
+        :param str name: name of the resource
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> Optional[str]:
         """
-        The ID of this resource.
+        ID of the resource
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
         return pulumi.get(self, "name")
 
 
 @pulumi.output_type
-class DashboardChartChartItemQueryFilterAttribute(dict):
+class DashboardActionlistChartChartItemQueryFilterAttribute(dict):
     def __init__(__self__, *,
-                 id: str,
-                 name: str):
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
         """
-        :param str id: The ID of this resource.
+        :param str id: ID of the resource
+        :param str name: name of the resource
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> Optional[str]:
         """
-        The ID of this resource.
+        ID of the resource
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
         return pulumi.get(self, "name")
 
 
 @pulumi.output_type
-class DashboardChartThreshold(dict):
+class DashboardActionlistChartThreshold(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -714,14 +910,14 @@ class DashboardChartThreshold(dict):
             suggest = "display_text"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DashboardChartThreshold. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in DashboardActionlistChartThreshold. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        DashboardChartThreshold.__key_warning(key)
+        DashboardActionlistChartThreshold.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        DashboardChartThreshold.__key_warning(key)
+        DashboardActionlistChartThreshold.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -749,7 +945,7 @@ class DashboardChartThreshold(dict):
 
 
 @pulumi.output_type
-class DashboardChartValueMapping(dict):
+class DashboardActionlistChartValueMapping(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -759,14 +955,3940 @@ class DashboardChartValueMapping(dict):
             suggest = "match_value"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DashboardChartValueMapping. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in DashboardActionlistChartValueMapping. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        DashboardChartValueMapping.__key_warning(key)
+        DashboardActionlistChartValueMapping.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        DashboardChartValueMapping.__key_warning(key)
+        DashboardActionlistChartValueMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_text: str,
+                 match_value: str,
+                 order: int,
+                 type: str):
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "match_value", match_value)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter(name="matchValue")
+    def match_value(self) -> str:
+        return pulumi.get(self, "match_value")
+
+    @property
+    @pulumi.getter
+    def order(self) -> int:
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class DashboardAlerteventsChartChartItem(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expressionPlain":
+            suggest = "expression_plain"
+        elif key == "queryFilterAsset":
+            suggest = "query_filter_asset"
+        elif key == "queryFilterAttribute":
+            suggest = "query_filter_attribute"
+        elif key == "queryPlain":
+            suggest = "query_plain"
+        elif key == "refId":
+            suggest = "ref_id"
+        elif key == "queryGroupFunction":
+            suggest = "query_group_function"
+        elif key == "queryGroupUnit":
+            suggest = "query_group_unit"
+        elif key == "queryLimit":
+            suggest = "query_limit"
+        elif key == "querySortDirection":
+            suggest = "query_sort_direction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardAlerteventsChartChartItem. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardAlerteventsChartChartItem.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardAlerteventsChartChartItem.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 expression_plain: str,
+                 query_filter_asset: 'outputs.DashboardAlerteventsChartChartItemQueryFilterAsset',
+                 query_filter_attribute: 'outputs.DashboardAlerteventsChartChartItemQueryFilterAttribute',
+                 query_plain: str,
+                 ref_id: str,
+                 type: str,
+                 hidden: Optional[bool] = None,
+                 label: Optional[str] = None,
+                 query_group_function: Optional[str] = None,
+                 query_group_unit: Optional[str] = None,
+                 query_limit: Optional[int] = None,
+                 query_sort_direction: Optional[int] = None):
+        """
+        :param 'DashboardAlerteventsChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
+        :param 'DashboardAlerteventsChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "expression_plain", expression_plain)
+        pulumi.set(__self__, "query_filter_asset", query_filter_asset)
+        pulumi.set(__self__, "query_filter_attribute", query_filter_attribute)
+        pulumi.set(__self__, "query_plain", query_plain)
+        pulumi.set(__self__, "ref_id", ref_id)
+        pulumi.set(__self__, "type", type)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if query_group_function is not None:
+            pulumi.set(__self__, "query_group_function", query_group_function)
+        if query_group_unit is not None:
+            pulumi.set(__self__, "query_group_unit", query_group_unit)
+        if query_limit is not None:
+            pulumi.set(__self__, "query_limit", query_limit)
+        if query_sort_direction is not None:
+            pulumi.set(__self__, "query_sort_direction", query_sort_direction)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="expressionPlain")
+    def expression_plain(self) -> str:
+        return pulumi.get(self, "expression_plain")
+
+    @property
+    @pulumi.getter(name="queryFilterAsset")
+    def query_filter_asset(self) -> 'outputs.DashboardAlerteventsChartChartItemQueryFilterAsset':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_asset")
+
+    @property
+    @pulumi.getter(name="queryFilterAttribute")
+    def query_filter_attribute(self) -> 'outputs.DashboardAlerteventsChartChartItemQueryFilterAttribute':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_attribute")
+
+    @property
+    @pulumi.getter(name="queryPlain")
+    def query_plain(self) -> str:
+        return pulumi.get(self, "query_plain")
+
+    @property
+    @pulumi.getter(name="refId")
+    def ref_id(self) -> str:
+        return pulumi.get(self, "ref_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> Optional[bool]:
+        return pulumi.get(self, "hidden")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="queryGroupFunction")
+    def query_group_function(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_function")
+
+    @property
+    @pulumi.getter(name="queryGroupUnit")
+    def query_group_unit(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_unit")
+
+    @property
+    @pulumi.getter(name="queryLimit")
+    def query_limit(self) -> Optional[int]:
+        return pulumi.get(self, "query_limit")
+
+    @property
+    @pulumi.getter(name="querySortDirection")
+    def query_sort_direction(self) -> Optional[int]:
+        return pulumi.get(self, "query_sort_direction")
+
+
+@pulumi.output_type
+class DashboardAlerteventsChartChartItemQueryFilterAsset(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardAlerteventsChartChartItemQueryFilterAttribute(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardAlerteventsChartThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardAlerteventsChartThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardAlerteventsChartThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardAlerteventsChartThreshold.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 display_text: str,
+                 value: float):
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DashboardAlerteventsChartValueMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+        elif key == "matchValue":
+            suggest = "match_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardAlerteventsChartValueMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardAlerteventsChartValueMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardAlerteventsChartValueMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_text: str,
+                 match_value: str,
+                 order: int,
+                 type: str):
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "match_value", match_value)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter(name="matchValue")
+    def match_value(self) -> str:
+        return pulumi.get(self, "match_value")
+
+    @property
+    @pulumi.getter
+    def order(self) -> int:
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class DashboardAlertlistChartChartItem(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expressionPlain":
+            suggest = "expression_plain"
+        elif key == "queryFilterAsset":
+            suggest = "query_filter_asset"
+        elif key == "queryFilterAttribute":
+            suggest = "query_filter_attribute"
+        elif key == "queryPlain":
+            suggest = "query_plain"
+        elif key == "refId":
+            suggest = "ref_id"
+        elif key == "queryGroupFunction":
+            suggest = "query_group_function"
+        elif key == "queryGroupUnit":
+            suggest = "query_group_unit"
+        elif key == "queryLimit":
+            suggest = "query_limit"
+        elif key == "querySortDirection":
+            suggest = "query_sort_direction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardAlertlistChartChartItem. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardAlertlistChartChartItem.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardAlertlistChartChartItem.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 expression_plain: str,
+                 query_filter_asset: 'outputs.DashboardAlertlistChartChartItemQueryFilterAsset',
+                 query_filter_attribute: 'outputs.DashboardAlertlistChartChartItemQueryFilterAttribute',
+                 query_plain: str,
+                 ref_id: str,
+                 type: str,
+                 hidden: Optional[bool] = None,
+                 label: Optional[str] = None,
+                 query_group_function: Optional[str] = None,
+                 query_group_unit: Optional[str] = None,
+                 query_limit: Optional[int] = None,
+                 query_sort_direction: Optional[int] = None):
+        """
+        :param 'DashboardAlertlistChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
+        :param 'DashboardAlertlistChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "expression_plain", expression_plain)
+        pulumi.set(__self__, "query_filter_asset", query_filter_asset)
+        pulumi.set(__self__, "query_filter_attribute", query_filter_attribute)
+        pulumi.set(__self__, "query_plain", query_plain)
+        pulumi.set(__self__, "ref_id", ref_id)
+        pulumi.set(__self__, "type", type)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if query_group_function is not None:
+            pulumi.set(__self__, "query_group_function", query_group_function)
+        if query_group_unit is not None:
+            pulumi.set(__self__, "query_group_unit", query_group_unit)
+        if query_limit is not None:
+            pulumi.set(__self__, "query_limit", query_limit)
+        if query_sort_direction is not None:
+            pulumi.set(__self__, "query_sort_direction", query_sort_direction)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="expressionPlain")
+    def expression_plain(self) -> str:
+        return pulumi.get(self, "expression_plain")
+
+    @property
+    @pulumi.getter(name="queryFilterAsset")
+    def query_filter_asset(self) -> 'outputs.DashboardAlertlistChartChartItemQueryFilterAsset':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_asset")
+
+    @property
+    @pulumi.getter(name="queryFilterAttribute")
+    def query_filter_attribute(self) -> 'outputs.DashboardAlertlistChartChartItemQueryFilterAttribute':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_attribute")
+
+    @property
+    @pulumi.getter(name="queryPlain")
+    def query_plain(self) -> str:
+        return pulumi.get(self, "query_plain")
+
+    @property
+    @pulumi.getter(name="refId")
+    def ref_id(self) -> str:
+        return pulumi.get(self, "ref_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> Optional[bool]:
+        return pulumi.get(self, "hidden")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="queryGroupFunction")
+    def query_group_function(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_function")
+
+    @property
+    @pulumi.getter(name="queryGroupUnit")
+    def query_group_unit(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_unit")
+
+    @property
+    @pulumi.getter(name="queryLimit")
+    def query_limit(self) -> Optional[int]:
+        return pulumi.get(self, "query_limit")
+
+    @property
+    @pulumi.getter(name="querySortDirection")
+    def query_sort_direction(self) -> Optional[int]:
+        return pulumi.get(self, "query_sort_direction")
+
+
+@pulumi.output_type
+class DashboardAlertlistChartChartItemQueryFilterAsset(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardAlertlistChartChartItemQueryFilterAttribute(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardAlertlistChartThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardAlertlistChartThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardAlertlistChartThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardAlertlistChartThreshold.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 display_text: str,
+                 value: float):
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DashboardAlertlistChartValueMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+        elif key == "matchValue":
+            suggest = "match_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardAlertlistChartValueMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardAlertlistChartValueMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardAlertlistChartValueMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_text: str,
+                 match_value: str,
+                 order: int,
+                 type: str):
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "match_value", match_value)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter(name="matchValue")
+    def match_value(self) -> str:
+        return pulumi.get(self, "match_value")
+
+    @property
+    @pulumi.getter
+    def order(self) -> int:
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class DashboardAssetlistChartChartItem(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expressionPlain":
+            suggest = "expression_plain"
+        elif key == "queryFilterAsset":
+            suggest = "query_filter_asset"
+        elif key == "queryFilterAttribute":
+            suggest = "query_filter_attribute"
+        elif key == "queryPlain":
+            suggest = "query_plain"
+        elif key == "refId":
+            suggest = "ref_id"
+        elif key == "queryGroupFunction":
+            suggest = "query_group_function"
+        elif key == "queryGroupUnit":
+            suggest = "query_group_unit"
+        elif key == "queryLimit":
+            suggest = "query_limit"
+        elif key == "querySortDirection":
+            suggest = "query_sort_direction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardAssetlistChartChartItem. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardAssetlistChartChartItem.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardAssetlistChartChartItem.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 expression_plain: str,
+                 query_filter_asset: 'outputs.DashboardAssetlistChartChartItemQueryFilterAsset',
+                 query_filter_attribute: 'outputs.DashboardAssetlistChartChartItemQueryFilterAttribute',
+                 query_plain: str,
+                 ref_id: str,
+                 type: str,
+                 hidden: Optional[bool] = None,
+                 label: Optional[str] = None,
+                 query_group_function: Optional[str] = None,
+                 query_group_unit: Optional[str] = None,
+                 query_limit: Optional[int] = None,
+                 query_sort_direction: Optional[int] = None):
+        """
+        :param 'DashboardAssetlistChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
+        :param 'DashboardAssetlistChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "expression_plain", expression_plain)
+        pulumi.set(__self__, "query_filter_asset", query_filter_asset)
+        pulumi.set(__self__, "query_filter_attribute", query_filter_attribute)
+        pulumi.set(__self__, "query_plain", query_plain)
+        pulumi.set(__self__, "ref_id", ref_id)
+        pulumi.set(__self__, "type", type)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if query_group_function is not None:
+            pulumi.set(__self__, "query_group_function", query_group_function)
+        if query_group_unit is not None:
+            pulumi.set(__self__, "query_group_unit", query_group_unit)
+        if query_limit is not None:
+            pulumi.set(__self__, "query_limit", query_limit)
+        if query_sort_direction is not None:
+            pulumi.set(__self__, "query_sort_direction", query_sort_direction)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="expressionPlain")
+    def expression_plain(self) -> str:
+        return pulumi.get(self, "expression_plain")
+
+    @property
+    @pulumi.getter(name="queryFilterAsset")
+    def query_filter_asset(self) -> 'outputs.DashboardAssetlistChartChartItemQueryFilterAsset':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_asset")
+
+    @property
+    @pulumi.getter(name="queryFilterAttribute")
+    def query_filter_attribute(self) -> 'outputs.DashboardAssetlistChartChartItemQueryFilterAttribute':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_attribute")
+
+    @property
+    @pulumi.getter(name="queryPlain")
+    def query_plain(self) -> str:
+        return pulumi.get(self, "query_plain")
+
+    @property
+    @pulumi.getter(name="refId")
+    def ref_id(self) -> str:
+        return pulumi.get(self, "ref_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> Optional[bool]:
+        return pulumi.get(self, "hidden")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="queryGroupFunction")
+    def query_group_function(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_function")
+
+    @property
+    @pulumi.getter(name="queryGroupUnit")
+    def query_group_unit(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_unit")
+
+    @property
+    @pulumi.getter(name="queryLimit")
+    def query_limit(self) -> Optional[int]:
+        return pulumi.get(self, "query_limit")
+
+    @property
+    @pulumi.getter(name="querySortDirection")
+    def query_sort_direction(self) -> Optional[int]:
+        return pulumi.get(self, "query_sort_direction")
+
+
+@pulumi.output_type
+class DashboardAssetlistChartChartItemQueryFilterAsset(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardAssetlistChartChartItemQueryFilterAttribute(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardAssetlistChartThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardAssetlistChartThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardAssetlistChartThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardAssetlistChartThreshold.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 display_text: str,
+                 value: float):
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DashboardAssetlistChartValueMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+        elif key == "matchValue":
+            suggest = "match_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardAssetlistChartValueMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardAssetlistChartValueMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardAssetlistChartValueMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_text: str,
+                 match_value: str,
+                 order: int,
+                 type: str):
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "match_value", match_value)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter(name="matchValue")
+    def match_value(self) -> str:
+        return pulumi.get(self, "match_value")
+
+    @property
+    @pulumi.getter
+    def order(self) -> int:
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class DashboardBarChartChartItem(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expressionPlain":
+            suggest = "expression_plain"
+        elif key == "queryFilterAsset":
+            suggest = "query_filter_asset"
+        elif key == "queryFilterAttribute":
+            suggest = "query_filter_attribute"
+        elif key == "queryPlain":
+            suggest = "query_plain"
+        elif key == "refId":
+            suggest = "ref_id"
+        elif key == "queryGroupFunction":
+            suggest = "query_group_function"
+        elif key == "queryGroupUnit":
+            suggest = "query_group_unit"
+        elif key == "queryLimit":
+            suggest = "query_limit"
+        elif key == "querySortDirection":
+            suggest = "query_sort_direction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardBarChartChartItem. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardBarChartChartItem.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardBarChartChartItem.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 expression_plain: str,
+                 query_filter_asset: 'outputs.DashboardBarChartChartItemQueryFilterAsset',
+                 query_filter_attribute: 'outputs.DashboardBarChartChartItemQueryFilterAttribute',
+                 query_plain: str,
+                 ref_id: str,
+                 type: str,
+                 hidden: Optional[bool] = None,
+                 label: Optional[str] = None,
+                 query_group_function: Optional[str] = None,
+                 query_group_unit: Optional[str] = None,
+                 query_limit: Optional[int] = None,
+                 query_sort_direction: Optional[int] = None):
+        """
+        :param 'DashboardBarChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
+        :param 'DashboardBarChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "expression_plain", expression_plain)
+        pulumi.set(__self__, "query_filter_asset", query_filter_asset)
+        pulumi.set(__self__, "query_filter_attribute", query_filter_attribute)
+        pulumi.set(__self__, "query_plain", query_plain)
+        pulumi.set(__self__, "ref_id", ref_id)
+        pulumi.set(__self__, "type", type)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if query_group_function is not None:
+            pulumi.set(__self__, "query_group_function", query_group_function)
+        if query_group_unit is not None:
+            pulumi.set(__self__, "query_group_unit", query_group_unit)
+        if query_limit is not None:
+            pulumi.set(__self__, "query_limit", query_limit)
+        if query_sort_direction is not None:
+            pulumi.set(__self__, "query_sort_direction", query_sort_direction)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="expressionPlain")
+    def expression_plain(self) -> str:
+        return pulumi.get(self, "expression_plain")
+
+    @property
+    @pulumi.getter(name="queryFilterAsset")
+    def query_filter_asset(self) -> 'outputs.DashboardBarChartChartItemQueryFilterAsset':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_asset")
+
+    @property
+    @pulumi.getter(name="queryFilterAttribute")
+    def query_filter_attribute(self) -> 'outputs.DashboardBarChartChartItemQueryFilterAttribute':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_attribute")
+
+    @property
+    @pulumi.getter(name="queryPlain")
+    def query_plain(self) -> str:
+        return pulumi.get(self, "query_plain")
+
+    @property
+    @pulumi.getter(name="refId")
+    def ref_id(self) -> str:
+        return pulumi.get(self, "ref_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> Optional[bool]:
+        return pulumi.get(self, "hidden")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="queryGroupFunction")
+    def query_group_function(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_function")
+
+    @property
+    @pulumi.getter(name="queryGroupUnit")
+    def query_group_unit(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_unit")
+
+    @property
+    @pulumi.getter(name="queryLimit")
+    def query_limit(self) -> Optional[int]:
+        return pulumi.get(self, "query_limit")
+
+    @property
+    @pulumi.getter(name="querySortDirection")
+    def query_sort_direction(self) -> Optional[int]:
+        return pulumi.get(self, "query_sort_direction")
+
+
+@pulumi.output_type
+class DashboardBarChartChartItemQueryFilterAsset(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardBarChartChartItemQueryFilterAttribute(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardBarChartThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardBarChartThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardBarChartThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardBarChartThreshold.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 display_text: str,
+                 value: float):
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DashboardBarChartValueMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+        elif key == "matchValue":
+            suggest = "match_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardBarChartValueMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardBarChartValueMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardBarChartValueMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_text: str,
+                 match_value: str,
+                 order: int,
+                 type: str):
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "match_value", match_value)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter(name="matchValue")
+    def match_value(self) -> str:
+        return pulumi.get(self, "match_value")
+
+    @property
+    @pulumi.getter
+    def order(self) -> int:
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class DashboardBargaugeChartChartItem(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expressionPlain":
+            suggest = "expression_plain"
+        elif key == "queryFilterAsset":
+            suggest = "query_filter_asset"
+        elif key == "queryFilterAttribute":
+            suggest = "query_filter_attribute"
+        elif key == "queryPlain":
+            suggest = "query_plain"
+        elif key == "refId":
+            suggest = "ref_id"
+        elif key == "queryGroupFunction":
+            suggest = "query_group_function"
+        elif key == "queryGroupUnit":
+            suggest = "query_group_unit"
+        elif key == "queryLimit":
+            suggest = "query_limit"
+        elif key == "querySortDirection":
+            suggest = "query_sort_direction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardBargaugeChartChartItem. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardBargaugeChartChartItem.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardBargaugeChartChartItem.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 expression_plain: str,
+                 query_filter_asset: 'outputs.DashboardBargaugeChartChartItemQueryFilterAsset',
+                 query_filter_attribute: 'outputs.DashboardBargaugeChartChartItemQueryFilterAttribute',
+                 query_plain: str,
+                 ref_id: str,
+                 type: str,
+                 hidden: Optional[bool] = None,
+                 label: Optional[str] = None,
+                 query_group_function: Optional[str] = None,
+                 query_group_unit: Optional[str] = None,
+                 query_limit: Optional[int] = None,
+                 query_sort_direction: Optional[int] = None):
+        """
+        :param 'DashboardBargaugeChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
+        :param 'DashboardBargaugeChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "expression_plain", expression_plain)
+        pulumi.set(__self__, "query_filter_asset", query_filter_asset)
+        pulumi.set(__self__, "query_filter_attribute", query_filter_attribute)
+        pulumi.set(__self__, "query_plain", query_plain)
+        pulumi.set(__self__, "ref_id", ref_id)
+        pulumi.set(__self__, "type", type)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if query_group_function is not None:
+            pulumi.set(__self__, "query_group_function", query_group_function)
+        if query_group_unit is not None:
+            pulumi.set(__self__, "query_group_unit", query_group_unit)
+        if query_limit is not None:
+            pulumi.set(__self__, "query_limit", query_limit)
+        if query_sort_direction is not None:
+            pulumi.set(__self__, "query_sort_direction", query_sort_direction)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="expressionPlain")
+    def expression_plain(self) -> str:
+        return pulumi.get(self, "expression_plain")
+
+    @property
+    @pulumi.getter(name="queryFilterAsset")
+    def query_filter_asset(self) -> 'outputs.DashboardBargaugeChartChartItemQueryFilterAsset':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_asset")
+
+    @property
+    @pulumi.getter(name="queryFilterAttribute")
+    def query_filter_attribute(self) -> 'outputs.DashboardBargaugeChartChartItemQueryFilterAttribute':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_attribute")
+
+    @property
+    @pulumi.getter(name="queryPlain")
+    def query_plain(self) -> str:
+        return pulumi.get(self, "query_plain")
+
+    @property
+    @pulumi.getter(name="refId")
+    def ref_id(self) -> str:
+        return pulumi.get(self, "ref_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> Optional[bool]:
+        return pulumi.get(self, "hidden")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="queryGroupFunction")
+    def query_group_function(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_function")
+
+    @property
+    @pulumi.getter(name="queryGroupUnit")
+    def query_group_unit(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_unit")
+
+    @property
+    @pulumi.getter(name="queryLimit")
+    def query_limit(self) -> Optional[int]:
+        return pulumi.get(self, "query_limit")
+
+    @property
+    @pulumi.getter(name="querySortDirection")
+    def query_sort_direction(self) -> Optional[int]:
+        return pulumi.get(self, "query_sort_direction")
+
+
+@pulumi.output_type
+class DashboardBargaugeChartChartItemQueryFilterAsset(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardBargaugeChartChartItemQueryFilterAttribute(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardBargaugeChartThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardBargaugeChartThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardBargaugeChartThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardBargaugeChartThreshold.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 display_text: str,
+                 value: float):
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DashboardBargaugeChartValueMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+        elif key == "matchValue":
+            suggest = "match_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardBargaugeChartValueMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardBargaugeChartValueMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardBargaugeChartValueMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_text: str,
+                 match_value: str,
+                 order: int,
+                 type: str):
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "match_value", match_value)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter(name="matchValue")
+    def match_value(self) -> str:
+        return pulumi.get(self, "match_value")
+
+    @property
+    @pulumi.getter
+    def order(self) -> int:
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class DashboardCommandlistChartChartItem(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expressionPlain":
+            suggest = "expression_plain"
+        elif key == "queryFilterAsset":
+            suggest = "query_filter_asset"
+        elif key == "queryFilterAttribute":
+            suggest = "query_filter_attribute"
+        elif key == "queryPlain":
+            suggest = "query_plain"
+        elif key == "refId":
+            suggest = "ref_id"
+        elif key == "queryGroupFunction":
+            suggest = "query_group_function"
+        elif key == "queryGroupUnit":
+            suggest = "query_group_unit"
+        elif key == "queryLimit":
+            suggest = "query_limit"
+        elif key == "querySortDirection":
+            suggest = "query_sort_direction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardCommandlistChartChartItem. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardCommandlistChartChartItem.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardCommandlistChartChartItem.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 expression_plain: str,
+                 query_filter_asset: 'outputs.DashboardCommandlistChartChartItemQueryFilterAsset',
+                 query_filter_attribute: 'outputs.DashboardCommandlistChartChartItemQueryFilterAttribute',
+                 query_plain: str,
+                 ref_id: str,
+                 type: str,
+                 hidden: Optional[bool] = None,
+                 label: Optional[str] = None,
+                 query_group_function: Optional[str] = None,
+                 query_group_unit: Optional[str] = None,
+                 query_limit: Optional[int] = None,
+                 query_sort_direction: Optional[int] = None):
+        """
+        :param 'DashboardCommandlistChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
+        :param 'DashboardCommandlistChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "expression_plain", expression_plain)
+        pulumi.set(__self__, "query_filter_asset", query_filter_asset)
+        pulumi.set(__self__, "query_filter_attribute", query_filter_attribute)
+        pulumi.set(__self__, "query_plain", query_plain)
+        pulumi.set(__self__, "ref_id", ref_id)
+        pulumi.set(__self__, "type", type)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if query_group_function is not None:
+            pulumi.set(__self__, "query_group_function", query_group_function)
+        if query_group_unit is not None:
+            pulumi.set(__self__, "query_group_unit", query_group_unit)
+        if query_limit is not None:
+            pulumi.set(__self__, "query_limit", query_limit)
+        if query_sort_direction is not None:
+            pulumi.set(__self__, "query_sort_direction", query_sort_direction)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="expressionPlain")
+    def expression_plain(self) -> str:
+        return pulumi.get(self, "expression_plain")
+
+    @property
+    @pulumi.getter(name="queryFilterAsset")
+    def query_filter_asset(self) -> 'outputs.DashboardCommandlistChartChartItemQueryFilterAsset':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_asset")
+
+    @property
+    @pulumi.getter(name="queryFilterAttribute")
+    def query_filter_attribute(self) -> 'outputs.DashboardCommandlistChartChartItemQueryFilterAttribute':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_attribute")
+
+    @property
+    @pulumi.getter(name="queryPlain")
+    def query_plain(self) -> str:
+        return pulumi.get(self, "query_plain")
+
+    @property
+    @pulumi.getter(name="refId")
+    def ref_id(self) -> str:
+        return pulumi.get(self, "ref_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> Optional[bool]:
+        return pulumi.get(self, "hidden")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="queryGroupFunction")
+    def query_group_function(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_function")
+
+    @property
+    @pulumi.getter(name="queryGroupUnit")
+    def query_group_unit(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_unit")
+
+    @property
+    @pulumi.getter(name="queryLimit")
+    def query_limit(self) -> Optional[int]:
+        return pulumi.get(self, "query_limit")
+
+    @property
+    @pulumi.getter(name="querySortDirection")
+    def query_sort_direction(self) -> Optional[int]:
+        return pulumi.get(self, "query_sort_direction")
+
+
+@pulumi.output_type
+class DashboardCommandlistChartChartItemQueryFilterAsset(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardCommandlistChartChartItemQueryFilterAttribute(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardCommandlistChartThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardCommandlistChartThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardCommandlistChartThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardCommandlistChartThreshold.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 display_text: str,
+                 value: float):
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DashboardCommandlistChartValueMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+        elif key == "matchValue":
+            suggest = "match_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardCommandlistChartValueMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardCommandlistChartValueMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardCommandlistChartValueMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_text: str,
+                 match_value: str,
+                 order: int,
+                 type: str):
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "match_value", match_value)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter(name="matchValue")
+    def match_value(self) -> str:
+        return pulumi.get(self, "match_value")
+
+    @property
+    @pulumi.getter
+    def order(self) -> int:
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class DashboardGaugeChartChartItem(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expressionPlain":
+            suggest = "expression_plain"
+        elif key == "queryFilterAsset":
+            suggest = "query_filter_asset"
+        elif key == "queryFilterAttribute":
+            suggest = "query_filter_attribute"
+        elif key == "queryPlain":
+            suggest = "query_plain"
+        elif key == "refId":
+            suggest = "ref_id"
+        elif key == "queryGroupFunction":
+            suggest = "query_group_function"
+        elif key == "queryGroupUnit":
+            suggest = "query_group_unit"
+        elif key == "queryLimit":
+            suggest = "query_limit"
+        elif key == "querySortDirection":
+            suggest = "query_sort_direction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardGaugeChartChartItem. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardGaugeChartChartItem.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardGaugeChartChartItem.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 expression_plain: str,
+                 query_filter_asset: 'outputs.DashboardGaugeChartChartItemQueryFilterAsset',
+                 query_filter_attribute: 'outputs.DashboardGaugeChartChartItemQueryFilterAttribute',
+                 query_plain: str,
+                 ref_id: str,
+                 type: str,
+                 hidden: Optional[bool] = None,
+                 label: Optional[str] = None,
+                 query_group_function: Optional[str] = None,
+                 query_group_unit: Optional[str] = None,
+                 query_limit: Optional[int] = None,
+                 query_sort_direction: Optional[int] = None):
+        """
+        :param 'DashboardGaugeChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
+        :param 'DashboardGaugeChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "expression_plain", expression_plain)
+        pulumi.set(__self__, "query_filter_asset", query_filter_asset)
+        pulumi.set(__self__, "query_filter_attribute", query_filter_attribute)
+        pulumi.set(__self__, "query_plain", query_plain)
+        pulumi.set(__self__, "ref_id", ref_id)
+        pulumi.set(__self__, "type", type)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if query_group_function is not None:
+            pulumi.set(__self__, "query_group_function", query_group_function)
+        if query_group_unit is not None:
+            pulumi.set(__self__, "query_group_unit", query_group_unit)
+        if query_limit is not None:
+            pulumi.set(__self__, "query_limit", query_limit)
+        if query_sort_direction is not None:
+            pulumi.set(__self__, "query_sort_direction", query_sort_direction)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="expressionPlain")
+    def expression_plain(self) -> str:
+        return pulumi.get(self, "expression_plain")
+
+    @property
+    @pulumi.getter(name="queryFilterAsset")
+    def query_filter_asset(self) -> 'outputs.DashboardGaugeChartChartItemQueryFilterAsset':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_asset")
+
+    @property
+    @pulumi.getter(name="queryFilterAttribute")
+    def query_filter_attribute(self) -> 'outputs.DashboardGaugeChartChartItemQueryFilterAttribute':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_attribute")
+
+    @property
+    @pulumi.getter(name="queryPlain")
+    def query_plain(self) -> str:
+        return pulumi.get(self, "query_plain")
+
+    @property
+    @pulumi.getter(name="refId")
+    def ref_id(self) -> str:
+        return pulumi.get(self, "ref_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> Optional[bool]:
+        return pulumi.get(self, "hidden")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="queryGroupFunction")
+    def query_group_function(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_function")
+
+    @property
+    @pulumi.getter(name="queryGroupUnit")
+    def query_group_unit(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_unit")
+
+    @property
+    @pulumi.getter(name="queryLimit")
+    def query_limit(self) -> Optional[int]:
+        return pulumi.get(self, "query_limit")
+
+    @property
+    @pulumi.getter(name="querySortDirection")
+    def query_sort_direction(self) -> Optional[int]:
+        return pulumi.get(self, "query_sort_direction")
+
+
+@pulumi.output_type
+class DashboardGaugeChartChartItemQueryFilterAsset(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardGaugeChartChartItemQueryFilterAttribute(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardGaugeChartThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardGaugeChartThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardGaugeChartThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardGaugeChartThreshold.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 display_text: str,
+                 value: float):
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DashboardGaugeChartValueMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+        elif key == "matchValue":
+            suggest = "match_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardGaugeChartValueMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardGaugeChartValueMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardGaugeChartValueMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_text: str,
+                 match_value: str,
+                 order: int,
+                 type: str):
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "match_value", match_value)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter(name="matchValue")
+    def match_value(self) -> str:
+        return pulumi.get(self, "match_value")
+
+    @property
+    @pulumi.getter
+    def order(self) -> int:
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class DashboardHistogramChartChartItem(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expressionPlain":
+            suggest = "expression_plain"
+        elif key == "queryFilterAsset":
+            suggest = "query_filter_asset"
+        elif key == "queryFilterAttribute":
+            suggest = "query_filter_attribute"
+        elif key == "queryPlain":
+            suggest = "query_plain"
+        elif key == "refId":
+            suggest = "ref_id"
+        elif key == "queryGroupFunction":
+            suggest = "query_group_function"
+        elif key == "queryGroupUnit":
+            suggest = "query_group_unit"
+        elif key == "queryLimit":
+            suggest = "query_limit"
+        elif key == "querySortDirection":
+            suggest = "query_sort_direction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardHistogramChartChartItem. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardHistogramChartChartItem.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardHistogramChartChartItem.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 expression_plain: str,
+                 query_filter_asset: 'outputs.DashboardHistogramChartChartItemQueryFilterAsset',
+                 query_filter_attribute: 'outputs.DashboardHistogramChartChartItemQueryFilterAttribute',
+                 query_plain: str,
+                 ref_id: str,
+                 type: str,
+                 hidden: Optional[bool] = None,
+                 label: Optional[str] = None,
+                 query_group_function: Optional[str] = None,
+                 query_group_unit: Optional[str] = None,
+                 query_limit: Optional[int] = None,
+                 query_sort_direction: Optional[int] = None):
+        """
+        :param 'DashboardHistogramChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
+        :param 'DashboardHistogramChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "expression_plain", expression_plain)
+        pulumi.set(__self__, "query_filter_asset", query_filter_asset)
+        pulumi.set(__self__, "query_filter_attribute", query_filter_attribute)
+        pulumi.set(__self__, "query_plain", query_plain)
+        pulumi.set(__self__, "ref_id", ref_id)
+        pulumi.set(__self__, "type", type)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if query_group_function is not None:
+            pulumi.set(__self__, "query_group_function", query_group_function)
+        if query_group_unit is not None:
+            pulumi.set(__self__, "query_group_unit", query_group_unit)
+        if query_limit is not None:
+            pulumi.set(__self__, "query_limit", query_limit)
+        if query_sort_direction is not None:
+            pulumi.set(__self__, "query_sort_direction", query_sort_direction)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="expressionPlain")
+    def expression_plain(self) -> str:
+        return pulumi.get(self, "expression_plain")
+
+    @property
+    @pulumi.getter(name="queryFilterAsset")
+    def query_filter_asset(self) -> 'outputs.DashboardHistogramChartChartItemQueryFilterAsset':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_asset")
+
+    @property
+    @pulumi.getter(name="queryFilterAttribute")
+    def query_filter_attribute(self) -> 'outputs.DashboardHistogramChartChartItemQueryFilterAttribute':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_attribute")
+
+    @property
+    @pulumi.getter(name="queryPlain")
+    def query_plain(self) -> str:
+        return pulumi.get(self, "query_plain")
+
+    @property
+    @pulumi.getter(name="refId")
+    def ref_id(self) -> str:
+        return pulumi.get(self, "ref_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> Optional[bool]:
+        return pulumi.get(self, "hidden")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="queryGroupFunction")
+    def query_group_function(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_function")
+
+    @property
+    @pulumi.getter(name="queryGroupUnit")
+    def query_group_unit(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_unit")
+
+    @property
+    @pulumi.getter(name="queryLimit")
+    def query_limit(self) -> Optional[int]:
+        return pulumi.get(self, "query_limit")
+
+    @property
+    @pulumi.getter(name="querySortDirection")
+    def query_sort_direction(self) -> Optional[int]:
+        return pulumi.get(self, "query_sort_direction")
+
+
+@pulumi.output_type
+class DashboardHistogramChartChartItemQueryFilterAsset(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardHistogramChartChartItemQueryFilterAttribute(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardHistogramChartThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardHistogramChartThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardHistogramChartThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardHistogramChartThreshold.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 display_text: str,
+                 value: float):
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DashboardHistogramChartValueMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+        elif key == "matchValue":
+            suggest = "match_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardHistogramChartValueMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardHistogramChartValueMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardHistogramChartValueMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_text: str,
+                 match_value: str,
+                 order: int,
+                 type: str):
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "match_value", match_value)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter(name="matchValue")
+    def match_value(self) -> str:
+        return pulumi.get(self, "match_value")
+
+    @property
+    @pulumi.getter
+    def order(self) -> int:
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class DashboardImageChartChartItem(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expressionPlain":
+            suggest = "expression_plain"
+        elif key == "queryFilterAsset":
+            suggest = "query_filter_asset"
+        elif key == "queryFilterAttribute":
+            suggest = "query_filter_attribute"
+        elif key == "queryPlain":
+            suggest = "query_plain"
+        elif key == "refId":
+            suggest = "ref_id"
+        elif key == "queryGroupFunction":
+            suggest = "query_group_function"
+        elif key == "queryGroupUnit":
+            suggest = "query_group_unit"
+        elif key == "queryLimit":
+            suggest = "query_limit"
+        elif key == "querySortDirection":
+            suggest = "query_sort_direction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardImageChartChartItem. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardImageChartChartItem.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardImageChartChartItem.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 expression_plain: str,
+                 query_filter_asset: 'outputs.DashboardImageChartChartItemQueryFilterAsset',
+                 query_filter_attribute: 'outputs.DashboardImageChartChartItemQueryFilterAttribute',
+                 query_plain: str,
+                 ref_id: str,
+                 type: str,
+                 hidden: Optional[bool] = None,
+                 label: Optional[str] = None,
+                 query_group_function: Optional[str] = None,
+                 query_group_unit: Optional[str] = None,
+                 query_limit: Optional[int] = None,
+                 query_sort_direction: Optional[int] = None):
+        """
+        :param 'DashboardImageChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
+        :param 'DashboardImageChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "expression_plain", expression_plain)
+        pulumi.set(__self__, "query_filter_asset", query_filter_asset)
+        pulumi.set(__self__, "query_filter_attribute", query_filter_attribute)
+        pulumi.set(__self__, "query_plain", query_plain)
+        pulumi.set(__self__, "ref_id", ref_id)
+        pulumi.set(__self__, "type", type)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if query_group_function is not None:
+            pulumi.set(__self__, "query_group_function", query_group_function)
+        if query_group_unit is not None:
+            pulumi.set(__self__, "query_group_unit", query_group_unit)
+        if query_limit is not None:
+            pulumi.set(__self__, "query_limit", query_limit)
+        if query_sort_direction is not None:
+            pulumi.set(__self__, "query_sort_direction", query_sort_direction)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="expressionPlain")
+    def expression_plain(self) -> str:
+        return pulumi.get(self, "expression_plain")
+
+    @property
+    @pulumi.getter(name="queryFilterAsset")
+    def query_filter_asset(self) -> 'outputs.DashboardImageChartChartItemQueryFilterAsset':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_asset")
+
+    @property
+    @pulumi.getter(name="queryFilterAttribute")
+    def query_filter_attribute(self) -> 'outputs.DashboardImageChartChartItemQueryFilterAttribute':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_attribute")
+
+    @property
+    @pulumi.getter(name="queryPlain")
+    def query_plain(self) -> str:
+        return pulumi.get(self, "query_plain")
+
+    @property
+    @pulumi.getter(name="refId")
+    def ref_id(self) -> str:
+        return pulumi.get(self, "ref_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> Optional[bool]:
+        return pulumi.get(self, "hidden")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="queryGroupFunction")
+    def query_group_function(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_function")
+
+    @property
+    @pulumi.getter(name="queryGroupUnit")
+    def query_group_unit(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_unit")
+
+    @property
+    @pulumi.getter(name="queryLimit")
+    def query_limit(self) -> Optional[int]:
+        return pulumi.get(self, "query_limit")
+
+    @property
+    @pulumi.getter(name="querySortDirection")
+    def query_sort_direction(self) -> Optional[int]:
+        return pulumi.get(self, "query_sort_direction")
+
+
+@pulumi.output_type
+class DashboardImageChartChartItemQueryFilterAsset(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardImageChartChartItemQueryFilterAttribute(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardImageChartThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardImageChartThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardImageChartThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardImageChartThreshold.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 display_text: str,
+                 value: float):
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DashboardImageChartValueMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+        elif key == "matchValue":
+            suggest = "match_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardImageChartValueMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardImageChartValueMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardImageChartValueMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_text: str,
+                 match_value: str,
+                 order: int,
+                 type: str):
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "match_value", match_value)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter(name="matchValue")
+    def match_value(self) -> str:
+        return pulumi.get(self, "match_value")
+
+    @property
+    @pulumi.getter
+    def order(self) -> int:
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class DashboardStatChartChartItem(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expressionPlain":
+            suggest = "expression_plain"
+        elif key == "queryFilterAsset":
+            suggest = "query_filter_asset"
+        elif key == "queryFilterAttribute":
+            suggest = "query_filter_attribute"
+        elif key == "queryPlain":
+            suggest = "query_plain"
+        elif key == "refId":
+            suggest = "ref_id"
+        elif key == "queryGroupFunction":
+            suggest = "query_group_function"
+        elif key == "queryGroupUnit":
+            suggest = "query_group_unit"
+        elif key == "queryLimit":
+            suggest = "query_limit"
+        elif key == "querySortDirection":
+            suggest = "query_sort_direction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardStatChartChartItem. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardStatChartChartItem.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardStatChartChartItem.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 expression_plain: str,
+                 query_filter_asset: 'outputs.DashboardStatChartChartItemQueryFilterAsset',
+                 query_filter_attribute: 'outputs.DashboardStatChartChartItemQueryFilterAttribute',
+                 query_plain: str,
+                 ref_id: str,
+                 type: str,
+                 hidden: Optional[bool] = None,
+                 label: Optional[str] = None,
+                 query_group_function: Optional[str] = None,
+                 query_group_unit: Optional[str] = None,
+                 query_limit: Optional[int] = None,
+                 query_sort_direction: Optional[int] = None):
+        """
+        :param 'DashboardStatChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
+        :param 'DashboardStatChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "expression_plain", expression_plain)
+        pulumi.set(__self__, "query_filter_asset", query_filter_asset)
+        pulumi.set(__self__, "query_filter_attribute", query_filter_attribute)
+        pulumi.set(__self__, "query_plain", query_plain)
+        pulumi.set(__self__, "ref_id", ref_id)
+        pulumi.set(__self__, "type", type)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if query_group_function is not None:
+            pulumi.set(__self__, "query_group_function", query_group_function)
+        if query_group_unit is not None:
+            pulumi.set(__self__, "query_group_unit", query_group_unit)
+        if query_limit is not None:
+            pulumi.set(__self__, "query_limit", query_limit)
+        if query_sort_direction is not None:
+            pulumi.set(__self__, "query_sort_direction", query_sort_direction)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="expressionPlain")
+    def expression_plain(self) -> str:
+        return pulumi.get(self, "expression_plain")
+
+    @property
+    @pulumi.getter(name="queryFilterAsset")
+    def query_filter_asset(self) -> 'outputs.DashboardStatChartChartItemQueryFilterAsset':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_asset")
+
+    @property
+    @pulumi.getter(name="queryFilterAttribute")
+    def query_filter_attribute(self) -> 'outputs.DashboardStatChartChartItemQueryFilterAttribute':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_attribute")
+
+    @property
+    @pulumi.getter(name="queryPlain")
+    def query_plain(self) -> str:
+        return pulumi.get(self, "query_plain")
+
+    @property
+    @pulumi.getter(name="refId")
+    def ref_id(self) -> str:
+        return pulumi.get(self, "ref_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> Optional[bool]:
+        return pulumi.get(self, "hidden")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="queryGroupFunction")
+    def query_group_function(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_function")
+
+    @property
+    @pulumi.getter(name="queryGroupUnit")
+    def query_group_unit(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_unit")
+
+    @property
+    @pulumi.getter(name="queryLimit")
+    def query_limit(self) -> Optional[int]:
+        return pulumi.get(self, "query_limit")
+
+    @property
+    @pulumi.getter(name="querySortDirection")
+    def query_sort_direction(self) -> Optional[int]:
+        return pulumi.get(self, "query_sort_direction")
+
+
+@pulumi.output_type
+class DashboardStatChartChartItemQueryFilterAsset(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardStatChartChartItemQueryFilterAttribute(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardStatChartThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardStatChartThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardStatChartThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardStatChartThreshold.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 display_text: str,
+                 value: float):
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DashboardStatChartValueMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+        elif key == "matchValue":
+            suggest = "match_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardStatChartValueMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardStatChartValueMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardStatChartValueMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_text: str,
+                 match_value: str,
+                 order: int,
+                 type: str):
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "match_value", match_value)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter(name="matchValue")
+    def match_value(self) -> str:
+        return pulumi.get(self, "match_value")
+
+    @property
+    @pulumi.getter
+    def order(self) -> int:
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class DashboardTableChartChartItem(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expressionPlain":
+            suggest = "expression_plain"
+        elif key == "queryFilterAsset":
+            suggest = "query_filter_asset"
+        elif key == "queryFilterAttribute":
+            suggest = "query_filter_attribute"
+        elif key == "queryPlain":
+            suggest = "query_plain"
+        elif key == "refId":
+            suggest = "ref_id"
+        elif key == "queryGroupFunction":
+            suggest = "query_group_function"
+        elif key == "queryGroupUnit":
+            suggest = "query_group_unit"
+        elif key == "queryLimit":
+            suggest = "query_limit"
+        elif key == "querySortDirection":
+            suggest = "query_sort_direction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardTableChartChartItem. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardTableChartChartItem.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardTableChartChartItem.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 expression_plain: str,
+                 query_filter_asset: 'outputs.DashboardTableChartChartItemQueryFilterAsset',
+                 query_filter_attribute: 'outputs.DashboardTableChartChartItemQueryFilterAttribute',
+                 query_plain: str,
+                 ref_id: str,
+                 type: str,
+                 hidden: Optional[bool] = None,
+                 label: Optional[str] = None,
+                 query_group_function: Optional[str] = None,
+                 query_group_unit: Optional[str] = None,
+                 query_limit: Optional[int] = None,
+                 query_sort_direction: Optional[int] = None):
+        """
+        :param 'DashboardTableChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
+        :param 'DashboardTableChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "expression_plain", expression_plain)
+        pulumi.set(__self__, "query_filter_asset", query_filter_asset)
+        pulumi.set(__self__, "query_filter_attribute", query_filter_attribute)
+        pulumi.set(__self__, "query_plain", query_plain)
+        pulumi.set(__self__, "ref_id", ref_id)
+        pulumi.set(__self__, "type", type)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if query_group_function is not None:
+            pulumi.set(__self__, "query_group_function", query_group_function)
+        if query_group_unit is not None:
+            pulumi.set(__self__, "query_group_unit", query_group_unit)
+        if query_limit is not None:
+            pulumi.set(__self__, "query_limit", query_limit)
+        if query_sort_direction is not None:
+            pulumi.set(__self__, "query_sort_direction", query_sort_direction)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="expressionPlain")
+    def expression_plain(self) -> str:
+        return pulumi.get(self, "expression_plain")
+
+    @property
+    @pulumi.getter(name="queryFilterAsset")
+    def query_filter_asset(self) -> 'outputs.DashboardTableChartChartItemQueryFilterAsset':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_asset")
+
+    @property
+    @pulumi.getter(name="queryFilterAttribute")
+    def query_filter_attribute(self) -> 'outputs.DashboardTableChartChartItemQueryFilterAttribute':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_attribute")
+
+    @property
+    @pulumi.getter(name="queryPlain")
+    def query_plain(self) -> str:
+        return pulumi.get(self, "query_plain")
+
+    @property
+    @pulumi.getter(name="refId")
+    def ref_id(self) -> str:
+        return pulumi.get(self, "ref_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> Optional[bool]:
+        return pulumi.get(self, "hidden")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="queryGroupFunction")
+    def query_group_function(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_function")
+
+    @property
+    @pulumi.getter(name="queryGroupUnit")
+    def query_group_unit(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_unit")
+
+    @property
+    @pulumi.getter(name="queryLimit")
+    def query_limit(self) -> Optional[int]:
+        return pulumi.get(self, "query_limit")
+
+    @property
+    @pulumi.getter(name="querySortDirection")
+    def query_sort_direction(self) -> Optional[int]:
+        return pulumi.get(self, "query_sort_direction")
+
+
+@pulumi.output_type
+class DashboardTableChartChartItemQueryFilterAsset(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardTableChartChartItemQueryFilterAttribute(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardTableChartThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardTableChartThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardTableChartThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardTableChartThreshold.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 display_text: str,
+                 value: float):
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DashboardTableChartValueMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+        elif key == "matchValue":
+            suggest = "match_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardTableChartValueMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardTableChartValueMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardTableChartValueMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_text: str,
+                 match_value: str,
+                 order: int,
+                 type: str):
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "match_value", match_value)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter(name="matchValue")
+    def match_value(self) -> str:
+        return pulumi.get(self, "match_value")
+
+    @property
+    @pulumi.getter
+    def order(self) -> int:
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class DashboardTextChartChartItem(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expressionPlain":
+            suggest = "expression_plain"
+        elif key == "queryFilterAsset":
+            suggest = "query_filter_asset"
+        elif key == "queryFilterAttribute":
+            suggest = "query_filter_attribute"
+        elif key == "queryPlain":
+            suggest = "query_plain"
+        elif key == "refId":
+            suggest = "ref_id"
+        elif key == "queryGroupFunction":
+            suggest = "query_group_function"
+        elif key == "queryGroupUnit":
+            suggest = "query_group_unit"
+        elif key == "queryLimit":
+            suggest = "query_limit"
+        elif key == "querySortDirection":
+            suggest = "query_sort_direction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardTextChartChartItem. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardTextChartChartItem.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardTextChartChartItem.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 expression_plain: str,
+                 query_filter_asset: 'outputs.DashboardTextChartChartItemQueryFilterAsset',
+                 query_filter_attribute: 'outputs.DashboardTextChartChartItemQueryFilterAttribute',
+                 query_plain: str,
+                 ref_id: str,
+                 type: str,
+                 hidden: Optional[bool] = None,
+                 label: Optional[str] = None,
+                 query_group_function: Optional[str] = None,
+                 query_group_unit: Optional[str] = None,
+                 query_limit: Optional[int] = None,
+                 query_sort_direction: Optional[int] = None):
+        """
+        :param 'DashboardTextChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
+        :param 'DashboardTextChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "expression_plain", expression_plain)
+        pulumi.set(__self__, "query_filter_asset", query_filter_asset)
+        pulumi.set(__self__, "query_filter_attribute", query_filter_attribute)
+        pulumi.set(__self__, "query_plain", query_plain)
+        pulumi.set(__self__, "ref_id", ref_id)
+        pulumi.set(__self__, "type", type)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if query_group_function is not None:
+            pulumi.set(__self__, "query_group_function", query_group_function)
+        if query_group_unit is not None:
+            pulumi.set(__self__, "query_group_unit", query_group_unit)
+        if query_limit is not None:
+            pulumi.set(__self__, "query_limit", query_limit)
+        if query_sort_direction is not None:
+            pulumi.set(__self__, "query_sort_direction", query_sort_direction)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="expressionPlain")
+    def expression_plain(self) -> str:
+        return pulumi.get(self, "expression_plain")
+
+    @property
+    @pulumi.getter(name="queryFilterAsset")
+    def query_filter_asset(self) -> 'outputs.DashboardTextChartChartItemQueryFilterAsset':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_asset")
+
+    @property
+    @pulumi.getter(name="queryFilterAttribute")
+    def query_filter_attribute(self) -> 'outputs.DashboardTextChartChartItemQueryFilterAttribute':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_attribute")
+
+    @property
+    @pulumi.getter(name="queryPlain")
+    def query_plain(self) -> str:
+        return pulumi.get(self, "query_plain")
+
+    @property
+    @pulumi.getter(name="refId")
+    def ref_id(self) -> str:
+        return pulumi.get(self, "ref_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> Optional[bool]:
+        return pulumi.get(self, "hidden")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="queryGroupFunction")
+    def query_group_function(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_function")
+
+    @property
+    @pulumi.getter(name="queryGroupUnit")
+    def query_group_unit(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_unit")
+
+    @property
+    @pulumi.getter(name="queryLimit")
+    def query_limit(self) -> Optional[int]:
+        return pulumi.get(self, "query_limit")
+
+    @property
+    @pulumi.getter(name="querySortDirection")
+    def query_sort_direction(self) -> Optional[int]:
+        return pulumi.get(self, "query_sort_direction")
+
+
+@pulumi.output_type
+class DashboardTextChartChartItemQueryFilterAsset(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardTextChartChartItemQueryFilterAttribute(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardTextChartThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardTextChartThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardTextChartThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardTextChartThreshold.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 display_text: str,
+                 value: float):
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DashboardTextChartValueMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+        elif key == "matchValue":
+            suggest = "match_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardTextChartValueMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardTextChartValueMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardTextChartValueMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_text: str,
+                 match_value: str,
+                 order: int,
+                 type: str):
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "match_value", match_value)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter(name="matchValue")
+    def match_value(self) -> str:
+        return pulumi.get(self, "match_value")
+
+    @property
+    @pulumi.getter
+    def order(self) -> int:
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class DashboardTimeseriesChartChartItem(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expressionPlain":
+            suggest = "expression_plain"
+        elif key == "queryFilterAsset":
+            suggest = "query_filter_asset"
+        elif key == "queryFilterAttribute":
+            suggest = "query_filter_attribute"
+        elif key == "queryPlain":
+            suggest = "query_plain"
+        elif key == "refId":
+            suggest = "ref_id"
+        elif key == "queryGroupFunction":
+            suggest = "query_group_function"
+        elif key == "queryGroupUnit":
+            suggest = "query_group_unit"
+        elif key == "queryLimit":
+            suggest = "query_limit"
+        elif key == "querySortDirection":
+            suggest = "query_sort_direction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardTimeseriesChartChartItem. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardTimeseriesChartChartItem.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardTimeseriesChartChartItem.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 expression_plain: str,
+                 query_filter_asset: 'outputs.DashboardTimeseriesChartChartItemQueryFilterAsset',
+                 query_filter_attribute: 'outputs.DashboardTimeseriesChartChartItemQueryFilterAttribute',
+                 query_plain: str,
+                 ref_id: str,
+                 type: str,
+                 hidden: Optional[bool] = None,
+                 label: Optional[str] = None,
+                 query_group_function: Optional[str] = None,
+                 query_group_unit: Optional[str] = None,
+                 query_limit: Optional[int] = None,
+                 query_sort_direction: Optional[int] = None):
+        """
+        :param 'DashboardTimeseriesChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
+        :param 'DashboardTimeseriesChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "expression_plain", expression_plain)
+        pulumi.set(__self__, "query_filter_asset", query_filter_asset)
+        pulumi.set(__self__, "query_filter_attribute", query_filter_attribute)
+        pulumi.set(__self__, "query_plain", query_plain)
+        pulumi.set(__self__, "ref_id", ref_id)
+        pulumi.set(__self__, "type", type)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if query_group_function is not None:
+            pulumi.set(__self__, "query_group_function", query_group_function)
+        if query_group_unit is not None:
+            pulumi.set(__self__, "query_group_unit", query_group_unit)
+        if query_limit is not None:
+            pulumi.set(__self__, "query_limit", query_limit)
+        if query_sort_direction is not None:
+            pulumi.set(__self__, "query_sort_direction", query_sort_direction)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="expressionPlain")
+    def expression_plain(self) -> str:
+        return pulumi.get(self, "expression_plain")
+
+    @property
+    @pulumi.getter(name="queryFilterAsset")
+    def query_filter_asset(self) -> 'outputs.DashboardTimeseriesChartChartItemQueryFilterAsset':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_asset")
+
+    @property
+    @pulumi.getter(name="queryFilterAttribute")
+    def query_filter_attribute(self) -> 'outputs.DashboardTimeseriesChartChartItemQueryFilterAttribute':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_attribute")
+
+    @property
+    @pulumi.getter(name="queryPlain")
+    def query_plain(self) -> str:
+        return pulumi.get(self, "query_plain")
+
+    @property
+    @pulumi.getter(name="refId")
+    def ref_id(self) -> str:
+        return pulumi.get(self, "ref_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> Optional[bool]:
+        return pulumi.get(self, "hidden")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="queryGroupFunction")
+    def query_group_function(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_function")
+
+    @property
+    @pulumi.getter(name="queryGroupUnit")
+    def query_group_unit(self) -> Optional[str]:
+        return pulumi.get(self, "query_group_unit")
+
+    @property
+    @pulumi.getter(name="queryLimit")
+    def query_limit(self) -> Optional[int]:
+        return pulumi.get(self, "query_limit")
+
+    @property
+    @pulumi.getter(name="querySortDirection")
+    def query_sort_direction(self) -> Optional[int]:
+        return pulumi.get(self, "query_sort_direction")
+
+
+@pulumi.output_type
+class DashboardTimeseriesChartChartItemQueryFilterAsset(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardTimeseriesChartChartItemQueryFilterAttribute(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DashboardTimeseriesChartThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardTimeseriesChartThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardTimeseriesChartThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardTimeseriesChartThreshold.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 color: str,
+                 display_text: str,
+                 value: float):
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DashboardTimeseriesChartValueMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+        elif key == "matchValue":
+            suggest = "match_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardTimeseriesChartValueMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardTimeseriesChartValueMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardTimeseriesChartValueMapping.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -807,6 +4929,10 @@ class FunctionFunctionItem(dict):
         suggest = None
         if key == "expressionPlain":
             suggest = "expression_plain"
+        elif key == "queryFilterAsset":
+            suggest = "query_filter_asset"
+        elif key == "queryFilterAttribute":
+            suggest = "query_filter_attribute"
         elif key == "queryPlain":
             suggest = "query_plain"
         elif key == "refId":
@@ -824,15 +4950,28 @@ class FunctionFunctionItem(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 expression: str,
                  expression_plain: str,
+                 query_filter_asset: 'outputs.FunctionFunctionItemQueryFilterAsset',
+                 query_filter_attribute: 'outputs.FunctionFunctionItemQueryFilterAttribute',
                  query_plain: str,
                  ref_id: str,
                  type: str,
                  id: Optional[str] = None):
         """
-        :param str id: optional id
+        :param str expression: how the expression is shown (i.e 'A * 2')
+        :param str expression_plain: actual mongo query containing the expression
+        :param 'FunctionFunctionItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
+        :param 'FunctionFunctionItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        :param str query_plain: actual mongo query
+        :param str ref_id: identifier of the variable (i.e 'A')
+        :param str type: either QUERY or EXPRESSION
+        :param str id: ID of the function item
         """
+        pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "expression_plain", expression_plain)
+        pulumi.set(__self__, "query_filter_asset", query_filter_asset)
+        pulumi.set(__self__, "query_filter_attribute", query_filter_attribute)
         pulumi.set(__self__, "query_plain", query_plain)
         pulumi.set(__self__, "ref_id", ref_id)
         pulumi.set(__self__, "type", type)
@@ -840,32 +4979,192 @@ class FunctionFunctionItem(dict):
             pulumi.set(__self__, "id", id)
 
     @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        how the expression is shown (i.e 'A * 2')
+        """
+        return pulumi.get(self, "expression")
+
+    @property
     @pulumi.getter(name="expressionPlain")
     def expression_plain(self) -> str:
+        """
+        actual mongo query containing the expression
+        """
         return pulumi.get(self, "expression_plain")
+
+    @property
+    @pulumi.getter(name="queryFilterAsset")
+    def query_filter_asset(self) -> 'outputs.FunctionFunctionItemQueryFilterAsset':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_asset")
+
+    @property
+    @pulumi.getter(name="queryFilterAttribute")
+    def query_filter_attribute(self) -> 'outputs.FunctionFunctionItemQueryFilterAttribute':
+        """
+        Asset/Attribute filter
+        """
+        return pulumi.get(self, "query_filter_attribute")
 
     @property
     @pulumi.getter(name="queryPlain")
     def query_plain(self) -> str:
+        """
+        actual mongo query
+        """
         return pulumi.get(self, "query_plain")
 
     @property
     @pulumi.getter(name="refId")
     def ref_id(self) -> str:
+        """
+        identifier of the variable (i.e 'A')
+        """
         return pulumi.get(self, "ref_id")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        either QUERY or EXPRESSION
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        optional id
+        ID of the function item
         """
         return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class FunctionFunctionItemQueryFilterAsset(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class FunctionFunctionItemQueryFilterAttribute(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class FunctionTargetAsset(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class FunctionTargetAttribute(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

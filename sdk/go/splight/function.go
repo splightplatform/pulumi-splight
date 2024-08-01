@@ -28,11 +28,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal([]map[string]interface{}{
-//				map[string]interface{}{
-//					"$match": map[string]interface{}{
-//						"asset":     "49551a15-d79b-40dc-9434-1b33d6b2fcb2",
-//						"attribute": "c1d0d94b-5feb-4ebb-a527-0b0a34196252",
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"type": "GeometryCollection",
+//				"geometries": []map[string]interface{}{
+//					map[string]interface{}{
+//						"type": "Point",
+//						"coordinates": []float64{
+//							0,
+//							0,
+//						},
 //					},
 //				},
 //			})
@@ -40,11 +44,29 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal([]map[string]interface{}{
-//				map[string]interface{}{
-//					"$match": map[string]interface{}{
-//						"asset":     "49551a15-d79b-40dc-9434-1b33d6b2fcb2",
-//						"attribute": "c1d0d94b-5feb-4ebb-a527-0b0a34196252",
+//			myAsset, err := splight.NewAsset(ctx, "myAsset", &splight.AssetArgs{
+//				Description: pulumi.String("My Asset Description"),
+//				Geometry:    pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myAttribute, err := splight.NewAssetAttribute(ctx, "myAttribute", &splight.AssetAttributeArgs{
+//				Type:  pulumi.String("Number"),
+//				Asset: myAsset.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"type": "GeometryCollection",
+//				"geometries": []map[string]interface{}{
+//					map[string]interface{}{
+//						"type": "Point",
+//						"coordinates": []float64{
+//							0,
+//							0,
+//						},
 //					},
 //				},
 //			})
@@ -52,33 +74,87 @@ import (
 //				return err
 //			}
 //			json1 := string(tmpJSON1)
-//			_, err = splight.NewFunction(ctx, "functionTest", &splight.FunctionArgs{
-//				Description:    pulumi.String("Created with Terraform"),
-//				Type:           pulumi.String("rate"),
-//				TimeWindow:     pulumi.Int(600),
-//				RateValue:      pulumi.Int(10),
-//				RateUnit:       pulumi.String("minute"),
-//				TargetVariable: pulumi.String("A"),
-//				TargetAsset: pulumi.StringMap{
-//					"id":   pulumi.String("49551a15-d79b-40dc-9434-1b33d6b2fcb2"),
-//					"name": pulumi.String("An asset"),
+//			myTargetAsset, err := splight.NewAsset(ctx, "myTargetAsset", &splight.AssetArgs{
+//				Description: pulumi.String("My Target Asset Description"),
+//				Geometry:    pulumi.String(json1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myTargetAttribute, err := splight.NewAssetAttribute(ctx, "myTargetAttribute", &splight.AssetAttributeArgs{
+//				Type:  pulumi.String("Number"),
+//				Asset: myTargetAsset.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON2, err := json.Marshal(map[string]interface{}{
+//				"$function": map[string]interface{}{
+//					"body": "function () { return A * 2 }",
+//					"args": []interface{}{},
+//					"lang": "js",
 //				},
-//				TargetAttribute: pulumi.StringMap{
-//					"id":   pulumi.String("49551a15-d79b-40dc-9434-1b33d6b2fcb2"),
-//					"name": pulumi.String("An attribute"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json2 := string(tmpJSON2)
+//			_, err = splight.NewFunction(ctx, "functionTest", &splight.FunctionArgs{
+//				Description:    pulumi.String("My Function Description"),
+//				Type:           pulumi.String("rate"),
+//				RateUnit:       pulumi.String("minute"),
+//				RateValue:      pulumi.Int(10),
+//				TimeWindow:     3600 * 12,
+//				TargetVariable: pulumi.String("B"),
+//				TargetAsset: &splight.FunctionTargetAssetArgs{
+//					Id:   myTargetAsset.ID(),
+//					Name: myTargetAsset.Name,
+//				},
+//				TargetAttribute: &splight.FunctionTargetAttributeArgs{
+//					Id:   myTargetAttribute.ID(),
+//					Name: myTargetAttribute.Name,
 //				},
 //				FunctionItems: splight.FunctionFunctionItemArray{
 //					&splight.FunctionFunctionItemArgs{
 //						RefId:           pulumi.String("A"),
 //						Type:            pulumi.String("QUERY"),
+//						Expression:      pulumi.String(""),
 //						ExpressionPlain: pulumi.String(""),
-//						QueryPlain:      pulumi.String(json0),
+//						QueryFilterAsset: &splight.FunctionFunctionItemQueryFilterAssetArgs{
+//							Id:   myAsset.ID(),
+//							Name: myAsset.Name,
+//						},
+//						QueryFilterAttribute: &splight.FunctionFunctionItemQueryFilterAttributeArgs{
+//							Id:   myAttribute.ID(),
+//							Name: myAttribute.Name,
+//						},
+//						QueryPlain: pulumi.All(myAsset.ID(), myAttribute.ID()).ApplyT(func(_args []interface{}) (string, error) {
+//							myAssetId := _args[0].(string)
+//							myAttributeId := _args[1].(string)
+//							var _zero string
+//							tmpJSON3, err := json.Marshal([]map[string]interface{}{
+//								map[string]interface{}{
+//									"$match": map[string]interface{}{
+//										"asset":     myAssetId,
+//										"attribute": myAttributeId,
+//									},
+//								},
+//							})
+//							if err != nil {
+//								return _zero, err
+//							}
+//							json3 := string(tmpJSON3)
+//							return json3, nil
+//						}).(pulumi.StringOutput),
 //					},
 //					&splight.FunctionFunctionItemArgs{
-//						RefId:           pulumi.String("B"),
-//						Type:            pulumi.String("QUERY"),
-//						ExpressionPlain: pulumi.String(""),
-//						QueryPlain:      pulumi.String(json1),
+//						RefId:                pulumi.String("B"),
+//						Type:                 pulumi.String("EXPRESSION"),
+//						Expression:           pulumi.String("A * 2"),
+//						ExpressionPlain:      pulumi.String(json2),
+//						QueryFilterAsset:     nil,
+//						QueryFilterAttribute: nil,
+//						QueryPlain:           pulumi.String(""),
 //					},
 //				},
 //			})
@@ -121,10 +197,10 @@ type Function struct {
 	RateUnit pulumi.StringOutput `pulumi:"rateUnit"`
 	// schedule value
 	RateValue pulumi.IntOutput `pulumi:"rateValue"`
-	// asset where to ingest results
-	TargetAsset pulumi.StringMapOutput `pulumi:"targetAsset"`
-	// attribute where to ingest results
-	TargetAttribute pulumi.StringMapOutput `pulumi:"targetAttribute"`
+	// Asset/Attribute filter
+	TargetAsset FunctionTargetAssetOutput `pulumi:"targetAsset"`
+	// Asset/Attribute filter
+	TargetAttribute FunctionTargetAttributeOutput `pulumi:"targetAttribute"`
 	// variable to be considered to be ingested
 	TargetVariable pulumi.StringOutput `pulumi:"targetVariable"`
 	// window to fetch data from. Data out of that window will not be considered for evaluation
@@ -206,10 +282,10 @@ type functionState struct {
 	RateUnit *string `pulumi:"rateUnit"`
 	// schedule value
 	RateValue *int `pulumi:"rateValue"`
-	// asset where to ingest results
-	TargetAsset map[string]string `pulumi:"targetAsset"`
-	// attribute where to ingest results
-	TargetAttribute map[string]string `pulumi:"targetAttribute"`
+	// Asset/Attribute filter
+	TargetAsset *FunctionTargetAsset `pulumi:"targetAsset"`
+	// Asset/Attribute filter
+	TargetAttribute *FunctionTargetAttribute `pulumi:"targetAttribute"`
 	// variable to be considered to be ingested
 	TargetVariable *string `pulumi:"targetVariable"`
 	// window to fetch data from. Data out of that window will not be considered for evaluation
@@ -241,10 +317,10 @@ type FunctionState struct {
 	RateUnit pulumi.StringPtrInput
 	// schedule value
 	RateValue pulumi.IntPtrInput
-	// asset where to ingest results
-	TargetAsset pulumi.StringMapInput
-	// attribute where to ingest results
-	TargetAttribute pulumi.StringMapInput
+	// Asset/Attribute filter
+	TargetAsset FunctionTargetAssetPtrInput
+	// Asset/Attribute filter
+	TargetAttribute FunctionTargetAttributePtrInput
 	// variable to be considered to be ingested
 	TargetVariable pulumi.StringPtrInput
 	// window to fetch data from. Data out of that window will not be considered for evaluation
@@ -280,10 +356,10 @@ type functionArgs struct {
 	RateUnit *string `pulumi:"rateUnit"`
 	// schedule value
 	RateValue *int `pulumi:"rateValue"`
-	// asset where to ingest results
-	TargetAsset map[string]string `pulumi:"targetAsset"`
-	// attribute where to ingest results
-	TargetAttribute map[string]string `pulumi:"targetAttribute"`
+	// Asset/Attribute filter
+	TargetAsset FunctionTargetAsset `pulumi:"targetAsset"`
+	// Asset/Attribute filter
+	TargetAttribute FunctionTargetAttribute `pulumi:"targetAttribute"`
 	// variable to be considered to be ingested
 	TargetVariable string `pulumi:"targetVariable"`
 	// window to fetch data from. Data out of that window will not be considered for evaluation
@@ -316,10 +392,10 @@ type FunctionArgs struct {
 	RateUnit pulumi.StringPtrInput
 	// schedule value
 	RateValue pulumi.IntPtrInput
-	// asset where to ingest results
-	TargetAsset pulumi.StringMapInput
-	// attribute where to ingest results
-	TargetAttribute pulumi.StringMapInput
+	// Asset/Attribute filter
+	TargetAsset FunctionTargetAssetInput
+	// Asset/Attribute filter
+	TargetAttribute FunctionTargetAttributeInput
 	// variable to be considered to be ingested
 	TargetVariable pulumi.StringInput
 	// window to fetch data from. Data out of that window will not be considered for evaluation
@@ -470,14 +546,14 @@ func (o FunctionOutput) RateValue() pulumi.IntOutput {
 	return o.ApplyT(func(v *Function) pulumi.IntOutput { return v.RateValue }).(pulumi.IntOutput)
 }
 
-// asset where to ingest results
-func (o FunctionOutput) TargetAsset() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.TargetAsset }).(pulumi.StringMapOutput)
+// Asset/Attribute filter
+func (o FunctionOutput) TargetAsset() FunctionTargetAssetOutput {
+	return o.ApplyT(func(v *Function) FunctionTargetAssetOutput { return v.TargetAsset }).(FunctionTargetAssetOutput)
 }
 
-// attribute where to ingest results
-func (o FunctionOutput) TargetAttribute() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.TargetAttribute }).(pulumi.StringMapOutput)
+// Asset/Attribute filter
+func (o FunctionOutput) TargetAttribute() FunctionTargetAttributeOutput {
+	return o.ApplyT(func(v *Function) FunctionTargetAttributeOutput { return v.TargetAttribute }).(FunctionTargetAttributeOutput)
 }
 
 // variable to be considered to be ingested
