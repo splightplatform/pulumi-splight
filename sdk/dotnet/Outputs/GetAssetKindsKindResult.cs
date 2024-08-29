@@ -14,7 +14,13 @@ namespace Splight.Splight.Outputs
     [OutputType]
     public sealed class GetAssetKindsKindResult
     {
+        /// <summary>
+        /// ID of the resource
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// name of the resource
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

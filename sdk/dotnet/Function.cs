@@ -82,7 +82,7 @@ namespace Splight.Splight
     ///         Type = "rate",
     ///         RateUnit = "minute",
     ///         RateValue = 10,
-    ///         TimeWindow = 3600 * 12,
+    ///         TimeWindow = 3600,
     ///         TargetVariable = "B",
     ///         TargetAsset = new Splight.Inputs.FunctionTargetAssetArgs
     ///         {
@@ -112,6 +112,8 @@ namespace Splight.Splight
     ///                     Id = myAttribute.Id,
     ///                     Name = myAttribute.Name,
     ///                 },
+    ///                 QueryGroupFunction = "avg",
+    ///                 QueryGroupUnit = "day",
     ///                 QueryPlain = Output.JsonSerialize(Output.Create(new[]
     ///                 {
     ///                     new Dictionary&lt;string, object?&gt;

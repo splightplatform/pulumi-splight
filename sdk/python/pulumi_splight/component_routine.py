@@ -257,11 +257,11 @@ class ComponentRoutine(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  component_id: Optional[pulumi.Input[str]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineConfigArgs']]]]] = None,
+                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComponentRoutineConfigArgs', 'ComponentRoutineConfigArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineInputArgs']]]]] = None,
+                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComponentRoutineInputArgs', 'ComponentRoutineInputArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 outputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineOutputArgs']]]]] = None,
+                 outputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComponentRoutineOutputArgs', 'ComponentRoutineOutputArgsDict']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -276,27 +276,27 @@ class ComponentRoutine(pulumi.CustomResource):
             description="Created with Terraform",
             type="IncomingRoutine",
             component_id="1234-1234-1234-1234",
-            configs=[splight.ComponentRoutineConfigArgs(
-                name="config_param",
-                type="bool",
-                value="true",
-                multiple=False,
-                required=True,
-                sensitive=False,
-                description=json.dumps("Created with Terraform123123"),
-            )],
-            outputs=[splight.ComponentRoutineOutputArgs(
-                name="address",
-                description="destination address for data to be pushed",
-                type="DataAddress",
-                value_type="Number",
-                multiple=False,
-                required=True,
-                values={
+            configs=[{
+                "name": "config_param",
+                "type": "bool",
+                "value": "true",
+                "multiple": False,
+                "required": True,
+                "sensitive": False,
+                "description": json.dumps("Created with Terraform123123"),
+            }],
+            outputs=[{
+                "name": "address",
+                "description": "destination address for data to be pushed",
+                "type": "DataAddress",
+                "value_type": "Number",
+                "multiple": False,
+                "required": True,
+                "values": {
                     "asset": "1234-1234-1234-1234",
                     "attribute": "1234-1234-1234-1234",
                 },
-            )])
+            }])
         ```
 
         ## Import
@@ -308,11 +308,11 @@ class ComponentRoutine(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] component_id: reference to component to be attached
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineConfigArgs']]]] configs: static config parameters of the routine
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ComponentRoutineConfigArgs', 'ComponentRoutineConfigArgsDict']]]] configs: static config parameters of the routine
         :param pulumi.Input[str] description: optional complementary information about the routine
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineInputArgs']]]] inputs: asset attribute where to ingest data. Only valid for IncomingRoutine
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ComponentRoutineInputArgs', 'ComponentRoutineInputArgsDict']]]] inputs: asset attribute where to ingest data. Only valid for IncomingRoutine
         :param pulumi.Input[str] name: name of the routine
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineOutputArgs']]]] outputs: asset attribute where to ingest data. Only valid for IncomingRoutine
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ComponentRoutineOutputArgs', 'ComponentRoutineOutputArgsDict']]]] outputs: asset attribute where to ingest data. Only valid for IncomingRoutine
         :param pulumi.Input[str] type: [IncomingRoutine|OutgoingRoutine] direction of the data flow (from device to system or from system to device)
         """
         ...
@@ -333,27 +333,27 @@ class ComponentRoutine(pulumi.CustomResource):
             description="Created with Terraform",
             type="IncomingRoutine",
             component_id="1234-1234-1234-1234",
-            configs=[splight.ComponentRoutineConfigArgs(
-                name="config_param",
-                type="bool",
-                value="true",
-                multiple=False,
-                required=True,
-                sensitive=False,
-                description=json.dumps("Created with Terraform123123"),
-            )],
-            outputs=[splight.ComponentRoutineOutputArgs(
-                name="address",
-                description="destination address for data to be pushed",
-                type="DataAddress",
-                value_type="Number",
-                multiple=False,
-                required=True,
-                values={
+            configs=[{
+                "name": "config_param",
+                "type": "bool",
+                "value": "true",
+                "multiple": False,
+                "required": True,
+                "sensitive": False,
+                "description": json.dumps("Created with Terraform123123"),
+            }],
+            outputs=[{
+                "name": "address",
+                "description": "destination address for data to be pushed",
+                "type": "DataAddress",
+                "value_type": "Number",
+                "multiple": False,
+                "required": True,
+                "values": {
                     "asset": "1234-1234-1234-1234",
                     "attribute": "1234-1234-1234-1234",
                 },
-            )])
+            }])
         ```
 
         ## Import
@@ -378,11 +378,11 @@ class ComponentRoutine(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  component_id: Optional[pulumi.Input[str]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineConfigArgs']]]]] = None,
+                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComponentRoutineConfigArgs', 'ComponentRoutineConfigArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineInputArgs']]]]] = None,
+                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComponentRoutineInputArgs', 'ComponentRoutineInputArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 outputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineOutputArgs']]]]] = None,
+                 outputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComponentRoutineOutputArgs', 'ComponentRoutineOutputArgsDict']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -415,11 +415,11 @@ class ComponentRoutine(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             component_id: Optional[pulumi.Input[str]] = None,
-            configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineConfigArgs']]]]] = None,
+            configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComponentRoutineConfigArgs', 'ComponentRoutineConfigArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            inputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineInputArgs']]]]] = None,
+            inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComponentRoutineInputArgs', 'ComponentRoutineInputArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            outputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineOutputArgs']]]]] = None,
+            outputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComponentRoutineOutputArgs', 'ComponentRoutineOutputArgsDict']]]]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'ComponentRoutine':
         """
         Get an existing ComponentRoutine resource's state with the given name, id, and optional extra
@@ -429,11 +429,11 @@ class ComponentRoutine(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] component_id: reference to component to be attached
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineConfigArgs']]]] configs: static config parameters of the routine
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ComponentRoutineConfigArgs', 'ComponentRoutineConfigArgsDict']]]] configs: static config parameters of the routine
         :param pulumi.Input[str] description: optional complementary information about the routine
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineInputArgs']]]] inputs: asset attribute where to ingest data. Only valid for IncomingRoutine
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ComponentRoutineInputArgs', 'ComponentRoutineInputArgsDict']]]] inputs: asset attribute where to ingest data. Only valid for IncomingRoutine
         :param pulumi.Input[str] name: name of the routine
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentRoutineOutputArgs']]]] outputs: asset attribute where to ingest data. Only valid for IncomingRoutine
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ComponentRoutineOutputArgs', 'ComponentRoutineOutputArgsDict']]]] outputs: asset attribute where to ingest data. Only valid for IncomingRoutine
         :param pulumi.Input[str] type: [IncomingRoutine|OutgoingRoutine] direction of the data flow (from device to system or from system to device)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

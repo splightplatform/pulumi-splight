@@ -21,7 +21,7 @@ class AssetAttributeArgs:
         """
         The set of arguments for constructing a AssetAttribute resource.
         :param pulumi.Input[str] asset: reference to the asset to be linked to
-        :param pulumi.Input[str] type: [string|boolean|number] type of the data to be ingested in this attribute
+        :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] unit: optional reference to the unit of the measure
         """
@@ -48,7 +48,7 @@ class AssetAttributeArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        [string|boolean|number] type of the data to be ingested in this attribute
+        [String|Boolean|Number] type of the data to be ingested in this attribute
         """
         return pulumi.get(self, "type")
 
@@ -92,7 +92,7 @@ class _AssetAttributeState:
         Input properties used for looking up and filtering AssetAttribute resources.
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] name: name of the resource
-        :param pulumi.Input[str] type: [string|boolean|number] type of the data to be ingested in this attribute
+        :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: optional reference to the unit of the measure
         """
         if asset is not None:
@@ -132,7 +132,7 @@ class _AssetAttributeState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        [string|boolean|number] type of the data to be ingested in this attribute
+        [String|Boolean|Number] type of the data to be ingested in this attribute
         """
         return pulumi.get(self, "type")
 
@@ -168,12 +168,25 @@ class AssetAttribute(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_splight as splight
 
-        asset_test_function_attribute = splight.AssetAttribute("assetTestFunctionAttribute",
-            asset="1234-1234-1234-1234",
+        my_asset = splight.Asset("myAsset",
+            description="My Asset Description",
+            geometry=json.dumps({
+                "type": "GeometryCollection",
+                "geometries": [{
+                    "type": "Point",
+                    "coordinates": [
+                        0,
+                        0,
+                    ],
+                }],
+            }))
+        my_attribute = splight.AssetAttribute("myAttribute",
             type="Number",
-            unit="meters")
+            unit="meters",
+            asset=my_asset.id)
         ```
 
         ## Import
@@ -186,7 +199,7 @@ class AssetAttribute(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] name: name of the resource
-        :param pulumi.Input[str] type: [string|boolean|number] type of the data to be ingested in this attribute
+        :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: optional reference to the unit of the measure
         """
         ...
@@ -200,12 +213,25 @@ class AssetAttribute(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_splight as splight
 
-        asset_test_function_attribute = splight.AssetAttribute("assetTestFunctionAttribute",
-            asset="1234-1234-1234-1234",
+        my_asset = splight.Asset("myAsset",
+            description="My Asset Description",
+            geometry=json.dumps({
+                "type": "GeometryCollection",
+                "geometries": [{
+                    "type": "Point",
+                    "coordinates": [
+                        0,
+                        0,
+                    ],
+                }],
+            }))
+        my_attribute = splight.AssetAttribute("myAttribute",
             type="Number",
-            unit="meters")
+            unit="meters",
+            asset=my_asset.id)
         ```
 
         ## Import
@@ -273,7 +299,7 @@ class AssetAttribute(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] name: name of the resource
-        :param pulumi.Input[str] type: [string|boolean|number] type of the data to be ingested in this attribute
+        :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: optional reference to the unit of the measure
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -306,7 +332,7 @@ class AssetAttribute(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        [string|boolean|number] type of the data to be ingested in this attribute
+        [String|Boolean|Number] type of the data to be ingested in this attribute
         """
         return pulumi.get(self, "type")
 

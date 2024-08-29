@@ -5,6 +5,47 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface ActionAsset {
+    /**
+     * asset id
+     */
+    id: string;
+    /**
+     * asset name
+     */
+    name: string;
+}
+
+export interface ActionSetpoint {
+    /**
+     * the target attribute of the setpoint which should also be an attribute of the specified asset
+     */
+    attribute: outputs.ActionSetpointAttribute;
+    /**
+     * setpoint ID
+     */
+    id: string;
+    /**
+     * setpoint name
+     */
+    name: string;
+    /**
+     * JSON encoded scalar value
+     */
+    value: string;
+}
+
+export interface ActionSetpointAttribute {
+    /**
+     * attribute id
+     */
+    id: string;
+    /**
+     * attribute name
+     */
+    name: string;
+}
+
 export interface AlertAlertItem {
     /**
      * how the expression is shown (i.e 'A * 2')
@@ -26,6 +67,14 @@ export interface AlertAlertItem {
      * Asset/Attribute filter
      */
     queryFilterAttribute: outputs.AlertAlertItemQueryFilterAttribute;
+    /**
+     * function used to aggregate data
+     */
+    queryGroupFunction?: string;
+    /**
+     * time window to apply the aggregation
+     */
+    queryGroupUnit?: string;
     /**
      * actual mongo query
      */
@@ -88,6 +137,43 @@ export interface AssetKind {
     name: string;
 }
 
+export interface AssetTag {
+    /**
+     * tag id
+     */
+    id: string;
+    /**
+     * tag name
+     */
+    name: string;
+}
+
+export interface CommandAction {
+    /**
+     * asset associated with the action (to be deprecated)
+     */
+    asset: outputs.CommandActionAsset;
+    /**
+     * action ID
+     */
+    id: string;
+    /**
+     * setpoint name
+     */
+    name: string;
+}
+
+export interface CommandActionAsset {
+    /**
+     * asset id
+     */
+    id: string;
+    /**
+     * asset name
+     */
+    name: string;
+}
+
 export interface ComponentInput {
     description?: string;
     multiple?: boolean;
@@ -138,6 +224,17 @@ export interface ComponentRoutineOutput {
 export interface ComponentRoutineOutputValue {
     asset: string;
     attribute: string;
+}
+
+export interface ComponentTag {
+    /**
+     * tag id
+     */
+    id: string;
+    /**
+     * tag name
+     */
+    name: string;
 }
 
 export interface DashboardActionlistChartChartItem {
@@ -960,6 +1057,14 @@ export interface FunctionFunctionItem {
      */
     queryFilterAttribute: outputs.FunctionFunctionItemQueryFilterAttribute;
     /**
+     * function used to aggregate data
+     */
+    queryGroupFunction?: string;
+    /**
+     * time window to apply the aggregation
+     */
+    queryGroupUnit?: string;
+    /**
      * actual mongo query
      */
     queryPlain: string;
@@ -1018,7 +1123,24 @@ export interface FunctionTargetAttribute {
 }
 
 export interface GetAssetKindsKind {
+    /**
+     * ID of the resource
+     */
     id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+}
+
+export interface GetTagsTag {
+    /**
+     * ID of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
     name: string;
 }
 

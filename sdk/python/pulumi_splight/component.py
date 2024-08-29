@@ -19,13 +19,15 @@ class ComponentArgs:
                  version: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  inputs: Optional[pulumi.Input[Sequence[pulumi.Input['ComponentInputArgs']]]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ComponentTagArgs']]]] = None):
         """
         The set of arguments for constructing a Component resource.
         :param pulumi.Input[str] version: [NAME-VERSION] the version of the hub component
-        :param pulumi.Input[str] description: optinal description to add details of the resource
+        :param pulumi.Input[str] description: optional description to add details of the resource
         :param pulumi.Input[Sequence[pulumi.Input['ComponentInputArgs']]] inputs: static config parameters of the routine
         :param pulumi.Input[str] name: the name of the component to be created
+        :param pulumi.Input[Sequence[pulumi.Input['ComponentTagArgs']]] tags: tags of the resource
         """
         pulumi.set(__self__, "version", version)
         if description is not None:
@@ -34,6 +36,8 @@ class ComponentArgs:
             pulumi.set(__self__, "inputs", inputs)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -51,7 +55,7 @@ class ComponentArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        optinal description to add details of the resource
+        optional description to add details of the resource
         """
         return pulumi.get(self, "description")
 
@@ -82,6 +86,18 @@ class ComponentArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ComponentTagArgs']]]]:
+        """
+        tags of the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ComponentTagArgs']]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -90,12 +106,14 @@ class _ComponentState:
                  description: Optional[pulumi.Input[str]] = None,
                  inputs: Optional[pulumi.Input[Sequence[pulumi.Input['ComponentInputArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ComponentTagArgs']]]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Component resources.
-        :param pulumi.Input[str] description: optinal description to add details of the resource
+        :param pulumi.Input[str] description: optional description to add details of the resource
         :param pulumi.Input[Sequence[pulumi.Input['ComponentInputArgs']]] inputs: static config parameters of the routine
         :param pulumi.Input[str] name: the name of the component to be created
+        :param pulumi.Input[Sequence[pulumi.Input['ComponentTagArgs']]] tags: tags of the resource
         :param pulumi.Input[str] version: [NAME-VERSION] the version of the hub component
         """
         if description is not None:
@@ -104,6 +122,8 @@ class _ComponentState:
             pulumi.set(__self__, "inputs", inputs)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -111,7 +131,7 @@ class _ComponentState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        optinal description to add details of the resource
+        optional description to add details of the resource
         """
         return pulumi.get(self, "description")
 
@@ -142,6 +162,18 @@ class _ComponentState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ComponentTagArgs']]]]:
+        """
+        tags of the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ComponentTagArgs']]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter
@@ -162,69 +194,13 @@ class Component(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentInputArgs']]]]] = None,
+                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComponentInputArgs', 'ComponentInputArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComponentTagArgs', 'ComponentTagArgsDict']]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_splight as splight
-
-        component_test = splight.Component("componentTest",
-            description="Created with Terraform",
-            version="Random-3.1.0",
-            inputs=[
-                splight.ComponentInputArgs(
-                    name="period",
-                    type="int",
-                    value=json.dumps(10),
-                    multiple=False,
-                    required=False,
-                    sensitive=False,
-                    description="",
-                ),
-                splight.ComponentInputArgs(
-                    name="min",
-                    type="int",
-                    value=json.dumps(1),
-                    multiple=False,
-                    required=False,
-                    sensitive=False,
-                    description="",
-                ),
-                splight.ComponentInputArgs(
-                    name="max",
-                    type="int",
-                    value=json.dumps(150),
-                    multiple=False,
-                    required=False,
-                    sensitive=False,
-                    description="",
-                ),
-                splight.ComponentInputArgs(
-                    name="max_iterations",
-                    type="int",
-                    value=json.dumps(3),
-                    multiple=False,
-                    required=False,
-                    sensitive=False,
-                    description="",
-                ),
-                splight.ComponentInputArgs(
-                    name="should_crash",
-                    type="bool",
-                    value=json.dumps("true"),
-                    multiple=False,
-                    required=False,
-                    sensitive=False,
-                    description="",
-                ),
-            ])
-        ```
 
         ## Import
 
@@ -234,9 +210,10 @@ class Component(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: optinal description to add details of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentInputArgs']]]] inputs: static config parameters of the routine
+        :param pulumi.Input[str] description: optional description to add details of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ComponentInputArgs', 'ComponentInputArgsDict']]]] inputs: static config parameters of the routine
         :param pulumi.Input[str] name: the name of the component to be created
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ComponentTagArgs', 'ComponentTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[str] version: [NAME-VERSION] the version of the hub component
         """
         ...
@@ -247,63 +224,6 @@ class Component(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_splight as splight
-
-        component_test = splight.Component("componentTest",
-            description="Created with Terraform",
-            version="Random-3.1.0",
-            inputs=[
-                splight.ComponentInputArgs(
-                    name="period",
-                    type="int",
-                    value=json.dumps(10),
-                    multiple=False,
-                    required=False,
-                    sensitive=False,
-                    description="",
-                ),
-                splight.ComponentInputArgs(
-                    name="min",
-                    type="int",
-                    value=json.dumps(1),
-                    multiple=False,
-                    required=False,
-                    sensitive=False,
-                    description="",
-                ),
-                splight.ComponentInputArgs(
-                    name="max",
-                    type="int",
-                    value=json.dumps(150),
-                    multiple=False,
-                    required=False,
-                    sensitive=False,
-                    description="",
-                ),
-                splight.ComponentInputArgs(
-                    name="max_iterations",
-                    type="int",
-                    value=json.dumps(3),
-                    multiple=False,
-                    required=False,
-                    sensitive=False,
-                    description="",
-                ),
-                splight.ComponentInputArgs(
-                    name="should_crash",
-                    type="bool",
-                    value=json.dumps("true"),
-                    multiple=False,
-                    required=False,
-                    sensitive=False,
-                    description="",
-                ),
-            ])
-        ```
 
         ## Import
 
@@ -327,8 +247,9 @@ class Component(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentInputArgs']]]]] = None,
+                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComponentInputArgs', 'ComponentInputArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComponentTagArgs', 'ComponentTagArgsDict']]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -342,6 +263,7 @@ class Component(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["inputs"] = inputs
             __props__.__dict__["name"] = name
+            __props__.__dict__["tags"] = tags
             if version is None and not opts.urn:
                 raise TypeError("Missing required property 'version'")
             __props__.__dict__["version"] = version
@@ -356,8 +278,9 @@ class Component(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            inputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentInputArgs']]]]] = None,
+            inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComponentInputArgs', 'ComponentInputArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComponentTagArgs', 'ComponentTagArgsDict']]]]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'Component':
         """
         Get an existing Component resource's state with the given name, id, and optional extra
@@ -366,9 +289,10 @@ class Component(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: optinal description to add details of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComponentInputArgs']]]] inputs: static config parameters of the routine
+        :param pulumi.Input[str] description: optional description to add details of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ComponentInputArgs', 'ComponentInputArgsDict']]]] inputs: static config parameters of the routine
         :param pulumi.Input[str] name: the name of the component to be created
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ComponentTagArgs', 'ComponentTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[str] version: [NAME-VERSION] the version of the hub component
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -378,6 +302,7 @@ class Component(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["inputs"] = inputs
         __props__.__dict__["name"] = name
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["version"] = version
         return Component(resource_name, opts=opts, __props__=__props__)
 
@@ -385,7 +310,7 @@ class Component(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        optinal description to add details of the resource
+        optional description to add details of the resource
         """
         return pulumi.get(self, "description")
 
@@ -404,6 +329,14 @@ class Component(pulumi.CustomResource):
         the name of the component to be created
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.ComponentTag']]]:
+        """
+        tags of the resource
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter

@@ -28,16 +28,39 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(10)
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"type": "GeometryCollection",
+//				"geometries": []map[string]interface{}{
+//					map[string]interface{}{
+//						"type": "Point",
+//						"coordinates": []float64{
+//							0,
+//							0,
+//						},
+//					},
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			_, err = splight.NewAssetMetadata(ctx, "assetTestMetadata", &splight.AssetMetadataArgs{
+//			myAsset, err := splight.NewAsset(ctx, "myAsset", &splight.AssetArgs{
+//				Description: pulumi.String("My Asset Description"),
+//				Geometry:    pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON1, err := json.Marshal(10)
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			_, err = splight.NewAssetMetadata(ctx, "myAssetMetadata", &splight.AssetMetadataArgs{
 //				Type:  pulumi.String("Number"),
 //				Unit:  pulumi.String("meters"),
-//				Value: pulumi.String(json0),
-//				Asset: pulumi.String("1234-1234-1234-1234"),
+//				Value: pulumi.String(json1),
+//				Asset: myAsset.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -60,7 +83,7 @@ type AssetMetadata struct {
 	Asset pulumi.StringOutput `pulumi:"asset"`
 	// name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [string|boolean|number] type of the data to be ingested in this attribute
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
 	Type pulumi.StringOutput `pulumi:"type"`
 	// optional reference to the unit of the measure
 	Unit pulumi.StringPtrOutput `pulumi:"unit"`
@@ -111,7 +134,7 @@ type assetMetadataState struct {
 	Asset *string `pulumi:"asset"`
 	// name of the resource
 	Name *string `pulumi:"name"`
-	// [string|boolean|number] type of the data to be ingested in this attribute
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
 	Type *string `pulumi:"type"`
 	// optional reference to the unit of the measure
 	Unit *string `pulumi:"unit"`
@@ -124,7 +147,7 @@ type AssetMetadataState struct {
 	Asset pulumi.StringPtrInput
 	// name of the resource
 	Name pulumi.StringPtrInput
-	// [string|boolean|number] type of the data to be ingested in this attribute
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
 	Type pulumi.StringPtrInput
 	// optional reference to the unit of the measure
 	Unit pulumi.StringPtrInput
@@ -141,7 +164,7 @@ type assetMetadataArgs struct {
 	Asset string `pulumi:"asset"`
 	// name of the resource
 	Name *string `pulumi:"name"`
-	// [string|boolean|number] type of the data to be ingested in this attribute
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
 	Type string `pulumi:"type"`
 	// optional reference to the unit of the measure
 	Unit *string `pulumi:"unit"`
@@ -155,7 +178,7 @@ type AssetMetadataArgs struct {
 	Asset pulumi.StringInput
 	// name of the resource
 	Name pulumi.StringPtrInput
-	// [string|boolean|number] type of the data to be ingested in this attribute
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
 	Type pulumi.StringInput
 	// optional reference to the unit of the measure
 	Unit pulumi.StringPtrInput
@@ -260,7 +283,7 @@ func (o AssetMetadataOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AssetMetadata) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// [string|boolean|number] type of the data to be ingested in this attribute
+// [String|Boolean|Number] type of the data to be ingested in this attribute
 func (o AssetMetadataOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AssetMetadata) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -14,105 +14,6 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"encoding/json"
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/splightplatform/pulumi-splight/sdk/go/splight"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(10)
-//			if err != nil {
-//				return err
-//			}
-//			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal(1)
-//			if err != nil {
-//				return err
-//			}
-//			json1 := string(tmpJSON1)
-//			tmpJSON2, err := json.Marshal(150)
-//			if err != nil {
-//				return err
-//			}
-//			json2 := string(tmpJSON2)
-//			tmpJSON3, err := json.Marshal(3)
-//			if err != nil {
-//				return err
-//			}
-//			json3 := string(tmpJSON3)
-//			tmpJSON4, err := json.Marshal("true")
-//			if err != nil {
-//				return err
-//			}
-//			json4 := string(tmpJSON4)
-//			_, err = splight.NewComponent(ctx, "componentTest", &splight.ComponentArgs{
-//				Description: pulumi.String("Created with Terraform"),
-//				Version:     pulumi.String("Random-3.1.0"),
-//				Inputs: splight.ComponentInputTypeArray{
-//					&splight.ComponentInputTypeArgs{
-//						Name:        pulumi.String("period"),
-//						Type:        pulumi.String("int"),
-//						Value:       pulumi.String(json0),
-//						Multiple:    pulumi.Bool(false),
-//						Required:    pulumi.Bool(false),
-//						Sensitive:   pulumi.Bool(false),
-//						Description: pulumi.String(""),
-//					},
-//					&splight.ComponentInputTypeArgs{
-//						Name:        pulumi.String("min"),
-//						Type:        pulumi.String("int"),
-//						Value:       pulumi.String(json1),
-//						Multiple:    pulumi.Bool(false),
-//						Required:    pulumi.Bool(false),
-//						Sensitive:   pulumi.Bool(false),
-//						Description: pulumi.String(""),
-//					},
-//					&splight.ComponentInputTypeArgs{
-//						Name:        pulumi.String("max"),
-//						Type:        pulumi.String("int"),
-//						Value:       pulumi.String(json2),
-//						Multiple:    pulumi.Bool(false),
-//						Required:    pulumi.Bool(false),
-//						Sensitive:   pulumi.Bool(false),
-//						Description: pulumi.String(""),
-//					},
-//					&splight.ComponentInputTypeArgs{
-//						Name:        pulumi.String("max_iterations"),
-//						Type:        pulumi.String("int"),
-//						Value:       pulumi.String(json3),
-//						Multiple:    pulumi.Bool(false),
-//						Required:    pulumi.Bool(false),
-//						Sensitive:   pulumi.Bool(false),
-//						Description: pulumi.String(""),
-//					},
-//					&splight.ComponentInputTypeArgs{
-//						Name:        pulumi.String("should_crash"),
-//						Type:        pulumi.String("bool"),
-//						Value:       pulumi.String(json4),
-//						Multiple:    pulumi.Bool(false),
-//						Required:    pulumi.Bool(false),
-//						Sensitive:   pulumi.Bool(false),
-//						Description: pulumi.String(""),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh
@@ -121,12 +22,14 @@ import (
 type Component struct {
 	pulumi.CustomResourceState
 
-	// optinal description to add details of the resource
+	// optional description to add details of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// static config parameters of the routine
 	Inputs ComponentInputTypeArrayOutput `pulumi:"inputs"`
 	// the name of the component to be created
 	Name pulumi.StringOutput `pulumi:"name"`
+	// tags of the resource
+	Tags ComponentTagArrayOutput `pulumi:"tags"`
 	// [NAME-VERSION] the version of the hub component
 	Version pulumi.StringOutput `pulumi:"version"`
 }
@@ -164,23 +67,27 @@ func GetComponent(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Component resources.
 type componentState struct {
-	// optinal description to add details of the resource
+	// optional description to add details of the resource
 	Description *string `pulumi:"description"`
 	// static config parameters of the routine
 	Inputs []ComponentInputType `pulumi:"inputs"`
 	// the name of the component to be created
 	Name *string `pulumi:"name"`
+	// tags of the resource
+	Tags []ComponentTag `pulumi:"tags"`
 	// [NAME-VERSION] the version of the hub component
 	Version *string `pulumi:"version"`
 }
 
 type ComponentState struct {
-	// optinal description to add details of the resource
+	// optional description to add details of the resource
 	Description pulumi.StringPtrInput
 	// static config parameters of the routine
 	Inputs ComponentInputTypeArrayInput
 	// the name of the component to be created
 	Name pulumi.StringPtrInput
+	// tags of the resource
+	Tags ComponentTagArrayInput
 	// [NAME-VERSION] the version of the hub component
 	Version pulumi.StringPtrInput
 }
@@ -190,24 +97,28 @@ func (ComponentState) ElementType() reflect.Type {
 }
 
 type componentArgs struct {
-	// optinal description to add details of the resource
+	// optional description to add details of the resource
 	Description *string `pulumi:"description"`
 	// static config parameters of the routine
 	Inputs []ComponentInputType `pulumi:"inputs"`
 	// the name of the component to be created
 	Name *string `pulumi:"name"`
+	// tags of the resource
+	Tags []ComponentTag `pulumi:"tags"`
 	// [NAME-VERSION] the version of the hub component
 	Version string `pulumi:"version"`
 }
 
 // The set of arguments for constructing a Component resource.
 type ComponentArgs struct {
-	// optinal description to add details of the resource
+	// optional description to add details of the resource
 	Description pulumi.StringPtrInput
 	// static config parameters of the routine
 	Inputs ComponentInputTypeArrayInput
 	// the name of the component to be created
 	Name pulumi.StringPtrInput
+	// tags of the resource
+	Tags ComponentTagArrayInput
 	// [NAME-VERSION] the version of the hub component
 	Version pulumi.StringInput
 }
@@ -299,7 +210,7 @@ func (o ComponentOutput) ToComponentOutputWithContext(ctx context.Context) Compo
 	return o
 }
 
-// optinal description to add details of the resource
+// optional description to add details of the resource
 func (o ComponentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Component) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -312,6 +223,11 @@ func (o ComponentOutput) Inputs() ComponentInputTypeArrayOutput {
 // the name of the component to be created
 func (o ComponentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Component) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// tags of the resource
+func (o ComponentOutput) Tags() ComponentTagArrayOutput {
+	return o.ApplyT(func(v *Component) ComponentTagArrayOutput { return v.Tags }).(ComponentTagArrayOutput)
 }
 
 // [NAME-VERSION] the version of the hub component

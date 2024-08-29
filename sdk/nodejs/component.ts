@@ -9,63 +9,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as splight from "@splightplatform/pulumi-splight";
- *
- * const componentTest = new splight.Component("componentTest", {
- *     description: "Created with Terraform",
- *     version: "Random-3.1.0",
- *     inputs: [
- *         {
- *             name: "period",
- *             type: "int",
- *             value: JSON.stringify(10),
- *             multiple: false,
- *             required: false,
- *             sensitive: false,
- *             description: "",
- *         },
- *         {
- *             name: "min",
- *             type: "int",
- *             value: JSON.stringify(1),
- *             multiple: false,
- *             required: false,
- *             sensitive: false,
- *             description: "",
- *         },
- *         {
- *             name: "max",
- *             type: "int",
- *             value: JSON.stringify(150),
- *             multiple: false,
- *             required: false,
- *             sensitive: false,
- *             description: "",
- *         },
- *         {
- *             name: "max_iterations",
- *             type: "int",
- *             value: JSON.stringify(3),
- *             multiple: false,
- *             required: false,
- *             sensitive: false,
- *             description: "",
- *         },
- *         {
- *             name: "should_crash",
- *             type: "bool",
- *             value: JSON.stringify("true"),
- *             multiple: false,
- *             required: false,
- *             sensitive: false,
- *             description: "",
- *         },
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * ```sh
@@ -101,7 +44,7 @@ export class Component extends pulumi.CustomResource {
     }
 
     /**
-     * optinal description to add details of the resource
+     * optional description to add details of the resource
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -112,6 +55,10 @@ export class Component extends pulumi.CustomResource {
      * the name of the component to be created
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * tags of the resource
+     */
+    public readonly tags!: pulumi.Output<outputs.ComponentTag[] | undefined>;
     /**
      * [NAME-VERSION] the version of the hub component
      */
@@ -133,6 +80,7 @@ export class Component extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["inputs"] = state ? state.inputs : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as ComponentArgs | undefined;
@@ -142,6 +90,7 @@ export class Component extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["inputs"] = args ? args.inputs : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -154,7 +103,7 @@ export class Component extends pulumi.CustomResource {
  */
 export interface ComponentState {
     /**
-     * optinal description to add details of the resource
+     * optional description to add details of the resource
      */
     description?: pulumi.Input<string>;
     /**
@@ -165,6 +114,10 @@ export interface ComponentState {
      * the name of the component to be created
      */
     name?: pulumi.Input<string>;
+    /**
+     * tags of the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.ComponentTag>[]>;
     /**
      * [NAME-VERSION] the version of the hub component
      */
@@ -176,7 +129,7 @@ export interface ComponentState {
  */
 export interface ComponentArgs {
     /**
-     * optinal description to add details of the resource
+     * optional description to add details of the resource
      */
     description?: pulumi.Input<string>;
     /**
@@ -187,6 +140,10 @@ export interface ComponentArgs {
      * the name of the component to be created
      */
     name?: pulumi.Input<string>;
+    /**
+     * tags of the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.ComponentTag>[]>;
     /**
      * [NAME-VERSION] the version of the hub component
      */

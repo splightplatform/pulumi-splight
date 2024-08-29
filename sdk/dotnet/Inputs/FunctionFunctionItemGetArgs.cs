@@ -44,6 +44,18 @@ namespace Splight.Splight.Inputs
         public Input<Inputs.FunctionFunctionItemQueryFilterAttributeGetArgs> QueryFilterAttribute { get; set; } = null!;
 
         /// <summary>
+        /// function used to aggregate data
+        /// </summary>
+        [Input("queryGroupFunction")]
+        public Input<string>? QueryGroupFunction { get; set; }
+
+        /// <summary>
+        /// time window to apply the aggregation
+        /// </summary>
+        [Input("queryGroupUnit")]
+        public Input<string>? QueryGroupUnit { get; set; }
+
+        /// <summary>
         /// actual mongo query
         /// </summary>
         [Input("queryPlain", required: true)]

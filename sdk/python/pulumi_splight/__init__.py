@@ -5,10 +5,12 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .action import *
 from .alert import *
 from .asset import *
 from .asset_attribute import *
 from .asset_metadata import *
+from .command import *
 from .component import *
 from .component_routine import *
 from .dashboard import *
@@ -31,9 +33,11 @@ from .file import *
 from .file_folder import *
 from .function import *
 from .get_asset_kinds import *
+from .get_tags import *
 from .node import *
 from .provider import *
 from .secret import *
+from .tag import *
 from ._inputs import *
 from . import outputs
 
@@ -47,6 +51,14 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "splight",
+  "mod": "index/action",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/action:Action": "Action"
+  }
+ },
  {
   "pkg": "splight",
   "mod": "index/alert",
@@ -77,6 +89,14 @@ _utilities.register(
   "fqn": "pulumi_splight",
   "classes": {
    "splight:index/assetMetadata:AssetMetadata": "AssetMetadata"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/command",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/command:Command": "Command"
   }
  },
  {
@@ -261,6 +281,14 @@ _utilities.register(
   "fqn": "pulumi_splight",
   "classes": {
    "splight:index/secret:Secret": "Secret"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/tag",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/tag:Tag": "Tag"
   }
  }
 ]

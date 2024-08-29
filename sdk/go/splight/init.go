@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "splight:index/action:Action":
+		r = &Action{}
 	case "splight:index/alert:Alert":
 		r = &Alert{}
 	case "splight:index/asset:Asset":
@@ -29,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AssetAttribute{}
 	case "splight:index/assetMetadata:AssetMetadata":
 		r = &AssetMetadata{}
+	case "splight:index/command:Command":
+		r = &Command{}
 	case "splight:index/component:Component":
 		r = &Component{}
 	case "splight:index/componentRoutine:ComponentRoutine":
@@ -75,6 +79,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Node{}
 	case "splight:index/secret:Secret":
 		r = &Secret{}
+	case "splight:index/tag:Tag":
+		r = &Tag{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -108,6 +114,11 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"splight",
+		"index/action",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
 		"index/alert",
 		&module{version},
 	)
@@ -124,6 +135,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"splight",
 		"index/assetMetadata",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/command",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -239,6 +255,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"splight",
 		"index/secret",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/tag",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

@@ -546,12 +546,12 @@ class Function(pulumi.CustomResource):
                  cron_month: Optional[pulumi.Input[int]] = None,
                  cron_year: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 function_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionFunctionItemArgs']]]]] = None,
+                 function_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FunctionFunctionItemArgs', 'FunctionFunctionItemArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rate_unit: Optional[pulumi.Input[str]] = None,
                  rate_value: Optional[pulumi.Input[int]] = None,
-                 target_asset: Optional[pulumi.Input[pulumi.InputType['FunctionTargetAssetArgs']]] = None,
-                 target_attribute: Optional[pulumi.Input[pulumi.InputType['FunctionTargetAttributeArgs']]] = None,
+                 target_asset: Optional[pulumi.Input[Union['FunctionTargetAssetArgs', 'FunctionTargetAssetArgsDict']]] = None,
+                 target_attribute: Optional[pulumi.Input[Union['FunctionTargetAttributeArgs', 'FunctionTargetAttributeArgsDict']]] = None,
                  target_variable: Optional[pulumi.Input[str]] = None,
                  time_window: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -599,52 +599,54 @@ class Function(pulumi.CustomResource):
             type="rate",
             rate_unit="minute",
             rate_value=10,
-            time_window=3600 * 12,
+            time_window=3600,
             target_variable="B",
-            target_asset=splight.FunctionTargetAssetArgs(
-                id=my_target_asset.id,
-                name=my_target_asset.name,
-            ),
-            target_attribute=splight.FunctionTargetAttributeArgs(
-                id=my_target_attribute.id,
-                name=my_target_attribute.name,
-            ),
+            target_asset={
+                "id": my_target_asset.id,
+                "name": my_target_asset.name,
+            },
+            target_attribute={
+                "id": my_target_attribute.id,
+                "name": my_target_attribute.name,
+            },
             function_items=[
-                splight.FunctionFunctionItemArgs(
-                    ref_id="A",
-                    type="QUERY",
-                    expression="",
-                    expression_plain="",
-                    query_filter_asset=splight.FunctionFunctionItemQueryFilterAssetArgs(
-                        id=my_asset.id,
-                        name=my_asset.name,
-                    ),
-                    query_filter_attribute=splight.FunctionFunctionItemQueryFilterAttributeArgs(
-                        id=my_attribute.id,
-                        name=my_attribute.name,
-                    ),
-                    query_plain=pulumi.Output.json_dumps([{
-                        "$match": {
+                {
+                    "ref_id": "A",
+                    "type": "QUERY",
+                    "expression": "",
+                    "expression_plain": "",
+                    "query_filter_asset": {
+                        "id": my_asset.id,
+                        "name": my_asset.name,
+                    },
+                    "query_filter_attribute": {
+                        "id": my_attribute.id,
+                        "name": my_attribute.name,
+                    },
+                    "query_group_function": "avg",
+                    "query_group_unit": "day",
+                    "query_plain": pulumi.Output.json_dumps([{
+                        "_match": {
                             "asset": my_asset.id,
                             "attribute": my_attribute.id,
                         },
                     }]),
-                ),
-                splight.FunctionFunctionItemArgs(
-                    ref_id="B",
-                    type="EXPRESSION",
-                    expression="A * 2",
-                    expression_plain=json.dumps({
-                        "$function": {
+                },
+                {
+                    "ref_id": "B",
+                    "type": "EXPRESSION",
+                    "expression": "A * 2",
+                    "expression_plain": json.dumps({
+                        "_function": {
                             "body": "function () { return A * 2 }",
                             "args": [],
                             "lang": "js",
                         },
                     }),
-                    query_filter_asset=splight.FunctionFunctionItemQueryFilterAssetArgs(),
-                    query_filter_attribute=splight.FunctionFunctionItemQueryFilterAttributeArgs(),
-                    query_plain="",
-                ),
+                    "query_filter_asset": {},
+                    "query_filter_attribute": {},
+                    "query_plain": "",
+                },
             ])
         ```
 
@@ -663,12 +665,12 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[int] cron_month: schedule value for cron
         :param pulumi.Input[int] cron_year: schedule value for cron
         :param pulumi.Input[str] description: The description of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionFunctionItemArgs']]]] function_items: traces to be used to compute the results
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionFunctionItemArgs', 'FunctionFunctionItemArgsDict']]]] function_items: traces to be used to compute the results
         :param pulumi.Input[str] name: The name of the resource
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
-        :param pulumi.Input[pulumi.InputType['FunctionTargetAssetArgs']] target_asset: Asset/Attribute filter
-        :param pulumi.Input[pulumi.InputType['FunctionTargetAttributeArgs']] target_attribute: Asset/Attribute filter
+        :param pulumi.Input[Union['FunctionTargetAssetArgs', 'FunctionTargetAssetArgsDict']] target_asset: Asset/Attribute filter
+        :param pulumi.Input[Union['FunctionTargetAttributeArgs', 'FunctionTargetAttributeArgsDict']] target_attribute: Asset/Attribute filter
         :param pulumi.Input[str] target_variable: variable to be considered to be ingested
         :param pulumi.Input[int] time_window: window to fetch data from. Data out of that window will not be considered for evaluation
         :param pulumi.Input[str] type: [cron|rate] type for the cron
@@ -722,52 +724,54 @@ class Function(pulumi.CustomResource):
             type="rate",
             rate_unit="minute",
             rate_value=10,
-            time_window=3600 * 12,
+            time_window=3600,
             target_variable="B",
-            target_asset=splight.FunctionTargetAssetArgs(
-                id=my_target_asset.id,
-                name=my_target_asset.name,
-            ),
-            target_attribute=splight.FunctionTargetAttributeArgs(
-                id=my_target_attribute.id,
-                name=my_target_attribute.name,
-            ),
+            target_asset={
+                "id": my_target_asset.id,
+                "name": my_target_asset.name,
+            },
+            target_attribute={
+                "id": my_target_attribute.id,
+                "name": my_target_attribute.name,
+            },
             function_items=[
-                splight.FunctionFunctionItemArgs(
-                    ref_id="A",
-                    type="QUERY",
-                    expression="",
-                    expression_plain="",
-                    query_filter_asset=splight.FunctionFunctionItemQueryFilterAssetArgs(
-                        id=my_asset.id,
-                        name=my_asset.name,
-                    ),
-                    query_filter_attribute=splight.FunctionFunctionItemQueryFilterAttributeArgs(
-                        id=my_attribute.id,
-                        name=my_attribute.name,
-                    ),
-                    query_plain=pulumi.Output.json_dumps([{
-                        "$match": {
+                {
+                    "ref_id": "A",
+                    "type": "QUERY",
+                    "expression": "",
+                    "expression_plain": "",
+                    "query_filter_asset": {
+                        "id": my_asset.id,
+                        "name": my_asset.name,
+                    },
+                    "query_filter_attribute": {
+                        "id": my_attribute.id,
+                        "name": my_attribute.name,
+                    },
+                    "query_group_function": "avg",
+                    "query_group_unit": "day",
+                    "query_plain": pulumi.Output.json_dumps([{
+                        "_match": {
                             "asset": my_asset.id,
                             "attribute": my_attribute.id,
                         },
                     }]),
-                ),
-                splight.FunctionFunctionItemArgs(
-                    ref_id="B",
-                    type="EXPRESSION",
-                    expression="A * 2",
-                    expression_plain=json.dumps({
-                        "$function": {
+                },
+                {
+                    "ref_id": "B",
+                    "type": "EXPRESSION",
+                    "expression": "A * 2",
+                    "expression_plain": json.dumps({
+                        "_function": {
                             "body": "function () { return A * 2 }",
                             "args": [],
                             "lang": "js",
                         },
                     }),
-                    query_filter_asset=splight.FunctionFunctionItemQueryFilterAssetArgs(),
-                    query_filter_attribute=splight.FunctionFunctionItemQueryFilterAttributeArgs(),
-                    query_plain="",
-                ),
+                    "query_filter_asset": {},
+                    "query_filter_attribute": {},
+                    "query_plain": "",
+                },
             ])
         ```
 
@@ -799,12 +803,12 @@ class Function(pulumi.CustomResource):
                  cron_month: Optional[pulumi.Input[int]] = None,
                  cron_year: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 function_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionFunctionItemArgs']]]]] = None,
+                 function_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FunctionFunctionItemArgs', 'FunctionFunctionItemArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rate_unit: Optional[pulumi.Input[str]] = None,
                  rate_value: Optional[pulumi.Input[int]] = None,
-                 target_asset: Optional[pulumi.Input[pulumi.InputType['FunctionTargetAssetArgs']]] = None,
-                 target_attribute: Optional[pulumi.Input[pulumi.InputType['FunctionTargetAttributeArgs']]] = None,
+                 target_asset: Optional[pulumi.Input[Union['FunctionTargetAssetArgs', 'FunctionTargetAssetArgsDict']]] = None,
+                 target_attribute: Optional[pulumi.Input[Union['FunctionTargetAttributeArgs', 'FunctionTargetAttributeArgsDict']]] = None,
                  target_variable: Optional[pulumi.Input[str]] = None,
                  time_window: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -864,12 +868,12 @@ class Function(pulumi.CustomResource):
             cron_month: Optional[pulumi.Input[int]] = None,
             cron_year: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            function_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionFunctionItemArgs']]]]] = None,
+            function_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FunctionFunctionItemArgs', 'FunctionFunctionItemArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             rate_unit: Optional[pulumi.Input[str]] = None,
             rate_value: Optional[pulumi.Input[int]] = None,
-            target_asset: Optional[pulumi.Input[pulumi.InputType['FunctionTargetAssetArgs']]] = None,
-            target_attribute: Optional[pulumi.Input[pulumi.InputType['FunctionTargetAttributeArgs']]] = None,
+            target_asset: Optional[pulumi.Input[Union['FunctionTargetAssetArgs', 'FunctionTargetAssetArgsDict']]] = None,
+            target_attribute: Optional[pulumi.Input[Union['FunctionTargetAttributeArgs', 'FunctionTargetAttributeArgsDict']]] = None,
             target_variable: Optional[pulumi.Input[str]] = None,
             time_window: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'Function':
@@ -887,12 +891,12 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[int] cron_month: schedule value for cron
         :param pulumi.Input[int] cron_year: schedule value for cron
         :param pulumi.Input[str] description: The description of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionFunctionItemArgs']]]] function_items: traces to be used to compute the results
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionFunctionItemArgs', 'FunctionFunctionItemArgsDict']]]] function_items: traces to be used to compute the results
         :param pulumi.Input[str] name: The name of the resource
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
-        :param pulumi.Input[pulumi.InputType['FunctionTargetAssetArgs']] target_asset: Asset/Attribute filter
-        :param pulumi.Input[pulumi.InputType['FunctionTargetAttributeArgs']] target_attribute: Asset/Attribute filter
+        :param pulumi.Input[Union['FunctionTargetAssetArgs', 'FunctionTargetAssetArgsDict']] target_asset: Asset/Attribute filter
+        :param pulumi.Input[Union['FunctionTargetAttributeArgs', 'FunctionTargetAttributeArgsDict']] target_attribute: Asset/Attribute filter
         :param pulumi.Input[str] target_variable: variable to be considered to be ingested
         :param pulumi.Input[int] time_window: window to fetch data from. Data out of that window will not be considered for evaluation
         :param pulumi.Input[str] type: [cron|rate] type for the cron

@@ -7,52 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/splightplatform/pulumi-splight/sdk/go/splight/internal"
 )
 
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"encoding/json"
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/splightplatform/pulumi-splight/sdk/go/splight"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"type":       "GeometryCollection",
-//				"geometries": []interface{}{},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			json0 := string(tmpJSON0)
-//			_, err = splight.NewAsset(ctx, "assetMainTest", &splight.AssetArgs{
-//				Description: pulumi.String("Created with Terraform"),
-//				Geometry:    pulumi.String(json0),
-//				Kinds: splight.AssetKindArray{
-//					&splight.AssetKindArgs{
-//						Id:   pulumi.String("1234-1234-1234-1234"),
-//						Name: pulumi.String("Line"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
@@ -64,23 +24,28 @@ type Asset struct {
 
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// geo position and shape of the resource
-	Geometry pulumi.StringPtrOutput `pulumi:"geometry"`
+	// GeoJSON GeomtryCollection
+	Geometry pulumi.StringOutput `pulumi:"geometry"`
 	// kind of the resource
-	Kinds AssetKindArrayOutput `pulumi:"kinds"`
+	Kind AssetKindPtrOutput `pulumi:"kind"`
 	// name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// linked assets
 	RelatedAssets pulumi.StringArrayOutput `pulumi:"relatedAssets"`
+	// tags of the resource
+	Tags AssetTagArrayOutput `pulumi:"tags"`
 }
 
 // NewAsset registers a new resource with the given unique name, arguments, and options.
 func NewAsset(ctx *pulumi.Context,
 	name string, args *AssetArgs, opts ...pulumi.ResourceOption) (*Asset, error) {
 	if args == nil {
-		args = &AssetArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Geometry == nil {
+		return nil, errors.New("invalid value for required argument 'Geometry'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Asset
 	err := ctx.RegisterResource("splight:index/asset:Asset", name, args, &resource, opts...)
@@ -106,27 +71,31 @@ func GetAsset(ctx *pulumi.Context,
 type assetState struct {
 	// description of the resource
 	Description *string `pulumi:"description"`
-	// geo position and shape of the resource
+	// GeoJSON GeomtryCollection
 	Geometry *string `pulumi:"geometry"`
 	// kind of the resource
-	Kinds []AssetKind `pulumi:"kinds"`
+	Kind *AssetKind `pulumi:"kind"`
 	// name of the resource
 	Name *string `pulumi:"name"`
 	// linked assets
 	RelatedAssets []string `pulumi:"relatedAssets"`
+	// tags of the resource
+	Tags []AssetTag `pulumi:"tags"`
 }
 
 type AssetState struct {
 	// description of the resource
 	Description pulumi.StringPtrInput
-	// geo position and shape of the resource
+	// GeoJSON GeomtryCollection
 	Geometry pulumi.StringPtrInput
 	// kind of the resource
-	Kinds AssetKindArrayInput
+	Kind AssetKindPtrInput
 	// name of the resource
 	Name pulumi.StringPtrInput
 	// linked assets
 	RelatedAssets pulumi.StringArrayInput
+	// tags of the resource
+	Tags AssetTagArrayInput
 }
 
 func (AssetState) ElementType() reflect.Type {
@@ -136,28 +105,32 @@ func (AssetState) ElementType() reflect.Type {
 type assetArgs struct {
 	// description of the resource
 	Description *string `pulumi:"description"`
-	// geo position and shape of the resource
-	Geometry *string `pulumi:"geometry"`
+	// GeoJSON GeomtryCollection
+	Geometry string `pulumi:"geometry"`
 	// kind of the resource
-	Kinds []AssetKind `pulumi:"kinds"`
+	Kind *AssetKind `pulumi:"kind"`
 	// name of the resource
 	Name *string `pulumi:"name"`
 	// linked assets
 	RelatedAssets []string `pulumi:"relatedAssets"`
+	// tags of the resource
+	Tags []AssetTag `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Asset resource.
 type AssetArgs struct {
 	// description of the resource
 	Description pulumi.StringPtrInput
-	// geo position and shape of the resource
-	Geometry pulumi.StringPtrInput
+	// GeoJSON GeomtryCollection
+	Geometry pulumi.StringInput
 	// kind of the resource
-	Kinds AssetKindArrayInput
+	Kind AssetKindPtrInput
 	// name of the resource
 	Name pulumi.StringPtrInput
 	// linked assets
 	RelatedAssets pulumi.StringArrayInput
+	// tags of the resource
+	Tags AssetTagArrayInput
 }
 
 func (AssetArgs) ElementType() reflect.Type {
@@ -252,14 +225,14 @@ func (o AssetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// geo position and shape of the resource
-func (o AssetOutput) Geometry() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Asset) pulumi.StringPtrOutput { return v.Geometry }).(pulumi.StringPtrOutput)
+// GeoJSON GeomtryCollection
+func (o AssetOutput) Geometry() pulumi.StringOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.Geometry }).(pulumi.StringOutput)
 }
 
 // kind of the resource
-func (o AssetOutput) Kinds() AssetKindArrayOutput {
-	return o.ApplyT(func(v *Asset) AssetKindArrayOutput { return v.Kinds }).(AssetKindArrayOutput)
+func (o AssetOutput) Kind() AssetKindPtrOutput {
+	return o.ApplyT(func(v *Asset) AssetKindPtrOutput { return v.Kind }).(AssetKindPtrOutput)
 }
 
 // name of the resource
@@ -270,6 +243,11 @@ func (o AssetOutput) Name() pulumi.StringOutput {
 // linked assets
 func (o AssetOutput) RelatedAssets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringArrayOutput { return v.RelatedAssets }).(pulumi.StringArrayOutput)
+}
+
+// tags of the resource
+func (o AssetOutput) Tags() AssetTagArrayOutput {
+	return o.ApplyT(func(v *Asset) AssetTagArrayOutput { return v.Tags }).(AssetTagArrayOutput)
 }
 
 type AssetArrayOutput struct{ *pulumi.OutputState }

@@ -13,77 +13,6 @@ namespace Splight.Splight
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using System.Text.Json;
-    /// using Pulumi;
-    /// using Splight = Splight.Splight;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var componentTest = new Splight.Component("componentTest", new()
-    ///     {
-    ///         Description = "Created with Terraform",
-    ///         Version = "Random-3.1.0",
-    ///         Inputs = new[]
-    ///         {
-    ///             new Splight.Inputs.ComponentInputArgs
-    ///             {
-    ///                 Name = "period",
-    ///                 Type = "int",
-    ///                 Value = JsonSerializer.Serialize(10),
-    ///                 Multiple = false,
-    ///                 Required = false,
-    ///                 Sensitive = false,
-    ///                 Description = "",
-    ///             },
-    ///             new Splight.Inputs.ComponentInputArgs
-    ///             {
-    ///                 Name = "min",
-    ///                 Type = "int",
-    ///                 Value = JsonSerializer.Serialize(1),
-    ///                 Multiple = false,
-    ///                 Required = false,
-    ///                 Sensitive = false,
-    ///                 Description = "",
-    ///             },
-    ///             new Splight.Inputs.ComponentInputArgs
-    ///             {
-    ///                 Name = "max",
-    ///                 Type = "int",
-    ///                 Value = JsonSerializer.Serialize(150),
-    ///                 Multiple = false,
-    ///                 Required = false,
-    ///                 Sensitive = false,
-    ///                 Description = "",
-    ///             },
-    ///             new Splight.Inputs.ComponentInputArgs
-    ///             {
-    ///                 Name = "max_iterations",
-    ///                 Type = "int",
-    ///                 Value = JsonSerializer.Serialize(3),
-    ///                 Multiple = false,
-    ///                 Required = false,
-    ///                 Sensitive = false,
-    ///                 Description = "",
-    ///             },
-    ///             new Splight.Inputs.ComponentInputArgs
-    ///             {
-    ///                 Name = "should_crash",
-    ///                 Type = "bool",
-    ///                 Value = JsonSerializer.Serialize("true"),
-    ///                 Multiple = false,
-    ///                 Required = false,
-    ///                 Sensitive = false,
-    ///                 Description = "",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -94,7 +23,7 @@ namespace Splight.Splight
     public partial class Component : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// optinal description to add details of the resource
+        /// optional description to add details of the resource
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -110,6 +39,12 @@ namespace Splight.Splight
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// tags of the resource
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<Outputs.ComponentTag>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// [NAME-VERSION] the version of the hub component
@@ -165,7 +100,7 @@ namespace Splight.Splight
     public sealed class ComponentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// optinal description to add details of the resource
+        /// optional description to add details of the resource
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -188,6 +123,18 @@ namespace Splight.Splight
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("tags")]
+        private InputList<Inputs.ComponentTagArgs>? _tags;
+
+        /// <summary>
+        /// tags of the resource
+        /// </summary>
+        public InputList<Inputs.ComponentTagArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.ComponentTagArgs>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// [NAME-VERSION] the version of the hub component
         /// </summary>
@@ -203,7 +150,7 @@ namespace Splight.Splight
     public sealed class ComponentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// optinal description to add details of the resource
+        /// optional description to add details of the resource
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -225,6 +172,18 @@ namespace Splight.Splight
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("tags")]
+        private InputList<Inputs.ComponentTagGetArgs>? _tags;
+
+        /// <summary>
+        /// tags of the resource
+        /// </summary>
+        public InputList<Inputs.ComponentTagGetArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.ComponentTagGetArgs>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// [NAME-VERSION] the version of the hub component

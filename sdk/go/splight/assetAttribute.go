@@ -19,6 +19,8 @@ import (
 //
 // import (
 //
+//	"encoding/json"
+//
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/splightplatform/pulumi-splight/sdk/go/splight"
 //
@@ -26,10 +28,33 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := splight.NewAssetAttribute(ctx, "assetTestFunctionAttribute", &splight.AssetAttributeArgs{
-//				Asset: pulumi.String("1234-1234-1234-1234"),
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"type": "GeometryCollection",
+//				"geometries": []map[string]interface{}{
+//					map[string]interface{}{
+//						"type": "Point",
+//						"coordinates": []float64{
+//							0,
+//							0,
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			myAsset, err := splight.NewAsset(ctx, "myAsset", &splight.AssetArgs{
+//				Description: pulumi.String("My Asset Description"),
+//				Geometry:    pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = splight.NewAssetAttribute(ctx, "myAttribute", &splight.AssetAttributeArgs{
 //				Type:  pulumi.String("Number"),
 //				Unit:  pulumi.String("meters"),
+//				Asset: myAsset.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -52,7 +77,7 @@ type AssetAttribute struct {
 	Asset pulumi.StringOutput `pulumi:"asset"`
 	// name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [string|boolean|number] type of the data to be ingested in this attribute
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
 	Type pulumi.StringOutput `pulumi:"type"`
 	// optional reference to the unit of the measure
 	Unit pulumi.StringPtrOutput `pulumi:"unit"`
@@ -98,7 +123,7 @@ type assetAttributeState struct {
 	Asset *string `pulumi:"asset"`
 	// name of the resource
 	Name *string `pulumi:"name"`
-	// [string|boolean|number] type of the data to be ingested in this attribute
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
 	Type *string `pulumi:"type"`
 	// optional reference to the unit of the measure
 	Unit *string `pulumi:"unit"`
@@ -109,7 +134,7 @@ type AssetAttributeState struct {
 	Asset pulumi.StringPtrInput
 	// name of the resource
 	Name pulumi.StringPtrInput
-	// [string|boolean|number] type of the data to be ingested in this attribute
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
 	Type pulumi.StringPtrInput
 	// optional reference to the unit of the measure
 	Unit pulumi.StringPtrInput
@@ -124,7 +149,7 @@ type assetAttributeArgs struct {
 	Asset string `pulumi:"asset"`
 	// name of the resource
 	Name *string `pulumi:"name"`
-	// [string|boolean|number] type of the data to be ingested in this attribute
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
 	Type string `pulumi:"type"`
 	// optional reference to the unit of the measure
 	Unit *string `pulumi:"unit"`
@@ -136,7 +161,7 @@ type AssetAttributeArgs struct {
 	Asset pulumi.StringInput
 	// name of the resource
 	Name pulumi.StringPtrInput
-	// [string|boolean|number] type of the data to be ingested in this attribute
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
 	Type pulumi.StringInput
 	// optional reference to the unit of the measure
 	Unit pulumi.StringPtrInput
@@ -239,7 +264,7 @@ func (o AssetAttributeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AssetAttribute) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// [string|boolean|number] type of the data to be ingested in this attribute
+// [String|Boolean|Number] type of the data to be ingested in this attribute
 func (o AssetAttributeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AssetAttribute) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

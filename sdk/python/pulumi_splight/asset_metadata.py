@@ -22,7 +22,7 @@ class AssetMetadataArgs:
         """
         The set of arguments for constructing a AssetMetadata resource.
         :param pulumi.Input[str] asset: reference to the asset to be linked to
-        :param pulumi.Input[str] type: [string|boolean|number] type of the data to be ingested in this attribute
+        :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] unit: optional reference to the unit of the measure
@@ -51,7 +51,7 @@ class AssetMetadataArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        [string|boolean|number] type of the data to be ingested in this attribute
+        [String|Boolean|Number] type of the data to be ingested in this attribute
         """
         return pulumi.get(self, "type")
 
@@ -108,7 +108,7 @@ class _AssetMetadataState:
         Input properties used for looking up and filtering AssetMetadata resources.
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] name: name of the resource
-        :param pulumi.Input[str] type: [string|boolean|number] type of the data to be ingested in this attribute
+        :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: optional reference to the unit of the measure
         :param pulumi.Input[str] value: metadata value
         """
@@ -151,7 +151,7 @@ class _AssetMetadataState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        [string|boolean|number] type of the data to be ingested in this attribute
+        [String|Boolean|Number] type of the data to be ingested in this attribute
         """
         return pulumi.get(self, "type")
 
@@ -203,11 +203,23 @@ class AssetMetadata(pulumi.CustomResource):
         import json
         import pulumi_splight as splight
 
-        asset_test_metadata = splight.AssetMetadata("assetTestMetadata",
+        my_asset = splight.Asset("myAsset",
+            description="My Asset Description",
+            geometry=json.dumps({
+                "type": "GeometryCollection",
+                "geometries": [{
+                    "type": "Point",
+                    "coordinates": [
+                        0,
+                        0,
+                    ],
+                }],
+            }))
+        my_asset_metadata = splight.AssetMetadata("myAssetMetadata",
             type="Number",
             unit="meters",
             value=json.dumps(10),
-            asset="1234-1234-1234-1234")
+            asset=my_asset.id)
         ```
 
         ## Import
@@ -220,7 +232,7 @@ class AssetMetadata(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] name: name of the resource
-        :param pulumi.Input[str] type: [string|boolean|number] type of the data to be ingested in this attribute
+        :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: optional reference to the unit of the measure
         :param pulumi.Input[str] value: metadata value
         """
@@ -238,11 +250,23 @@ class AssetMetadata(pulumi.CustomResource):
         import json
         import pulumi_splight as splight
 
-        asset_test_metadata = splight.AssetMetadata("assetTestMetadata",
+        my_asset = splight.Asset("myAsset",
+            description="My Asset Description",
+            geometry=json.dumps({
+                "type": "GeometryCollection",
+                "geometries": [{
+                    "type": "Point",
+                    "coordinates": [
+                        0,
+                        0,
+                    ],
+                }],
+            }))
+        my_asset_metadata = splight.AssetMetadata("myAssetMetadata",
             type="Number",
             unit="meters",
             value=json.dumps(10),
-            asset="1234-1234-1234-1234")
+            asset=my_asset.id)
         ```
 
         ## Import
@@ -315,7 +339,7 @@ class AssetMetadata(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] name: name of the resource
-        :param pulumi.Input[str] type: [string|boolean|number] type of the data to be ingested in this attribute
+        :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: optional reference to the unit of the measure
         :param pulumi.Input[str] value: metadata value
         """
@@ -350,7 +374,7 @@ class AssetMetadata(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        [string|boolean|number] type of the data to be ingested in this attribute
+        [String|Boolean|Number] type of the data to be ingested in this attribute
         """
         return pulumi.get(self, "type")
 
