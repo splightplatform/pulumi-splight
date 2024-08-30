@@ -5,7 +5,7 @@ archives:
 builds:
   - env:
       - CGO_ENABLED=0
-  - binary: pulumi-resource-splight
+    binary: pulumi-resource-splight
     dir: provider
     goos:
       - freebsd
