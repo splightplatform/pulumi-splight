@@ -5,6 +5,47 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface ActionAsset {
+    /**
+     * asset id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * asset name
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface ActionSetpoint {
+    /**
+     * the target attribute of the setpoint which should also be an attribute of the specified asset
+     */
+    attribute: pulumi.Input<inputs.ActionSetpointAttribute>;
+    /**
+     * setpoint ID
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * setpoint name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * JSON encoded scalar value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface ActionSetpointAttribute {
+    /**
+     * attribute id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * attribute name
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface AlertAlertItem {
     /**
      * how the expression is shown (i.e 'A * 2')
@@ -26,6 +67,14 @@ export interface AlertAlertItem {
      * Asset/Attribute filter
      */
     queryFilterAttribute: pulumi.Input<inputs.AlertAlertItemQueryFilterAttribute>;
+    /**
+     * function used to aggregate data
+     */
+    queryGroupFunction?: pulumi.Input<string>;
+    /**
+     * time window to apply the aggregation
+     */
+    queryGroupUnit?: pulumi.Input<string>;
     /**
      * actual mongo query
      */
@@ -88,6 +137,43 @@ export interface AssetKind {
     name: pulumi.Input<string>;
 }
 
+export interface AssetTag {
+    /**
+     * tag id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * tag name
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface CommandAction {
+    /**
+     * asset associated with the action (to be deprecated)
+     */
+    asset: pulumi.Input<inputs.CommandActionAsset>;
+    /**
+     * action ID
+     */
+    id: pulumi.Input<string>;
+    /**
+     * setpoint name
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface CommandActionAsset {
+    /**
+     * asset id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * asset name
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface ComponentInput {
     description?: pulumi.Input<string>;
     multiple?: pulumi.Input<boolean>;
@@ -138,6 +224,17 @@ export interface ComponentRoutineOutput {
 export interface ComponentRoutineOutputValue {
     asset: pulumi.Input<string>;
     attribute: pulumi.Input<string>;
+}
+
+export interface ComponentTag {
+    /**
+     * tag id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * tag name
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface DashboardActionlistChartChartItem {
@@ -959,6 +1056,14 @@ export interface FunctionFunctionItem {
      * Asset/Attribute filter
      */
     queryFilterAttribute: pulumi.Input<inputs.FunctionFunctionItemQueryFilterAttribute>;
+    /**
+     * function used to aggregate data
+     */
+    queryGroupFunction?: pulumi.Input<string>;
+    /**
+     * time window to apply the aggregation
+     */
+    queryGroupUnit?: pulumi.Input<string>;
     /**
      * actual mongo query
      */

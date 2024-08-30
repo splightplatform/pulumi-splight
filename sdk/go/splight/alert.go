@@ -63,7 +63,7 @@ import (
 //				Type:        pulumi.String("rate"),
 //				RateUnit:    pulumi.String("minute"),
 //				RateValue:   pulumi.Int(10),
-//				TimeWindow:  3600 * 12,
+//				TimeWindow:  pulumi.Int(3600),
 //				Thresholds: splight.AlertThresholdArray{
 //					&splight.AlertThresholdArgs{
 //						Value:      pulumi.Float64(1),
@@ -89,6 +89,8 @@ import (
 //							Id:   myAttribute.ID(),
 //							Name: myAttribute.Name,
 //						},
+//						QueryGroupFunction: pulumi.String("avg"),
+//						QueryGroupUnit:     pulumi.String("day"),
 //						QueryPlain: pulumi.All(myAsset.ID(), myAttribute.ID()).ApplyT(func(_args []interface{}) (string, error) {
 //							myAssetId := _args[0].(string)
 //							myAttributeId := _args[1].(string)

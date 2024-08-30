@@ -11,10 +11,23 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as splight from "@splightplatform/pulumi-splight";
  *
- * const assetTestFunctionAttribute = new splight.AssetAttribute("assetTestFunctionAttribute", {
- *     asset: "1234-1234-1234-1234",
+ * const myAsset = new splight.Asset("myAsset", {
+ *     description: "My Asset Description",
+ *     geometry: JSON.stringify({
+ *         type: "GeometryCollection",
+ *         geometries: [{
+ *             type: "Point",
+ *             coordinates: [
+ *                 0,
+ *                 0,
+ *             ],
+ *         }],
+ *     }),
+ * });
+ * const myAttribute = new splight.AssetAttribute("myAttribute", {
  *     type: "Number",
  *     unit: "meters",
+ *     asset: myAsset.id,
  * });
  * ```
  *
@@ -61,7 +74,7 @@ export class AssetAttribute extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * [string|boolean|number] type of the data to be ingested in this attribute
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -117,7 +130,7 @@ export interface AssetAttributeState {
      */
     name?: pulumi.Input<string>;
     /**
-     * [string|boolean|number] type of the data to be ingested in this attribute
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
      */
     type?: pulumi.Input<string>;
     /**
@@ -139,7 +152,7 @@ export interface AssetAttributeArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * [string|boolean|number] type of the data to be ingested in this attribute
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
      */
     type: pulumi.Input<string>;
     /**

@@ -13,6 +13,347 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ActionAsset struct {
+	// asset id
+	Id string `pulumi:"id"`
+	// asset name
+	Name string `pulumi:"name"`
+}
+
+// ActionAssetInput is an input type that accepts ActionAssetArgs and ActionAssetOutput values.
+// You can construct a concrete instance of `ActionAssetInput` via:
+//
+//	ActionAssetArgs{...}
+type ActionAssetInput interface {
+	pulumi.Input
+
+	ToActionAssetOutput() ActionAssetOutput
+	ToActionAssetOutputWithContext(context.Context) ActionAssetOutput
+}
+
+type ActionAssetArgs struct {
+	// asset id
+	Id pulumi.StringInput `pulumi:"id"`
+	// asset name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ActionAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAsset)(nil)).Elem()
+}
+
+func (i ActionAssetArgs) ToActionAssetOutput() ActionAssetOutput {
+	return i.ToActionAssetOutputWithContext(context.Background())
+}
+
+func (i ActionAssetArgs) ToActionAssetOutputWithContext(ctx context.Context) ActionAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAssetOutput)
+}
+
+func (i ActionAssetArgs) ToActionAssetPtrOutput() ActionAssetPtrOutput {
+	return i.ToActionAssetPtrOutputWithContext(context.Background())
+}
+
+func (i ActionAssetArgs) ToActionAssetPtrOutputWithContext(ctx context.Context) ActionAssetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAssetOutput).ToActionAssetPtrOutputWithContext(ctx)
+}
+
+// ActionAssetPtrInput is an input type that accepts ActionAssetArgs, ActionAssetPtr and ActionAssetPtrOutput values.
+// You can construct a concrete instance of `ActionAssetPtrInput` via:
+//
+//	        ActionAssetArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionAssetPtrInput interface {
+	pulumi.Input
+
+	ToActionAssetPtrOutput() ActionAssetPtrOutput
+	ToActionAssetPtrOutputWithContext(context.Context) ActionAssetPtrOutput
+}
+
+type actionAssetPtrType ActionAssetArgs
+
+func ActionAssetPtr(v *ActionAssetArgs) ActionAssetPtrInput {
+	return (*actionAssetPtrType)(v)
+}
+
+func (*actionAssetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAsset)(nil)).Elem()
+}
+
+func (i *actionAssetPtrType) ToActionAssetPtrOutput() ActionAssetPtrOutput {
+	return i.ToActionAssetPtrOutputWithContext(context.Background())
+}
+
+func (i *actionAssetPtrType) ToActionAssetPtrOutputWithContext(ctx context.Context) ActionAssetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAssetPtrOutput)
+}
+
+type ActionAssetOutput struct{ *pulumi.OutputState }
+
+func (ActionAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAsset)(nil)).Elem()
+}
+
+func (o ActionAssetOutput) ToActionAssetOutput() ActionAssetOutput {
+	return o
+}
+
+func (o ActionAssetOutput) ToActionAssetOutputWithContext(ctx context.Context) ActionAssetOutput {
+	return o
+}
+
+func (o ActionAssetOutput) ToActionAssetPtrOutput() ActionAssetPtrOutput {
+	return o.ToActionAssetPtrOutputWithContext(context.Background())
+}
+
+func (o ActionAssetOutput) ToActionAssetPtrOutputWithContext(ctx context.Context) ActionAssetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionAsset) *ActionAsset {
+		return &v
+	}).(ActionAssetPtrOutput)
+}
+
+// asset id
+func (o ActionAssetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionAsset) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// asset name
+func (o ActionAssetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionAsset) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ActionAssetPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionAssetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAsset)(nil)).Elem()
+}
+
+func (o ActionAssetPtrOutput) ToActionAssetPtrOutput() ActionAssetPtrOutput {
+	return o
+}
+
+func (o ActionAssetPtrOutput) ToActionAssetPtrOutputWithContext(ctx context.Context) ActionAssetPtrOutput {
+	return o
+}
+
+func (o ActionAssetPtrOutput) Elem() ActionAssetOutput {
+	return o.ApplyT(func(v *ActionAsset) ActionAsset {
+		if v != nil {
+			return *v
+		}
+		var ret ActionAsset
+		return ret
+	}).(ActionAssetOutput)
+}
+
+// asset id
+func (o ActionAssetPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionAsset) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// asset name
+func (o ActionAssetPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionAsset) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type ActionSetpoint struct {
+	// the target attribute of the setpoint which should also be an attribute of the specified asset
+	Attribute ActionSetpointAttribute `pulumi:"attribute"`
+	// setpoint ID
+	Id *string `pulumi:"id"`
+	// setpoint name
+	Name *string `pulumi:"name"`
+	// JSON encoded scalar value
+	Value string `pulumi:"value"`
+}
+
+// ActionSetpointInput is an input type that accepts ActionSetpointArgs and ActionSetpointOutput values.
+// You can construct a concrete instance of `ActionSetpointInput` via:
+//
+//	ActionSetpointArgs{...}
+type ActionSetpointInput interface {
+	pulumi.Input
+
+	ToActionSetpointOutput() ActionSetpointOutput
+	ToActionSetpointOutputWithContext(context.Context) ActionSetpointOutput
+}
+
+type ActionSetpointArgs struct {
+	// the target attribute of the setpoint which should also be an attribute of the specified asset
+	Attribute ActionSetpointAttributeInput `pulumi:"attribute"`
+	// setpoint ID
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// setpoint name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// JSON encoded scalar value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ActionSetpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSetpoint)(nil)).Elem()
+}
+
+func (i ActionSetpointArgs) ToActionSetpointOutput() ActionSetpointOutput {
+	return i.ToActionSetpointOutputWithContext(context.Background())
+}
+
+func (i ActionSetpointArgs) ToActionSetpointOutputWithContext(ctx context.Context) ActionSetpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSetpointOutput)
+}
+
+// ActionSetpointArrayInput is an input type that accepts ActionSetpointArray and ActionSetpointArrayOutput values.
+// You can construct a concrete instance of `ActionSetpointArrayInput` via:
+//
+//	ActionSetpointArray{ ActionSetpointArgs{...} }
+type ActionSetpointArrayInput interface {
+	pulumi.Input
+
+	ToActionSetpointArrayOutput() ActionSetpointArrayOutput
+	ToActionSetpointArrayOutputWithContext(context.Context) ActionSetpointArrayOutput
+}
+
+type ActionSetpointArray []ActionSetpointInput
+
+func (ActionSetpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionSetpoint)(nil)).Elem()
+}
+
+func (i ActionSetpointArray) ToActionSetpointArrayOutput() ActionSetpointArrayOutput {
+	return i.ToActionSetpointArrayOutputWithContext(context.Background())
+}
+
+func (i ActionSetpointArray) ToActionSetpointArrayOutputWithContext(ctx context.Context) ActionSetpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSetpointArrayOutput)
+}
+
+type ActionSetpointOutput struct{ *pulumi.OutputState }
+
+func (ActionSetpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSetpoint)(nil)).Elem()
+}
+
+func (o ActionSetpointOutput) ToActionSetpointOutput() ActionSetpointOutput {
+	return o
+}
+
+func (o ActionSetpointOutput) ToActionSetpointOutputWithContext(ctx context.Context) ActionSetpointOutput {
+	return o
+}
+
+// the target attribute of the setpoint which should also be an attribute of the specified asset
+func (o ActionSetpointOutput) Attribute() ActionSetpointAttributeOutput {
+	return o.ApplyT(func(v ActionSetpoint) ActionSetpointAttribute { return v.Attribute }).(ActionSetpointAttributeOutput)
+}
+
+// setpoint ID
+func (o ActionSetpointOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSetpoint) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// setpoint name
+func (o ActionSetpointOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSetpoint) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// JSON encoded scalar value
+func (o ActionSetpointOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSetpoint) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ActionSetpointArrayOutput struct{ *pulumi.OutputState }
+
+func (ActionSetpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionSetpoint)(nil)).Elem()
+}
+
+func (o ActionSetpointArrayOutput) ToActionSetpointArrayOutput() ActionSetpointArrayOutput {
+	return o
+}
+
+func (o ActionSetpointArrayOutput) ToActionSetpointArrayOutputWithContext(ctx context.Context) ActionSetpointArrayOutput {
+	return o
+}
+
+func (o ActionSetpointArrayOutput) Index(i pulumi.IntInput) ActionSetpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionSetpoint {
+		return vs[0].([]ActionSetpoint)[vs[1].(int)]
+	}).(ActionSetpointOutput)
+}
+
+type ActionSetpointAttribute struct {
+	// attribute id
+	Id string `pulumi:"id"`
+	// attribute name
+	Name string `pulumi:"name"`
+}
+
+// ActionSetpointAttributeInput is an input type that accepts ActionSetpointAttributeArgs and ActionSetpointAttributeOutput values.
+// You can construct a concrete instance of `ActionSetpointAttributeInput` via:
+//
+//	ActionSetpointAttributeArgs{...}
+type ActionSetpointAttributeInput interface {
+	pulumi.Input
+
+	ToActionSetpointAttributeOutput() ActionSetpointAttributeOutput
+	ToActionSetpointAttributeOutputWithContext(context.Context) ActionSetpointAttributeOutput
+}
+
+type ActionSetpointAttributeArgs struct {
+	// attribute id
+	Id pulumi.StringInput `pulumi:"id"`
+	// attribute name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ActionSetpointAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSetpointAttribute)(nil)).Elem()
+}
+
+func (i ActionSetpointAttributeArgs) ToActionSetpointAttributeOutput() ActionSetpointAttributeOutput {
+	return i.ToActionSetpointAttributeOutputWithContext(context.Background())
+}
+
+func (i ActionSetpointAttributeArgs) ToActionSetpointAttributeOutputWithContext(ctx context.Context) ActionSetpointAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSetpointAttributeOutput)
+}
+
+type ActionSetpointAttributeOutput struct{ *pulumi.OutputState }
+
+func (ActionSetpointAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSetpointAttribute)(nil)).Elem()
+}
+
+func (o ActionSetpointAttributeOutput) ToActionSetpointAttributeOutput() ActionSetpointAttributeOutput {
+	return o
+}
+
+func (o ActionSetpointAttributeOutput) ToActionSetpointAttributeOutputWithContext(ctx context.Context) ActionSetpointAttributeOutput {
+	return o
+}
+
+// attribute id
+func (o ActionSetpointAttributeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSetpointAttribute) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// attribute name
+func (o ActionSetpointAttributeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSetpointAttribute) string { return v.Name }).(pulumi.StringOutput)
+}
+
 type AlertAlertItem struct {
 	// how the expression is shown (i.e 'A * 2')
 	Expression string `pulumi:"expression"`
@@ -24,6 +365,10 @@ type AlertAlertItem struct {
 	QueryFilterAsset AlertAlertItemQueryFilterAsset `pulumi:"queryFilterAsset"`
 	// Asset/Attribute filter
 	QueryFilterAttribute AlertAlertItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
+	// function used to aggregate data
+	QueryGroupFunction *string `pulumi:"queryGroupFunction"`
+	// time window to apply the aggregation
+	QueryGroupUnit *string `pulumi:"queryGroupUnit"`
 	// actual mongo query
 	QueryPlain string `pulumi:"queryPlain"`
 	// identifier of the variable (i.e 'A')
@@ -54,6 +399,10 @@ type AlertAlertItemArgs struct {
 	QueryFilterAsset AlertAlertItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
 	// Asset/Attribute filter
 	QueryFilterAttribute AlertAlertItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
+	// function used to aggregate data
+	QueryGroupFunction pulumi.StringPtrInput `pulumi:"queryGroupFunction"`
+	// time window to apply the aggregation
+	QueryGroupUnit pulumi.StringPtrInput `pulumi:"queryGroupUnit"`
 	// actual mongo query
 	QueryPlain pulumi.StringInput `pulumi:"queryPlain"`
 	// identifier of the variable (i.e 'A')
@@ -136,6 +485,16 @@ func (o AlertAlertItemOutput) QueryFilterAsset() AlertAlertItemQueryFilterAssetO
 // Asset/Attribute filter
 func (o AlertAlertItemOutput) QueryFilterAttribute() AlertAlertItemQueryFilterAttributeOutput {
 	return o.ApplyT(func(v AlertAlertItem) AlertAlertItemQueryFilterAttribute { return v.QueryFilterAttribute }).(AlertAlertItemQueryFilterAttributeOutput)
+}
+
+// function used to aggregate data
+func (o AlertAlertItemOutput) QueryGroupFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertAlertItem) *string { return v.QueryGroupFunction }).(pulumi.StringPtrOutput)
+}
+
+// time window to apply the aggregation
+func (o AlertAlertItemOutput) QueryGroupUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertAlertItem) *string { return v.QueryGroupUnit }).(pulumi.StringPtrOutput)
 }
 
 // actual mongo query
@@ -447,29 +806,45 @@ func (i AssetKindArgs) ToAssetKindOutputWithContext(ctx context.Context) AssetKi
 	return pulumi.ToOutputWithContext(ctx, i).(AssetKindOutput)
 }
 
-// AssetKindArrayInput is an input type that accepts AssetKindArray and AssetKindArrayOutput values.
-// You can construct a concrete instance of `AssetKindArrayInput` via:
+func (i AssetKindArgs) ToAssetKindPtrOutput() AssetKindPtrOutput {
+	return i.ToAssetKindPtrOutputWithContext(context.Background())
+}
+
+func (i AssetKindArgs) ToAssetKindPtrOutputWithContext(ctx context.Context) AssetKindPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetKindOutput).ToAssetKindPtrOutputWithContext(ctx)
+}
+
+// AssetKindPtrInput is an input type that accepts AssetKindArgs, AssetKindPtr and AssetKindPtrOutput values.
+// You can construct a concrete instance of `AssetKindPtrInput` via:
 //
-//	AssetKindArray{ AssetKindArgs{...} }
-type AssetKindArrayInput interface {
+//	        AssetKindArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssetKindPtrInput interface {
 	pulumi.Input
 
-	ToAssetKindArrayOutput() AssetKindArrayOutput
-	ToAssetKindArrayOutputWithContext(context.Context) AssetKindArrayOutput
+	ToAssetKindPtrOutput() AssetKindPtrOutput
+	ToAssetKindPtrOutputWithContext(context.Context) AssetKindPtrOutput
 }
 
-type AssetKindArray []AssetKindInput
+type assetKindPtrType AssetKindArgs
 
-func (AssetKindArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AssetKind)(nil)).Elem()
+func AssetKindPtr(v *AssetKindArgs) AssetKindPtrInput {
+	return (*assetKindPtrType)(v)
 }
 
-func (i AssetKindArray) ToAssetKindArrayOutput() AssetKindArrayOutput {
-	return i.ToAssetKindArrayOutputWithContext(context.Background())
+func (*assetKindPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetKind)(nil)).Elem()
 }
 
-func (i AssetKindArray) ToAssetKindArrayOutputWithContext(ctx context.Context) AssetKindArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetKindArrayOutput)
+func (i *assetKindPtrType) ToAssetKindPtrOutput() AssetKindPtrOutput {
+	return i.ToAssetKindPtrOutputWithContext(context.Background())
+}
+
+func (i *assetKindPtrType) ToAssetKindPtrOutputWithContext(ctx context.Context) AssetKindPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetKindPtrOutput)
 }
 
 type AssetKindOutput struct{ *pulumi.OutputState }
@@ -486,6 +861,16 @@ func (o AssetKindOutput) ToAssetKindOutputWithContext(ctx context.Context) Asset
 	return o
 }
 
+func (o AssetKindOutput) ToAssetKindPtrOutput() AssetKindPtrOutput {
+	return o.ToAssetKindPtrOutputWithContext(context.Background())
+}
+
+func (o AssetKindOutput) ToAssetKindPtrOutputWithContext(ctx context.Context) AssetKindPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetKind) *AssetKind {
+		return &v
+	}).(AssetKindPtrOutput)
+}
+
 // kind id
 func (o AssetKindOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v AssetKind) string { return v.Id }).(pulumi.StringOutput)
@@ -496,24 +881,330 @@ func (o AssetKindOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AssetKind) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type AssetKindArrayOutput struct{ *pulumi.OutputState }
+type AssetKindPtrOutput struct{ *pulumi.OutputState }
 
-func (AssetKindArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AssetKind)(nil)).Elem()
+func (AssetKindPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetKind)(nil)).Elem()
 }
 
-func (o AssetKindArrayOutput) ToAssetKindArrayOutput() AssetKindArrayOutput {
+func (o AssetKindPtrOutput) ToAssetKindPtrOutput() AssetKindPtrOutput {
 	return o
 }
 
-func (o AssetKindArrayOutput) ToAssetKindArrayOutputWithContext(ctx context.Context) AssetKindArrayOutput {
+func (o AssetKindPtrOutput) ToAssetKindPtrOutputWithContext(ctx context.Context) AssetKindPtrOutput {
 	return o
 }
 
-func (o AssetKindArrayOutput) Index(i pulumi.IntInput) AssetKindOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetKind {
-		return vs[0].([]AssetKind)[vs[1].(int)]
+func (o AssetKindPtrOutput) Elem() AssetKindOutput {
+	return o.ApplyT(func(v *AssetKind) AssetKind {
+		if v != nil {
+			return *v
+		}
+		var ret AssetKind
+		return ret
 	}).(AssetKindOutput)
+}
+
+// kind id
+func (o AssetKindPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetKind) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// kind name
+func (o AssetKindPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetKind) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type AssetTag struct {
+	// tag id
+	Id string `pulumi:"id"`
+	// tag name
+	Name string `pulumi:"name"`
+}
+
+// AssetTagInput is an input type that accepts AssetTagArgs and AssetTagOutput values.
+// You can construct a concrete instance of `AssetTagInput` via:
+//
+//	AssetTagArgs{...}
+type AssetTagInput interface {
+	pulumi.Input
+
+	ToAssetTagOutput() AssetTagOutput
+	ToAssetTagOutputWithContext(context.Context) AssetTagOutput
+}
+
+type AssetTagArgs struct {
+	// tag id
+	Id pulumi.StringInput `pulumi:"id"`
+	// tag name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (AssetTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetTag)(nil)).Elem()
+}
+
+func (i AssetTagArgs) ToAssetTagOutput() AssetTagOutput {
+	return i.ToAssetTagOutputWithContext(context.Background())
+}
+
+func (i AssetTagArgs) ToAssetTagOutputWithContext(ctx context.Context) AssetTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetTagOutput)
+}
+
+// AssetTagArrayInput is an input type that accepts AssetTagArray and AssetTagArrayOutput values.
+// You can construct a concrete instance of `AssetTagArrayInput` via:
+//
+//	AssetTagArray{ AssetTagArgs{...} }
+type AssetTagArrayInput interface {
+	pulumi.Input
+
+	ToAssetTagArrayOutput() AssetTagArrayOutput
+	ToAssetTagArrayOutputWithContext(context.Context) AssetTagArrayOutput
+}
+
+type AssetTagArray []AssetTagInput
+
+func (AssetTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetTag)(nil)).Elem()
+}
+
+func (i AssetTagArray) ToAssetTagArrayOutput() AssetTagArrayOutput {
+	return i.ToAssetTagArrayOutputWithContext(context.Background())
+}
+
+func (i AssetTagArray) ToAssetTagArrayOutputWithContext(ctx context.Context) AssetTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetTagArrayOutput)
+}
+
+type AssetTagOutput struct{ *pulumi.OutputState }
+
+func (AssetTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetTag)(nil)).Elem()
+}
+
+func (o AssetTagOutput) ToAssetTagOutput() AssetTagOutput {
+	return o
+}
+
+func (o AssetTagOutput) ToAssetTagOutputWithContext(ctx context.Context) AssetTagOutput {
+	return o
+}
+
+// tag id
+func (o AssetTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// tag name
+func (o AssetTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type AssetTagArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetTag)(nil)).Elem()
+}
+
+func (o AssetTagArrayOutput) ToAssetTagArrayOutput() AssetTagArrayOutput {
+	return o
+}
+
+func (o AssetTagArrayOutput) ToAssetTagArrayOutputWithContext(ctx context.Context) AssetTagArrayOutput {
+	return o
+}
+
+func (o AssetTagArrayOutput) Index(i pulumi.IntInput) AssetTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetTag {
+		return vs[0].([]AssetTag)[vs[1].(int)]
+	}).(AssetTagOutput)
+}
+
+type CommandAction struct {
+	// asset associated with the action (to be deprecated)
+	Asset CommandActionAsset `pulumi:"asset"`
+	// action ID
+	Id string `pulumi:"id"`
+	// setpoint name
+	Name string `pulumi:"name"`
+}
+
+// CommandActionInput is an input type that accepts CommandActionArgs and CommandActionOutput values.
+// You can construct a concrete instance of `CommandActionInput` via:
+//
+//	CommandActionArgs{...}
+type CommandActionInput interface {
+	pulumi.Input
+
+	ToCommandActionOutput() CommandActionOutput
+	ToCommandActionOutputWithContext(context.Context) CommandActionOutput
+}
+
+type CommandActionArgs struct {
+	// asset associated with the action (to be deprecated)
+	Asset CommandActionAssetInput `pulumi:"asset"`
+	// action ID
+	Id pulumi.StringInput `pulumi:"id"`
+	// setpoint name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (CommandActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommandAction)(nil)).Elem()
+}
+
+func (i CommandActionArgs) ToCommandActionOutput() CommandActionOutput {
+	return i.ToCommandActionOutputWithContext(context.Background())
+}
+
+func (i CommandActionArgs) ToCommandActionOutputWithContext(ctx context.Context) CommandActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommandActionOutput)
+}
+
+// CommandActionArrayInput is an input type that accepts CommandActionArray and CommandActionArrayOutput values.
+// You can construct a concrete instance of `CommandActionArrayInput` via:
+//
+//	CommandActionArray{ CommandActionArgs{...} }
+type CommandActionArrayInput interface {
+	pulumi.Input
+
+	ToCommandActionArrayOutput() CommandActionArrayOutput
+	ToCommandActionArrayOutputWithContext(context.Context) CommandActionArrayOutput
+}
+
+type CommandActionArray []CommandActionInput
+
+func (CommandActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CommandAction)(nil)).Elem()
+}
+
+func (i CommandActionArray) ToCommandActionArrayOutput() CommandActionArrayOutput {
+	return i.ToCommandActionArrayOutputWithContext(context.Background())
+}
+
+func (i CommandActionArray) ToCommandActionArrayOutputWithContext(ctx context.Context) CommandActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommandActionArrayOutput)
+}
+
+type CommandActionOutput struct{ *pulumi.OutputState }
+
+func (CommandActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommandAction)(nil)).Elem()
+}
+
+func (o CommandActionOutput) ToCommandActionOutput() CommandActionOutput {
+	return o
+}
+
+func (o CommandActionOutput) ToCommandActionOutputWithContext(ctx context.Context) CommandActionOutput {
+	return o
+}
+
+// asset associated with the action (to be deprecated)
+func (o CommandActionOutput) Asset() CommandActionAssetOutput {
+	return o.ApplyT(func(v CommandAction) CommandActionAsset { return v.Asset }).(CommandActionAssetOutput)
+}
+
+// action ID
+func (o CommandActionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v CommandAction) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// setpoint name
+func (o CommandActionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CommandAction) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type CommandActionArrayOutput struct{ *pulumi.OutputState }
+
+func (CommandActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CommandAction)(nil)).Elem()
+}
+
+func (o CommandActionArrayOutput) ToCommandActionArrayOutput() CommandActionArrayOutput {
+	return o
+}
+
+func (o CommandActionArrayOutput) ToCommandActionArrayOutputWithContext(ctx context.Context) CommandActionArrayOutput {
+	return o
+}
+
+func (o CommandActionArrayOutput) Index(i pulumi.IntInput) CommandActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CommandAction {
+		return vs[0].([]CommandAction)[vs[1].(int)]
+	}).(CommandActionOutput)
+}
+
+type CommandActionAsset struct {
+	// asset id
+	Id string `pulumi:"id"`
+	// asset name
+	Name string `pulumi:"name"`
+}
+
+// CommandActionAssetInput is an input type that accepts CommandActionAssetArgs and CommandActionAssetOutput values.
+// You can construct a concrete instance of `CommandActionAssetInput` via:
+//
+//	CommandActionAssetArgs{...}
+type CommandActionAssetInput interface {
+	pulumi.Input
+
+	ToCommandActionAssetOutput() CommandActionAssetOutput
+	ToCommandActionAssetOutputWithContext(context.Context) CommandActionAssetOutput
+}
+
+type CommandActionAssetArgs struct {
+	// asset id
+	Id pulumi.StringInput `pulumi:"id"`
+	// asset name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (CommandActionAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommandActionAsset)(nil)).Elem()
+}
+
+func (i CommandActionAssetArgs) ToCommandActionAssetOutput() CommandActionAssetOutput {
+	return i.ToCommandActionAssetOutputWithContext(context.Background())
+}
+
+func (i CommandActionAssetArgs) ToCommandActionAssetOutputWithContext(ctx context.Context) CommandActionAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommandActionAssetOutput)
+}
+
+type CommandActionAssetOutput struct{ *pulumi.OutputState }
+
+func (CommandActionAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommandActionAsset)(nil)).Elem()
+}
+
+func (o CommandActionAssetOutput) ToCommandActionAssetOutput() CommandActionAssetOutput {
+	return o
+}
+
+func (o CommandActionAssetOutput) ToCommandActionAssetOutputWithContext(ctx context.Context) CommandActionAssetOutput {
+	return o
+}
+
+// asset id
+func (o CommandActionAssetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v CommandActionAsset) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// asset name
+func (o CommandActionAssetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CommandActionAsset) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type ComponentInputType struct {
@@ -1246,6 +1937,112 @@ func (o ComponentRoutineOutputValueArrayOutput) Index(i pulumi.IntInput) Compone
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComponentRoutineOutputValue {
 		return vs[0].([]ComponentRoutineOutputValue)[vs[1].(int)]
 	}).(ComponentRoutineOutputValueOutput)
+}
+
+type ComponentTag struct {
+	// tag id
+	Id string `pulumi:"id"`
+	// tag name
+	Name string `pulumi:"name"`
+}
+
+// ComponentTagInput is an input type that accepts ComponentTagArgs and ComponentTagOutput values.
+// You can construct a concrete instance of `ComponentTagInput` via:
+//
+//	ComponentTagArgs{...}
+type ComponentTagInput interface {
+	pulumi.Input
+
+	ToComponentTagOutput() ComponentTagOutput
+	ToComponentTagOutputWithContext(context.Context) ComponentTagOutput
+}
+
+type ComponentTagArgs struct {
+	// tag id
+	Id pulumi.StringInput `pulumi:"id"`
+	// tag name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ComponentTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComponentTag)(nil)).Elem()
+}
+
+func (i ComponentTagArgs) ToComponentTagOutput() ComponentTagOutput {
+	return i.ToComponentTagOutputWithContext(context.Background())
+}
+
+func (i ComponentTagArgs) ToComponentTagOutputWithContext(ctx context.Context) ComponentTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComponentTagOutput)
+}
+
+// ComponentTagArrayInput is an input type that accepts ComponentTagArray and ComponentTagArrayOutput values.
+// You can construct a concrete instance of `ComponentTagArrayInput` via:
+//
+//	ComponentTagArray{ ComponentTagArgs{...} }
+type ComponentTagArrayInput interface {
+	pulumi.Input
+
+	ToComponentTagArrayOutput() ComponentTagArrayOutput
+	ToComponentTagArrayOutputWithContext(context.Context) ComponentTagArrayOutput
+}
+
+type ComponentTagArray []ComponentTagInput
+
+func (ComponentTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComponentTag)(nil)).Elem()
+}
+
+func (i ComponentTagArray) ToComponentTagArrayOutput() ComponentTagArrayOutput {
+	return i.ToComponentTagArrayOutputWithContext(context.Background())
+}
+
+func (i ComponentTagArray) ToComponentTagArrayOutputWithContext(ctx context.Context) ComponentTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComponentTagArrayOutput)
+}
+
+type ComponentTagOutput struct{ *pulumi.OutputState }
+
+func (ComponentTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComponentTag)(nil)).Elem()
+}
+
+func (o ComponentTagOutput) ToComponentTagOutput() ComponentTagOutput {
+	return o
+}
+
+func (o ComponentTagOutput) ToComponentTagOutputWithContext(ctx context.Context) ComponentTagOutput {
+	return o
+}
+
+// tag id
+func (o ComponentTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ComponentTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// tag name
+func (o ComponentTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ComponentTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ComponentTagArrayOutput struct{ *pulumi.OutputState }
+
+func (ComponentTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComponentTag)(nil)).Elem()
+}
+
+func (o ComponentTagArrayOutput) ToComponentTagArrayOutput() ComponentTagArrayOutput {
+	return o
+}
+
+func (o ComponentTagArrayOutput) ToComponentTagArrayOutputWithContext(ctx context.Context) ComponentTagArrayOutput {
+	return o
+}
+
+func (o ComponentTagArrayOutput) Index(i pulumi.IntInput) ComponentTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComponentTag {
+		return vs[0].([]ComponentTag)[vs[1].(int)]
+	}).(ComponentTagOutput)
 }
 
 type DashboardActionlistChartChartItem struct {
@@ -8483,6 +9280,10 @@ type FunctionFunctionItem struct {
 	QueryFilterAsset FunctionFunctionItemQueryFilterAsset `pulumi:"queryFilterAsset"`
 	// Asset/Attribute filter
 	QueryFilterAttribute FunctionFunctionItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
+	// function used to aggregate data
+	QueryGroupFunction *string `pulumi:"queryGroupFunction"`
+	// time window to apply the aggregation
+	QueryGroupUnit *string `pulumi:"queryGroupUnit"`
 	// actual mongo query
 	QueryPlain string `pulumi:"queryPlain"`
 	// identifier of the variable (i.e 'A')
@@ -8513,6 +9314,10 @@ type FunctionFunctionItemArgs struct {
 	QueryFilterAsset FunctionFunctionItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
 	// Asset/Attribute filter
 	QueryFilterAttribute FunctionFunctionItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
+	// function used to aggregate data
+	QueryGroupFunction pulumi.StringPtrInput `pulumi:"queryGroupFunction"`
+	// time window to apply the aggregation
+	QueryGroupUnit pulumi.StringPtrInput `pulumi:"queryGroupUnit"`
 	// actual mongo query
 	QueryPlain pulumi.StringInput `pulumi:"queryPlain"`
 	// identifier of the variable (i.e 'A')
@@ -8595,6 +9400,16 @@ func (o FunctionFunctionItemOutput) QueryFilterAsset() FunctionFunctionItemQuery
 // Asset/Attribute filter
 func (o FunctionFunctionItemOutput) QueryFilterAttribute() FunctionFunctionItemQueryFilterAttributeOutput {
 	return o.ApplyT(func(v FunctionFunctionItem) FunctionFunctionItemQueryFilterAttribute { return v.QueryFilterAttribute }).(FunctionFunctionItemQueryFilterAttributeOutput)
+}
+
+// function used to aggregate data
+func (o FunctionFunctionItemOutput) QueryGroupFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionFunctionItem) *string { return v.QueryGroupFunction }).(pulumi.StringPtrOutput)
+}
+
+// time window to apply the aggregation
+func (o FunctionFunctionItemOutput) QueryGroupUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionFunctionItem) *string { return v.QueryGroupUnit }).(pulumi.StringPtrOutput)
 }
 
 // actual mongo query
@@ -9067,7 +9882,9 @@ func (o FunctionTargetAttributePtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 type GetAssetKindsKind struct {
-	Id   string `pulumi:"id"`
+	// ID of the resource
+	Id string `pulumi:"id"`
+	// name of the resource
 	Name string `pulumi:"name"`
 }
 
@@ -9083,7 +9900,9 @@ type GetAssetKindsKindInput interface {
 }
 
 type GetAssetKindsKindArgs struct {
-	Id   pulumi.StringInput `pulumi:"id"`
+	// ID of the resource
+	Id pulumi.StringInput `pulumi:"id"`
+	// name of the resource
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -9138,10 +9957,12 @@ func (o GetAssetKindsKindOutput) ToGetAssetKindsKindOutputWithContext(ctx contex
 	return o
 }
 
+// ID of the resource
 func (o GetAssetKindsKindOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAssetKindsKind) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// name of the resource
 func (o GetAssetKindsKindOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAssetKindsKind) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -9166,7 +9987,118 @@ func (o GetAssetKindsKindArrayOutput) Index(i pulumi.IntInput) GetAssetKindsKind
 	}).(GetAssetKindsKindOutput)
 }
 
+type GetTagsTag struct {
+	// ID of the resource
+	Id string `pulumi:"id"`
+	// name of the resource
+	Name string `pulumi:"name"`
+}
+
+// GetTagsTagInput is an input type that accepts GetTagsTagArgs and GetTagsTagOutput values.
+// You can construct a concrete instance of `GetTagsTagInput` via:
+//
+//	GetTagsTagArgs{...}
+type GetTagsTagInput interface {
+	pulumi.Input
+
+	ToGetTagsTagOutput() GetTagsTagOutput
+	ToGetTagsTagOutputWithContext(context.Context) GetTagsTagOutput
+}
+
+type GetTagsTagArgs struct {
+	// ID of the resource
+	Id pulumi.StringInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetTagsTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagsTag)(nil)).Elem()
+}
+
+func (i GetTagsTagArgs) ToGetTagsTagOutput() GetTagsTagOutput {
+	return i.ToGetTagsTagOutputWithContext(context.Background())
+}
+
+func (i GetTagsTagArgs) ToGetTagsTagOutputWithContext(ctx context.Context) GetTagsTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagsTagOutput)
+}
+
+// GetTagsTagArrayInput is an input type that accepts GetTagsTagArray and GetTagsTagArrayOutput values.
+// You can construct a concrete instance of `GetTagsTagArrayInput` via:
+//
+//	GetTagsTagArray{ GetTagsTagArgs{...} }
+type GetTagsTagArrayInput interface {
+	pulumi.Input
+
+	ToGetTagsTagArrayOutput() GetTagsTagArrayOutput
+	ToGetTagsTagArrayOutputWithContext(context.Context) GetTagsTagArrayOutput
+}
+
+type GetTagsTagArray []GetTagsTagInput
+
+func (GetTagsTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagsTag)(nil)).Elem()
+}
+
+func (i GetTagsTagArray) ToGetTagsTagArrayOutput() GetTagsTagArrayOutput {
+	return i.ToGetTagsTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetTagsTagArray) ToGetTagsTagArrayOutputWithContext(ctx context.Context) GetTagsTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagsTagArrayOutput)
+}
+
+type GetTagsTagOutput struct{ *pulumi.OutputState }
+
+func (GetTagsTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagsTag)(nil)).Elem()
+}
+
+func (o GetTagsTagOutput) ToGetTagsTagOutput() GetTagsTagOutput {
+	return o
+}
+
+func (o GetTagsTagOutput) ToGetTagsTagOutputWithContext(ctx context.Context) GetTagsTagOutput {
+	return o
+}
+
+// ID of the resource
+func (o GetTagsTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagsTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// name of the resource
+func (o GetTagsTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagsTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetTagsTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTagsTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagsTag)(nil)).Elem()
+}
+
+func (o GetTagsTagArrayOutput) ToGetTagsTagArrayOutput() GetTagsTagArrayOutput {
+	return o
+}
+
+func (o GetTagsTagArrayOutput) ToGetTagsTagArrayOutputWithContext(ctx context.Context) GetTagsTagArrayOutput {
+	return o
+}
+
+func (o GetTagsTagArrayOutput) Index(i pulumi.IntInput) GetTagsTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTagsTag {
+		return vs[0].([]GetTagsTag)[vs[1].(int)]
+	}).(GetTagsTagOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAssetInput)(nil)).Elem(), ActionAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAssetPtrInput)(nil)).Elem(), ActionAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSetpointInput)(nil)).Elem(), ActionSetpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSetpointArrayInput)(nil)).Elem(), ActionSetpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSetpointAttributeInput)(nil)).Elem(), ActionSetpointAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertAlertItemInput)(nil)).Elem(), AlertAlertItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertAlertItemArrayInput)(nil)).Elem(), AlertAlertItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertAlertItemQueryFilterAssetInput)(nil)).Elem(), AlertAlertItemQueryFilterAssetArgs{})
@@ -9174,7 +10106,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertThresholdInput)(nil)).Elem(), AlertThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertThresholdArrayInput)(nil)).Elem(), AlertThresholdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetKindInput)(nil)).Elem(), AssetKindArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AssetKindArrayInput)(nil)).Elem(), AssetKindArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetKindPtrInput)(nil)).Elem(), AssetKindArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetTagInput)(nil)).Elem(), AssetTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetTagArrayInput)(nil)).Elem(), AssetTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommandActionInput)(nil)).Elem(), CommandActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommandActionArrayInput)(nil)).Elem(), CommandActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommandActionAssetInput)(nil)).Elem(), CommandActionAssetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentInputTypeInput)(nil)).Elem(), ComponentInputTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentInputTypeArrayInput)(nil)).Elem(), ComponentInputTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineConfigInput)(nil)).Elem(), ComponentRoutineConfigArgs{})
@@ -9187,6 +10124,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineOutputTypeArrayInput)(nil)).Elem(), ComponentRoutineOutputTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineOutputValueInput)(nil)).Elem(), ComponentRoutineOutputValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineOutputValueArrayInput)(nil)).Elem(), ComponentRoutineOutputValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComponentTagInput)(nil)).Elem(), ComponentTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComponentTagArrayInput)(nil)).Elem(), ComponentTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardActionlistChartChartItemInput)(nil)).Elem(), DashboardActionlistChartChartItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardActionlistChartChartItemArrayInput)(nil)).Elem(), DashboardActionlistChartChartItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardActionlistChartChartItemQueryFilterAssetInput)(nil)).Elem(), DashboardActionlistChartChartItemQueryFilterAssetArgs{})
@@ -9309,6 +10248,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTargetAttributePtrInput)(nil)).Elem(), FunctionTargetAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAssetKindsKindInput)(nil)).Elem(), GetAssetKindsKindArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAssetKindsKindArrayInput)(nil)).Elem(), GetAssetKindsKindArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagInput)(nil)).Elem(), GetTagsTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagArrayInput)(nil)).Elem(), GetTagsTagArray{})
+	pulumi.RegisterOutputType(ActionAssetOutput{})
+	pulumi.RegisterOutputType(ActionAssetPtrOutput{})
+	pulumi.RegisterOutputType(ActionSetpointOutput{})
+	pulumi.RegisterOutputType(ActionSetpointArrayOutput{})
+	pulumi.RegisterOutputType(ActionSetpointAttributeOutput{})
 	pulumi.RegisterOutputType(AlertAlertItemOutput{})
 	pulumi.RegisterOutputType(AlertAlertItemArrayOutput{})
 	pulumi.RegisterOutputType(AlertAlertItemQueryFilterAssetOutput{})
@@ -9316,7 +10262,12 @@ func init() {
 	pulumi.RegisterOutputType(AlertThresholdOutput{})
 	pulumi.RegisterOutputType(AlertThresholdArrayOutput{})
 	pulumi.RegisterOutputType(AssetKindOutput{})
-	pulumi.RegisterOutputType(AssetKindArrayOutput{})
+	pulumi.RegisterOutputType(AssetKindPtrOutput{})
+	pulumi.RegisterOutputType(AssetTagOutput{})
+	pulumi.RegisterOutputType(AssetTagArrayOutput{})
+	pulumi.RegisterOutputType(CommandActionOutput{})
+	pulumi.RegisterOutputType(CommandActionArrayOutput{})
+	pulumi.RegisterOutputType(CommandActionAssetOutput{})
 	pulumi.RegisterOutputType(ComponentInputTypeOutput{})
 	pulumi.RegisterOutputType(ComponentInputTypeArrayOutput{})
 	pulumi.RegisterOutputType(ComponentRoutineConfigOutput{})
@@ -9329,6 +10280,8 @@ func init() {
 	pulumi.RegisterOutputType(ComponentRoutineOutputTypeArrayOutput{})
 	pulumi.RegisterOutputType(ComponentRoutineOutputValueOutput{})
 	pulumi.RegisterOutputType(ComponentRoutineOutputValueArrayOutput{})
+	pulumi.RegisterOutputType(ComponentTagOutput{})
+	pulumi.RegisterOutputType(ComponentTagArrayOutput{})
 	pulumi.RegisterOutputType(DashboardActionlistChartChartItemOutput{})
 	pulumi.RegisterOutputType(DashboardActionlistChartChartItemArrayOutput{})
 	pulumi.RegisterOutputType(DashboardActionlistChartChartItemQueryFilterAssetOutput{})
@@ -9451,4 +10404,6 @@ func init() {
 	pulumi.RegisterOutputType(FunctionTargetAttributePtrOutput{})
 	pulumi.RegisterOutputType(GetAssetKindsKindOutput{})
 	pulumi.RegisterOutputType(GetAssetKindsKindArrayOutput{})
+	pulumi.RegisterOutputType(GetTagsTagOutput{})
+	pulumi.RegisterOutputType(GetTagsTagArrayOutput{})
 }

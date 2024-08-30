@@ -1,6 +1,24 @@
 {
     "auto-aliasing": {
         "resources": {
+            "splight_action": {
+                "current": "splight:index/action:Action",
+                "fields": {
+                    "asset": {
+                        "maxItemsOne": true
+                    },
+                    "setpoints": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "attribute": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "splight_alert": {
                 "current": "splight:index/alert:Alert",
                 "fields": {
@@ -29,9 +47,12 @@
                 "current": "splight:index/asset:Asset",
                 "fields": {
                     "kind": {
-                        "maxItemsOne": false
+                        "maxItemsOne": true
                     },
                     "related_assets": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
                         "maxItemsOne": false
                     }
                 }
@@ -42,10 +63,28 @@
             "splight_asset_metadata": {
                 "current": "splight:index/assetMetadata:AssetMetadata"
             },
+            "splight_command": {
+                "current": "splight:index/command:Command",
+                "fields": {
+                    "actions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "asset": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "splight_component": {
                 "current": "splight:index/component:Component",
                 "fields": {
                     "input": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
                         "maxItemsOne": false
                     }
                 }
@@ -477,6 +516,9 @@
             },
             "splight_secret": {
                 "current": "splight:index/secret:Secret"
+            },
+            "splight_tag": {
+                "current": "splight:index/tag:Tag"
             }
         },
         "datasources": {
@@ -484,6 +526,14 @@
                 "current": "splight:index/getAssetKinds:getAssetKinds",
                 "fields": {
                     "kinds": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "splight_tags": {
+                "current": "splight:index/getTags:getTags",
+                "fields": {
+                    "tags": {
                         "maxItemsOne": false
                     }
                 }

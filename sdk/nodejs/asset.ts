@@ -9,23 +9,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as splight from "@splightplatform/pulumi-splight";
- *
- * const assetMainTest = new splight.Asset("assetMainTest", {
- *     description: "Created with Terraform",
- *     geometry: JSON.stringify({
- *         type: "GeometryCollection",
- *         geometries: [],
- *     }),
- *     kinds: [{
- *         id: "1234-1234-1234-1234",
- *         name: "Line",
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * ```sh
@@ -65,13 +48,13 @@ export class Asset extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * geo position and shape of the resource
+     * GeoJSON GeomtryCollection
      */
-    public readonly geometry!: pulumi.Output<string | undefined>;
+    public readonly geometry!: pulumi.Output<string>;
     /**
      * kind of the resource
      */
-    public readonly kinds!: pulumi.Output<outputs.AssetKind[] | undefined>;
+    public readonly kind!: pulumi.Output<outputs.AssetKind | undefined>;
     /**
      * name of the resource
      */
@@ -80,6 +63,10 @@ export class Asset extends pulumi.CustomResource {
      * linked assets
      */
     public readonly relatedAssets!: pulumi.Output<string[] | undefined>;
+    /**
+     * tags of the resource
+     */
+    public readonly tags!: pulumi.Output<outputs.AssetTag[] | undefined>;
 
     /**
      * Create a Asset resource with the given unique name, arguments, and options.
@@ -88,7 +75,7 @@ export class Asset extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: AssetArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: AssetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AssetArgs | AssetState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -96,16 +83,21 @@ export class Asset extends pulumi.CustomResource {
             const state = argsOrState as AssetState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["geometry"] = state ? state.geometry : undefined;
-            resourceInputs["kinds"] = state ? state.kinds : undefined;
+            resourceInputs["kind"] = state ? state.kind : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["relatedAssets"] = state ? state.relatedAssets : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as AssetArgs | undefined;
+            if ((!args || args.geometry === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'geometry'");
+            }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
-            resourceInputs["kinds"] = args ? args.kinds : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["relatedAssets"] = args ? args.relatedAssets : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Asset.__pulumiType, name, resourceInputs, opts);
@@ -121,13 +113,13 @@ export interface AssetState {
      */
     description?: pulumi.Input<string>;
     /**
-     * geo position and shape of the resource
+     * GeoJSON GeomtryCollection
      */
     geometry?: pulumi.Input<string>;
     /**
      * kind of the resource
      */
-    kinds?: pulumi.Input<pulumi.Input<inputs.AssetKind>[]>;
+    kind?: pulumi.Input<inputs.AssetKind>;
     /**
      * name of the resource
      */
@@ -136,6 +128,10 @@ export interface AssetState {
      * linked assets
      */
     relatedAssets?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * tags of the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.AssetTag>[]>;
 }
 
 /**
@@ -147,13 +143,13 @@ export interface AssetArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * geo position and shape of the resource
+     * GeoJSON GeomtryCollection
      */
-    geometry?: pulumi.Input<string>;
+    geometry: pulumi.Input<string>;
     /**
      * kind of the resource
      */
-    kinds?: pulumi.Input<pulumi.Input<inputs.AssetKind>[]>;
+    kind?: pulumi.Input<inputs.AssetKind>;
     /**
      * name of the resource
      */
@@ -162,4 +158,8 @@ export interface AssetArgs {
      * linked assets
      */
     relatedAssets?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * tags of the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.AssetTag>[]>;
 }

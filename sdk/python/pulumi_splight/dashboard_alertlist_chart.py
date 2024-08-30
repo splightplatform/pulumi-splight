@@ -855,7 +855,7 @@ class DashboardAlertlistChart(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alert_list_type: Optional[pulumi.Input[str]] = None,
-                 chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardAlertlistChartChartItemArgs']]]]] = None,
+                 chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardAlertlistChartChartItemArgs', 'DashboardAlertlistChartChartItemArgsDict']]]]] = None,
                  collection: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_time_range: Optional[pulumi.Input[bool]] = None,
@@ -874,11 +874,11 @@ class DashboardAlertlistChart(pulumi.CustomResource):
                  relative_window_time: Optional[pulumi.Input[str]] = None,
                  show_beyond_data: Optional[pulumi.Input[bool]] = None,
                  tab: Optional[pulumi.Input[str]] = None,
-                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardAlertlistChartThresholdArgs']]]]] = None,
+                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardAlertlistChartThresholdArgs', 'DashboardAlertlistChartThresholdArgsDict']]]]] = None,
                  timestamp_gte: Optional[pulumi.Input[str]] = None,
                  timestamp_lte: Optional[pulumi.Input[str]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
-                 value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardAlertlistChartValueMappingArgs']]]]] = None,
+                 value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardAlertlistChartValueMappingArgs', 'DashboardAlertlistChartValueMappingArgsDict']]]]] = None,
                  width: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -926,22 +926,22 @@ class DashboardAlertlistChart(pulumi.CustomResource):
             filter_statuses=["healthy"],
             alert_list_type="table",
             chart_items=[
-                splight.DashboardAlertlistChartChartItemArgs(
-                    ref_id="A",
-                    type="QUERY",
-                    color="red",
-                    expression_plain="",
-                    query_filter_asset=splight.DashboardAlertlistChartChartItemQueryFilterAssetArgs(
-                        id=asset_test.id,
-                        name=asset_test.name,
-                    ),
-                    query_filter_attribute=splight.DashboardAlertlistChartChartItemQueryFilterAttributeArgs(
-                        id=attribute_test1.id,
-                        name=attribute_test1.name,
-                    ),
-                    query_plain=pulumi.Output.json_dumps([
+                {
+                    "ref_id": "A",
+                    "type": "QUERY",
+                    "color": "red",
+                    "expression_plain": "",
+                    "query_filter_asset": {
+                        "id": asset_test.id,
+                        "name": asset_test.name,
+                    },
+                    "query_filter_attribute": {
+                        "id": attribute_test1.id,
+                        "name": attribute_test1.name,
+                    },
+                    "query_plain": pulumi.Output.json_dumps([
                         {
-                            "$match": {
+                            "_match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test1.id,
                             },
@@ -969,23 +969,23 @@ class DashboardAlertlistChart(pulumi.CustomResource):
                             },
                         },
                     ]),
-                ),
-                splight.DashboardAlertlistChartChartItemArgs(
-                    ref_id="B",
-                    color="blue",
-                    type="QUERY",
-                    expression_plain="",
-                    query_filter_asset=splight.DashboardAlertlistChartChartItemQueryFilterAssetArgs(
-                        id=asset_test.id,
-                        name=asset_test.name,
-                    ),
-                    query_filter_attribute=splight.DashboardAlertlistChartChartItemQueryFilterAttributeArgs(
-                        id=attribute_test2.id,
-                        name=attribute_test2.name,
-                    ),
-                    query_plain=pulumi.Output.json_dumps([
+                },
+                {
+                    "ref_id": "B",
+                    "color": "blue",
+                    "type": "QUERY",
+                    "expression_plain": "",
+                    "query_filter_asset": {
+                        "id": asset_test.id,
+                        "name": asset_test.name,
+                    },
+                    "query_filter_attribute": {
+                        "id": attribute_test2.id,
+                        "name": attribute_test2.name,
+                    },
+                    "query_plain": pulumi.Output.json_dumps([
                         {
-                            "$match": {
+                            "_match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test2.id,
                             },
@@ -1013,19 +1013,19 @@ class DashboardAlertlistChart(pulumi.CustomResource):
                             },
                         },
                     ]),
-                ),
+                },
             ],
-            thresholds=[splight.DashboardAlertlistChartThresholdArgs(
-                color="#00edcf",
-                display_text="T1Test",
-                value=13.1,
-            )],
-            value_mappings=[splight.DashboardAlertlistChartValueMappingArgs(
-                display_text="MODIFICADO",
-                match_value="123.3",
-                type="exact_match",
-                order=0,
-            )])
+            thresholds=[{
+                "color": "#00edcf",
+                "display_text": "T1Test",
+                "value": 13.1,
+            }],
+            value_mappings=[{
+                "display_text": "MODIFICADO",
+                "match_value": "123.3",
+                "type": "exact_match",
+                "order": 0,
+            }])
         ```
 
         ## Import
@@ -1037,7 +1037,7 @@ class DashboardAlertlistChart(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alert_list_type: alert list type
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardAlertlistChartChartItemArgs']]]] chart_items: chart traces to be included
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardAlertlistChartChartItemArgs', 'DashboardAlertlistChartChartItemArgsDict']]]] chart_items: chart traces to be included
         :param pulumi.Input[str] description: chart description
         :param pulumi.Input[bool] display_time_range: whether to display the time range or not
         :param pulumi.Input[str] filter_name: filter name
@@ -1055,11 +1055,11 @@ class DashboardAlertlistChart(pulumi.CustomResource):
         :param pulumi.Input[str] relative_window_time: relative window time
         :param pulumi.Input[bool] show_beyond_data: whether to show data which is beyond timestamp_lte or not
         :param pulumi.Input[str] tab: id for the tab where to place the chart
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardAlertlistChartThresholdArgs']]]] thresholds: optional static lines to be added to the chart as references
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardAlertlistChartThresholdArgs', 'DashboardAlertlistChartThresholdArgsDict']]]] thresholds: optional static lines to be added to the chart as references
         :param pulumi.Input[str] timestamp_gte: date in isoformat or shortcut string where to end reading
         :param pulumi.Input[str] timestamp_lte: date in isoformat or shortcut string where to start reading
         :param pulumi.Input[str] timezone: chart timezone
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardAlertlistChartValueMappingArgs']]]] value_mappings: optional mappings to transform data with rules
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardAlertlistChartValueMappingArgs', 'DashboardAlertlistChartValueMappingArgsDict']]]] value_mappings: optional mappings to transform data with rules
         :param pulumi.Input[int] width: chart width in cols (max 20)
         """
         ...
@@ -1113,22 +1113,22 @@ class DashboardAlertlistChart(pulumi.CustomResource):
             filter_statuses=["healthy"],
             alert_list_type="table",
             chart_items=[
-                splight.DashboardAlertlistChartChartItemArgs(
-                    ref_id="A",
-                    type="QUERY",
-                    color="red",
-                    expression_plain="",
-                    query_filter_asset=splight.DashboardAlertlistChartChartItemQueryFilterAssetArgs(
-                        id=asset_test.id,
-                        name=asset_test.name,
-                    ),
-                    query_filter_attribute=splight.DashboardAlertlistChartChartItemQueryFilterAttributeArgs(
-                        id=attribute_test1.id,
-                        name=attribute_test1.name,
-                    ),
-                    query_plain=pulumi.Output.json_dumps([
+                {
+                    "ref_id": "A",
+                    "type": "QUERY",
+                    "color": "red",
+                    "expression_plain": "",
+                    "query_filter_asset": {
+                        "id": asset_test.id,
+                        "name": asset_test.name,
+                    },
+                    "query_filter_attribute": {
+                        "id": attribute_test1.id,
+                        "name": attribute_test1.name,
+                    },
+                    "query_plain": pulumi.Output.json_dumps([
                         {
-                            "$match": {
+                            "_match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test1.id,
                             },
@@ -1156,23 +1156,23 @@ class DashboardAlertlistChart(pulumi.CustomResource):
                             },
                         },
                     ]),
-                ),
-                splight.DashboardAlertlistChartChartItemArgs(
-                    ref_id="B",
-                    color="blue",
-                    type="QUERY",
-                    expression_plain="",
-                    query_filter_asset=splight.DashboardAlertlistChartChartItemQueryFilterAssetArgs(
-                        id=asset_test.id,
-                        name=asset_test.name,
-                    ),
-                    query_filter_attribute=splight.DashboardAlertlistChartChartItemQueryFilterAttributeArgs(
-                        id=attribute_test2.id,
-                        name=attribute_test2.name,
-                    ),
-                    query_plain=pulumi.Output.json_dumps([
+                },
+                {
+                    "ref_id": "B",
+                    "color": "blue",
+                    "type": "QUERY",
+                    "expression_plain": "",
+                    "query_filter_asset": {
+                        "id": asset_test.id,
+                        "name": asset_test.name,
+                    },
+                    "query_filter_attribute": {
+                        "id": attribute_test2.id,
+                        "name": attribute_test2.name,
+                    },
+                    "query_plain": pulumi.Output.json_dumps([
                         {
-                            "$match": {
+                            "_match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test2.id,
                             },
@@ -1200,19 +1200,19 @@ class DashboardAlertlistChart(pulumi.CustomResource):
                             },
                         },
                     ]),
-                ),
+                },
             ],
-            thresholds=[splight.DashboardAlertlistChartThresholdArgs(
-                color="#00edcf",
-                display_text="T1Test",
-                value=13.1,
-            )],
-            value_mappings=[splight.DashboardAlertlistChartValueMappingArgs(
-                display_text="MODIFICADO",
-                match_value="123.3",
-                type="exact_match",
-                order=0,
-            )])
+            thresholds=[{
+                "color": "#00edcf",
+                "display_text": "T1Test",
+                "value": 13.1,
+            }],
+            value_mappings=[{
+                "display_text": "MODIFICADO",
+                "match_value": "123.3",
+                "type": "exact_match",
+                "order": 0,
+            }])
         ```
 
         ## Import
@@ -1237,7 +1237,7 @@ class DashboardAlertlistChart(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alert_list_type: Optional[pulumi.Input[str]] = None,
-                 chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardAlertlistChartChartItemArgs']]]]] = None,
+                 chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardAlertlistChartChartItemArgs', 'DashboardAlertlistChartChartItemArgsDict']]]]] = None,
                  collection: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_time_range: Optional[pulumi.Input[bool]] = None,
@@ -1256,11 +1256,11 @@ class DashboardAlertlistChart(pulumi.CustomResource):
                  relative_window_time: Optional[pulumi.Input[str]] = None,
                  show_beyond_data: Optional[pulumi.Input[bool]] = None,
                  tab: Optional[pulumi.Input[str]] = None,
-                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardAlertlistChartThresholdArgs']]]]] = None,
+                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardAlertlistChartThresholdArgs', 'DashboardAlertlistChartThresholdArgsDict']]]]] = None,
                  timestamp_gte: Optional[pulumi.Input[str]] = None,
                  timestamp_lte: Optional[pulumi.Input[str]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
-                 value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardAlertlistChartValueMappingArgs']]]]] = None,
+                 value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardAlertlistChartValueMappingArgs', 'DashboardAlertlistChartValueMappingArgsDict']]]]] = None,
                  width: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1316,7 +1316,7 @@ class DashboardAlertlistChart(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             alert_list_type: Optional[pulumi.Input[str]] = None,
-            chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardAlertlistChartChartItemArgs']]]]] = None,
+            chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardAlertlistChartChartItemArgs', 'DashboardAlertlistChartChartItemArgsDict']]]]] = None,
             collection: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_time_range: Optional[pulumi.Input[bool]] = None,
@@ -1335,11 +1335,11 @@ class DashboardAlertlistChart(pulumi.CustomResource):
             relative_window_time: Optional[pulumi.Input[str]] = None,
             show_beyond_data: Optional[pulumi.Input[bool]] = None,
             tab: Optional[pulumi.Input[str]] = None,
-            thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardAlertlistChartThresholdArgs']]]]] = None,
+            thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardAlertlistChartThresholdArgs', 'DashboardAlertlistChartThresholdArgsDict']]]]] = None,
             timestamp_gte: Optional[pulumi.Input[str]] = None,
             timestamp_lte: Optional[pulumi.Input[str]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
-            value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardAlertlistChartValueMappingArgs']]]]] = None,
+            value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardAlertlistChartValueMappingArgs', 'DashboardAlertlistChartValueMappingArgsDict']]]]] = None,
             width: Optional[pulumi.Input[int]] = None) -> 'DashboardAlertlistChart':
         """
         Get an existing DashboardAlertlistChart resource's state with the given name, id, and optional extra
@@ -1349,7 +1349,7 @@ class DashboardAlertlistChart(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alert_list_type: alert list type
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardAlertlistChartChartItemArgs']]]] chart_items: chart traces to be included
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardAlertlistChartChartItemArgs', 'DashboardAlertlistChartChartItemArgsDict']]]] chart_items: chart traces to be included
         :param pulumi.Input[str] description: chart description
         :param pulumi.Input[bool] display_time_range: whether to display the time range or not
         :param pulumi.Input[str] filter_name: filter name
@@ -1367,11 +1367,11 @@ class DashboardAlertlistChart(pulumi.CustomResource):
         :param pulumi.Input[str] relative_window_time: relative window time
         :param pulumi.Input[bool] show_beyond_data: whether to show data which is beyond timestamp_lte or not
         :param pulumi.Input[str] tab: id for the tab where to place the chart
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardAlertlistChartThresholdArgs']]]] thresholds: optional static lines to be added to the chart as references
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardAlertlistChartThresholdArgs', 'DashboardAlertlistChartThresholdArgsDict']]]] thresholds: optional static lines to be added to the chart as references
         :param pulumi.Input[str] timestamp_gte: date in isoformat or shortcut string where to end reading
         :param pulumi.Input[str] timestamp_lte: date in isoformat or shortcut string where to start reading
         :param pulumi.Input[str] timezone: chart timezone
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardAlertlistChartValueMappingArgs']]]] value_mappings: optional mappings to transform data with rules
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardAlertlistChartValueMappingArgs', 'DashboardAlertlistChartValueMappingArgsDict']]]] value_mappings: optional mappings to transform data with rules
         :param pulumi.Input[int] width: chart width in cols (max 20)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

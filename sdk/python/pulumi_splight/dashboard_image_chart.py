@@ -822,7 +822,7 @@ class DashboardImageChart(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardImageChartChartItemArgs']]]]] = None,
+                 chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardImageChartChartItemArgs', 'DashboardImageChartChartItemArgsDict']]]]] = None,
                  collection: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_time_range: Optional[pulumi.Input[bool]] = None,
@@ -841,11 +841,11 @@ class DashboardImageChart(pulumi.CustomResource):
                  relative_window_time: Optional[pulumi.Input[str]] = None,
                  show_beyond_data: Optional[pulumi.Input[bool]] = None,
                  tab: Optional[pulumi.Input[str]] = None,
-                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardImageChartThresholdArgs']]]]] = None,
+                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardImageChartThresholdArgs', 'DashboardImageChartThresholdArgsDict']]]]] = None,
                  timestamp_gte: Optional[pulumi.Input[str]] = None,
                  timestamp_lte: Optional[pulumi.Input[str]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
-                 value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardImageChartValueMappingArgs']]]]] = None,
+                 value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardImageChartValueMappingArgs', 'DashboardImageChartValueMappingArgsDict']]]]] = None,
                  width: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -892,22 +892,22 @@ class DashboardImageChart(pulumi.CustomResource):
             image_url="123-123-123-123-123",
             image_file=None,
             chart_items=[
-                splight.DashboardImageChartChartItemArgs(
-                    ref_id="A",
-                    type="QUERY",
-                    color="red",
-                    expression_plain="",
-                    query_filter_asset=splight.DashboardImageChartChartItemQueryFilterAssetArgs(
-                        id=asset_test.id,
-                        name=asset_test.name,
-                    ),
-                    query_filter_attribute=splight.DashboardImageChartChartItemQueryFilterAttributeArgs(
-                        id=attribute_test1.id,
-                        name=attribute_test1.name,
-                    ),
-                    query_plain=pulumi.Output.json_dumps([
+                {
+                    "ref_id": "A",
+                    "type": "QUERY",
+                    "color": "red",
+                    "expression_plain": "",
+                    "query_filter_asset": {
+                        "id": asset_test.id,
+                        "name": asset_test.name,
+                    },
+                    "query_filter_attribute": {
+                        "id": attribute_test1.id,
+                        "name": attribute_test1.name,
+                    },
+                    "query_plain": pulumi.Output.json_dumps([
                         {
-                            "$match": {
+                            "_match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test1.id,
                             },
@@ -935,23 +935,23 @@ class DashboardImageChart(pulumi.CustomResource):
                             },
                         },
                     ]),
-                ),
-                splight.DashboardImageChartChartItemArgs(
-                    ref_id="B",
-                    color="blue",
-                    type="QUERY",
-                    expression_plain="",
-                    query_filter_asset=splight.DashboardImageChartChartItemQueryFilterAssetArgs(
-                        id=asset_test.id,
-                        name=asset_test.name,
-                    ),
-                    query_filter_attribute=splight.DashboardImageChartChartItemQueryFilterAttributeArgs(
-                        id=attribute_test2.id,
-                        name=attribute_test2.name,
-                    ),
-                    query_plain=pulumi.Output.json_dumps([
+                },
+                {
+                    "ref_id": "B",
+                    "color": "blue",
+                    "type": "QUERY",
+                    "expression_plain": "",
+                    "query_filter_asset": {
+                        "id": asset_test.id,
+                        "name": asset_test.name,
+                    },
+                    "query_filter_attribute": {
+                        "id": attribute_test2.id,
+                        "name": attribute_test2.name,
+                    },
+                    "query_plain": pulumi.Output.json_dumps([
                         {
-                            "$match": {
+                            "_match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test2.id,
                             },
@@ -979,19 +979,19 @@ class DashboardImageChart(pulumi.CustomResource):
                             },
                         },
                     ]),
-                ),
+                },
             ],
-            thresholds=[splight.DashboardImageChartThresholdArgs(
-                color="#00edcf",
-                display_text="T1Test",
-                value=13.1,
-            )],
-            value_mappings=[splight.DashboardImageChartValueMappingArgs(
-                display_text="MODIFICADO",
-                match_value="123.3",
-                type="exact_match",
-                order=0,
-            )])
+            thresholds=[{
+                "color": "#00edcf",
+                "display_text": "T1Test",
+                "value": 13.1,
+            }],
+            value_mappings=[{
+                "display_text": "MODIFICADO",
+                "match_value": "123.3",
+                "type": "exact_match",
+                "order": 0,
+            }])
         ```
 
         ## Import
@@ -1002,7 +1002,7 @@ class DashboardImageChart(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardImageChartChartItemArgs']]]] chart_items: chart traces to be included
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardImageChartChartItemArgs', 'DashboardImageChartChartItemArgsDict']]]] chart_items: chart traces to be included
         :param pulumi.Input[str] description: chart description
         :param pulumi.Input[bool] display_time_range: whether to display the time range or not
         :param pulumi.Input[int] height: chart height in px
@@ -1020,11 +1020,11 @@ class DashboardImageChart(pulumi.CustomResource):
         :param pulumi.Input[str] relative_window_time: relative window time
         :param pulumi.Input[bool] show_beyond_data: whether to show data which is beyond timestamp_lte or not
         :param pulumi.Input[str] tab: id for the tab where to place the chart
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardImageChartThresholdArgs']]]] thresholds: optional static lines to be added to the chart as references
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardImageChartThresholdArgs', 'DashboardImageChartThresholdArgsDict']]]] thresholds: optional static lines to be added to the chart as references
         :param pulumi.Input[str] timestamp_gte: date in isoformat or shortcut string where to end reading
         :param pulumi.Input[str] timestamp_lte: date in isoformat or shortcut string where to start reading
         :param pulumi.Input[str] timezone: chart timezone
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardImageChartValueMappingArgs']]]] value_mappings: optional mappings to transform data with rules
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardImageChartValueMappingArgs', 'DashboardImageChartValueMappingArgsDict']]]] value_mappings: optional mappings to transform data with rules
         :param pulumi.Input[int] width: chart width in cols (max 20)
         """
         ...
@@ -1077,22 +1077,22 @@ class DashboardImageChart(pulumi.CustomResource):
             image_url="123-123-123-123-123",
             image_file=None,
             chart_items=[
-                splight.DashboardImageChartChartItemArgs(
-                    ref_id="A",
-                    type="QUERY",
-                    color="red",
-                    expression_plain="",
-                    query_filter_asset=splight.DashboardImageChartChartItemQueryFilterAssetArgs(
-                        id=asset_test.id,
-                        name=asset_test.name,
-                    ),
-                    query_filter_attribute=splight.DashboardImageChartChartItemQueryFilterAttributeArgs(
-                        id=attribute_test1.id,
-                        name=attribute_test1.name,
-                    ),
-                    query_plain=pulumi.Output.json_dumps([
+                {
+                    "ref_id": "A",
+                    "type": "QUERY",
+                    "color": "red",
+                    "expression_plain": "",
+                    "query_filter_asset": {
+                        "id": asset_test.id,
+                        "name": asset_test.name,
+                    },
+                    "query_filter_attribute": {
+                        "id": attribute_test1.id,
+                        "name": attribute_test1.name,
+                    },
+                    "query_plain": pulumi.Output.json_dumps([
                         {
-                            "$match": {
+                            "_match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test1.id,
                             },
@@ -1120,23 +1120,23 @@ class DashboardImageChart(pulumi.CustomResource):
                             },
                         },
                     ]),
-                ),
-                splight.DashboardImageChartChartItemArgs(
-                    ref_id="B",
-                    color="blue",
-                    type="QUERY",
-                    expression_plain="",
-                    query_filter_asset=splight.DashboardImageChartChartItemQueryFilterAssetArgs(
-                        id=asset_test.id,
-                        name=asset_test.name,
-                    ),
-                    query_filter_attribute=splight.DashboardImageChartChartItemQueryFilterAttributeArgs(
-                        id=attribute_test2.id,
-                        name=attribute_test2.name,
-                    ),
-                    query_plain=pulumi.Output.json_dumps([
+                },
+                {
+                    "ref_id": "B",
+                    "color": "blue",
+                    "type": "QUERY",
+                    "expression_plain": "",
+                    "query_filter_asset": {
+                        "id": asset_test.id,
+                        "name": asset_test.name,
+                    },
+                    "query_filter_attribute": {
+                        "id": attribute_test2.id,
+                        "name": attribute_test2.name,
+                    },
+                    "query_plain": pulumi.Output.json_dumps([
                         {
-                            "$match": {
+                            "_match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test2.id,
                             },
@@ -1164,19 +1164,19 @@ class DashboardImageChart(pulumi.CustomResource):
                             },
                         },
                     ]),
-                ),
+                },
             ],
-            thresholds=[splight.DashboardImageChartThresholdArgs(
-                color="#00edcf",
-                display_text="T1Test",
-                value=13.1,
-            )],
-            value_mappings=[splight.DashboardImageChartValueMappingArgs(
-                display_text="MODIFICADO",
-                match_value="123.3",
-                type="exact_match",
-                order=0,
-            )])
+            thresholds=[{
+                "color": "#00edcf",
+                "display_text": "T1Test",
+                "value": 13.1,
+            }],
+            value_mappings=[{
+                "display_text": "MODIFICADO",
+                "match_value": "123.3",
+                "type": "exact_match",
+                "order": 0,
+            }])
         ```
 
         ## Import
@@ -1200,7 +1200,7 @@ class DashboardImageChart(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardImageChartChartItemArgs']]]]] = None,
+                 chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardImageChartChartItemArgs', 'DashboardImageChartChartItemArgsDict']]]]] = None,
                  collection: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_time_range: Optional[pulumi.Input[bool]] = None,
@@ -1219,11 +1219,11 @@ class DashboardImageChart(pulumi.CustomResource):
                  relative_window_time: Optional[pulumi.Input[str]] = None,
                  show_beyond_data: Optional[pulumi.Input[bool]] = None,
                  tab: Optional[pulumi.Input[str]] = None,
-                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardImageChartThresholdArgs']]]]] = None,
+                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardImageChartThresholdArgs', 'DashboardImageChartThresholdArgsDict']]]]] = None,
                  timestamp_gte: Optional[pulumi.Input[str]] = None,
                  timestamp_lte: Optional[pulumi.Input[str]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
-                 value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardImageChartValueMappingArgs']]]]] = None,
+                 value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardImageChartValueMappingArgs', 'DashboardImageChartValueMappingArgsDict']]]]] = None,
                  width: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1277,7 +1277,7 @@ class DashboardImageChart(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardImageChartChartItemArgs']]]]] = None,
+            chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardImageChartChartItemArgs', 'DashboardImageChartChartItemArgsDict']]]]] = None,
             collection: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_time_range: Optional[pulumi.Input[bool]] = None,
@@ -1296,11 +1296,11 @@ class DashboardImageChart(pulumi.CustomResource):
             relative_window_time: Optional[pulumi.Input[str]] = None,
             show_beyond_data: Optional[pulumi.Input[bool]] = None,
             tab: Optional[pulumi.Input[str]] = None,
-            thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardImageChartThresholdArgs']]]]] = None,
+            thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardImageChartThresholdArgs', 'DashboardImageChartThresholdArgsDict']]]]] = None,
             timestamp_gte: Optional[pulumi.Input[str]] = None,
             timestamp_lte: Optional[pulumi.Input[str]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
-            value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardImageChartValueMappingArgs']]]]] = None,
+            value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardImageChartValueMappingArgs', 'DashboardImageChartValueMappingArgsDict']]]]] = None,
             width: Optional[pulumi.Input[int]] = None) -> 'DashboardImageChart':
         """
         Get an existing DashboardImageChart resource's state with the given name, id, and optional extra
@@ -1309,7 +1309,7 @@ class DashboardImageChart(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardImageChartChartItemArgs']]]] chart_items: chart traces to be included
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardImageChartChartItemArgs', 'DashboardImageChartChartItemArgsDict']]]] chart_items: chart traces to be included
         :param pulumi.Input[str] description: chart description
         :param pulumi.Input[bool] display_time_range: whether to display the time range or not
         :param pulumi.Input[int] height: chart height in px
@@ -1327,11 +1327,11 @@ class DashboardImageChart(pulumi.CustomResource):
         :param pulumi.Input[str] relative_window_time: relative window time
         :param pulumi.Input[bool] show_beyond_data: whether to show data which is beyond timestamp_lte or not
         :param pulumi.Input[str] tab: id for the tab where to place the chart
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardImageChartThresholdArgs']]]] thresholds: optional static lines to be added to the chart as references
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardImageChartThresholdArgs', 'DashboardImageChartThresholdArgsDict']]]] thresholds: optional static lines to be added to the chart as references
         :param pulumi.Input[str] timestamp_gte: date in isoformat or shortcut string where to end reading
         :param pulumi.Input[str] timestamp_lte: date in isoformat or shortcut string where to start reading
         :param pulumi.Input[str] timezone: chart timezone
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardImageChartValueMappingArgs']]]] value_mappings: optional mappings to transform data with rules
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardImageChartValueMappingArgs', 'DashboardImageChartValueMappingArgsDict']]]] value_mappings: optional mappings to transform data with rules
         :param pulumi.Input[int] width: chart width in cols (max 20)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -3,14 +3,23 @@ archives:
   - id: archive
     name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
 builds:
+  - env:
+      - CGO_ENABLED=0
   - binary: pulumi-resource-splight
     dir: provider
+    goos:
+      - freebsd
+      - windows
+      - linux
+      - darwin
     goarch:
       - amd64
+      - '386'
+      - arm
       - arm64
-    goos:
-      - darwin
-      - linux
+    ignore:
+      - goos: darwin
+        goarch: '386'
     ldflags:
       - -X github.com/splightplatform/pulumi-splight/provider/pkg/version.Version={{ .Version }}
     main: ./cmd/pulumi-resource-splight
@@ -19,6 +28,3 @@ changelog:
 release:
   disable: false
   prerelease: auto
-snapshot:
-  # This is set as the provider version
-  name_template: '{{ .Tag }}-snapshot'

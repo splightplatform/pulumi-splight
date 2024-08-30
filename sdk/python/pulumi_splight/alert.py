@@ -626,7 +626,7 @@ class Alert(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aggregation: Optional[pulumi.Input[str]] = None,
-                 alert_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertAlertItemArgs']]]]] = None,
+                 alert_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertAlertItemArgs', 'AlertAlertItemArgsDict']]]]] = None,
                  cron_dom: Optional[pulumi.Input[int]] = None,
                  cron_dow: Optional[pulumi.Input[int]] = None,
                  cron_hours: Optional[pulumi.Input[int]] = None,
@@ -641,7 +641,7 @@ class Alert(pulumi.CustomResource):
                  related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
                  target_variable: Optional[pulumi.Input[str]] = None,
-                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertThresholdArgs']]]]] = None,
+                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertThresholdArgs', 'AlertThresholdArgsDict']]]]] = None,
                  time_window: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -673,36 +673,38 @@ class Alert(pulumi.CustomResource):
             type="rate",
             rate_unit="minute",
             rate_value=10,
-            time_window=3600 * 12,
-            thresholds=[splight.AlertThresholdArgs(
-                value=1,
-                status="alert",
-                status_text="Some warning!",
-            )],
+            time_window=3600,
+            thresholds=[{
+                "value": 1,
+                "status": "alert",
+                "status_text": "Some warning!",
+            }],
             severity="sev1",
             operator="lt",
             aggregation="max",
             target_variable="A",
-            alert_items=[splight.AlertAlertItemArgs(
-                ref_id="A",
-                type="QUERY",
-                expression="",
-                expression_plain="",
-                query_filter_asset=splight.AlertAlertItemQueryFilterAssetArgs(
-                    id=my_asset.id,
-                    name=my_asset.name,
-                ),
-                query_filter_attribute=splight.AlertAlertItemQueryFilterAttributeArgs(
-                    id=my_attribute.id,
-                    name=my_attribute.name,
-                ),
-                query_plain=pulumi.Output.json_dumps([{
-                    "$match": {
+            alert_items=[{
+                "ref_id": "A",
+                "type": "QUERY",
+                "expression": "",
+                "expression_plain": "",
+                "query_filter_asset": {
+                    "id": my_asset.id,
+                    "name": my_asset.name,
+                },
+                "query_filter_attribute": {
+                    "id": my_attribute.id,
+                    "name": my_attribute.name,
+                },
+                "query_group_function": "avg",
+                "query_group_unit": "day",
+                "query_plain": pulumi.Output.json_dumps([{
+                    "_match": {
                         "asset": my_asset.id,
                         "attribute": my_attribute.id,
                     },
                 }]),
-            )])
+            }])
         ```
 
         ## Import
@@ -714,7 +716,7 @@ class Alert(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] aggregation: aggregation to be applied to reads before comparisson
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertAlertItemArgs']]]] alert_items: traces to be used to compute the results
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertAlertItemArgs', 'AlertAlertItemArgsDict']]]] alert_items: traces to be used to compute the results
         :param pulumi.Input[int] cron_dom: schedule value for cron
         :param pulumi.Input[int] cron_dow: schedule value for cron
         :param pulumi.Input[int] cron_hours: schedule value for cron
@@ -766,36 +768,38 @@ class Alert(pulumi.CustomResource):
             type="rate",
             rate_unit="minute",
             rate_value=10,
-            time_window=3600 * 12,
-            thresholds=[splight.AlertThresholdArgs(
-                value=1,
-                status="alert",
-                status_text="Some warning!",
-            )],
+            time_window=3600,
+            thresholds=[{
+                "value": 1,
+                "status": "alert",
+                "status_text": "Some warning!",
+            }],
             severity="sev1",
             operator="lt",
             aggregation="max",
             target_variable="A",
-            alert_items=[splight.AlertAlertItemArgs(
-                ref_id="A",
-                type="QUERY",
-                expression="",
-                expression_plain="",
-                query_filter_asset=splight.AlertAlertItemQueryFilterAssetArgs(
-                    id=my_asset.id,
-                    name=my_asset.name,
-                ),
-                query_filter_attribute=splight.AlertAlertItemQueryFilterAttributeArgs(
-                    id=my_attribute.id,
-                    name=my_attribute.name,
-                ),
-                query_plain=pulumi.Output.json_dumps([{
-                    "$match": {
+            alert_items=[{
+                "ref_id": "A",
+                "type": "QUERY",
+                "expression": "",
+                "expression_plain": "",
+                "query_filter_asset": {
+                    "id": my_asset.id,
+                    "name": my_asset.name,
+                },
+                "query_filter_attribute": {
+                    "id": my_attribute.id,
+                    "name": my_attribute.name,
+                },
+                "query_group_function": "avg",
+                "query_group_unit": "day",
+                "query_plain": pulumi.Output.json_dumps([{
+                    "_match": {
                         "asset": my_asset.id,
                         "attribute": my_attribute.id,
                     },
                 }]),
-            )])
+            }])
         ```
 
         ## Import
@@ -820,7 +824,7 @@ class Alert(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aggregation: Optional[pulumi.Input[str]] = None,
-                 alert_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertAlertItemArgs']]]]] = None,
+                 alert_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertAlertItemArgs', 'AlertAlertItemArgsDict']]]]] = None,
                  cron_dom: Optional[pulumi.Input[int]] = None,
                  cron_dow: Optional[pulumi.Input[int]] = None,
                  cron_hours: Optional[pulumi.Input[int]] = None,
@@ -835,7 +839,7 @@ class Alert(pulumi.CustomResource):
                  related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
                  target_variable: Optional[pulumi.Input[str]] = None,
-                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertThresholdArgs']]]]] = None,
+                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertThresholdArgs', 'AlertThresholdArgsDict']]]]] = None,
                  time_window: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -895,7 +899,7 @@ class Alert(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             aggregation: Optional[pulumi.Input[str]] = None,
-            alert_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertAlertItemArgs']]]]] = None,
+            alert_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertAlertItemArgs', 'AlertAlertItemArgsDict']]]]] = None,
             cron_dom: Optional[pulumi.Input[int]] = None,
             cron_dow: Optional[pulumi.Input[int]] = None,
             cron_hours: Optional[pulumi.Input[int]] = None,
@@ -910,7 +914,7 @@ class Alert(pulumi.CustomResource):
             related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             severity: Optional[pulumi.Input[str]] = None,
             target_variable: Optional[pulumi.Input[str]] = None,
-            thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertThresholdArgs']]]]] = None,
+            thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertThresholdArgs', 'AlertThresholdArgsDict']]]]] = None,
             time_window: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'Alert':
         """
@@ -921,7 +925,7 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] aggregation: aggregation to be applied to reads before comparisson
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertAlertItemArgs']]]] alert_items: traces to be used to compute the results
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertAlertItemArgs', 'AlertAlertItemArgsDict']]]] alert_items: traces to be used to compute the results
         :param pulumi.Input[int] cron_dom: schedule value for cron
         :param pulumi.Input[int] cron_dow: schedule value for cron
         :param pulumi.Input[int] cron_hours: schedule value for cron

@@ -1110,7 +1110,7 @@ class DashboardTimeseriesChart(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardTimeseriesChartChartItemArgs']]]]] = None,
+                 chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardTimeseriesChartChartItemArgs', 'DashboardTimeseriesChartChartItemArgsDict']]]]] = None,
                  collection: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_time_range: Optional[pulumi.Input[bool]] = None,
@@ -1131,12 +1131,12 @@ class DashboardTimeseriesChart(pulumi.CustomResource):
                  show_beyond_data: Optional[pulumi.Input[bool]] = None,
                  show_line: Optional[pulumi.Input[bool]] = None,
                  tab: Optional[pulumi.Input[str]] = None,
-                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardTimeseriesChartThresholdArgs']]]]] = None,
+                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardTimeseriesChartThresholdArgs', 'DashboardTimeseriesChartThresholdArgsDict']]]]] = None,
                  timeseries_type: Optional[pulumi.Input[str]] = None,
                  timestamp_gte: Optional[pulumi.Input[str]] = None,
                  timestamp_lte: Optional[pulumi.Input[str]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
-                 value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardTimeseriesChartValueMappingArgs']]]]] = None,
+                 value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardTimeseriesChartValueMappingArgs', 'DashboardTimeseriesChartValueMappingArgsDict']]]]] = None,
                  width: Optional[pulumi.Input[int]] = None,
                  x_axis_auto_skip: Optional[pulumi.Input[bool]] = None,
                  x_axis_format: Optional[pulumi.Input[str]] = None,
@@ -1198,22 +1198,22 @@ class DashboardTimeseriesChart(pulumi.CustomResource):
             fill=True,
             show_line=True,
             chart_items=[
-                splight.DashboardTimeseriesChartChartItemArgs(
-                    ref_id="A",
-                    type="QUERY",
-                    color="red",
-                    expression_plain="",
-                    query_filter_asset=splight.DashboardTimeseriesChartChartItemQueryFilterAssetArgs(
-                        id=asset_test.id,
-                        name=asset_test.name,
-                    ),
-                    query_filter_attribute=splight.DashboardTimeseriesChartChartItemQueryFilterAttributeArgs(
-                        id=attribute_test1.id,
-                        name=attribute_test1.name,
-                    ),
-                    query_plain=pulumi.Output.json_dumps([
+                {
+                    "ref_id": "A",
+                    "type": "QUERY",
+                    "color": "red",
+                    "expression_plain": "",
+                    "query_filter_asset": {
+                        "id": asset_test.id,
+                        "name": asset_test.name,
+                    },
+                    "query_filter_attribute": {
+                        "id": attribute_test1.id,
+                        "name": attribute_test1.name,
+                    },
+                    "query_plain": pulumi.Output.json_dumps([
                         {
-                            "$match": {
+                            "_match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test1.id,
                             },
@@ -1241,23 +1241,23 @@ class DashboardTimeseriesChart(pulumi.CustomResource):
                             },
                         },
                     ]),
-                ),
-                splight.DashboardTimeseriesChartChartItemArgs(
-                    ref_id="B",
-                    color="blue",
-                    type="QUERY",
-                    expression_plain="",
-                    query_filter_asset=splight.DashboardTimeseriesChartChartItemQueryFilterAssetArgs(
-                        id=asset_test.id,
-                        name=asset_test.name,
-                    ),
-                    query_filter_attribute=splight.DashboardTimeseriesChartChartItemQueryFilterAttributeArgs(
-                        id=attribute_test2.id,
-                        name=attribute_test2.name,
-                    ),
-                    query_plain=pulumi.Output.json_dumps([
+                },
+                {
+                    "ref_id": "B",
+                    "color": "blue",
+                    "type": "QUERY",
+                    "expression_plain": "",
+                    "query_filter_asset": {
+                        "id": asset_test.id,
+                        "name": asset_test.name,
+                    },
+                    "query_filter_attribute": {
+                        "id": attribute_test2.id,
+                        "name": attribute_test2.name,
+                    },
+                    "query_plain": pulumi.Output.json_dumps([
                         {
-                            "$match": {
+                            "_match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test2.id,
                             },
@@ -1285,19 +1285,19 @@ class DashboardTimeseriesChart(pulumi.CustomResource):
                             },
                         },
                     ]),
-                ),
+                },
             ],
-            thresholds=[splight.DashboardTimeseriesChartThresholdArgs(
-                color="#00edcf",
-                display_text="T1Test",
-                value=13.1,
-            )],
-            value_mappings=[splight.DashboardTimeseriesChartValueMappingArgs(
-                display_text="MODIFICADO",
-                match_value="123.3",
-                type="exact_match",
-                order=0,
-            )])
+            thresholds=[{
+                "color": "#00edcf",
+                "display_text": "T1Test",
+                "value": 13.1,
+            }],
+            value_mappings=[{
+                "display_text": "MODIFICADO",
+                "match_value": "123.3",
+                "type": "exact_match",
+                "order": 0,
+            }])
         ```
 
         ## Import
@@ -1308,7 +1308,7 @@ class DashboardTimeseriesChart(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardTimeseriesChartChartItemArgs']]]] chart_items: chart traces to be included
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardTimeseriesChartChartItemArgs', 'DashboardTimeseriesChartChartItemArgsDict']]]] chart_items: chart traces to be included
         :param pulumi.Input[str] description: chart description
         :param pulumi.Input[bool] display_time_range: whether to display the time range or not
         :param pulumi.Input[bool] fill: whether to fill the area under the curve or not
@@ -1328,12 +1328,12 @@ class DashboardTimeseriesChart(pulumi.CustomResource):
         :param pulumi.Input[bool] show_beyond_data: whether to show data which is beyond timestamp_lte or not
         :param pulumi.Input[bool] show_line: whether to show the line or not
         :param pulumi.Input[str] tab: id for the tab where to place the chart
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardTimeseriesChartThresholdArgs']]]] thresholds: optional static lines to be added to the chart as references
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardTimeseriesChartThresholdArgs', 'DashboardTimeseriesChartThresholdArgsDict']]]] thresholds: optional static lines to be added to the chart as references
         :param pulumi.Input[str] timeseries_type: [line|bar] timeseries type
         :param pulumi.Input[str] timestamp_gte: date in isoformat or shortcut string where to end reading
         :param pulumi.Input[str] timestamp_lte: date in isoformat or shortcut string where to start reading
         :param pulumi.Input[str] timezone: chart timezone
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardTimeseriesChartValueMappingArgs']]]] value_mappings: optional mappings to transform data with rules
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardTimeseriesChartValueMappingArgs', 'DashboardTimeseriesChartValueMappingArgsDict']]]] value_mappings: optional mappings to transform data with rules
         :param pulumi.Input[int] width: chart width in cols (max 20)
         :param pulumi.Input[bool] x_axis_auto_skip: x axis auto skip
         :param pulumi.Input[str] x_axis_format: x axis time format
@@ -1401,22 +1401,22 @@ class DashboardTimeseriesChart(pulumi.CustomResource):
             fill=True,
             show_line=True,
             chart_items=[
-                splight.DashboardTimeseriesChartChartItemArgs(
-                    ref_id="A",
-                    type="QUERY",
-                    color="red",
-                    expression_plain="",
-                    query_filter_asset=splight.DashboardTimeseriesChartChartItemQueryFilterAssetArgs(
-                        id=asset_test.id,
-                        name=asset_test.name,
-                    ),
-                    query_filter_attribute=splight.DashboardTimeseriesChartChartItemQueryFilterAttributeArgs(
-                        id=attribute_test1.id,
-                        name=attribute_test1.name,
-                    ),
-                    query_plain=pulumi.Output.json_dumps([
+                {
+                    "ref_id": "A",
+                    "type": "QUERY",
+                    "color": "red",
+                    "expression_plain": "",
+                    "query_filter_asset": {
+                        "id": asset_test.id,
+                        "name": asset_test.name,
+                    },
+                    "query_filter_attribute": {
+                        "id": attribute_test1.id,
+                        "name": attribute_test1.name,
+                    },
+                    "query_plain": pulumi.Output.json_dumps([
                         {
-                            "$match": {
+                            "_match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test1.id,
                             },
@@ -1444,23 +1444,23 @@ class DashboardTimeseriesChart(pulumi.CustomResource):
                             },
                         },
                     ]),
-                ),
-                splight.DashboardTimeseriesChartChartItemArgs(
-                    ref_id="B",
-                    color="blue",
-                    type="QUERY",
-                    expression_plain="",
-                    query_filter_asset=splight.DashboardTimeseriesChartChartItemQueryFilterAssetArgs(
-                        id=asset_test.id,
-                        name=asset_test.name,
-                    ),
-                    query_filter_attribute=splight.DashboardTimeseriesChartChartItemQueryFilterAttributeArgs(
-                        id=attribute_test2.id,
-                        name=attribute_test2.name,
-                    ),
-                    query_plain=pulumi.Output.json_dumps([
+                },
+                {
+                    "ref_id": "B",
+                    "color": "blue",
+                    "type": "QUERY",
+                    "expression_plain": "",
+                    "query_filter_asset": {
+                        "id": asset_test.id,
+                        "name": asset_test.name,
+                    },
+                    "query_filter_attribute": {
+                        "id": attribute_test2.id,
+                        "name": attribute_test2.name,
+                    },
+                    "query_plain": pulumi.Output.json_dumps([
                         {
-                            "$match": {
+                            "_match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test2.id,
                             },
@@ -1488,19 +1488,19 @@ class DashboardTimeseriesChart(pulumi.CustomResource):
                             },
                         },
                     ]),
-                ),
+                },
             ],
-            thresholds=[splight.DashboardTimeseriesChartThresholdArgs(
-                color="#00edcf",
-                display_text="T1Test",
-                value=13.1,
-            )],
-            value_mappings=[splight.DashboardTimeseriesChartValueMappingArgs(
-                display_text="MODIFICADO",
-                match_value="123.3",
-                type="exact_match",
-                order=0,
-            )])
+            thresholds=[{
+                "color": "#00edcf",
+                "display_text": "T1Test",
+                "value": 13.1,
+            }],
+            value_mappings=[{
+                "display_text": "MODIFICADO",
+                "match_value": "123.3",
+                "type": "exact_match",
+                "order": 0,
+            }])
         ```
 
         ## Import
@@ -1524,7 +1524,7 @@ class DashboardTimeseriesChart(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardTimeseriesChartChartItemArgs']]]]] = None,
+                 chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardTimeseriesChartChartItemArgs', 'DashboardTimeseriesChartChartItemArgsDict']]]]] = None,
                  collection: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_time_range: Optional[pulumi.Input[bool]] = None,
@@ -1545,12 +1545,12 @@ class DashboardTimeseriesChart(pulumi.CustomResource):
                  show_beyond_data: Optional[pulumi.Input[bool]] = None,
                  show_line: Optional[pulumi.Input[bool]] = None,
                  tab: Optional[pulumi.Input[str]] = None,
-                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardTimeseriesChartThresholdArgs']]]]] = None,
+                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardTimeseriesChartThresholdArgs', 'DashboardTimeseriesChartThresholdArgsDict']]]]] = None,
                  timeseries_type: Optional[pulumi.Input[str]] = None,
                  timestamp_gte: Optional[pulumi.Input[str]] = None,
                  timestamp_lte: Optional[pulumi.Input[str]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
-                 value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardTimeseriesChartValueMappingArgs']]]]] = None,
+                 value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardTimeseriesChartValueMappingArgs', 'DashboardTimeseriesChartValueMappingArgsDict']]]]] = None,
                  width: Optional[pulumi.Input[int]] = None,
                  x_axis_auto_skip: Optional[pulumi.Input[bool]] = None,
                  x_axis_format: Optional[pulumi.Input[str]] = None,
@@ -1619,7 +1619,7 @@ class DashboardTimeseriesChart(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardTimeseriesChartChartItemArgs']]]]] = None,
+            chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardTimeseriesChartChartItemArgs', 'DashboardTimeseriesChartChartItemArgsDict']]]]] = None,
             collection: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_time_range: Optional[pulumi.Input[bool]] = None,
@@ -1640,12 +1640,12 @@ class DashboardTimeseriesChart(pulumi.CustomResource):
             show_beyond_data: Optional[pulumi.Input[bool]] = None,
             show_line: Optional[pulumi.Input[bool]] = None,
             tab: Optional[pulumi.Input[str]] = None,
-            thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardTimeseriesChartThresholdArgs']]]]] = None,
+            thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardTimeseriesChartThresholdArgs', 'DashboardTimeseriesChartThresholdArgsDict']]]]] = None,
             timeseries_type: Optional[pulumi.Input[str]] = None,
             timestamp_gte: Optional[pulumi.Input[str]] = None,
             timestamp_lte: Optional[pulumi.Input[str]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
-            value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardTimeseriesChartValueMappingArgs']]]]] = None,
+            value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardTimeseriesChartValueMappingArgs', 'DashboardTimeseriesChartValueMappingArgsDict']]]]] = None,
             width: Optional[pulumi.Input[int]] = None,
             x_axis_auto_skip: Optional[pulumi.Input[bool]] = None,
             x_axis_format: Optional[pulumi.Input[str]] = None,
@@ -1660,7 +1660,7 @@ class DashboardTimeseriesChart(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardTimeseriesChartChartItemArgs']]]] chart_items: chart traces to be included
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardTimeseriesChartChartItemArgs', 'DashboardTimeseriesChartChartItemArgsDict']]]] chart_items: chart traces to be included
         :param pulumi.Input[str] description: chart description
         :param pulumi.Input[bool] display_time_range: whether to display the time range or not
         :param pulumi.Input[bool] fill: whether to fill the area under the curve or not
@@ -1680,12 +1680,12 @@ class DashboardTimeseriesChart(pulumi.CustomResource):
         :param pulumi.Input[bool] show_beyond_data: whether to show data which is beyond timestamp_lte or not
         :param pulumi.Input[bool] show_line: whether to show the line or not
         :param pulumi.Input[str] tab: id for the tab where to place the chart
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardTimeseriesChartThresholdArgs']]]] thresholds: optional static lines to be added to the chart as references
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardTimeseriesChartThresholdArgs', 'DashboardTimeseriesChartThresholdArgsDict']]]] thresholds: optional static lines to be added to the chart as references
         :param pulumi.Input[str] timeseries_type: [line|bar] timeseries type
         :param pulumi.Input[str] timestamp_gte: date in isoformat or shortcut string where to end reading
         :param pulumi.Input[str] timestamp_lte: date in isoformat or shortcut string where to start reading
         :param pulumi.Input[str] timezone: chart timezone
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardTimeseriesChartValueMappingArgs']]]] value_mappings: optional mappings to transform data with rules
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardTimeseriesChartValueMappingArgs', 'DashboardTimeseriesChartValueMappingArgsDict']]]] value_mappings: optional mappings to transform data with rules
         :param pulumi.Input[int] width: chart width in cols (max 20)
         :param pulumi.Input[bool] x_axis_auto_skip: x axis auto skip
         :param pulumi.Input[str] x_axis_format: x axis time format

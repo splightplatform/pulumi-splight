@@ -16,29 +16,44 @@ __all__ = ['AssetArgs', 'Asset']
 @pulumi.input_type
 class AssetArgs:
     def __init__(__self__, *,
+                 geometry: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 geometry: Optional[pulumi.Input[str]] = None,
-                 kinds: Optional[pulumi.Input[Sequence[pulumi.Input['AssetKindArgs']]]] = None,
+                 kind: Optional[pulumi.Input['AssetKindArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['AssetTagArgs']]]] = None):
         """
         The set of arguments for constructing a Asset resource.
+        :param pulumi.Input[str] geometry: GeoJSON GeomtryCollection
         :param pulumi.Input[str] description: description of the resource
-        :param pulumi.Input[str] geometry: geo position and shape of the resource
-        :param pulumi.Input[Sequence[pulumi.Input['AssetKindArgs']]] kinds: kind of the resource
+        :param pulumi.Input['AssetKindArgs'] kind: kind of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_assets: linked assets
+        :param pulumi.Input[Sequence[pulumi.Input['AssetTagArgs']]] tags: tags of the resource
         """
+        pulumi.set(__self__, "geometry", geometry)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if geometry is not None:
-            pulumi.set(__self__, "geometry", geometry)
-        if kinds is not None:
-            pulumi.set(__self__, "kinds", kinds)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if related_assets is not None:
             pulumi.set(__self__, "related_assets", related_assets)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def geometry(self) -> pulumi.Input[str]:
+        """
+        GeoJSON GeomtryCollection
+        """
+        return pulumi.get(self, "geometry")
+
+    @geometry.setter
+    def geometry(self, value: pulumi.Input[str]):
+        pulumi.set(self, "geometry", value)
 
     @property
     @pulumi.getter
@@ -54,27 +69,15 @@ class AssetArgs:
 
     @property
     @pulumi.getter
-    def geometry(self) -> Optional[pulumi.Input[str]]:
-        """
-        geo position and shape of the resource
-        """
-        return pulumi.get(self, "geometry")
-
-    @geometry.setter
-    def geometry(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "geometry", value)
-
-    @property
-    @pulumi.getter
-    def kinds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AssetKindArgs']]]]:
+    def kind(self) -> Optional[pulumi.Input['AssetKindArgs']]:
         """
         kind of the resource
         """
-        return pulumi.get(self, "kinds")
+        return pulumi.get(self, "kind")
 
-    @kinds.setter
-    def kinds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AssetKindArgs']]]]):
-        pulumi.set(self, "kinds", value)
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input['AssetKindArgs']]):
+        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter
@@ -99,6 +102,18 @@ class AssetArgs:
     @related_assets.setter
     def related_assets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "related_assets", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AssetTagArgs']]]]:
+        """
+        tags of the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AssetTagArgs']]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -106,27 +121,31 @@ class _AssetState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
-                 kinds: Optional[pulumi.Input[Sequence[pulumi.Input['AssetKindArgs']]]] = None,
+                 kind: Optional[pulumi.Input['AssetKindArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['AssetTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering Asset resources.
         :param pulumi.Input[str] description: description of the resource
-        :param pulumi.Input[str] geometry: geo position and shape of the resource
-        :param pulumi.Input[Sequence[pulumi.Input['AssetKindArgs']]] kinds: kind of the resource
+        :param pulumi.Input[str] geometry: GeoJSON GeomtryCollection
+        :param pulumi.Input['AssetKindArgs'] kind: kind of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_assets: linked assets
+        :param pulumi.Input[Sequence[pulumi.Input['AssetTagArgs']]] tags: tags of the resource
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
             pulumi.set(__self__, "geometry", geometry)
-        if kinds is not None:
-            pulumi.set(__self__, "kinds", kinds)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if related_assets is not None:
             pulumi.set(__self__, "related_assets", related_assets)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -144,7 +163,7 @@ class _AssetState:
     @pulumi.getter
     def geometry(self) -> Optional[pulumi.Input[str]]:
         """
-        geo position and shape of the resource
+        GeoJSON GeomtryCollection
         """
         return pulumi.get(self, "geometry")
 
@@ -154,15 +173,15 @@ class _AssetState:
 
     @property
     @pulumi.getter
-    def kinds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AssetKindArgs']]]]:
+    def kind(self) -> Optional[pulumi.Input['AssetKindArgs']]:
         """
         kind of the resource
         """
-        return pulumi.get(self, "kinds")
+        return pulumi.get(self, "kind")
 
-    @kinds.setter
-    def kinds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AssetKindArgs']]]]):
-        pulumi.set(self, "kinds", value)
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input['AssetKindArgs']]):
+        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter
@@ -187,6 +206,18 @@ class _AssetState:
     @related_assets.setter
     def related_assets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "related_assets", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AssetTagArgs']]]]:
+        """
+        tags of the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AssetTagArgs']]]]):
+        pulumi.set(self, "tags", value)
 
 
 class Asset(pulumi.CustomResource):
@@ -196,29 +227,13 @@ class Asset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
-                 kinds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AssetKindArgs']]]]] = None,
+                 kind: Optional[pulumi.Input[Union['AssetKindArgs', 'AssetKindArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AssetTagArgs', 'AssetTagArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_splight as splight
-
-        asset_main_test = splight.Asset("assetMainTest",
-            description="Created with Terraform",
-            geometry=json.dumps({
-                "type": "GeometryCollection",
-                "geometries": [],
-            }),
-            kinds=[splight.AssetKindArgs(
-                id="1234-1234-1234-1234",
-                name="Line",
-            )])
-        ```
 
         ## Import
 
@@ -229,36 +244,20 @@ class Asset(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: description of the resource
-        :param pulumi.Input[str] geometry: geo position and shape of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AssetKindArgs']]]] kinds: kind of the resource
+        :param pulumi.Input[str] geometry: GeoJSON GeomtryCollection
+        :param pulumi.Input[Union['AssetKindArgs', 'AssetKindArgsDict']] kind: kind of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_assets: linked assets
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AssetTagArgs', 'AssetTagArgsDict']]]] tags: tags of the resource
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[AssetArgs] = None,
+                 args: AssetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_splight as splight
-
-        asset_main_test = splight.Asset("assetMainTest",
-            description="Created with Terraform",
-            geometry=json.dumps({
-                "type": "GeometryCollection",
-                "geometries": [],
-            }),
-            kinds=[splight.AssetKindArgs(
-                id="1234-1234-1234-1234",
-                name="Line",
-            )])
-        ```
 
         ## Import
 
@@ -283,9 +282,10 @@ class Asset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
-                 kinds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AssetKindArgs']]]]] = None,
+                 kind: Optional[pulumi.Input[Union['AssetKindArgs', 'AssetKindArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AssetTagArgs', 'AssetTagArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -296,10 +296,13 @@ class Asset(pulumi.CustomResource):
             __props__ = AssetArgs.__new__(AssetArgs)
 
             __props__.__dict__["description"] = description
+            if geometry is None and not opts.urn:
+                raise TypeError("Missing required property 'geometry'")
             __props__.__dict__["geometry"] = geometry
-            __props__.__dict__["kinds"] = kinds
+            __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             __props__.__dict__["related_assets"] = related_assets
+            __props__.__dict__["tags"] = tags
         super(Asset, __self__).__init__(
             'splight:index/asset:Asset',
             resource_name,
@@ -312,9 +315,10 @@ class Asset(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             geometry: Optional[pulumi.Input[str]] = None,
-            kinds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AssetKindArgs']]]]] = None,
+            kind: Optional[pulumi.Input[Union['AssetKindArgs', 'AssetKindArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Asset':
+            related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AssetTagArgs', 'AssetTagArgsDict']]]]] = None) -> 'Asset':
         """
         Get an existing Asset resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -323,10 +327,11 @@ class Asset(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: description of the resource
-        :param pulumi.Input[str] geometry: geo position and shape of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AssetKindArgs']]]] kinds: kind of the resource
+        :param pulumi.Input[str] geometry: GeoJSON GeomtryCollection
+        :param pulumi.Input[Union['AssetKindArgs', 'AssetKindArgsDict']] kind: kind of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_assets: linked assets
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AssetTagArgs', 'AssetTagArgsDict']]]] tags: tags of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -334,9 +339,10 @@ class Asset(pulumi.CustomResource):
 
         __props__.__dict__["description"] = description
         __props__.__dict__["geometry"] = geometry
-        __props__.__dict__["kinds"] = kinds
+        __props__.__dict__["kind"] = kind
         __props__.__dict__["name"] = name
         __props__.__dict__["related_assets"] = related_assets
+        __props__.__dict__["tags"] = tags
         return Asset(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -349,19 +355,19 @@ class Asset(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def geometry(self) -> pulumi.Output[Optional[str]]:
+    def geometry(self) -> pulumi.Output[str]:
         """
-        geo position and shape of the resource
+        GeoJSON GeomtryCollection
         """
         return pulumi.get(self, "geometry")
 
     @property
     @pulumi.getter
-    def kinds(self) -> pulumi.Output[Optional[Sequence['outputs.AssetKind']]]:
+    def kind(self) -> pulumi.Output[Optional['outputs.AssetKind']]:
         """
         kind of the resource
         """
-        return pulumi.get(self, "kinds")
+        return pulumi.get(self, "kind")
 
     @property
     @pulumi.getter
@@ -378,4 +384,12 @@ class Asset(pulumi.CustomResource):
         linked assets
         """
         return pulumi.get(self, "related_assets")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.AssetTag']]]:
+        """
+        tags of the resource
+        """
+        return pulumi.get(self, "tags")
 

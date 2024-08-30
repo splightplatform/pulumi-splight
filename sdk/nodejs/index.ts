@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { ActionArgs, ActionState } from "./action";
+export type Action = import("./action").Action;
+export const Action: typeof import("./action").Action = null as any;
+utilities.lazyLoad(exports, ["Action"], () => require("./action"));
+
 export { AlertArgs, AlertState } from "./alert";
 export type Alert = import("./alert").Alert;
 export const Alert: typeof import("./alert").Alert = null as any;
@@ -24,6 +29,11 @@ export { AssetMetadataArgs, AssetMetadataState } from "./assetMetadata";
 export type AssetMetadata = import("./assetMetadata").AssetMetadata;
 export const AssetMetadata: typeof import("./assetMetadata").AssetMetadata = null as any;
 utilities.lazyLoad(exports, ["AssetMetadata"], () => require("./assetMetadata"));
+
+export { CommandArgs, CommandState } from "./command";
+export type Command = import("./command").Command;
+export const Command: typeof import("./command").Command = null as any;
+utilities.lazyLoad(exports, ["Command"], () => require("./command"));
 
 export { ComponentArgs, ComponentState } from "./component";
 export type Component = import("./component").Component;
@@ -135,6 +145,11 @@ export const getAssetKinds: typeof import("./getAssetKinds").getAssetKinds = nul
 export const getAssetKindsOutput: typeof import("./getAssetKinds").getAssetKindsOutput = null as any;
 utilities.lazyLoad(exports, ["getAssetKinds","getAssetKindsOutput"], () => require("./getAssetKinds"));
 
+export { GetTagsResult } from "./getTags";
+export const getTags: typeof import("./getTags").getTags = null as any;
+export const getTagsOutput: typeof import("./getTags").getTagsOutput = null as any;
+utilities.lazyLoad(exports, ["getTags","getTagsOutput"], () => require("./getTags"));
+
 export { NodeArgs, NodeState } from "./node";
 export type Node = import("./node").Node;
 export const Node: typeof import("./node").Node = null as any;
@@ -150,6 +165,11 @@ export type Secret = import("./secret").Secret;
 export const Secret: typeof import("./secret").Secret = null as any;
 utilities.lazyLoad(exports, ["Secret"], () => require("./secret"));
 
+export { TagArgs, TagState } from "./tag";
+export type Tag = import("./tag").Tag;
+export const Tag: typeof import("./tag").Tag = null as any;
+utilities.lazyLoad(exports, ["Tag"], () => require("./tag"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -164,6 +184,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "splight:index/action:Action":
+                return new Action(name, <any>undefined, { urn })
             case "splight:index/alert:Alert":
                 return new Alert(name, <any>undefined, { urn })
             case "splight:index/asset:Asset":
@@ -172,6 +194,8 @@ const _module = {
                 return new AssetAttribute(name, <any>undefined, { urn })
             case "splight:index/assetMetadata:AssetMetadata":
                 return new AssetMetadata(name, <any>undefined, { urn })
+            case "splight:index/command:Command":
+                return new Command(name, <any>undefined, { urn })
             case "splight:index/component:Component":
                 return new Component(name, <any>undefined, { urn })
             case "splight:index/componentRoutine:ComponentRoutine":
@@ -218,15 +242,19 @@ const _module = {
                 return new Node(name, <any>undefined, { urn })
             case "splight:index/secret:Secret":
                 return new Secret(name, <any>undefined, { urn })
+            case "splight:index/tag:Tag":
+                return new Tag(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
+pulumi.runtime.registerResourceModule("splight", "index/action", _module)
 pulumi.runtime.registerResourceModule("splight", "index/alert", _module)
 pulumi.runtime.registerResourceModule("splight", "index/asset", _module)
 pulumi.runtime.registerResourceModule("splight", "index/assetAttribute", _module)
 pulumi.runtime.registerResourceModule("splight", "index/assetMetadata", _module)
+pulumi.runtime.registerResourceModule("splight", "index/command", _module)
 pulumi.runtime.registerResourceModule("splight", "index/component", _module)
 pulumi.runtime.registerResourceModule("splight", "index/componentRoutine", _module)
 pulumi.runtime.registerResourceModule("splight", "index/dashboard", _module)
@@ -250,6 +278,7 @@ pulumi.runtime.registerResourceModule("splight", "index/fileFolder", _module)
 pulumi.runtime.registerResourceModule("splight", "index/function", _module)
 pulumi.runtime.registerResourceModule("splight", "index/node", _module)
 pulumi.runtime.registerResourceModule("splight", "index/secret", _module)
+pulumi.runtime.registerResourceModule("splight", "index/tag", _module)
 pulumi.runtime.registerResourcePackage("splight", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

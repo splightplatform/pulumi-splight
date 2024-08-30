@@ -22,12 +22,33 @@ namespace Splight.Splight
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var assetTestMetadata = new Splight.AssetMetadata("assetTestMetadata", new()
+    ///     var myAsset = new Splight.Asset("myAsset", new()
+    ///     {
+    ///         Description = "My Asset Description",
+    ///         Geometry = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["type"] = "GeometryCollection",
+    ///             ["geometries"] = new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["type"] = "Point",
+    ///                     ["coordinates"] = new[]
+    ///                     {
+    ///                         0,
+    ///                         0,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    ///     var myAssetMetadata = new Splight.AssetMetadata("myAssetMetadata", new()
     ///     {
     ///         Type = "Number",
     ///         Unit = "meters",
     ///         Value = JsonSerializer.Serialize(10),
-    ///         Asset = "1234-1234-1234-1234",
+    ///         Asset = myAsset.Id,
     ///     });
     /// 
     /// });
@@ -55,7 +76,7 @@ namespace Splight.Splight
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// [string|boolean|number] type of the data to be ingested in this attribute
+        /// [String|Boolean|Number] type of the data to be ingested in this attribute
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -132,7 +153,7 @@ namespace Splight.Splight
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// [string|boolean|number] type of the data to be ingested in this attribute
+        /// [String|Boolean|Number] type of the data to be ingested in this attribute
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -170,7 +191,7 @@ namespace Splight.Splight
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// [string|boolean|number] type of the data to be ingested in this attribute
+        /// [String|Boolean|Number] type of the data to be ingested in this attribute
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

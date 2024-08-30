@@ -10,17 +10,24 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
+    'ActionAssetArgs',
+    'ActionSetpointArgs',
+    'ActionSetpointAttributeArgs',
     'AlertAlertItemArgs',
     'AlertAlertItemQueryFilterAssetArgs',
     'AlertAlertItemQueryFilterAttributeArgs',
     'AlertThresholdArgs',
     'AssetKindArgs',
+    'AssetTagArgs',
+    'CommandActionArgs',
+    'CommandActionAssetArgs',
     'ComponentInputArgs',
     'ComponentRoutineConfigArgs',
     'ComponentRoutineInputArgs',
     'ComponentRoutineInputValueArgs',
     'ComponentRoutineOutputArgs',
     'ComponentRoutineOutputValueArgs',
+    'ComponentTagArgs',
     'DashboardActionlistChartChartItemArgs',
     'DashboardActionlistChartChartItemQueryFilterAssetArgs',
     'DashboardActionlistChartChartItemQueryFilterAttributeArgs',
@@ -99,6 +106,149 @@ __all__ = [
 ]
 
 @pulumi.input_type
+class ActionAssetArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: asset id
+        :param pulumi.Input[str] name: asset name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        asset id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        asset name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class ActionSetpointArgs:
+    def __init__(__self__, *,
+                 attribute: pulumi.Input['ActionSetpointAttributeArgs'],
+                 value: pulumi.Input[str],
+                 id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['ActionSetpointAttributeArgs'] attribute: the target attribute of the setpoint which should also be an attribute of the specified asset
+        :param pulumi.Input[str] value: JSON encoded scalar value
+        :param pulumi.Input[str] id: setpoint ID
+        :param pulumi.Input[str] name: setpoint name
+        """
+        pulumi.set(__self__, "attribute", attribute)
+        pulumi.set(__self__, "value", value)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def attribute(self) -> pulumi.Input['ActionSetpointAttributeArgs']:
+        """
+        the target attribute of the setpoint which should also be an attribute of the specified asset
+        """
+        return pulumi.get(self, "attribute")
+
+    @attribute.setter
+    def attribute(self, value: pulumi.Input['ActionSetpointAttributeArgs']):
+        pulumi.set(self, "attribute", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        JSON encoded scalar value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        setpoint ID
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        setpoint name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class ActionSetpointAttributeArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: attribute id
+        :param pulumi.Input[str] name: attribute name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        attribute id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        attribute name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
 class AlertAlertItemArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
@@ -108,7 +258,9 @@ class AlertAlertItemArgs:
                  query_plain: pulumi.Input[str],
                  ref_id: pulumi.Input[str],
                  type: pulumi.Input[str],
-                 id: Optional[pulumi.Input[str]] = None):
+                 id: Optional[pulumi.Input[str]] = None,
+                 query_group_function: Optional[pulumi.Input[str]] = None,
+                 query_group_unit: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] expression: how the expression is shown (i.e 'A * 2')
         :param pulumi.Input[str] expression_plain: actual mongo query containing the expression
@@ -118,6 +270,8 @@ class AlertAlertItemArgs:
         :param pulumi.Input[str] ref_id: identifier of the variable (i.e 'A')
         :param pulumi.Input[str] type: either QUERY or EXPRESSION
         :param pulumi.Input[str] id: ID of the function item
+        :param pulumi.Input[str] query_group_function: function used to aggregate data
+        :param pulumi.Input[str] query_group_unit: time window to apply the aggregation
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "expression_plain", expression_plain)
@@ -128,6 +282,10 @@ class AlertAlertItemArgs:
         pulumi.set(__self__, "type", type)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if query_group_function is not None:
+            pulumi.set(__self__, "query_group_function", query_group_function)
+        if query_group_unit is not None:
+            pulumi.set(__self__, "query_group_unit", query_group_unit)
 
     @property
     @pulumi.getter
@@ -224,6 +382,30 @@ class AlertAlertItemArgs:
     @id.setter
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="queryGroupFunction")
+    def query_group_function(self) -> Optional[pulumi.Input[str]]:
+        """
+        function used to aggregate data
+        """
+        return pulumi.get(self, "query_group_function")
+
+    @query_group_function.setter
+    def query_group_function(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query_group_function", value)
+
+    @property
+    @pulumi.getter(name="queryGroupUnit")
+    def query_group_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        time window to apply the aggregation
+        """
+        return pulumi.get(self, "query_group_unit")
+
+    @query_group_unit.setter
+    def query_group_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query_group_unit", value)
 
 
 @pulumi.input_type
@@ -386,6 +568,132 @@ class AssetKindArgs:
     def name(self) -> pulumi.Input[str]:
         """
         kind name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class AssetTagArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: tag id
+        :param pulumi.Input[str] name: tag name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        tag name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class CommandActionArgs:
+    def __init__(__self__, *,
+                 asset: pulumi.Input['CommandActionAssetArgs'],
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input['CommandActionAssetArgs'] asset: asset associated with the action (to be deprecated)
+        :param pulumi.Input[str] id: action ID
+        :param pulumi.Input[str] name: setpoint name
+        """
+        pulumi.set(__self__, "asset", asset)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def asset(self) -> pulumi.Input['CommandActionAssetArgs']:
+        """
+        asset associated with the action (to be deprecated)
+        """
+        return pulumi.get(self, "asset")
+
+    @asset.setter
+    def asset(self, value: pulumi.Input['CommandActionAssetArgs']):
+        pulumi.set(self, "asset", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        action ID
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        setpoint name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class CommandActionAssetArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: asset id
+        :param pulumi.Input[str] name: asset name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        asset id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        asset name
         """
         return pulumi.get(self, "name")
 
@@ -818,6 +1126,43 @@ class ComponentRoutineOutputValueArgs:
     @attribute.setter
     def attribute(self, value: pulumi.Input[str]):
         pulumi.set(self, "attribute", value)
+
+
+@pulumi.input_type
+class ComponentTagArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: tag id
+        :param pulumi.Input[str] name: tag name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        tag name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
@@ -5436,7 +5781,9 @@ class FunctionFunctionItemArgs:
                  query_plain: pulumi.Input[str],
                  ref_id: pulumi.Input[str],
                  type: pulumi.Input[str],
-                 id: Optional[pulumi.Input[str]] = None):
+                 id: Optional[pulumi.Input[str]] = None,
+                 query_group_function: Optional[pulumi.Input[str]] = None,
+                 query_group_unit: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] expression: how the expression is shown (i.e 'A * 2')
         :param pulumi.Input[str] expression_plain: actual mongo query containing the expression
@@ -5446,6 +5793,8 @@ class FunctionFunctionItemArgs:
         :param pulumi.Input[str] ref_id: identifier of the variable (i.e 'A')
         :param pulumi.Input[str] type: either QUERY or EXPRESSION
         :param pulumi.Input[str] id: ID of the function item
+        :param pulumi.Input[str] query_group_function: function used to aggregate data
+        :param pulumi.Input[str] query_group_unit: time window to apply the aggregation
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "expression_plain", expression_plain)
@@ -5456,6 +5805,10 @@ class FunctionFunctionItemArgs:
         pulumi.set(__self__, "type", type)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if query_group_function is not None:
+            pulumi.set(__self__, "query_group_function", query_group_function)
+        if query_group_unit is not None:
+            pulumi.set(__self__, "query_group_unit", query_group_unit)
 
     @property
     @pulumi.getter
@@ -5552,6 +5905,30 @@ class FunctionFunctionItemArgs:
     @id.setter
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="queryGroupFunction")
+    def query_group_function(self) -> Optional[pulumi.Input[str]]:
+        """
+        function used to aggregate data
+        """
+        return pulumi.get(self, "query_group_function")
+
+    @query_group_function.setter
+    def query_group_function(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query_group_function", value)
+
+    @property
+    @pulumi.getter(name="queryGroupUnit")
+    def query_group_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        time window to apply the aggregation
+        """
+        return pulumi.get(self, "query_group_unit")
+
+    @query_group_unit.setter
+    def query_group_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query_group_unit", value)
 
 
 @pulumi.input_type

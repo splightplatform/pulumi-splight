@@ -13,38 +13,6 @@ namespace Splight.Splight
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using System.Text.Json;
-    /// using Pulumi;
-    /// using Splight = Splight.Splight;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var assetMainTest = new Splight.Asset("assetMainTest", new()
-    ///     {
-    ///         Description = "Created with Terraform",
-    ///         Geometry = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///         {
-    ///             ["type"] = "GeometryCollection",
-    ///             ["geometries"] = new[]
-    ///             {
-    ///             },
-    ///         }),
-    ///         Kinds = new[]
-    ///         {
-    ///             new Splight.Inputs.AssetKindArgs
-    ///             {
-    ///                 Id = "1234-1234-1234-1234",
-    ///                 Name = "Line",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -61,16 +29,16 @@ namespace Splight.Splight
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// geo position and shape of the resource
+        /// GeoJSON GeomtryCollection
         /// </summary>
         [Output("geometry")]
-        public Output<string?> Geometry { get; private set; } = null!;
+        public Output<string> Geometry { get; private set; } = null!;
 
         /// <summary>
         /// kind of the resource
         /// </summary>
-        [Output("kinds")]
-        public Output<ImmutableArray<Outputs.AssetKind>> Kinds { get; private set; } = null!;
+        [Output("kind")]
+        public Output<Outputs.AssetKind?> Kind { get; private set; } = null!;
 
         /// <summary>
         /// name of the resource
@@ -84,6 +52,12 @@ namespace Splight.Splight
         [Output("relatedAssets")]
         public Output<ImmutableArray<string>> RelatedAssets { get; private set; } = null!;
 
+        /// <summary>
+        /// tags of the resource
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<Outputs.AssetTag>> Tags { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Asset resource with the given unique name, arguments, and options.
@@ -92,7 +66,7 @@ namespace Splight.Splight
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Asset(string name, AssetArgs? args = null, CustomResourceOptions? options = null)
+        public Asset(string name, AssetArgs args, CustomResourceOptions? options = null)
             : base("splight:index/asset:Asset", name, args ?? new AssetArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -138,22 +112,16 @@ namespace Splight.Splight
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// geo position and shape of the resource
+        /// GeoJSON GeomtryCollection
         /// </summary>
-        [Input("geometry")]
-        public Input<string>? Geometry { get; set; }
-
-        [Input("kinds")]
-        private InputList<Inputs.AssetKindArgs>? _kinds;
+        [Input("geometry", required: true)]
+        public Input<string> Geometry { get; set; } = null!;
 
         /// <summary>
         /// kind of the resource
         /// </summary>
-        public InputList<Inputs.AssetKindArgs> Kinds
-        {
-            get => _kinds ?? (_kinds = new InputList<Inputs.AssetKindArgs>());
-            set => _kinds = value;
-        }
+        [Input("kind")]
+        public Input<Inputs.AssetKindArgs>? Kind { get; set; }
 
         /// <summary>
         /// name of the resource
@@ -171,6 +139,18 @@ namespace Splight.Splight
         {
             get => _relatedAssets ?? (_relatedAssets = new InputList<string>());
             set => _relatedAssets = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.AssetTagArgs>? _tags;
+
+        /// <summary>
+        /// tags of the resource
+        /// </summary>
+        public InputList<Inputs.AssetTagArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.AssetTagArgs>());
+            set => _tags = value;
         }
 
         public AssetArgs()
@@ -188,22 +168,16 @@ namespace Splight.Splight
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// geo position and shape of the resource
+        /// GeoJSON GeomtryCollection
         /// </summary>
         [Input("geometry")]
         public Input<string>? Geometry { get; set; }
 
-        [Input("kinds")]
-        private InputList<Inputs.AssetKindGetArgs>? _kinds;
-
         /// <summary>
         /// kind of the resource
         /// </summary>
-        public InputList<Inputs.AssetKindGetArgs> Kinds
-        {
-            get => _kinds ?? (_kinds = new InputList<Inputs.AssetKindGetArgs>());
-            set => _kinds = value;
-        }
+        [Input("kind")]
+        public Input<Inputs.AssetKindGetArgs>? Kind { get; set; }
 
         /// <summary>
         /// name of the resource
@@ -221,6 +195,18 @@ namespace Splight.Splight
         {
             get => _relatedAssets ?? (_relatedAssets = new InputList<string>());
             set => _relatedAssets = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.AssetTagGetArgs>? _tags;
+
+        /// <summary>
+        /// tags of the resource
+        /// </summary>
+        public InputList<Inputs.AssetTagGetArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.AssetTagGetArgs>());
+            set => _tags = value;
         }
 
         public AssetState()

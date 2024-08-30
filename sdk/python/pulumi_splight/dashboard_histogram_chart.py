@@ -985,7 +985,7 @@ class DashboardHistogramChart(pulumi.CustomResource):
                  bucket_count: Optional[pulumi.Input[int]] = None,
                  bucket_size: Optional[pulumi.Input[int]] = None,
                  categories_top_max_limit: Optional[pulumi.Input[int]] = None,
-                 chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardHistogramChartChartItemArgs']]]]] = None,
+                 chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardHistogramChartChartItemArgs', 'DashboardHistogramChartChartItemArgsDict']]]]] = None,
                  collection: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_time_range: Optional[pulumi.Input[bool]] = None,
@@ -1006,11 +1006,11 @@ class DashboardHistogramChart(pulumi.CustomResource):
                  sorting: Optional[pulumi.Input[str]] = None,
                  stacked: Optional[pulumi.Input[bool]] = None,
                  tab: Optional[pulumi.Input[str]] = None,
-                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardHistogramChartThresholdArgs']]]]] = None,
+                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardHistogramChartThresholdArgs', 'DashboardHistogramChartThresholdArgsDict']]]]] = None,
                  timestamp_gte: Optional[pulumi.Input[str]] = None,
                  timestamp_lte: Optional[pulumi.Input[str]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
-                 value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardHistogramChartValueMappingArgs']]]]] = None,
+                 value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardHistogramChartValueMappingArgs', 'DashboardHistogramChartValueMappingArgsDict']]]]] = None,
                  width: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -1062,22 +1062,22 @@ class DashboardHistogramChart(pulumi.CustomResource):
             stacked=True,
             categories_top_max_limit=None,
             chart_items=[
-                splight.DashboardHistogramChartChartItemArgs(
-                    ref_id="A",
-                    type="QUERY",
-                    color="red",
-                    expression_plain="",
-                    query_filter_asset=splight.DashboardHistogramChartChartItemQueryFilterAssetArgs(
-                        id=asset_test.id,
-                        name=asset_test.name,
-                    ),
-                    query_filter_attribute=splight.DashboardHistogramChartChartItemQueryFilterAttributeArgs(
-                        id=attribute_test1.id,
-                        name=attribute_test1.name,
-                    ),
-                    query_plain=pulumi.Output.json_dumps([
+                {
+                    "ref_id": "A",
+                    "type": "QUERY",
+                    "color": "red",
+                    "expression_plain": "",
+                    "query_filter_asset": {
+                        "id": asset_test.id,
+                        "name": asset_test.name,
+                    },
+                    "query_filter_attribute": {
+                        "id": attribute_test1.id,
+                        "name": attribute_test1.name,
+                    },
+                    "query_plain": pulumi.Output.json_dumps([
                         {
-                            "$match": {
+                            "_match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test1.id,
                             },
@@ -1105,23 +1105,23 @@ class DashboardHistogramChart(pulumi.CustomResource):
                             },
                         },
                     ]),
-                ),
-                splight.DashboardHistogramChartChartItemArgs(
-                    ref_id="B",
-                    color="blue",
-                    type="QUERY",
-                    expression_plain="",
-                    query_filter_asset=splight.DashboardHistogramChartChartItemQueryFilterAssetArgs(
-                        id=asset_test.id,
-                        name=asset_test.name,
-                    ),
-                    query_filter_attribute=splight.DashboardHistogramChartChartItemQueryFilterAttributeArgs(
-                        id=attribute_test2.id,
-                        name=attribute_test2.name,
-                    ),
-                    query_plain=pulumi.Output.json_dumps([
+                },
+                {
+                    "ref_id": "B",
+                    "color": "blue",
+                    "type": "QUERY",
+                    "expression_plain": "",
+                    "query_filter_asset": {
+                        "id": asset_test.id,
+                        "name": asset_test.name,
+                    },
+                    "query_filter_attribute": {
+                        "id": attribute_test2.id,
+                        "name": attribute_test2.name,
+                    },
+                    "query_plain": pulumi.Output.json_dumps([
                         {
-                            "$match": {
+                            "_match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test2.id,
                             },
@@ -1149,19 +1149,19 @@ class DashboardHistogramChart(pulumi.CustomResource):
                             },
                         },
                     ]),
-                ),
+                },
             ],
-            thresholds=[splight.DashboardHistogramChartThresholdArgs(
-                color="#00edcf",
-                display_text="T1Test",
-                value=13.1,
-            )],
-            value_mappings=[splight.DashboardHistogramChartValueMappingArgs(
-                display_text="MODIFICADO",
-                match_value="123.3",
-                type="exact_match",
-                order=0,
-            )])
+            thresholds=[{
+                "color": "#00edcf",
+                "display_text": "T1Test",
+                "value": 13.1,
+            }],
+            value_mappings=[{
+                "display_text": "MODIFICADO",
+                "match_value": "123.3",
+                "type": "exact_match",
+                "order": 0,
+            }])
         ```
 
         ## Import
@@ -1175,7 +1175,7 @@ class DashboardHistogramChart(pulumi.CustomResource):
         :param pulumi.Input[int] bucket_count: bucket count
         :param pulumi.Input[int] bucket_size: bucket size
         :param pulumi.Input[int] categories_top_max_limit: categories top max limit
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardHistogramChartChartItemArgs']]]] chart_items: chart traces to be included
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardHistogramChartChartItemArgs', 'DashboardHistogramChartChartItemArgsDict']]]] chart_items: chart traces to be included
         :param pulumi.Input[str] description: chart description
         :param pulumi.Input[bool] display_time_range: whether to display the time range or not
         :param pulumi.Input[int] height: chart height in px
@@ -1195,11 +1195,11 @@ class DashboardHistogramChart(pulumi.CustomResource):
         :param pulumi.Input[str] sorting: sorting type
         :param pulumi.Input[bool] stacked: whether to stack or not the histogram
         :param pulumi.Input[str] tab: id for the tab where to place the chart
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardHistogramChartThresholdArgs']]]] thresholds: optional static lines to be added to the chart as references
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardHistogramChartThresholdArgs', 'DashboardHistogramChartThresholdArgsDict']]]] thresholds: optional static lines to be added to the chart as references
         :param pulumi.Input[str] timestamp_gte: date in isoformat or shortcut string where to end reading
         :param pulumi.Input[str] timestamp_lte: date in isoformat or shortcut string where to start reading
         :param pulumi.Input[str] timezone: chart timezone
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardHistogramChartValueMappingArgs']]]] value_mappings: optional mappings to transform data with rules
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardHistogramChartValueMappingArgs', 'DashboardHistogramChartValueMappingArgsDict']]]] value_mappings: optional mappings to transform data with rules
         :param pulumi.Input[int] width: chart width in cols (max 20)
         """
         ...
@@ -1257,22 +1257,22 @@ class DashboardHistogramChart(pulumi.CustomResource):
             stacked=True,
             categories_top_max_limit=None,
             chart_items=[
-                splight.DashboardHistogramChartChartItemArgs(
-                    ref_id="A",
-                    type="QUERY",
-                    color="red",
-                    expression_plain="",
-                    query_filter_asset=splight.DashboardHistogramChartChartItemQueryFilterAssetArgs(
-                        id=asset_test.id,
-                        name=asset_test.name,
-                    ),
-                    query_filter_attribute=splight.DashboardHistogramChartChartItemQueryFilterAttributeArgs(
-                        id=attribute_test1.id,
-                        name=attribute_test1.name,
-                    ),
-                    query_plain=pulumi.Output.json_dumps([
+                {
+                    "ref_id": "A",
+                    "type": "QUERY",
+                    "color": "red",
+                    "expression_plain": "",
+                    "query_filter_asset": {
+                        "id": asset_test.id,
+                        "name": asset_test.name,
+                    },
+                    "query_filter_attribute": {
+                        "id": attribute_test1.id,
+                        "name": attribute_test1.name,
+                    },
+                    "query_plain": pulumi.Output.json_dumps([
                         {
-                            "$match": {
+                            "_match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test1.id,
                             },
@@ -1300,23 +1300,23 @@ class DashboardHistogramChart(pulumi.CustomResource):
                             },
                         },
                     ]),
-                ),
-                splight.DashboardHistogramChartChartItemArgs(
-                    ref_id="B",
-                    color="blue",
-                    type="QUERY",
-                    expression_plain="",
-                    query_filter_asset=splight.DashboardHistogramChartChartItemQueryFilterAssetArgs(
-                        id=asset_test.id,
-                        name=asset_test.name,
-                    ),
-                    query_filter_attribute=splight.DashboardHistogramChartChartItemQueryFilterAttributeArgs(
-                        id=attribute_test2.id,
-                        name=attribute_test2.name,
-                    ),
-                    query_plain=pulumi.Output.json_dumps([
+                },
+                {
+                    "ref_id": "B",
+                    "color": "blue",
+                    "type": "QUERY",
+                    "expression_plain": "",
+                    "query_filter_asset": {
+                        "id": asset_test.id,
+                        "name": asset_test.name,
+                    },
+                    "query_filter_attribute": {
+                        "id": attribute_test2.id,
+                        "name": attribute_test2.name,
+                    },
+                    "query_plain": pulumi.Output.json_dumps([
                         {
-                            "$match": {
+                            "_match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test2.id,
                             },
@@ -1344,19 +1344,19 @@ class DashboardHistogramChart(pulumi.CustomResource):
                             },
                         },
                     ]),
-                ),
+                },
             ],
-            thresholds=[splight.DashboardHistogramChartThresholdArgs(
-                color="#00edcf",
-                display_text="T1Test",
-                value=13.1,
-            )],
-            value_mappings=[splight.DashboardHistogramChartValueMappingArgs(
-                display_text="MODIFICADO",
-                match_value="123.3",
-                type="exact_match",
-                order=0,
-            )])
+            thresholds=[{
+                "color": "#00edcf",
+                "display_text": "T1Test",
+                "value": 13.1,
+            }],
+            value_mappings=[{
+                "display_text": "MODIFICADO",
+                "match_value": "123.3",
+                "type": "exact_match",
+                "order": 0,
+            }])
         ```
 
         ## Import
@@ -1383,7 +1383,7 @@ class DashboardHistogramChart(pulumi.CustomResource):
                  bucket_count: Optional[pulumi.Input[int]] = None,
                  bucket_size: Optional[pulumi.Input[int]] = None,
                  categories_top_max_limit: Optional[pulumi.Input[int]] = None,
-                 chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardHistogramChartChartItemArgs']]]]] = None,
+                 chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardHistogramChartChartItemArgs', 'DashboardHistogramChartChartItemArgsDict']]]]] = None,
                  collection: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_time_range: Optional[pulumi.Input[bool]] = None,
@@ -1404,11 +1404,11 @@ class DashboardHistogramChart(pulumi.CustomResource):
                  sorting: Optional[pulumi.Input[str]] = None,
                  stacked: Optional[pulumi.Input[bool]] = None,
                  tab: Optional[pulumi.Input[str]] = None,
-                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardHistogramChartThresholdArgs']]]]] = None,
+                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardHistogramChartThresholdArgs', 'DashboardHistogramChartThresholdArgsDict']]]]] = None,
                  timestamp_gte: Optional[pulumi.Input[str]] = None,
                  timestamp_lte: Optional[pulumi.Input[str]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
-                 value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardHistogramChartValueMappingArgs']]]]] = None,
+                 value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardHistogramChartValueMappingArgs', 'DashboardHistogramChartValueMappingArgsDict']]]]] = None,
                  width: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1470,7 +1470,7 @@ class DashboardHistogramChart(pulumi.CustomResource):
             bucket_count: Optional[pulumi.Input[int]] = None,
             bucket_size: Optional[pulumi.Input[int]] = None,
             categories_top_max_limit: Optional[pulumi.Input[int]] = None,
-            chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardHistogramChartChartItemArgs']]]]] = None,
+            chart_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardHistogramChartChartItemArgs', 'DashboardHistogramChartChartItemArgsDict']]]]] = None,
             collection: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_time_range: Optional[pulumi.Input[bool]] = None,
@@ -1491,11 +1491,11 @@ class DashboardHistogramChart(pulumi.CustomResource):
             sorting: Optional[pulumi.Input[str]] = None,
             stacked: Optional[pulumi.Input[bool]] = None,
             tab: Optional[pulumi.Input[str]] = None,
-            thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardHistogramChartThresholdArgs']]]]] = None,
+            thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardHistogramChartThresholdArgs', 'DashboardHistogramChartThresholdArgsDict']]]]] = None,
             timestamp_gte: Optional[pulumi.Input[str]] = None,
             timestamp_lte: Optional[pulumi.Input[str]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
-            value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardHistogramChartValueMappingArgs']]]]] = None,
+            value_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardHistogramChartValueMappingArgs', 'DashboardHistogramChartValueMappingArgsDict']]]]] = None,
             width: Optional[pulumi.Input[int]] = None) -> 'DashboardHistogramChart':
         """
         Get an existing DashboardHistogramChart resource's state with the given name, id, and optional extra
@@ -1507,7 +1507,7 @@ class DashboardHistogramChart(pulumi.CustomResource):
         :param pulumi.Input[int] bucket_count: bucket count
         :param pulumi.Input[int] bucket_size: bucket size
         :param pulumi.Input[int] categories_top_max_limit: categories top max limit
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardHistogramChartChartItemArgs']]]] chart_items: chart traces to be included
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardHistogramChartChartItemArgs', 'DashboardHistogramChartChartItemArgsDict']]]] chart_items: chart traces to be included
         :param pulumi.Input[str] description: chart description
         :param pulumi.Input[bool] display_time_range: whether to display the time range or not
         :param pulumi.Input[int] height: chart height in px
@@ -1527,11 +1527,11 @@ class DashboardHistogramChart(pulumi.CustomResource):
         :param pulumi.Input[str] sorting: sorting type
         :param pulumi.Input[bool] stacked: whether to stack or not the histogram
         :param pulumi.Input[str] tab: id for the tab where to place the chart
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardHistogramChartThresholdArgs']]]] thresholds: optional static lines to be added to the chart as references
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardHistogramChartThresholdArgs', 'DashboardHistogramChartThresholdArgsDict']]]] thresholds: optional static lines to be added to the chart as references
         :param pulumi.Input[str] timestamp_gte: date in isoformat or shortcut string where to end reading
         :param pulumi.Input[str] timestamp_lte: date in isoformat or shortcut string where to start reading
         :param pulumi.Input[str] timezone: chart timezone
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardHistogramChartValueMappingArgs']]]] value_mappings: optional mappings to transform data with rules
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardHistogramChartValueMappingArgs', 'DashboardHistogramChartValueMappingArgsDict']]]] value_mappings: optional mappings to transform data with rules
         :param pulumi.Input[int] width: chart width in cols (max 20)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

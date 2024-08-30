@@ -52,7 +52,7 @@ import * as utilities from "./utilities";
  *     type: "rate",
  *     rateUnit: "minute",
  *     rateValue: 10,
- *     timeWindow: 3600 * 12,
+ *     timeWindow: 3600,
  *     targetVariable: "B",
  *     targetAsset: {
  *         id: myTargetAsset.id,
@@ -76,6 +76,8 @@ import * as utilities from "./utilities";
  *                 id: myAttribute.id,
  *                 name: myAttribute.name,
  *             },
+ *             queryGroupFunction: "avg",
+ *             queryGroupUnit: "day",
  *             queryPlain: pulumi.jsonStringify([{
  *                 $match: {
  *                     asset: myAsset.id,

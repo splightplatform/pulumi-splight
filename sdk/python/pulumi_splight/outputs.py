@@ -11,17 +11,24 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'ActionAsset',
+    'ActionSetpoint',
+    'ActionSetpointAttribute',
     'AlertAlertItem',
     'AlertAlertItemQueryFilterAsset',
     'AlertAlertItemQueryFilterAttribute',
     'AlertThreshold',
     'AssetKind',
+    'AssetTag',
+    'CommandAction',
+    'CommandActionAsset',
     'ComponentInput',
     'ComponentRoutineConfig',
     'ComponentRoutineInput',
     'ComponentRoutineInputValue',
     'ComponentRoutineOutput',
     'ComponentRoutineOutputValue',
+    'ComponentTag',
     'DashboardActionlistChartChartItem',
     'DashboardActionlistChartChartItemQueryFilterAsset',
     'DashboardActionlistChartChartItemQueryFilterAttribute',
@@ -98,7 +105,119 @@ __all__ = [
     'FunctionTargetAsset',
     'FunctionTargetAttribute',
     'GetAssetKindsKindResult',
+    'GetTagsTagResult',
 ]
+
+@pulumi.output_type
+class ActionAsset(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: asset id
+        :param str name: asset name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        asset id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        asset name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ActionSetpoint(dict):
+    def __init__(__self__, *,
+                 attribute: 'outputs.ActionSetpointAttribute',
+                 value: str,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param 'ActionSetpointAttributeArgs' attribute: the target attribute of the setpoint which should also be an attribute of the specified asset
+        :param str value: JSON encoded scalar value
+        :param str id: setpoint ID
+        :param str name: setpoint name
+        """
+        pulumi.set(__self__, "attribute", attribute)
+        pulumi.set(__self__, "value", value)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def attribute(self) -> 'outputs.ActionSetpointAttribute':
+        """
+        the target attribute of the setpoint which should also be an attribute of the specified asset
+        """
+        return pulumi.get(self, "attribute")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        JSON encoded scalar value
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        setpoint ID
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        setpoint name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ActionSetpointAttribute(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: attribute id
+        :param str name: attribute name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        attribute id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        attribute name
+        """
+        return pulumi.get(self, "name")
+
 
 @pulumi.output_type
 class AlertAlertItem(dict):
@@ -115,6 +234,10 @@ class AlertAlertItem(dict):
             suggest = "query_plain"
         elif key == "refId":
             suggest = "ref_id"
+        elif key == "queryGroupFunction":
+            suggest = "query_group_function"
+        elif key == "queryGroupUnit":
+            suggest = "query_group_unit"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AlertAlertItem. Access the value via the '{suggest}' property getter instead.")
@@ -135,7 +258,9 @@ class AlertAlertItem(dict):
                  query_plain: str,
                  ref_id: str,
                  type: str,
-                 id: Optional[str] = None):
+                 id: Optional[str] = None,
+                 query_group_function: Optional[str] = None,
+                 query_group_unit: Optional[str] = None):
         """
         :param str expression: how the expression is shown (i.e 'A * 2')
         :param str expression_plain: actual mongo query containing the expression
@@ -145,6 +270,8 @@ class AlertAlertItem(dict):
         :param str ref_id: identifier of the variable (i.e 'A')
         :param str type: either QUERY or EXPRESSION
         :param str id: ID of the function item
+        :param str query_group_function: function used to aggregate data
+        :param str query_group_unit: time window to apply the aggregation
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "expression_plain", expression_plain)
@@ -155,6 +282,10 @@ class AlertAlertItem(dict):
         pulumi.set(__self__, "type", type)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if query_group_function is not None:
+            pulumi.set(__self__, "query_group_function", query_group_function)
+        if query_group_unit is not None:
+            pulumi.set(__self__, "query_group_unit", query_group_unit)
 
     @property
     @pulumi.getter
@@ -219,6 +350,22 @@ class AlertAlertItem(dict):
         ID of the function item
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="queryGroupFunction")
+    def query_group_function(self) -> Optional[str]:
+        """
+        function used to aggregate data
+        """
+        return pulumi.get(self, "query_group_function")
+
+    @property
+    @pulumi.getter(name="queryGroupUnit")
+    def query_group_unit(self) -> Optional[str]:
+        """
+        time window to apply the aggregation
+        """
+        return pulumi.get(self, "query_group_unit")
 
 
 @pulumi.output_type
@@ -366,6 +513,104 @@ class AssetKind(dict):
     def name(self) -> str:
         """
         kind name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class AssetTag(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: tag id
+        :param str name: tag name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        tag name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class CommandAction(dict):
+    def __init__(__self__, *,
+                 asset: 'outputs.CommandActionAsset',
+                 id: str,
+                 name: str):
+        """
+        :param 'CommandActionAssetArgs' asset: asset associated with the action (to be deprecated)
+        :param str id: action ID
+        :param str name: setpoint name
+        """
+        pulumi.set(__self__, "asset", asset)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def asset(self) -> 'outputs.CommandActionAsset':
+        """
+        asset associated with the action (to be deprecated)
+        """
+        return pulumi.get(self, "asset")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        action ID
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        setpoint name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class CommandActionAsset(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: asset id
+        :param str name: asset name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        asset id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        asset name
         """
         return pulumi.get(self, "name")
 
@@ -692,6 +937,35 @@ class ComponentRoutineOutputValue(dict):
     @pulumi.getter
     def attribute(self) -> str:
         return pulumi.get(self, "attribute")
+
+
+@pulumi.output_type
+class ComponentTag(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: tag id
+        :param str name: tag name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        tag name
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -4937,6 +5211,10 @@ class FunctionFunctionItem(dict):
             suggest = "query_plain"
         elif key == "refId":
             suggest = "ref_id"
+        elif key == "queryGroupFunction":
+            suggest = "query_group_function"
+        elif key == "queryGroupUnit":
+            suggest = "query_group_unit"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in FunctionFunctionItem. Access the value via the '{suggest}' property getter instead.")
@@ -4957,7 +5235,9 @@ class FunctionFunctionItem(dict):
                  query_plain: str,
                  ref_id: str,
                  type: str,
-                 id: Optional[str] = None):
+                 id: Optional[str] = None,
+                 query_group_function: Optional[str] = None,
+                 query_group_unit: Optional[str] = None):
         """
         :param str expression: how the expression is shown (i.e 'A * 2')
         :param str expression_plain: actual mongo query containing the expression
@@ -4967,6 +5247,8 @@ class FunctionFunctionItem(dict):
         :param str ref_id: identifier of the variable (i.e 'A')
         :param str type: either QUERY or EXPRESSION
         :param str id: ID of the function item
+        :param str query_group_function: function used to aggregate data
+        :param str query_group_unit: time window to apply the aggregation
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "expression_plain", expression_plain)
@@ -4977,6 +5259,10 @@ class FunctionFunctionItem(dict):
         pulumi.set(__self__, "type", type)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if query_group_function is not None:
+            pulumi.set(__self__, "query_group_function", query_group_function)
+        if query_group_unit is not None:
+            pulumi.set(__self__, "query_group_unit", query_group_unit)
 
     @property
     @pulumi.getter
@@ -5041,6 +5327,22 @@ class FunctionFunctionItem(dict):
         ID of the function item
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="queryGroupFunction")
+    def query_group_function(self) -> Optional[str]:
+        """
+        function used to aggregate data
+        """
+        return pulumi.get(self, "query_group_function")
+
+    @property
+    @pulumi.getter(name="queryGroupUnit")
+    def query_group_unit(self) -> Optional[str]:
+        """
+        time window to apply the aggregation
+        """
+        return pulumi.get(self, "query_group_unit")
 
 
 @pulumi.output_type
@@ -5172,17 +5474,56 @@ class GetAssetKindsKindResult(dict):
     def __init__(__self__, *,
                  id: str,
                  name: str):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        ID of the resource
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetTagsTagResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: ID of the resource
+        :param str name: name of the resource
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        name of the resource
+        """
         return pulumi.get(self, "name")
 
 

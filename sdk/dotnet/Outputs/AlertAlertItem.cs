@@ -35,6 +35,14 @@ namespace Splight.Splight.Outputs
         /// </summary>
         public readonly Outputs.AlertAlertItemQueryFilterAttribute QueryFilterAttribute;
         /// <summary>
+        /// function used to aggregate data
+        /// </summary>
+        public readonly string? QueryGroupFunction;
+        /// <summary>
+        /// time window to apply the aggregation
+        /// </summary>
+        public readonly string? QueryGroupUnit;
+        /// <summary>
         /// actual mongo query
         /// </summary>
         public readonly string QueryPlain;
@@ -59,6 +67,10 @@ namespace Splight.Splight.Outputs
 
             Outputs.AlertAlertItemQueryFilterAttribute queryFilterAttribute,
 
+            string? queryGroupFunction,
+
+            string? queryGroupUnit,
+
             string queryPlain,
 
             string refId,
@@ -70,6 +82,8 @@ namespace Splight.Splight.Outputs
             Id = id;
             QueryFilterAsset = queryFilterAsset;
             QueryFilterAttribute = queryFilterAttribute;
+            QueryGroupFunction = queryGroupFunction;
+            QueryGroupUnit = queryGroupUnit;
             QueryPlain = queryPlain;
             RefId = refId;
             Type = type;
