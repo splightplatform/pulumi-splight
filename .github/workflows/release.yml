@@ -26,6 +26,7 @@ jobs:
   publish_binary:
     name: Publish Provider
     runs-on: ubuntu-latest
+    needs: tag_version
     steps:
     - uses: actions/checkout@v4
       with:
