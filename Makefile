@@ -65,6 +65,7 @@ build: build-python build-nodejs build-dotnet # Used by CI/CD
 clean:
 	@rm -rf $(WORKING_DIR)/bin
 	@rm -f $(WORKING_DIR)/provider/cmd/${PROVIDER}/schema.json
+	@rm -rf $(COVERAGE_OUTPUT_DIR)
 	@echo "{}" > $(WORKING_DIR)/provider/cmd/${PROVIDER}/bridge-metadata.json
 	@for sdk in $(LANGUAGES); do \
 		rm -rf $(WORKING_DIR)/sdk/$$sdk; \
