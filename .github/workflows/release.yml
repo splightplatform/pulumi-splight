@@ -11,6 +11,7 @@ env:
   NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
 jobs:
   tag_version:
+    name: Tag Version
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

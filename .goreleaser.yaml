@@ -8,7 +8,8 @@ builds:
     binary: pulumi-resource-splight
     dir: provider
     goos:
-      - freebsd
+      # FIXME: uncomment when the github.com/pkg/term == 1.2.0
+      # - freebsd
       - windows
       - linux
       - darwin
