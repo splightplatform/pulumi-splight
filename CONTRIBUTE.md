@@ -8,11 +8,9 @@
 - Goreleaser (1.26.2)
 - Dotnet (8.0.104)
 
-### Building locally
+### Building Locally
 
-Update the provider/go.mod file to specify the desired version of the [Splight Terraform Provider](https://github.com/splightplatform/terraform-provider-splight).
-
-Use the same version number in the `version` file, formatted as X.Y.Z (without the 'v').
+Update the `provider/go.mod` file to specify the desired version of the [Splight Terraform Provider](https://github.com/splightplatform/terraform-provider-splight). Then, in the `version` file, set the same version number in the format `X.Y.Z` (e.g., `1.2.3`), without the leading 'v'.
 
 By doing this, its easier to track which version of the Terraform provider is used by the Pulumi provider.
 
@@ -54,10 +52,6 @@ Generate the files mentioned above and compile the Pulumi provider:
 ```bash
 make provider
 ```
-
-We offer an optional `make snapshot` command, which leverages Goreleaser to create a local release of the Pulumi provider.
-This command is particularly useful for testing the release process prior to officially releasing a new version.
-You can also use the generated binaries for different architectures and operating systems to test the provider by referencing it in your Pulumi project.
 
 #### Generate the SDKs
 
@@ -134,13 +128,4 @@ pulumi up --parallel 1 # Do not use concurrent requests
 
 ### Release
 
-Create a tag that matches the version in the `version` file.
-
-```bash
-git tag -a vX.Y.Z -m "Release vX.Y.Z"
-git push origin vX.Y.Z
-```
-
-This will trigger the CI/CD pipeline to:
-- Use GoReleaser to build the provider and upload the binaries to a GitHub release.
-- Build the SDKs and publish them to their respective package managers.
+After completing all the previous steps, commit your changes and open a PR. Once the PR is merged, the CI/CD pipeline will automatically create the tag, build and publish the provider binaries to a GitHub release, and publish the SDKs to their respective package managers.

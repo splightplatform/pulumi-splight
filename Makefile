@@ -20,7 +20,7 @@ COLOR_INFO      := \033[0;32m
 
 .PHONY: default tidy tfgen schema-bridge provider sdks build-python build-nodejs build-dotnet build clean
 
-default: tidy clean tfgen provider sdks
+default: clean tidy tfgen provider sdks
 
 tidy:
 	@cd provider && \
