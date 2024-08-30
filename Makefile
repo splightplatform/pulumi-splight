@@ -20,7 +20,7 @@ COLOR_INFO      := \033[0;32m
 
 .PHONY: default tidy tfgen schema-bridge provider sdks build-python build-nodejs build-dotnet build clean
 
-default: tidy clean tfgen provider sdks
+default: clean tidy tfgen provider sdks
 
 tidy:
 	@cd provider && \
@@ -65,6 +65,7 @@ build: build-python build-nodejs build-dotnet # Used by CI/CD
 clean:
 	@rm -rf $(WORKING_DIR)/bin
 	@rm -f $(WORKING_DIR)/provider/cmd/${PROVIDER}/schema.json
+	@rm -rf $(COVERAGE_OUTPUT_DIR)
 	@echo "{}" > $(WORKING_DIR)/provider/cmd/${PROVIDER}/bridge-metadata.json
 	@for sdk in $(LANGUAGES); do \
 		rm -rf $(WORKING_DIR)/sdk/$$sdk; \
