@@ -230,14 +230,14 @@ class AlertAlertItem(dict):
             suggest = "query_filter_asset"
         elif key == "queryFilterAttribute":
             suggest = "query_filter_attribute"
-        elif key == "queryPlain":
-            suggest = "query_plain"
-        elif key == "refId":
-            suggest = "ref_id"
         elif key == "queryGroupFunction":
             suggest = "query_group_function"
         elif key == "queryGroupUnit":
             suggest = "query_group_unit"
+        elif key == "queryPlain":
+            suggest = "query_plain"
+        elif key == "refId":
+            suggest = "ref_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AlertAlertItem. Access the value via the '{suggest}' property getter instead.")
@@ -255,37 +255,35 @@ class AlertAlertItem(dict):
                  expression_plain: str,
                  query_filter_asset: 'outputs.AlertAlertItemQueryFilterAsset',
                  query_filter_attribute: 'outputs.AlertAlertItemQueryFilterAttribute',
+                 query_group_function: str,
+                 query_group_unit: str,
                  query_plain: str,
                  ref_id: str,
                  type: str,
-                 id: Optional[str] = None,
-                 query_group_function: Optional[str] = None,
-                 query_group_unit: Optional[str] = None):
+                 id: Optional[str] = None):
         """
         :param str expression: how the expression is shown (i.e 'A * 2')
         :param str expression_plain: actual mongo query containing the expression
         :param 'AlertAlertItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
         :param 'AlertAlertItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        :param str query_group_function: function used to aggregate data
+        :param str query_group_unit: time window to apply the aggregation
         :param str query_plain: actual mongo query
         :param str ref_id: identifier of the variable (i.e 'A')
         :param str type: either QUERY or EXPRESSION
         :param str id: ID of the function item
-        :param str query_group_function: function used to aggregate data
-        :param str query_group_unit: time window to apply the aggregation
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "expression_plain", expression_plain)
         pulumi.set(__self__, "query_filter_asset", query_filter_asset)
         pulumi.set(__self__, "query_filter_attribute", query_filter_attribute)
+        pulumi.set(__self__, "query_group_function", query_group_function)
+        pulumi.set(__self__, "query_group_unit", query_group_unit)
         pulumi.set(__self__, "query_plain", query_plain)
         pulumi.set(__self__, "ref_id", ref_id)
         pulumi.set(__self__, "type", type)
         if id is not None:
             pulumi.set(__self__, "id", id)
-        if query_group_function is not None:
-            pulumi.set(__self__, "query_group_function", query_group_function)
-        if query_group_unit is not None:
-            pulumi.set(__self__, "query_group_unit", query_group_unit)
 
     @property
     @pulumi.getter
@@ -320,6 +318,22 @@ class AlertAlertItem(dict):
         return pulumi.get(self, "query_filter_attribute")
 
     @property
+    @pulumi.getter(name="queryGroupFunction")
+    def query_group_function(self) -> str:
+        """
+        function used to aggregate data
+        """
+        return pulumi.get(self, "query_group_function")
+
+    @property
+    @pulumi.getter(name="queryGroupUnit")
+    def query_group_unit(self) -> str:
+        """
+        time window to apply the aggregation
+        """
+        return pulumi.get(self, "query_group_unit")
+
+    @property
     @pulumi.getter(name="queryPlain")
     def query_plain(self) -> str:
         """
@@ -350,22 +364,6 @@ class AlertAlertItem(dict):
         ID of the function item
         """
         return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="queryGroupFunction")
-    def query_group_function(self) -> Optional[str]:
-        """
-        function used to aggregate data
-        """
-        return pulumi.get(self, "query_group_function")
-
-    @property
-    @pulumi.getter(name="queryGroupUnit")
-    def query_group_unit(self) -> Optional[str]:
-        """
-        time window to apply the aggregation
-        """
-        return pulumi.get(self, "query_group_unit")
 
 
 @pulumi.output_type
@@ -5207,14 +5205,14 @@ class FunctionFunctionItem(dict):
             suggest = "query_filter_asset"
         elif key == "queryFilterAttribute":
             suggest = "query_filter_attribute"
-        elif key == "queryPlain":
-            suggest = "query_plain"
-        elif key == "refId":
-            suggest = "ref_id"
         elif key == "queryGroupFunction":
             suggest = "query_group_function"
         elif key == "queryGroupUnit":
             suggest = "query_group_unit"
+        elif key == "queryPlain":
+            suggest = "query_plain"
+        elif key == "refId":
+            suggest = "ref_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in FunctionFunctionItem. Access the value via the '{suggest}' property getter instead.")
@@ -5232,37 +5230,35 @@ class FunctionFunctionItem(dict):
                  expression_plain: str,
                  query_filter_asset: 'outputs.FunctionFunctionItemQueryFilterAsset',
                  query_filter_attribute: 'outputs.FunctionFunctionItemQueryFilterAttribute',
+                 query_group_function: str,
+                 query_group_unit: str,
                  query_plain: str,
                  ref_id: str,
                  type: str,
-                 id: Optional[str] = None,
-                 query_group_function: Optional[str] = None,
-                 query_group_unit: Optional[str] = None):
+                 id: Optional[str] = None):
         """
         :param str expression: how the expression is shown (i.e 'A * 2')
         :param str expression_plain: actual mongo query containing the expression
         :param 'FunctionFunctionItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
         :param 'FunctionFunctionItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        :param str query_group_function: function used to aggregate data
+        :param str query_group_unit: time window to apply the aggregation
         :param str query_plain: actual mongo query
         :param str ref_id: identifier of the variable (i.e 'A')
         :param str type: either QUERY or EXPRESSION
         :param str id: ID of the function item
-        :param str query_group_function: function used to aggregate data
-        :param str query_group_unit: time window to apply the aggregation
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "expression_plain", expression_plain)
         pulumi.set(__self__, "query_filter_asset", query_filter_asset)
         pulumi.set(__self__, "query_filter_attribute", query_filter_attribute)
+        pulumi.set(__self__, "query_group_function", query_group_function)
+        pulumi.set(__self__, "query_group_unit", query_group_unit)
         pulumi.set(__self__, "query_plain", query_plain)
         pulumi.set(__self__, "ref_id", ref_id)
         pulumi.set(__self__, "type", type)
         if id is not None:
             pulumi.set(__self__, "id", id)
-        if query_group_function is not None:
-            pulumi.set(__self__, "query_group_function", query_group_function)
-        if query_group_unit is not None:
-            pulumi.set(__self__, "query_group_unit", query_group_unit)
 
     @property
     @pulumi.getter
@@ -5297,6 +5293,22 @@ class FunctionFunctionItem(dict):
         return pulumi.get(self, "query_filter_attribute")
 
     @property
+    @pulumi.getter(name="queryGroupFunction")
+    def query_group_function(self) -> str:
+        """
+        function used to aggregate data
+        """
+        return pulumi.get(self, "query_group_function")
+
+    @property
+    @pulumi.getter(name="queryGroupUnit")
+    def query_group_unit(self) -> str:
+        """
+        time window to apply the aggregation
+        """
+        return pulumi.get(self, "query_group_unit")
+
+    @property
     @pulumi.getter(name="queryPlain")
     def query_plain(self) -> str:
         """
@@ -5327,22 +5339,6 @@ class FunctionFunctionItem(dict):
         ID of the function item
         """
         return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="queryGroupFunction")
-    def query_group_function(self) -> Optional[str]:
-        """
-        function used to aggregate data
-        """
-        return pulumi.get(self, "query_group_function")
-
-    @property
-    @pulumi.getter(name="queryGroupUnit")
-    def query_group_unit(self) -> Optional[str]:
-        """
-        time window to apply the aggregation
-        """
-        return pulumi.get(self, "query_group_unit")
 
 
 @pulumi.output_type

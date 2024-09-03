@@ -366,9 +366,9 @@ type AlertAlertItem struct {
 	// Asset/Attribute filter
 	QueryFilterAttribute AlertAlertItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
 	// function used to aggregate data
-	QueryGroupFunction *string `pulumi:"queryGroupFunction"`
+	QueryGroupFunction string `pulumi:"queryGroupFunction"`
 	// time window to apply the aggregation
-	QueryGroupUnit *string `pulumi:"queryGroupUnit"`
+	QueryGroupUnit string `pulumi:"queryGroupUnit"`
 	// actual mongo query
 	QueryPlain string `pulumi:"queryPlain"`
 	// identifier of the variable (i.e 'A')
@@ -400,9 +400,9 @@ type AlertAlertItemArgs struct {
 	// Asset/Attribute filter
 	QueryFilterAttribute AlertAlertItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
 	// function used to aggregate data
-	QueryGroupFunction pulumi.StringPtrInput `pulumi:"queryGroupFunction"`
+	QueryGroupFunction pulumi.StringInput `pulumi:"queryGroupFunction"`
 	// time window to apply the aggregation
-	QueryGroupUnit pulumi.StringPtrInput `pulumi:"queryGroupUnit"`
+	QueryGroupUnit pulumi.StringInput `pulumi:"queryGroupUnit"`
 	// actual mongo query
 	QueryPlain pulumi.StringInput `pulumi:"queryPlain"`
 	// identifier of the variable (i.e 'A')
@@ -488,13 +488,13 @@ func (o AlertAlertItemOutput) QueryFilterAttribute() AlertAlertItemQueryFilterAt
 }
 
 // function used to aggregate data
-func (o AlertAlertItemOutput) QueryGroupFunction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AlertAlertItem) *string { return v.QueryGroupFunction }).(pulumi.StringPtrOutput)
+func (o AlertAlertItemOutput) QueryGroupFunction() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertAlertItem) string { return v.QueryGroupFunction }).(pulumi.StringOutput)
 }
 
 // time window to apply the aggregation
-func (o AlertAlertItemOutput) QueryGroupUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AlertAlertItem) *string { return v.QueryGroupUnit }).(pulumi.StringPtrOutput)
+func (o AlertAlertItemOutput) QueryGroupUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertAlertItem) string { return v.QueryGroupUnit }).(pulumi.StringOutput)
 }
 
 // actual mongo query
@@ -9281,9 +9281,9 @@ type FunctionFunctionItem struct {
 	// Asset/Attribute filter
 	QueryFilterAttribute FunctionFunctionItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
 	// function used to aggregate data
-	QueryGroupFunction *string `pulumi:"queryGroupFunction"`
+	QueryGroupFunction string `pulumi:"queryGroupFunction"`
 	// time window to apply the aggregation
-	QueryGroupUnit *string `pulumi:"queryGroupUnit"`
+	QueryGroupUnit string `pulumi:"queryGroupUnit"`
 	// actual mongo query
 	QueryPlain string `pulumi:"queryPlain"`
 	// identifier of the variable (i.e 'A')
@@ -9315,9 +9315,9 @@ type FunctionFunctionItemArgs struct {
 	// Asset/Attribute filter
 	QueryFilterAttribute FunctionFunctionItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
 	// function used to aggregate data
-	QueryGroupFunction pulumi.StringPtrInput `pulumi:"queryGroupFunction"`
+	QueryGroupFunction pulumi.StringInput `pulumi:"queryGroupFunction"`
 	// time window to apply the aggregation
-	QueryGroupUnit pulumi.StringPtrInput `pulumi:"queryGroupUnit"`
+	QueryGroupUnit pulumi.StringInput `pulumi:"queryGroupUnit"`
 	// actual mongo query
 	QueryPlain pulumi.StringInput `pulumi:"queryPlain"`
 	// identifier of the variable (i.e 'A')
@@ -9403,13 +9403,13 @@ func (o FunctionFunctionItemOutput) QueryFilterAttribute() FunctionFunctionItemQ
 }
 
 // function used to aggregate data
-func (o FunctionFunctionItemOutput) QueryGroupFunction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FunctionFunctionItem) *string { return v.QueryGroupFunction }).(pulumi.StringPtrOutput)
+func (o FunctionFunctionItemOutput) QueryGroupFunction() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionFunctionItem) string { return v.QueryGroupFunction }).(pulumi.StringOutput)
 }
 
 // time window to apply the aggregation
-func (o FunctionFunctionItemOutput) QueryGroupUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FunctionFunctionItem) *string { return v.QueryGroupUnit }).(pulumi.StringPtrOutput)
+func (o FunctionFunctionItemOutput) QueryGroupUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionFunctionItem) string { return v.QueryGroupUnit }).(pulumi.StringOutput)
 }
 
 // actual mongo query

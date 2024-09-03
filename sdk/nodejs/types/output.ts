@@ -70,11 +70,11 @@ export interface AlertAlertItem {
     /**
      * function used to aggregate data
      */
-    queryGroupFunction?: string;
+    queryGroupFunction: string;
     /**
      * time window to apply the aggregation
      */
-    queryGroupUnit?: string;
+    queryGroupUnit: string;
     /**
      * actual mongo query
      */
@@ -1059,11 +1059,11 @@ export interface FunctionFunctionItem {
     /**
      * function used to aggregate data
      */
-    queryGroupFunction?: string;
+    queryGroupFunction: string;
     /**
      * time window to apply the aggregation
      */
-    queryGroupUnit?: string;
+    queryGroupUnit: string;
     /**
      * actual mongo query
      */

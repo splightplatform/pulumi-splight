@@ -46,14 +46,14 @@ namespace Splight.Splight.Inputs
         /// <summary>
         /// function used to aggregate data
         /// </summary>
-        [Input("queryGroupFunction")]
-        public Input<string>? QueryGroupFunction { get; set; }
+        [Input("queryGroupFunction", required: true)]
+        public Input<string> QueryGroupFunction { get; set; } = null!;
 
         /// <summary>
         /// time window to apply the aggregation
         /// </summary>
-        [Input("queryGroupUnit")]
-        public Input<string>? QueryGroupUnit { get; set; }
+        [Input("queryGroupUnit", required: true)]
+        public Input<string> QueryGroupUnit { get; set; } = null!;
 
         /// <summary>
         /// actual mongo query
