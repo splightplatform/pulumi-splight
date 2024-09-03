@@ -70,11 +70,11 @@ export interface AlertAlertItem {
     /**
      * function used to aggregate data
      */
-    queryGroupFunction?: pulumi.Input<string>;
+    queryGroupFunction: pulumi.Input<string>;
     /**
      * time window to apply the aggregation
      */
-    queryGroupUnit?: pulumi.Input<string>;
+    queryGroupUnit: pulumi.Input<string>;
     /**
      * actual mongo query
      */
@@ -1059,11 +1059,11 @@ export interface FunctionFunctionItem {
     /**
      * function used to aggregate data
      */
-    queryGroupFunction?: pulumi.Input<string>;
+    queryGroupFunction: pulumi.Input<string>;
     /**
      * time window to apply the aggregation
      */
-    queryGroupUnit?: pulumi.Input<string>;
+    queryGroupUnit: pulumi.Input<string>;
     /**
      * actual mongo query
      */

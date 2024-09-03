@@ -186,6 +186,8 @@
                 "expressionPlain",
                 "queryFilterAsset",
                 "queryFilterAttribute",
+                "queryGroupFunction",
+                "queryGroupUnit",
                 "queryPlain",
                 "refId",
                 "type"
@@ -198,6 +200,8 @@
                         "id",
                         "queryFilterAsset",
                         "queryFilterAttribute",
+                        "queryGroupFunction",
+                        "queryGroupUnit",
                         "queryPlain",
                         "refId",
                         "type"
@@ -2277,6 +2281,8 @@
                 "expressionPlain",
                 "queryFilterAsset",
                 "queryFilterAttribute",
+                "queryGroupFunction",
+                "queryGroupUnit",
                 "queryPlain",
                 "refId",
                 "type"
@@ -2289,6 +2295,8 @@
                         "id",
                         "queryFilterAsset",
                         "queryFilterAttribute",
+                        "queryGroupFunction",
+                        "queryGroupUnit",
                         "queryPlain",
                         "refId",
                         "type"
