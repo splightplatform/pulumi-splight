@@ -361,9 +361,9 @@ type AlertAlertItem struct {
 	ExpressionPlain string `pulumi:"expressionPlain"`
 	// ID of the function item
 	Id *string `pulumi:"id"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset AlertAlertItemQueryFilterAsset `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute AlertAlertItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
 	// function used to aggregate data
 	QueryGroupFunction string `pulumi:"queryGroupFunction"`
@@ -395,9 +395,9 @@ type AlertAlertItemArgs struct {
 	ExpressionPlain pulumi.StringInput `pulumi:"expressionPlain"`
 	// ID of the function item
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset AlertAlertItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute AlertAlertItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
 	// function used to aggregate data
 	QueryGroupFunction pulumi.StringInput `pulumi:"queryGroupFunction"`
@@ -477,12 +477,12 @@ func (o AlertAlertItemOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertAlertItem) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Asset/Attribute filter
+// Asset filter
 func (o AlertAlertItemOutput) QueryFilterAsset() AlertAlertItemQueryFilterAssetOutput {
 	return o.ApplyT(func(v AlertAlertItem) AlertAlertItemQueryFilterAsset { return v.QueryFilterAsset }).(AlertAlertItemQueryFilterAssetOutput)
 }
 
-// Asset/Attribute filter
+// Attribute filter
 func (o AlertAlertItemOutput) QueryFilterAttribute() AlertAlertItemQueryFilterAttributeOutput {
 	return o.ApplyT(func(v AlertAlertItem) AlertAlertItemQueryFilterAttribute { return v.QueryFilterAttribute }).(AlertAlertItemQueryFilterAttributeOutput)
 }
@@ -2050,9 +2050,9 @@ type DashboardActionlistChartChartItem struct {
 	ExpressionPlain string  `pulumi:"expressionPlain"`
 	Hidden          *bool   `pulumi:"hidden"`
 	Label           *string `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardActionlistChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardActionlistChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   *string                                               `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       *string                                               `pulumi:"queryGroupUnit"`
@@ -2079,9 +2079,9 @@ type DashboardActionlistChartChartItemArgs struct {
 	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
 	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
 	Label           pulumi.StringPtrInput `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardActionlistChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardActionlistChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   pulumi.StringPtrInput                                      `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       pulumi.StringPtrInput                                      `pulumi:"queryGroupUnit"`
@@ -2159,14 +2159,14 @@ func (o DashboardActionlistChartChartItemOutput) Label() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v DashboardActionlistChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// Asset/Attribute filter
+// Asset filter
 func (o DashboardActionlistChartChartItemOutput) QueryFilterAsset() DashboardActionlistChartChartItemQueryFilterAssetOutput {
 	return o.ApplyT(func(v DashboardActionlistChartChartItem) DashboardActionlistChartChartItemQueryFilterAsset {
 		return v.QueryFilterAsset
 	}).(DashboardActionlistChartChartItemQueryFilterAssetOutput)
 }
 
-// Asset/Attribute filter
+// Attribute filter
 func (o DashboardActionlistChartChartItemOutput) QueryFilterAttribute() DashboardActionlistChartChartItemQueryFilterAttributeOutput {
 	return o.ApplyT(func(v DashboardActionlistChartChartItem) DashboardActionlistChartChartItemQueryFilterAttribute {
 		return v.QueryFilterAttribute
@@ -2566,9 +2566,9 @@ type DashboardAlerteventsChartChartItem struct {
 	ExpressionPlain string  `pulumi:"expressionPlain"`
 	Hidden          *bool   `pulumi:"hidden"`
 	Label           *string `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardAlerteventsChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardAlerteventsChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   *string                                                `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       *string                                                `pulumi:"queryGroupUnit"`
@@ -2595,9 +2595,9 @@ type DashboardAlerteventsChartChartItemArgs struct {
 	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
 	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
 	Label           pulumi.StringPtrInput `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardAlerteventsChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardAlerteventsChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   pulumi.StringPtrInput                                       `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       pulumi.StringPtrInput                                       `pulumi:"queryGroupUnit"`
@@ -2675,14 +2675,14 @@ func (o DashboardAlerteventsChartChartItemOutput) Label() pulumi.StringPtrOutput
 	return o.ApplyT(func(v DashboardAlerteventsChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// Asset/Attribute filter
+// Asset filter
 func (o DashboardAlerteventsChartChartItemOutput) QueryFilterAsset() DashboardAlerteventsChartChartItemQueryFilterAssetOutput {
 	return o.ApplyT(func(v DashboardAlerteventsChartChartItem) DashboardAlerteventsChartChartItemQueryFilterAsset {
 		return v.QueryFilterAsset
 	}).(DashboardAlerteventsChartChartItemQueryFilterAssetOutput)
 }
 
-// Asset/Attribute filter
+// Attribute filter
 func (o DashboardAlerteventsChartChartItemOutput) QueryFilterAttribute() DashboardAlerteventsChartChartItemQueryFilterAttributeOutput {
 	return o.ApplyT(func(v DashboardAlerteventsChartChartItem) DashboardAlerteventsChartChartItemQueryFilterAttribute {
 		return v.QueryFilterAttribute
@@ -3082,9 +3082,9 @@ type DashboardAlertlistChartChartItem struct {
 	ExpressionPlain string  `pulumi:"expressionPlain"`
 	Hidden          *bool   `pulumi:"hidden"`
 	Label           *string `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardAlertlistChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardAlertlistChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   *string                                              `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       *string                                              `pulumi:"queryGroupUnit"`
@@ -3111,9 +3111,9 @@ type DashboardAlertlistChartChartItemArgs struct {
 	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
 	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
 	Label           pulumi.StringPtrInput `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardAlertlistChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardAlertlistChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   pulumi.StringPtrInput                                     `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       pulumi.StringPtrInput                                     `pulumi:"queryGroupUnit"`
@@ -3191,14 +3191,14 @@ func (o DashboardAlertlistChartChartItemOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardAlertlistChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// Asset/Attribute filter
+// Asset filter
 func (o DashboardAlertlistChartChartItemOutput) QueryFilterAsset() DashboardAlertlistChartChartItemQueryFilterAssetOutput {
 	return o.ApplyT(func(v DashboardAlertlistChartChartItem) DashboardAlertlistChartChartItemQueryFilterAsset {
 		return v.QueryFilterAsset
 	}).(DashboardAlertlistChartChartItemQueryFilterAssetOutput)
 }
 
-// Asset/Attribute filter
+// Attribute filter
 func (o DashboardAlertlistChartChartItemOutput) QueryFilterAttribute() DashboardAlertlistChartChartItemQueryFilterAttributeOutput {
 	return o.ApplyT(func(v DashboardAlertlistChartChartItem) DashboardAlertlistChartChartItemQueryFilterAttribute {
 		return v.QueryFilterAttribute
@@ -3598,9 +3598,9 @@ type DashboardAssetlistChartChartItem struct {
 	ExpressionPlain string  `pulumi:"expressionPlain"`
 	Hidden          *bool   `pulumi:"hidden"`
 	Label           *string `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardAssetlistChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardAssetlistChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   *string                                              `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       *string                                              `pulumi:"queryGroupUnit"`
@@ -3627,9 +3627,9 @@ type DashboardAssetlistChartChartItemArgs struct {
 	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
 	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
 	Label           pulumi.StringPtrInput `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardAssetlistChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardAssetlistChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   pulumi.StringPtrInput                                     `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       pulumi.StringPtrInput                                     `pulumi:"queryGroupUnit"`
@@ -3707,14 +3707,14 @@ func (o DashboardAssetlistChartChartItemOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardAssetlistChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// Asset/Attribute filter
+// Asset filter
 func (o DashboardAssetlistChartChartItemOutput) QueryFilterAsset() DashboardAssetlistChartChartItemQueryFilterAssetOutput {
 	return o.ApplyT(func(v DashboardAssetlistChartChartItem) DashboardAssetlistChartChartItemQueryFilterAsset {
 		return v.QueryFilterAsset
 	}).(DashboardAssetlistChartChartItemQueryFilterAssetOutput)
 }
 
-// Asset/Attribute filter
+// Attribute filter
 func (o DashboardAssetlistChartChartItemOutput) QueryFilterAttribute() DashboardAssetlistChartChartItemQueryFilterAttributeOutput {
 	return o.ApplyT(func(v DashboardAssetlistChartChartItem) DashboardAssetlistChartChartItemQueryFilterAttribute {
 		return v.QueryFilterAttribute
@@ -4114,9 +4114,9 @@ type DashboardBarChartChartItem struct {
 	ExpressionPlain string  `pulumi:"expressionPlain"`
 	Hidden          *bool   `pulumi:"hidden"`
 	Label           *string `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardBarChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardBarChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   *string                                        `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       *string                                        `pulumi:"queryGroupUnit"`
@@ -4143,9 +4143,9 @@ type DashboardBarChartChartItemArgs struct {
 	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
 	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
 	Label           pulumi.StringPtrInput `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardBarChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardBarChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   pulumi.StringPtrInput                               `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       pulumi.StringPtrInput                               `pulumi:"queryGroupUnit"`
@@ -4223,14 +4223,14 @@ func (o DashboardBarChartChartItemOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardBarChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// Asset/Attribute filter
+// Asset filter
 func (o DashboardBarChartChartItemOutput) QueryFilterAsset() DashboardBarChartChartItemQueryFilterAssetOutput {
 	return o.ApplyT(func(v DashboardBarChartChartItem) DashboardBarChartChartItemQueryFilterAsset {
 		return v.QueryFilterAsset
 	}).(DashboardBarChartChartItemQueryFilterAssetOutput)
 }
 
-// Asset/Attribute filter
+// Attribute filter
 func (o DashboardBarChartChartItemOutput) QueryFilterAttribute() DashboardBarChartChartItemQueryFilterAttributeOutput {
 	return o.ApplyT(func(v DashboardBarChartChartItem) DashboardBarChartChartItemQueryFilterAttribute {
 		return v.QueryFilterAttribute
@@ -4630,9 +4630,9 @@ type DashboardBargaugeChartChartItem struct {
 	ExpressionPlain string  `pulumi:"expressionPlain"`
 	Hidden          *bool   `pulumi:"hidden"`
 	Label           *string `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardBargaugeChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardBargaugeChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   *string                                             `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       *string                                             `pulumi:"queryGroupUnit"`
@@ -4659,9 +4659,9 @@ type DashboardBargaugeChartChartItemArgs struct {
 	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
 	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
 	Label           pulumi.StringPtrInput `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardBargaugeChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardBargaugeChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   pulumi.StringPtrInput                                    `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       pulumi.StringPtrInput                                    `pulumi:"queryGroupUnit"`
@@ -4739,14 +4739,14 @@ func (o DashboardBargaugeChartChartItemOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardBargaugeChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// Asset/Attribute filter
+// Asset filter
 func (o DashboardBargaugeChartChartItemOutput) QueryFilterAsset() DashboardBargaugeChartChartItemQueryFilterAssetOutput {
 	return o.ApplyT(func(v DashboardBargaugeChartChartItem) DashboardBargaugeChartChartItemQueryFilterAsset {
 		return v.QueryFilterAsset
 	}).(DashboardBargaugeChartChartItemQueryFilterAssetOutput)
 }
 
-// Asset/Attribute filter
+// Attribute filter
 func (o DashboardBargaugeChartChartItemOutput) QueryFilterAttribute() DashboardBargaugeChartChartItemQueryFilterAttributeOutput {
 	return o.ApplyT(func(v DashboardBargaugeChartChartItem) DashboardBargaugeChartChartItemQueryFilterAttribute {
 		return v.QueryFilterAttribute
@@ -5146,9 +5146,9 @@ type DashboardCommandlistChartChartItem struct {
 	ExpressionPlain string  `pulumi:"expressionPlain"`
 	Hidden          *bool   `pulumi:"hidden"`
 	Label           *string `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardCommandlistChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardCommandlistChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   *string                                                `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       *string                                                `pulumi:"queryGroupUnit"`
@@ -5175,9 +5175,9 @@ type DashboardCommandlistChartChartItemArgs struct {
 	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
 	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
 	Label           pulumi.StringPtrInput `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardCommandlistChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardCommandlistChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   pulumi.StringPtrInput                                       `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       pulumi.StringPtrInput                                       `pulumi:"queryGroupUnit"`
@@ -5255,14 +5255,14 @@ func (o DashboardCommandlistChartChartItemOutput) Label() pulumi.StringPtrOutput
 	return o.ApplyT(func(v DashboardCommandlistChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// Asset/Attribute filter
+// Asset filter
 func (o DashboardCommandlistChartChartItemOutput) QueryFilterAsset() DashboardCommandlistChartChartItemQueryFilterAssetOutput {
 	return o.ApplyT(func(v DashboardCommandlistChartChartItem) DashboardCommandlistChartChartItemQueryFilterAsset {
 		return v.QueryFilterAsset
 	}).(DashboardCommandlistChartChartItemQueryFilterAssetOutput)
 }
 
-// Asset/Attribute filter
+// Attribute filter
 func (o DashboardCommandlistChartChartItemOutput) QueryFilterAttribute() DashboardCommandlistChartChartItemQueryFilterAttributeOutput {
 	return o.ApplyT(func(v DashboardCommandlistChartChartItem) DashboardCommandlistChartChartItemQueryFilterAttribute {
 		return v.QueryFilterAttribute
@@ -5662,9 +5662,9 @@ type DashboardGaugeChartChartItem struct {
 	ExpressionPlain string  `pulumi:"expressionPlain"`
 	Hidden          *bool   `pulumi:"hidden"`
 	Label           *string `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardGaugeChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardGaugeChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   *string                                          `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       *string                                          `pulumi:"queryGroupUnit"`
@@ -5691,9 +5691,9 @@ type DashboardGaugeChartChartItemArgs struct {
 	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
 	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
 	Label           pulumi.StringPtrInput `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardGaugeChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardGaugeChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   pulumi.StringPtrInput                                 `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       pulumi.StringPtrInput                                 `pulumi:"queryGroupUnit"`
@@ -5771,14 +5771,14 @@ func (o DashboardGaugeChartChartItemOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardGaugeChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// Asset/Attribute filter
+// Asset filter
 func (o DashboardGaugeChartChartItemOutput) QueryFilterAsset() DashboardGaugeChartChartItemQueryFilterAssetOutput {
 	return o.ApplyT(func(v DashboardGaugeChartChartItem) DashboardGaugeChartChartItemQueryFilterAsset {
 		return v.QueryFilterAsset
 	}).(DashboardGaugeChartChartItemQueryFilterAssetOutput)
 }
 
-// Asset/Attribute filter
+// Attribute filter
 func (o DashboardGaugeChartChartItemOutput) QueryFilterAttribute() DashboardGaugeChartChartItemQueryFilterAttributeOutput {
 	return o.ApplyT(func(v DashboardGaugeChartChartItem) DashboardGaugeChartChartItemQueryFilterAttribute {
 		return v.QueryFilterAttribute
@@ -6178,9 +6178,9 @@ type DashboardHistogramChartChartItem struct {
 	ExpressionPlain string  `pulumi:"expressionPlain"`
 	Hidden          *bool   `pulumi:"hidden"`
 	Label           *string `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardHistogramChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardHistogramChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   *string                                              `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       *string                                              `pulumi:"queryGroupUnit"`
@@ -6207,9 +6207,9 @@ type DashboardHistogramChartChartItemArgs struct {
 	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
 	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
 	Label           pulumi.StringPtrInput `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardHistogramChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardHistogramChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   pulumi.StringPtrInput                                     `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       pulumi.StringPtrInput                                     `pulumi:"queryGroupUnit"`
@@ -6287,14 +6287,14 @@ func (o DashboardHistogramChartChartItemOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardHistogramChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// Asset/Attribute filter
+// Asset filter
 func (o DashboardHistogramChartChartItemOutput) QueryFilterAsset() DashboardHistogramChartChartItemQueryFilterAssetOutput {
 	return o.ApplyT(func(v DashboardHistogramChartChartItem) DashboardHistogramChartChartItemQueryFilterAsset {
 		return v.QueryFilterAsset
 	}).(DashboardHistogramChartChartItemQueryFilterAssetOutput)
 }
 
-// Asset/Attribute filter
+// Attribute filter
 func (o DashboardHistogramChartChartItemOutput) QueryFilterAttribute() DashboardHistogramChartChartItemQueryFilterAttributeOutput {
 	return o.ApplyT(func(v DashboardHistogramChartChartItem) DashboardHistogramChartChartItemQueryFilterAttribute {
 		return v.QueryFilterAttribute
@@ -6694,9 +6694,9 @@ type DashboardImageChartChartItem struct {
 	ExpressionPlain string  `pulumi:"expressionPlain"`
 	Hidden          *bool   `pulumi:"hidden"`
 	Label           *string `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardImageChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardImageChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   *string                                          `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       *string                                          `pulumi:"queryGroupUnit"`
@@ -6723,9 +6723,9 @@ type DashboardImageChartChartItemArgs struct {
 	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
 	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
 	Label           pulumi.StringPtrInput `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardImageChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardImageChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   pulumi.StringPtrInput                                 `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       pulumi.StringPtrInput                                 `pulumi:"queryGroupUnit"`
@@ -6803,14 +6803,14 @@ func (o DashboardImageChartChartItemOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardImageChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// Asset/Attribute filter
+// Asset filter
 func (o DashboardImageChartChartItemOutput) QueryFilterAsset() DashboardImageChartChartItemQueryFilterAssetOutput {
 	return o.ApplyT(func(v DashboardImageChartChartItem) DashboardImageChartChartItemQueryFilterAsset {
 		return v.QueryFilterAsset
 	}).(DashboardImageChartChartItemQueryFilterAssetOutput)
 }
 
-// Asset/Attribute filter
+// Attribute filter
 func (o DashboardImageChartChartItemOutput) QueryFilterAttribute() DashboardImageChartChartItemQueryFilterAttributeOutput {
 	return o.ApplyT(func(v DashboardImageChartChartItem) DashboardImageChartChartItemQueryFilterAttribute {
 		return v.QueryFilterAttribute
@@ -7210,9 +7210,9 @@ type DashboardStatChartChartItem struct {
 	ExpressionPlain string  `pulumi:"expressionPlain"`
 	Hidden          *bool   `pulumi:"hidden"`
 	Label           *string `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardStatChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardStatChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   *string                                         `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       *string                                         `pulumi:"queryGroupUnit"`
@@ -7239,9 +7239,9 @@ type DashboardStatChartChartItemArgs struct {
 	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
 	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
 	Label           pulumi.StringPtrInput `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardStatChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardStatChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   pulumi.StringPtrInput                                `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       pulumi.StringPtrInput                                `pulumi:"queryGroupUnit"`
@@ -7319,14 +7319,14 @@ func (o DashboardStatChartChartItemOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardStatChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// Asset/Attribute filter
+// Asset filter
 func (o DashboardStatChartChartItemOutput) QueryFilterAsset() DashboardStatChartChartItemQueryFilterAssetOutput {
 	return o.ApplyT(func(v DashboardStatChartChartItem) DashboardStatChartChartItemQueryFilterAsset {
 		return v.QueryFilterAsset
 	}).(DashboardStatChartChartItemQueryFilterAssetOutput)
 }
 
-// Asset/Attribute filter
+// Attribute filter
 func (o DashboardStatChartChartItemOutput) QueryFilterAttribute() DashboardStatChartChartItemQueryFilterAttributeOutput {
 	return o.ApplyT(func(v DashboardStatChartChartItem) DashboardStatChartChartItemQueryFilterAttribute {
 		return v.QueryFilterAttribute
@@ -7726,9 +7726,9 @@ type DashboardTableChartChartItem struct {
 	ExpressionPlain string  `pulumi:"expressionPlain"`
 	Hidden          *bool   `pulumi:"hidden"`
 	Label           *string `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardTableChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardTableChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   *string                                          `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       *string                                          `pulumi:"queryGroupUnit"`
@@ -7755,9 +7755,9 @@ type DashboardTableChartChartItemArgs struct {
 	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
 	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
 	Label           pulumi.StringPtrInput `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardTableChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardTableChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   pulumi.StringPtrInput                                 `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       pulumi.StringPtrInput                                 `pulumi:"queryGroupUnit"`
@@ -7835,14 +7835,14 @@ func (o DashboardTableChartChartItemOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardTableChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// Asset/Attribute filter
+// Asset filter
 func (o DashboardTableChartChartItemOutput) QueryFilterAsset() DashboardTableChartChartItemQueryFilterAssetOutput {
 	return o.ApplyT(func(v DashboardTableChartChartItem) DashboardTableChartChartItemQueryFilterAsset {
 		return v.QueryFilterAsset
 	}).(DashboardTableChartChartItemQueryFilterAssetOutput)
 }
 
-// Asset/Attribute filter
+// Attribute filter
 func (o DashboardTableChartChartItemOutput) QueryFilterAttribute() DashboardTableChartChartItemQueryFilterAttributeOutput {
 	return o.ApplyT(func(v DashboardTableChartChartItem) DashboardTableChartChartItemQueryFilterAttribute {
 		return v.QueryFilterAttribute
@@ -8242,9 +8242,9 @@ type DashboardTextChartChartItem struct {
 	ExpressionPlain string  `pulumi:"expressionPlain"`
 	Hidden          *bool   `pulumi:"hidden"`
 	Label           *string `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardTextChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardTextChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   *string                                         `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       *string                                         `pulumi:"queryGroupUnit"`
@@ -8271,9 +8271,9 @@ type DashboardTextChartChartItemArgs struct {
 	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
 	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
 	Label           pulumi.StringPtrInput `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardTextChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardTextChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   pulumi.StringPtrInput                                `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       pulumi.StringPtrInput                                `pulumi:"queryGroupUnit"`
@@ -8351,14 +8351,14 @@ func (o DashboardTextChartChartItemOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardTextChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// Asset/Attribute filter
+// Asset filter
 func (o DashboardTextChartChartItemOutput) QueryFilterAsset() DashboardTextChartChartItemQueryFilterAssetOutput {
 	return o.ApplyT(func(v DashboardTextChartChartItem) DashboardTextChartChartItemQueryFilterAsset {
 		return v.QueryFilterAsset
 	}).(DashboardTextChartChartItemQueryFilterAssetOutput)
 }
 
-// Asset/Attribute filter
+// Attribute filter
 func (o DashboardTextChartChartItemOutput) QueryFilterAttribute() DashboardTextChartChartItemQueryFilterAttributeOutput {
 	return o.ApplyT(func(v DashboardTextChartChartItem) DashboardTextChartChartItemQueryFilterAttribute {
 		return v.QueryFilterAttribute
@@ -8758,9 +8758,9 @@ type DashboardTimeseriesChartChartItem struct {
 	ExpressionPlain string  `pulumi:"expressionPlain"`
 	Hidden          *bool   `pulumi:"hidden"`
 	Label           *string `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardTimeseriesChartChartItemQueryFilterAsset `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardTimeseriesChartChartItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   *string                                               `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       *string                                               `pulumi:"queryGroupUnit"`
@@ -8787,9 +8787,9 @@ type DashboardTimeseriesChartChartItemArgs struct {
 	ExpressionPlain pulumi.StringInput    `pulumi:"expressionPlain"`
 	Hidden          pulumi.BoolPtrInput   `pulumi:"hidden"`
 	Label           pulumi.StringPtrInput `pulumi:"label"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset DashboardTimeseriesChartChartItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute DashboardTimeseriesChartChartItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
 	QueryGroupFunction   pulumi.StringPtrInput                                      `pulumi:"queryGroupFunction"`
 	QueryGroupUnit       pulumi.StringPtrInput                                      `pulumi:"queryGroupUnit"`
@@ -8867,14 +8867,14 @@ func (o DashboardTimeseriesChartChartItemOutput) Label() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v DashboardTimeseriesChartChartItem) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// Asset/Attribute filter
+// Asset filter
 func (o DashboardTimeseriesChartChartItemOutput) QueryFilterAsset() DashboardTimeseriesChartChartItemQueryFilterAssetOutput {
 	return o.ApplyT(func(v DashboardTimeseriesChartChartItem) DashboardTimeseriesChartChartItemQueryFilterAsset {
 		return v.QueryFilterAsset
 	}).(DashboardTimeseriesChartChartItemQueryFilterAssetOutput)
 }
 
-// Asset/Attribute filter
+// Attribute filter
 func (o DashboardTimeseriesChartChartItemOutput) QueryFilterAttribute() DashboardTimeseriesChartChartItemQueryFilterAttributeOutput {
 	return o.ApplyT(func(v DashboardTimeseriesChartChartItem) DashboardTimeseriesChartChartItemQueryFilterAttribute {
 		return v.QueryFilterAttribute
@@ -9276,9 +9276,9 @@ type FunctionFunctionItem struct {
 	ExpressionPlain string `pulumi:"expressionPlain"`
 	// ID of the function item
 	Id *string `pulumi:"id"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset FunctionFunctionItemQueryFilterAsset `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute FunctionFunctionItemQueryFilterAttribute `pulumi:"queryFilterAttribute"`
 	// function used to aggregate data
 	QueryGroupFunction string `pulumi:"queryGroupFunction"`
@@ -9310,9 +9310,9 @@ type FunctionFunctionItemArgs struct {
 	ExpressionPlain pulumi.StringInput `pulumi:"expressionPlain"`
 	// ID of the function item
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Asset/Attribute filter
+	// Asset filter
 	QueryFilterAsset FunctionFunctionItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	QueryFilterAttribute FunctionFunctionItemQueryFilterAttributeInput `pulumi:"queryFilterAttribute"`
 	// function used to aggregate data
 	QueryGroupFunction pulumi.StringInput `pulumi:"queryGroupFunction"`
@@ -9392,12 +9392,12 @@ func (o FunctionFunctionItemOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionFunctionItem) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Asset/Attribute filter
+// Asset filter
 func (o FunctionFunctionItemOutput) QueryFilterAsset() FunctionFunctionItemQueryFilterAssetOutput {
 	return o.ApplyT(func(v FunctionFunctionItem) FunctionFunctionItemQueryFilterAsset { return v.QueryFilterAsset }).(FunctionFunctionItemQueryFilterAssetOutput)
 }
 
-// Asset/Attribute filter
+// Attribute filter
 func (o FunctionFunctionItemOutput) QueryFilterAttribute() FunctionFunctionItemQueryFilterAttributeOutput {
 	return o.ApplyT(func(v FunctionFunctionItem) FunctionFunctionItemQueryFilterAttribute { return v.QueryFilterAttribute }).(FunctionFunctionItemQueryFilterAttributeOutput)
 }
@@ -9513,6 +9513,8 @@ type FunctionFunctionItemQueryFilterAttribute struct {
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
+	// type of the resource
+	Type *string `pulumi:"type"`
 }
 
 // FunctionFunctionItemQueryFilterAttributeInput is an input type that accepts FunctionFunctionItemQueryFilterAttributeArgs and FunctionFunctionItemQueryFilterAttributeOutput values.
@@ -9531,6 +9533,8 @@ type FunctionFunctionItemQueryFilterAttributeArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// type of the resource
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (FunctionFunctionItemQueryFilterAttributeArgs) ElementType() reflect.Type {
@@ -9567,6 +9571,11 @@ func (o FunctionFunctionItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOut
 // name of the resource
 func (o FunctionFunctionItemQueryFilterAttributeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionFunctionItemQueryFilterAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// type of the resource
+func (o FunctionFunctionItemQueryFilterAttributeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionFunctionItemQueryFilterAttribute) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type FunctionTargetAsset struct {
@@ -9730,6 +9739,8 @@ type FunctionTargetAttribute struct {
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
+	// type of the resource
+	Type *string `pulumi:"type"`
 }
 
 // FunctionTargetAttributeInput is an input type that accepts FunctionTargetAttributeArgs and FunctionTargetAttributeOutput values.
@@ -9748,6 +9759,8 @@ type FunctionTargetAttributeArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// type of the resource
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (FunctionTargetAttributeArgs) ElementType() reflect.Type {
@@ -9837,6 +9850,11 @@ func (o FunctionTargetAttributeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionTargetAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// type of the resource
+func (o FunctionTargetAttributeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionTargetAttribute) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
 type FunctionTargetAttributePtrOutput struct{ *pulumi.OutputState }
 
 func (FunctionTargetAttributePtrOutput) ElementType() reflect.Type {
@@ -9878,6 +9896,16 @@ func (o FunctionTargetAttributePtrOutput) Name() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// type of the resource
+func (o FunctionTargetAttributePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionTargetAttribute) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
 	}).(pulumi.StringPtrOutput)
 }
 

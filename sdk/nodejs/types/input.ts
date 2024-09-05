@@ -60,11 +60,11 @@ export interface AlertAlertItem {
      */
     id?: pulumi.Input<string>;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: pulumi.Input<inputs.AlertAlertItemQueryFilterAsset>;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: pulumi.Input<inputs.AlertAlertItemQueryFilterAttribute>;
     /**
@@ -243,11 +243,11 @@ export interface DashboardActionlistChartChartItem {
     hidden?: pulumi.Input<boolean>;
     label?: pulumi.Input<string>;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: pulumi.Input<inputs.DashboardActionlistChartChartItemQueryFilterAsset>;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: pulumi.Input<inputs.DashboardActionlistChartChartItemQueryFilterAttribute>;
     queryGroupFunction?: pulumi.Input<string>;
@@ -300,11 +300,11 @@ export interface DashboardAlerteventsChartChartItem {
     hidden?: pulumi.Input<boolean>;
     label?: pulumi.Input<string>;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: pulumi.Input<inputs.DashboardAlerteventsChartChartItemQueryFilterAsset>;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: pulumi.Input<inputs.DashboardAlerteventsChartChartItemQueryFilterAttribute>;
     queryGroupFunction?: pulumi.Input<string>;
@@ -357,11 +357,11 @@ export interface DashboardAlertlistChartChartItem {
     hidden?: pulumi.Input<boolean>;
     label?: pulumi.Input<string>;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: pulumi.Input<inputs.DashboardAlertlistChartChartItemQueryFilterAsset>;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: pulumi.Input<inputs.DashboardAlertlistChartChartItemQueryFilterAttribute>;
     queryGroupFunction?: pulumi.Input<string>;
@@ -414,11 +414,11 @@ export interface DashboardAssetlistChartChartItem {
     hidden?: pulumi.Input<boolean>;
     label?: pulumi.Input<string>;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: pulumi.Input<inputs.DashboardAssetlistChartChartItemQueryFilterAsset>;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: pulumi.Input<inputs.DashboardAssetlistChartChartItemQueryFilterAttribute>;
     queryGroupFunction?: pulumi.Input<string>;
@@ -471,11 +471,11 @@ export interface DashboardBarChartChartItem {
     hidden?: pulumi.Input<boolean>;
     label?: pulumi.Input<string>;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: pulumi.Input<inputs.DashboardBarChartChartItemQueryFilterAsset>;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: pulumi.Input<inputs.DashboardBarChartChartItemQueryFilterAttribute>;
     queryGroupFunction?: pulumi.Input<string>;
@@ -528,11 +528,11 @@ export interface DashboardBargaugeChartChartItem {
     hidden?: pulumi.Input<boolean>;
     label?: pulumi.Input<string>;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: pulumi.Input<inputs.DashboardBargaugeChartChartItemQueryFilterAsset>;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: pulumi.Input<inputs.DashboardBargaugeChartChartItemQueryFilterAttribute>;
     queryGroupFunction?: pulumi.Input<string>;
@@ -585,11 +585,11 @@ export interface DashboardCommandlistChartChartItem {
     hidden?: pulumi.Input<boolean>;
     label?: pulumi.Input<string>;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: pulumi.Input<inputs.DashboardCommandlistChartChartItemQueryFilterAsset>;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: pulumi.Input<inputs.DashboardCommandlistChartChartItemQueryFilterAttribute>;
     queryGroupFunction?: pulumi.Input<string>;
@@ -642,11 +642,11 @@ export interface DashboardGaugeChartChartItem {
     hidden?: pulumi.Input<boolean>;
     label?: pulumi.Input<string>;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: pulumi.Input<inputs.DashboardGaugeChartChartItemQueryFilterAsset>;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: pulumi.Input<inputs.DashboardGaugeChartChartItemQueryFilterAttribute>;
     queryGroupFunction?: pulumi.Input<string>;
@@ -699,11 +699,11 @@ export interface DashboardHistogramChartChartItem {
     hidden?: pulumi.Input<boolean>;
     label?: pulumi.Input<string>;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: pulumi.Input<inputs.DashboardHistogramChartChartItemQueryFilterAsset>;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: pulumi.Input<inputs.DashboardHistogramChartChartItemQueryFilterAttribute>;
     queryGroupFunction?: pulumi.Input<string>;
@@ -756,11 +756,11 @@ export interface DashboardImageChartChartItem {
     hidden?: pulumi.Input<boolean>;
     label?: pulumi.Input<string>;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: pulumi.Input<inputs.DashboardImageChartChartItemQueryFilterAsset>;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: pulumi.Input<inputs.DashboardImageChartChartItemQueryFilterAttribute>;
     queryGroupFunction?: pulumi.Input<string>;
@@ -813,11 +813,11 @@ export interface DashboardStatChartChartItem {
     hidden?: pulumi.Input<boolean>;
     label?: pulumi.Input<string>;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: pulumi.Input<inputs.DashboardStatChartChartItemQueryFilterAsset>;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: pulumi.Input<inputs.DashboardStatChartChartItemQueryFilterAttribute>;
     queryGroupFunction?: pulumi.Input<string>;
@@ -870,11 +870,11 @@ export interface DashboardTableChartChartItem {
     hidden?: pulumi.Input<boolean>;
     label?: pulumi.Input<string>;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: pulumi.Input<inputs.DashboardTableChartChartItemQueryFilterAsset>;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: pulumi.Input<inputs.DashboardTableChartChartItemQueryFilterAttribute>;
     queryGroupFunction?: pulumi.Input<string>;
@@ -927,11 +927,11 @@ export interface DashboardTextChartChartItem {
     hidden?: pulumi.Input<boolean>;
     label?: pulumi.Input<string>;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: pulumi.Input<inputs.DashboardTextChartChartItemQueryFilterAsset>;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: pulumi.Input<inputs.DashboardTextChartChartItemQueryFilterAttribute>;
     queryGroupFunction?: pulumi.Input<string>;
@@ -984,11 +984,11 @@ export interface DashboardTimeseriesChartChartItem {
     hidden?: pulumi.Input<boolean>;
     label?: pulumi.Input<string>;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: pulumi.Input<inputs.DashboardTimeseriesChartChartItemQueryFilterAsset>;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: pulumi.Input<inputs.DashboardTimeseriesChartChartItemQueryFilterAttribute>;
     queryGroupFunction?: pulumi.Input<string>;
@@ -1049,11 +1049,11 @@ export interface FunctionFunctionItem {
      */
     id?: pulumi.Input<string>;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: pulumi.Input<inputs.FunctionFunctionItemQueryFilterAsset>;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: pulumi.Input<inputs.FunctionFunctionItemQueryFilterAttribute>;
     /**
@@ -1098,6 +1098,10 @@ export interface FunctionFunctionItemQueryFilterAttribute {
      * name of the resource
      */
     name?: pulumi.Input<string>;
+    /**
+     * type of the resource
+     */
+    type?: pulumi.Input<string>;
 }
 
 export interface FunctionTargetAsset {
@@ -1120,5 +1124,9 @@ export interface FunctionTargetAttribute {
      * name of the resource
      */
     name?: pulumi.Input<string>;
+    /**
+     * type of the resource
+     */
+    type?: pulumi.Input<string>;
 }
 

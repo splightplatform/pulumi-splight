@@ -113,6 +113,7 @@ import (
 //				TargetAttribute: &splight.FunctionTargetAttributeArgs{
 //					Id:   myTargetAttribute.ID(),
 //					Name: myTargetAttribute.Name,
+//					Type: pulumi.String("Number"),
 //				},
 //				FunctionItems: splight.FunctionFunctionItemArray{
 //					&splight.FunctionFunctionItemArgs{
@@ -127,6 +128,7 @@ import (
 //						QueryFilterAttribute: &splight.FunctionFunctionItemQueryFilterAttributeArgs{
 //							Id:   myAttribute.ID(),
 //							Name: myAttribute.Name,
+//							Type: pulumi.String("Number"),
 //						},
 //						QueryGroupFunction: pulumi.String("avg"),
 //						QueryGroupUnit:     pulumi.String("day"),
@@ -156,6 +158,8 @@ import (
 //						ExpressionPlain:      pulumi.String(json2),
 //						QueryFilterAsset:     nil,
 //						QueryFilterAttribute: nil,
+//						QueryGroupFunction:   pulumi.String(""),
+//						QueryGroupUnit:       pulumi.String(""),
 //						QueryPlain:           pulumi.String(""),
 //					},
 //				},
@@ -199,9 +203,9 @@ type Function struct {
 	RateUnit pulumi.StringOutput `pulumi:"rateUnit"`
 	// schedule value
 	RateValue pulumi.IntOutput `pulumi:"rateValue"`
-	// Asset/Attribute filter
+	// Asset filter
 	TargetAsset FunctionTargetAssetOutput `pulumi:"targetAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	TargetAttribute FunctionTargetAttributeOutput `pulumi:"targetAttribute"`
 	// variable to be considered to be ingested
 	TargetVariable pulumi.StringOutput `pulumi:"targetVariable"`
@@ -284,9 +288,9 @@ type functionState struct {
 	RateUnit *string `pulumi:"rateUnit"`
 	// schedule value
 	RateValue *int `pulumi:"rateValue"`
-	// Asset/Attribute filter
+	// Asset filter
 	TargetAsset *FunctionTargetAsset `pulumi:"targetAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	TargetAttribute *FunctionTargetAttribute `pulumi:"targetAttribute"`
 	// variable to be considered to be ingested
 	TargetVariable *string `pulumi:"targetVariable"`
@@ -319,9 +323,9 @@ type FunctionState struct {
 	RateUnit pulumi.StringPtrInput
 	// schedule value
 	RateValue pulumi.IntPtrInput
-	// Asset/Attribute filter
+	// Asset filter
 	TargetAsset FunctionTargetAssetPtrInput
-	// Asset/Attribute filter
+	// Attribute filter
 	TargetAttribute FunctionTargetAttributePtrInput
 	// variable to be considered to be ingested
 	TargetVariable pulumi.StringPtrInput
@@ -358,9 +362,9 @@ type functionArgs struct {
 	RateUnit *string `pulumi:"rateUnit"`
 	// schedule value
 	RateValue *int `pulumi:"rateValue"`
-	// Asset/Attribute filter
+	// Asset filter
 	TargetAsset FunctionTargetAsset `pulumi:"targetAsset"`
-	// Asset/Attribute filter
+	// Attribute filter
 	TargetAttribute FunctionTargetAttribute `pulumi:"targetAttribute"`
 	// variable to be considered to be ingested
 	TargetVariable string `pulumi:"targetVariable"`
@@ -394,9 +398,9 @@ type FunctionArgs struct {
 	RateUnit pulumi.StringPtrInput
 	// schedule value
 	RateValue pulumi.IntPtrInput
-	// Asset/Attribute filter
+	// Asset filter
 	TargetAsset FunctionTargetAssetInput
-	// Asset/Attribute filter
+	// Attribute filter
 	TargetAttribute FunctionTargetAttributeInput
 	// variable to be considered to be ingested
 	TargetVariable pulumi.StringInput
@@ -548,12 +552,12 @@ func (o FunctionOutput) RateValue() pulumi.IntOutput {
 	return o.ApplyT(func(v *Function) pulumi.IntOutput { return v.RateValue }).(pulumi.IntOutput)
 }
 
-// Asset/Attribute filter
+// Asset filter
 func (o FunctionOutput) TargetAsset() FunctionTargetAssetOutput {
 	return o.ApplyT(func(v *Function) FunctionTargetAssetOutput { return v.TargetAsset }).(FunctionTargetAssetOutput)
 }
 
-// Asset/Attribute filter
+// Attribute filter
 func (o FunctionOutput) TargetAttribute() FunctionTargetAttributeOutput {
 	return o.ApplyT(func(v *Function) FunctionTargetAttributeOutput { return v.TargetAttribute }).(FunctionTargetAttributeOutput)
 }
