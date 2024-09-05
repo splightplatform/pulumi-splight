@@ -22,15 +22,22 @@ namespace Splight.Splight.Outputs
         /// name of the resource
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// type of the resource
+        /// </summary>
+        public readonly string? Type;
 
         [OutputConstructor]
         private FunctionTargetAttribute(
             string? id,
 
-            string? name)
+            string? name,
+
+            string? type)
         {
             Id = id;
             Name = name;
+            Type = type;
         }
     }
 }

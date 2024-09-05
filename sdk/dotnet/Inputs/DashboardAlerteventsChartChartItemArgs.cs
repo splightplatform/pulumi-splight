@@ -26,13 +26,13 @@ namespace Splight.Splight.Inputs
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// Asset/Attribute filter
+        /// Asset filter
         /// </summary>
         [Input("queryFilterAsset", required: true)]
         public Input<Inputs.DashboardAlerteventsChartChartItemQueryFilterAssetArgs> QueryFilterAsset { get; set; } = null!;
 
         /// <summary>
-        /// Asset/Attribute filter
+        /// Attribute filter
         /// </summary>
         [Input("queryFilterAttribute", required: true)]
         public Input<Inputs.DashboardAlerteventsChartChartItemQueryFilterAttributeArgs> QueryFilterAttribute { get; set; } = null!;

@@ -60,11 +60,11 @@ export interface AlertAlertItem {
      */
     id: string;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: outputs.AlertAlertItemQueryFilterAsset;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: outputs.AlertAlertItemQueryFilterAttribute;
     /**
@@ -243,11 +243,11 @@ export interface DashboardActionlistChartChartItem {
     hidden?: boolean;
     label?: string;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: outputs.DashboardActionlistChartChartItemQueryFilterAsset;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: outputs.DashboardActionlistChartChartItemQueryFilterAttribute;
     queryGroupFunction?: string;
@@ -300,11 +300,11 @@ export interface DashboardAlerteventsChartChartItem {
     hidden?: boolean;
     label?: string;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: outputs.DashboardAlerteventsChartChartItemQueryFilterAsset;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: outputs.DashboardAlerteventsChartChartItemQueryFilterAttribute;
     queryGroupFunction?: string;
@@ -357,11 +357,11 @@ export interface DashboardAlertlistChartChartItem {
     hidden?: boolean;
     label?: string;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: outputs.DashboardAlertlistChartChartItemQueryFilterAsset;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: outputs.DashboardAlertlistChartChartItemQueryFilterAttribute;
     queryGroupFunction?: string;
@@ -414,11 +414,11 @@ export interface DashboardAssetlistChartChartItem {
     hidden?: boolean;
     label?: string;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: outputs.DashboardAssetlistChartChartItemQueryFilterAsset;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: outputs.DashboardAssetlistChartChartItemQueryFilterAttribute;
     queryGroupFunction?: string;
@@ -471,11 +471,11 @@ export interface DashboardBarChartChartItem {
     hidden?: boolean;
     label?: string;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: outputs.DashboardBarChartChartItemQueryFilterAsset;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: outputs.DashboardBarChartChartItemQueryFilterAttribute;
     queryGroupFunction?: string;
@@ -528,11 +528,11 @@ export interface DashboardBargaugeChartChartItem {
     hidden?: boolean;
     label?: string;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: outputs.DashboardBargaugeChartChartItemQueryFilterAsset;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: outputs.DashboardBargaugeChartChartItemQueryFilterAttribute;
     queryGroupFunction?: string;
@@ -585,11 +585,11 @@ export interface DashboardCommandlistChartChartItem {
     hidden?: boolean;
     label?: string;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: outputs.DashboardCommandlistChartChartItemQueryFilterAsset;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: outputs.DashboardCommandlistChartChartItemQueryFilterAttribute;
     queryGroupFunction?: string;
@@ -642,11 +642,11 @@ export interface DashboardGaugeChartChartItem {
     hidden?: boolean;
     label?: string;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: outputs.DashboardGaugeChartChartItemQueryFilterAsset;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: outputs.DashboardGaugeChartChartItemQueryFilterAttribute;
     queryGroupFunction?: string;
@@ -699,11 +699,11 @@ export interface DashboardHistogramChartChartItem {
     hidden?: boolean;
     label?: string;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: outputs.DashboardHistogramChartChartItemQueryFilterAsset;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: outputs.DashboardHistogramChartChartItemQueryFilterAttribute;
     queryGroupFunction?: string;
@@ -756,11 +756,11 @@ export interface DashboardImageChartChartItem {
     hidden?: boolean;
     label?: string;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: outputs.DashboardImageChartChartItemQueryFilterAsset;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: outputs.DashboardImageChartChartItemQueryFilterAttribute;
     queryGroupFunction?: string;
@@ -813,11 +813,11 @@ export interface DashboardStatChartChartItem {
     hidden?: boolean;
     label?: string;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: outputs.DashboardStatChartChartItemQueryFilterAsset;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: outputs.DashboardStatChartChartItemQueryFilterAttribute;
     queryGroupFunction?: string;
@@ -870,11 +870,11 @@ export interface DashboardTableChartChartItem {
     hidden?: boolean;
     label?: string;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: outputs.DashboardTableChartChartItemQueryFilterAsset;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: outputs.DashboardTableChartChartItemQueryFilterAttribute;
     queryGroupFunction?: string;
@@ -927,11 +927,11 @@ export interface DashboardTextChartChartItem {
     hidden?: boolean;
     label?: string;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: outputs.DashboardTextChartChartItemQueryFilterAsset;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: outputs.DashboardTextChartChartItemQueryFilterAttribute;
     queryGroupFunction?: string;
@@ -984,11 +984,11 @@ export interface DashboardTimeseriesChartChartItem {
     hidden?: boolean;
     label?: string;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: outputs.DashboardTimeseriesChartChartItemQueryFilterAsset;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: outputs.DashboardTimeseriesChartChartItemQueryFilterAttribute;
     queryGroupFunction?: string;
@@ -1049,11 +1049,11 @@ export interface FunctionFunctionItem {
      */
     id: string;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     queryFilterAsset: outputs.FunctionFunctionItemQueryFilterAsset;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     queryFilterAttribute: outputs.FunctionFunctionItemQueryFilterAttribute;
     /**
@@ -1098,6 +1098,10 @@ export interface FunctionFunctionItemQueryFilterAttribute {
      * name of the resource
      */
     name?: string;
+    /**
+     * type of the resource
+     */
+    type?: string;
 }
 
 export interface FunctionTargetAsset {
@@ -1120,6 +1124,10 @@ export interface FunctionTargetAttribute {
      * name of the resource
      */
     name?: string;
+    /**
+     * type of the resource
+     */
+    type?: string;
 }
 
 export interface GetAssetKindsKind {

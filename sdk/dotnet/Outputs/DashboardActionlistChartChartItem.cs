@@ -19,11 +19,11 @@ namespace Splight.Splight.Outputs
         public readonly bool? Hidden;
         public readonly string? Label;
         /// <summary>
-        /// Asset/Attribute filter
+        /// Asset filter
         /// </summary>
         public readonly Outputs.DashboardActionlistChartChartItemQueryFilterAsset QueryFilterAsset;
         /// <summary>
-        /// Asset/Attribute filter
+        /// Attribute filter
         /// </summary>
         public readonly Outputs.DashboardActionlistChartChartItemQueryFilterAttribute QueryFilterAttribute;
         public readonly string? QueryGroupFunction;

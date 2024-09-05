@@ -27,11 +27,11 @@ namespace Splight.Splight.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// Asset/Attribute filter
+        /// Asset filter
         /// </summary>
         public readonly Outputs.AlertAlertItemQueryFilterAsset QueryFilterAsset;
         /// <summary>
-        /// Asset/Attribute filter
+        /// Attribute filter
         /// </summary>
         public readonly Outputs.AlertAlertItemQueryFilterAttribute QueryFilterAttribute;
         /// <summary>

@@ -32,13 +32,13 @@ namespace Splight.Splight.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Asset/Attribute filter
+        /// Asset filter
         /// </summary>
         [Input("queryFilterAsset", required: true)]
         public Input<Inputs.FunctionFunctionItemQueryFilterAssetArgs> QueryFilterAsset { get; set; } = null!;
 
         /// <summary>
-        /// Asset/Attribute filter
+        /// Attribute filter
         /// </summary>
         [Input("queryFilterAttribute", required: true)]
         public Input<Inputs.FunctionFunctionItemQueryFilterAttributeArgs> QueryFilterAttribute { get; set; } = null!;

@@ -25,6 +25,12 @@ namespace Splight.Splight.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// type of the resource
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
         public FunctionFunctionItemQueryFilterAttributeGetArgs()
         {
         }

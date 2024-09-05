@@ -93,6 +93,7 @@ namespace Splight.Splight
     ///         {
     ///             Id = myTargetAttribute.Id,
     ///             Name = myTargetAttribute.Name,
+    ///             Type = "Number",
     ///         },
     ///         FunctionItems = new[]
     ///         {
@@ -111,6 +112,7 @@ namespace Splight.Splight
     ///                 {
     ///                     Id = myAttribute.Id,
     ///                     Name = myAttribute.Name,
+    ///                     Type = "Number",
     ///                 },
     ///                 QueryGroupFunction = "avg",
     ///                 QueryGroupUnit = "day",
@@ -144,6 +146,8 @@ namespace Splight.Splight
     ///                 }),
     ///                 QueryFilterAsset = null,
     ///                 QueryFilterAttribute = null,
+    ///                 QueryGroupFunction = "",
+    ///                 QueryGroupUnit = "",
     ///                 QueryPlain = "",
     ///             },
     ///         },
@@ -228,13 +232,13 @@ namespace Splight.Splight
         public Output<int> RateValue { get; private set; } = null!;
 
         /// <summary>
-        /// Asset/Attribute filter
+        /// Asset filter
         /// </summary>
         [Output("targetAsset")]
         public Output<Outputs.FunctionTargetAsset> TargetAsset { get; private set; } = null!;
 
         /// <summary>
-        /// Asset/Attribute filter
+        /// Attribute filter
         /// </summary>
         [Output("targetAttribute")]
         public Output<Outputs.FunctionTargetAttribute> TargetAttribute { get; private set; } = null!;
@@ -377,13 +381,13 @@ namespace Splight.Splight
         public Input<int>? RateValue { get; set; }
 
         /// <summary>
-        /// Asset/Attribute filter
+        /// Asset filter
         /// </summary>
         [Input("targetAsset", required: true)]
         public Input<Inputs.FunctionTargetAssetArgs> TargetAsset { get; set; } = null!;
 
         /// <summary>
-        /// Asset/Attribute filter
+        /// Attribute filter
         /// </summary>
         [Input("targetAttribute", required: true)]
         public Input<Inputs.FunctionTargetAttributeArgs> TargetAttribute { get; set; } = null!;
@@ -487,13 +491,13 @@ namespace Splight.Splight
         public Input<int>? RateValue { get; set; }
 
         /// <summary>
-        /// Asset/Attribute filter
+        /// Asset filter
         /// </summary>
         [Input("targetAsset")]
         public Input<Inputs.FunctionTargetAssetGetArgs>? TargetAsset { get; set; }
 
         /// <summary>
-        /// Asset/Attribute filter
+        /// Attribute filter
         /// </summary>
         [Input("targetAttribute")]
         public Input<Inputs.FunctionTargetAttributeGetArgs>? TargetAttribute { get; set; }

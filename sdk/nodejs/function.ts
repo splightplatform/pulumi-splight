@@ -61,6 +61,7 @@ import * as utilities from "./utilities";
  *     targetAttribute: {
  *         id: myTargetAttribute.id,
  *         name: myTargetAttribute.name,
+ *         type: "Number",
  *     },
  *     functionItems: [
  *         {
@@ -75,6 +76,7 @@ import * as utilities from "./utilities";
  *             queryFilterAttribute: {
  *                 id: myAttribute.id,
  *                 name: myAttribute.name,
+ *                 type: "Number",
  *             },
  *             queryGroupFunction: "avg",
  *             queryGroupUnit: "day",
@@ -98,6 +100,8 @@ import * as utilities from "./utilities";
  *             }),
  *             queryFilterAsset: {},
  *             queryFilterAttribute: {},
+ *             queryGroupFunction: "",
+ *             queryGroupUnit: "",
  *             queryPlain: "",
  *         },
  *     ],
@@ -183,11 +187,11 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly rateValue!: pulumi.Output<number>;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     public readonly targetAsset!: pulumi.Output<outputs.FunctionTargetAsset>;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     public readonly targetAttribute!: pulumi.Output<outputs.FunctionTargetAttribute>;
     /**
@@ -326,11 +330,11 @@ export interface FunctionState {
      */
     rateValue?: pulumi.Input<number>;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     targetAsset?: pulumi.Input<inputs.FunctionTargetAsset>;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     targetAttribute?: pulumi.Input<inputs.FunctionTargetAttribute>;
     /**
@@ -396,11 +400,11 @@ export interface FunctionArgs {
      */
     rateValue?: pulumi.Input<number>;
     /**
-     * Asset/Attribute filter
+     * Asset filter
      */
     targetAsset: pulumi.Input<inputs.FunctionTargetAsset>;
     /**
-     * Asset/Attribute filter
+     * Attribute filter
      */
     targetAttribute: pulumi.Input<inputs.FunctionTargetAttribute>;
     /**

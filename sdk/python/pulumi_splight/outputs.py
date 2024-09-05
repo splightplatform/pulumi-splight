@@ -264,8 +264,8 @@ class AlertAlertItem(dict):
         """
         :param str expression: how the expression is shown (i.e 'A * 2')
         :param str expression_plain: actual mongo query containing the expression
-        :param 'AlertAlertItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
-        :param 'AlertAlertItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        :param 'AlertAlertItemQueryFilterAssetArgs' query_filter_asset: Asset filter
+        :param 'AlertAlertItemQueryFilterAttributeArgs' query_filter_attribute: Attribute filter
         :param str query_group_function: function used to aggregate data
         :param str query_group_unit: time window to apply the aggregation
         :param str query_plain: actual mongo query
@@ -305,7 +305,7 @@ class AlertAlertItem(dict):
     @pulumi.getter(name="queryFilterAsset")
     def query_filter_asset(self) -> 'outputs.AlertAlertItemQueryFilterAsset':
         """
-        Asset/Attribute filter
+        Asset filter
         """
         return pulumi.get(self, "query_filter_asset")
 
@@ -313,7 +313,7 @@ class AlertAlertItem(dict):
     @pulumi.getter(name="queryFilterAttribute")
     def query_filter_attribute(self) -> 'outputs.AlertAlertItemQueryFilterAttribute':
         """
-        Asset/Attribute filter
+        Attribute filter
         """
         return pulumi.get(self, "query_filter_attribute")
 
@@ -1016,8 +1016,8 @@ class DashboardActionlistChartChartItem(dict):
                  query_limit: Optional[int] = None,
                  query_sort_direction: Optional[int] = None):
         """
-        :param 'DashboardActionlistChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
-        :param 'DashboardActionlistChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        :param 'DashboardActionlistChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset filter
+        :param 'DashboardActionlistChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Attribute filter
         """
         pulumi.set(__self__, "color", color)
         pulumi.set(__self__, "expression_plain", expression_plain)
@@ -1053,7 +1053,7 @@ class DashboardActionlistChartChartItem(dict):
     @pulumi.getter(name="queryFilterAsset")
     def query_filter_asset(self) -> 'outputs.DashboardActionlistChartChartItemQueryFilterAsset':
         """
-        Asset/Attribute filter
+        Asset filter
         """
         return pulumi.get(self, "query_filter_asset")
 
@@ -1061,7 +1061,7 @@ class DashboardActionlistChartChartItem(dict):
     @pulumi.getter(name="queryFilterAttribute")
     def query_filter_attribute(self) -> 'outputs.DashboardActionlistChartChartItemQueryFilterAttribute':
         """
-        Asset/Attribute filter
+        Attribute filter
         """
         return pulumi.get(self, "query_filter_attribute")
 
@@ -1318,8 +1318,8 @@ class DashboardAlerteventsChartChartItem(dict):
                  query_limit: Optional[int] = None,
                  query_sort_direction: Optional[int] = None):
         """
-        :param 'DashboardAlerteventsChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
-        :param 'DashboardAlerteventsChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        :param 'DashboardAlerteventsChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset filter
+        :param 'DashboardAlerteventsChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Attribute filter
         """
         pulumi.set(__self__, "color", color)
         pulumi.set(__self__, "expression_plain", expression_plain)
@@ -1355,7 +1355,7 @@ class DashboardAlerteventsChartChartItem(dict):
     @pulumi.getter(name="queryFilterAsset")
     def query_filter_asset(self) -> 'outputs.DashboardAlerteventsChartChartItemQueryFilterAsset':
         """
-        Asset/Attribute filter
+        Asset filter
         """
         return pulumi.get(self, "query_filter_asset")
 
@@ -1363,7 +1363,7 @@ class DashboardAlerteventsChartChartItem(dict):
     @pulumi.getter(name="queryFilterAttribute")
     def query_filter_attribute(self) -> 'outputs.DashboardAlerteventsChartChartItemQueryFilterAttribute':
         """
-        Asset/Attribute filter
+        Attribute filter
         """
         return pulumi.get(self, "query_filter_attribute")
 
@@ -1620,8 +1620,8 @@ class DashboardAlertlistChartChartItem(dict):
                  query_limit: Optional[int] = None,
                  query_sort_direction: Optional[int] = None):
         """
-        :param 'DashboardAlertlistChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
-        :param 'DashboardAlertlistChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        :param 'DashboardAlertlistChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset filter
+        :param 'DashboardAlertlistChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Attribute filter
         """
         pulumi.set(__self__, "color", color)
         pulumi.set(__self__, "expression_plain", expression_plain)
@@ -1657,7 +1657,7 @@ class DashboardAlertlistChartChartItem(dict):
     @pulumi.getter(name="queryFilterAsset")
     def query_filter_asset(self) -> 'outputs.DashboardAlertlistChartChartItemQueryFilterAsset':
         """
-        Asset/Attribute filter
+        Asset filter
         """
         return pulumi.get(self, "query_filter_asset")
 
@@ -1665,7 +1665,7 @@ class DashboardAlertlistChartChartItem(dict):
     @pulumi.getter(name="queryFilterAttribute")
     def query_filter_attribute(self) -> 'outputs.DashboardAlertlistChartChartItemQueryFilterAttribute':
         """
-        Asset/Attribute filter
+        Attribute filter
         """
         return pulumi.get(self, "query_filter_attribute")
 
@@ -1922,8 +1922,8 @@ class DashboardAssetlistChartChartItem(dict):
                  query_limit: Optional[int] = None,
                  query_sort_direction: Optional[int] = None):
         """
-        :param 'DashboardAssetlistChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
-        :param 'DashboardAssetlistChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        :param 'DashboardAssetlistChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset filter
+        :param 'DashboardAssetlistChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Attribute filter
         """
         pulumi.set(__self__, "color", color)
         pulumi.set(__self__, "expression_plain", expression_plain)
@@ -1959,7 +1959,7 @@ class DashboardAssetlistChartChartItem(dict):
     @pulumi.getter(name="queryFilterAsset")
     def query_filter_asset(self) -> 'outputs.DashboardAssetlistChartChartItemQueryFilterAsset':
         """
-        Asset/Attribute filter
+        Asset filter
         """
         return pulumi.get(self, "query_filter_asset")
 
@@ -1967,7 +1967,7 @@ class DashboardAssetlistChartChartItem(dict):
     @pulumi.getter(name="queryFilterAttribute")
     def query_filter_attribute(self) -> 'outputs.DashboardAssetlistChartChartItemQueryFilterAttribute':
         """
-        Asset/Attribute filter
+        Attribute filter
         """
         return pulumi.get(self, "query_filter_attribute")
 
@@ -2224,8 +2224,8 @@ class DashboardBarChartChartItem(dict):
                  query_limit: Optional[int] = None,
                  query_sort_direction: Optional[int] = None):
         """
-        :param 'DashboardBarChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
-        :param 'DashboardBarChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        :param 'DashboardBarChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset filter
+        :param 'DashboardBarChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Attribute filter
         """
         pulumi.set(__self__, "color", color)
         pulumi.set(__self__, "expression_plain", expression_plain)
@@ -2261,7 +2261,7 @@ class DashboardBarChartChartItem(dict):
     @pulumi.getter(name="queryFilterAsset")
     def query_filter_asset(self) -> 'outputs.DashboardBarChartChartItemQueryFilterAsset':
         """
-        Asset/Attribute filter
+        Asset filter
         """
         return pulumi.get(self, "query_filter_asset")
 
@@ -2269,7 +2269,7 @@ class DashboardBarChartChartItem(dict):
     @pulumi.getter(name="queryFilterAttribute")
     def query_filter_attribute(self) -> 'outputs.DashboardBarChartChartItemQueryFilterAttribute':
         """
-        Asset/Attribute filter
+        Attribute filter
         """
         return pulumi.get(self, "query_filter_attribute")
 
@@ -2526,8 +2526,8 @@ class DashboardBargaugeChartChartItem(dict):
                  query_limit: Optional[int] = None,
                  query_sort_direction: Optional[int] = None):
         """
-        :param 'DashboardBargaugeChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
-        :param 'DashboardBargaugeChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        :param 'DashboardBargaugeChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset filter
+        :param 'DashboardBargaugeChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Attribute filter
         """
         pulumi.set(__self__, "color", color)
         pulumi.set(__self__, "expression_plain", expression_plain)
@@ -2563,7 +2563,7 @@ class DashboardBargaugeChartChartItem(dict):
     @pulumi.getter(name="queryFilterAsset")
     def query_filter_asset(self) -> 'outputs.DashboardBargaugeChartChartItemQueryFilterAsset':
         """
-        Asset/Attribute filter
+        Asset filter
         """
         return pulumi.get(self, "query_filter_asset")
 
@@ -2571,7 +2571,7 @@ class DashboardBargaugeChartChartItem(dict):
     @pulumi.getter(name="queryFilterAttribute")
     def query_filter_attribute(self) -> 'outputs.DashboardBargaugeChartChartItemQueryFilterAttribute':
         """
-        Asset/Attribute filter
+        Attribute filter
         """
         return pulumi.get(self, "query_filter_attribute")
 
@@ -2828,8 +2828,8 @@ class DashboardCommandlistChartChartItem(dict):
                  query_limit: Optional[int] = None,
                  query_sort_direction: Optional[int] = None):
         """
-        :param 'DashboardCommandlistChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
-        :param 'DashboardCommandlistChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        :param 'DashboardCommandlistChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset filter
+        :param 'DashboardCommandlistChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Attribute filter
         """
         pulumi.set(__self__, "color", color)
         pulumi.set(__self__, "expression_plain", expression_plain)
@@ -2865,7 +2865,7 @@ class DashboardCommandlistChartChartItem(dict):
     @pulumi.getter(name="queryFilterAsset")
     def query_filter_asset(self) -> 'outputs.DashboardCommandlistChartChartItemQueryFilterAsset':
         """
-        Asset/Attribute filter
+        Asset filter
         """
         return pulumi.get(self, "query_filter_asset")
 
@@ -2873,7 +2873,7 @@ class DashboardCommandlistChartChartItem(dict):
     @pulumi.getter(name="queryFilterAttribute")
     def query_filter_attribute(self) -> 'outputs.DashboardCommandlistChartChartItemQueryFilterAttribute':
         """
-        Asset/Attribute filter
+        Attribute filter
         """
         return pulumi.get(self, "query_filter_attribute")
 
@@ -3130,8 +3130,8 @@ class DashboardGaugeChartChartItem(dict):
                  query_limit: Optional[int] = None,
                  query_sort_direction: Optional[int] = None):
         """
-        :param 'DashboardGaugeChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
-        :param 'DashboardGaugeChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        :param 'DashboardGaugeChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset filter
+        :param 'DashboardGaugeChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Attribute filter
         """
         pulumi.set(__self__, "color", color)
         pulumi.set(__self__, "expression_plain", expression_plain)
@@ -3167,7 +3167,7 @@ class DashboardGaugeChartChartItem(dict):
     @pulumi.getter(name="queryFilterAsset")
     def query_filter_asset(self) -> 'outputs.DashboardGaugeChartChartItemQueryFilterAsset':
         """
-        Asset/Attribute filter
+        Asset filter
         """
         return pulumi.get(self, "query_filter_asset")
 
@@ -3175,7 +3175,7 @@ class DashboardGaugeChartChartItem(dict):
     @pulumi.getter(name="queryFilterAttribute")
     def query_filter_attribute(self) -> 'outputs.DashboardGaugeChartChartItemQueryFilterAttribute':
         """
-        Asset/Attribute filter
+        Attribute filter
         """
         return pulumi.get(self, "query_filter_attribute")
 
@@ -3432,8 +3432,8 @@ class DashboardHistogramChartChartItem(dict):
                  query_limit: Optional[int] = None,
                  query_sort_direction: Optional[int] = None):
         """
-        :param 'DashboardHistogramChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
-        :param 'DashboardHistogramChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        :param 'DashboardHistogramChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset filter
+        :param 'DashboardHistogramChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Attribute filter
         """
         pulumi.set(__self__, "color", color)
         pulumi.set(__self__, "expression_plain", expression_plain)
@@ -3469,7 +3469,7 @@ class DashboardHistogramChartChartItem(dict):
     @pulumi.getter(name="queryFilterAsset")
     def query_filter_asset(self) -> 'outputs.DashboardHistogramChartChartItemQueryFilterAsset':
         """
-        Asset/Attribute filter
+        Asset filter
         """
         return pulumi.get(self, "query_filter_asset")
 
@@ -3477,7 +3477,7 @@ class DashboardHistogramChartChartItem(dict):
     @pulumi.getter(name="queryFilterAttribute")
     def query_filter_attribute(self) -> 'outputs.DashboardHistogramChartChartItemQueryFilterAttribute':
         """
-        Asset/Attribute filter
+        Attribute filter
         """
         return pulumi.get(self, "query_filter_attribute")
 
@@ -3734,8 +3734,8 @@ class DashboardImageChartChartItem(dict):
                  query_limit: Optional[int] = None,
                  query_sort_direction: Optional[int] = None):
         """
-        :param 'DashboardImageChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
-        :param 'DashboardImageChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        :param 'DashboardImageChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset filter
+        :param 'DashboardImageChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Attribute filter
         """
         pulumi.set(__self__, "color", color)
         pulumi.set(__self__, "expression_plain", expression_plain)
@@ -3771,7 +3771,7 @@ class DashboardImageChartChartItem(dict):
     @pulumi.getter(name="queryFilterAsset")
     def query_filter_asset(self) -> 'outputs.DashboardImageChartChartItemQueryFilterAsset':
         """
-        Asset/Attribute filter
+        Asset filter
         """
         return pulumi.get(self, "query_filter_asset")
 
@@ -3779,7 +3779,7 @@ class DashboardImageChartChartItem(dict):
     @pulumi.getter(name="queryFilterAttribute")
     def query_filter_attribute(self) -> 'outputs.DashboardImageChartChartItemQueryFilterAttribute':
         """
-        Asset/Attribute filter
+        Attribute filter
         """
         return pulumi.get(self, "query_filter_attribute")
 
@@ -4036,8 +4036,8 @@ class DashboardStatChartChartItem(dict):
                  query_limit: Optional[int] = None,
                  query_sort_direction: Optional[int] = None):
         """
-        :param 'DashboardStatChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
-        :param 'DashboardStatChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        :param 'DashboardStatChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset filter
+        :param 'DashboardStatChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Attribute filter
         """
         pulumi.set(__self__, "color", color)
         pulumi.set(__self__, "expression_plain", expression_plain)
@@ -4073,7 +4073,7 @@ class DashboardStatChartChartItem(dict):
     @pulumi.getter(name="queryFilterAsset")
     def query_filter_asset(self) -> 'outputs.DashboardStatChartChartItemQueryFilterAsset':
         """
-        Asset/Attribute filter
+        Asset filter
         """
         return pulumi.get(self, "query_filter_asset")
 
@@ -4081,7 +4081,7 @@ class DashboardStatChartChartItem(dict):
     @pulumi.getter(name="queryFilterAttribute")
     def query_filter_attribute(self) -> 'outputs.DashboardStatChartChartItemQueryFilterAttribute':
         """
-        Asset/Attribute filter
+        Attribute filter
         """
         return pulumi.get(self, "query_filter_attribute")
 
@@ -4338,8 +4338,8 @@ class DashboardTableChartChartItem(dict):
                  query_limit: Optional[int] = None,
                  query_sort_direction: Optional[int] = None):
         """
-        :param 'DashboardTableChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
-        :param 'DashboardTableChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        :param 'DashboardTableChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset filter
+        :param 'DashboardTableChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Attribute filter
         """
         pulumi.set(__self__, "color", color)
         pulumi.set(__self__, "expression_plain", expression_plain)
@@ -4375,7 +4375,7 @@ class DashboardTableChartChartItem(dict):
     @pulumi.getter(name="queryFilterAsset")
     def query_filter_asset(self) -> 'outputs.DashboardTableChartChartItemQueryFilterAsset':
         """
-        Asset/Attribute filter
+        Asset filter
         """
         return pulumi.get(self, "query_filter_asset")
 
@@ -4383,7 +4383,7 @@ class DashboardTableChartChartItem(dict):
     @pulumi.getter(name="queryFilterAttribute")
     def query_filter_attribute(self) -> 'outputs.DashboardTableChartChartItemQueryFilterAttribute':
         """
-        Asset/Attribute filter
+        Attribute filter
         """
         return pulumi.get(self, "query_filter_attribute")
 
@@ -4640,8 +4640,8 @@ class DashboardTextChartChartItem(dict):
                  query_limit: Optional[int] = None,
                  query_sort_direction: Optional[int] = None):
         """
-        :param 'DashboardTextChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
-        :param 'DashboardTextChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        :param 'DashboardTextChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset filter
+        :param 'DashboardTextChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Attribute filter
         """
         pulumi.set(__self__, "color", color)
         pulumi.set(__self__, "expression_plain", expression_plain)
@@ -4677,7 +4677,7 @@ class DashboardTextChartChartItem(dict):
     @pulumi.getter(name="queryFilterAsset")
     def query_filter_asset(self) -> 'outputs.DashboardTextChartChartItemQueryFilterAsset':
         """
-        Asset/Attribute filter
+        Asset filter
         """
         return pulumi.get(self, "query_filter_asset")
 
@@ -4685,7 +4685,7 @@ class DashboardTextChartChartItem(dict):
     @pulumi.getter(name="queryFilterAttribute")
     def query_filter_attribute(self) -> 'outputs.DashboardTextChartChartItemQueryFilterAttribute':
         """
-        Asset/Attribute filter
+        Attribute filter
         """
         return pulumi.get(self, "query_filter_attribute")
 
@@ -4942,8 +4942,8 @@ class DashboardTimeseriesChartChartItem(dict):
                  query_limit: Optional[int] = None,
                  query_sort_direction: Optional[int] = None):
         """
-        :param 'DashboardTimeseriesChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
-        :param 'DashboardTimeseriesChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        :param 'DashboardTimeseriesChartChartItemQueryFilterAssetArgs' query_filter_asset: Asset filter
+        :param 'DashboardTimeseriesChartChartItemQueryFilterAttributeArgs' query_filter_attribute: Attribute filter
         """
         pulumi.set(__self__, "color", color)
         pulumi.set(__self__, "expression_plain", expression_plain)
@@ -4979,7 +4979,7 @@ class DashboardTimeseriesChartChartItem(dict):
     @pulumi.getter(name="queryFilterAsset")
     def query_filter_asset(self) -> 'outputs.DashboardTimeseriesChartChartItemQueryFilterAsset':
         """
-        Asset/Attribute filter
+        Asset filter
         """
         return pulumi.get(self, "query_filter_asset")
 
@@ -4987,7 +4987,7 @@ class DashboardTimeseriesChartChartItem(dict):
     @pulumi.getter(name="queryFilterAttribute")
     def query_filter_attribute(self) -> 'outputs.DashboardTimeseriesChartChartItemQueryFilterAttribute':
         """
-        Asset/Attribute filter
+        Attribute filter
         """
         return pulumi.get(self, "query_filter_attribute")
 
@@ -5239,8 +5239,8 @@ class FunctionFunctionItem(dict):
         """
         :param str expression: how the expression is shown (i.e 'A * 2')
         :param str expression_plain: actual mongo query containing the expression
-        :param 'FunctionFunctionItemQueryFilterAssetArgs' query_filter_asset: Asset/Attribute filter
-        :param 'FunctionFunctionItemQueryFilterAttributeArgs' query_filter_attribute: Asset/Attribute filter
+        :param 'FunctionFunctionItemQueryFilterAssetArgs' query_filter_asset: Asset filter
+        :param 'FunctionFunctionItemQueryFilterAttributeArgs' query_filter_attribute: Attribute filter
         :param str query_group_function: function used to aggregate data
         :param str query_group_unit: time window to apply the aggregation
         :param str query_plain: actual mongo query
@@ -5280,7 +5280,7 @@ class FunctionFunctionItem(dict):
     @pulumi.getter(name="queryFilterAsset")
     def query_filter_asset(self) -> 'outputs.FunctionFunctionItemQueryFilterAsset':
         """
-        Asset/Attribute filter
+        Asset filter
         """
         return pulumi.get(self, "query_filter_asset")
 
@@ -5288,7 +5288,7 @@ class FunctionFunctionItem(dict):
     @pulumi.getter(name="queryFilterAttribute")
     def query_filter_attribute(self) -> 'outputs.FunctionFunctionItemQueryFilterAttribute':
         """
-        Asset/Attribute filter
+        Attribute filter
         """
         return pulumi.get(self, "query_filter_attribute")
 
@@ -5376,15 +5376,19 @@ class FunctionFunctionItemQueryFilterAsset(dict):
 class FunctionFunctionItemQueryFilterAttribute(dict):
     def __init__(__self__, *,
                  id: Optional[str] = None,
-                 name: Optional[str] = None):
+                 name: Optional[str] = None,
+                 type: Optional[str] = None):
         """
         :param str id: ID of the resource
         :param str name: name of the resource
+        :param str type: type of the resource
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -5401,6 +5405,14 @@ class FunctionFunctionItemQueryFilterAttribute(dict):
         name of the resource
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        type of the resource
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -5438,15 +5450,19 @@ class FunctionTargetAsset(dict):
 class FunctionTargetAttribute(dict):
     def __init__(__self__, *,
                  id: Optional[str] = None,
-                 name: Optional[str] = None):
+                 name: Optional[str] = None,
+                 type: Optional[str] = None):
         """
         :param str id: ID of the resource
         :param str name: name of the resource
+        :param str type: type of the resource
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -5463,6 +5479,14 @@ class FunctionTargetAttribute(dict):
         name of the resource
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        type of the resource
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

@@ -36,8 +36,8 @@ class FunctionArgs:
         The set of arguments for constructing a Function resource.
         :param pulumi.Input[str] description: The description of the resource
         :param pulumi.Input[Sequence[pulumi.Input['FunctionFunctionItemArgs']]] function_items: traces to be used to compute the results
-        :param pulumi.Input['FunctionTargetAssetArgs'] target_asset: Asset/Attribute filter
-        :param pulumi.Input['FunctionTargetAttributeArgs'] target_attribute: Asset/Attribute filter
+        :param pulumi.Input['FunctionTargetAssetArgs'] target_asset: Asset filter
+        :param pulumi.Input['FunctionTargetAttributeArgs'] target_attribute: Attribute filter
         :param pulumi.Input[str] target_variable: variable to be considered to be ingested
         :param pulumi.Input[int] time_window: window to fetch data from. Data out of that window will not be considered for evaluation
         :param pulumi.Input[str] type: [cron|rate] type for the cron
@@ -105,7 +105,7 @@ class FunctionArgs:
     @pulumi.getter(name="targetAsset")
     def target_asset(self) -> pulumi.Input['FunctionTargetAssetArgs']:
         """
-        Asset/Attribute filter
+        Asset filter
         """
         return pulumi.get(self, "target_asset")
 
@@ -117,7 +117,7 @@ class FunctionArgs:
     @pulumi.getter(name="targetAttribute")
     def target_attribute(self) -> pulumi.Input['FunctionTargetAttributeArgs']:
         """
-        Asset/Attribute filter
+        Attribute filter
         """
         return pulumi.get(self, "target_attribute")
 
@@ -302,8 +302,8 @@ class _FunctionState:
         :param pulumi.Input[str] name: The name of the resource
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
-        :param pulumi.Input['FunctionTargetAssetArgs'] target_asset: Asset/Attribute filter
-        :param pulumi.Input['FunctionTargetAttributeArgs'] target_attribute: Asset/Attribute filter
+        :param pulumi.Input['FunctionTargetAssetArgs'] target_asset: Asset filter
+        :param pulumi.Input['FunctionTargetAttributeArgs'] target_attribute: Attribute filter
         :param pulumi.Input[str] target_variable: variable to be considered to be ingested
         :param pulumi.Input[int] time_window: window to fetch data from. Data out of that window will not be considered for evaluation
         :param pulumi.Input[str] type: [cron|rate] type for the cron
@@ -477,7 +477,7 @@ class _FunctionState:
     @pulumi.getter(name="targetAsset")
     def target_asset(self) -> Optional[pulumi.Input['FunctionTargetAssetArgs']]:
         """
-        Asset/Attribute filter
+        Asset filter
         """
         return pulumi.get(self, "target_asset")
 
@@ -489,7 +489,7 @@ class _FunctionState:
     @pulumi.getter(name="targetAttribute")
     def target_attribute(self) -> Optional[pulumi.Input['FunctionTargetAttributeArgs']]:
         """
-        Asset/Attribute filter
+        Attribute filter
         """
         return pulumi.get(self, "target_attribute")
 
@@ -608,6 +608,7 @@ class Function(pulumi.CustomResource):
             target_attribute={
                 "id": my_target_attribute.id,
                 "name": my_target_attribute.name,
+                "type": "Number",
             },
             function_items=[
                 {
@@ -622,6 +623,7 @@ class Function(pulumi.CustomResource):
                     "query_filter_attribute": {
                         "id": my_attribute.id,
                         "name": my_attribute.name,
+                        "type": "Number",
                     },
                     "query_group_function": "avg",
                     "query_group_unit": "day",
@@ -645,6 +647,8 @@ class Function(pulumi.CustomResource):
                     }),
                     "query_filter_asset": {},
                     "query_filter_attribute": {},
+                    "query_group_function": "",
+                    "query_group_unit": "",
                     "query_plain": "",
                 },
             ])
@@ -669,8 +673,8 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the resource
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
-        :param pulumi.Input[Union['FunctionTargetAssetArgs', 'FunctionTargetAssetArgsDict']] target_asset: Asset/Attribute filter
-        :param pulumi.Input[Union['FunctionTargetAttributeArgs', 'FunctionTargetAttributeArgsDict']] target_attribute: Asset/Attribute filter
+        :param pulumi.Input[Union['FunctionTargetAssetArgs', 'FunctionTargetAssetArgsDict']] target_asset: Asset filter
+        :param pulumi.Input[Union['FunctionTargetAttributeArgs', 'FunctionTargetAttributeArgsDict']] target_attribute: Attribute filter
         :param pulumi.Input[str] target_variable: variable to be considered to be ingested
         :param pulumi.Input[int] time_window: window to fetch data from. Data out of that window will not be considered for evaluation
         :param pulumi.Input[str] type: [cron|rate] type for the cron
@@ -733,6 +737,7 @@ class Function(pulumi.CustomResource):
             target_attribute={
                 "id": my_target_attribute.id,
                 "name": my_target_attribute.name,
+                "type": "Number",
             },
             function_items=[
                 {
@@ -747,6 +752,7 @@ class Function(pulumi.CustomResource):
                     "query_filter_attribute": {
                         "id": my_attribute.id,
                         "name": my_attribute.name,
+                        "type": "Number",
                     },
                     "query_group_function": "avg",
                     "query_group_unit": "day",
@@ -770,6 +776,8 @@ class Function(pulumi.CustomResource):
                     }),
                     "query_filter_asset": {},
                     "query_filter_attribute": {},
+                    "query_group_function": "",
+                    "query_group_unit": "",
                     "query_plain": "",
                 },
             ])
@@ -895,8 +903,8 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the resource
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
-        :param pulumi.Input[Union['FunctionTargetAssetArgs', 'FunctionTargetAssetArgsDict']] target_asset: Asset/Attribute filter
-        :param pulumi.Input[Union['FunctionTargetAttributeArgs', 'FunctionTargetAttributeArgsDict']] target_attribute: Asset/Attribute filter
+        :param pulumi.Input[Union['FunctionTargetAssetArgs', 'FunctionTargetAssetArgsDict']] target_asset: Asset filter
+        :param pulumi.Input[Union['FunctionTargetAttributeArgs', 'FunctionTargetAttributeArgsDict']] target_attribute: Attribute filter
         :param pulumi.Input[str] target_variable: variable to be considered to be ingested
         :param pulumi.Input[int] time_window: window to fetch data from. Data out of that window will not be considered for evaluation
         :param pulumi.Input[str] type: [cron|rate] type for the cron
@@ -1015,7 +1023,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="targetAsset")
     def target_asset(self) -> pulumi.Output['outputs.FunctionTargetAsset']:
         """
-        Asset/Attribute filter
+        Asset filter
         """
         return pulumi.get(self, "target_asset")
 
@@ -1023,7 +1031,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="targetAttribute")
     def target_attribute(self) -> pulumi.Output['outputs.FunctionTargetAttribute']:
         """
-        Asset/Attribute filter
+        Attribute filter
         """
         return pulumi.get(self, "target_attribute")
 
