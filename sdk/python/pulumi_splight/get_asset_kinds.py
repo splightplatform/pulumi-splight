@@ -56,8 +56,6 @@ class AwaitableGetAssetKindsResult(GetAssetKindsResult):
 
 def get_asset_kinds(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAssetKindsResult:
     """
-    Data source to fetch all asset kinds defined in the platform
-
     ## Example Usage
 
     ```python
@@ -79,8 +77,6 @@ def get_asset_kinds(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGet
 @_utilities.lift_output_func(get_asset_kinds)
 def get_asset_kinds_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAssetKindsResult]:
     """
-    Data source to fetch all asset kinds defined in the platform
-
     ## Example Usage
 
     ```python

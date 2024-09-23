@@ -19,7 +19,7 @@ namespace Splight.Splight.Outputs
         /// </summary>
         public readonly Outputs.CommandActionAsset Asset;
         /// <summary>
-        /// action ID
+        /// action Id
         /// </summary>
         public readonly string Id;
         /// <summary>

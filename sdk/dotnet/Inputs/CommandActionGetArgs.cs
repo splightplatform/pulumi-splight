@@ -20,7 +20,7 @@ namespace Splight.Splight.Inputs
         public Input<Inputs.CommandActionAssetGetArgs> Asset { get; set; } = null!;
 
         /// <summary>
-        /// action ID
+        /// action Id
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;

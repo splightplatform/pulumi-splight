@@ -11,8 +11,6 @@ import (
 	"github.com/splightplatform/pulumi-splight/sdk/go/splight/internal"
 )
 
-// Data source to fetch all tags defined in the organization account
-//
 // ## Example Usage
 //
 // ```go

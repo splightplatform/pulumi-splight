@@ -13,55 +13,6 @@ namespace Splight.Splight
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using System.Text.Json;
-    /// using Pulumi;
-    /// using Splight = Splight.Splight;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var componentTestRoutine = new Splight.ComponentRoutine("componentTestRoutine", new()
-    ///     {
-    ///         Description = "Created with Terraform",
-    ///         Type = "IncomingRoutine",
-    ///         ComponentId = "1234-1234-1234-1234",
-    ///         Configs = new[]
-    ///         {
-    ///             new Splight.Inputs.ComponentRoutineConfigArgs
-    ///             {
-    ///                 Name = "config_param",
-    ///                 Type = "bool",
-    ///                 Value = "true",
-    ///                 Multiple = false,
-    ///                 Required = true,
-    ///                 Sensitive = false,
-    ///                 Description = JsonSerializer.Serialize("Created with Terraform123123"),
-    ///             },
-    ///         },
-    ///         Outputs = new[]
-    ///         {
-    ///             new Splight.Inputs.ComponentRoutineOutputArgs
-    ///             {
-    ///                 Name = "address",
-    ///                 Description = "destination address for data to be pushed",
-    ///                 Type = "DataAddress",
-    ///                 ValueType = "Number",
-    ///                 Multiple = false,
-    ///                 Required = true,
-    ///                 Values = 
-    ///                 {
-    ///                     { "asset", "1234-1234-1234-1234" },
-    ///                     { "attribute", "1234-1234-1234-1234" },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

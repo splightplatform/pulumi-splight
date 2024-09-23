@@ -11,8 +11,6 @@ import (
 	"github.com/splightplatform/pulumi-splight/sdk/go/splight/internal"
 )
 
-// Data source to fetch all asset kinds defined in the platform
-//
 // ## Example Usage
 //
 // ```go

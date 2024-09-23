@@ -15,7 +15,7 @@ namespace Splight.Splight.Outputs
     public sealed class DashboardImageChartChartItemQueryFilterAsset
     {
         /// <summary>
-        /// ID of the resource
+        /// Id of the resource
         /// </summary>
         public readonly string? Id;
         /// <summary>

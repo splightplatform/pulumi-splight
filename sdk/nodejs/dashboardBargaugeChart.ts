@@ -101,46 +101,17 @@ import * as utilities from "./utilities";
  *         {
  *             refId: "B",
  *             color: "blue",
- *             type: "QUERY",
- *             expressionPlain: "",
- *             queryFilterAsset: {
- *                 id: assetTest.id,
- *                 name: assetTest.name,
- *             },
- *             queryFilterAttribute: {
- *                 id: attributeTest2.id,
- *                 name: attributeTest2.name,
- *             },
- *             queryPlain: pulumi.jsonStringify([
- *                 {
- *                     $match: {
- *                         asset: assetTest.id,
- *                         attribute: attributeTest2.id,
- *                     },
+ *             type: "EXPRESSION",
+ *             queryPlain: "",
+ *             expressionPlain: JSON.stringify({
+ *                 $function: {
+ *                     body: "function ($A) { return $A/50 }",
+ *                     args: ["$A"],
+ *                     lang: "js",
  *                 },
- *                 {
- *                     $addFields: {
- *                         timestamp: {
- *                             $dateTrunc: {
- *                                 date: "$timestamp",
- *                                 unit: "hour",
- *                                 binSize: 1,
- *                             },
- *                         },
- *                     },
- *                 },
- *                 {
- *                     $group: {
- *                         _id: "$timestamp",
- *                         value: {
- *                             $last: "$value",
- *                         },
- *                         timestamp: {
- *                             $last: "$timestamp",
- *                         },
- *                     },
- *                 },
- *             ]),
+ *             }),
+ *             queryFilterAsset: {},
+ *             queryFilterAttribute: {},
  *         },
  *     ],
  *     thresholds: [{

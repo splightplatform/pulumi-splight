@@ -973,46 +973,17 @@ class DashboardBargaugeChart(pulumi.CustomResource):
                 {
                     "ref_id": "B",
                     "color": "blue",
-                    "type": "QUERY",
-                    "expression_plain": "",
-                    "query_filter_asset": {
-                        "id": asset_test.id,
-                        "name": asset_test.name,
-                    },
-                    "query_filter_attribute": {
-                        "id": attribute_test2.id,
-                        "name": attribute_test2.name,
-                    },
-                    "query_plain": pulumi.Output.json_dumps([
-                        {
-                            "_match": {
-                                "asset": asset_test.id,
-                                "attribute": attribute_test2.id,
-                            },
+                    "type": "EXPRESSION",
+                    "query_plain": "",
+                    "expression_plain": json.dumps({
+                        "_function": {
+                            "body": "function ($A) { return $A/50 }",
+                            "args": ["$A"],
+                            "lang": "js",
                         },
-                        {
-                            "$addFields": {
-                                "timestamp": {
-                                    "$dateTrunc": {
-                                        "date": "$timestamp",
-                                        "unit": "hour",
-                                        "binSize": 1,
-                                    },
-                                },
-                            },
-                        },
-                        {
-                            "$group": {
-                                "_id": "$timestamp",
-                                "value": {
-                                    "$last": "$value",
-                                },
-                                "timestamp": {
-                                    "$last": "$timestamp",
-                                },
-                            },
-                        },
-                    ]),
+                    }),
+                    "query_filter_asset": {},
+                    "query_filter_attribute": {},
                 },
             ],
             thresholds=[{
@@ -1160,46 +1131,17 @@ class DashboardBargaugeChart(pulumi.CustomResource):
                 {
                     "ref_id": "B",
                     "color": "blue",
-                    "type": "QUERY",
-                    "expression_plain": "",
-                    "query_filter_asset": {
-                        "id": asset_test.id,
-                        "name": asset_test.name,
-                    },
-                    "query_filter_attribute": {
-                        "id": attribute_test2.id,
-                        "name": attribute_test2.name,
-                    },
-                    "query_plain": pulumi.Output.json_dumps([
-                        {
-                            "_match": {
-                                "asset": asset_test.id,
-                                "attribute": attribute_test2.id,
-                            },
+                    "type": "EXPRESSION",
+                    "query_plain": "",
+                    "expression_plain": json.dumps({
+                        "_function": {
+                            "body": "function ($A) { return $A/50 }",
+                            "args": ["$A"],
+                            "lang": "js",
                         },
-                        {
-                            "$addFields": {
-                                "timestamp": {
-                                    "$dateTrunc": {
-                                        "date": "$timestamp",
-                                        "unit": "hour",
-                                        "binSize": 1,
-                                    },
-                                },
-                            },
-                        },
-                        {
-                            "$group": {
-                                "_id": "$timestamp",
-                                "value": {
-                                    "$last": "$value",
-                                },
-                                "timestamp": {
-                                    "$last": "$timestamp",
-                                },
-                            },
-                        },
-                    ]),
+                    }),
+                    "query_filter_asset": {},
+                    "query_filter_attribute": {},
                 },
             ],
             thresholds=[{

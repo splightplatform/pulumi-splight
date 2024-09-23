@@ -142,59 +142,22 @@ namespace Splight.Splight
     ///             {
     ///                 RefId = "B",
     ///                 Color = "blue",
-    ///                 Type = "QUERY",
-    ///                 ExpressionPlain = "",
-    ///                 QueryFilterAsset = new Splight.Inputs.DashboardBargaugeChartChartItemQueryFilterAssetArgs
+    ///                 Type = "EXPRESSION",
+    ///                 QueryPlain = "",
+    ///                 ExpressionPlain = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///                 {
-    ///                     Id = assetTest.Id,
-    ///                     Name = assetTest.Name,
-    ///                 },
-    ///                 QueryFilterAttribute = new Splight.Inputs.DashboardBargaugeChartChartItemQueryFilterAttributeArgs
-    ///                 {
-    ///                     Id = attributeTest2.Id,
-    ///                     Name = attributeTest2.Name,
-    ///                 },
-    ///                 QueryPlain = Output.JsonSerialize(Output.Create(new[]
-    ///                 {
-    ///                     new Dictionary&lt;string, object?&gt;
+    ///                     ["$function"] = new Dictionary&lt;string, object?&gt;
     ///                     {
-    ///                         ["$match"] = new Dictionary&lt;string, object?&gt;
+    ///                         ["body"] = "function ($A) { return $A/50 }",
+    ///                         ["args"] = new[]
     ///                         {
-    ///                             ["asset"] = assetTest.Id,
-    ///                             ["attribute"] = attributeTest2.Id,
+    ///                             "$A",
     ///                         },
+    ///                         ["lang"] = "js",
     ///                     },
-    ///                     new Dictionary&lt;string, object?&gt;
-    ///                     {
-    ///                         ["$addFields"] = new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             ["timestamp"] = new Dictionary&lt;string, object?&gt;
-    ///                             {
-    ///                                 ["$dateTrunc"] = new Dictionary&lt;string, object?&gt;
-    ///                                 {
-    ///                                     ["date"] = "$timestamp",
-    ///                                     ["unit"] = "hour",
-    ///                                     ["binSize"] = 1,
-    ///                                 },
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                     new Dictionary&lt;string, object?&gt;
-    ///                     {
-    ///                         ["$group"] = new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             ["_id"] = "$timestamp",
-    ///                             ["value"] = new Dictionary&lt;string, object?&gt;
-    ///                             {
-    ///                                 ["$last"] = "$value",
-    ///                             },
-    ///                             ["timestamp"] = new Dictionary&lt;string, object?&gt;
-    ///                             {
-    ///                                 ["$last"] = "$timestamp",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 })),
+    ///                 }),
+    ///                 QueryFilterAsset = null,
+    ///                 QueryFilterAttribute = null,
     ///             },
     ///         },
     ///         Thresholds = new[]

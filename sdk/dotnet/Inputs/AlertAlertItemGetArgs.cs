@@ -26,7 +26,7 @@ namespace Splight.Splight.Inputs
         public Input<string> ExpressionPlain { get; set; } = null!;
 
         /// <summary>
-        /// ID of the function item
+        /// Id of the function item
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

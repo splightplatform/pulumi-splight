@@ -13,8 +13,6 @@ namespace Splight.Splight
     public static class GetTags
     {
         /// <summary>
-        /// Data source to fetch all tags defined in the organization account
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,8 +32,6 @@ namespace Splight.Splight
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagsResult>("splight:index/getTags:getTags", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
-        /// Data source to fetch all tags defined in the organization account
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

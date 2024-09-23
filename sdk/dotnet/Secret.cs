@@ -11,8 +11,6 @@ using Pulumi;
 namespace Splight.Splight
 {
     /// <summary>
-    /// Provides a Cloudflare Observatory Scheduled Test resource.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -23,9 +21,9 @@ namespace Splight.Splight
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var secretTest = new Splight.Secret("secretTest", new()
+    ///     var mySecret = new Splight.Secret("mySecret", new()
     ///     {
-    ///         RawValue = "ASUPERSECR3T",
+    ///         RawValue = "My Secret Value",
     ///     });
     /// 
     /// });

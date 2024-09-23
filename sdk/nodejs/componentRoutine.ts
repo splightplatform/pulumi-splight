@@ -9,38 +9,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as splight from "@splightplatform/pulumi-splight";
- *
- * const componentTestRoutine = new splight.ComponentRoutine("componentTestRoutine", {
- *     description: "Created with Terraform",
- *     type: "IncomingRoutine",
- *     componentId: "1234-1234-1234-1234",
- *     configs: [{
- *         name: "config_param",
- *         type: "bool",
- *         value: "true",
- *         multiple: false,
- *         required: true,
- *         sensitive: false,
- *         description: JSON.stringify("Created with Terraform123123"),
- *     }],
- *     outputs: [{
- *         name: "address",
- *         description: "destination address for data to be pushed",
- *         type: "DataAddress",
- *         valueType: "Number",
- *         multiple: false,
- *         required: true,
- *         values: {
- *             asset: "1234-1234-1234-1234",
- *             attribute: "1234-1234-1234-1234",
- *         },
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

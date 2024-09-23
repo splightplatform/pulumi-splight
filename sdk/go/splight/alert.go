@@ -155,8 +155,6 @@ type Alert struct {
 	RateUnit pulumi.StringOutput `pulumi:"rateUnit"`
 	// schedule value
 	RateValue pulumi.IntOutput `pulumi:"rateValue"`
-	// related assets to be linked. In case one of these alerts triggers it will be reflected on each of these assets.
-	RelatedAssets pulumi.StringArrayOutput `pulumi:"relatedAssets"`
 	// [sev1,...,sev8] severity for the alert
 	Severity pulumi.StringOutput `pulumi:"severity"`
 	// variable to be used to compare with thresholds
@@ -251,8 +249,6 @@ type alertState struct {
 	RateUnit *string `pulumi:"rateUnit"`
 	// schedule value
 	RateValue *int `pulumi:"rateValue"`
-	// related assets to be linked. In case one of these alerts triggers it will be reflected on each of these assets.
-	RelatedAssets []string `pulumi:"relatedAssets"`
 	// [sev1,...,sev8] severity for the alert
 	Severity *string `pulumi:"severity"`
 	// variable to be used to compare with thresholds
@@ -291,8 +287,6 @@ type AlertState struct {
 	RateUnit pulumi.StringPtrInput
 	// schedule value
 	RateValue pulumi.IntPtrInput
-	// related assets to be linked. In case one of these alerts triggers it will be reflected on each of these assets.
-	RelatedAssets pulumi.StringArrayInput
 	// [sev1,...,sev8] severity for the alert
 	Severity pulumi.StringPtrInput
 	// variable to be used to compare with thresholds
@@ -335,8 +329,6 @@ type alertArgs struct {
 	RateUnit *string `pulumi:"rateUnit"`
 	// schedule value
 	RateValue *int `pulumi:"rateValue"`
-	// related assets to be linked. In case one of these alerts triggers it will be reflected on each of these assets.
-	RelatedAssets []string `pulumi:"relatedAssets"`
 	// [sev1,...,sev8] severity for the alert
 	Severity string `pulumi:"severity"`
 	// variable to be used to compare with thresholds
@@ -376,8 +368,6 @@ type AlertArgs struct {
 	RateUnit pulumi.StringPtrInput
 	// schedule value
 	RateValue pulumi.IntPtrInput
-	// related assets to be linked. In case one of these alerts triggers it will be reflected on each of these assets.
-	RelatedAssets pulumi.StringArrayInput
 	// [sev1,...,sev8] severity for the alert
 	Severity pulumi.StringInput
 	// variable to be used to compare with thresholds
@@ -539,11 +529,6 @@ func (o AlertOutput) RateUnit() pulumi.StringOutput {
 // schedule value
 func (o AlertOutput) RateValue() pulumi.IntOutput {
 	return o.ApplyT(func(v *Alert) pulumi.IntOutput { return v.RateValue }).(pulumi.IntOutput)
-}
-
-// related assets to be linked. In case one of these alerts triggers it will be reflected on each of these assets.
-func (o AlertOutput) RelatedAssets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Alert) pulumi.StringArrayOutput { return v.RelatedAssets }).(pulumi.StringArrayOutput)
 }
 
 // [sev1,...,sev8] severity for the alert

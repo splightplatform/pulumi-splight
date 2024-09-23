@@ -30,8 +30,6 @@ type Asset struct {
 	Kind AssetKindPtrOutput `pulumi:"kind"`
 	// name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// linked assets
-	RelatedAssets pulumi.StringArrayOutput `pulumi:"relatedAssets"`
 	// tags of the resource
 	Tags AssetTagArrayOutput `pulumi:"tags"`
 }
@@ -77,8 +75,6 @@ type assetState struct {
 	Kind *AssetKind `pulumi:"kind"`
 	// name of the resource
 	Name *string `pulumi:"name"`
-	// linked assets
-	RelatedAssets []string `pulumi:"relatedAssets"`
 	// tags of the resource
 	Tags []AssetTag `pulumi:"tags"`
 }
@@ -92,8 +88,6 @@ type AssetState struct {
 	Kind AssetKindPtrInput
 	// name of the resource
 	Name pulumi.StringPtrInput
-	// linked assets
-	RelatedAssets pulumi.StringArrayInput
 	// tags of the resource
 	Tags AssetTagArrayInput
 }
@@ -111,8 +105,6 @@ type assetArgs struct {
 	Kind *AssetKind `pulumi:"kind"`
 	// name of the resource
 	Name *string `pulumi:"name"`
-	// linked assets
-	RelatedAssets []string `pulumi:"relatedAssets"`
 	// tags of the resource
 	Tags []AssetTag `pulumi:"tags"`
 }
@@ -127,8 +119,6 @@ type AssetArgs struct {
 	Kind AssetKindPtrInput
 	// name of the resource
 	Name pulumi.StringPtrInput
-	// linked assets
-	RelatedAssets pulumi.StringArrayInput
 	// tags of the resource
 	Tags AssetTagArrayInput
 }
@@ -238,11 +228,6 @@ func (o AssetOutput) Kind() AssetKindPtrOutput {
 // name of the resource
 func (o AssetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// linked assets
-func (o AssetOutput) RelatedAssets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Asset) pulumi.StringArrayOutput { return v.RelatedAssets }).(pulumi.StringArrayOutput)
 }
 
 // tags of the resource

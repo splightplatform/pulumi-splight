@@ -20,7 +20,7 @@ namespace Splight.Splight.Inputs
         public Input<Inputs.ActionSetpointAttributeGetArgs> Attribute { get; set; } = null!;
 
         /// <summary>
-        /// setpoint ID
+        /// setpoint Id
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

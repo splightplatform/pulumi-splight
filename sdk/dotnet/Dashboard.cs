@@ -13,25 +13,6 @@ namespace Splight.Splight
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Splight = Splight.Splight;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var dashboardTest = new Splight.Dashboard("dashboardTest", new()
-    ///     {
-    ///         RelatedAssets = new[]
-    ///         {
-    ///             "1234-1234-1234-1234",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -42,7 +23,7 @@ namespace Splight.Splight
     public partial class Dashboard : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// complementary information for the dashboard
+        /// dashboard description
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -54,10 +35,16 @@ namespace Splight.Splight
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// assets linked
+        /// related assets of the resource
         /// </summary>
         [Output("relatedAssets")]
-        public Output<ImmutableArray<string>> RelatedAssets { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DashboardRelatedAsset>> RelatedAssets { get; private set; } = null!;
+
+        /// <summary>
+        /// tags of the resource
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<Outputs.DashboardTag>> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -107,7 +94,7 @@ namespace Splight.Splight
     public sealed class DashboardArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// complementary information for the dashboard
+        /// dashboard description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -119,15 +106,27 @@ namespace Splight.Splight
         public Input<string>? Name { get; set; }
 
         [Input("relatedAssets")]
-        private InputList<string>? _relatedAssets;
+        private InputList<Inputs.DashboardRelatedAssetArgs>? _relatedAssets;
 
         /// <summary>
-        /// assets linked
+        /// related assets of the resource
         /// </summary>
-        public InputList<string> RelatedAssets
+        public InputList<Inputs.DashboardRelatedAssetArgs> RelatedAssets
         {
-            get => _relatedAssets ?? (_relatedAssets = new InputList<string>());
+            get => _relatedAssets ?? (_relatedAssets = new InputList<Inputs.DashboardRelatedAssetArgs>());
             set => _relatedAssets = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.DashboardTagArgs>? _tags;
+
+        /// <summary>
+        /// tags of the resource
+        /// </summary>
+        public InputList<Inputs.DashboardTagArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.DashboardTagArgs>());
+            set => _tags = value;
         }
 
         public DashboardArgs()
@@ -139,7 +138,7 @@ namespace Splight.Splight
     public sealed class DashboardState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// complementary information for the dashboard
+        /// dashboard description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -151,15 +150,27 @@ namespace Splight.Splight
         public Input<string>? Name { get; set; }
 
         [Input("relatedAssets")]
-        private InputList<string>? _relatedAssets;
+        private InputList<Inputs.DashboardRelatedAssetGetArgs>? _relatedAssets;
 
         /// <summary>
-        /// assets linked
+        /// related assets of the resource
         /// </summary>
-        public InputList<string> RelatedAssets
+        public InputList<Inputs.DashboardRelatedAssetGetArgs> RelatedAssets
         {
-            get => _relatedAssets ?? (_relatedAssets = new InputList<string>());
+            get => _relatedAssets ?? (_relatedAssets = new InputList<Inputs.DashboardRelatedAssetGetArgs>());
             set => _relatedAssets = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.DashboardTagGetArgs>? _tags;
+
+        /// <summary>
+        /// tags of the resource
+        /// </summary>
+        public InputList<Inputs.DashboardTagGetArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.DashboardTagGetArgs>());
+            set => _tags = value;
         }
 
         public DashboardState()

@@ -51,7 +51,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			attributeTest2, err := splight.NewAssetAttribute(ctx, "attributeTest2", &splight.AssetAttributeArgs{
+//			_, err = splight.NewAssetAttribute(ctx, "attributeTest2", &splight.AssetAttributeArgs{
 //				Type:  pulumi.String("Number"),
 //				Unit:  pulumi.String("seconds"),
 //				Asset: assetTest.ID(),
@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			dashboardTest, err := splight.NewDashboard(ctx, "dashboardTest", &splight.DashboardArgs{
-//				RelatedAssets: pulumi.StringArray{},
+//				RelatedAssets: splight.DashboardRelatedAssetArray{},
 //			})
 //			if err != nil {
 //				return err
@@ -72,6 +72,19 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"$function": map[string]interface{}{
+//					"body": "function ($A) { return $A/50 }",
+//					"args": []string{
+//						"$A",
+//					},
+//					"lang": "js",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
 //			_, err = splight.NewDashboardBargaugeChart(ctx, "dashboardChartTest", &splight.DashboardBargaugeChartArgs{
 //				Tab:               dashboardTabTest.ID(),
 //				TimestampGte:      pulumi.String("now - 7d"),
@@ -108,7 +121,7 @@ import (
 //							assetTestId := _args[0].(string)
 //							attributeTest1Id := _args[1].(string)
 //							var _zero string
-//							tmpJSON1, err := json.Marshal([]interface{}{
+//							tmpJSON2, err := json.Marshal([]interface{}{
 //								map[string]interface{}{
 //									"$match": map[string]interface{}{
 //										"asset":     assetTestId,
@@ -141,63 +154,18 @@ import (
 //							if err != nil {
 //								return _zero, err
 //							}
-//							json1 := string(tmpJSON1)
-//							return json1, nil
-//						}).(pulumi.StringOutput),
-//					},
-//					&splight.DashboardBargaugeChartChartItemArgs{
-//						RefId:           pulumi.String("B"),
-//						Color:           pulumi.String("blue"),
-//						Type:            pulumi.String("QUERY"),
-//						ExpressionPlain: pulumi.String(""),
-//						QueryFilterAsset: &splight.DashboardBargaugeChartChartItemQueryFilterAssetArgs{
-//							Id:   assetTest.ID(),
-//							Name: assetTest.Name,
-//						},
-//						QueryFilterAttribute: &splight.DashboardBargaugeChartChartItemQueryFilterAttributeArgs{
-//							Id:   attributeTest2.ID(),
-//							Name: attributeTest2.Name,
-//						},
-//						QueryPlain: pulumi.All(assetTest.ID(), attributeTest2.ID()).ApplyT(func(_args []interface{}) (string, error) {
-//							assetTestId := _args[0].(string)
-//							attributeTest2Id := _args[1].(string)
-//							var _zero string
-//							tmpJSON2, err := json.Marshal([]interface{}{
-//								map[string]interface{}{
-//									"$match": map[string]interface{}{
-//										"asset":     assetTestId,
-//										"attribute": attributeTest2Id,
-//									},
-//								},
-//								map[string]interface{}{
-//									"$addFields": map[string]interface{}{
-//										"timestamp": map[string]interface{}{
-//											"$dateTrunc": map[string]interface{}{
-//												"date":    "$timestamp",
-//												"unit":    "hour",
-//												"binSize": 1,
-//											},
-//										},
-//									},
-//								},
-//								map[string]interface{}{
-//									"$group": map[string]interface{}{
-//										"_id": "$timestamp",
-//										"value": map[string]interface{}{
-//											"$last": "$value",
-//										},
-//										"timestamp": map[string]interface{}{
-//											"$last": "$timestamp",
-//										},
-//									},
-//								},
-//							})
-//							if err != nil {
-//								return _zero, err
-//							}
 //							json2 := string(tmpJSON2)
 //							return json2, nil
 //						}).(pulumi.StringOutput),
+//					},
+//					&splight.DashboardBargaugeChartChartItemArgs{
+//						RefId:                pulumi.String("B"),
+//						Color:                pulumi.String("blue"),
+//						Type:                 pulumi.String("EXPRESSION"),
+//						QueryPlain:           pulumi.String(""),
+//						ExpressionPlain:      pulumi.String(json1),
+//						QueryFilterAsset:     nil,
+//						QueryFilterAttribute: nil,
 //					},
 //				},
 //				Thresholds: splight.DashboardBargaugeChartThresholdArray{

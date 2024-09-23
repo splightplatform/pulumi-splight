@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['DashboardArgs', 'Dashboard']
 
@@ -16,12 +18,14 @@ class DashboardArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardRelatedAssetArgs']]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardTagArgs']]]] = None):
         """
         The set of arguments for constructing a Dashboard resource.
-        :param pulumi.Input[str] description: complementary information for the dashboard
+        :param pulumi.Input[str] description: dashboard description
         :param pulumi.Input[str] name: dashboard name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] related_assets: assets linked
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardRelatedAssetArgs']]] related_assets: related assets of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardTagArgs']]] tags: tags of the resource
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -29,12 +33,14 @@ class DashboardArgs:
             pulumi.set(__self__, "name", name)
         if related_assets is not None:
             pulumi.set(__self__, "related_assets", related_assets)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        complementary information for the dashboard
+        dashboard description
         """
         return pulumi.get(self, "description")
 
@@ -56,15 +62,27 @@ class DashboardArgs:
 
     @property
     @pulumi.getter(name="relatedAssets")
-    def related_assets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def related_assets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardRelatedAssetArgs']]]]:
         """
-        assets linked
+        related assets of the resource
         """
         return pulumi.get(self, "related_assets")
 
     @related_assets.setter
-    def related_assets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def related_assets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardRelatedAssetArgs']]]]):
         pulumi.set(self, "related_assets", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardTagArgs']]]]:
+        """
+        tags of the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardTagArgs']]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -72,12 +90,14 @@ class _DashboardState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardRelatedAssetArgs']]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering Dashboard resources.
-        :param pulumi.Input[str] description: complementary information for the dashboard
+        :param pulumi.Input[str] description: dashboard description
         :param pulumi.Input[str] name: dashboard name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] related_assets: assets linked
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardRelatedAssetArgs']]] related_assets: related assets of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardTagArgs']]] tags: tags of the resource
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -85,12 +105,14 @@ class _DashboardState:
             pulumi.set(__self__, "name", name)
         if related_assets is not None:
             pulumi.set(__self__, "related_assets", related_assets)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        complementary information for the dashboard
+        dashboard description
         """
         return pulumi.get(self, "description")
 
@@ -112,15 +134,27 @@ class _DashboardState:
 
     @property
     @pulumi.getter(name="relatedAssets")
-    def related_assets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def related_assets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardRelatedAssetArgs']]]]:
         """
-        assets linked
+        related assets of the resource
         """
         return pulumi.get(self, "related_assets")
 
     @related_assets.setter
-    def related_assets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def related_assets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardRelatedAssetArgs']]]]):
         pulumi.set(self, "related_assets", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardTagArgs']]]]:
+        """
+        tags of the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardTagArgs']]]]):
+        pulumi.set(self, "tags", value)
 
 
 class Dashboard(pulumi.CustomResource):
@@ -130,17 +164,11 @@ class Dashboard(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardRelatedAssetArgs', 'DashboardRelatedAssetArgsDict']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardTagArgs', 'DashboardTagArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_splight as splight
-
-        dashboard_test = splight.Dashboard("dashboardTest", related_assets=["1234-1234-1234-1234"])
-        ```
 
         ## Import
 
@@ -150,9 +178,10 @@ class Dashboard(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: complementary information for the dashboard
+        :param pulumi.Input[str] description: dashboard description
         :param pulumi.Input[str] name: dashboard name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] related_assets: assets linked
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardRelatedAssetArgs', 'DashboardRelatedAssetArgsDict']]]] related_assets: related assets of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardTagArgs', 'DashboardTagArgsDict']]]] tags: tags of the resource
         """
         ...
     @overload
@@ -162,13 +191,6 @@ class Dashboard(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_splight as splight
-
-        dashboard_test = splight.Dashboard("dashboardTest", related_assets=["1234-1234-1234-1234"])
-        ```
 
         ## Import
 
@@ -193,7 +215,8 @@ class Dashboard(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardRelatedAssetArgs', 'DashboardRelatedAssetArgsDict']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardTagArgs', 'DashboardTagArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -206,6 +229,7 @@ class Dashboard(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["related_assets"] = related_assets
+            __props__.__dict__["tags"] = tags
         super(Dashboard, __self__).__init__(
             'splight:index/dashboard:Dashboard',
             resource_name,
@@ -218,7 +242,8 @@ class Dashboard(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Dashboard':
+            related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardRelatedAssetArgs', 'DashboardRelatedAssetArgsDict']]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardTagArgs', 'DashboardTagArgsDict']]]]] = None) -> 'Dashboard':
         """
         Get an existing Dashboard resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -226,9 +251,10 @@ class Dashboard(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: complementary information for the dashboard
+        :param pulumi.Input[str] description: dashboard description
         :param pulumi.Input[str] name: dashboard name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] related_assets: assets linked
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardRelatedAssetArgs', 'DashboardRelatedAssetArgsDict']]]] related_assets: related assets of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardTagArgs', 'DashboardTagArgsDict']]]] tags: tags of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -237,13 +263,14 @@ class Dashboard(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["related_assets"] = related_assets
+        __props__.__dict__["tags"] = tags
         return Dashboard(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        complementary information for the dashboard
+        dashboard description
         """
         return pulumi.get(self, "description")
 
@@ -257,9 +284,17 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="relatedAssets")
-    def related_assets(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def related_assets(self) -> pulumi.Output[Optional[Sequence['outputs.DashboardRelatedAsset']]]:
         """
-        assets linked
+        related assets of the resource
         """
         return pulumi.get(self, "related_assets")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.DashboardTag']]]:
+        """
+        tags of the resource
+        """
+        return pulumi.get(self, "tags")
 

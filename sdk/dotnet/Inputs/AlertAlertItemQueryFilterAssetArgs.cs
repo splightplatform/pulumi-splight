@@ -14,7 +14,7 @@ namespace Splight.Splight.Inputs
     public sealed class AlertAlertItemQueryFilterAssetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the resource
+        /// Id of the resource
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

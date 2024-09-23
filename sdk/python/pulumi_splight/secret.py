@@ -95,15 +95,13 @@ class Secret(pulumi.CustomResource):
                  raw_value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Observatory Scheduled Test resource.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_splight as splight
 
-        secret_test = splight.Secret("secretTest", raw_value="ASUPERSECR3T")
+        my_secret = splight.Secret("mySecret", raw_value="My Secret Value")
         ```
 
         ## Import
@@ -122,15 +120,13 @@ class Secret(pulumi.CustomResource):
                  args: SecretArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Observatory Scheduled Test resource.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_splight as splight
 
-        secret_test = splight.Secret("secretTest", raw_value="ASUPERSECR3T")
+        my_secret = splight.Secret("mySecret", raw_value="My Secret Value")
         ```
 
         ## Import
