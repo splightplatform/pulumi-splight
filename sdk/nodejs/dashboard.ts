@@ -2,17 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as splight from "@splightplatform/pulumi-splight";
- *
- * const dashboardTest = new splight.Dashboard("dashboardTest", {relatedAssets: ["1234-1234-1234-1234"]});
- * ```
  *
  * ## Import
  *
@@ -49,7 +44,7 @@ export class Dashboard extends pulumi.CustomResource {
     }
 
     /**
-     * complementary information for the dashboard
+     * dashboard description
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -57,9 +52,13 @@ export class Dashboard extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * assets linked
+     * related assets of the resource
      */
-    public readonly relatedAssets!: pulumi.Output<string[] | undefined>;
+    public readonly relatedAssets!: pulumi.Output<outputs.DashboardRelatedAsset[] | undefined>;
+    /**
+     * tags of the resource
+     */
+    public readonly tags!: pulumi.Output<outputs.DashboardTag[] | undefined>;
 
     /**
      * Create a Dashboard resource with the given unique name, arguments, and options.
@@ -77,11 +76,13 @@ export class Dashboard extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["relatedAssets"] = state ? state.relatedAssets : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as DashboardArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["relatedAssets"] = args ? args.relatedAssets : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Dashboard.__pulumiType, name, resourceInputs, opts);
@@ -93,7 +94,7 @@ export class Dashboard extends pulumi.CustomResource {
  */
 export interface DashboardState {
     /**
-     * complementary information for the dashboard
+     * dashboard description
      */
     description?: pulumi.Input<string>;
     /**
@@ -101,9 +102,13 @@ export interface DashboardState {
      */
     name?: pulumi.Input<string>;
     /**
-     * assets linked
+     * related assets of the resource
      */
-    relatedAssets?: pulumi.Input<pulumi.Input<string>[]>;
+    relatedAssets?: pulumi.Input<pulumi.Input<inputs.DashboardRelatedAsset>[]>;
+    /**
+     * tags of the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.DashboardTag>[]>;
 }
 
 /**
@@ -111,7 +116,7 @@ export interface DashboardState {
  */
 export interface DashboardArgs {
     /**
-     * complementary information for the dashboard
+     * dashboard description
      */
     description?: pulumi.Input<string>;
     /**
@@ -119,7 +124,11 @@ export interface DashboardArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * assets linked
+     * related assets of the resource
      */
-    relatedAssets?: pulumi.Input<pulumi.Input<string>[]>;
+    relatedAssets?: pulumi.Input<pulumi.Input<inputs.DashboardRelatedAsset>[]>;
+    /**
+     * tags of the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.DashboardTag>[]>;
 }

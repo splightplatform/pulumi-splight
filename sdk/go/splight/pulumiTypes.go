@@ -172,7 +172,7 @@ func (o ActionAssetPtrOutput) Name() pulumi.StringPtrOutput {
 type ActionSetpoint struct {
 	// the target attribute of the setpoint which should also be an attribute of the specified asset
 	Attribute ActionSetpointAttribute `pulumi:"attribute"`
-	// setpoint ID
+	// setpoint Id
 	Id *string `pulumi:"id"`
 	// setpoint name
 	Name *string `pulumi:"name"`
@@ -194,7 +194,7 @@ type ActionSetpointInput interface {
 type ActionSetpointArgs struct {
 	// the target attribute of the setpoint which should also be an attribute of the specified asset
 	Attribute ActionSetpointAttributeInput `pulumi:"attribute"`
-	// setpoint ID
+	// setpoint Id
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// setpoint name
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -258,7 +258,7 @@ func (o ActionSetpointOutput) Attribute() ActionSetpointAttributeOutput {
 	return o.ApplyT(func(v ActionSetpoint) ActionSetpointAttribute { return v.Attribute }).(ActionSetpointAttributeOutput)
 }
 
-// setpoint ID
+// setpoint Id
 func (o ActionSetpointOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSetpoint) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -359,7 +359,7 @@ type AlertAlertItem struct {
 	Expression string `pulumi:"expression"`
 	// actual mongo query containing the expression
 	ExpressionPlain string `pulumi:"expressionPlain"`
-	// ID of the function item
+	// Id of the function item
 	Id *string `pulumi:"id"`
 	// Asset filter
 	QueryFilterAsset AlertAlertItemQueryFilterAsset `pulumi:"queryFilterAsset"`
@@ -393,7 +393,7 @@ type AlertAlertItemArgs struct {
 	Expression pulumi.StringInput `pulumi:"expression"`
 	// actual mongo query containing the expression
 	ExpressionPlain pulumi.StringInput `pulumi:"expressionPlain"`
-	// ID of the function item
+	// Id of the function item
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Asset filter
 	QueryFilterAsset AlertAlertItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
@@ -472,7 +472,7 @@ func (o AlertAlertItemOutput) ExpressionPlain() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertAlertItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
 }
 
-// ID of the function item
+// Id of the function item
 func (o AlertAlertItemOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertAlertItem) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -533,7 +533,7 @@ func (o AlertAlertItemArrayOutput) Index(i pulumi.IntInput) AlertAlertItemOutput
 }
 
 type AlertAlertItemQueryFilterAsset struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -551,7 +551,7 @@ type AlertAlertItemQueryFilterAssetInput interface {
 }
 
 type AlertAlertItemQueryFilterAssetArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -583,7 +583,7 @@ func (o AlertAlertItemQueryFilterAssetOutput) ToAlertAlertItemQueryFilterAssetOu
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o AlertAlertItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertAlertItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -594,7 +594,7 @@ func (o AlertAlertItemQueryFilterAssetOutput) Name() pulumi.StringPtrOutput {
 }
 
 type AlertAlertItemQueryFilterAttribute struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -612,7 +612,7 @@ type AlertAlertItemQueryFilterAttributeInput interface {
 }
 
 type AlertAlertItemQueryFilterAttributeArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -644,7 +644,7 @@ func (o AlertAlertItemQueryFilterAttributeOutput) ToAlertAlertItemQueryFilterAtt
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o AlertAlertItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertAlertItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -1034,7 +1034,7 @@ func (o AssetTagArrayOutput) Index(i pulumi.IntInput) AssetTagOutput {
 type CommandAction struct {
 	// asset associated with the action (to be deprecated)
 	Asset CommandActionAsset `pulumi:"asset"`
-	// action ID
+	// action Id
 	Id string `pulumi:"id"`
 	// setpoint name
 	Name string `pulumi:"name"`
@@ -1054,7 +1054,7 @@ type CommandActionInput interface {
 type CommandActionArgs struct {
 	// asset associated with the action (to be deprecated)
 	Asset CommandActionAssetInput `pulumi:"asset"`
-	// action ID
+	// action Id
 	Id pulumi.StringInput `pulumi:"id"`
 	// setpoint name
 	Name pulumi.StringInput `pulumi:"name"`
@@ -1116,7 +1116,7 @@ func (o CommandActionOutput) Asset() CommandActionAssetOutput {
 	return o.ApplyT(func(v CommandAction) CommandActionAsset { return v.Asset }).(CommandActionAssetOutput)
 }
 
-// action ID
+// action Id
 func (o CommandActionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v CommandAction) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -2222,7 +2222,7 @@ func (o DashboardActionlistChartChartItemArrayOutput) Index(i pulumi.IntInput) D
 }
 
 type DashboardActionlistChartChartItemQueryFilterAsset struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -2240,7 +2240,7 @@ type DashboardActionlistChartChartItemQueryFilterAssetInput interface {
 }
 
 type DashboardActionlistChartChartItemQueryFilterAssetArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -2272,7 +2272,7 @@ func (o DashboardActionlistChartChartItemQueryFilterAssetOutput) ToDashboardActi
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardActionlistChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardActionlistChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -2283,7 +2283,7 @@ func (o DashboardActionlistChartChartItemQueryFilterAssetOutput) Name() pulumi.S
 }
 
 type DashboardActionlistChartChartItemQueryFilterAttribute struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -2301,7 +2301,7 @@ type DashboardActionlistChartChartItemQueryFilterAttributeInput interface {
 }
 
 type DashboardActionlistChartChartItemQueryFilterAttributeArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -2333,7 +2333,7 @@ func (o DashboardActionlistChartChartItemQueryFilterAttributeOutput) ToDashboard
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardActionlistChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardActionlistChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -2738,7 +2738,7 @@ func (o DashboardAlerteventsChartChartItemArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type DashboardAlerteventsChartChartItemQueryFilterAsset struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -2756,7 +2756,7 @@ type DashboardAlerteventsChartChartItemQueryFilterAssetInput interface {
 }
 
 type DashboardAlerteventsChartChartItemQueryFilterAssetArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -2788,7 +2788,7 @@ func (o DashboardAlerteventsChartChartItemQueryFilterAssetOutput) ToDashboardAle
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardAlerteventsChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardAlerteventsChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -2799,7 +2799,7 @@ func (o DashboardAlerteventsChartChartItemQueryFilterAssetOutput) Name() pulumi.
 }
 
 type DashboardAlerteventsChartChartItemQueryFilterAttribute struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -2817,7 +2817,7 @@ type DashboardAlerteventsChartChartItemQueryFilterAttributeInput interface {
 }
 
 type DashboardAlerteventsChartChartItemQueryFilterAttributeArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -2849,7 +2849,7 @@ func (o DashboardAlerteventsChartChartItemQueryFilterAttributeOutput) ToDashboar
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardAlerteventsChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardAlerteventsChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -3254,7 +3254,7 @@ func (o DashboardAlertlistChartChartItemArrayOutput) Index(i pulumi.IntInput) Da
 }
 
 type DashboardAlertlistChartChartItemQueryFilterAsset struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -3272,7 +3272,7 @@ type DashboardAlertlistChartChartItemQueryFilterAssetInput interface {
 }
 
 type DashboardAlertlistChartChartItemQueryFilterAssetArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -3304,7 +3304,7 @@ func (o DashboardAlertlistChartChartItemQueryFilterAssetOutput) ToDashboardAlert
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardAlertlistChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardAlertlistChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -3315,7 +3315,7 @@ func (o DashboardAlertlistChartChartItemQueryFilterAssetOutput) Name() pulumi.St
 }
 
 type DashboardAlertlistChartChartItemQueryFilterAttribute struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -3333,7 +3333,7 @@ type DashboardAlertlistChartChartItemQueryFilterAttributeInput interface {
 }
 
 type DashboardAlertlistChartChartItemQueryFilterAttributeArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -3365,7 +3365,7 @@ func (o DashboardAlertlistChartChartItemQueryFilterAttributeOutput) ToDashboardA
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardAlertlistChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardAlertlistChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -3770,7 +3770,7 @@ func (o DashboardAssetlistChartChartItemArrayOutput) Index(i pulumi.IntInput) Da
 }
 
 type DashboardAssetlistChartChartItemQueryFilterAsset struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -3788,7 +3788,7 @@ type DashboardAssetlistChartChartItemQueryFilterAssetInput interface {
 }
 
 type DashboardAssetlistChartChartItemQueryFilterAssetArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -3820,7 +3820,7 @@ func (o DashboardAssetlistChartChartItemQueryFilterAssetOutput) ToDashboardAsset
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardAssetlistChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardAssetlistChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -3831,7 +3831,7 @@ func (o DashboardAssetlistChartChartItemQueryFilterAssetOutput) Name() pulumi.St
 }
 
 type DashboardAssetlistChartChartItemQueryFilterAttribute struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -3849,7 +3849,7 @@ type DashboardAssetlistChartChartItemQueryFilterAttributeInput interface {
 }
 
 type DashboardAssetlistChartChartItemQueryFilterAttributeArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -3881,7 +3881,7 @@ func (o DashboardAssetlistChartChartItemQueryFilterAttributeOutput) ToDashboardA
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardAssetlistChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardAssetlistChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -4286,7 +4286,7 @@ func (o DashboardBarChartChartItemArrayOutput) Index(i pulumi.IntInput) Dashboar
 }
 
 type DashboardBarChartChartItemQueryFilterAsset struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -4304,7 +4304,7 @@ type DashboardBarChartChartItemQueryFilterAssetInput interface {
 }
 
 type DashboardBarChartChartItemQueryFilterAssetArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -4336,7 +4336,7 @@ func (o DashboardBarChartChartItemQueryFilterAssetOutput) ToDashboardBarChartCha
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardBarChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardBarChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -4347,7 +4347,7 @@ func (o DashboardBarChartChartItemQueryFilterAssetOutput) Name() pulumi.StringPt
 }
 
 type DashboardBarChartChartItemQueryFilterAttribute struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -4365,7 +4365,7 @@ type DashboardBarChartChartItemQueryFilterAttributeInput interface {
 }
 
 type DashboardBarChartChartItemQueryFilterAttributeArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -4397,7 +4397,7 @@ func (o DashboardBarChartChartItemQueryFilterAttributeOutput) ToDashboardBarChar
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardBarChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardBarChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -4802,7 +4802,7 @@ func (o DashboardBargaugeChartChartItemArrayOutput) Index(i pulumi.IntInput) Das
 }
 
 type DashboardBargaugeChartChartItemQueryFilterAsset struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -4820,7 +4820,7 @@ type DashboardBargaugeChartChartItemQueryFilterAssetInput interface {
 }
 
 type DashboardBargaugeChartChartItemQueryFilterAssetArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -4852,7 +4852,7 @@ func (o DashboardBargaugeChartChartItemQueryFilterAssetOutput) ToDashboardBargau
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardBargaugeChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardBargaugeChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -4863,7 +4863,7 @@ func (o DashboardBargaugeChartChartItemQueryFilterAssetOutput) Name() pulumi.Str
 }
 
 type DashboardBargaugeChartChartItemQueryFilterAttribute struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -4881,7 +4881,7 @@ type DashboardBargaugeChartChartItemQueryFilterAttributeInput interface {
 }
 
 type DashboardBargaugeChartChartItemQueryFilterAttributeArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -4913,7 +4913,7 @@ func (o DashboardBargaugeChartChartItemQueryFilterAttributeOutput) ToDashboardBa
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardBargaugeChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardBargaugeChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -5318,7 +5318,7 @@ func (o DashboardCommandlistChartChartItemArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type DashboardCommandlistChartChartItemQueryFilterAsset struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -5336,7 +5336,7 @@ type DashboardCommandlistChartChartItemQueryFilterAssetInput interface {
 }
 
 type DashboardCommandlistChartChartItemQueryFilterAssetArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -5368,7 +5368,7 @@ func (o DashboardCommandlistChartChartItemQueryFilterAssetOutput) ToDashboardCom
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardCommandlistChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardCommandlistChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -5379,7 +5379,7 @@ func (o DashboardCommandlistChartChartItemQueryFilterAssetOutput) Name() pulumi.
 }
 
 type DashboardCommandlistChartChartItemQueryFilterAttribute struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -5397,7 +5397,7 @@ type DashboardCommandlistChartChartItemQueryFilterAttributeInput interface {
 }
 
 type DashboardCommandlistChartChartItemQueryFilterAttributeArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -5429,7 +5429,7 @@ func (o DashboardCommandlistChartChartItemQueryFilterAttributeOutput) ToDashboar
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardCommandlistChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardCommandlistChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -5834,7 +5834,7 @@ func (o DashboardGaugeChartChartItemArrayOutput) Index(i pulumi.IntInput) Dashbo
 }
 
 type DashboardGaugeChartChartItemQueryFilterAsset struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -5852,7 +5852,7 @@ type DashboardGaugeChartChartItemQueryFilterAssetInput interface {
 }
 
 type DashboardGaugeChartChartItemQueryFilterAssetArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -5884,7 +5884,7 @@ func (o DashboardGaugeChartChartItemQueryFilterAssetOutput) ToDashboardGaugeChar
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardGaugeChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardGaugeChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -5895,7 +5895,7 @@ func (o DashboardGaugeChartChartItemQueryFilterAssetOutput) Name() pulumi.String
 }
 
 type DashboardGaugeChartChartItemQueryFilterAttribute struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -5913,7 +5913,7 @@ type DashboardGaugeChartChartItemQueryFilterAttributeInput interface {
 }
 
 type DashboardGaugeChartChartItemQueryFilterAttributeArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -5945,7 +5945,7 @@ func (o DashboardGaugeChartChartItemQueryFilterAttributeOutput) ToDashboardGauge
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardGaugeChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardGaugeChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -6350,7 +6350,7 @@ func (o DashboardHistogramChartChartItemArrayOutput) Index(i pulumi.IntInput) Da
 }
 
 type DashboardHistogramChartChartItemQueryFilterAsset struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -6368,7 +6368,7 @@ type DashboardHistogramChartChartItemQueryFilterAssetInput interface {
 }
 
 type DashboardHistogramChartChartItemQueryFilterAssetArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -6400,7 +6400,7 @@ func (o DashboardHistogramChartChartItemQueryFilterAssetOutput) ToDashboardHisto
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardHistogramChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardHistogramChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -6411,7 +6411,7 @@ func (o DashboardHistogramChartChartItemQueryFilterAssetOutput) Name() pulumi.St
 }
 
 type DashboardHistogramChartChartItemQueryFilterAttribute struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -6429,7 +6429,7 @@ type DashboardHistogramChartChartItemQueryFilterAttributeInput interface {
 }
 
 type DashboardHistogramChartChartItemQueryFilterAttributeArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -6461,7 +6461,7 @@ func (o DashboardHistogramChartChartItemQueryFilterAttributeOutput) ToDashboardH
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardHistogramChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardHistogramChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -6866,7 +6866,7 @@ func (o DashboardImageChartChartItemArrayOutput) Index(i pulumi.IntInput) Dashbo
 }
 
 type DashboardImageChartChartItemQueryFilterAsset struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -6884,7 +6884,7 @@ type DashboardImageChartChartItemQueryFilterAssetInput interface {
 }
 
 type DashboardImageChartChartItemQueryFilterAssetArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -6916,7 +6916,7 @@ func (o DashboardImageChartChartItemQueryFilterAssetOutput) ToDashboardImageChar
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardImageChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardImageChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -6927,7 +6927,7 @@ func (o DashboardImageChartChartItemQueryFilterAssetOutput) Name() pulumi.String
 }
 
 type DashboardImageChartChartItemQueryFilterAttribute struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -6945,7 +6945,7 @@ type DashboardImageChartChartItemQueryFilterAttributeInput interface {
 }
 
 type DashboardImageChartChartItemQueryFilterAttributeArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -6977,7 +6977,7 @@ func (o DashboardImageChartChartItemQueryFilterAttributeOutput) ToDashboardImage
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardImageChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardImageChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -7205,6 +7205,112 @@ func (o DashboardImageChartValueMappingArrayOutput) Index(i pulumi.IntInput) Das
 	}).(DashboardImageChartValueMappingOutput)
 }
 
+type DashboardRelatedAsset struct {
+	// asset id
+	Id string `pulumi:"id"`
+	// asset name
+	Name string `pulumi:"name"`
+}
+
+// DashboardRelatedAssetInput is an input type that accepts DashboardRelatedAssetArgs and DashboardRelatedAssetOutput values.
+// You can construct a concrete instance of `DashboardRelatedAssetInput` via:
+//
+//	DashboardRelatedAssetArgs{...}
+type DashboardRelatedAssetInput interface {
+	pulumi.Input
+
+	ToDashboardRelatedAssetOutput() DashboardRelatedAssetOutput
+	ToDashboardRelatedAssetOutputWithContext(context.Context) DashboardRelatedAssetOutput
+}
+
+type DashboardRelatedAssetArgs struct {
+	// asset id
+	Id pulumi.StringInput `pulumi:"id"`
+	// asset name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (DashboardRelatedAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardRelatedAsset)(nil)).Elem()
+}
+
+func (i DashboardRelatedAssetArgs) ToDashboardRelatedAssetOutput() DashboardRelatedAssetOutput {
+	return i.ToDashboardRelatedAssetOutputWithContext(context.Background())
+}
+
+func (i DashboardRelatedAssetArgs) ToDashboardRelatedAssetOutputWithContext(ctx context.Context) DashboardRelatedAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardRelatedAssetOutput)
+}
+
+// DashboardRelatedAssetArrayInput is an input type that accepts DashboardRelatedAssetArray and DashboardRelatedAssetArrayOutput values.
+// You can construct a concrete instance of `DashboardRelatedAssetArrayInput` via:
+//
+//	DashboardRelatedAssetArray{ DashboardRelatedAssetArgs{...} }
+type DashboardRelatedAssetArrayInput interface {
+	pulumi.Input
+
+	ToDashboardRelatedAssetArrayOutput() DashboardRelatedAssetArrayOutput
+	ToDashboardRelatedAssetArrayOutputWithContext(context.Context) DashboardRelatedAssetArrayOutput
+}
+
+type DashboardRelatedAssetArray []DashboardRelatedAssetInput
+
+func (DashboardRelatedAssetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardRelatedAsset)(nil)).Elem()
+}
+
+func (i DashboardRelatedAssetArray) ToDashboardRelatedAssetArrayOutput() DashboardRelatedAssetArrayOutput {
+	return i.ToDashboardRelatedAssetArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardRelatedAssetArray) ToDashboardRelatedAssetArrayOutputWithContext(ctx context.Context) DashboardRelatedAssetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardRelatedAssetArrayOutput)
+}
+
+type DashboardRelatedAssetOutput struct{ *pulumi.OutputState }
+
+func (DashboardRelatedAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardRelatedAsset)(nil)).Elem()
+}
+
+func (o DashboardRelatedAssetOutput) ToDashboardRelatedAssetOutput() DashboardRelatedAssetOutput {
+	return o
+}
+
+func (o DashboardRelatedAssetOutput) ToDashboardRelatedAssetOutputWithContext(ctx context.Context) DashboardRelatedAssetOutput {
+	return o
+}
+
+// asset id
+func (o DashboardRelatedAssetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardRelatedAsset) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// asset name
+func (o DashboardRelatedAssetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardRelatedAsset) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type DashboardRelatedAssetArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardRelatedAssetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardRelatedAsset)(nil)).Elem()
+}
+
+func (o DashboardRelatedAssetArrayOutput) ToDashboardRelatedAssetArrayOutput() DashboardRelatedAssetArrayOutput {
+	return o
+}
+
+func (o DashboardRelatedAssetArrayOutput) ToDashboardRelatedAssetArrayOutputWithContext(ctx context.Context) DashboardRelatedAssetArrayOutput {
+	return o
+}
+
+func (o DashboardRelatedAssetArrayOutput) Index(i pulumi.IntInput) DashboardRelatedAssetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardRelatedAsset {
+		return vs[0].([]DashboardRelatedAsset)[vs[1].(int)]
+	}).(DashboardRelatedAssetOutput)
+}
+
 type DashboardStatChartChartItem struct {
 	Color           string  `pulumi:"color"`
 	ExpressionPlain string  `pulumi:"expressionPlain"`
@@ -7382,7 +7488,7 @@ func (o DashboardStatChartChartItemArrayOutput) Index(i pulumi.IntInput) Dashboa
 }
 
 type DashboardStatChartChartItemQueryFilterAsset struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -7400,7 +7506,7 @@ type DashboardStatChartChartItemQueryFilterAssetInput interface {
 }
 
 type DashboardStatChartChartItemQueryFilterAssetArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -7432,7 +7538,7 @@ func (o DashboardStatChartChartItemQueryFilterAssetOutput) ToDashboardStatChartC
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardStatChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardStatChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -7443,7 +7549,7 @@ func (o DashboardStatChartChartItemQueryFilterAssetOutput) Name() pulumi.StringP
 }
 
 type DashboardStatChartChartItemQueryFilterAttribute struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -7461,7 +7567,7 @@ type DashboardStatChartChartItemQueryFilterAttributeInput interface {
 }
 
 type DashboardStatChartChartItemQueryFilterAttributeArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -7493,7 +7599,7 @@ func (o DashboardStatChartChartItemQueryFilterAttributeOutput) ToDashboardStatCh
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardStatChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardStatChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -7898,7 +8004,7 @@ func (o DashboardTableChartChartItemArrayOutput) Index(i pulumi.IntInput) Dashbo
 }
 
 type DashboardTableChartChartItemQueryFilterAsset struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -7916,7 +8022,7 @@ type DashboardTableChartChartItemQueryFilterAssetInput interface {
 }
 
 type DashboardTableChartChartItemQueryFilterAssetArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -7948,7 +8054,7 @@ func (o DashboardTableChartChartItemQueryFilterAssetOutput) ToDashboardTableChar
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardTableChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardTableChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -7959,7 +8065,7 @@ func (o DashboardTableChartChartItemQueryFilterAssetOutput) Name() pulumi.String
 }
 
 type DashboardTableChartChartItemQueryFilterAttribute struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -7977,7 +8083,7 @@ type DashboardTableChartChartItemQueryFilterAttributeInput interface {
 }
 
 type DashboardTableChartChartItemQueryFilterAttributeArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -8009,7 +8115,7 @@ func (o DashboardTableChartChartItemQueryFilterAttributeOutput) ToDashboardTable
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardTableChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardTableChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -8237,6 +8343,112 @@ func (o DashboardTableChartValueMappingArrayOutput) Index(i pulumi.IntInput) Das
 	}).(DashboardTableChartValueMappingOutput)
 }
 
+type DashboardTag struct {
+	// tag id
+	Id string `pulumi:"id"`
+	// tag name
+	Name string `pulumi:"name"`
+}
+
+// DashboardTagInput is an input type that accepts DashboardTagArgs and DashboardTagOutput values.
+// You can construct a concrete instance of `DashboardTagInput` via:
+//
+//	DashboardTagArgs{...}
+type DashboardTagInput interface {
+	pulumi.Input
+
+	ToDashboardTagOutput() DashboardTagOutput
+	ToDashboardTagOutputWithContext(context.Context) DashboardTagOutput
+}
+
+type DashboardTagArgs struct {
+	// tag id
+	Id pulumi.StringInput `pulumi:"id"`
+	// tag name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (DashboardTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTag)(nil)).Elem()
+}
+
+func (i DashboardTagArgs) ToDashboardTagOutput() DashboardTagOutput {
+	return i.ToDashboardTagOutputWithContext(context.Background())
+}
+
+func (i DashboardTagArgs) ToDashboardTagOutputWithContext(ctx context.Context) DashboardTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTagOutput)
+}
+
+// DashboardTagArrayInput is an input type that accepts DashboardTagArray and DashboardTagArrayOutput values.
+// You can construct a concrete instance of `DashboardTagArrayInput` via:
+//
+//	DashboardTagArray{ DashboardTagArgs{...} }
+type DashboardTagArrayInput interface {
+	pulumi.Input
+
+	ToDashboardTagArrayOutput() DashboardTagArrayOutput
+	ToDashboardTagArrayOutputWithContext(context.Context) DashboardTagArrayOutput
+}
+
+type DashboardTagArray []DashboardTagInput
+
+func (DashboardTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardTag)(nil)).Elem()
+}
+
+func (i DashboardTagArray) ToDashboardTagArrayOutput() DashboardTagArrayOutput {
+	return i.ToDashboardTagArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardTagArray) ToDashboardTagArrayOutputWithContext(ctx context.Context) DashboardTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardTagArrayOutput)
+}
+
+type DashboardTagOutput struct{ *pulumi.OutputState }
+
+func (DashboardTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardTag)(nil)).Elem()
+}
+
+func (o DashboardTagOutput) ToDashboardTagOutput() DashboardTagOutput {
+	return o
+}
+
+func (o DashboardTagOutput) ToDashboardTagOutputWithContext(ctx context.Context) DashboardTagOutput {
+	return o
+}
+
+// tag id
+func (o DashboardTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// tag name
+func (o DashboardTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type DashboardTagArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardTag)(nil)).Elem()
+}
+
+func (o DashboardTagArrayOutput) ToDashboardTagArrayOutput() DashboardTagArrayOutput {
+	return o
+}
+
+func (o DashboardTagArrayOutput) ToDashboardTagArrayOutputWithContext(ctx context.Context) DashboardTagArrayOutput {
+	return o
+}
+
+func (o DashboardTagArrayOutput) Index(i pulumi.IntInput) DashboardTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardTag {
+		return vs[0].([]DashboardTag)[vs[1].(int)]
+	}).(DashboardTagOutput)
+}
+
 type DashboardTextChartChartItem struct {
 	Color           string  `pulumi:"color"`
 	ExpressionPlain string  `pulumi:"expressionPlain"`
@@ -8414,7 +8626,7 @@ func (o DashboardTextChartChartItemArrayOutput) Index(i pulumi.IntInput) Dashboa
 }
 
 type DashboardTextChartChartItemQueryFilterAsset struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -8432,7 +8644,7 @@ type DashboardTextChartChartItemQueryFilterAssetInput interface {
 }
 
 type DashboardTextChartChartItemQueryFilterAssetArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -8464,7 +8676,7 @@ func (o DashboardTextChartChartItemQueryFilterAssetOutput) ToDashboardTextChartC
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardTextChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardTextChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -8475,7 +8687,7 @@ func (o DashboardTextChartChartItemQueryFilterAssetOutput) Name() pulumi.StringP
 }
 
 type DashboardTextChartChartItemQueryFilterAttribute struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -8493,7 +8705,7 @@ type DashboardTextChartChartItemQueryFilterAttributeInput interface {
 }
 
 type DashboardTextChartChartItemQueryFilterAttributeArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -8525,7 +8737,7 @@ func (o DashboardTextChartChartItemQueryFilterAttributeOutput) ToDashboardTextCh
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardTextChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardTextChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -8930,7 +9142,7 @@ func (o DashboardTimeseriesChartChartItemArrayOutput) Index(i pulumi.IntInput) D
 }
 
 type DashboardTimeseriesChartChartItemQueryFilterAsset struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -8948,7 +9160,7 @@ type DashboardTimeseriesChartChartItemQueryFilterAssetInput interface {
 }
 
 type DashboardTimeseriesChartChartItemQueryFilterAssetArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -8980,7 +9192,7 @@ func (o DashboardTimeseriesChartChartItemQueryFilterAssetOutput) ToDashboardTime
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardTimeseriesChartChartItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardTimeseriesChartChartItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -8991,7 +9203,7 @@ func (o DashboardTimeseriesChartChartItemQueryFilterAssetOutput) Name() pulumi.S
 }
 
 type DashboardTimeseriesChartChartItemQueryFilterAttribute struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -9009,7 +9221,7 @@ type DashboardTimeseriesChartChartItemQueryFilterAttributeInput interface {
 }
 
 type DashboardTimeseriesChartChartItemQueryFilterAttributeArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -9041,7 +9253,7 @@ func (o DashboardTimeseriesChartChartItemQueryFilterAttributeOutput) ToDashboard
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o DashboardTimeseriesChartChartItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardTimeseriesChartChartItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -9274,7 +9486,7 @@ type FunctionFunctionItem struct {
 	Expression string `pulumi:"expression"`
 	// actual mongo query containing the expression
 	ExpressionPlain string `pulumi:"expressionPlain"`
-	// ID of the function item
+	// Id of the function item
 	Id *string `pulumi:"id"`
 	// Asset filter
 	QueryFilterAsset FunctionFunctionItemQueryFilterAsset `pulumi:"queryFilterAsset"`
@@ -9308,7 +9520,7 @@ type FunctionFunctionItemArgs struct {
 	Expression pulumi.StringInput `pulumi:"expression"`
 	// actual mongo query containing the expression
 	ExpressionPlain pulumi.StringInput `pulumi:"expressionPlain"`
-	// ID of the function item
+	// Id of the function item
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Asset filter
 	QueryFilterAsset FunctionFunctionItemQueryFilterAssetInput `pulumi:"queryFilterAsset"`
@@ -9387,7 +9599,7 @@ func (o FunctionFunctionItemOutput) ExpressionPlain() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionFunctionItem) string { return v.ExpressionPlain }).(pulumi.StringOutput)
 }
 
-// ID of the function item
+// Id of the function item
 func (o FunctionFunctionItemOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionFunctionItem) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -9448,7 +9660,7 @@ func (o FunctionFunctionItemArrayOutput) Index(i pulumi.IntInput) FunctionFuncti
 }
 
 type FunctionFunctionItemQueryFilterAsset struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -9466,7 +9678,7 @@ type FunctionFunctionItemQueryFilterAssetInput interface {
 }
 
 type FunctionFunctionItemQueryFilterAssetArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -9498,7 +9710,7 @@ func (o FunctionFunctionItemQueryFilterAssetOutput) ToFunctionFunctionItemQueryF
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o FunctionFunctionItemQueryFilterAssetOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionFunctionItemQueryFilterAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -9509,7 +9721,7 @@ func (o FunctionFunctionItemQueryFilterAssetOutput) Name() pulumi.StringPtrOutpu
 }
 
 type FunctionFunctionItemQueryFilterAttribute struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -9529,7 +9741,7 @@ type FunctionFunctionItemQueryFilterAttributeInput interface {
 }
 
 type FunctionFunctionItemQueryFilterAttributeArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -9563,7 +9775,7 @@ func (o FunctionFunctionItemQueryFilterAttributeOutput) ToFunctionFunctionItemQu
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o FunctionFunctionItemQueryFilterAttributeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionFunctionItemQueryFilterAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -9579,7 +9791,7 @@ func (o FunctionFunctionItemQueryFilterAttributeOutput) Type() pulumi.StringPtrO
 }
 
 type FunctionTargetAsset struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -9597,7 +9809,7 @@ type FunctionTargetAssetInput interface {
 }
 
 type FunctionTargetAssetArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -9680,7 +9892,7 @@ func (o FunctionTargetAssetOutput) ToFunctionTargetAssetPtrOutputWithContext(ctx
 	}).(FunctionTargetAssetPtrOutput)
 }
 
-// ID of the resource
+// Id of the resource
 func (o FunctionTargetAssetOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionTargetAsset) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -9714,7 +9926,7 @@ func (o FunctionTargetAssetPtrOutput) Elem() FunctionTargetAssetOutput {
 	}).(FunctionTargetAssetOutput)
 }
 
-// ID of the resource
+// Id of the resource
 func (o FunctionTargetAssetPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionTargetAsset) *string {
 		if v == nil {
@@ -9735,7 +9947,7 @@ func (o FunctionTargetAssetPtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 type FunctionTargetAttribute struct {
-	// ID of the resource
+	// Id of the resource
 	Id *string `pulumi:"id"`
 	// name of the resource
 	Name *string `pulumi:"name"`
@@ -9755,7 +9967,7 @@ type FunctionTargetAttributeInput interface {
 }
 
 type FunctionTargetAttributeArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -9840,7 +10052,7 @@ func (o FunctionTargetAttributeOutput) ToFunctionTargetAttributePtrOutputWithCon
 	}).(FunctionTargetAttributePtrOutput)
 }
 
-// ID of the resource
+// Id of the resource
 func (o FunctionTargetAttributeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionTargetAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -9879,7 +10091,7 @@ func (o FunctionTargetAttributePtrOutput) Elem() FunctionTargetAttributeOutput {
 	}).(FunctionTargetAttributeOutput)
 }
 
-// ID of the resource
+// Id of the resource
 func (o FunctionTargetAttributePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionTargetAttribute) *string {
 		if v == nil {
@@ -9909,8 +10121,7743 @@ func (o FunctionTargetAttributePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type LineAbsorptivity struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineAbsorptivityInput is an input type that accepts LineAbsorptivityArgs and LineAbsorptivityOutput values.
+// You can construct a concrete instance of `LineAbsorptivityInput` via:
+//
+//	LineAbsorptivityArgs{...}
+type LineAbsorptivityInput interface {
+	pulumi.Input
+
+	ToLineAbsorptivityOutput() LineAbsorptivityOutput
+	ToLineAbsorptivityOutputWithContext(context.Context) LineAbsorptivityOutput
+}
+
+type LineAbsorptivityArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineAbsorptivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineAbsorptivity)(nil)).Elem()
+}
+
+func (i LineAbsorptivityArgs) ToLineAbsorptivityOutput() LineAbsorptivityOutput {
+	return i.ToLineAbsorptivityOutputWithContext(context.Background())
+}
+
+func (i LineAbsorptivityArgs) ToLineAbsorptivityOutputWithContext(ctx context.Context) LineAbsorptivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineAbsorptivityOutput)
+}
+
+func (i LineAbsorptivityArgs) ToLineAbsorptivityPtrOutput() LineAbsorptivityPtrOutput {
+	return i.ToLineAbsorptivityPtrOutputWithContext(context.Background())
+}
+
+func (i LineAbsorptivityArgs) ToLineAbsorptivityPtrOutputWithContext(ctx context.Context) LineAbsorptivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineAbsorptivityOutput).ToLineAbsorptivityPtrOutputWithContext(ctx)
+}
+
+// LineAbsorptivityPtrInput is an input type that accepts LineAbsorptivityArgs, LineAbsorptivityPtr and LineAbsorptivityPtrOutput values.
+// You can construct a concrete instance of `LineAbsorptivityPtrInput` via:
+//
+//	        LineAbsorptivityArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineAbsorptivityPtrInput interface {
+	pulumi.Input
+
+	ToLineAbsorptivityPtrOutput() LineAbsorptivityPtrOutput
+	ToLineAbsorptivityPtrOutputWithContext(context.Context) LineAbsorptivityPtrOutput
+}
+
+type lineAbsorptivityPtrType LineAbsorptivityArgs
+
+func LineAbsorptivityPtr(v *LineAbsorptivityArgs) LineAbsorptivityPtrInput {
+	return (*lineAbsorptivityPtrType)(v)
+}
+
+func (*lineAbsorptivityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineAbsorptivity)(nil)).Elem()
+}
+
+func (i *lineAbsorptivityPtrType) ToLineAbsorptivityPtrOutput() LineAbsorptivityPtrOutput {
+	return i.ToLineAbsorptivityPtrOutputWithContext(context.Background())
+}
+
+func (i *lineAbsorptivityPtrType) ToLineAbsorptivityPtrOutputWithContext(ctx context.Context) LineAbsorptivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineAbsorptivityPtrOutput)
+}
+
+type LineAbsorptivityOutput struct{ *pulumi.OutputState }
+
+func (LineAbsorptivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineAbsorptivity)(nil)).Elem()
+}
+
+func (o LineAbsorptivityOutput) ToLineAbsorptivityOutput() LineAbsorptivityOutput {
+	return o
+}
+
+func (o LineAbsorptivityOutput) ToLineAbsorptivityOutputWithContext(ctx context.Context) LineAbsorptivityOutput {
+	return o
+}
+
+func (o LineAbsorptivityOutput) ToLineAbsorptivityPtrOutput() LineAbsorptivityPtrOutput {
+	return o.ToLineAbsorptivityPtrOutputWithContext(context.Background())
+}
+
+func (o LineAbsorptivityOutput) ToLineAbsorptivityPtrOutputWithContext(ctx context.Context) LineAbsorptivityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineAbsorptivity) *LineAbsorptivity {
+		return &v
+	}).(LineAbsorptivityPtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineAbsorptivityOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineAbsorptivity) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineAbsorptivityOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineAbsorptivity) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineAbsorptivityOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineAbsorptivity) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineAbsorptivityOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineAbsorptivity) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineAbsorptivityOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineAbsorptivity) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineAbsorptivityOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineAbsorptivity) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineAbsorptivityPtrOutput struct{ *pulumi.OutputState }
+
+func (LineAbsorptivityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineAbsorptivity)(nil)).Elem()
+}
+
+func (o LineAbsorptivityPtrOutput) ToLineAbsorptivityPtrOutput() LineAbsorptivityPtrOutput {
+	return o
+}
+
+func (o LineAbsorptivityPtrOutput) ToLineAbsorptivityPtrOutputWithContext(ctx context.Context) LineAbsorptivityPtrOutput {
+	return o
+}
+
+func (o LineAbsorptivityPtrOutput) Elem() LineAbsorptivityOutput {
+	return o.ApplyT(func(v *LineAbsorptivity) LineAbsorptivity {
+		if v != nil {
+			return *v
+		}
+		var ret LineAbsorptivity
+		return ret
+	}).(LineAbsorptivityOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineAbsorptivityPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineAbsorptivity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineAbsorptivityPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineAbsorptivity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineAbsorptivityPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineAbsorptivity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineAbsorptivityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineAbsorptivity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineAbsorptivityPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineAbsorptivity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineAbsorptivityPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineAbsorptivity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineActivePower struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// LineActivePowerInput is an input type that accepts LineActivePowerArgs and LineActivePowerOutput values.
+// You can construct a concrete instance of `LineActivePowerInput` via:
+//
+//	LineActivePowerArgs{...}
+type LineActivePowerInput interface {
+	pulumi.Input
+
+	ToLineActivePowerOutput() LineActivePowerOutput
+	ToLineActivePowerOutputWithContext(context.Context) LineActivePowerOutput
+}
+
+type LineActivePowerArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (LineActivePowerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineActivePower)(nil)).Elem()
+}
+
+func (i LineActivePowerArgs) ToLineActivePowerOutput() LineActivePowerOutput {
+	return i.ToLineActivePowerOutputWithContext(context.Background())
+}
+
+func (i LineActivePowerArgs) ToLineActivePowerOutputWithContext(ctx context.Context) LineActivePowerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineActivePowerOutput)
+}
+
+// LineActivePowerArrayInput is an input type that accepts LineActivePowerArray and LineActivePowerArrayOutput values.
+// You can construct a concrete instance of `LineActivePowerArrayInput` via:
+//
+//	LineActivePowerArray{ LineActivePowerArgs{...} }
+type LineActivePowerArrayInput interface {
+	pulumi.Input
+
+	ToLineActivePowerArrayOutput() LineActivePowerArrayOutput
+	ToLineActivePowerArrayOutputWithContext(context.Context) LineActivePowerArrayOutput
+}
+
+type LineActivePowerArray []LineActivePowerInput
+
+func (LineActivePowerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineActivePower)(nil)).Elem()
+}
+
+func (i LineActivePowerArray) ToLineActivePowerArrayOutput() LineActivePowerArrayOutput {
+	return i.ToLineActivePowerArrayOutputWithContext(context.Background())
+}
+
+func (i LineActivePowerArray) ToLineActivePowerArrayOutputWithContext(ctx context.Context) LineActivePowerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineActivePowerArrayOutput)
+}
+
+type LineActivePowerOutput struct{ *pulumi.OutputState }
+
+func (LineActivePowerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineActivePower)(nil)).Elem()
+}
+
+func (o LineActivePowerOutput) ToLineActivePowerOutput() LineActivePowerOutput {
+	return o
+}
+
+func (o LineActivePowerOutput) ToLineActivePowerOutputWithContext(ctx context.Context) LineActivePowerOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o LineActivePowerOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineActivePower) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineActivePowerOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineActivePower) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineActivePowerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineActivePower) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineActivePowerOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineActivePower) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineActivePowerOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineActivePower) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type LineActivePowerArrayOutput struct{ *pulumi.OutputState }
+
+func (LineActivePowerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineActivePower)(nil)).Elem()
+}
+
+func (o LineActivePowerArrayOutput) ToLineActivePowerArrayOutput() LineActivePowerArrayOutput {
+	return o
+}
+
+func (o LineActivePowerArrayOutput) ToLineActivePowerArrayOutputWithContext(ctx context.Context) LineActivePowerArrayOutput {
+	return o
+}
+
+func (o LineActivePowerArrayOutput) Index(i pulumi.IntInput) LineActivePowerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LineActivePower {
+		return vs[0].([]LineActivePower)[vs[1].(int)]
+	}).(LineActivePowerOutput)
+}
+
+type LineActivePowerEnd struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// LineActivePowerEndInput is an input type that accepts LineActivePowerEndArgs and LineActivePowerEndOutput values.
+// You can construct a concrete instance of `LineActivePowerEndInput` via:
+//
+//	LineActivePowerEndArgs{...}
+type LineActivePowerEndInput interface {
+	pulumi.Input
+
+	ToLineActivePowerEndOutput() LineActivePowerEndOutput
+	ToLineActivePowerEndOutputWithContext(context.Context) LineActivePowerEndOutput
+}
+
+type LineActivePowerEndArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (LineActivePowerEndArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineActivePowerEnd)(nil)).Elem()
+}
+
+func (i LineActivePowerEndArgs) ToLineActivePowerEndOutput() LineActivePowerEndOutput {
+	return i.ToLineActivePowerEndOutputWithContext(context.Background())
+}
+
+func (i LineActivePowerEndArgs) ToLineActivePowerEndOutputWithContext(ctx context.Context) LineActivePowerEndOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineActivePowerEndOutput)
+}
+
+// LineActivePowerEndArrayInput is an input type that accepts LineActivePowerEndArray and LineActivePowerEndArrayOutput values.
+// You can construct a concrete instance of `LineActivePowerEndArrayInput` via:
+//
+//	LineActivePowerEndArray{ LineActivePowerEndArgs{...} }
+type LineActivePowerEndArrayInput interface {
+	pulumi.Input
+
+	ToLineActivePowerEndArrayOutput() LineActivePowerEndArrayOutput
+	ToLineActivePowerEndArrayOutputWithContext(context.Context) LineActivePowerEndArrayOutput
+}
+
+type LineActivePowerEndArray []LineActivePowerEndInput
+
+func (LineActivePowerEndArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineActivePowerEnd)(nil)).Elem()
+}
+
+func (i LineActivePowerEndArray) ToLineActivePowerEndArrayOutput() LineActivePowerEndArrayOutput {
+	return i.ToLineActivePowerEndArrayOutputWithContext(context.Background())
+}
+
+func (i LineActivePowerEndArray) ToLineActivePowerEndArrayOutputWithContext(ctx context.Context) LineActivePowerEndArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineActivePowerEndArrayOutput)
+}
+
+type LineActivePowerEndOutput struct{ *pulumi.OutputState }
+
+func (LineActivePowerEndOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineActivePowerEnd)(nil)).Elem()
+}
+
+func (o LineActivePowerEndOutput) ToLineActivePowerEndOutput() LineActivePowerEndOutput {
+	return o
+}
+
+func (o LineActivePowerEndOutput) ToLineActivePowerEndOutputWithContext(ctx context.Context) LineActivePowerEndOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o LineActivePowerEndOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineActivePowerEnd) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineActivePowerEndOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineActivePowerEnd) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineActivePowerEndOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineActivePowerEnd) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineActivePowerEndOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineActivePowerEnd) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineActivePowerEndOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineActivePowerEnd) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type LineActivePowerEndArrayOutput struct{ *pulumi.OutputState }
+
+func (LineActivePowerEndArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineActivePowerEnd)(nil)).Elem()
+}
+
+func (o LineActivePowerEndArrayOutput) ToLineActivePowerEndArrayOutput() LineActivePowerEndArrayOutput {
+	return o
+}
+
+func (o LineActivePowerEndArrayOutput) ToLineActivePowerEndArrayOutputWithContext(ctx context.Context) LineActivePowerEndArrayOutput {
+	return o
+}
+
+func (o LineActivePowerEndArrayOutput) Index(i pulumi.IntInput) LineActivePowerEndOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LineActivePowerEnd {
+		return vs[0].([]LineActivePowerEnd)[vs[1].(int)]
+	}).(LineActivePowerEndOutput)
+}
+
+type LineAmpacity struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// LineAmpacityInput is an input type that accepts LineAmpacityArgs and LineAmpacityOutput values.
+// You can construct a concrete instance of `LineAmpacityInput` via:
+//
+//	LineAmpacityArgs{...}
+type LineAmpacityInput interface {
+	pulumi.Input
+
+	ToLineAmpacityOutput() LineAmpacityOutput
+	ToLineAmpacityOutputWithContext(context.Context) LineAmpacityOutput
+}
+
+type LineAmpacityArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (LineAmpacityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineAmpacity)(nil)).Elem()
+}
+
+func (i LineAmpacityArgs) ToLineAmpacityOutput() LineAmpacityOutput {
+	return i.ToLineAmpacityOutputWithContext(context.Background())
+}
+
+func (i LineAmpacityArgs) ToLineAmpacityOutputWithContext(ctx context.Context) LineAmpacityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineAmpacityOutput)
+}
+
+// LineAmpacityArrayInput is an input type that accepts LineAmpacityArray and LineAmpacityArrayOutput values.
+// You can construct a concrete instance of `LineAmpacityArrayInput` via:
+//
+//	LineAmpacityArray{ LineAmpacityArgs{...} }
+type LineAmpacityArrayInput interface {
+	pulumi.Input
+
+	ToLineAmpacityArrayOutput() LineAmpacityArrayOutput
+	ToLineAmpacityArrayOutputWithContext(context.Context) LineAmpacityArrayOutput
+}
+
+type LineAmpacityArray []LineAmpacityInput
+
+func (LineAmpacityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineAmpacity)(nil)).Elem()
+}
+
+func (i LineAmpacityArray) ToLineAmpacityArrayOutput() LineAmpacityArrayOutput {
+	return i.ToLineAmpacityArrayOutputWithContext(context.Background())
+}
+
+func (i LineAmpacityArray) ToLineAmpacityArrayOutputWithContext(ctx context.Context) LineAmpacityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineAmpacityArrayOutput)
+}
+
+type LineAmpacityOutput struct{ *pulumi.OutputState }
+
+func (LineAmpacityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineAmpacity)(nil)).Elem()
+}
+
+func (o LineAmpacityOutput) ToLineAmpacityOutput() LineAmpacityOutput {
+	return o
+}
+
+func (o LineAmpacityOutput) ToLineAmpacityOutputWithContext(ctx context.Context) LineAmpacityOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o LineAmpacityOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineAmpacity) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineAmpacityOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineAmpacity) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineAmpacityOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineAmpacity) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineAmpacityOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineAmpacity) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineAmpacityOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineAmpacity) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type LineAmpacityArrayOutput struct{ *pulumi.OutputState }
+
+func (LineAmpacityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineAmpacity)(nil)).Elem()
+}
+
+func (o LineAmpacityArrayOutput) ToLineAmpacityArrayOutput() LineAmpacityArrayOutput {
+	return o
+}
+
+func (o LineAmpacityArrayOutput) ToLineAmpacityArrayOutputWithContext(ctx context.Context) LineAmpacityArrayOutput {
+	return o
+}
+
+func (o LineAmpacityArrayOutput) Index(i pulumi.IntInput) LineAmpacityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LineAmpacity {
+		return vs[0].([]LineAmpacity)[vs[1].(int)]
+	}).(LineAmpacityOutput)
+}
+
+type LineAtmosphere struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineAtmosphereInput is an input type that accepts LineAtmosphereArgs and LineAtmosphereOutput values.
+// You can construct a concrete instance of `LineAtmosphereInput` via:
+//
+//	LineAtmosphereArgs{...}
+type LineAtmosphereInput interface {
+	pulumi.Input
+
+	ToLineAtmosphereOutput() LineAtmosphereOutput
+	ToLineAtmosphereOutputWithContext(context.Context) LineAtmosphereOutput
+}
+
+type LineAtmosphereArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineAtmosphereArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineAtmosphere)(nil)).Elem()
+}
+
+func (i LineAtmosphereArgs) ToLineAtmosphereOutput() LineAtmosphereOutput {
+	return i.ToLineAtmosphereOutputWithContext(context.Background())
+}
+
+func (i LineAtmosphereArgs) ToLineAtmosphereOutputWithContext(ctx context.Context) LineAtmosphereOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineAtmosphereOutput)
+}
+
+func (i LineAtmosphereArgs) ToLineAtmospherePtrOutput() LineAtmospherePtrOutput {
+	return i.ToLineAtmospherePtrOutputWithContext(context.Background())
+}
+
+func (i LineAtmosphereArgs) ToLineAtmospherePtrOutputWithContext(ctx context.Context) LineAtmospherePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineAtmosphereOutput).ToLineAtmospherePtrOutputWithContext(ctx)
+}
+
+// LineAtmospherePtrInput is an input type that accepts LineAtmosphereArgs, LineAtmospherePtr and LineAtmospherePtrOutput values.
+// You can construct a concrete instance of `LineAtmospherePtrInput` via:
+//
+//	        LineAtmosphereArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineAtmospherePtrInput interface {
+	pulumi.Input
+
+	ToLineAtmospherePtrOutput() LineAtmospherePtrOutput
+	ToLineAtmospherePtrOutputWithContext(context.Context) LineAtmospherePtrOutput
+}
+
+type lineAtmospherePtrType LineAtmosphereArgs
+
+func LineAtmospherePtr(v *LineAtmosphereArgs) LineAtmospherePtrInput {
+	return (*lineAtmospherePtrType)(v)
+}
+
+func (*lineAtmospherePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineAtmosphere)(nil)).Elem()
+}
+
+func (i *lineAtmospherePtrType) ToLineAtmospherePtrOutput() LineAtmospherePtrOutput {
+	return i.ToLineAtmospherePtrOutputWithContext(context.Background())
+}
+
+func (i *lineAtmospherePtrType) ToLineAtmospherePtrOutputWithContext(ctx context.Context) LineAtmospherePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineAtmospherePtrOutput)
+}
+
+type LineAtmosphereOutput struct{ *pulumi.OutputState }
+
+func (LineAtmosphereOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineAtmosphere)(nil)).Elem()
+}
+
+func (o LineAtmosphereOutput) ToLineAtmosphereOutput() LineAtmosphereOutput {
+	return o
+}
+
+func (o LineAtmosphereOutput) ToLineAtmosphereOutputWithContext(ctx context.Context) LineAtmosphereOutput {
+	return o
+}
+
+func (o LineAtmosphereOutput) ToLineAtmospherePtrOutput() LineAtmospherePtrOutput {
+	return o.ToLineAtmospherePtrOutputWithContext(context.Background())
+}
+
+func (o LineAtmosphereOutput) ToLineAtmospherePtrOutputWithContext(ctx context.Context) LineAtmospherePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineAtmosphere) *LineAtmosphere {
+		return &v
+	}).(LineAtmospherePtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineAtmosphereOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineAtmosphere) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineAtmosphereOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineAtmosphere) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineAtmosphereOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineAtmosphere) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineAtmosphereOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineAtmosphere) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineAtmosphereOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineAtmosphere) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineAtmosphereOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineAtmosphere) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineAtmospherePtrOutput struct{ *pulumi.OutputState }
+
+func (LineAtmospherePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineAtmosphere)(nil)).Elem()
+}
+
+func (o LineAtmospherePtrOutput) ToLineAtmospherePtrOutput() LineAtmospherePtrOutput {
+	return o
+}
+
+func (o LineAtmospherePtrOutput) ToLineAtmospherePtrOutputWithContext(ctx context.Context) LineAtmospherePtrOutput {
+	return o
+}
+
+func (o LineAtmospherePtrOutput) Elem() LineAtmosphereOutput {
+	return o.ApplyT(func(v *LineAtmosphere) LineAtmosphere {
+		if v != nil {
+			return *v
+		}
+		var ret LineAtmosphere
+		return ret
+	}).(LineAtmosphereOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineAtmospherePtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineAtmosphere) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineAtmospherePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineAtmosphere) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineAtmospherePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineAtmosphere) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineAtmospherePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineAtmosphere) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineAtmospherePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineAtmosphere) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineAtmospherePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineAtmosphere) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineCapacitance struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineCapacitanceInput is an input type that accepts LineCapacitanceArgs and LineCapacitanceOutput values.
+// You can construct a concrete instance of `LineCapacitanceInput` via:
+//
+//	LineCapacitanceArgs{...}
+type LineCapacitanceInput interface {
+	pulumi.Input
+
+	ToLineCapacitanceOutput() LineCapacitanceOutput
+	ToLineCapacitanceOutputWithContext(context.Context) LineCapacitanceOutput
+}
+
+type LineCapacitanceArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineCapacitanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineCapacitance)(nil)).Elem()
+}
+
+func (i LineCapacitanceArgs) ToLineCapacitanceOutput() LineCapacitanceOutput {
+	return i.ToLineCapacitanceOutputWithContext(context.Background())
+}
+
+func (i LineCapacitanceArgs) ToLineCapacitanceOutputWithContext(ctx context.Context) LineCapacitanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineCapacitanceOutput)
+}
+
+func (i LineCapacitanceArgs) ToLineCapacitancePtrOutput() LineCapacitancePtrOutput {
+	return i.ToLineCapacitancePtrOutputWithContext(context.Background())
+}
+
+func (i LineCapacitanceArgs) ToLineCapacitancePtrOutputWithContext(ctx context.Context) LineCapacitancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineCapacitanceOutput).ToLineCapacitancePtrOutputWithContext(ctx)
+}
+
+// LineCapacitancePtrInput is an input type that accepts LineCapacitanceArgs, LineCapacitancePtr and LineCapacitancePtrOutput values.
+// You can construct a concrete instance of `LineCapacitancePtrInput` via:
+//
+//	        LineCapacitanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineCapacitancePtrInput interface {
+	pulumi.Input
+
+	ToLineCapacitancePtrOutput() LineCapacitancePtrOutput
+	ToLineCapacitancePtrOutputWithContext(context.Context) LineCapacitancePtrOutput
+}
+
+type lineCapacitancePtrType LineCapacitanceArgs
+
+func LineCapacitancePtr(v *LineCapacitanceArgs) LineCapacitancePtrInput {
+	return (*lineCapacitancePtrType)(v)
+}
+
+func (*lineCapacitancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineCapacitance)(nil)).Elem()
+}
+
+func (i *lineCapacitancePtrType) ToLineCapacitancePtrOutput() LineCapacitancePtrOutput {
+	return i.ToLineCapacitancePtrOutputWithContext(context.Background())
+}
+
+func (i *lineCapacitancePtrType) ToLineCapacitancePtrOutputWithContext(ctx context.Context) LineCapacitancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineCapacitancePtrOutput)
+}
+
+type LineCapacitanceOutput struct{ *pulumi.OutputState }
+
+func (LineCapacitanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineCapacitance)(nil)).Elem()
+}
+
+func (o LineCapacitanceOutput) ToLineCapacitanceOutput() LineCapacitanceOutput {
+	return o
+}
+
+func (o LineCapacitanceOutput) ToLineCapacitanceOutputWithContext(ctx context.Context) LineCapacitanceOutput {
+	return o
+}
+
+func (o LineCapacitanceOutput) ToLineCapacitancePtrOutput() LineCapacitancePtrOutput {
+	return o.ToLineCapacitancePtrOutputWithContext(context.Background())
+}
+
+func (o LineCapacitanceOutput) ToLineCapacitancePtrOutputWithContext(ctx context.Context) LineCapacitancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineCapacitance) *LineCapacitance {
+		return &v
+	}).(LineCapacitancePtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineCapacitanceOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCapacitance) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineCapacitanceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCapacitance) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineCapacitanceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCapacitance) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineCapacitanceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCapacitance) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineCapacitanceOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCapacitance) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineCapacitanceOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineCapacitance) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineCapacitancePtrOutput struct{ *pulumi.OutputState }
+
+func (LineCapacitancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineCapacitance)(nil)).Elem()
+}
+
+func (o LineCapacitancePtrOutput) ToLineCapacitancePtrOutput() LineCapacitancePtrOutput {
+	return o
+}
+
+func (o LineCapacitancePtrOutput) ToLineCapacitancePtrOutputWithContext(ctx context.Context) LineCapacitancePtrOutput {
+	return o
+}
+
+func (o LineCapacitancePtrOutput) Elem() LineCapacitanceOutput {
+	return o.ApplyT(func(v *LineCapacitance) LineCapacitance {
+		if v != nil {
+			return *v
+		}
+		var ret LineCapacitance
+		return ret
+	}).(LineCapacitanceOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineCapacitancePtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineCapacitance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineCapacitancePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineCapacitance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineCapacitancePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineCapacitance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineCapacitancePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineCapacitance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineCapacitancePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineCapacitance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineCapacitancePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineCapacitance) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineConductance struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineConductanceInput is an input type that accepts LineConductanceArgs and LineConductanceOutput values.
+// You can construct a concrete instance of `LineConductanceInput` via:
+//
+//	LineConductanceArgs{...}
+type LineConductanceInput interface {
+	pulumi.Input
+
+	ToLineConductanceOutput() LineConductanceOutput
+	ToLineConductanceOutputWithContext(context.Context) LineConductanceOutput
+}
+
+type LineConductanceArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineConductanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineConductance)(nil)).Elem()
+}
+
+func (i LineConductanceArgs) ToLineConductanceOutput() LineConductanceOutput {
+	return i.ToLineConductanceOutputWithContext(context.Background())
+}
+
+func (i LineConductanceArgs) ToLineConductanceOutputWithContext(ctx context.Context) LineConductanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineConductanceOutput)
+}
+
+func (i LineConductanceArgs) ToLineConductancePtrOutput() LineConductancePtrOutput {
+	return i.ToLineConductancePtrOutputWithContext(context.Background())
+}
+
+func (i LineConductanceArgs) ToLineConductancePtrOutputWithContext(ctx context.Context) LineConductancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineConductanceOutput).ToLineConductancePtrOutputWithContext(ctx)
+}
+
+// LineConductancePtrInput is an input type that accepts LineConductanceArgs, LineConductancePtr and LineConductancePtrOutput values.
+// You can construct a concrete instance of `LineConductancePtrInput` via:
+//
+//	        LineConductanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineConductancePtrInput interface {
+	pulumi.Input
+
+	ToLineConductancePtrOutput() LineConductancePtrOutput
+	ToLineConductancePtrOutputWithContext(context.Context) LineConductancePtrOutput
+}
+
+type lineConductancePtrType LineConductanceArgs
+
+func LineConductancePtr(v *LineConductanceArgs) LineConductancePtrInput {
+	return (*lineConductancePtrType)(v)
+}
+
+func (*lineConductancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineConductance)(nil)).Elem()
+}
+
+func (i *lineConductancePtrType) ToLineConductancePtrOutput() LineConductancePtrOutput {
+	return i.ToLineConductancePtrOutputWithContext(context.Background())
+}
+
+func (i *lineConductancePtrType) ToLineConductancePtrOutputWithContext(ctx context.Context) LineConductancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineConductancePtrOutput)
+}
+
+type LineConductanceOutput struct{ *pulumi.OutputState }
+
+func (LineConductanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineConductance)(nil)).Elem()
+}
+
+func (o LineConductanceOutput) ToLineConductanceOutput() LineConductanceOutput {
+	return o
+}
+
+func (o LineConductanceOutput) ToLineConductanceOutputWithContext(ctx context.Context) LineConductanceOutput {
+	return o
+}
+
+func (o LineConductanceOutput) ToLineConductancePtrOutput() LineConductancePtrOutput {
+	return o.ToLineConductancePtrOutputWithContext(context.Background())
+}
+
+func (o LineConductanceOutput) ToLineConductancePtrOutputWithContext(ctx context.Context) LineConductancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineConductance) *LineConductance {
+		return &v
+	}).(LineConductancePtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineConductanceOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineConductance) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineConductanceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineConductance) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineConductanceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineConductance) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineConductanceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineConductance) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineConductanceOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineConductance) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineConductanceOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineConductance) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineConductancePtrOutput struct{ *pulumi.OutputState }
+
+func (LineConductancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineConductance)(nil)).Elem()
+}
+
+func (o LineConductancePtrOutput) ToLineConductancePtrOutput() LineConductancePtrOutput {
+	return o
+}
+
+func (o LineConductancePtrOutput) ToLineConductancePtrOutputWithContext(ctx context.Context) LineConductancePtrOutput {
+	return o
+}
+
+func (o LineConductancePtrOutput) Elem() LineConductanceOutput {
+	return o.ApplyT(func(v *LineConductance) LineConductance {
+		if v != nil {
+			return *v
+		}
+		var ret LineConductance
+		return ret
+	}).(LineConductanceOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineConductancePtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineConductance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineConductancePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineConductance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineConductancePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineConductance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineConductancePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineConductance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineConductancePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineConductance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineConductancePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineConductance) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineCurrent struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// LineCurrentInput is an input type that accepts LineCurrentArgs and LineCurrentOutput values.
+// You can construct a concrete instance of `LineCurrentInput` via:
+//
+//	LineCurrentArgs{...}
+type LineCurrentInput interface {
+	pulumi.Input
+
+	ToLineCurrentOutput() LineCurrentOutput
+	ToLineCurrentOutputWithContext(context.Context) LineCurrentOutput
+}
+
+type LineCurrentArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (LineCurrentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineCurrent)(nil)).Elem()
+}
+
+func (i LineCurrentArgs) ToLineCurrentOutput() LineCurrentOutput {
+	return i.ToLineCurrentOutputWithContext(context.Background())
+}
+
+func (i LineCurrentArgs) ToLineCurrentOutputWithContext(ctx context.Context) LineCurrentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineCurrentOutput)
+}
+
+// LineCurrentArrayInput is an input type that accepts LineCurrentArray and LineCurrentArrayOutput values.
+// You can construct a concrete instance of `LineCurrentArrayInput` via:
+//
+//	LineCurrentArray{ LineCurrentArgs{...} }
+type LineCurrentArrayInput interface {
+	pulumi.Input
+
+	ToLineCurrentArrayOutput() LineCurrentArrayOutput
+	ToLineCurrentArrayOutputWithContext(context.Context) LineCurrentArrayOutput
+}
+
+type LineCurrentArray []LineCurrentInput
+
+func (LineCurrentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineCurrent)(nil)).Elem()
+}
+
+func (i LineCurrentArray) ToLineCurrentArrayOutput() LineCurrentArrayOutput {
+	return i.ToLineCurrentArrayOutputWithContext(context.Background())
+}
+
+func (i LineCurrentArray) ToLineCurrentArrayOutputWithContext(ctx context.Context) LineCurrentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineCurrentArrayOutput)
+}
+
+type LineCurrentOutput struct{ *pulumi.OutputState }
+
+func (LineCurrentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineCurrent)(nil)).Elem()
+}
+
+func (o LineCurrentOutput) ToLineCurrentOutput() LineCurrentOutput {
+	return o
+}
+
+func (o LineCurrentOutput) ToLineCurrentOutputWithContext(ctx context.Context) LineCurrentOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o LineCurrentOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCurrent) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineCurrentOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCurrent) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineCurrentOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCurrent) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineCurrentOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCurrent) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineCurrentOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCurrent) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type LineCurrentArrayOutput struct{ *pulumi.OutputState }
+
+func (LineCurrentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineCurrent)(nil)).Elem()
+}
+
+func (o LineCurrentArrayOutput) ToLineCurrentArrayOutput() LineCurrentArrayOutput {
+	return o
+}
+
+func (o LineCurrentArrayOutput) ToLineCurrentArrayOutputWithContext(ctx context.Context) LineCurrentArrayOutput {
+	return o
+}
+
+func (o LineCurrentArrayOutput) Index(i pulumi.IntInput) LineCurrentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LineCurrent {
+		return vs[0].([]LineCurrent)[vs[1].(int)]
+	}).(LineCurrentOutput)
+}
+
+type LineCurrentR struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// LineCurrentRInput is an input type that accepts LineCurrentRArgs and LineCurrentROutput values.
+// You can construct a concrete instance of `LineCurrentRInput` via:
+//
+//	LineCurrentRArgs{...}
+type LineCurrentRInput interface {
+	pulumi.Input
+
+	ToLineCurrentROutput() LineCurrentROutput
+	ToLineCurrentROutputWithContext(context.Context) LineCurrentROutput
+}
+
+type LineCurrentRArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (LineCurrentRArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineCurrentR)(nil)).Elem()
+}
+
+func (i LineCurrentRArgs) ToLineCurrentROutput() LineCurrentROutput {
+	return i.ToLineCurrentROutputWithContext(context.Background())
+}
+
+func (i LineCurrentRArgs) ToLineCurrentROutputWithContext(ctx context.Context) LineCurrentROutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineCurrentROutput)
+}
+
+// LineCurrentRArrayInput is an input type that accepts LineCurrentRArray and LineCurrentRArrayOutput values.
+// You can construct a concrete instance of `LineCurrentRArrayInput` via:
+//
+//	LineCurrentRArray{ LineCurrentRArgs{...} }
+type LineCurrentRArrayInput interface {
+	pulumi.Input
+
+	ToLineCurrentRArrayOutput() LineCurrentRArrayOutput
+	ToLineCurrentRArrayOutputWithContext(context.Context) LineCurrentRArrayOutput
+}
+
+type LineCurrentRArray []LineCurrentRInput
+
+func (LineCurrentRArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineCurrentR)(nil)).Elem()
+}
+
+func (i LineCurrentRArray) ToLineCurrentRArrayOutput() LineCurrentRArrayOutput {
+	return i.ToLineCurrentRArrayOutputWithContext(context.Background())
+}
+
+func (i LineCurrentRArray) ToLineCurrentRArrayOutputWithContext(ctx context.Context) LineCurrentRArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineCurrentRArrayOutput)
+}
+
+type LineCurrentROutput struct{ *pulumi.OutputState }
+
+func (LineCurrentROutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineCurrentR)(nil)).Elem()
+}
+
+func (o LineCurrentROutput) ToLineCurrentROutput() LineCurrentROutput {
+	return o
+}
+
+func (o LineCurrentROutput) ToLineCurrentROutputWithContext(ctx context.Context) LineCurrentROutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o LineCurrentROutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCurrentR) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineCurrentROutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCurrentR) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineCurrentROutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCurrentR) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineCurrentROutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCurrentR) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineCurrentROutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCurrentR) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type LineCurrentRArrayOutput struct{ *pulumi.OutputState }
+
+func (LineCurrentRArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineCurrentR)(nil)).Elem()
+}
+
+func (o LineCurrentRArrayOutput) ToLineCurrentRArrayOutput() LineCurrentRArrayOutput {
+	return o
+}
+
+func (o LineCurrentRArrayOutput) ToLineCurrentRArrayOutputWithContext(ctx context.Context) LineCurrentRArrayOutput {
+	return o
+}
+
+func (o LineCurrentRArrayOutput) Index(i pulumi.IntInput) LineCurrentROutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LineCurrentR {
+		return vs[0].([]LineCurrentR)[vs[1].(int)]
+	}).(LineCurrentROutput)
+}
+
+type LineCurrentT struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// LineCurrentTInput is an input type that accepts LineCurrentTArgs and LineCurrentTOutput values.
+// You can construct a concrete instance of `LineCurrentTInput` via:
+//
+//	LineCurrentTArgs{...}
+type LineCurrentTInput interface {
+	pulumi.Input
+
+	ToLineCurrentTOutput() LineCurrentTOutput
+	ToLineCurrentTOutputWithContext(context.Context) LineCurrentTOutput
+}
+
+type LineCurrentTArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (LineCurrentTArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineCurrentT)(nil)).Elem()
+}
+
+func (i LineCurrentTArgs) ToLineCurrentTOutput() LineCurrentTOutput {
+	return i.ToLineCurrentTOutputWithContext(context.Background())
+}
+
+func (i LineCurrentTArgs) ToLineCurrentTOutputWithContext(ctx context.Context) LineCurrentTOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineCurrentTOutput)
+}
+
+// LineCurrentTArrayInput is an input type that accepts LineCurrentTArray and LineCurrentTArrayOutput values.
+// You can construct a concrete instance of `LineCurrentTArrayInput` via:
+//
+//	LineCurrentTArray{ LineCurrentTArgs{...} }
+type LineCurrentTArrayInput interface {
+	pulumi.Input
+
+	ToLineCurrentTArrayOutput() LineCurrentTArrayOutput
+	ToLineCurrentTArrayOutputWithContext(context.Context) LineCurrentTArrayOutput
+}
+
+type LineCurrentTArray []LineCurrentTInput
+
+func (LineCurrentTArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineCurrentT)(nil)).Elem()
+}
+
+func (i LineCurrentTArray) ToLineCurrentTArrayOutput() LineCurrentTArrayOutput {
+	return i.ToLineCurrentTArrayOutputWithContext(context.Background())
+}
+
+func (i LineCurrentTArray) ToLineCurrentTArrayOutputWithContext(ctx context.Context) LineCurrentTArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineCurrentTArrayOutput)
+}
+
+type LineCurrentTOutput struct{ *pulumi.OutputState }
+
+func (LineCurrentTOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineCurrentT)(nil)).Elem()
+}
+
+func (o LineCurrentTOutput) ToLineCurrentTOutput() LineCurrentTOutput {
+	return o
+}
+
+func (o LineCurrentTOutput) ToLineCurrentTOutputWithContext(ctx context.Context) LineCurrentTOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o LineCurrentTOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCurrentT) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineCurrentTOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCurrentT) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineCurrentTOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCurrentT) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineCurrentTOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCurrentT) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineCurrentTOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCurrentT) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type LineCurrentTArrayOutput struct{ *pulumi.OutputState }
+
+func (LineCurrentTArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineCurrentT)(nil)).Elem()
+}
+
+func (o LineCurrentTArrayOutput) ToLineCurrentTArrayOutput() LineCurrentTArrayOutput {
+	return o
+}
+
+func (o LineCurrentTArrayOutput) ToLineCurrentTArrayOutputWithContext(ctx context.Context) LineCurrentTArrayOutput {
+	return o
+}
+
+func (o LineCurrentTArrayOutput) Index(i pulumi.IntInput) LineCurrentTOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LineCurrentT {
+		return vs[0].([]LineCurrentT)[vs[1].(int)]
+	}).(LineCurrentTOutput)
+}
+
+type LineDiameter struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineDiameterInput is an input type that accepts LineDiameterArgs and LineDiameterOutput values.
+// You can construct a concrete instance of `LineDiameterInput` via:
+//
+//	LineDiameterArgs{...}
+type LineDiameterInput interface {
+	pulumi.Input
+
+	ToLineDiameterOutput() LineDiameterOutput
+	ToLineDiameterOutputWithContext(context.Context) LineDiameterOutput
+}
+
+type LineDiameterArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineDiameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineDiameter)(nil)).Elem()
+}
+
+func (i LineDiameterArgs) ToLineDiameterOutput() LineDiameterOutput {
+	return i.ToLineDiameterOutputWithContext(context.Background())
+}
+
+func (i LineDiameterArgs) ToLineDiameterOutputWithContext(ctx context.Context) LineDiameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineDiameterOutput)
+}
+
+func (i LineDiameterArgs) ToLineDiameterPtrOutput() LineDiameterPtrOutput {
+	return i.ToLineDiameterPtrOutputWithContext(context.Background())
+}
+
+func (i LineDiameterArgs) ToLineDiameterPtrOutputWithContext(ctx context.Context) LineDiameterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineDiameterOutput).ToLineDiameterPtrOutputWithContext(ctx)
+}
+
+// LineDiameterPtrInput is an input type that accepts LineDiameterArgs, LineDiameterPtr and LineDiameterPtrOutput values.
+// You can construct a concrete instance of `LineDiameterPtrInput` via:
+//
+//	        LineDiameterArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineDiameterPtrInput interface {
+	pulumi.Input
+
+	ToLineDiameterPtrOutput() LineDiameterPtrOutput
+	ToLineDiameterPtrOutputWithContext(context.Context) LineDiameterPtrOutput
+}
+
+type lineDiameterPtrType LineDiameterArgs
+
+func LineDiameterPtr(v *LineDiameterArgs) LineDiameterPtrInput {
+	return (*lineDiameterPtrType)(v)
+}
+
+func (*lineDiameterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineDiameter)(nil)).Elem()
+}
+
+func (i *lineDiameterPtrType) ToLineDiameterPtrOutput() LineDiameterPtrOutput {
+	return i.ToLineDiameterPtrOutputWithContext(context.Background())
+}
+
+func (i *lineDiameterPtrType) ToLineDiameterPtrOutputWithContext(ctx context.Context) LineDiameterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineDiameterPtrOutput)
+}
+
+type LineDiameterOutput struct{ *pulumi.OutputState }
+
+func (LineDiameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineDiameter)(nil)).Elem()
+}
+
+func (o LineDiameterOutput) ToLineDiameterOutput() LineDiameterOutput {
+	return o
+}
+
+func (o LineDiameterOutput) ToLineDiameterOutputWithContext(ctx context.Context) LineDiameterOutput {
+	return o
+}
+
+func (o LineDiameterOutput) ToLineDiameterPtrOutput() LineDiameterPtrOutput {
+	return o.ToLineDiameterPtrOutputWithContext(context.Background())
+}
+
+func (o LineDiameterOutput) ToLineDiameterPtrOutputWithContext(ctx context.Context) LineDiameterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineDiameter) *LineDiameter {
+		return &v
+	}).(LineDiameterPtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineDiameterOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineDiameter) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineDiameterOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineDiameter) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineDiameterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineDiameter) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineDiameterOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineDiameter) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineDiameterOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineDiameter) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineDiameterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineDiameter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineDiameterPtrOutput struct{ *pulumi.OutputState }
+
+func (LineDiameterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineDiameter)(nil)).Elem()
+}
+
+func (o LineDiameterPtrOutput) ToLineDiameterPtrOutput() LineDiameterPtrOutput {
+	return o
+}
+
+func (o LineDiameterPtrOutput) ToLineDiameterPtrOutputWithContext(ctx context.Context) LineDiameterPtrOutput {
+	return o
+}
+
+func (o LineDiameterPtrOutput) Elem() LineDiameterOutput {
+	return o.ApplyT(func(v *LineDiameter) LineDiameter {
+		if v != nil {
+			return *v
+		}
+		var ret LineDiameter
+		return ret
+	}).(LineDiameterOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineDiameterPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineDiameter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineDiameterPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineDiameter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineDiameterPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineDiameter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineDiameterPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineDiameter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineDiameterPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineDiameter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineDiameterPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineDiameter) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineEmissivity struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineEmissivityInput is an input type that accepts LineEmissivityArgs and LineEmissivityOutput values.
+// You can construct a concrete instance of `LineEmissivityInput` via:
+//
+//	LineEmissivityArgs{...}
+type LineEmissivityInput interface {
+	pulumi.Input
+
+	ToLineEmissivityOutput() LineEmissivityOutput
+	ToLineEmissivityOutputWithContext(context.Context) LineEmissivityOutput
+}
+
+type LineEmissivityArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineEmissivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineEmissivity)(nil)).Elem()
+}
+
+func (i LineEmissivityArgs) ToLineEmissivityOutput() LineEmissivityOutput {
+	return i.ToLineEmissivityOutputWithContext(context.Background())
+}
+
+func (i LineEmissivityArgs) ToLineEmissivityOutputWithContext(ctx context.Context) LineEmissivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineEmissivityOutput)
+}
+
+func (i LineEmissivityArgs) ToLineEmissivityPtrOutput() LineEmissivityPtrOutput {
+	return i.ToLineEmissivityPtrOutputWithContext(context.Background())
+}
+
+func (i LineEmissivityArgs) ToLineEmissivityPtrOutputWithContext(ctx context.Context) LineEmissivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineEmissivityOutput).ToLineEmissivityPtrOutputWithContext(ctx)
+}
+
+// LineEmissivityPtrInput is an input type that accepts LineEmissivityArgs, LineEmissivityPtr and LineEmissivityPtrOutput values.
+// You can construct a concrete instance of `LineEmissivityPtrInput` via:
+//
+//	        LineEmissivityArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineEmissivityPtrInput interface {
+	pulumi.Input
+
+	ToLineEmissivityPtrOutput() LineEmissivityPtrOutput
+	ToLineEmissivityPtrOutputWithContext(context.Context) LineEmissivityPtrOutput
+}
+
+type lineEmissivityPtrType LineEmissivityArgs
+
+func LineEmissivityPtr(v *LineEmissivityArgs) LineEmissivityPtrInput {
+	return (*lineEmissivityPtrType)(v)
+}
+
+func (*lineEmissivityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineEmissivity)(nil)).Elem()
+}
+
+func (i *lineEmissivityPtrType) ToLineEmissivityPtrOutput() LineEmissivityPtrOutput {
+	return i.ToLineEmissivityPtrOutputWithContext(context.Background())
+}
+
+func (i *lineEmissivityPtrType) ToLineEmissivityPtrOutputWithContext(ctx context.Context) LineEmissivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineEmissivityPtrOutput)
+}
+
+type LineEmissivityOutput struct{ *pulumi.OutputState }
+
+func (LineEmissivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineEmissivity)(nil)).Elem()
+}
+
+func (o LineEmissivityOutput) ToLineEmissivityOutput() LineEmissivityOutput {
+	return o
+}
+
+func (o LineEmissivityOutput) ToLineEmissivityOutputWithContext(ctx context.Context) LineEmissivityOutput {
+	return o
+}
+
+func (o LineEmissivityOutput) ToLineEmissivityPtrOutput() LineEmissivityPtrOutput {
+	return o.ToLineEmissivityPtrOutputWithContext(context.Background())
+}
+
+func (o LineEmissivityOutput) ToLineEmissivityPtrOutputWithContext(ctx context.Context) LineEmissivityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineEmissivity) *LineEmissivity {
+		return &v
+	}).(LineEmissivityPtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineEmissivityOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineEmissivity) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineEmissivityOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineEmissivity) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineEmissivityOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineEmissivity) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineEmissivityOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineEmissivity) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineEmissivityOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineEmissivity) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineEmissivityOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineEmissivity) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineEmissivityPtrOutput struct{ *pulumi.OutputState }
+
+func (LineEmissivityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineEmissivity)(nil)).Elem()
+}
+
+func (o LineEmissivityPtrOutput) ToLineEmissivityPtrOutput() LineEmissivityPtrOutput {
+	return o
+}
+
+func (o LineEmissivityPtrOutput) ToLineEmissivityPtrOutputWithContext(ctx context.Context) LineEmissivityPtrOutput {
+	return o
+}
+
+func (o LineEmissivityPtrOutput) Elem() LineEmissivityOutput {
+	return o.ApplyT(func(v *LineEmissivity) LineEmissivity {
+		if v != nil {
+			return *v
+		}
+		var ret LineEmissivity
+		return ret
+	}).(LineEmissivityOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineEmissivityPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineEmissivity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineEmissivityPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineEmissivity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineEmissivityPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineEmissivity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineEmissivityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineEmissivity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineEmissivityPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineEmissivity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineEmissivityPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineEmissivity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineEnergy struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// LineEnergyInput is an input type that accepts LineEnergyArgs and LineEnergyOutput values.
+// You can construct a concrete instance of `LineEnergyInput` via:
+//
+//	LineEnergyArgs{...}
+type LineEnergyInput interface {
+	pulumi.Input
+
+	ToLineEnergyOutput() LineEnergyOutput
+	ToLineEnergyOutputWithContext(context.Context) LineEnergyOutput
+}
+
+type LineEnergyArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (LineEnergyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineEnergy)(nil)).Elem()
+}
+
+func (i LineEnergyArgs) ToLineEnergyOutput() LineEnergyOutput {
+	return i.ToLineEnergyOutputWithContext(context.Background())
+}
+
+func (i LineEnergyArgs) ToLineEnergyOutputWithContext(ctx context.Context) LineEnergyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineEnergyOutput)
+}
+
+// LineEnergyArrayInput is an input type that accepts LineEnergyArray and LineEnergyArrayOutput values.
+// You can construct a concrete instance of `LineEnergyArrayInput` via:
+//
+//	LineEnergyArray{ LineEnergyArgs{...} }
+type LineEnergyArrayInput interface {
+	pulumi.Input
+
+	ToLineEnergyArrayOutput() LineEnergyArrayOutput
+	ToLineEnergyArrayOutputWithContext(context.Context) LineEnergyArrayOutput
+}
+
+type LineEnergyArray []LineEnergyInput
+
+func (LineEnergyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineEnergy)(nil)).Elem()
+}
+
+func (i LineEnergyArray) ToLineEnergyArrayOutput() LineEnergyArrayOutput {
+	return i.ToLineEnergyArrayOutputWithContext(context.Background())
+}
+
+func (i LineEnergyArray) ToLineEnergyArrayOutputWithContext(ctx context.Context) LineEnergyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineEnergyArrayOutput)
+}
+
+type LineEnergyOutput struct{ *pulumi.OutputState }
+
+func (LineEnergyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineEnergy)(nil)).Elem()
+}
+
+func (o LineEnergyOutput) ToLineEnergyOutput() LineEnergyOutput {
+	return o
+}
+
+func (o LineEnergyOutput) ToLineEnergyOutputWithContext(ctx context.Context) LineEnergyOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o LineEnergyOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineEnergy) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineEnergyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineEnergy) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineEnergyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineEnergy) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineEnergyOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineEnergy) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineEnergyOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineEnergy) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type LineEnergyArrayOutput struct{ *pulumi.OutputState }
+
+func (LineEnergyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineEnergy)(nil)).Elem()
+}
+
+func (o LineEnergyArrayOutput) ToLineEnergyArrayOutput() LineEnergyArrayOutput {
+	return o
+}
+
+func (o LineEnergyArrayOutput) ToLineEnergyArrayOutputWithContext(ctx context.Context) LineEnergyArrayOutput {
+	return o
+}
+
+func (o LineEnergyArrayOutput) Index(i pulumi.IntInput) LineEnergyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LineEnergy {
+		return vs[0].([]LineEnergy)[vs[1].(int)]
+	}).(LineEnergyOutput)
+}
+
+type LineKind struct {
+	// kind id
+	Id string `pulumi:"id"`
+	// kind name
+	Name string `pulumi:"name"`
+}
+
+// LineKindInput is an input type that accepts LineKindArgs and LineKindOutput values.
+// You can construct a concrete instance of `LineKindInput` via:
+//
+//	LineKindArgs{...}
+type LineKindInput interface {
+	pulumi.Input
+
+	ToLineKindOutput() LineKindOutput
+	ToLineKindOutputWithContext(context.Context) LineKindOutput
+}
+
+type LineKindArgs struct {
+	// kind id
+	Id pulumi.StringInput `pulumi:"id"`
+	// kind name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LineKindArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineKind)(nil)).Elem()
+}
+
+func (i LineKindArgs) ToLineKindOutput() LineKindOutput {
+	return i.ToLineKindOutputWithContext(context.Background())
+}
+
+func (i LineKindArgs) ToLineKindOutputWithContext(ctx context.Context) LineKindOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineKindOutput)
+}
+
+// LineKindArrayInput is an input type that accepts LineKindArray and LineKindArrayOutput values.
+// You can construct a concrete instance of `LineKindArrayInput` via:
+//
+//	LineKindArray{ LineKindArgs{...} }
+type LineKindArrayInput interface {
+	pulumi.Input
+
+	ToLineKindArrayOutput() LineKindArrayOutput
+	ToLineKindArrayOutputWithContext(context.Context) LineKindArrayOutput
+}
+
+type LineKindArray []LineKindInput
+
+func (LineKindArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineKind)(nil)).Elem()
+}
+
+func (i LineKindArray) ToLineKindArrayOutput() LineKindArrayOutput {
+	return i.ToLineKindArrayOutputWithContext(context.Background())
+}
+
+func (i LineKindArray) ToLineKindArrayOutputWithContext(ctx context.Context) LineKindArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineKindArrayOutput)
+}
+
+type LineKindOutput struct{ *pulumi.OutputState }
+
+func (LineKindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineKind)(nil)).Elem()
+}
+
+func (o LineKindOutput) ToLineKindOutput() LineKindOutput {
+	return o
+}
+
+func (o LineKindOutput) ToLineKindOutputWithContext(ctx context.Context) LineKindOutput {
+	return o
+}
+
+// kind id
+func (o LineKindOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LineKind) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// kind name
+func (o LineKindOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LineKind) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type LineKindArrayOutput struct{ *pulumi.OutputState }
+
+func (LineKindArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineKind)(nil)).Elem()
+}
+
+func (o LineKindArrayOutput) ToLineKindArrayOutput() LineKindArrayOutput {
+	return o
+}
+
+func (o LineKindArrayOutput) ToLineKindArrayOutputWithContext(ctx context.Context) LineKindArrayOutput {
+	return o
+}
+
+func (o LineKindArrayOutput) Index(i pulumi.IntInput) LineKindOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LineKind {
+		return vs[0].([]LineKind)[vs[1].(int)]
+	}).(LineKindOutput)
+}
+
+type LineLength struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineLengthInput is an input type that accepts LineLengthArgs and LineLengthOutput values.
+// You can construct a concrete instance of `LineLengthInput` via:
+//
+//	LineLengthArgs{...}
+type LineLengthInput interface {
+	pulumi.Input
+
+	ToLineLengthOutput() LineLengthOutput
+	ToLineLengthOutputWithContext(context.Context) LineLengthOutput
+}
+
+type LineLengthArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineLengthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineLength)(nil)).Elem()
+}
+
+func (i LineLengthArgs) ToLineLengthOutput() LineLengthOutput {
+	return i.ToLineLengthOutputWithContext(context.Background())
+}
+
+func (i LineLengthArgs) ToLineLengthOutputWithContext(ctx context.Context) LineLengthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineLengthOutput)
+}
+
+func (i LineLengthArgs) ToLineLengthPtrOutput() LineLengthPtrOutput {
+	return i.ToLineLengthPtrOutputWithContext(context.Background())
+}
+
+func (i LineLengthArgs) ToLineLengthPtrOutputWithContext(ctx context.Context) LineLengthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineLengthOutput).ToLineLengthPtrOutputWithContext(ctx)
+}
+
+// LineLengthPtrInput is an input type that accepts LineLengthArgs, LineLengthPtr and LineLengthPtrOutput values.
+// You can construct a concrete instance of `LineLengthPtrInput` via:
+//
+//	        LineLengthArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineLengthPtrInput interface {
+	pulumi.Input
+
+	ToLineLengthPtrOutput() LineLengthPtrOutput
+	ToLineLengthPtrOutputWithContext(context.Context) LineLengthPtrOutput
+}
+
+type lineLengthPtrType LineLengthArgs
+
+func LineLengthPtr(v *LineLengthArgs) LineLengthPtrInput {
+	return (*lineLengthPtrType)(v)
+}
+
+func (*lineLengthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineLength)(nil)).Elem()
+}
+
+func (i *lineLengthPtrType) ToLineLengthPtrOutput() LineLengthPtrOutput {
+	return i.ToLineLengthPtrOutputWithContext(context.Background())
+}
+
+func (i *lineLengthPtrType) ToLineLengthPtrOutputWithContext(ctx context.Context) LineLengthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineLengthPtrOutput)
+}
+
+type LineLengthOutput struct{ *pulumi.OutputState }
+
+func (LineLengthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineLength)(nil)).Elem()
+}
+
+func (o LineLengthOutput) ToLineLengthOutput() LineLengthOutput {
+	return o
+}
+
+func (o LineLengthOutput) ToLineLengthOutputWithContext(ctx context.Context) LineLengthOutput {
+	return o
+}
+
+func (o LineLengthOutput) ToLineLengthPtrOutput() LineLengthPtrOutput {
+	return o.ToLineLengthPtrOutputWithContext(context.Background())
+}
+
+func (o LineLengthOutput) ToLineLengthPtrOutputWithContext(ctx context.Context) LineLengthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineLength) *LineLength {
+		return &v
+	}).(LineLengthPtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineLengthOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineLength) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineLengthOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineLength) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineLengthOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineLength) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineLengthOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineLength) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineLengthOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineLength) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineLengthOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineLength) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineLengthPtrOutput struct{ *pulumi.OutputState }
+
+func (LineLengthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineLength)(nil)).Elem()
+}
+
+func (o LineLengthPtrOutput) ToLineLengthPtrOutput() LineLengthPtrOutput {
+	return o
+}
+
+func (o LineLengthPtrOutput) ToLineLengthPtrOutputWithContext(ctx context.Context) LineLengthPtrOutput {
+	return o
+}
+
+func (o LineLengthPtrOutput) Elem() LineLengthOutput {
+	return o.ApplyT(func(v *LineLength) LineLength {
+		if v != nil {
+			return *v
+		}
+		var ret LineLength
+		return ret
+	}).(LineLengthOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineLengthPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineLength) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineLengthPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineLength) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineLengthPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineLength) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineLengthPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineLength) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineLengthPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineLength) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineLengthPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineLength) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineMaxTemperature struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// LineMaxTemperatureInput is an input type that accepts LineMaxTemperatureArgs and LineMaxTemperatureOutput values.
+// You can construct a concrete instance of `LineMaxTemperatureInput` via:
+//
+//	LineMaxTemperatureArgs{...}
+type LineMaxTemperatureInput interface {
+	pulumi.Input
+
+	ToLineMaxTemperatureOutput() LineMaxTemperatureOutput
+	ToLineMaxTemperatureOutputWithContext(context.Context) LineMaxTemperatureOutput
+}
+
+type LineMaxTemperatureArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (LineMaxTemperatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineMaxTemperature)(nil)).Elem()
+}
+
+func (i LineMaxTemperatureArgs) ToLineMaxTemperatureOutput() LineMaxTemperatureOutput {
+	return i.ToLineMaxTemperatureOutputWithContext(context.Background())
+}
+
+func (i LineMaxTemperatureArgs) ToLineMaxTemperatureOutputWithContext(ctx context.Context) LineMaxTemperatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineMaxTemperatureOutput)
+}
+
+// LineMaxTemperatureArrayInput is an input type that accepts LineMaxTemperatureArray and LineMaxTemperatureArrayOutput values.
+// You can construct a concrete instance of `LineMaxTemperatureArrayInput` via:
+//
+//	LineMaxTemperatureArray{ LineMaxTemperatureArgs{...} }
+type LineMaxTemperatureArrayInput interface {
+	pulumi.Input
+
+	ToLineMaxTemperatureArrayOutput() LineMaxTemperatureArrayOutput
+	ToLineMaxTemperatureArrayOutputWithContext(context.Context) LineMaxTemperatureArrayOutput
+}
+
+type LineMaxTemperatureArray []LineMaxTemperatureInput
+
+func (LineMaxTemperatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineMaxTemperature)(nil)).Elem()
+}
+
+func (i LineMaxTemperatureArray) ToLineMaxTemperatureArrayOutput() LineMaxTemperatureArrayOutput {
+	return i.ToLineMaxTemperatureArrayOutputWithContext(context.Background())
+}
+
+func (i LineMaxTemperatureArray) ToLineMaxTemperatureArrayOutputWithContext(ctx context.Context) LineMaxTemperatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineMaxTemperatureArrayOutput)
+}
+
+type LineMaxTemperatureOutput struct{ *pulumi.OutputState }
+
+func (LineMaxTemperatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineMaxTemperature)(nil)).Elem()
+}
+
+func (o LineMaxTemperatureOutput) ToLineMaxTemperatureOutput() LineMaxTemperatureOutput {
+	return o
+}
+
+func (o LineMaxTemperatureOutput) ToLineMaxTemperatureOutputWithContext(ctx context.Context) LineMaxTemperatureOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o LineMaxTemperatureOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaxTemperature) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineMaxTemperatureOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaxTemperature) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineMaxTemperatureOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaxTemperature) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineMaxTemperatureOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaxTemperature) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineMaxTemperatureOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaxTemperature) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type LineMaxTemperatureArrayOutput struct{ *pulumi.OutputState }
+
+func (LineMaxTemperatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineMaxTemperature)(nil)).Elem()
+}
+
+func (o LineMaxTemperatureArrayOutput) ToLineMaxTemperatureArrayOutput() LineMaxTemperatureArrayOutput {
+	return o
+}
+
+func (o LineMaxTemperatureArrayOutput) ToLineMaxTemperatureArrayOutputWithContext(ctx context.Context) LineMaxTemperatureArrayOutput {
+	return o
+}
+
+func (o LineMaxTemperatureArrayOutput) Index(i pulumi.IntInput) LineMaxTemperatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LineMaxTemperature {
+		return vs[0].([]LineMaxTemperature)[vs[1].(int)]
+	}).(LineMaxTemperatureOutput)
+}
+
+type LineMaximumAllowedCurrent struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineMaximumAllowedCurrentInput is an input type that accepts LineMaximumAllowedCurrentArgs and LineMaximumAllowedCurrentOutput values.
+// You can construct a concrete instance of `LineMaximumAllowedCurrentInput` via:
+//
+//	LineMaximumAllowedCurrentArgs{...}
+type LineMaximumAllowedCurrentInput interface {
+	pulumi.Input
+
+	ToLineMaximumAllowedCurrentOutput() LineMaximumAllowedCurrentOutput
+	ToLineMaximumAllowedCurrentOutputWithContext(context.Context) LineMaximumAllowedCurrentOutput
+}
+
+type LineMaximumAllowedCurrentArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineMaximumAllowedCurrentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineMaximumAllowedCurrent)(nil)).Elem()
+}
+
+func (i LineMaximumAllowedCurrentArgs) ToLineMaximumAllowedCurrentOutput() LineMaximumAllowedCurrentOutput {
+	return i.ToLineMaximumAllowedCurrentOutputWithContext(context.Background())
+}
+
+func (i LineMaximumAllowedCurrentArgs) ToLineMaximumAllowedCurrentOutputWithContext(ctx context.Context) LineMaximumAllowedCurrentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineMaximumAllowedCurrentOutput)
+}
+
+func (i LineMaximumAllowedCurrentArgs) ToLineMaximumAllowedCurrentPtrOutput() LineMaximumAllowedCurrentPtrOutput {
+	return i.ToLineMaximumAllowedCurrentPtrOutputWithContext(context.Background())
+}
+
+func (i LineMaximumAllowedCurrentArgs) ToLineMaximumAllowedCurrentPtrOutputWithContext(ctx context.Context) LineMaximumAllowedCurrentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineMaximumAllowedCurrentOutput).ToLineMaximumAllowedCurrentPtrOutputWithContext(ctx)
+}
+
+// LineMaximumAllowedCurrentPtrInput is an input type that accepts LineMaximumAllowedCurrentArgs, LineMaximumAllowedCurrentPtr and LineMaximumAllowedCurrentPtrOutput values.
+// You can construct a concrete instance of `LineMaximumAllowedCurrentPtrInput` via:
+//
+//	        LineMaximumAllowedCurrentArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineMaximumAllowedCurrentPtrInput interface {
+	pulumi.Input
+
+	ToLineMaximumAllowedCurrentPtrOutput() LineMaximumAllowedCurrentPtrOutput
+	ToLineMaximumAllowedCurrentPtrOutputWithContext(context.Context) LineMaximumAllowedCurrentPtrOutput
+}
+
+type lineMaximumAllowedCurrentPtrType LineMaximumAllowedCurrentArgs
+
+func LineMaximumAllowedCurrentPtr(v *LineMaximumAllowedCurrentArgs) LineMaximumAllowedCurrentPtrInput {
+	return (*lineMaximumAllowedCurrentPtrType)(v)
+}
+
+func (*lineMaximumAllowedCurrentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineMaximumAllowedCurrent)(nil)).Elem()
+}
+
+func (i *lineMaximumAllowedCurrentPtrType) ToLineMaximumAllowedCurrentPtrOutput() LineMaximumAllowedCurrentPtrOutput {
+	return i.ToLineMaximumAllowedCurrentPtrOutputWithContext(context.Background())
+}
+
+func (i *lineMaximumAllowedCurrentPtrType) ToLineMaximumAllowedCurrentPtrOutputWithContext(ctx context.Context) LineMaximumAllowedCurrentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineMaximumAllowedCurrentPtrOutput)
+}
+
+type LineMaximumAllowedCurrentOutput struct{ *pulumi.OutputState }
+
+func (LineMaximumAllowedCurrentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineMaximumAllowedCurrent)(nil)).Elem()
+}
+
+func (o LineMaximumAllowedCurrentOutput) ToLineMaximumAllowedCurrentOutput() LineMaximumAllowedCurrentOutput {
+	return o
+}
+
+func (o LineMaximumAllowedCurrentOutput) ToLineMaximumAllowedCurrentOutputWithContext(ctx context.Context) LineMaximumAllowedCurrentOutput {
+	return o
+}
+
+func (o LineMaximumAllowedCurrentOutput) ToLineMaximumAllowedCurrentPtrOutput() LineMaximumAllowedCurrentPtrOutput {
+	return o.ToLineMaximumAllowedCurrentPtrOutputWithContext(context.Background())
+}
+
+func (o LineMaximumAllowedCurrentOutput) ToLineMaximumAllowedCurrentPtrOutputWithContext(ctx context.Context) LineMaximumAllowedCurrentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineMaximumAllowedCurrent) *LineMaximumAllowedCurrent {
+		return &v
+	}).(LineMaximumAllowedCurrentPtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineMaximumAllowedCurrentOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedCurrent) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineMaximumAllowedCurrentOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedCurrent) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineMaximumAllowedCurrentOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedCurrent) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineMaximumAllowedCurrentOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedCurrent) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineMaximumAllowedCurrentOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedCurrent) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineMaximumAllowedCurrentOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineMaximumAllowedCurrent) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineMaximumAllowedCurrentPtrOutput struct{ *pulumi.OutputState }
+
+func (LineMaximumAllowedCurrentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineMaximumAllowedCurrent)(nil)).Elem()
+}
+
+func (o LineMaximumAllowedCurrentPtrOutput) ToLineMaximumAllowedCurrentPtrOutput() LineMaximumAllowedCurrentPtrOutput {
+	return o
+}
+
+func (o LineMaximumAllowedCurrentPtrOutput) ToLineMaximumAllowedCurrentPtrOutputWithContext(ctx context.Context) LineMaximumAllowedCurrentPtrOutput {
+	return o
+}
+
+func (o LineMaximumAllowedCurrentPtrOutput) Elem() LineMaximumAllowedCurrentOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedCurrent) LineMaximumAllowedCurrent {
+		if v != nil {
+			return *v
+		}
+		var ret LineMaximumAllowedCurrent
+		return ret
+	}).(LineMaximumAllowedCurrentOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineMaximumAllowedCurrentPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedCurrent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineMaximumAllowedCurrentPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedCurrent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineMaximumAllowedCurrentPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedCurrent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineMaximumAllowedCurrentPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedCurrent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineMaximumAllowedCurrentPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedCurrent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineMaximumAllowedCurrentPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedCurrent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineMaximumAllowedPower struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineMaximumAllowedPowerInput is an input type that accepts LineMaximumAllowedPowerArgs and LineMaximumAllowedPowerOutput values.
+// You can construct a concrete instance of `LineMaximumAllowedPowerInput` via:
+//
+//	LineMaximumAllowedPowerArgs{...}
+type LineMaximumAllowedPowerInput interface {
+	pulumi.Input
+
+	ToLineMaximumAllowedPowerOutput() LineMaximumAllowedPowerOutput
+	ToLineMaximumAllowedPowerOutputWithContext(context.Context) LineMaximumAllowedPowerOutput
+}
+
+type LineMaximumAllowedPowerArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineMaximumAllowedPowerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineMaximumAllowedPower)(nil)).Elem()
+}
+
+func (i LineMaximumAllowedPowerArgs) ToLineMaximumAllowedPowerOutput() LineMaximumAllowedPowerOutput {
+	return i.ToLineMaximumAllowedPowerOutputWithContext(context.Background())
+}
+
+func (i LineMaximumAllowedPowerArgs) ToLineMaximumAllowedPowerOutputWithContext(ctx context.Context) LineMaximumAllowedPowerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineMaximumAllowedPowerOutput)
+}
+
+func (i LineMaximumAllowedPowerArgs) ToLineMaximumAllowedPowerPtrOutput() LineMaximumAllowedPowerPtrOutput {
+	return i.ToLineMaximumAllowedPowerPtrOutputWithContext(context.Background())
+}
+
+func (i LineMaximumAllowedPowerArgs) ToLineMaximumAllowedPowerPtrOutputWithContext(ctx context.Context) LineMaximumAllowedPowerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineMaximumAllowedPowerOutput).ToLineMaximumAllowedPowerPtrOutputWithContext(ctx)
+}
+
+// LineMaximumAllowedPowerPtrInput is an input type that accepts LineMaximumAllowedPowerArgs, LineMaximumAllowedPowerPtr and LineMaximumAllowedPowerPtrOutput values.
+// You can construct a concrete instance of `LineMaximumAllowedPowerPtrInput` via:
+//
+//	        LineMaximumAllowedPowerArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineMaximumAllowedPowerPtrInput interface {
+	pulumi.Input
+
+	ToLineMaximumAllowedPowerPtrOutput() LineMaximumAllowedPowerPtrOutput
+	ToLineMaximumAllowedPowerPtrOutputWithContext(context.Context) LineMaximumAllowedPowerPtrOutput
+}
+
+type lineMaximumAllowedPowerPtrType LineMaximumAllowedPowerArgs
+
+func LineMaximumAllowedPowerPtr(v *LineMaximumAllowedPowerArgs) LineMaximumAllowedPowerPtrInput {
+	return (*lineMaximumAllowedPowerPtrType)(v)
+}
+
+func (*lineMaximumAllowedPowerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineMaximumAllowedPower)(nil)).Elem()
+}
+
+func (i *lineMaximumAllowedPowerPtrType) ToLineMaximumAllowedPowerPtrOutput() LineMaximumAllowedPowerPtrOutput {
+	return i.ToLineMaximumAllowedPowerPtrOutputWithContext(context.Background())
+}
+
+func (i *lineMaximumAllowedPowerPtrType) ToLineMaximumAllowedPowerPtrOutputWithContext(ctx context.Context) LineMaximumAllowedPowerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineMaximumAllowedPowerPtrOutput)
+}
+
+type LineMaximumAllowedPowerOutput struct{ *pulumi.OutputState }
+
+func (LineMaximumAllowedPowerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineMaximumAllowedPower)(nil)).Elem()
+}
+
+func (o LineMaximumAllowedPowerOutput) ToLineMaximumAllowedPowerOutput() LineMaximumAllowedPowerOutput {
+	return o
+}
+
+func (o LineMaximumAllowedPowerOutput) ToLineMaximumAllowedPowerOutputWithContext(ctx context.Context) LineMaximumAllowedPowerOutput {
+	return o
+}
+
+func (o LineMaximumAllowedPowerOutput) ToLineMaximumAllowedPowerPtrOutput() LineMaximumAllowedPowerPtrOutput {
+	return o.ToLineMaximumAllowedPowerPtrOutputWithContext(context.Background())
+}
+
+func (o LineMaximumAllowedPowerOutput) ToLineMaximumAllowedPowerPtrOutputWithContext(ctx context.Context) LineMaximumAllowedPowerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineMaximumAllowedPower) *LineMaximumAllowedPower {
+		return &v
+	}).(LineMaximumAllowedPowerPtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineMaximumAllowedPowerOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedPower) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineMaximumAllowedPowerOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedPower) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineMaximumAllowedPowerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedPower) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineMaximumAllowedPowerOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedPower) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineMaximumAllowedPowerOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedPower) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineMaximumAllowedPowerOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineMaximumAllowedPower) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineMaximumAllowedPowerPtrOutput struct{ *pulumi.OutputState }
+
+func (LineMaximumAllowedPowerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineMaximumAllowedPower)(nil)).Elem()
+}
+
+func (o LineMaximumAllowedPowerPtrOutput) ToLineMaximumAllowedPowerPtrOutput() LineMaximumAllowedPowerPtrOutput {
+	return o
+}
+
+func (o LineMaximumAllowedPowerPtrOutput) ToLineMaximumAllowedPowerPtrOutputWithContext(ctx context.Context) LineMaximumAllowedPowerPtrOutput {
+	return o
+}
+
+func (o LineMaximumAllowedPowerPtrOutput) Elem() LineMaximumAllowedPowerOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedPower) LineMaximumAllowedPower {
+		if v != nil {
+			return *v
+		}
+		var ret LineMaximumAllowedPower
+		return ret
+	}).(LineMaximumAllowedPowerOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineMaximumAllowedPowerPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedPower) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineMaximumAllowedPowerPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedPower) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineMaximumAllowedPowerPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedPower) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineMaximumAllowedPowerPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedPower) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineMaximumAllowedPowerPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedPower) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineMaximumAllowedPowerPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedPower) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineMaximumAllowedTemperature struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineMaximumAllowedTemperatureInput is an input type that accepts LineMaximumAllowedTemperatureArgs and LineMaximumAllowedTemperatureOutput values.
+// You can construct a concrete instance of `LineMaximumAllowedTemperatureInput` via:
+//
+//	LineMaximumAllowedTemperatureArgs{...}
+type LineMaximumAllowedTemperatureInput interface {
+	pulumi.Input
+
+	ToLineMaximumAllowedTemperatureOutput() LineMaximumAllowedTemperatureOutput
+	ToLineMaximumAllowedTemperatureOutputWithContext(context.Context) LineMaximumAllowedTemperatureOutput
+}
+
+type LineMaximumAllowedTemperatureArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineMaximumAllowedTemperatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineMaximumAllowedTemperature)(nil)).Elem()
+}
+
+func (i LineMaximumAllowedTemperatureArgs) ToLineMaximumAllowedTemperatureOutput() LineMaximumAllowedTemperatureOutput {
+	return i.ToLineMaximumAllowedTemperatureOutputWithContext(context.Background())
+}
+
+func (i LineMaximumAllowedTemperatureArgs) ToLineMaximumAllowedTemperatureOutputWithContext(ctx context.Context) LineMaximumAllowedTemperatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineMaximumAllowedTemperatureOutput)
+}
+
+func (i LineMaximumAllowedTemperatureArgs) ToLineMaximumAllowedTemperaturePtrOutput() LineMaximumAllowedTemperaturePtrOutput {
+	return i.ToLineMaximumAllowedTemperaturePtrOutputWithContext(context.Background())
+}
+
+func (i LineMaximumAllowedTemperatureArgs) ToLineMaximumAllowedTemperaturePtrOutputWithContext(ctx context.Context) LineMaximumAllowedTemperaturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineMaximumAllowedTemperatureOutput).ToLineMaximumAllowedTemperaturePtrOutputWithContext(ctx)
+}
+
+// LineMaximumAllowedTemperaturePtrInput is an input type that accepts LineMaximumAllowedTemperatureArgs, LineMaximumAllowedTemperaturePtr and LineMaximumAllowedTemperaturePtrOutput values.
+// You can construct a concrete instance of `LineMaximumAllowedTemperaturePtrInput` via:
+//
+//	        LineMaximumAllowedTemperatureArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineMaximumAllowedTemperaturePtrInput interface {
+	pulumi.Input
+
+	ToLineMaximumAllowedTemperaturePtrOutput() LineMaximumAllowedTemperaturePtrOutput
+	ToLineMaximumAllowedTemperaturePtrOutputWithContext(context.Context) LineMaximumAllowedTemperaturePtrOutput
+}
+
+type lineMaximumAllowedTemperaturePtrType LineMaximumAllowedTemperatureArgs
+
+func LineMaximumAllowedTemperaturePtr(v *LineMaximumAllowedTemperatureArgs) LineMaximumAllowedTemperaturePtrInput {
+	return (*lineMaximumAllowedTemperaturePtrType)(v)
+}
+
+func (*lineMaximumAllowedTemperaturePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineMaximumAllowedTemperature)(nil)).Elem()
+}
+
+func (i *lineMaximumAllowedTemperaturePtrType) ToLineMaximumAllowedTemperaturePtrOutput() LineMaximumAllowedTemperaturePtrOutput {
+	return i.ToLineMaximumAllowedTemperaturePtrOutputWithContext(context.Background())
+}
+
+func (i *lineMaximumAllowedTemperaturePtrType) ToLineMaximumAllowedTemperaturePtrOutputWithContext(ctx context.Context) LineMaximumAllowedTemperaturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineMaximumAllowedTemperaturePtrOutput)
+}
+
+type LineMaximumAllowedTemperatureOutput struct{ *pulumi.OutputState }
+
+func (LineMaximumAllowedTemperatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineMaximumAllowedTemperature)(nil)).Elem()
+}
+
+func (o LineMaximumAllowedTemperatureOutput) ToLineMaximumAllowedTemperatureOutput() LineMaximumAllowedTemperatureOutput {
+	return o
+}
+
+func (o LineMaximumAllowedTemperatureOutput) ToLineMaximumAllowedTemperatureOutputWithContext(ctx context.Context) LineMaximumAllowedTemperatureOutput {
+	return o
+}
+
+func (o LineMaximumAllowedTemperatureOutput) ToLineMaximumAllowedTemperaturePtrOutput() LineMaximumAllowedTemperaturePtrOutput {
+	return o.ToLineMaximumAllowedTemperaturePtrOutputWithContext(context.Background())
+}
+
+func (o LineMaximumAllowedTemperatureOutput) ToLineMaximumAllowedTemperaturePtrOutputWithContext(ctx context.Context) LineMaximumAllowedTemperaturePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineMaximumAllowedTemperature) *LineMaximumAllowedTemperature {
+		return &v
+	}).(LineMaximumAllowedTemperaturePtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineMaximumAllowedTemperatureOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperature) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineMaximumAllowedTemperatureOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperature) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineMaximumAllowedTemperatureOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperature) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineMaximumAllowedTemperatureOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperature) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineMaximumAllowedTemperatureOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperature) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineMaximumAllowedTemperatureOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperature) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineMaximumAllowedTemperaturePtrOutput struct{ *pulumi.OutputState }
+
+func (LineMaximumAllowedTemperaturePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineMaximumAllowedTemperature)(nil)).Elem()
+}
+
+func (o LineMaximumAllowedTemperaturePtrOutput) ToLineMaximumAllowedTemperaturePtrOutput() LineMaximumAllowedTemperaturePtrOutput {
+	return o
+}
+
+func (o LineMaximumAllowedTemperaturePtrOutput) ToLineMaximumAllowedTemperaturePtrOutputWithContext(ctx context.Context) LineMaximumAllowedTemperaturePtrOutput {
+	return o
+}
+
+func (o LineMaximumAllowedTemperaturePtrOutput) Elem() LineMaximumAllowedTemperatureOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperature) LineMaximumAllowedTemperature {
+		if v != nil {
+			return *v
+		}
+		var ret LineMaximumAllowedTemperature
+		return ret
+	}).(LineMaximumAllowedTemperatureOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineMaximumAllowedTemperaturePtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperature) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineMaximumAllowedTemperaturePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperature) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineMaximumAllowedTemperaturePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperature) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineMaximumAllowedTemperaturePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperature) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineMaximumAllowedTemperaturePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperature) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineMaximumAllowedTemperaturePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperature) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineMaximumAllowedTemperatureLte struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineMaximumAllowedTemperatureLteInput is an input type that accepts LineMaximumAllowedTemperatureLteArgs and LineMaximumAllowedTemperatureLteOutput values.
+// You can construct a concrete instance of `LineMaximumAllowedTemperatureLteInput` via:
+//
+//	LineMaximumAllowedTemperatureLteArgs{...}
+type LineMaximumAllowedTemperatureLteInput interface {
+	pulumi.Input
+
+	ToLineMaximumAllowedTemperatureLteOutput() LineMaximumAllowedTemperatureLteOutput
+	ToLineMaximumAllowedTemperatureLteOutputWithContext(context.Context) LineMaximumAllowedTemperatureLteOutput
+}
+
+type LineMaximumAllowedTemperatureLteArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineMaximumAllowedTemperatureLteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineMaximumAllowedTemperatureLte)(nil)).Elem()
+}
+
+func (i LineMaximumAllowedTemperatureLteArgs) ToLineMaximumAllowedTemperatureLteOutput() LineMaximumAllowedTemperatureLteOutput {
+	return i.ToLineMaximumAllowedTemperatureLteOutputWithContext(context.Background())
+}
+
+func (i LineMaximumAllowedTemperatureLteArgs) ToLineMaximumAllowedTemperatureLteOutputWithContext(ctx context.Context) LineMaximumAllowedTemperatureLteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineMaximumAllowedTemperatureLteOutput)
+}
+
+func (i LineMaximumAllowedTemperatureLteArgs) ToLineMaximumAllowedTemperatureLtePtrOutput() LineMaximumAllowedTemperatureLtePtrOutput {
+	return i.ToLineMaximumAllowedTemperatureLtePtrOutputWithContext(context.Background())
+}
+
+func (i LineMaximumAllowedTemperatureLteArgs) ToLineMaximumAllowedTemperatureLtePtrOutputWithContext(ctx context.Context) LineMaximumAllowedTemperatureLtePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineMaximumAllowedTemperatureLteOutput).ToLineMaximumAllowedTemperatureLtePtrOutputWithContext(ctx)
+}
+
+// LineMaximumAllowedTemperatureLtePtrInput is an input type that accepts LineMaximumAllowedTemperatureLteArgs, LineMaximumAllowedTemperatureLtePtr and LineMaximumAllowedTemperatureLtePtrOutput values.
+// You can construct a concrete instance of `LineMaximumAllowedTemperatureLtePtrInput` via:
+//
+//	        LineMaximumAllowedTemperatureLteArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineMaximumAllowedTemperatureLtePtrInput interface {
+	pulumi.Input
+
+	ToLineMaximumAllowedTemperatureLtePtrOutput() LineMaximumAllowedTemperatureLtePtrOutput
+	ToLineMaximumAllowedTemperatureLtePtrOutputWithContext(context.Context) LineMaximumAllowedTemperatureLtePtrOutput
+}
+
+type lineMaximumAllowedTemperatureLtePtrType LineMaximumAllowedTemperatureLteArgs
+
+func LineMaximumAllowedTemperatureLtePtr(v *LineMaximumAllowedTemperatureLteArgs) LineMaximumAllowedTemperatureLtePtrInput {
+	return (*lineMaximumAllowedTemperatureLtePtrType)(v)
+}
+
+func (*lineMaximumAllowedTemperatureLtePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineMaximumAllowedTemperatureLte)(nil)).Elem()
+}
+
+func (i *lineMaximumAllowedTemperatureLtePtrType) ToLineMaximumAllowedTemperatureLtePtrOutput() LineMaximumAllowedTemperatureLtePtrOutput {
+	return i.ToLineMaximumAllowedTemperatureLtePtrOutputWithContext(context.Background())
+}
+
+func (i *lineMaximumAllowedTemperatureLtePtrType) ToLineMaximumAllowedTemperatureLtePtrOutputWithContext(ctx context.Context) LineMaximumAllowedTemperatureLtePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineMaximumAllowedTemperatureLtePtrOutput)
+}
+
+type LineMaximumAllowedTemperatureLteOutput struct{ *pulumi.OutputState }
+
+func (LineMaximumAllowedTemperatureLteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineMaximumAllowedTemperatureLte)(nil)).Elem()
+}
+
+func (o LineMaximumAllowedTemperatureLteOutput) ToLineMaximumAllowedTemperatureLteOutput() LineMaximumAllowedTemperatureLteOutput {
+	return o
+}
+
+func (o LineMaximumAllowedTemperatureLteOutput) ToLineMaximumAllowedTemperatureLteOutputWithContext(ctx context.Context) LineMaximumAllowedTemperatureLteOutput {
+	return o
+}
+
+func (o LineMaximumAllowedTemperatureLteOutput) ToLineMaximumAllowedTemperatureLtePtrOutput() LineMaximumAllowedTemperatureLtePtrOutput {
+	return o.ToLineMaximumAllowedTemperatureLtePtrOutputWithContext(context.Background())
+}
+
+func (o LineMaximumAllowedTemperatureLteOutput) ToLineMaximumAllowedTemperatureLtePtrOutputWithContext(ctx context.Context) LineMaximumAllowedTemperatureLtePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineMaximumAllowedTemperatureLte) *LineMaximumAllowedTemperatureLte {
+		return &v
+	}).(LineMaximumAllowedTemperatureLtePtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineMaximumAllowedTemperatureLteOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperatureLte) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineMaximumAllowedTemperatureLteOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperatureLte) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineMaximumAllowedTemperatureLteOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperatureLte) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineMaximumAllowedTemperatureLteOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperatureLte) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineMaximumAllowedTemperatureLteOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperatureLte) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineMaximumAllowedTemperatureLteOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperatureLte) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineMaximumAllowedTemperatureLtePtrOutput struct{ *pulumi.OutputState }
+
+func (LineMaximumAllowedTemperatureLtePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineMaximumAllowedTemperatureLte)(nil)).Elem()
+}
+
+func (o LineMaximumAllowedTemperatureLtePtrOutput) ToLineMaximumAllowedTemperatureLtePtrOutput() LineMaximumAllowedTemperatureLtePtrOutput {
+	return o
+}
+
+func (o LineMaximumAllowedTemperatureLtePtrOutput) ToLineMaximumAllowedTemperatureLtePtrOutputWithContext(ctx context.Context) LineMaximumAllowedTemperatureLtePtrOutput {
+	return o
+}
+
+func (o LineMaximumAllowedTemperatureLtePtrOutput) Elem() LineMaximumAllowedTemperatureLteOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperatureLte) LineMaximumAllowedTemperatureLte {
+		if v != nil {
+			return *v
+		}
+		var ret LineMaximumAllowedTemperatureLte
+		return ret
+	}).(LineMaximumAllowedTemperatureLteOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineMaximumAllowedTemperatureLtePtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperatureLte) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineMaximumAllowedTemperatureLtePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperatureLte) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineMaximumAllowedTemperatureLtePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperatureLte) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineMaximumAllowedTemperatureLtePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperatureLte) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineMaximumAllowedTemperatureLtePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperatureLte) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineMaximumAllowedTemperatureLtePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperatureLte) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineMaximumAllowedTemperatureSte struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineMaximumAllowedTemperatureSteInput is an input type that accepts LineMaximumAllowedTemperatureSteArgs and LineMaximumAllowedTemperatureSteOutput values.
+// You can construct a concrete instance of `LineMaximumAllowedTemperatureSteInput` via:
+//
+//	LineMaximumAllowedTemperatureSteArgs{...}
+type LineMaximumAllowedTemperatureSteInput interface {
+	pulumi.Input
+
+	ToLineMaximumAllowedTemperatureSteOutput() LineMaximumAllowedTemperatureSteOutput
+	ToLineMaximumAllowedTemperatureSteOutputWithContext(context.Context) LineMaximumAllowedTemperatureSteOutput
+}
+
+type LineMaximumAllowedTemperatureSteArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineMaximumAllowedTemperatureSteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineMaximumAllowedTemperatureSte)(nil)).Elem()
+}
+
+func (i LineMaximumAllowedTemperatureSteArgs) ToLineMaximumAllowedTemperatureSteOutput() LineMaximumAllowedTemperatureSteOutput {
+	return i.ToLineMaximumAllowedTemperatureSteOutputWithContext(context.Background())
+}
+
+func (i LineMaximumAllowedTemperatureSteArgs) ToLineMaximumAllowedTemperatureSteOutputWithContext(ctx context.Context) LineMaximumAllowedTemperatureSteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineMaximumAllowedTemperatureSteOutput)
+}
+
+func (i LineMaximumAllowedTemperatureSteArgs) ToLineMaximumAllowedTemperatureStePtrOutput() LineMaximumAllowedTemperatureStePtrOutput {
+	return i.ToLineMaximumAllowedTemperatureStePtrOutputWithContext(context.Background())
+}
+
+func (i LineMaximumAllowedTemperatureSteArgs) ToLineMaximumAllowedTemperatureStePtrOutputWithContext(ctx context.Context) LineMaximumAllowedTemperatureStePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineMaximumAllowedTemperatureSteOutput).ToLineMaximumAllowedTemperatureStePtrOutputWithContext(ctx)
+}
+
+// LineMaximumAllowedTemperatureStePtrInput is an input type that accepts LineMaximumAllowedTemperatureSteArgs, LineMaximumAllowedTemperatureStePtr and LineMaximumAllowedTemperatureStePtrOutput values.
+// You can construct a concrete instance of `LineMaximumAllowedTemperatureStePtrInput` via:
+//
+//	        LineMaximumAllowedTemperatureSteArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineMaximumAllowedTemperatureStePtrInput interface {
+	pulumi.Input
+
+	ToLineMaximumAllowedTemperatureStePtrOutput() LineMaximumAllowedTemperatureStePtrOutput
+	ToLineMaximumAllowedTemperatureStePtrOutputWithContext(context.Context) LineMaximumAllowedTemperatureStePtrOutput
+}
+
+type lineMaximumAllowedTemperatureStePtrType LineMaximumAllowedTemperatureSteArgs
+
+func LineMaximumAllowedTemperatureStePtr(v *LineMaximumAllowedTemperatureSteArgs) LineMaximumAllowedTemperatureStePtrInput {
+	return (*lineMaximumAllowedTemperatureStePtrType)(v)
+}
+
+func (*lineMaximumAllowedTemperatureStePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineMaximumAllowedTemperatureSte)(nil)).Elem()
+}
+
+func (i *lineMaximumAllowedTemperatureStePtrType) ToLineMaximumAllowedTemperatureStePtrOutput() LineMaximumAllowedTemperatureStePtrOutput {
+	return i.ToLineMaximumAllowedTemperatureStePtrOutputWithContext(context.Background())
+}
+
+func (i *lineMaximumAllowedTemperatureStePtrType) ToLineMaximumAllowedTemperatureStePtrOutputWithContext(ctx context.Context) LineMaximumAllowedTemperatureStePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineMaximumAllowedTemperatureStePtrOutput)
+}
+
+type LineMaximumAllowedTemperatureSteOutput struct{ *pulumi.OutputState }
+
+func (LineMaximumAllowedTemperatureSteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineMaximumAllowedTemperatureSte)(nil)).Elem()
+}
+
+func (o LineMaximumAllowedTemperatureSteOutput) ToLineMaximumAllowedTemperatureSteOutput() LineMaximumAllowedTemperatureSteOutput {
+	return o
+}
+
+func (o LineMaximumAllowedTemperatureSteOutput) ToLineMaximumAllowedTemperatureSteOutputWithContext(ctx context.Context) LineMaximumAllowedTemperatureSteOutput {
+	return o
+}
+
+func (o LineMaximumAllowedTemperatureSteOutput) ToLineMaximumAllowedTemperatureStePtrOutput() LineMaximumAllowedTemperatureStePtrOutput {
+	return o.ToLineMaximumAllowedTemperatureStePtrOutputWithContext(context.Background())
+}
+
+func (o LineMaximumAllowedTemperatureSteOutput) ToLineMaximumAllowedTemperatureStePtrOutputWithContext(ctx context.Context) LineMaximumAllowedTemperatureStePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineMaximumAllowedTemperatureSte) *LineMaximumAllowedTemperatureSte {
+		return &v
+	}).(LineMaximumAllowedTemperatureStePtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineMaximumAllowedTemperatureSteOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperatureSte) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineMaximumAllowedTemperatureSteOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperatureSte) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineMaximumAllowedTemperatureSteOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperatureSte) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineMaximumAllowedTemperatureSteOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperatureSte) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineMaximumAllowedTemperatureSteOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperatureSte) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineMaximumAllowedTemperatureSteOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperatureSte) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineMaximumAllowedTemperatureStePtrOutput struct{ *pulumi.OutputState }
+
+func (LineMaximumAllowedTemperatureStePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineMaximumAllowedTemperatureSte)(nil)).Elem()
+}
+
+func (o LineMaximumAllowedTemperatureStePtrOutput) ToLineMaximumAllowedTemperatureStePtrOutput() LineMaximumAllowedTemperatureStePtrOutput {
+	return o
+}
+
+func (o LineMaximumAllowedTemperatureStePtrOutput) ToLineMaximumAllowedTemperatureStePtrOutputWithContext(ctx context.Context) LineMaximumAllowedTemperatureStePtrOutput {
+	return o
+}
+
+func (o LineMaximumAllowedTemperatureStePtrOutput) Elem() LineMaximumAllowedTemperatureSteOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperatureSte) LineMaximumAllowedTemperatureSte {
+		if v != nil {
+			return *v
+		}
+		var ret LineMaximumAllowedTemperatureSte
+		return ret
+	}).(LineMaximumAllowedTemperatureSteOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineMaximumAllowedTemperatureStePtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperatureSte) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineMaximumAllowedTemperatureStePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperatureSte) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineMaximumAllowedTemperatureStePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperatureSte) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineMaximumAllowedTemperatureStePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperatureSte) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineMaximumAllowedTemperatureStePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperatureSte) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineMaximumAllowedTemperatureStePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineMaximumAllowedTemperatureSte) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineNumberOfConductors struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineNumberOfConductorsInput is an input type that accepts LineNumberOfConductorsArgs and LineNumberOfConductorsOutput values.
+// You can construct a concrete instance of `LineNumberOfConductorsInput` via:
+//
+//	LineNumberOfConductorsArgs{...}
+type LineNumberOfConductorsInput interface {
+	pulumi.Input
+
+	ToLineNumberOfConductorsOutput() LineNumberOfConductorsOutput
+	ToLineNumberOfConductorsOutputWithContext(context.Context) LineNumberOfConductorsOutput
+}
+
+type LineNumberOfConductorsArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineNumberOfConductorsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineNumberOfConductors)(nil)).Elem()
+}
+
+func (i LineNumberOfConductorsArgs) ToLineNumberOfConductorsOutput() LineNumberOfConductorsOutput {
+	return i.ToLineNumberOfConductorsOutputWithContext(context.Background())
+}
+
+func (i LineNumberOfConductorsArgs) ToLineNumberOfConductorsOutputWithContext(ctx context.Context) LineNumberOfConductorsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineNumberOfConductorsOutput)
+}
+
+func (i LineNumberOfConductorsArgs) ToLineNumberOfConductorsPtrOutput() LineNumberOfConductorsPtrOutput {
+	return i.ToLineNumberOfConductorsPtrOutputWithContext(context.Background())
+}
+
+func (i LineNumberOfConductorsArgs) ToLineNumberOfConductorsPtrOutputWithContext(ctx context.Context) LineNumberOfConductorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineNumberOfConductorsOutput).ToLineNumberOfConductorsPtrOutputWithContext(ctx)
+}
+
+// LineNumberOfConductorsPtrInput is an input type that accepts LineNumberOfConductorsArgs, LineNumberOfConductorsPtr and LineNumberOfConductorsPtrOutput values.
+// You can construct a concrete instance of `LineNumberOfConductorsPtrInput` via:
+//
+//	        LineNumberOfConductorsArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineNumberOfConductorsPtrInput interface {
+	pulumi.Input
+
+	ToLineNumberOfConductorsPtrOutput() LineNumberOfConductorsPtrOutput
+	ToLineNumberOfConductorsPtrOutputWithContext(context.Context) LineNumberOfConductorsPtrOutput
+}
+
+type lineNumberOfConductorsPtrType LineNumberOfConductorsArgs
+
+func LineNumberOfConductorsPtr(v *LineNumberOfConductorsArgs) LineNumberOfConductorsPtrInput {
+	return (*lineNumberOfConductorsPtrType)(v)
+}
+
+func (*lineNumberOfConductorsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineNumberOfConductors)(nil)).Elem()
+}
+
+func (i *lineNumberOfConductorsPtrType) ToLineNumberOfConductorsPtrOutput() LineNumberOfConductorsPtrOutput {
+	return i.ToLineNumberOfConductorsPtrOutputWithContext(context.Background())
+}
+
+func (i *lineNumberOfConductorsPtrType) ToLineNumberOfConductorsPtrOutputWithContext(ctx context.Context) LineNumberOfConductorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineNumberOfConductorsPtrOutput)
+}
+
+type LineNumberOfConductorsOutput struct{ *pulumi.OutputState }
+
+func (LineNumberOfConductorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineNumberOfConductors)(nil)).Elem()
+}
+
+func (o LineNumberOfConductorsOutput) ToLineNumberOfConductorsOutput() LineNumberOfConductorsOutput {
+	return o
+}
+
+func (o LineNumberOfConductorsOutput) ToLineNumberOfConductorsOutputWithContext(ctx context.Context) LineNumberOfConductorsOutput {
+	return o
+}
+
+func (o LineNumberOfConductorsOutput) ToLineNumberOfConductorsPtrOutput() LineNumberOfConductorsPtrOutput {
+	return o.ToLineNumberOfConductorsPtrOutputWithContext(context.Background())
+}
+
+func (o LineNumberOfConductorsOutput) ToLineNumberOfConductorsPtrOutputWithContext(ctx context.Context) LineNumberOfConductorsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineNumberOfConductors) *LineNumberOfConductors {
+		return &v
+	}).(LineNumberOfConductorsPtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineNumberOfConductorsOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineNumberOfConductors) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineNumberOfConductorsOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineNumberOfConductors) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineNumberOfConductorsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineNumberOfConductors) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineNumberOfConductorsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineNumberOfConductors) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineNumberOfConductorsOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineNumberOfConductors) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineNumberOfConductorsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineNumberOfConductors) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineNumberOfConductorsPtrOutput struct{ *pulumi.OutputState }
+
+func (LineNumberOfConductorsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineNumberOfConductors)(nil)).Elem()
+}
+
+func (o LineNumberOfConductorsPtrOutput) ToLineNumberOfConductorsPtrOutput() LineNumberOfConductorsPtrOutput {
+	return o
+}
+
+func (o LineNumberOfConductorsPtrOutput) ToLineNumberOfConductorsPtrOutputWithContext(ctx context.Context) LineNumberOfConductorsPtrOutput {
+	return o
+}
+
+func (o LineNumberOfConductorsPtrOutput) Elem() LineNumberOfConductorsOutput {
+	return o.ApplyT(func(v *LineNumberOfConductors) LineNumberOfConductors {
+		if v != nil {
+			return *v
+		}
+		var ret LineNumberOfConductors
+		return ret
+	}).(LineNumberOfConductorsOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineNumberOfConductorsPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineNumberOfConductors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineNumberOfConductorsPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineNumberOfConductors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineNumberOfConductorsPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineNumberOfConductors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineNumberOfConductorsPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineNumberOfConductors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineNumberOfConductorsPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineNumberOfConductors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineNumberOfConductorsPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineNumberOfConductors) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineReactance struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineReactanceInput is an input type that accepts LineReactanceArgs and LineReactanceOutput values.
+// You can construct a concrete instance of `LineReactanceInput` via:
+//
+//	LineReactanceArgs{...}
+type LineReactanceInput interface {
+	pulumi.Input
+
+	ToLineReactanceOutput() LineReactanceOutput
+	ToLineReactanceOutputWithContext(context.Context) LineReactanceOutput
+}
+
+type LineReactanceArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineReactanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineReactance)(nil)).Elem()
+}
+
+func (i LineReactanceArgs) ToLineReactanceOutput() LineReactanceOutput {
+	return i.ToLineReactanceOutputWithContext(context.Background())
+}
+
+func (i LineReactanceArgs) ToLineReactanceOutputWithContext(ctx context.Context) LineReactanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineReactanceOutput)
+}
+
+func (i LineReactanceArgs) ToLineReactancePtrOutput() LineReactancePtrOutput {
+	return i.ToLineReactancePtrOutputWithContext(context.Background())
+}
+
+func (i LineReactanceArgs) ToLineReactancePtrOutputWithContext(ctx context.Context) LineReactancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineReactanceOutput).ToLineReactancePtrOutputWithContext(ctx)
+}
+
+// LineReactancePtrInput is an input type that accepts LineReactanceArgs, LineReactancePtr and LineReactancePtrOutput values.
+// You can construct a concrete instance of `LineReactancePtrInput` via:
+//
+//	        LineReactanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineReactancePtrInput interface {
+	pulumi.Input
+
+	ToLineReactancePtrOutput() LineReactancePtrOutput
+	ToLineReactancePtrOutputWithContext(context.Context) LineReactancePtrOutput
+}
+
+type lineReactancePtrType LineReactanceArgs
+
+func LineReactancePtr(v *LineReactanceArgs) LineReactancePtrInput {
+	return (*lineReactancePtrType)(v)
+}
+
+func (*lineReactancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineReactance)(nil)).Elem()
+}
+
+func (i *lineReactancePtrType) ToLineReactancePtrOutput() LineReactancePtrOutput {
+	return i.ToLineReactancePtrOutputWithContext(context.Background())
+}
+
+func (i *lineReactancePtrType) ToLineReactancePtrOutputWithContext(ctx context.Context) LineReactancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineReactancePtrOutput)
+}
+
+type LineReactanceOutput struct{ *pulumi.OutputState }
+
+func (LineReactanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineReactance)(nil)).Elem()
+}
+
+func (o LineReactanceOutput) ToLineReactanceOutput() LineReactanceOutput {
+	return o
+}
+
+func (o LineReactanceOutput) ToLineReactanceOutputWithContext(ctx context.Context) LineReactanceOutput {
+	return o
+}
+
+func (o LineReactanceOutput) ToLineReactancePtrOutput() LineReactancePtrOutput {
+	return o.ToLineReactancePtrOutputWithContext(context.Background())
+}
+
+func (o LineReactanceOutput) ToLineReactancePtrOutputWithContext(ctx context.Context) LineReactancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineReactance) *LineReactance {
+		return &v
+	}).(LineReactancePtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineReactanceOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineReactance) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineReactanceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineReactance) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineReactanceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineReactance) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineReactanceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineReactance) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineReactanceOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineReactance) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineReactanceOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineReactance) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineReactancePtrOutput struct{ *pulumi.OutputState }
+
+func (LineReactancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineReactance)(nil)).Elem()
+}
+
+func (o LineReactancePtrOutput) ToLineReactancePtrOutput() LineReactancePtrOutput {
+	return o
+}
+
+func (o LineReactancePtrOutput) ToLineReactancePtrOutputWithContext(ctx context.Context) LineReactancePtrOutput {
+	return o
+}
+
+func (o LineReactancePtrOutput) Elem() LineReactanceOutput {
+	return o.ApplyT(func(v *LineReactance) LineReactance {
+		if v != nil {
+			return *v
+		}
+		var ret LineReactance
+		return ret
+	}).(LineReactanceOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineReactancePtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineReactance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineReactancePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineReactance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineReactancePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineReactance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineReactancePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineReactance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineReactancePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineReactance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineReactancePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineReactance) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineReactivePower struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// LineReactivePowerInput is an input type that accepts LineReactivePowerArgs and LineReactivePowerOutput values.
+// You can construct a concrete instance of `LineReactivePowerInput` via:
+//
+//	LineReactivePowerArgs{...}
+type LineReactivePowerInput interface {
+	pulumi.Input
+
+	ToLineReactivePowerOutput() LineReactivePowerOutput
+	ToLineReactivePowerOutputWithContext(context.Context) LineReactivePowerOutput
+}
+
+type LineReactivePowerArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (LineReactivePowerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineReactivePower)(nil)).Elem()
+}
+
+func (i LineReactivePowerArgs) ToLineReactivePowerOutput() LineReactivePowerOutput {
+	return i.ToLineReactivePowerOutputWithContext(context.Background())
+}
+
+func (i LineReactivePowerArgs) ToLineReactivePowerOutputWithContext(ctx context.Context) LineReactivePowerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineReactivePowerOutput)
+}
+
+// LineReactivePowerArrayInput is an input type that accepts LineReactivePowerArray and LineReactivePowerArrayOutput values.
+// You can construct a concrete instance of `LineReactivePowerArrayInput` via:
+//
+//	LineReactivePowerArray{ LineReactivePowerArgs{...} }
+type LineReactivePowerArrayInput interface {
+	pulumi.Input
+
+	ToLineReactivePowerArrayOutput() LineReactivePowerArrayOutput
+	ToLineReactivePowerArrayOutputWithContext(context.Context) LineReactivePowerArrayOutput
+}
+
+type LineReactivePowerArray []LineReactivePowerInput
+
+func (LineReactivePowerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineReactivePower)(nil)).Elem()
+}
+
+func (i LineReactivePowerArray) ToLineReactivePowerArrayOutput() LineReactivePowerArrayOutput {
+	return i.ToLineReactivePowerArrayOutputWithContext(context.Background())
+}
+
+func (i LineReactivePowerArray) ToLineReactivePowerArrayOutputWithContext(ctx context.Context) LineReactivePowerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineReactivePowerArrayOutput)
+}
+
+type LineReactivePowerOutput struct{ *pulumi.OutputState }
+
+func (LineReactivePowerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineReactivePower)(nil)).Elem()
+}
+
+func (o LineReactivePowerOutput) ToLineReactivePowerOutput() LineReactivePowerOutput {
+	return o
+}
+
+func (o LineReactivePowerOutput) ToLineReactivePowerOutputWithContext(ctx context.Context) LineReactivePowerOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o LineReactivePowerOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineReactivePower) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineReactivePowerOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineReactivePower) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineReactivePowerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineReactivePower) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineReactivePowerOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineReactivePower) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineReactivePowerOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineReactivePower) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type LineReactivePowerArrayOutput struct{ *pulumi.OutputState }
+
+func (LineReactivePowerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineReactivePower)(nil)).Elem()
+}
+
+func (o LineReactivePowerArrayOutput) ToLineReactivePowerArrayOutput() LineReactivePowerArrayOutput {
+	return o
+}
+
+func (o LineReactivePowerArrayOutput) ToLineReactivePowerArrayOutputWithContext(ctx context.Context) LineReactivePowerArrayOutput {
+	return o
+}
+
+func (o LineReactivePowerArrayOutput) Index(i pulumi.IntInput) LineReactivePowerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LineReactivePower {
+		return vs[0].([]LineReactivePower)[vs[1].(int)]
+	}).(LineReactivePowerOutput)
+}
+
+type LineReferenceResistance struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineReferenceResistanceInput is an input type that accepts LineReferenceResistanceArgs and LineReferenceResistanceOutput values.
+// You can construct a concrete instance of `LineReferenceResistanceInput` via:
+//
+//	LineReferenceResistanceArgs{...}
+type LineReferenceResistanceInput interface {
+	pulumi.Input
+
+	ToLineReferenceResistanceOutput() LineReferenceResistanceOutput
+	ToLineReferenceResistanceOutputWithContext(context.Context) LineReferenceResistanceOutput
+}
+
+type LineReferenceResistanceArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineReferenceResistanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineReferenceResistance)(nil)).Elem()
+}
+
+func (i LineReferenceResistanceArgs) ToLineReferenceResistanceOutput() LineReferenceResistanceOutput {
+	return i.ToLineReferenceResistanceOutputWithContext(context.Background())
+}
+
+func (i LineReferenceResistanceArgs) ToLineReferenceResistanceOutputWithContext(ctx context.Context) LineReferenceResistanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineReferenceResistanceOutput)
+}
+
+func (i LineReferenceResistanceArgs) ToLineReferenceResistancePtrOutput() LineReferenceResistancePtrOutput {
+	return i.ToLineReferenceResistancePtrOutputWithContext(context.Background())
+}
+
+func (i LineReferenceResistanceArgs) ToLineReferenceResistancePtrOutputWithContext(ctx context.Context) LineReferenceResistancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineReferenceResistanceOutput).ToLineReferenceResistancePtrOutputWithContext(ctx)
+}
+
+// LineReferenceResistancePtrInput is an input type that accepts LineReferenceResistanceArgs, LineReferenceResistancePtr and LineReferenceResistancePtrOutput values.
+// You can construct a concrete instance of `LineReferenceResistancePtrInput` via:
+//
+//	        LineReferenceResistanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineReferenceResistancePtrInput interface {
+	pulumi.Input
+
+	ToLineReferenceResistancePtrOutput() LineReferenceResistancePtrOutput
+	ToLineReferenceResistancePtrOutputWithContext(context.Context) LineReferenceResistancePtrOutput
+}
+
+type lineReferenceResistancePtrType LineReferenceResistanceArgs
+
+func LineReferenceResistancePtr(v *LineReferenceResistanceArgs) LineReferenceResistancePtrInput {
+	return (*lineReferenceResistancePtrType)(v)
+}
+
+func (*lineReferenceResistancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineReferenceResistance)(nil)).Elem()
+}
+
+func (i *lineReferenceResistancePtrType) ToLineReferenceResistancePtrOutput() LineReferenceResistancePtrOutput {
+	return i.ToLineReferenceResistancePtrOutputWithContext(context.Background())
+}
+
+func (i *lineReferenceResistancePtrType) ToLineReferenceResistancePtrOutputWithContext(ctx context.Context) LineReferenceResistancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineReferenceResistancePtrOutput)
+}
+
+type LineReferenceResistanceOutput struct{ *pulumi.OutputState }
+
+func (LineReferenceResistanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineReferenceResistance)(nil)).Elem()
+}
+
+func (o LineReferenceResistanceOutput) ToLineReferenceResistanceOutput() LineReferenceResistanceOutput {
+	return o
+}
+
+func (o LineReferenceResistanceOutput) ToLineReferenceResistanceOutputWithContext(ctx context.Context) LineReferenceResistanceOutput {
+	return o
+}
+
+func (o LineReferenceResistanceOutput) ToLineReferenceResistancePtrOutput() LineReferenceResistancePtrOutput {
+	return o.ToLineReferenceResistancePtrOutputWithContext(context.Background())
+}
+
+func (o LineReferenceResistanceOutput) ToLineReferenceResistancePtrOutputWithContext(ctx context.Context) LineReferenceResistancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineReferenceResistance) *LineReferenceResistance {
+		return &v
+	}).(LineReferenceResistancePtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineReferenceResistanceOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineReferenceResistance) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineReferenceResistanceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineReferenceResistance) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineReferenceResistanceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineReferenceResistance) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineReferenceResistanceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineReferenceResistance) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineReferenceResistanceOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineReferenceResistance) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineReferenceResistanceOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineReferenceResistance) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineReferenceResistancePtrOutput struct{ *pulumi.OutputState }
+
+func (LineReferenceResistancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineReferenceResistance)(nil)).Elem()
+}
+
+func (o LineReferenceResistancePtrOutput) ToLineReferenceResistancePtrOutput() LineReferenceResistancePtrOutput {
+	return o
+}
+
+func (o LineReferenceResistancePtrOutput) ToLineReferenceResistancePtrOutputWithContext(ctx context.Context) LineReferenceResistancePtrOutput {
+	return o
+}
+
+func (o LineReferenceResistancePtrOutput) Elem() LineReferenceResistanceOutput {
+	return o.ApplyT(func(v *LineReferenceResistance) LineReferenceResistance {
+		if v != nil {
+			return *v
+		}
+		var ret LineReferenceResistance
+		return ret
+	}).(LineReferenceResistanceOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineReferenceResistancePtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineReferenceResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineReferenceResistancePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineReferenceResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineReferenceResistancePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineReferenceResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineReferenceResistancePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineReferenceResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineReferenceResistancePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineReferenceResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineReferenceResistancePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineReferenceResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineRelatedAsset struct {
+	// asset id
+	Id string `pulumi:"id"`
+	// asset name
+	Name string `pulumi:"name"`
+}
+
+// LineRelatedAssetInput is an input type that accepts LineRelatedAssetArgs and LineRelatedAssetOutput values.
+// You can construct a concrete instance of `LineRelatedAssetInput` via:
+//
+//	LineRelatedAssetArgs{...}
+type LineRelatedAssetInput interface {
+	pulumi.Input
+
+	ToLineRelatedAssetOutput() LineRelatedAssetOutput
+	ToLineRelatedAssetOutputWithContext(context.Context) LineRelatedAssetOutput
+}
+
+type LineRelatedAssetArgs struct {
+	// asset id
+	Id pulumi.StringInput `pulumi:"id"`
+	// asset name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LineRelatedAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineRelatedAsset)(nil)).Elem()
+}
+
+func (i LineRelatedAssetArgs) ToLineRelatedAssetOutput() LineRelatedAssetOutput {
+	return i.ToLineRelatedAssetOutputWithContext(context.Background())
+}
+
+func (i LineRelatedAssetArgs) ToLineRelatedAssetOutputWithContext(ctx context.Context) LineRelatedAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineRelatedAssetOutput)
+}
+
+// LineRelatedAssetArrayInput is an input type that accepts LineRelatedAssetArray and LineRelatedAssetArrayOutput values.
+// You can construct a concrete instance of `LineRelatedAssetArrayInput` via:
+//
+//	LineRelatedAssetArray{ LineRelatedAssetArgs{...} }
+type LineRelatedAssetArrayInput interface {
+	pulumi.Input
+
+	ToLineRelatedAssetArrayOutput() LineRelatedAssetArrayOutput
+	ToLineRelatedAssetArrayOutputWithContext(context.Context) LineRelatedAssetArrayOutput
+}
+
+type LineRelatedAssetArray []LineRelatedAssetInput
+
+func (LineRelatedAssetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineRelatedAsset)(nil)).Elem()
+}
+
+func (i LineRelatedAssetArray) ToLineRelatedAssetArrayOutput() LineRelatedAssetArrayOutput {
+	return i.ToLineRelatedAssetArrayOutputWithContext(context.Background())
+}
+
+func (i LineRelatedAssetArray) ToLineRelatedAssetArrayOutputWithContext(ctx context.Context) LineRelatedAssetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineRelatedAssetArrayOutput)
+}
+
+type LineRelatedAssetOutput struct{ *pulumi.OutputState }
+
+func (LineRelatedAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineRelatedAsset)(nil)).Elem()
+}
+
+func (o LineRelatedAssetOutput) ToLineRelatedAssetOutput() LineRelatedAssetOutput {
+	return o
+}
+
+func (o LineRelatedAssetOutput) ToLineRelatedAssetOutputWithContext(ctx context.Context) LineRelatedAssetOutput {
+	return o
+}
+
+// asset id
+func (o LineRelatedAssetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LineRelatedAsset) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// asset name
+func (o LineRelatedAssetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LineRelatedAsset) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type LineRelatedAssetArrayOutput struct{ *pulumi.OutputState }
+
+func (LineRelatedAssetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineRelatedAsset)(nil)).Elem()
+}
+
+func (o LineRelatedAssetArrayOutput) ToLineRelatedAssetArrayOutput() LineRelatedAssetArrayOutput {
+	return o
+}
+
+func (o LineRelatedAssetArrayOutput) ToLineRelatedAssetArrayOutputWithContext(ctx context.Context) LineRelatedAssetArrayOutput {
+	return o
+}
+
+func (o LineRelatedAssetArrayOutput) Index(i pulumi.IntInput) LineRelatedAssetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LineRelatedAsset {
+		return vs[0].([]LineRelatedAsset)[vs[1].(int)]
+	}).(LineRelatedAssetOutput)
+}
+
+type LineResistance struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineResistanceInput is an input type that accepts LineResistanceArgs and LineResistanceOutput values.
+// You can construct a concrete instance of `LineResistanceInput` via:
+//
+//	LineResistanceArgs{...}
+type LineResistanceInput interface {
+	pulumi.Input
+
+	ToLineResistanceOutput() LineResistanceOutput
+	ToLineResistanceOutputWithContext(context.Context) LineResistanceOutput
+}
+
+type LineResistanceArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineResistanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineResistance)(nil)).Elem()
+}
+
+func (i LineResistanceArgs) ToLineResistanceOutput() LineResistanceOutput {
+	return i.ToLineResistanceOutputWithContext(context.Background())
+}
+
+func (i LineResistanceArgs) ToLineResistanceOutputWithContext(ctx context.Context) LineResistanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineResistanceOutput)
+}
+
+func (i LineResistanceArgs) ToLineResistancePtrOutput() LineResistancePtrOutput {
+	return i.ToLineResistancePtrOutputWithContext(context.Background())
+}
+
+func (i LineResistanceArgs) ToLineResistancePtrOutputWithContext(ctx context.Context) LineResistancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineResistanceOutput).ToLineResistancePtrOutputWithContext(ctx)
+}
+
+// LineResistancePtrInput is an input type that accepts LineResistanceArgs, LineResistancePtr and LineResistancePtrOutput values.
+// You can construct a concrete instance of `LineResistancePtrInput` via:
+//
+//	        LineResistanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineResistancePtrInput interface {
+	pulumi.Input
+
+	ToLineResistancePtrOutput() LineResistancePtrOutput
+	ToLineResistancePtrOutputWithContext(context.Context) LineResistancePtrOutput
+}
+
+type lineResistancePtrType LineResistanceArgs
+
+func LineResistancePtr(v *LineResistanceArgs) LineResistancePtrInput {
+	return (*lineResistancePtrType)(v)
+}
+
+func (*lineResistancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineResistance)(nil)).Elem()
+}
+
+func (i *lineResistancePtrType) ToLineResistancePtrOutput() LineResistancePtrOutput {
+	return i.ToLineResistancePtrOutputWithContext(context.Background())
+}
+
+func (i *lineResistancePtrType) ToLineResistancePtrOutputWithContext(ctx context.Context) LineResistancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineResistancePtrOutput)
+}
+
+type LineResistanceOutput struct{ *pulumi.OutputState }
+
+func (LineResistanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineResistance)(nil)).Elem()
+}
+
+func (o LineResistanceOutput) ToLineResistanceOutput() LineResistanceOutput {
+	return o
+}
+
+func (o LineResistanceOutput) ToLineResistanceOutputWithContext(ctx context.Context) LineResistanceOutput {
+	return o
+}
+
+func (o LineResistanceOutput) ToLineResistancePtrOutput() LineResistancePtrOutput {
+	return o.ToLineResistancePtrOutputWithContext(context.Background())
+}
+
+func (o LineResistanceOutput) ToLineResistancePtrOutputWithContext(ctx context.Context) LineResistancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineResistance) *LineResistance {
+		return &v
+	}).(LineResistancePtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineResistanceOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineResistance) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineResistanceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineResistance) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineResistanceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineResistance) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineResistanceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineResistance) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineResistanceOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineResistance) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineResistanceOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineResistance) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineResistancePtrOutput struct{ *pulumi.OutputState }
+
+func (LineResistancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineResistance)(nil)).Elem()
+}
+
+func (o LineResistancePtrOutput) ToLineResistancePtrOutput() LineResistancePtrOutput {
+	return o
+}
+
+func (o LineResistancePtrOutput) ToLineResistancePtrOutputWithContext(ctx context.Context) LineResistancePtrOutput {
+	return o
+}
+
+func (o LineResistancePtrOutput) Elem() LineResistanceOutput {
+	return o.ApplyT(func(v *LineResistance) LineResistance {
+		if v != nil {
+			return *v
+		}
+		var ret LineResistance
+		return ret
+	}).(LineResistanceOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineResistancePtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineResistancePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineResistancePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineResistancePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineResistancePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineResistancePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineSafetyMarginForPower struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineSafetyMarginForPowerInput is an input type that accepts LineSafetyMarginForPowerArgs and LineSafetyMarginForPowerOutput values.
+// You can construct a concrete instance of `LineSafetyMarginForPowerInput` via:
+//
+//	LineSafetyMarginForPowerArgs{...}
+type LineSafetyMarginForPowerInput interface {
+	pulumi.Input
+
+	ToLineSafetyMarginForPowerOutput() LineSafetyMarginForPowerOutput
+	ToLineSafetyMarginForPowerOutputWithContext(context.Context) LineSafetyMarginForPowerOutput
+}
+
+type LineSafetyMarginForPowerArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineSafetyMarginForPowerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineSafetyMarginForPower)(nil)).Elem()
+}
+
+func (i LineSafetyMarginForPowerArgs) ToLineSafetyMarginForPowerOutput() LineSafetyMarginForPowerOutput {
+	return i.ToLineSafetyMarginForPowerOutputWithContext(context.Background())
+}
+
+func (i LineSafetyMarginForPowerArgs) ToLineSafetyMarginForPowerOutputWithContext(ctx context.Context) LineSafetyMarginForPowerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineSafetyMarginForPowerOutput)
+}
+
+func (i LineSafetyMarginForPowerArgs) ToLineSafetyMarginForPowerPtrOutput() LineSafetyMarginForPowerPtrOutput {
+	return i.ToLineSafetyMarginForPowerPtrOutputWithContext(context.Background())
+}
+
+func (i LineSafetyMarginForPowerArgs) ToLineSafetyMarginForPowerPtrOutputWithContext(ctx context.Context) LineSafetyMarginForPowerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineSafetyMarginForPowerOutput).ToLineSafetyMarginForPowerPtrOutputWithContext(ctx)
+}
+
+// LineSafetyMarginForPowerPtrInput is an input type that accepts LineSafetyMarginForPowerArgs, LineSafetyMarginForPowerPtr and LineSafetyMarginForPowerPtrOutput values.
+// You can construct a concrete instance of `LineSafetyMarginForPowerPtrInput` via:
+//
+//	        LineSafetyMarginForPowerArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineSafetyMarginForPowerPtrInput interface {
+	pulumi.Input
+
+	ToLineSafetyMarginForPowerPtrOutput() LineSafetyMarginForPowerPtrOutput
+	ToLineSafetyMarginForPowerPtrOutputWithContext(context.Context) LineSafetyMarginForPowerPtrOutput
+}
+
+type lineSafetyMarginForPowerPtrType LineSafetyMarginForPowerArgs
+
+func LineSafetyMarginForPowerPtr(v *LineSafetyMarginForPowerArgs) LineSafetyMarginForPowerPtrInput {
+	return (*lineSafetyMarginForPowerPtrType)(v)
+}
+
+func (*lineSafetyMarginForPowerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineSafetyMarginForPower)(nil)).Elem()
+}
+
+func (i *lineSafetyMarginForPowerPtrType) ToLineSafetyMarginForPowerPtrOutput() LineSafetyMarginForPowerPtrOutput {
+	return i.ToLineSafetyMarginForPowerPtrOutputWithContext(context.Background())
+}
+
+func (i *lineSafetyMarginForPowerPtrType) ToLineSafetyMarginForPowerPtrOutputWithContext(ctx context.Context) LineSafetyMarginForPowerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineSafetyMarginForPowerPtrOutput)
+}
+
+type LineSafetyMarginForPowerOutput struct{ *pulumi.OutputState }
+
+func (LineSafetyMarginForPowerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineSafetyMarginForPower)(nil)).Elem()
+}
+
+func (o LineSafetyMarginForPowerOutput) ToLineSafetyMarginForPowerOutput() LineSafetyMarginForPowerOutput {
+	return o
+}
+
+func (o LineSafetyMarginForPowerOutput) ToLineSafetyMarginForPowerOutputWithContext(ctx context.Context) LineSafetyMarginForPowerOutput {
+	return o
+}
+
+func (o LineSafetyMarginForPowerOutput) ToLineSafetyMarginForPowerPtrOutput() LineSafetyMarginForPowerPtrOutput {
+	return o.ToLineSafetyMarginForPowerPtrOutputWithContext(context.Background())
+}
+
+func (o LineSafetyMarginForPowerOutput) ToLineSafetyMarginForPowerPtrOutputWithContext(ctx context.Context) LineSafetyMarginForPowerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineSafetyMarginForPower) *LineSafetyMarginForPower {
+		return &v
+	}).(LineSafetyMarginForPowerPtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineSafetyMarginForPowerOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSafetyMarginForPower) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineSafetyMarginForPowerOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSafetyMarginForPower) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineSafetyMarginForPowerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSafetyMarginForPower) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineSafetyMarginForPowerOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSafetyMarginForPower) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineSafetyMarginForPowerOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSafetyMarginForPower) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineSafetyMarginForPowerOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineSafetyMarginForPower) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineSafetyMarginForPowerPtrOutput struct{ *pulumi.OutputState }
+
+func (LineSafetyMarginForPowerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineSafetyMarginForPower)(nil)).Elem()
+}
+
+func (o LineSafetyMarginForPowerPtrOutput) ToLineSafetyMarginForPowerPtrOutput() LineSafetyMarginForPowerPtrOutput {
+	return o
+}
+
+func (o LineSafetyMarginForPowerPtrOutput) ToLineSafetyMarginForPowerPtrOutputWithContext(ctx context.Context) LineSafetyMarginForPowerPtrOutput {
+	return o
+}
+
+func (o LineSafetyMarginForPowerPtrOutput) Elem() LineSafetyMarginForPowerOutput {
+	return o.ApplyT(func(v *LineSafetyMarginForPower) LineSafetyMarginForPower {
+		if v != nil {
+			return *v
+		}
+		var ret LineSafetyMarginForPower
+		return ret
+	}).(LineSafetyMarginForPowerOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineSafetyMarginForPowerPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineSafetyMarginForPower) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineSafetyMarginForPowerPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineSafetyMarginForPower) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineSafetyMarginForPowerPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineSafetyMarginForPower) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineSafetyMarginForPowerPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineSafetyMarginForPower) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineSafetyMarginForPowerPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineSafetyMarginForPower) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineSafetyMarginForPowerPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineSafetyMarginForPower) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineSusceptance struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineSusceptanceInput is an input type that accepts LineSusceptanceArgs and LineSusceptanceOutput values.
+// You can construct a concrete instance of `LineSusceptanceInput` via:
+//
+//	LineSusceptanceArgs{...}
+type LineSusceptanceInput interface {
+	pulumi.Input
+
+	ToLineSusceptanceOutput() LineSusceptanceOutput
+	ToLineSusceptanceOutputWithContext(context.Context) LineSusceptanceOutput
+}
+
+type LineSusceptanceArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineSusceptanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineSusceptance)(nil)).Elem()
+}
+
+func (i LineSusceptanceArgs) ToLineSusceptanceOutput() LineSusceptanceOutput {
+	return i.ToLineSusceptanceOutputWithContext(context.Background())
+}
+
+func (i LineSusceptanceArgs) ToLineSusceptanceOutputWithContext(ctx context.Context) LineSusceptanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineSusceptanceOutput)
+}
+
+func (i LineSusceptanceArgs) ToLineSusceptancePtrOutput() LineSusceptancePtrOutput {
+	return i.ToLineSusceptancePtrOutputWithContext(context.Background())
+}
+
+func (i LineSusceptanceArgs) ToLineSusceptancePtrOutputWithContext(ctx context.Context) LineSusceptancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineSusceptanceOutput).ToLineSusceptancePtrOutputWithContext(ctx)
+}
+
+// LineSusceptancePtrInput is an input type that accepts LineSusceptanceArgs, LineSusceptancePtr and LineSusceptancePtrOutput values.
+// You can construct a concrete instance of `LineSusceptancePtrInput` via:
+//
+//	        LineSusceptanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineSusceptancePtrInput interface {
+	pulumi.Input
+
+	ToLineSusceptancePtrOutput() LineSusceptancePtrOutput
+	ToLineSusceptancePtrOutputWithContext(context.Context) LineSusceptancePtrOutput
+}
+
+type lineSusceptancePtrType LineSusceptanceArgs
+
+func LineSusceptancePtr(v *LineSusceptanceArgs) LineSusceptancePtrInput {
+	return (*lineSusceptancePtrType)(v)
+}
+
+func (*lineSusceptancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineSusceptance)(nil)).Elem()
+}
+
+func (i *lineSusceptancePtrType) ToLineSusceptancePtrOutput() LineSusceptancePtrOutput {
+	return i.ToLineSusceptancePtrOutputWithContext(context.Background())
+}
+
+func (i *lineSusceptancePtrType) ToLineSusceptancePtrOutputWithContext(ctx context.Context) LineSusceptancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineSusceptancePtrOutput)
+}
+
+type LineSusceptanceOutput struct{ *pulumi.OutputState }
+
+func (LineSusceptanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineSusceptance)(nil)).Elem()
+}
+
+func (o LineSusceptanceOutput) ToLineSusceptanceOutput() LineSusceptanceOutput {
+	return o
+}
+
+func (o LineSusceptanceOutput) ToLineSusceptanceOutputWithContext(ctx context.Context) LineSusceptanceOutput {
+	return o
+}
+
+func (o LineSusceptanceOutput) ToLineSusceptancePtrOutput() LineSusceptancePtrOutput {
+	return o.ToLineSusceptancePtrOutputWithContext(context.Background())
+}
+
+func (o LineSusceptanceOutput) ToLineSusceptancePtrOutputWithContext(ctx context.Context) LineSusceptancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineSusceptance) *LineSusceptance {
+		return &v
+	}).(LineSusceptancePtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineSusceptanceOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSusceptance) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineSusceptanceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSusceptance) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineSusceptanceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSusceptance) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineSusceptanceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSusceptance) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineSusceptanceOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSusceptance) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineSusceptanceOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineSusceptance) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineSusceptancePtrOutput struct{ *pulumi.OutputState }
+
+func (LineSusceptancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineSusceptance)(nil)).Elem()
+}
+
+func (o LineSusceptancePtrOutput) ToLineSusceptancePtrOutput() LineSusceptancePtrOutput {
+	return o
+}
+
+func (o LineSusceptancePtrOutput) ToLineSusceptancePtrOutputWithContext(ctx context.Context) LineSusceptancePtrOutput {
+	return o
+}
+
+func (o LineSusceptancePtrOutput) Elem() LineSusceptanceOutput {
+	return o.ApplyT(func(v *LineSusceptance) LineSusceptance {
+		if v != nil {
+			return *v
+		}
+		var ret LineSusceptance
+		return ret
+	}).(LineSusceptanceOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineSusceptancePtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineSusceptance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineSusceptancePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineSusceptance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineSusceptancePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineSusceptance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineSusceptancePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineSusceptance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineSusceptancePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineSusceptance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineSusceptancePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineSusceptance) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineTag struct {
+	// tag id
+	Id string `pulumi:"id"`
+	// tag name
+	Name string `pulumi:"name"`
+}
+
+// LineTagInput is an input type that accepts LineTagArgs and LineTagOutput values.
+// You can construct a concrete instance of `LineTagInput` via:
+//
+//	LineTagArgs{...}
+type LineTagInput interface {
+	pulumi.Input
+
+	ToLineTagOutput() LineTagOutput
+	ToLineTagOutputWithContext(context.Context) LineTagOutput
+}
+
+type LineTagArgs struct {
+	// tag id
+	Id pulumi.StringInput `pulumi:"id"`
+	// tag name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LineTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineTag)(nil)).Elem()
+}
+
+func (i LineTagArgs) ToLineTagOutput() LineTagOutput {
+	return i.ToLineTagOutputWithContext(context.Background())
+}
+
+func (i LineTagArgs) ToLineTagOutputWithContext(ctx context.Context) LineTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineTagOutput)
+}
+
+// LineTagArrayInput is an input type that accepts LineTagArray and LineTagArrayOutput values.
+// You can construct a concrete instance of `LineTagArrayInput` via:
+//
+//	LineTagArray{ LineTagArgs{...} }
+type LineTagArrayInput interface {
+	pulumi.Input
+
+	ToLineTagArrayOutput() LineTagArrayOutput
+	ToLineTagArrayOutputWithContext(context.Context) LineTagArrayOutput
+}
+
+type LineTagArray []LineTagInput
+
+func (LineTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineTag)(nil)).Elem()
+}
+
+func (i LineTagArray) ToLineTagArrayOutput() LineTagArrayOutput {
+	return i.ToLineTagArrayOutputWithContext(context.Background())
+}
+
+func (i LineTagArray) ToLineTagArrayOutputWithContext(ctx context.Context) LineTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineTagArrayOutput)
+}
+
+type LineTagOutput struct{ *pulumi.OutputState }
+
+func (LineTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineTag)(nil)).Elem()
+}
+
+func (o LineTagOutput) ToLineTagOutput() LineTagOutput {
+	return o
+}
+
+func (o LineTagOutput) ToLineTagOutputWithContext(ctx context.Context) LineTagOutput {
+	return o
+}
+
+// tag id
+func (o LineTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LineTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// tag name
+func (o LineTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LineTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type LineTagArrayOutput struct{ *pulumi.OutputState }
+
+func (LineTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineTag)(nil)).Elem()
+}
+
+func (o LineTagArrayOutput) ToLineTagArrayOutput() LineTagArrayOutput {
+	return o
+}
+
+func (o LineTagArrayOutput) ToLineTagArrayOutputWithContext(ctx context.Context) LineTagArrayOutput {
+	return o
+}
+
+func (o LineTagArrayOutput) Index(i pulumi.IntInput) LineTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LineTag {
+		return vs[0].([]LineTag)[vs[1].(int)]
+	}).(LineTagOutput)
+}
+
+type LineTemperatureCoeffResistance struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineTemperatureCoeffResistanceInput is an input type that accepts LineTemperatureCoeffResistanceArgs and LineTemperatureCoeffResistanceOutput values.
+// You can construct a concrete instance of `LineTemperatureCoeffResistanceInput` via:
+//
+//	LineTemperatureCoeffResistanceArgs{...}
+type LineTemperatureCoeffResistanceInput interface {
+	pulumi.Input
+
+	ToLineTemperatureCoeffResistanceOutput() LineTemperatureCoeffResistanceOutput
+	ToLineTemperatureCoeffResistanceOutputWithContext(context.Context) LineTemperatureCoeffResistanceOutput
+}
+
+type LineTemperatureCoeffResistanceArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineTemperatureCoeffResistanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineTemperatureCoeffResistance)(nil)).Elem()
+}
+
+func (i LineTemperatureCoeffResistanceArgs) ToLineTemperatureCoeffResistanceOutput() LineTemperatureCoeffResistanceOutput {
+	return i.ToLineTemperatureCoeffResistanceOutputWithContext(context.Background())
+}
+
+func (i LineTemperatureCoeffResistanceArgs) ToLineTemperatureCoeffResistanceOutputWithContext(ctx context.Context) LineTemperatureCoeffResistanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineTemperatureCoeffResistanceOutput)
+}
+
+func (i LineTemperatureCoeffResistanceArgs) ToLineTemperatureCoeffResistancePtrOutput() LineTemperatureCoeffResistancePtrOutput {
+	return i.ToLineTemperatureCoeffResistancePtrOutputWithContext(context.Background())
+}
+
+func (i LineTemperatureCoeffResistanceArgs) ToLineTemperatureCoeffResistancePtrOutputWithContext(ctx context.Context) LineTemperatureCoeffResistancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineTemperatureCoeffResistanceOutput).ToLineTemperatureCoeffResistancePtrOutputWithContext(ctx)
+}
+
+// LineTemperatureCoeffResistancePtrInput is an input type that accepts LineTemperatureCoeffResistanceArgs, LineTemperatureCoeffResistancePtr and LineTemperatureCoeffResistancePtrOutput values.
+// You can construct a concrete instance of `LineTemperatureCoeffResistancePtrInput` via:
+//
+//	        LineTemperatureCoeffResistanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineTemperatureCoeffResistancePtrInput interface {
+	pulumi.Input
+
+	ToLineTemperatureCoeffResistancePtrOutput() LineTemperatureCoeffResistancePtrOutput
+	ToLineTemperatureCoeffResistancePtrOutputWithContext(context.Context) LineTemperatureCoeffResistancePtrOutput
+}
+
+type lineTemperatureCoeffResistancePtrType LineTemperatureCoeffResistanceArgs
+
+func LineTemperatureCoeffResistancePtr(v *LineTemperatureCoeffResistanceArgs) LineTemperatureCoeffResistancePtrInput {
+	return (*lineTemperatureCoeffResistancePtrType)(v)
+}
+
+func (*lineTemperatureCoeffResistancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineTemperatureCoeffResistance)(nil)).Elem()
+}
+
+func (i *lineTemperatureCoeffResistancePtrType) ToLineTemperatureCoeffResistancePtrOutput() LineTemperatureCoeffResistancePtrOutput {
+	return i.ToLineTemperatureCoeffResistancePtrOutputWithContext(context.Background())
+}
+
+func (i *lineTemperatureCoeffResistancePtrType) ToLineTemperatureCoeffResistancePtrOutputWithContext(ctx context.Context) LineTemperatureCoeffResistancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineTemperatureCoeffResistancePtrOutput)
+}
+
+type LineTemperatureCoeffResistanceOutput struct{ *pulumi.OutputState }
+
+func (LineTemperatureCoeffResistanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineTemperatureCoeffResistance)(nil)).Elem()
+}
+
+func (o LineTemperatureCoeffResistanceOutput) ToLineTemperatureCoeffResistanceOutput() LineTemperatureCoeffResistanceOutput {
+	return o
+}
+
+func (o LineTemperatureCoeffResistanceOutput) ToLineTemperatureCoeffResistanceOutputWithContext(ctx context.Context) LineTemperatureCoeffResistanceOutput {
+	return o
+}
+
+func (o LineTemperatureCoeffResistanceOutput) ToLineTemperatureCoeffResistancePtrOutput() LineTemperatureCoeffResistancePtrOutput {
+	return o.ToLineTemperatureCoeffResistancePtrOutputWithContext(context.Background())
+}
+
+func (o LineTemperatureCoeffResistanceOutput) ToLineTemperatureCoeffResistancePtrOutputWithContext(ctx context.Context) LineTemperatureCoeffResistancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineTemperatureCoeffResistance) *LineTemperatureCoeffResistance {
+		return &v
+	}).(LineTemperatureCoeffResistancePtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineTemperatureCoeffResistanceOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineTemperatureCoeffResistance) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineTemperatureCoeffResistanceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineTemperatureCoeffResistance) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineTemperatureCoeffResistanceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineTemperatureCoeffResistance) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineTemperatureCoeffResistanceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineTemperatureCoeffResistance) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineTemperatureCoeffResistanceOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineTemperatureCoeffResistance) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineTemperatureCoeffResistanceOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineTemperatureCoeffResistance) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineTemperatureCoeffResistancePtrOutput struct{ *pulumi.OutputState }
+
+func (LineTemperatureCoeffResistancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineTemperatureCoeffResistance)(nil)).Elem()
+}
+
+func (o LineTemperatureCoeffResistancePtrOutput) ToLineTemperatureCoeffResistancePtrOutput() LineTemperatureCoeffResistancePtrOutput {
+	return o
+}
+
+func (o LineTemperatureCoeffResistancePtrOutput) ToLineTemperatureCoeffResistancePtrOutputWithContext(ctx context.Context) LineTemperatureCoeffResistancePtrOutput {
+	return o
+}
+
+func (o LineTemperatureCoeffResistancePtrOutput) Elem() LineTemperatureCoeffResistanceOutput {
+	return o.ApplyT(func(v *LineTemperatureCoeffResistance) LineTemperatureCoeffResistance {
+		if v != nil {
+			return *v
+		}
+		var ret LineTemperatureCoeffResistance
+		return ret
+	}).(LineTemperatureCoeffResistanceOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineTemperatureCoeffResistancePtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineTemperatureCoeffResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineTemperatureCoeffResistancePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineTemperatureCoeffResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineTemperatureCoeffResistancePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineTemperatureCoeffResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineTemperatureCoeffResistancePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineTemperatureCoeffResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineTemperatureCoeffResistancePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineTemperatureCoeffResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineTemperatureCoeffResistancePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineTemperatureCoeffResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineVoltageR struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// LineVoltageRInput is an input type that accepts LineVoltageRArgs and LineVoltageROutput values.
+// You can construct a concrete instance of `LineVoltageRInput` via:
+//
+//	LineVoltageRArgs{...}
+type LineVoltageRInput interface {
+	pulumi.Input
+
+	ToLineVoltageROutput() LineVoltageROutput
+	ToLineVoltageROutputWithContext(context.Context) LineVoltageROutput
+}
+
+type LineVoltageRArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (LineVoltageRArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineVoltageR)(nil)).Elem()
+}
+
+func (i LineVoltageRArgs) ToLineVoltageROutput() LineVoltageROutput {
+	return i.ToLineVoltageROutputWithContext(context.Background())
+}
+
+func (i LineVoltageRArgs) ToLineVoltageROutputWithContext(ctx context.Context) LineVoltageROutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineVoltageROutput)
+}
+
+// LineVoltageRArrayInput is an input type that accepts LineVoltageRArray and LineVoltageRArrayOutput values.
+// You can construct a concrete instance of `LineVoltageRArrayInput` via:
+//
+//	LineVoltageRArray{ LineVoltageRArgs{...} }
+type LineVoltageRArrayInput interface {
+	pulumi.Input
+
+	ToLineVoltageRArrayOutput() LineVoltageRArrayOutput
+	ToLineVoltageRArrayOutputWithContext(context.Context) LineVoltageRArrayOutput
+}
+
+type LineVoltageRArray []LineVoltageRInput
+
+func (LineVoltageRArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineVoltageR)(nil)).Elem()
+}
+
+func (i LineVoltageRArray) ToLineVoltageRArrayOutput() LineVoltageRArrayOutput {
+	return i.ToLineVoltageRArrayOutputWithContext(context.Background())
+}
+
+func (i LineVoltageRArray) ToLineVoltageRArrayOutputWithContext(ctx context.Context) LineVoltageRArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineVoltageRArrayOutput)
+}
+
+type LineVoltageROutput struct{ *pulumi.OutputState }
+
+func (LineVoltageROutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineVoltageR)(nil)).Elem()
+}
+
+func (o LineVoltageROutput) ToLineVoltageROutput() LineVoltageROutput {
+	return o
+}
+
+func (o LineVoltageROutput) ToLineVoltageROutputWithContext(ctx context.Context) LineVoltageROutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o LineVoltageROutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineVoltageR) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineVoltageROutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineVoltageR) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineVoltageROutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineVoltageR) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineVoltageROutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineVoltageR) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineVoltageROutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineVoltageR) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type LineVoltageRArrayOutput struct{ *pulumi.OutputState }
+
+func (LineVoltageRArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineVoltageR)(nil)).Elem()
+}
+
+func (o LineVoltageRArrayOutput) ToLineVoltageRArrayOutput() LineVoltageRArrayOutput {
+	return o
+}
+
+func (o LineVoltageRArrayOutput) ToLineVoltageRArrayOutputWithContext(ctx context.Context) LineVoltageRArrayOutput {
+	return o
+}
+
+func (o LineVoltageRArrayOutput) Index(i pulumi.IntInput) LineVoltageROutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LineVoltageR {
+		return vs[0].([]LineVoltageR)[vs[1].(int)]
+	}).(LineVoltageROutput)
+}
+
+type LineVoltageSt struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// LineVoltageStInput is an input type that accepts LineVoltageStArgs and LineVoltageStOutput values.
+// You can construct a concrete instance of `LineVoltageStInput` via:
+//
+//	LineVoltageStArgs{...}
+type LineVoltageStInput interface {
+	pulumi.Input
+
+	ToLineVoltageStOutput() LineVoltageStOutput
+	ToLineVoltageStOutputWithContext(context.Context) LineVoltageStOutput
+}
+
+type LineVoltageStArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (LineVoltageStArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineVoltageSt)(nil)).Elem()
+}
+
+func (i LineVoltageStArgs) ToLineVoltageStOutput() LineVoltageStOutput {
+	return i.ToLineVoltageStOutputWithContext(context.Background())
+}
+
+func (i LineVoltageStArgs) ToLineVoltageStOutputWithContext(ctx context.Context) LineVoltageStOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineVoltageStOutput)
+}
+
+// LineVoltageStArrayInput is an input type that accepts LineVoltageStArray and LineVoltageStArrayOutput values.
+// You can construct a concrete instance of `LineVoltageStArrayInput` via:
+//
+//	LineVoltageStArray{ LineVoltageStArgs{...} }
+type LineVoltageStArrayInput interface {
+	pulumi.Input
+
+	ToLineVoltageStArrayOutput() LineVoltageStArrayOutput
+	ToLineVoltageStArrayOutputWithContext(context.Context) LineVoltageStArrayOutput
+}
+
+type LineVoltageStArray []LineVoltageStInput
+
+func (LineVoltageStArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineVoltageSt)(nil)).Elem()
+}
+
+func (i LineVoltageStArray) ToLineVoltageStArrayOutput() LineVoltageStArrayOutput {
+	return i.ToLineVoltageStArrayOutputWithContext(context.Background())
+}
+
+func (i LineVoltageStArray) ToLineVoltageStArrayOutputWithContext(ctx context.Context) LineVoltageStArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineVoltageStArrayOutput)
+}
+
+type LineVoltageStOutput struct{ *pulumi.OutputState }
+
+func (LineVoltageStOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineVoltageSt)(nil)).Elem()
+}
+
+func (o LineVoltageStOutput) ToLineVoltageStOutput() LineVoltageStOutput {
+	return o
+}
+
+func (o LineVoltageStOutput) ToLineVoltageStOutputWithContext(ctx context.Context) LineVoltageStOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o LineVoltageStOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineVoltageSt) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineVoltageStOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineVoltageSt) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineVoltageStOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineVoltageSt) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineVoltageStOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineVoltageSt) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineVoltageStOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineVoltageSt) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type LineVoltageStArrayOutput struct{ *pulumi.OutputState }
+
+func (LineVoltageStArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineVoltageSt)(nil)).Elem()
+}
+
+func (o LineVoltageStArrayOutput) ToLineVoltageStArrayOutput() LineVoltageStArrayOutput {
+	return o
+}
+
+func (o LineVoltageStArrayOutput) ToLineVoltageStArrayOutputWithContext(ctx context.Context) LineVoltageStArrayOutput {
+	return o
+}
+
+func (o LineVoltageStArrayOutput) Index(i pulumi.IntInput) LineVoltageStOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LineVoltageSt {
+		return vs[0].([]LineVoltageSt)[vs[1].(int)]
+	}).(LineVoltageStOutput)
+}
+
+type LineVoltageTr struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// LineVoltageTrInput is an input type that accepts LineVoltageTrArgs and LineVoltageTrOutput values.
+// You can construct a concrete instance of `LineVoltageTrInput` via:
+//
+//	LineVoltageTrArgs{...}
+type LineVoltageTrInput interface {
+	pulumi.Input
+
+	ToLineVoltageTrOutput() LineVoltageTrOutput
+	ToLineVoltageTrOutputWithContext(context.Context) LineVoltageTrOutput
+}
+
+type LineVoltageTrArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (LineVoltageTrArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineVoltageTr)(nil)).Elem()
+}
+
+func (i LineVoltageTrArgs) ToLineVoltageTrOutput() LineVoltageTrOutput {
+	return i.ToLineVoltageTrOutputWithContext(context.Background())
+}
+
+func (i LineVoltageTrArgs) ToLineVoltageTrOutputWithContext(ctx context.Context) LineVoltageTrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineVoltageTrOutput)
+}
+
+// LineVoltageTrArrayInput is an input type that accepts LineVoltageTrArray and LineVoltageTrArrayOutput values.
+// You can construct a concrete instance of `LineVoltageTrArrayInput` via:
+//
+//	LineVoltageTrArray{ LineVoltageTrArgs{...} }
+type LineVoltageTrArrayInput interface {
+	pulumi.Input
+
+	ToLineVoltageTrArrayOutput() LineVoltageTrArrayOutput
+	ToLineVoltageTrArrayOutputWithContext(context.Context) LineVoltageTrArrayOutput
+}
+
+type LineVoltageTrArray []LineVoltageTrInput
+
+func (LineVoltageTrArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineVoltageTr)(nil)).Elem()
+}
+
+func (i LineVoltageTrArray) ToLineVoltageTrArrayOutput() LineVoltageTrArrayOutput {
+	return i.ToLineVoltageTrArrayOutputWithContext(context.Background())
+}
+
+func (i LineVoltageTrArray) ToLineVoltageTrArrayOutputWithContext(ctx context.Context) LineVoltageTrArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineVoltageTrArrayOutput)
+}
+
+type LineVoltageTrOutput struct{ *pulumi.OutputState }
+
+func (LineVoltageTrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineVoltageTr)(nil)).Elem()
+}
+
+func (o LineVoltageTrOutput) ToLineVoltageTrOutput() LineVoltageTrOutput {
+	return o
+}
+
+func (o LineVoltageTrOutput) ToLineVoltageTrOutputWithContext(ctx context.Context) LineVoltageTrOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o LineVoltageTrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineVoltageTr) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineVoltageTrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineVoltageTr) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineVoltageTrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineVoltageTr) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineVoltageTrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineVoltageTr) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineVoltageTrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineVoltageTr) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type LineVoltageTrArrayOutput struct{ *pulumi.OutputState }
+
+func (LineVoltageTrArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineVoltageTr)(nil)).Elem()
+}
+
+func (o LineVoltageTrArrayOutput) ToLineVoltageTrArrayOutput() LineVoltageTrArrayOutput {
+	return o
+}
+
+func (o LineVoltageTrArrayOutput) ToLineVoltageTrArrayOutputWithContext(ctx context.Context) LineVoltageTrArrayOutput {
+	return o
+}
+
+func (o LineVoltageTrArrayOutput) Index(i pulumi.IntInput) LineVoltageTrOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LineVoltageTr {
+		return vs[0].([]LineVoltageTr)[vs[1].(int)]
+	}).(LineVoltageTrOutput)
+}
+
+type SegmentAltitude struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// SegmentAltitudeInput is an input type that accepts SegmentAltitudeArgs and SegmentAltitudeOutput values.
+// You can construct a concrete instance of `SegmentAltitudeInput` via:
+//
+//	SegmentAltitudeArgs{...}
+type SegmentAltitudeInput interface {
+	pulumi.Input
+
+	ToSegmentAltitudeOutput() SegmentAltitudeOutput
+	ToSegmentAltitudeOutputWithContext(context.Context) SegmentAltitudeOutput
+}
+
+type SegmentAltitudeArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (SegmentAltitudeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentAltitude)(nil)).Elem()
+}
+
+func (i SegmentAltitudeArgs) ToSegmentAltitudeOutput() SegmentAltitudeOutput {
+	return i.ToSegmentAltitudeOutputWithContext(context.Background())
+}
+
+func (i SegmentAltitudeArgs) ToSegmentAltitudeOutputWithContext(ctx context.Context) SegmentAltitudeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentAltitudeOutput)
+}
+
+func (i SegmentAltitudeArgs) ToSegmentAltitudePtrOutput() SegmentAltitudePtrOutput {
+	return i.ToSegmentAltitudePtrOutputWithContext(context.Background())
+}
+
+func (i SegmentAltitudeArgs) ToSegmentAltitudePtrOutputWithContext(ctx context.Context) SegmentAltitudePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentAltitudeOutput).ToSegmentAltitudePtrOutputWithContext(ctx)
+}
+
+// SegmentAltitudePtrInput is an input type that accepts SegmentAltitudeArgs, SegmentAltitudePtr and SegmentAltitudePtrOutput values.
+// You can construct a concrete instance of `SegmentAltitudePtrInput` via:
+//
+//	        SegmentAltitudeArgs{...}
+//
+//	or:
+//
+//	        nil
+type SegmentAltitudePtrInput interface {
+	pulumi.Input
+
+	ToSegmentAltitudePtrOutput() SegmentAltitudePtrOutput
+	ToSegmentAltitudePtrOutputWithContext(context.Context) SegmentAltitudePtrOutput
+}
+
+type segmentAltitudePtrType SegmentAltitudeArgs
+
+func SegmentAltitudePtr(v *SegmentAltitudeArgs) SegmentAltitudePtrInput {
+	return (*segmentAltitudePtrType)(v)
+}
+
+func (*segmentAltitudePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SegmentAltitude)(nil)).Elem()
+}
+
+func (i *segmentAltitudePtrType) ToSegmentAltitudePtrOutput() SegmentAltitudePtrOutput {
+	return i.ToSegmentAltitudePtrOutputWithContext(context.Background())
+}
+
+func (i *segmentAltitudePtrType) ToSegmentAltitudePtrOutputWithContext(ctx context.Context) SegmentAltitudePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentAltitudePtrOutput)
+}
+
+type SegmentAltitudeOutput struct{ *pulumi.OutputState }
+
+func (SegmentAltitudeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentAltitude)(nil)).Elem()
+}
+
+func (o SegmentAltitudeOutput) ToSegmentAltitudeOutput() SegmentAltitudeOutput {
+	return o
+}
+
+func (o SegmentAltitudeOutput) ToSegmentAltitudeOutputWithContext(ctx context.Context) SegmentAltitudeOutput {
+	return o
+}
+
+func (o SegmentAltitudeOutput) ToSegmentAltitudePtrOutput() SegmentAltitudePtrOutput {
+	return o.ToSegmentAltitudePtrOutputWithContext(context.Background())
+}
+
+func (o SegmentAltitudeOutput) ToSegmentAltitudePtrOutputWithContext(ctx context.Context) SegmentAltitudePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SegmentAltitude) *SegmentAltitude {
+		return &v
+	}).(SegmentAltitudePtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o SegmentAltitudeOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentAltitude) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o SegmentAltitudeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentAltitude) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o SegmentAltitudeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentAltitude) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o SegmentAltitudeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentAltitude) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o SegmentAltitudeOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentAltitude) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o SegmentAltitudeOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SegmentAltitude) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type SegmentAltitudePtrOutput struct{ *pulumi.OutputState }
+
+func (SegmentAltitudePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SegmentAltitude)(nil)).Elem()
+}
+
+func (o SegmentAltitudePtrOutput) ToSegmentAltitudePtrOutput() SegmentAltitudePtrOutput {
+	return o
+}
+
+func (o SegmentAltitudePtrOutput) ToSegmentAltitudePtrOutputWithContext(ctx context.Context) SegmentAltitudePtrOutput {
+	return o
+}
+
+func (o SegmentAltitudePtrOutput) Elem() SegmentAltitudeOutput {
+	return o.ApplyT(func(v *SegmentAltitude) SegmentAltitude {
+		if v != nil {
+			return *v
+		}
+		var ret SegmentAltitude
+		return ret
+	}).(SegmentAltitudeOutput)
+}
+
+// reference to the asset to be linked to
+func (o SegmentAltitudePtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentAltitude) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o SegmentAltitudePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentAltitude) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o SegmentAltitudePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentAltitude) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o SegmentAltitudePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentAltitude) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o SegmentAltitudePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentAltitude) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o SegmentAltitudePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentAltitude) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type SegmentAzimuth struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// SegmentAzimuthInput is an input type that accepts SegmentAzimuthArgs and SegmentAzimuthOutput values.
+// You can construct a concrete instance of `SegmentAzimuthInput` via:
+//
+//	SegmentAzimuthArgs{...}
+type SegmentAzimuthInput interface {
+	pulumi.Input
+
+	ToSegmentAzimuthOutput() SegmentAzimuthOutput
+	ToSegmentAzimuthOutputWithContext(context.Context) SegmentAzimuthOutput
+}
+
+type SegmentAzimuthArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (SegmentAzimuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentAzimuth)(nil)).Elem()
+}
+
+func (i SegmentAzimuthArgs) ToSegmentAzimuthOutput() SegmentAzimuthOutput {
+	return i.ToSegmentAzimuthOutputWithContext(context.Background())
+}
+
+func (i SegmentAzimuthArgs) ToSegmentAzimuthOutputWithContext(ctx context.Context) SegmentAzimuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentAzimuthOutput)
+}
+
+func (i SegmentAzimuthArgs) ToSegmentAzimuthPtrOutput() SegmentAzimuthPtrOutput {
+	return i.ToSegmentAzimuthPtrOutputWithContext(context.Background())
+}
+
+func (i SegmentAzimuthArgs) ToSegmentAzimuthPtrOutputWithContext(ctx context.Context) SegmentAzimuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentAzimuthOutput).ToSegmentAzimuthPtrOutputWithContext(ctx)
+}
+
+// SegmentAzimuthPtrInput is an input type that accepts SegmentAzimuthArgs, SegmentAzimuthPtr and SegmentAzimuthPtrOutput values.
+// You can construct a concrete instance of `SegmentAzimuthPtrInput` via:
+//
+//	        SegmentAzimuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type SegmentAzimuthPtrInput interface {
+	pulumi.Input
+
+	ToSegmentAzimuthPtrOutput() SegmentAzimuthPtrOutput
+	ToSegmentAzimuthPtrOutputWithContext(context.Context) SegmentAzimuthPtrOutput
+}
+
+type segmentAzimuthPtrType SegmentAzimuthArgs
+
+func SegmentAzimuthPtr(v *SegmentAzimuthArgs) SegmentAzimuthPtrInput {
+	return (*segmentAzimuthPtrType)(v)
+}
+
+func (*segmentAzimuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SegmentAzimuth)(nil)).Elem()
+}
+
+func (i *segmentAzimuthPtrType) ToSegmentAzimuthPtrOutput() SegmentAzimuthPtrOutput {
+	return i.ToSegmentAzimuthPtrOutputWithContext(context.Background())
+}
+
+func (i *segmentAzimuthPtrType) ToSegmentAzimuthPtrOutputWithContext(ctx context.Context) SegmentAzimuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentAzimuthPtrOutput)
+}
+
+type SegmentAzimuthOutput struct{ *pulumi.OutputState }
+
+func (SegmentAzimuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentAzimuth)(nil)).Elem()
+}
+
+func (o SegmentAzimuthOutput) ToSegmentAzimuthOutput() SegmentAzimuthOutput {
+	return o
+}
+
+func (o SegmentAzimuthOutput) ToSegmentAzimuthOutputWithContext(ctx context.Context) SegmentAzimuthOutput {
+	return o
+}
+
+func (o SegmentAzimuthOutput) ToSegmentAzimuthPtrOutput() SegmentAzimuthPtrOutput {
+	return o.ToSegmentAzimuthPtrOutputWithContext(context.Background())
+}
+
+func (o SegmentAzimuthOutput) ToSegmentAzimuthPtrOutputWithContext(ctx context.Context) SegmentAzimuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SegmentAzimuth) *SegmentAzimuth {
+		return &v
+	}).(SegmentAzimuthPtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o SegmentAzimuthOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentAzimuth) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o SegmentAzimuthOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentAzimuth) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o SegmentAzimuthOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentAzimuth) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o SegmentAzimuthOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentAzimuth) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o SegmentAzimuthOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentAzimuth) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o SegmentAzimuthOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SegmentAzimuth) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type SegmentAzimuthPtrOutput struct{ *pulumi.OutputState }
+
+func (SegmentAzimuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SegmentAzimuth)(nil)).Elem()
+}
+
+func (o SegmentAzimuthPtrOutput) ToSegmentAzimuthPtrOutput() SegmentAzimuthPtrOutput {
+	return o
+}
+
+func (o SegmentAzimuthPtrOutput) ToSegmentAzimuthPtrOutputWithContext(ctx context.Context) SegmentAzimuthPtrOutput {
+	return o
+}
+
+func (o SegmentAzimuthPtrOutput) Elem() SegmentAzimuthOutput {
+	return o.ApplyT(func(v *SegmentAzimuth) SegmentAzimuth {
+		if v != nil {
+			return *v
+		}
+		var ret SegmentAzimuth
+		return ret
+	}).(SegmentAzimuthOutput)
+}
+
+// reference to the asset to be linked to
+func (o SegmentAzimuthPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentAzimuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o SegmentAzimuthPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentAzimuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o SegmentAzimuthPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentAzimuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o SegmentAzimuthPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentAzimuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o SegmentAzimuthPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentAzimuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o SegmentAzimuthPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentAzimuth) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type SegmentCumulativeDistance struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// SegmentCumulativeDistanceInput is an input type that accepts SegmentCumulativeDistanceArgs and SegmentCumulativeDistanceOutput values.
+// You can construct a concrete instance of `SegmentCumulativeDistanceInput` via:
+//
+//	SegmentCumulativeDistanceArgs{...}
+type SegmentCumulativeDistanceInput interface {
+	pulumi.Input
+
+	ToSegmentCumulativeDistanceOutput() SegmentCumulativeDistanceOutput
+	ToSegmentCumulativeDistanceOutputWithContext(context.Context) SegmentCumulativeDistanceOutput
+}
+
+type SegmentCumulativeDistanceArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (SegmentCumulativeDistanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentCumulativeDistance)(nil)).Elem()
+}
+
+func (i SegmentCumulativeDistanceArgs) ToSegmentCumulativeDistanceOutput() SegmentCumulativeDistanceOutput {
+	return i.ToSegmentCumulativeDistanceOutputWithContext(context.Background())
+}
+
+func (i SegmentCumulativeDistanceArgs) ToSegmentCumulativeDistanceOutputWithContext(ctx context.Context) SegmentCumulativeDistanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentCumulativeDistanceOutput)
+}
+
+func (i SegmentCumulativeDistanceArgs) ToSegmentCumulativeDistancePtrOutput() SegmentCumulativeDistancePtrOutput {
+	return i.ToSegmentCumulativeDistancePtrOutputWithContext(context.Background())
+}
+
+func (i SegmentCumulativeDistanceArgs) ToSegmentCumulativeDistancePtrOutputWithContext(ctx context.Context) SegmentCumulativeDistancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentCumulativeDistanceOutput).ToSegmentCumulativeDistancePtrOutputWithContext(ctx)
+}
+
+// SegmentCumulativeDistancePtrInput is an input type that accepts SegmentCumulativeDistanceArgs, SegmentCumulativeDistancePtr and SegmentCumulativeDistancePtrOutput values.
+// You can construct a concrete instance of `SegmentCumulativeDistancePtrInput` via:
+//
+//	        SegmentCumulativeDistanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type SegmentCumulativeDistancePtrInput interface {
+	pulumi.Input
+
+	ToSegmentCumulativeDistancePtrOutput() SegmentCumulativeDistancePtrOutput
+	ToSegmentCumulativeDistancePtrOutputWithContext(context.Context) SegmentCumulativeDistancePtrOutput
+}
+
+type segmentCumulativeDistancePtrType SegmentCumulativeDistanceArgs
+
+func SegmentCumulativeDistancePtr(v *SegmentCumulativeDistanceArgs) SegmentCumulativeDistancePtrInput {
+	return (*segmentCumulativeDistancePtrType)(v)
+}
+
+func (*segmentCumulativeDistancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SegmentCumulativeDistance)(nil)).Elem()
+}
+
+func (i *segmentCumulativeDistancePtrType) ToSegmentCumulativeDistancePtrOutput() SegmentCumulativeDistancePtrOutput {
+	return i.ToSegmentCumulativeDistancePtrOutputWithContext(context.Background())
+}
+
+func (i *segmentCumulativeDistancePtrType) ToSegmentCumulativeDistancePtrOutputWithContext(ctx context.Context) SegmentCumulativeDistancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentCumulativeDistancePtrOutput)
+}
+
+type SegmentCumulativeDistanceOutput struct{ *pulumi.OutputState }
+
+func (SegmentCumulativeDistanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentCumulativeDistance)(nil)).Elem()
+}
+
+func (o SegmentCumulativeDistanceOutput) ToSegmentCumulativeDistanceOutput() SegmentCumulativeDistanceOutput {
+	return o
+}
+
+func (o SegmentCumulativeDistanceOutput) ToSegmentCumulativeDistanceOutputWithContext(ctx context.Context) SegmentCumulativeDistanceOutput {
+	return o
+}
+
+func (o SegmentCumulativeDistanceOutput) ToSegmentCumulativeDistancePtrOutput() SegmentCumulativeDistancePtrOutput {
+	return o.ToSegmentCumulativeDistancePtrOutputWithContext(context.Background())
+}
+
+func (o SegmentCumulativeDistanceOutput) ToSegmentCumulativeDistancePtrOutputWithContext(ctx context.Context) SegmentCumulativeDistancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SegmentCumulativeDistance) *SegmentCumulativeDistance {
+		return &v
+	}).(SegmentCumulativeDistancePtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o SegmentCumulativeDistanceOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentCumulativeDistance) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o SegmentCumulativeDistanceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentCumulativeDistance) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o SegmentCumulativeDistanceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentCumulativeDistance) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o SegmentCumulativeDistanceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentCumulativeDistance) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o SegmentCumulativeDistanceOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentCumulativeDistance) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o SegmentCumulativeDistanceOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SegmentCumulativeDistance) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type SegmentCumulativeDistancePtrOutput struct{ *pulumi.OutputState }
+
+func (SegmentCumulativeDistancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SegmentCumulativeDistance)(nil)).Elem()
+}
+
+func (o SegmentCumulativeDistancePtrOutput) ToSegmentCumulativeDistancePtrOutput() SegmentCumulativeDistancePtrOutput {
+	return o
+}
+
+func (o SegmentCumulativeDistancePtrOutput) ToSegmentCumulativeDistancePtrOutputWithContext(ctx context.Context) SegmentCumulativeDistancePtrOutput {
+	return o
+}
+
+func (o SegmentCumulativeDistancePtrOutput) Elem() SegmentCumulativeDistanceOutput {
+	return o.ApplyT(func(v *SegmentCumulativeDistance) SegmentCumulativeDistance {
+		if v != nil {
+			return *v
+		}
+		var ret SegmentCumulativeDistance
+		return ret
+	}).(SegmentCumulativeDistanceOutput)
+}
+
+// reference to the asset to be linked to
+func (o SegmentCumulativeDistancePtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentCumulativeDistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o SegmentCumulativeDistancePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentCumulativeDistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o SegmentCumulativeDistancePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentCumulativeDistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o SegmentCumulativeDistancePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentCumulativeDistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o SegmentCumulativeDistancePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentCumulativeDistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o SegmentCumulativeDistancePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentCumulativeDistance) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type SegmentKind struct {
+	// kind id
+	Id string `pulumi:"id"`
+	// kind name
+	Name string `pulumi:"name"`
+}
+
+// SegmentKindInput is an input type that accepts SegmentKindArgs and SegmentKindOutput values.
+// You can construct a concrete instance of `SegmentKindInput` via:
+//
+//	SegmentKindArgs{...}
+type SegmentKindInput interface {
+	pulumi.Input
+
+	ToSegmentKindOutput() SegmentKindOutput
+	ToSegmentKindOutputWithContext(context.Context) SegmentKindOutput
+}
+
+type SegmentKindArgs struct {
+	// kind id
+	Id pulumi.StringInput `pulumi:"id"`
+	// kind name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (SegmentKindArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentKind)(nil)).Elem()
+}
+
+func (i SegmentKindArgs) ToSegmentKindOutput() SegmentKindOutput {
+	return i.ToSegmentKindOutputWithContext(context.Background())
+}
+
+func (i SegmentKindArgs) ToSegmentKindOutputWithContext(ctx context.Context) SegmentKindOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentKindOutput)
+}
+
+// SegmentKindArrayInput is an input type that accepts SegmentKindArray and SegmentKindArrayOutput values.
+// You can construct a concrete instance of `SegmentKindArrayInput` via:
+//
+//	SegmentKindArray{ SegmentKindArgs{...} }
+type SegmentKindArrayInput interface {
+	pulumi.Input
+
+	ToSegmentKindArrayOutput() SegmentKindArrayOutput
+	ToSegmentKindArrayOutputWithContext(context.Context) SegmentKindArrayOutput
+}
+
+type SegmentKindArray []SegmentKindInput
+
+func (SegmentKindArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SegmentKind)(nil)).Elem()
+}
+
+func (i SegmentKindArray) ToSegmentKindArrayOutput() SegmentKindArrayOutput {
+	return i.ToSegmentKindArrayOutputWithContext(context.Background())
+}
+
+func (i SegmentKindArray) ToSegmentKindArrayOutputWithContext(ctx context.Context) SegmentKindArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentKindArrayOutput)
+}
+
+type SegmentKindOutput struct{ *pulumi.OutputState }
+
+func (SegmentKindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentKind)(nil)).Elem()
+}
+
+func (o SegmentKindOutput) ToSegmentKindOutput() SegmentKindOutput {
+	return o
+}
+
+func (o SegmentKindOutput) ToSegmentKindOutputWithContext(ctx context.Context) SegmentKindOutput {
+	return o
+}
+
+// kind id
+func (o SegmentKindOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v SegmentKind) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// kind name
+func (o SegmentKindOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SegmentKind) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type SegmentKindArrayOutput struct{ *pulumi.OutputState }
+
+func (SegmentKindArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SegmentKind)(nil)).Elem()
+}
+
+func (o SegmentKindArrayOutput) ToSegmentKindArrayOutput() SegmentKindArrayOutput {
+	return o
+}
+
+func (o SegmentKindArrayOutput) ToSegmentKindArrayOutputWithContext(ctx context.Context) SegmentKindArrayOutput {
+	return o
+}
+
+func (o SegmentKindArrayOutput) Index(i pulumi.IntInput) SegmentKindOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SegmentKind {
+		return vs[0].([]SegmentKind)[vs[1].(int)]
+	}).(SegmentKindOutput)
+}
+
+type SegmentRelatedAsset struct {
+	// asset id
+	Id string `pulumi:"id"`
+	// asset name
+	Name string `pulumi:"name"`
+}
+
+// SegmentRelatedAssetInput is an input type that accepts SegmentRelatedAssetArgs and SegmentRelatedAssetOutput values.
+// You can construct a concrete instance of `SegmentRelatedAssetInput` via:
+//
+//	SegmentRelatedAssetArgs{...}
+type SegmentRelatedAssetInput interface {
+	pulumi.Input
+
+	ToSegmentRelatedAssetOutput() SegmentRelatedAssetOutput
+	ToSegmentRelatedAssetOutputWithContext(context.Context) SegmentRelatedAssetOutput
+}
+
+type SegmentRelatedAssetArgs struct {
+	// asset id
+	Id pulumi.StringInput `pulumi:"id"`
+	// asset name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (SegmentRelatedAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentRelatedAsset)(nil)).Elem()
+}
+
+func (i SegmentRelatedAssetArgs) ToSegmentRelatedAssetOutput() SegmentRelatedAssetOutput {
+	return i.ToSegmentRelatedAssetOutputWithContext(context.Background())
+}
+
+func (i SegmentRelatedAssetArgs) ToSegmentRelatedAssetOutputWithContext(ctx context.Context) SegmentRelatedAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentRelatedAssetOutput)
+}
+
+// SegmentRelatedAssetArrayInput is an input type that accepts SegmentRelatedAssetArray and SegmentRelatedAssetArrayOutput values.
+// You can construct a concrete instance of `SegmentRelatedAssetArrayInput` via:
+//
+//	SegmentRelatedAssetArray{ SegmentRelatedAssetArgs{...} }
+type SegmentRelatedAssetArrayInput interface {
+	pulumi.Input
+
+	ToSegmentRelatedAssetArrayOutput() SegmentRelatedAssetArrayOutput
+	ToSegmentRelatedAssetArrayOutputWithContext(context.Context) SegmentRelatedAssetArrayOutput
+}
+
+type SegmentRelatedAssetArray []SegmentRelatedAssetInput
+
+func (SegmentRelatedAssetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SegmentRelatedAsset)(nil)).Elem()
+}
+
+func (i SegmentRelatedAssetArray) ToSegmentRelatedAssetArrayOutput() SegmentRelatedAssetArrayOutput {
+	return i.ToSegmentRelatedAssetArrayOutputWithContext(context.Background())
+}
+
+func (i SegmentRelatedAssetArray) ToSegmentRelatedAssetArrayOutputWithContext(ctx context.Context) SegmentRelatedAssetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentRelatedAssetArrayOutput)
+}
+
+type SegmentRelatedAssetOutput struct{ *pulumi.OutputState }
+
+func (SegmentRelatedAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentRelatedAsset)(nil)).Elem()
+}
+
+func (o SegmentRelatedAssetOutput) ToSegmentRelatedAssetOutput() SegmentRelatedAssetOutput {
+	return o
+}
+
+func (o SegmentRelatedAssetOutput) ToSegmentRelatedAssetOutputWithContext(ctx context.Context) SegmentRelatedAssetOutput {
+	return o
+}
+
+// asset id
+func (o SegmentRelatedAssetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v SegmentRelatedAsset) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// asset name
+func (o SegmentRelatedAssetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SegmentRelatedAsset) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type SegmentRelatedAssetArrayOutput struct{ *pulumi.OutputState }
+
+func (SegmentRelatedAssetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SegmentRelatedAsset)(nil)).Elem()
+}
+
+func (o SegmentRelatedAssetArrayOutput) ToSegmentRelatedAssetArrayOutput() SegmentRelatedAssetArrayOutput {
+	return o
+}
+
+func (o SegmentRelatedAssetArrayOutput) ToSegmentRelatedAssetArrayOutputWithContext(ctx context.Context) SegmentRelatedAssetArrayOutput {
+	return o
+}
+
+func (o SegmentRelatedAssetArrayOutput) Index(i pulumi.IntInput) SegmentRelatedAssetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SegmentRelatedAsset {
+		return vs[0].([]SegmentRelatedAsset)[vs[1].(int)]
+	}).(SegmentRelatedAssetOutput)
+}
+
+type SegmentTag struct {
+	// tag id
+	Id string `pulumi:"id"`
+	// tag name
+	Name string `pulumi:"name"`
+}
+
+// SegmentTagInput is an input type that accepts SegmentTagArgs and SegmentTagOutput values.
+// You can construct a concrete instance of `SegmentTagInput` via:
+//
+//	SegmentTagArgs{...}
+type SegmentTagInput interface {
+	pulumi.Input
+
+	ToSegmentTagOutput() SegmentTagOutput
+	ToSegmentTagOutputWithContext(context.Context) SegmentTagOutput
+}
+
+type SegmentTagArgs struct {
+	// tag id
+	Id pulumi.StringInput `pulumi:"id"`
+	// tag name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (SegmentTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentTag)(nil)).Elem()
+}
+
+func (i SegmentTagArgs) ToSegmentTagOutput() SegmentTagOutput {
+	return i.ToSegmentTagOutputWithContext(context.Background())
+}
+
+func (i SegmentTagArgs) ToSegmentTagOutputWithContext(ctx context.Context) SegmentTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentTagOutput)
+}
+
+// SegmentTagArrayInput is an input type that accepts SegmentTagArray and SegmentTagArrayOutput values.
+// You can construct a concrete instance of `SegmentTagArrayInput` via:
+//
+//	SegmentTagArray{ SegmentTagArgs{...} }
+type SegmentTagArrayInput interface {
+	pulumi.Input
+
+	ToSegmentTagArrayOutput() SegmentTagArrayOutput
+	ToSegmentTagArrayOutputWithContext(context.Context) SegmentTagArrayOutput
+}
+
+type SegmentTagArray []SegmentTagInput
+
+func (SegmentTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SegmentTag)(nil)).Elem()
+}
+
+func (i SegmentTagArray) ToSegmentTagArrayOutput() SegmentTagArrayOutput {
+	return i.ToSegmentTagArrayOutputWithContext(context.Background())
+}
+
+func (i SegmentTagArray) ToSegmentTagArrayOutputWithContext(ctx context.Context) SegmentTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentTagArrayOutput)
+}
+
+type SegmentTagOutput struct{ *pulumi.OutputState }
+
+func (SegmentTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentTag)(nil)).Elem()
+}
+
+func (o SegmentTagOutput) ToSegmentTagOutput() SegmentTagOutput {
+	return o
+}
+
+func (o SegmentTagOutput) ToSegmentTagOutputWithContext(ctx context.Context) SegmentTagOutput {
+	return o
+}
+
+// tag id
+func (o SegmentTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v SegmentTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// tag name
+func (o SegmentTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SegmentTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type SegmentTagArrayOutput struct{ *pulumi.OutputState }
+
+func (SegmentTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SegmentTag)(nil)).Elem()
+}
+
+func (o SegmentTagArrayOutput) ToSegmentTagArrayOutput() SegmentTagArrayOutput {
+	return o
+}
+
+func (o SegmentTagArrayOutput) ToSegmentTagArrayOutputWithContext(ctx context.Context) SegmentTagArrayOutput {
+	return o
+}
+
+func (o SegmentTagArrayOutput) Index(i pulumi.IntInput) SegmentTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SegmentTag {
+		return vs[0].([]SegmentTag)[vs[1].(int)]
+	}).(SegmentTagOutput)
+}
+
+type SegmentTemperature struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// SegmentTemperatureInput is an input type that accepts SegmentTemperatureArgs and SegmentTemperatureOutput values.
+// You can construct a concrete instance of `SegmentTemperatureInput` via:
+//
+//	SegmentTemperatureArgs{...}
+type SegmentTemperatureInput interface {
+	pulumi.Input
+
+	ToSegmentTemperatureOutput() SegmentTemperatureOutput
+	ToSegmentTemperatureOutputWithContext(context.Context) SegmentTemperatureOutput
+}
+
+type SegmentTemperatureArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (SegmentTemperatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentTemperature)(nil)).Elem()
+}
+
+func (i SegmentTemperatureArgs) ToSegmentTemperatureOutput() SegmentTemperatureOutput {
+	return i.ToSegmentTemperatureOutputWithContext(context.Background())
+}
+
+func (i SegmentTemperatureArgs) ToSegmentTemperatureOutputWithContext(ctx context.Context) SegmentTemperatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentTemperatureOutput)
+}
+
+// SegmentTemperatureArrayInput is an input type that accepts SegmentTemperatureArray and SegmentTemperatureArrayOutput values.
+// You can construct a concrete instance of `SegmentTemperatureArrayInput` via:
+//
+//	SegmentTemperatureArray{ SegmentTemperatureArgs{...} }
+type SegmentTemperatureArrayInput interface {
+	pulumi.Input
+
+	ToSegmentTemperatureArrayOutput() SegmentTemperatureArrayOutput
+	ToSegmentTemperatureArrayOutputWithContext(context.Context) SegmentTemperatureArrayOutput
+}
+
+type SegmentTemperatureArray []SegmentTemperatureInput
+
+func (SegmentTemperatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SegmentTemperature)(nil)).Elem()
+}
+
+func (i SegmentTemperatureArray) ToSegmentTemperatureArrayOutput() SegmentTemperatureArrayOutput {
+	return i.ToSegmentTemperatureArrayOutputWithContext(context.Background())
+}
+
+func (i SegmentTemperatureArray) ToSegmentTemperatureArrayOutputWithContext(ctx context.Context) SegmentTemperatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentTemperatureArrayOutput)
+}
+
+type SegmentTemperatureOutput struct{ *pulumi.OutputState }
+
+func (SegmentTemperatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentTemperature)(nil)).Elem()
+}
+
+func (o SegmentTemperatureOutput) ToSegmentTemperatureOutput() SegmentTemperatureOutput {
+	return o
+}
+
+func (o SegmentTemperatureOutput) ToSegmentTemperatureOutputWithContext(ctx context.Context) SegmentTemperatureOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o SegmentTemperatureOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentTemperature) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o SegmentTemperatureOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentTemperature) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o SegmentTemperatureOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentTemperature) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o SegmentTemperatureOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentTemperature) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o SegmentTemperatureOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentTemperature) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type SegmentTemperatureArrayOutput struct{ *pulumi.OutputState }
+
+func (SegmentTemperatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SegmentTemperature)(nil)).Elem()
+}
+
+func (o SegmentTemperatureArrayOutput) ToSegmentTemperatureArrayOutput() SegmentTemperatureArrayOutput {
+	return o
+}
+
+func (o SegmentTemperatureArrayOutput) ToSegmentTemperatureArrayOutputWithContext(ctx context.Context) SegmentTemperatureArrayOutput {
+	return o
+}
+
+func (o SegmentTemperatureArrayOutput) Index(i pulumi.IntInput) SegmentTemperatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SegmentTemperature {
+		return vs[0].([]SegmentTemperature)[vs[1].(int)]
+	}).(SegmentTemperatureOutput)
+}
+
+type SegmentWindDirection struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// SegmentWindDirectionInput is an input type that accepts SegmentWindDirectionArgs and SegmentWindDirectionOutput values.
+// You can construct a concrete instance of `SegmentWindDirectionInput` via:
+//
+//	SegmentWindDirectionArgs{...}
+type SegmentWindDirectionInput interface {
+	pulumi.Input
+
+	ToSegmentWindDirectionOutput() SegmentWindDirectionOutput
+	ToSegmentWindDirectionOutputWithContext(context.Context) SegmentWindDirectionOutput
+}
+
+type SegmentWindDirectionArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (SegmentWindDirectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentWindDirection)(nil)).Elem()
+}
+
+func (i SegmentWindDirectionArgs) ToSegmentWindDirectionOutput() SegmentWindDirectionOutput {
+	return i.ToSegmentWindDirectionOutputWithContext(context.Background())
+}
+
+func (i SegmentWindDirectionArgs) ToSegmentWindDirectionOutputWithContext(ctx context.Context) SegmentWindDirectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentWindDirectionOutput)
+}
+
+// SegmentWindDirectionArrayInput is an input type that accepts SegmentWindDirectionArray and SegmentWindDirectionArrayOutput values.
+// You can construct a concrete instance of `SegmentWindDirectionArrayInput` via:
+//
+//	SegmentWindDirectionArray{ SegmentWindDirectionArgs{...} }
+type SegmentWindDirectionArrayInput interface {
+	pulumi.Input
+
+	ToSegmentWindDirectionArrayOutput() SegmentWindDirectionArrayOutput
+	ToSegmentWindDirectionArrayOutputWithContext(context.Context) SegmentWindDirectionArrayOutput
+}
+
+type SegmentWindDirectionArray []SegmentWindDirectionInput
+
+func (SegmentWindDirectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SegmentWindDirection)(nil)).Elem()
+}
+
+func (i SegmentWindDirectionArray) ToSegmentWindDirectionArrayOutput() SegmentWindDirectionArrayOutput {
+	return i.ToSegmentWindDirectionArrayOutputWithContext(context.Background())
+}
+
+func (i SegmentWindDirectionArray) ToSegmentWindDirectionArrayOutputWithContext(ctx context.Context) SegmentWindDirectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentWindDirectionArrayOutput)
+}
+
+type SegmentWindDirectionOutput struct{ *pulumi.OutputState }
+
+func (SegmentWindDirectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentWindDirection)(nil)).Elem()
+}
+
+func (o SegmentWindDirectionOutput) ToSegmentWindDirectionOutput() SegmentWindDirectionOutput {
+	return o
+}
+
+func (o SegmentWindDirectionOutput) ToSegmentWindDirectionOutputWithContext(ctx context.Context) SegmentWindDirectionOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o SegmentWindDirectionOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentWindDirection) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o SegmentWindDirectionOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentWindDirection) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o SegmentWindDirectionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentWindDirection) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o SegmentWindDirectionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentWindDirection) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o SegmentWindDirectionOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentWindDirection) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type SegmentWindDirectionArrayOutput struct{ *pulumi.OutputState }
+
+func (SegmentWindDirectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SegmentWindDirection)(nil)).Elem()
+}
+
+func (o SegmentWindDirectionArrayOutput) ToSegmentWindDirectionArrayOutput() SegmentWindDirectionArrayOutput {
+	return o
+}
+
+func (o SegmentWindDirectionArrayOutput) ToSegmentWindDirectionArrayOutputWithContext(ctx context.Context) SegmentWindDirectionArrayOutput {
+	return o
+}
+
+func (o SegmentWindDirectionArrayOutput) Index(i pulumi.IntInput) SegmentWindDirectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SegmentWindDirection {
+		return vs[0].([]SegmentWindDirection)[vs[1].(int)]
+	}).(SegmentWindDirectionOutput)
+}
+
+type SegmentWindSpeed struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// SegmentWindSpeedInput is an input type that accepts SegmentWindSpeedArgs and SegmentWindSpeedOutput values.
+// You can construct a concrete instance of `SegmentWindSpeedInput` via:
+//
+//	SegmentWindSpeedArgs{...}
+type SegmentWindSpeedInput interface {
+	pulumi.Input
+
+	ToSegmentWindSpeedOutput() SegmentWindSpeedOutput
+	ToSegmentWindSpeedOutputWithContext(context.Context) SegmentWindSpeedOutput
+}
+
+type SegmentWindSpeedArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (SegmentWindSpeedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentWindSpeed)(nil)).Elem()
+}
+
+func (i SegmentWindSpeedArgs) ToSegmentWindSpeedOutput() SegmentWindSpeedOutput {
+	return i.ToSegmentWindSpeedOutputWithContext(context.Background())
+}
+
+func (i SegmentWindSpeedArgs) ToSegmentWindSpeedOutputWithContext(ctx context.Context) SegmentWindSpeedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentWindSpeedOutput)
+}
+
+// SegmentWindSpeedArrayInput is an input type that accepts SegmentWindSpeedArray and SegmentWindSpeedArrayOutput values.
+// You can construct a concrete instance of `SegmentWindSpeedArrayInput` via:
+//
+//	SegmentWindSpeedArray{ SegmentWindSpeedArgs{...} }
+type SegmentWindSpeedArrayInput interface {
+	pulumi.Input
+
+	ToSegmentWindSpeedArrayOutput() SegmentWindSpeedArrayOutput
+	ToSegmentWindSpeedArrayOutputWithContext(context.Context) SegmentWindSpeedArrayOutput
+}
+
+type SegmentWindSpeedArray []SegmentWindSpeedInput
+
+func (SegmentWindSpeedArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SegmentWindSpeed)(nil)).Elem()
+}
+
+func (i SegmentWindSpeedArray) ToSegmentWindSpeedArrayOutput() SegmentWindSpeedArrayOutput {
+	return i.ToSegmentWindSpeedArrayOutputWithContext(context.Background())
+}
+
+func (i SegmentWindSpeedArray) ToSegmentWindSpeedArrayOutputWithContext(ctx context.Context) SegmentWindSpeedArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentWindSpeedArrayOutput)
+}
+
+type SegmentWindSpeedOutput struct{ *pulumi.OutputState }
+
+func (SegmentWindSpeedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentWindSpeed)(nil)).Elem()
+}
+
+func (o SegmentWindSpeedOutput) ToSegmentWindSpeedOutput() SegmentWindSpeedOutput {
+	return o
+}
+
+func (o SegmentWindSpeedOutput) ToSegmentWindSpeedOutputWithContext(ctx context.Context) SegmentWindSpeedOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o SegmentWindSpeedOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentWindSpeed) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o SegmentWindSpeedOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentWindSpeed) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o SegmentWindSpeedOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentWindSpeed) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o SegmentWindSpeedOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentWindSpeed) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o SegmentWindSpeedOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentWindSpeed) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type SegmentWindSpeedArrayOutput struct{ *pulumi.OutputState }
+
+func (SegmentWindSpeedArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SegmentWindSpeed)(nil)).Elem()
+}
+
+func (o SegmentWindSpeedArrayOutput) ToSegmentWindSpeedArrayOutput() SegmentWindSpeedArrayOutput {
+	return o
+}
+
+func (o SegmentWindSpeedArrayOutput) ToSegmentWindSpeedArrayOutputWithContext(ctx context.Context) SegmentWindSpeedArrayOutput {
+	return o
+}
+
+func (o SegmentWindSpeedArrayOutput) Index(i pulumi.IntInput) SegmentWindSpeedOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SegmentWindSpeed {
+		return vs[0].([]SegmentWindSpeed)[vs[1].(int)]
+	}).(SegmentWindSpeedOutput)
+}
+
 type GetAssetKindsKind struct {
-	// ID of the resource
+	// Id of the resource
 	Id string `pulumi:"id"`
 	// name of the resource
 	Name string `pulumi:"name"`
@@ -9928,7 +17875,7 @@ type GetAssetKindsKindInput interface {
 }
 
 type GetAssetKindsKindArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringInput `pulumi:"name"`
@@ -9985,7 +17932,7 @@ func (o GetAssetKindsKindOutput) ToGetAssetKindsKindOutputWithContext(ctx contex
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o GetAssetKindsKindOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAssetKindsKind) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -10016,7 +17963,7 @@ func (o GetAssetKindsKindArrayOutput) Index(i pulumi.IntInput) GetAssetKindsKind
 }
 
 type GetTagsTag struct {
-	// ID of the resource
+	// Id of the resource
 	Id string `pulumi:"id"`
 	// name of the resource
 	Name string `pulumi:"name"`
@@ -10034,7 +17981,7 @@ type GetTagsTagInput interface {
 }
 
 type GetTagsTagArgs struct {
-	// ID of the resource
+	// Id of the resource
 	Id pulumi.StringInput `pulumi:"id"`
 	// name of the resource
 	Name pulumi.StringInput `pulumi:"name"`
@@ -10091,7 +18038,7 @@ func (o GetTagsTagOutput) ToGetTagsTagOutputWithContext(ctx context.Context) Get
 	return o
 }
 
-// ID of the resource
+// Id of the resource
 func (o GetTagsTagOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTagsTag) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -10234,6 +18181,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardImageChartThresholdArrayInput)(nil)).Elem(), DashboardImageChartThresholdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardImageChartValueMappingInput)(nil)).Elem(), DashboardImageChartValueMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardImageChartValueMappingArrayInput)(nil)).Elem(), DashboardImageChartValueMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardRelatedAssetInput)(nil)).Elem(), DashboardRelatedAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardRelatedAssetArrayInput)(nil)).Elem(), DashboardRelatedAssetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardStatChartChartItemInput)(nil)).Elem(), DashboardStatChartChartItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardStatChartChartItemArrayInput)(nil)).Elem(), DashboardStatChartChartItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardStatChartChartItemQueryFilterAssetInput)(nil)).Elem(), DashboardStatChartChartItemQueryFilterAssetArgs{})
@@ -10250,6 +18199,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTableChartThresholdArrayInput)(nil)).Elem(), DashboardTableChartThresholdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTableChartValueMappingInput)(nil)).Elem(), DashboardTableChartValueMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTableChartValueMappingArrayInput)(nil)).Elem(), DashboardTableChartValueMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTagInput)(nil)).Elem(), DashboardTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTagArrayInput)(nil)).Elem(), DashboardTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTextChartChartItemInput)(nil)).Elem(), DashboardTextChartChartItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTextChartChartItemArrayInput)(nil)).Elem(), DashboardTextChartChartItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTextChartChartItemQueryFilterAssetInput)(nil)).Elem(), DashboardTextChartChartItemQueryFilterAssetArgs{})
@@ -10274,6 +18225,92 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTargetAssetPtrInput)(nil)).Elem(), FunctionTargetAssetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTargetAttributeInput)(nil)).Elem(), FunctionTargetAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTargetAttributePtrInput)(nil)).Elem(), FunctionTargetAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineAbsorptivityInput)(nil)).Elem(), LineAbsorptivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineAbsorptivityPtrInput)(nil)).Elem(), LineAbsorptivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineActivePowerInput)(nil)).Elem(), LineActivePowerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineActivePowerArrayInput)(nil)).Elem(), LineActivePowerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineActivePowerEndInput)(nil)).Elem(), LineActivePowerEndArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineActivePowerEndArrayInput)(nil)).Elem(), LineActivePowerEndArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineAmpacityInput)(nil)).Elem(), LineAmpacityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineAmpacityArrayInput)(nil)).Elem(), LineAmpacityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineAtmosphereInput)(nil)).Elem(), LineAtmosphereArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineAtmospherePtrInput)(nil)).Elem(), LineAtmosphereArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineCapacitanceInput)(nil)).Elem(), LineCapacitanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineCapacitancePtrInput)(nil)).Elem(), LineCapacitanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineConductanceInput)(nil)).Elem(), LineConductanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineConductancePtrInput)(nil)).Elem(), LineConductanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineCurrentInput)(nil)).Elem(), LineCurrentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineCurrentArrayInput)(nil)).Elem(), LineCurrentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineCurrentRInput)(nil)).Elem(), LineCurrentRArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineCurrentRArrayInput)(nil)).Elem(), LineCurrentRArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineCurrentTInput)(nil)).Elem(), LineCurrentTArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineCurrentTArrayInput)(nil)).Elem(), LineCurrentTArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineDiameterInput)(nil)).Elem(), LineDiameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineDiameterPtrInput)(nil)).Elem(), LineDiameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineEmissivityInput)(nil)).Elem(), LineEmissivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineEmissivityPtrInput)(nil)).Elem(), LineEmissivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineEnergyInput)(nil)).Elem(), LineEnergyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineEnergyArrayInput)(nil)).Elem(), LineEnergyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineKindInput)(nil)).Elem(), LineKindArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineKindArrayInput)(nil)).Elem(), LineKindArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineLengthInput)(nil)).Elem(), LineLengthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineLengthPtrInput)(nil)).Elem(), LineLengthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineMaxTemperatureInput)(nil)).Elem(), LineMaxTemperatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineMaxTemperatureArrayInput)(nil)).Elem(), LineMaxTemperatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineMaximumAllowedCurrentInput)(nil)).Elem(), LineMaximumAllowedCurrentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineMaximumAllowedCurrentPtrInput)(nil)).Elem(), LineMaximumAllowedCurrentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineMaximumAllowedPowerInput)(nil)).Elem(), LineMaximumAllowedPowerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineMaximumAllowedPowerPtrInput)(nil)).Elem(), LineMaximumAllowedPowerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineMaximumAllowedTemperatureInput)(nil)).Elem(), LineMaximumAllowedTemperatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineMaximumAllowedTemperaturePtrInput)(nil)).Elem(), LineMaximumAllowedTemperatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineMaximumAllowedTemperatureLteInput)(nil)).Elem(), LineMaximumAllowedTemperatureLteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineMaximumAllowedTemperatureLtePtrInput)(nil)).Elem(), LineMaximumAllowedTemperatureLteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineMaximumAllowedTemperatureSteInput)(nil)).Elem(), LineMaximumAllowedTemperatureSteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineMaximumAllowedTemperatureStePtrInput)(nil)).Elem(), LineMaximumAllowedTemperatureSteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineNumberOfConductorsInput)(nil)).Elem(), LineNumberOfConductorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineNumberOfConductorsPtrInput)(nil)).Elem(), LineNumberOfConductorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineReactanceInput)(nil)).Elem(), LineReactanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineReactancePtrInput)(nil)).Elem(), LineReactanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineReactivePowerInput)(nil)).Elem(), LineReactivePowerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineReactivePowerArrayInput)(nil)).Elem(), LineReactivePowerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineReferenceResistanceInput)(nil)).Elem(), LineReferenceResistanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineReferenceResistancePtrInput)(nil)).Elem(), LineReferenceResistanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineRelatedAssetInput)(nil)).Elem(), LineRelatedAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineRelatedAssetArrayInput)(nil)).Elem(), LineRelatedAssetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineResistanceInput)(nil)).Elem(), LineResistanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineResistancePtrInput)(nil)).Elem(), LineResistanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineSafetyMarginForPowerInput)(nil)).Elem(), LineSafetyMarginForPowerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineSafetyMarginForPowerPtrInput)(nil)).Elem(), LineSafetyMarginForPowerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineSusceptanceInput)(nil)).Elem(), LineSusceptanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineSusceptancePtrInput)(nil)).Elem(), LineSusceptanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineTagInput)(nil)).Elem(), LineTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineTagArrayInput)(nil)).Elem(), LineTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineTemperatureCoeffResistanceInput)(nil)).Elem(), LineTemperatureCoeffResistanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineTemperatureCoeffResistancePtrInput)(nil)).Elem(), LineTemperatureCoeffResistanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineVoltageRInput)(nil)).Elem(), LineVoltageRArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineVoltageRArrayInput)(nil)).Elem(), LineVoltageRArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineVoltageStInput)(nil)).Elem(), LineVoltageStArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineVoltageStArrayInput)(nil)).Elem(), LineVoltageStArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineVoltageTrInput)(nil)).Elem(), LineVoltageTrArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineVoltageTrArrayInput)(nil)).Elem(), LineVoltageTrArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentAltitudeInput)(nil)).Elem(), SegmentAltitudeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentAltitudePtrInput)(nil)).Elem(), SegmentAltitudeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentAzimuthInput)(nil)).Elem(), SegmentAzimuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentAzimuthPtrInput)(nil)).Elem(), SegmentAzimuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentCumulativeDistanceInput)(nil)).Elem(), SegmentCumulativeDistanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentCumulativeDistancePtrInput)(nil)).Elem(), SegmentCumulativeDistanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentKindInput)(nil)).Elem(), SegmentKindArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentKindArrayInput)(nil)).Elem(), SegmentKindArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentRelatedAssetInput)(nil)).Elem(), SegmentRelatedAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentRelatedAssetArrayInput)(nil)).Elem(), SegmentRelatedAssetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentTagInput)(nil)).Elem(), SegmentTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentTagArrayInput)(nil)).Elem(), SegmentTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentTemperatureInput)(nil)).Elem(), SegmentTemperatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentTemperatureArrayInput)(nil)).Elem(), SegmentTemperatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentWindDirectionInput)(nil)).Elem(), SegmentWindDirectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentWindDirectionArrayInput)(nil)).Elem(), SegmentWindDirectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentWindSpeedInput)(nil)).Elem(), SegmentWindSpeedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentWindSpeedArrayInput)(nil)).Elem(), SegmentWindSpeedArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAssetKindsKindInput)(nil)).Elem(), GetAssetKindsKindArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAssetKindsKindArrayInput)(nil)).Elem(), GetAssetKindsKindArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagInput)(nil)).Elem(), GetTagsTagArgs{})
@@ -10390,6 +18427,8 @@ func init() {
 	pulumi.RegisterOutputType(DashboardImageChartThresholdArrayOutput{})
 	pulumi.RegisterOutputType(DashboardImageChartValueMappingOutput{})
 	pulumi.RegisterOutputType(DashboardImageChartValueMappingArrayOutput{})
+	pulumi.RegisterOutputType(DashboardRelatedAssetOutput{})
+	pulumi.RegisterOutputType(DashboardRelatedAssetArrayOutput{})
 	pulumi.RegisterOutputType(DashboardStatChartChartItemOutput{})
 	pulumi.RegisterOutputType(DashboardStatChartChartItemArrayOutput{})
 	pulumi.RegisterOutputType(DashboardStatChartChartItemQueryFilterAssetOutput{})
@@ -10406,6 +18445,8 @@ func init() {
 	pulumi.RegisterOutputType(DashboardTableChartThresholdArrayOutput{})
 	pulumi.RegisterOutputType(DashboardTableChartValueMappingOutput{})
 	pulumi.RegisterOutputType(DashboardTableChartValueMappingArrayOutput{})
+	pulumi.RegisterOutputType(DashboardTagOutput{})
+	pulumi.RegisterOutputType(DashboardTagArrayOutput{})
 	pulumi.RegisterOutputType(DashboardTextChartChartItemOutput{})
 	pulumi.RegisterOutputType(DashboardTextChartChartItemArrayOutput{})
 	pulumi.RegisterOutputType(DashboardTextChartChartItemQueryFilterAssetOutput{})
@@ -10430,6 +18471,92 @@ func init() {
 	pulumi.RegisterOutputType(FunctionTargetAssetPtrOutput{})
 	pulumi.RegisterOutputType(FunctionTargetAttributeOutput{})
 	pulumi.RegisterOutputType(FunctionTargetAttributePtrOutput{})
+	pulumi.RegisterOutputType(LineAbsorptivityOutput{})
+	pulumi.RegisterOutputType(LineAbsorptivityPtrOutput{})
+	pulumi.RegisterOutputType(LineActivePowerOutput{})
+	pulumi.RegisterOutputType(LineActivePowerArrayOutput{})
+	pulumi.RegisterOutputType(LineActivePowerEndOutput{})
+	pulumi.RegisterOutputType(LineActivePowerEndArrayOutput{})
+	pulumi.RegisterOutputType(LineAmpacityOutput{})
+	pulumi.RegisterOutputType(LineAmpacityArrayOutput{})
+	pulumi.RegisterOutputType(LineAtmosphereOutput{})
+	pulumi.RegisterOutputType(LineAtmospherePtrOutput{})
+	pulumi.RegisterOutputType(LineCapacitanceOutput{})
+	pulumi.RegisterOutputType(LineCapacitancePtrOutput{})
+	pulumi.RegisterOutputType(LineConductanceOutput{})
+	pulumi.RegisterOutputType(LineConductancePtrOutput{})
+	pulumi.RegisterOutputType(LineCurrentOutput{})
+	pulumi.RegisterOutputType(LineCurrentArrayOutput{})
+	pulumi.RegisterOutputType(LineCurrentROutput{})
+	pulumi.RegisterOutputType(LineCurrentRArrayOutput{})
+	pulumi.RegisterOutputType(LineCurrentTOutput{})
+	pulumi.RegisterOutputType(LineCurrentTArrayOutput{})
+	pulumi.RegisterOutputType(LineDiameterOutput{})
+	pulumi.RegisterOutputType(LineDiameterPtrOutput{})
+	pulumi.RegisterOutputType(LineEmissivityOutput{})
+	pulumi.RegisterOutputType(LineEmissivityPtrOutput{})
+	pulumi.RegisterOutputType(LineEnergyOutput{})
+	pulumi.RegisterOutputType(LineEnergyArrayOutput{})
+	pulumi.RegisterOutputType(LineKindOutput{})
+	pulumi.RegisterOutputType(LineKindArrayOutput{})
+	pulumi.RegisterOutputType(LineLengthOutput{})
+	pulumi.RegisterOutputType(LineLengthPtrOutput{})
+	pulumi.RegisterOutputType(LineMaxTemperatureOutput{})
+	pulumi.RegisterOutputType(LineMaxTemperatureArrayOutput{})
+	pulumi.RegisterOutputType(LineMaximumAllowedCurrentOutput{})
+	pulumi.RegisterOutputType(LineMaximumAllowedCurrentPtrOutput{})
+	pulumi.RegisterOutputType(LineMaximumAllowedPowerOutput{})
+	pulumi.RegisterOutputType(LineMaximumAllowedPowerPtrOutput{})
+	pulumi.RegisterOutputType(LineMaximumAllowedTemperatureOutput{})
+	pulumi.RegisterOutputType(LineMaximumAllowedTemperaturePtrOutput{})
+	pulumi.RegisterOutputType(LineMaximumAllowedTemperatureLteOutput{})
+	pulumi.RegisterOutputType(LineMaximumAllowedTemperatureLtePtrOutput{})
+	pulumi.RegisterOutputType(LineMaximumAllowedTemperatureSteOutput{})
+	pulumi.RegisterOutputType(LineMaximumAllowedTemperatureStePtrOutput{})
+	pulumi.RegisterOutputType(LineNumberOfConductorsOutput{})
+	pulumi.RegisterOutputType(LineNumberOfConductorsPtrOutput{})
+	pulumi.RegisterOutputType(LineReactanceOutput{})
+	pulumi.RegisterOutputType(LineReactancePtrOutput{})
+	pulumi.RegisterOutputType(LineReactivePowerOutput{})
+	pulumi.RegisterOutputType(LineReactivePowerArrayOutput{})
+	pulumi.RegisterOutputType(LineReferenceResistanceOutput{})
+	pulumi.RegisterOutputType(LineReferenceResistancePtrOutput{})
+	pulumi.RegisterOutputType(LineRelatedAssetOutput{})
+	pulumi.RegisterOutputType(LineRelatedAssetArrayOutput{})
+	pulumi.RegisterOutputType(LineResistanceOutput{})
+	pulumi.RegisterOutputType(LineResistancePtrOutput{})
+	pulumi.RegisterOutputType(LineSafetyMarginForPowerOutput{})
+	pulumi.RegisterOutputType(LineSafetyMarginForPowerPtrOutput{})
+	pulumi.RegisterOutputType(LineSusceptanceOutput{})
+	pulumi.RegisterOutputType(LineSusceptancePtrOutput{})
+	pulumi.RegisterOutputType(LineTagOutput{})
+	pulumi.RegisterOutputType(LineTagArrayOutput{})
+	pulumi.RegisterOutputType(LineTemperatureCoeffResistanceOutput{})
+	pulumi.RegisterOutputType(LineTemperatureCoeffResistancePtrOutput{})
+	pulumi.RegisterOutputType(LineVoltageROutput{})
+	pulumi.RegisterOutputType(LineVoltageRArrayOutput{})
+	pulumi.RegisterOutputType(LineVoltageStOutput{})
+	pulumi.RegisterOutputType(LineVoltageStArrayOutput{})
+	pulumi.RegisterOutputType(LineVoltageTrOutput{})
+	pulumi.RegisterOutputType(LineVoltageTrArrayOutput{})
+	pulumi.RegisterOutputType(SegmentAltitudeOutput{})
+	pulumi.RegisterOutputType(SegmentAltitudePtrOutput{})
+	pulumi.RegisterOutputType(SegmentAzimuthOutput{})
+	pulumi.RegisterOutputType(SegmentAzimuthPtrOutput{})
+	pulumi.RegisterOutputType(SegmentCumulativeDistanceOutput{})
+	pulumi.RegisterOutputType(SegmentCumulativeDistancePtrOutput{})
+	pulumi.RegisterOutputType(SegmentKindOutput{})
+	pulumi.RegisterOutputType(SegmentKindArrayOutput{})
+	pulumi.RegisterOutputType(SegmentRelatedAssetOutput{})
+	pulumi.RegisterOutputType(SegmentRelatedAssetArrayOutput{})
+	pulumi.RegisterOutputType(SegmentTagOutput{})
+	pulumi.RegisterOutputType(SegmentTagArrayOutput{})
+	pulumi.RegisterOutputType(SegmentTemperatureOutput{})
+	pulumi.RegisterOutputType(SegmentTemperatureArrayOutput{})
+	pulumi.RegisterOutputType(SegmentWindDirectionOutput{})
+	pulumi.RegisterOutputType(SegmentWindDirectionArrayOutput{})
+	pulumi.RegisterOutputType(SegmentWindSpeedOutput{})
+	pulumi.RegisterOutputType(SegmentWindSpeedArrayOutput{})
 	pulumi.RegisterOutputType(GetAssetKindsKindOutput{})
 	pulumi.RegisterOutputType(GetAssetKindsKindArrayOutput{})
 	pulumi.RegisterOutputType(GetTagsTagOutput{})

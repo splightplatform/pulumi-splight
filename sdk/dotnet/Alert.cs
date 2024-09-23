@@ -195,12 +195,6 @@ namespace Splight.Splight
         public Output<int> RateValue { get; private set; } = null!;
 
         /// <summary>
-        /// related assets to be linked. In case one of these alerts triggers it will be reflected on each of these assets.
-        /// </summary>
-        [Output("relatedAssets")]
-        public Output<ImmutableArray<string>> RelatedAssets { get; private set; } = null!;
-
-        /// <summary>
         /// [sev1,...,sev8] severity for the alert
         /// </summary>
         [Output("severity")]
@@ -358,18 +352,6 @@ namespace Splight.Splight
         [Input("rateValue")]
         public Input<int>? RateValue { get; set; }
 
-        [Input("relatedAssets")]
-        private InputList<string>? _relatedAssets;
-
-        /// <summary>
-        /// related assets to be linked. In case one of these alerts triggers it will be reflected on each of these assets.
-        /// </summary>
-        public InputList<string> RelatedAssets
-        {
-            get => _relatedAssets ?? (_relatedAssets = new InputList<string>());
-            set => _relatedAssets = value;
-        }
-
         /// <summary>
         /// [sev1,...,sev8] severity for the alert
         /// </summary>
@@ -493,18 +475,6 @@ namespace Splight.Splight
         /// </summary>
         [Input("rateValue")]
         public Input<int>? RateValue { get; set; }
-
-        [Input("relatedAssets")]
-        private InputList<string>? _relatedAssets;
-
-        /// <summary>
-        /// related assets to be linked. In case one of these alerts triggers it will be reflected on each of these assets.
-        /// </summary>
-        public InputList<string> RelatedAssets
-        {
-            get => _relatedAssets ?? (_relatedAssets = new InputList<string>());
-            set => _relatedAssets = value;
-        }
 
         /// <summary>
         /// [sev1,...,sev8] severity for the alert

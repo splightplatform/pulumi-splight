@@ -22,7 +22,7 @@ export interface ActionSetpoint {
      */
     attribute: outputs.ActionSetpointAttribute;
     /**
-     * setpoint ID
+     * setpoint Id
      */
     id: string;
     /**
@@ -56,7 +56,7 @@ export interface AlertAlertItem {
      */
     expressionPlain: string;
     /**
-     * ID of the function item
+     * Id of the function item
      */
     id: string;
     /**
@@ -91,7 +91,7 @@ export interface AlertAlertItem {
 
 export interface AlertAlertItemQueryFilterAsset {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -102,7 +102,7 @@ export interface AlertAlertItemQueryFilterAsset {
 
 export interface AlertAlertItemQueryFilterAttribute {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -154,7 +154,7 @@ export interface CommandAction {
      */
     asset: outputs.CommandActionAsset;
     /**
-     * action ID
+     * action Id
      */
     id: string;
     /**
@@ -261,7 +261,7 @@ export interface DashboardActionlistChartChartItem {
 
 export interface DashboardActionlistChartChartItemQueryFilterAsset {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -272,7 +272,7 @@ export interface DashboardActionlistChartChartItemQueryFilterAsset {
 
 export interface DashboardActionlistChartChartItemQueryFilterAttribute {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -318,7 +318,7 @@ export interface DashboardAlerteventsChartChartItem {
 
 export interface DashboardAlerteventsChartChartItemQueryFilterAsset {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -329,7 +329,7 @@ export interface DashboardAlerteventsChartChartItemQueryFilterAsset {
 
 export interface DashboardAlerteventsChartChartItemQueryFilterAttribute {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -375,7 +375,7 @@ export interface DashboardAlertlistChartChartItem {
 
 export interface DashboardAlertlistChartChartItemQueryFilterAsset {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -386,7 +386,7 @@ export interface DashboardAlertlistChartChartItemQueryFilterAsset {
 
 export interface DashboardAlertlistChartChartItemQueryFilterAttribute {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -432,7 +432,7 @@ export interface DashboardAssetlistChartChartItem {
 
 export interface DashboardAssetlistChartChartItemQueryFilterAsset {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -443,7 +443,7 @@ export interface DashboardAssetlistChartChartItemQueryFilterAsset {
 
 export interface DashboardAssetlistChartChartItemQueryFilterAttribute {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -489,7 +489,7 @@ export interface DashboardBarChartChartItem {
 
 export interface DashboardBarChartChartItemQueryFilterAsset {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -500,7 +500,7 @@ export interface DashboardBarChartChartItemQueryFilterAsset {
 
 export interface DashboardBarChartChartItemQueryFilterAttribute {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -546,7 +546,7 @@ export interface DashboardBargaugeChartChartItem {
 
 export interface DashboardBargaugeChartChartItemQueryFilterAsset {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -557,7 +557,7 @@ export interface DashboardBargaugeChartChartItemQueryFilterAsset {
 
 export interface DashboardBargaugeChartChartItemQueryFilterAttribute {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -603,7 +603,7 @@ export interface DashboardCommandlistChartChartItem {
 
 export interface DashboardCommandlistChartChartItemQueryFilterAsset {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -614,7 +614,7 @@ export interface DashboardCommandlistChartChartItemQueryFilterAsset {
 
 export interface DashboardCommandlistChartChartItemQueryFilterAttribute {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -660,7 +660,7 @@ export interface DashboardGaugeChartChartItem {
 
 export interface DashboardGaugeChartChartItemQueryFilterAsset {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -671,7 +671,7 @@ export interface DashboardGaugeChartChartItemQueryFilterAsset {
 
 export interface DashboardGaugeChartChartItemQueryFilterAttribute {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -717,7 +717,7 @@ export interface DashboardHistogramChartChartItem {
 
 export interface DashboardHistogramChartChartItemQueryFilterAsset {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -728,7 +728,7 @@ export interface DashboardHistogramChartChartItemQueryFilterAsset {
 
 export interface DashboardHistogramChartChartItemQueryFilterAttribute {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -774,7 +774,7 @@ export interface DashboardImageChartChartItem {
 
 export interface DashboardImageChartChartItemQueryFilterAsset {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -785,7 +785,7 @@ export interface DashboardImageChartChartItemQueryFilterAsset {
 
 export interface DashboardImageChartChartItemQueryFilterAttribute {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -805,6 +805,17 @@ export interface DashboardImageChartValueMapping {
     matchValue: string;
     order: number;
     type: string;
+}
+
+export interface DashboardRelatedAsset {
+    /**
+     * asset id
+     */
+    id: string;
+    /**
+     * asset name
+     */
+    name: string;
 }
 
 export interface DashboardStatChartChartItem {
@@ -831,7 +842,7 @@ export interface DashboardStatChartChartItem {
 
 export interface DashboardStatChartChartItemQueryFilterAsset {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -842,7 +853,7 @@ export interface DashboardStatChartChartItemQueryFilterAsset {
 
 export interface DashboardStatChartChartItemQueryFilterAttribute {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -888,7 +899,7 @@ export interface DashboardTableChartChartItem {
 
 export interface DashboardTableChartChartItemQueryFilterAsset {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -899,7 +910,7 @@ export interface DashboardTableChartChartItemQueryFilterAsset {
 
 export interface DashboardTableChartChartItemQueryFilterAttribute {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -919,6 +930,17 @@ export interface DashboardTableChartValueMapping {
     matchValue: string;
     order: number;
     type: string;
+}
+
+export interface DashboardTag {
+    /**
+     * tag id
+     */
+    id: string;
+    /**
+     * tag name
+     */
+    name: string;
 }
 
 export interface DashboardTextChartChartItem {
@@ -945,7 +967,7 @@ export interface DashboardTextChartChartItem {
 
 export interface DashboardTextChartChartItemQueryFilterAsset {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -956,7 +978,7 @@ export interface DashboardTextChartChartItemQueryFilterAsset {
 
 export interface DashboardTextChartChartItemQueryFilterAttribute {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -1002,7 +1024,7 @@ export interface DashboardTimeseriesChartChartItem {
 
 export interface DashboardTimeseriesChartChartItemQueryFilterAsset {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -1013,7 +1035,7 @@ export interface DashboardTimeseriesChartChartItemQueryFilterAsset {
 
 export interface DashboardTimeseriesChartChartItemQueryFilterAttribute {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -1045,7 +1067,7 @@ export interface FunctionFunctionItem {
      */
     expressionPlain: string;
     /**
-     * ID of the function item
+     * Id of the function item
      */
     id: string;
     /**
@@ -1080,7 +1102,7 @@ export interface FunctionFunctionItem {
 
 export interface FunctionFunctionItemQueryFilterAsset {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -1091,7 +1113,7 @@ export interface FunctionFunctionItemQueryFilterAsset {
 
 export interface FunctionFunctionItemQueryFilterAttribute {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -1106,7 +1128,7 @@ export interface FunctionFunctionItemQueryFilterAttribute {
 
 export interface FunctionTargetAsset {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -1117,7 +1139,7 @@ export interface FunctionTargetAsset {
 
 export interface FunctionTargetAttribute {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id?: string;
     /**
@@ -1132,7 +1154,7 @@ export interface FunctionTargetAttribute {
 
 export interface GetAssetKindsKind {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id: string;
     /**
@@ -1143,12 +1165,1017 @@ export interface GetAssetKindsKind {
 
 export interface GetTagsTag {
     /**
-     * ID of the resource
+     * Id of the resource
      */
     id: string;
     /**
      * name of the resource
      */
     name: string;
+}
+
+export interface LineAbsorptivity {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineActivePower {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface LineActivePowerEnd {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface LineAmpacity {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface LineAtmosphere {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineCapacitance {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineConductance {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineCurrent {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface LineCurrentR {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface LineCurrentT {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface LineDiameter {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineEmissivity {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineEnergy {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface LineKind {
+    /**
+     * kind id
+     */
+    id: string;
+    /**
+     * kind name
+     */
+    name: string;
+}
+
+export interface LineLength {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineMaxTemperature {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface LineMaximumAllowedCurrent {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineMaximumAllowedPower {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineMaximumAllowedTemperature {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineMaximumAllowedTemperatureLte {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineMaximumAllowedTemperatureSte {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineNumberOfConductors {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineReactance {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineReactivePower {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface LineReferenceResistance {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineRelatedAsset {
+    /**
+     * asset id
+     */
+    id: string;
+    /**
+     * asset name
+     */
+    name: string;
+}
+
+export interface LineResistance {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineSafetyMarginForPower {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineSusceptance {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineTag {
+    /**
+     * tag id
+     */
+    id: string;
+    /**
+     * tag name
+     */
+    name: string;
+}
+
+export interface LineTemperatureCoeffResistance {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineVoltageR {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface LineVoltageSt {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface LineVoltageTr {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface SegmentAltitude {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface SegmentAzimuth {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface SegmentCumulativeDistance {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface SegmentKind {
+    /**
+     * kind id
+     */
+    id: string;
+    /**
+     * kind name
+     */
+    name: string;
+}
+
+export interface SegmentRelatedAsset {
+    /**
+     * asset id
+     */
+    id: string;
+    /**
+     * asset name
+     */
+    name: string;
+}
+
+export interface SegmentTag {
+    /**
+     * tag id
+     */
+    id: string;
+    /**
+     * tag name
+     */
+    name: string;
+}
+
+export interface SegmentTemperature {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface SegmentWindDirection {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface SegmentWindSpeed {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
 }
 

@@ -267,38 +267,6 @@ class ComponentRoutine(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import json
-        import pulumi_splight as splight
-
-        component_test_routine = splight.ComponentRoutine("componentTestRoutine",
-            description="Created with Terraform",
-            type="IncomingRoutine",
-            component_id="1234-1234-1234-1234",
-            configs=[{
-                "name": "config_param",
-                "type": "bool",
-                "value": "true",
-                "multiple": False,
-                "required": True,
-                "sensitive": False,
-                "description": json.dumps("Created with Terraform123123"),
-            }],
-            outputs=[{
-                "name": "address",
-                "description": "destination address for data to be pushed",
-                "type": "DataAddress",
-                "value_type": "Number",
-                "multiple": False,
-                "required": True,
-                "values": {
-                    "asset": "1234-1234-1234-1234",
-                    "attribute": "1234-1234-1234-1234",
-                },
-            }])
-        ```
-
         ## Import
 
         ```sh
@@ -323,38 +291,6 @@ class ComponentRoutine(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_splight as splight
-
-        component_test_routine = splight.ComponentRoutine("componentTestRoutine",
-            description="Created with Terraform",
-            type="IncomingRoutine",
-            component_id="1234-1234-1234-1234",
-            configs=[{
-                "name": "config_param",
-                "type": "bool",
-                "value": "true",
-                "multiple": False,
-                "required": True,
-                "sensitive": False,
-                "description": json.dumps("Created with Terraform123123"),
-            }],
-            outputs=[{
-                "name": "address",
-                "description": "destination address for data to be pushed",
-                "type": "DataAddress",
-                "value_type": "Number",
-                "multiple": False,
-                "required": True,
-                "values": {
-                    "asset": "1234-1234-1234-1234",
-                    "attribute": "1234-1234-1234-1234",
-                },
-            }])
-        ```
 
         ## Import
 

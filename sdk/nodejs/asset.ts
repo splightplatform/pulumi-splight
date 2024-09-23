@@ -60,10 +60,6 @@ export class Asset extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * linked assets
-     */
-    public readonly relatedAssets!: pulumi.Output<string[] | undefined>;
-    /**
      * tags of the resource
      */
     public readonly tags!: pulumi.Output<outputs.AssetTag[] | undefined>;
@@ -85,7 +81,6 @@ export class Asset extends pulumi.CustomResource {
             resourceInputs["geometry"] = state ? state.geometry : undefined;
             resourceInputs["kind"] = state ? state.kind : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["relatedAssets"] = state ? state.relatedAssets : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as AssetArgs | undefined;
@@ -96,7 +91,6 @@ export class Asset extends pulumi.CustomResource {
             resourceInputs["geometry"] = args ? args.geometry : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["relatedAssets"] = args ? args.relatedAssets : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -125,10 +119,6 @@ export interface AssetState {
      */
     name?: pulumi.Input<string>;
     /**
-     * linked assets
-     */
-    relatedAssets?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * tags of the resource
      */
     tags?: pulumi.Input<pulumi.Input<inputs.AssetTag>[]>;
@@ -154,10 +144,6 @@ export interface AssetArgs {
      * name of the resource
      */
     name?: pulumi.Input<string>;
-    /**
-     * linked assets
-     */
-    relatedAssets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * tags of the resource
      */

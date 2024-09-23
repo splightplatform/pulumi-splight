@@ -13,8 +13,6 @@ namespace Splight.Splight
     public static class GetAssetKinds
     {
         /// <summary>
-        /// Data source to fetch all asset kinds defined in the platform
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,8 +32,6 @@ namespace Splight.Splight
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAssetKindsResult>("splight:index/getAssetKinds:getAssetKinds", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
-        /// Data source to fetch all asset kinds defined in the platform
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

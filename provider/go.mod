@@ -1,6 +1,6 @@
 module github.com/splightplatform/pulumi-splight/provider
 
-go 1.21.12
+go 1.22
 
 toolchain go1.22.2
 
@@ -8,7 +8,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.89.1
-	github.com/splightplatform/terraform-provider-splight v0.3.3
+	github.com/splightplatform/terraform-provider-splight v1.0.0
 )
 
 require (

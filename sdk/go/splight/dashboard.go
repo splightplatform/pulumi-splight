@@ -13,32 +13,6 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/splightplatform/pulumi-splight/sdk/go/splight"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := splight.NewDashboard(ctx, "dashboardTest", &splight.DashboardArgs{
-//				RelatedAssets: pulumi.StringArray{
-//					pulumi.String("1234-1234-1234-1234"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh
@@ -47,12 +21,14 @@ import (
 type Dashboard struct {
 	pulumi.CustomResourceState
 
-	// complementary information for the dashboard
+	// dashboard description
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// dashboard name
 	Name pulumi.StringOutput `pulumi:"name"`
-	// assets linked
-	RelatedAssets pulumi.StringArrayOutput `pulumi:"relatedAssets"`
+	// related assets of the resource
+	RelatedAssets DashboardRelatedAssetArrayOutput `pulumi:"relatedAssets"`
+	// tags of the resource
+	Tags DashboardTagArrayOutput `pulumi:"tags"`
 }
 
 // NewDashboard registers a new resource with the given unique name, arguments, and options.
@@ -85,21 +61,25 @@ func GetDashboard(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Dashboard resources.
 type dashboardState struct {
-	// complementary information for the dashboard
+	// dashboard description
 	Description *string `pulumi:"description"`
 	// dashboard name
 	Name *string `pulumi:"name"`
-	// assets linked
-	RelatedAssets []string `pulumi:"relatedAssets"`
+	// related assets of the resource
+	RelatedAssets []DashboardRelatedAsset `pulumi:"relatedAssets"`
+	// tags of the resource
+	Tags []DashboardTag `pulumi:"tags"`
 }
 
 type DashboardState struct {
-	// complementary information for the dashboard
+	// dashboard description
 	Description pulumi.StringPtrInput
 	// dashboard name
 	Name pulumi.StringPtrInput
-	// assets linked
-	RelatedAssets pulumi.StringArrayInput
+	// related assets of the resource
+	RelatedAssets DashboardRelatedAssetArrayInput
+	// tags of the resource
+	Tags DashboardTagArrayInput
 }
 
 func (DashboardState) ElementType() reflect.Type {
@@ -107,22 +87,26 @@ func (DashboardState) ElementType() reflect.Type {
 }
 
 type dashboardArgs struct {
-	// complementary information for the dashboard
+	// dashboard description
 	Description *string `pulumi:"description"`
 	// dashboard name
 	Name *string `pulumi:"name"`
-	// assets linked
-	RelatedAssets []string `pulumi:"relatedAssets"`
+	// related assets of the resource
+	RelatedAssets []DashboardRelatedAsset `pulumi:"relatedAssets"`
+	// tags of the resource
+	Tags []DashboardTag `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Dashboard resource.
 type DashboardArgs struct {
-	// complementary information for the dashboard
+	// dashboard description
 	Description pulumi.StringPtrInput
 	// dashboard name
 	Name pulumi.StringPtrInput
-	// assets linked
-	RelatedAssets pulumi.StringArrayInput
+	// related assets of the resource
+	RelatedAssets DashboardRelatedAssetArrayInput
+	// tags of the resource
+	Tags DashboardTagArrayInput
 }
 
 func (DashboardArgs) ElementType() reflect.Type {
@@ -212,7 +196,7 @@ func (o DashboardOutput) ToDashboardOutputWithContext(ctx context.Context) Dashb
 	return o
 }
 
-// complementary information for the dashboard
+// dashboard description
 func (o DashboardOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -222,9 +206,14 @@ func (o DashboardOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// assets linked
-func (o DashboardOutput) RelatedAssets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Dashboard) pulumi.StringArrayOutput { return v.RelatedAssets }).(pulumi.StringArrayOutput)
+// related assets of the resource
+func (o DashboardOutput) RelatedAssets() DashboardRelatedAssetArrayOutput {
+	return o.ApplyT(func(v *Dashboard) DashboardRelatedAssetArrayOutput { return v.RelatedAssets }).(DashboardRelatedAssetArrayOutput)
+}
+
+// tags of the resource
+func (o DashboardOutput) Tags() DashboardTagArrayOutput {
+	return o.ApplyT(func(v *Dashboard) DashboardTagArrayOutput { return v.Tags }).(DashboardTagArrayOutput)
 }
 
 type DashboardArrayOutput struct{ *pulumi.OutputState }

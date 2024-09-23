@@ -19,7 +19,7 @@ namespace Splight.Splight.Outputs
         /// </summary>
         public readonly Outputs.ActionSetpointAttribute Attribute;
         /// <summary>
-        /// setpoint ID
+        /// setpoint Id
         /// </summary>
         public readonly string? Id;
         /// <summary>

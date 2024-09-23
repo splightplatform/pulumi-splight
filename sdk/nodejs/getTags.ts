@@ -7,8 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Data source to fetch all tags defined in the organization account
- *
  * ## Example Usage
  *
  * ```typescript
@@ -36,8 +34,6 @@ export interface GetTagsResult {
     readonly tags: outputs.GetTagsTag[];
 }
 /**
- * Data source to fetch all tags defined in the organization account
- *
  * ## Example Usage
  *
  * ```typescript

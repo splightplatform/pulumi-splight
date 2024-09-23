@@ -14,64 +14,6 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"encoding/json"
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/splightplatform/pulumi-splight/sdk/go/splight"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal("Created with Terraform123123")
-//			if err != nil {
-//				return err
-//			}
-//			json0 := string(tmpJSON0)
-//			_, err = splight.NewComponentRoutine(ctx, "componentTestRoutine", &splight.ComponentRoutineArgs{
-//				Description: pulumi.String("Created with Terraform"),
-//				Type:        pulumi.String("IncomingRoutine"),
-//				ComponentId: pulumi.String("1234-1234-1234-1234"),
-//				Configs: splight.ComponentRoutineConfigArray{
-//					&splight.ComponentRoutineConfigArgs{
-//						Name:        pulumi.String("config_param"),
-//						Type:        pulumi.String("bool"),
-//						Value:       pulumi.String("true"),
-//						Multiple:    pulumi.Bool(false),
-//						Required:    pulumi.Bool(true),
-//						Sensitive:   pulumi.Bool(false),
-//						Description: pulumi.String(json0),
-//					},
-//				},
-//				Outputs: splight.ComponentRoutineOutputTypeArray{
-//					&splight.ComponentRoutineOutputTypeArgs{
-//						Name:        pulumi.String("address"),
-//						Description: pulumi.String("destination address for data to be pushed"),
-//						Type:        pulumi.String("DataAddress"),
-//						ValueType:   pulumi.String("Number"),
-//						Multiple:    pulumi.Bool(false),
-//						Required:    pulumi.Bool(true),
-//						Values: splight.ComponentRoutineOutputValueArray{
-//							Asset:     "1234-1234-1234-1234",
-//							Attribute: "1234-1234-1234-1234",
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

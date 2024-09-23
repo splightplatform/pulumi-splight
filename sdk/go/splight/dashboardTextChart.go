@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			dashboardTest, err := splight.NewDashboard(ctx, "dashboardTest", &splight.DashboardArgs{
-//				RelatedAssets: pulumi.StringArray{},
+//				RelatedAssets: splight.DashboardRelatedAssetArray{},
 //			})
 //			if err != nil {
 //				return err

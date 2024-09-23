@@ -5,15 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Observatory Scheduled Test resource.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as splight from "@splightplatform/pulumi-splight";
  *
- * const secretTest = new splight.Secret("secretTest", {rawValue: "ASUPERSECR3T"});
+ * const mySecret = new splight.Secret("mySecret", {rawValue: "My Secret Value"});
  * ```
  *
  * ## Import

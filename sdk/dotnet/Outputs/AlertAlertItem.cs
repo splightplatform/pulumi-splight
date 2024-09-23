@@ -23,7 +23,7 @@ namespace Splight.Splight.Outputs
         /// </summary>
         public readonly string ExpressionPlain;
         /// <summary>
-        /// ID of the function item
+        /// Id of the function item
         /// </summary>
         public readonly string? Id;
         /// <summary>

@@ -125,16 +125,6 @@ export type DashboardTimeseriesChart = import("./dashboardTimeseriesChart").Dash
 export const DashboardTimeseriesChart: typeof import("./dashboardTimeseriesChart").DashboardTimeseriesChart = null as any;
 utilities.lazyLoad(exports, ["DashboardTimeseriesChart"], () => require("./dashboardTimeseriesChart"));
 
-export { FileArgs, FileState } from "./file";
-export type File = import("./file").File;
-export const File: typeof import("./file").File = null as any;
-utilities.lazyLoad(exports, ["File"], () => require("./file"));
-
-export { FileFolderArgs, FileFolderState } from "./fileFolder";
-export type FileFolder = import("./fileFolder").FileFolder;
-export const FileFolder: typeof import("./fileFolder").FileFolder = null as any;
-utilities.lazyLoad(exports, ["FileFolder"], () => require("./fileFolder"));
-
 export { FunctionArgs, FunctionState } from "./function";
 export type Function = import("./function").Function;
 export const Function: typeof import("./function").Function = null as any;
@@ -150,10 +140,10 @@ export const getTags: typeof import("./getTags").getTags = null as any;
 export const getTagsOutput: typeof import("./getTags").getTagsOutput = null as any;
 utilities.lazyLoad(exports, ["getTags","getTagsOutput"], () => require("./getTags"));
 
-export { NodeArgs, NodeState } from "./node";
-export type Node = import("./node").Node;
-export const Node: typeof import("./node").Node = null as any;
-utilities.lazyLoad(exports, ["Node"], () => require("./node"));
+export { LineArgs, LineState } from "./line";
+export type Line = import("./line").Line;
+export const Line: typeof import("./line").Line = null as any;
+utilities.lazyLoad(exports, ["Line"], () => require("./line"));
 
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
@@ -164,6 +154,11 @@ export { SecretArgs, SecretState } from "./secret";
 export type Secret = import("./secret").Secret;
 export const Secret: typeof import("./secret").Secret = null as any;
 utilities.lazyLoad(exports, ["Secret"], () => require("./secret"));
+
+export { SegmentArgs, SegmentState } from "./segment";
+export type Segment = import("./segment").Segment;
+export const Segment: typeof import("./segment").Segment = null as any;
+utilities.lazyLoad(exports, ["Segment"], () => require("./segment"));
 
 export { TagArgs, TagState } from "./tag";
 export type Tag = import("./tag").Tag;
@@ -232,16 +227,14 @@ const _module = {
                 return new DashboardTextChart(name, <any>undefined, { urn })
             case "splight:index/dashboardTimeseriesChart:DashboardTimeseriesChart":
                 return new DashboardTimeseriesChart(name, <any>undefined, { urn })
-            case "splight:index/file:File":
-                return new File(name, <any>undefined, { urn })
-            case "splight:index/fileFolder:FileFolder":
-                return new FileFolder(name, <any>undefined, { urn })
             case "splight:index/function:Function":
                 return new Function(name, <any>undefined, { urn })
-            case "splight:index/node:Node":
-                return new Node(name, <any>undefined, { urn })
+            case "splight:index/line:Line":
+                return new Line(name, <any>undefined, { urn })
             case "splight:index/secret:Secret":
                 return new Secret(name, <any>undefined, { urn })
+            case "splight:index/segment:Segment":
+                return new Segment(name, <any>undefined, { urn })
             case "splight:index/tag:Tag":
                 return new Tag(name, <any>undefined, { urn })
             default:
@@ -273,11 +266,10 @@ pulumi.runtime.registerResourceModule("splight", "index/dashboardTab", _module)
 pulumi.runtime.registerResourceModule("splight", "index/dashboardTableChart", _module)
 pulumi.runtime.registerResourceModule("splight", "index/dashboardTextChart", _module)
 pulumi.runtime.registerResourceModule("splight", "index/dashboardTimeseriesChart", _module)
-pulumi.runtime.registerResourceModule("splight", "index/file", _module)
-pulumi.runtime.registerResourceModule("splight", "index/fileFolder", _module)
 pulumi.runtime.registerResourceModule("splight", "index/function", _module)
-pulumi.runtime.registerResourceModule("splight", "index/node", _module)
+pulumi.runtime.registerResourceModule("splight", "index/line", _module)
 pulumi.runtime.registerResourceModule("splight", "index/secret", _module)
+pulumi.runtime.registerResourceModule("splight", "index/segment", _module)
 pulumi.runtime.registerResourceModule("splight", "index/tag", _module)
 pulumi.runtime.registerResourcePackage("splight", {
     version: utilities.getVersion(),

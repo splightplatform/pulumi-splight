@@ -47,12 +47,6 @@ namespace Splight.Splight
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// linked assets
-        /// </summary>
-        [Output("relatedAssets")]
-        public Output<ImmutableArray<string>> RelatedAssets { get; private set; } = null!;
-
-        /// <summary>
         /// tags of the resource
         /// </summary>
         [Output("tags")]
@@ -129,18 +123,6 @@ namespace Splight.Splight
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("relatedAssets")]
-        private InputList<string>? _relatedAssets;
-
-        /// <summary>
-        /// linked assets
-        /// </summary>
-        public InputList<string> RelatedAssets
-        {
-            get => _relatedAssets ?? (_relatedAssets = new InputList<string>());
-            set => _relatedAssets = value;
-        }
-
         [Input("tags")]
         private InputList<Inputs.AssetTagArgs>? _tags;
 
@@ -184,18 +166,6 @@ namespace Splight.Splight
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        [Input("relatedAssets")]
-        private InputList<string>? _relatedAssets;
-
-        /// <summary>
-        /// linked assets
-        /// </summary>
-        public InputList<string> RelatedAssets
-        {
-            get => _relatedAssets ?? (_relatedAssets = new InputList<string>());
-            set => _relatedAssets = value;
-        }
 
         [Input("tags")]
         private InputList<Inputs.AssetTagGetArgs>? _tags;

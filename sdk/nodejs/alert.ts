@@ -157,10 +157,6 @@ export class Alert extends pulumi.CustomResource {
      */
     public readonly rateValue!: pulumi.Output<number>;
     /**
-     * related assets to be linked. In case one of these alerts triggers it will be reflected on each of these assets.
-     */
-    public readonly relatedAssets!: pulumi.Output<string[] | undefined>;
-    /**
      * [sev1,...,sev8] severity for the alert
      */
     public readonly severity!: pulumi.Output<string>;
@@ -204,7 +200,6 @@ export class Alert extends pulumi.CustomResource {
             resourceInputs["operator"] = state ? state.operator : undefined;
             resourceInputs["rateUnit"] = state ? state.rateUnit : undefined;
             resourceInputs["rateValue"] = state ? state.rateValue : undefined;
-            resourceInputs["relatedAssets"] = state ? state.relatedAssets : undefined;
             resourceInputs["severity"] = state ? state.severity : undefined;
             resourceInputs["targetVariable"] = state ? state.targetVariable : undefined;
             resourceInputs["thresholds"] = state ? state.thresholds : undefined;
@@ -252,7 +247,6 @@ export class Alert extends pulumi.CustomResource {
             resourceInputs["operator"] = args ? args.operator : undefined;
             resourceInputs["rateUnit"] = args ? args.rateUnit : undefined;
             resourceInputs["rateValue"] = args ? args.rateValue : undefined;
-            resourceInputs["relatedAssets"] = args ? args.relatedAssets : undefined;
             resourceInputs["severity"] = args ? args.severity : undefined;
             resourceInputs["targetVariable"] = args ? args.targetVariable : undefined;
             resourceInputs["thresholds"] = args ? args.thresholds : undefined;
@@ -320,10 +314,6 @@ export interface AlertState {
      * schedule value
      */
     rateValue?: pulumi.Input<number>;
-    /**
-     * related assets to be linked. In case one of these alerts triggers it will be reflected on each of these assets.
-     */
-    relatedAssets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * [sev1,...,sev8] severity for the alert
      */
@@ -399,10 +389,6 @@ export interface AlertArgs {
      * schedule value
      */
     rateValue?: pulumi.Input<number>;
-    /**
-     * related assets to be linked. In case one of these alerts triggers it will be reflected on each of these assets.
-     */
-    relatedAssets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * [sev1,...,sev8] severity for the alert
      */

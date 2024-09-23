@@ -29,14 +29,13 @@ from .dashboard_tab import *
 from .dashboard_table_chart import *
 from .dashboard_text_chart import *
 from .dashboard_timeseries_chart import *
-from .file import *
-from .file_folder import *
 from .function import *
 from .get_asset_kinds import *
 from .get_tags import *
-from .node import *
+from .line import *
 from .provider import *
 from .secret import *
+from .segment import *
 from .tag import *
 from ._inputs import *
 from . import outputs
@@ -245,22 +244,6 @@ _utilities.register(
  },
  {
   "pkg": "splight",
-  "mod": "index/file",
-  "fqn": "pulumi_splight",
-  "classes": {
-   "splight:index/file:File": "File"
-  }
- },
- {
-  "pkg": "splight",
-  "mod": "index/fileFolder",
-  "fqn": "pulumi_splight",
-  "classes": {
-   "splight:index/fileFolder:FileFolder": "FileFolder"
-  }
- },
- {
-  "pkg": "splight",
   "mod": "index/function",
   "fqn": "pulumi_splight",
   "classes": {
@@ -269,10 +252,10 @@ _utilities.register(
  },
  {
   "pkg": "splight",
-  "mod": "index/node",
+  "mod": "index/line",
   "fqn": "pulumi_splight",
   "classes": {
-   "splight:index/node:Node": "Node"
+   "splight:index/line:Line": "Line"
   }
  },
  {
@@ -281,6 +264,14 @@ _utilities.register(
   "fqn": "pulumi_splight",
   "classes": {
    "splight:index/secret:Secret": "Secret"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/segment",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/segment:Segment": "Segment"
   }
  },
  {

@@ -7,8 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Data source to fetch all asset kinds defined in the platform
- *
  * ## Example Usage
  *
  * ```typescript
@@ -36,8 +34,6 @@ export interface GetAssetKindsResult {
     readonly kinds: outputs.GetAssetKindsKind[];
 }
 /**
- * Data source to fetch all asset kinds defined in the platform
- *
  * ## Example Usage
  *
  * ```typescript

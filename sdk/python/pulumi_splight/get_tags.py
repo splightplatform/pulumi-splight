@@ -56,8 +56,6 @@ class AwaitableGetTagsResult(GetTagsResult):
 
 def get_tags(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagsResult:
     """
-    Data source to fetch all tags defined in the organization account
-
     ## Example Usage
 
     ```python
@@ -79,8 +77,6 @@ def get_tags(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagsRes
 @_utilities.lift_output_func(get_tags)
 def get_tags_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagsResult]:
     """
-    Data source to fetch all tags defined in the organization account
-
     ## Example Usage
 
     ```python

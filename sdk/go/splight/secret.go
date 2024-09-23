@@ -12,8 +12,6 @@ import (
 	"github.com/splightplatform/pulumi-splight/sdk/go/splight/internal"
 )
 
-// Provides a Cloudflare Observatory Scheduled Test resource.
-//
 // ## Example Usage
 //
 // ```go
@@ -28,8 +26,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := splight.NewSecret(ctx, "secretTest", &splight.SecretArgs{
-//				RawValue: pulumi.String("ASUPERSECR3T"),
+//			_, err := splight.NewSecret(ctx, "mySecret", &splight.SecretArgs{
+//				RawValue: pulumi.String("My Secret Value"),
 //			})
 //			if err != nil {
 //				return err
