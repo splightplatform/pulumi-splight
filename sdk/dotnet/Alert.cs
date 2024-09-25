@@ -13,100 +13,6 @@ namespace Splight.Splight
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using System.Text.Json;
-    /// using Pulumi;
-    /// using Splight = Splight.Splight;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myAsset = new Splight.Asset("myAsset", new()
-    ///     {
-    ///         Description = "My Asset Description",
-    ///         Geometry = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///         {
-    ///             ["type"] = "GeometryCollection",
-    ///             ["geometries"] = new[]
-    ///             {
-    ///                 new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     ["type"] = "Point",
-    ///                     ["coordinates"] = new[]
-    ///                     {
-    ///                         0,
-    ///                         0,
-    ///                     },
-    ///                 },
-    ///             },
-    ///         }),
-    ///     });
-    /// 
-    ///     var myAttribute = new Splight.AssetAttribute("myAttribute", new()
-    ///     {
-    ///         Type = "Number",
-    ///         Asset = myAsset.Id,
-    ///     });
-    /// 
-    ///     var myAlert = new Splight.Alert("myAlert", new()
-    ///     {
-    ///         Description = "My Alert Description",
-    ///         Type = "rate",
-    ///         RateUnit = "minute",
-    ///         RateValue = 10,
-    ///         TimeWindow = 3600,
-    ///         Thresholds = new[]
-    ///         {
-    ///             new Splight.Inputs.AlertThresholdArgs
-    ///             {
-    ///                 Value = 1,
-    ///                 Status = "alert",
-    ///                 StatusText = "Some warning!",
-    ///             },
-    ///         },
-    ///         Severity = "sev1",
-    ///         Operator = "lt",
-    ///         Aggregation = "max",
-    ///         TargetVariable = "A",
-    ///         AlertItems = new[]
-    ///         {
-    ///             new Splight.Inputs.AlertAlertItemArgs
-    ///             {
-    ///                 RefId = "A",
-    ///                 Type = "QUERY",
-    ///                 Expression = "",
-    ///                 ExpressionPlain = "",
-    ///                 QueryFilterAsset = new Splight.Inputs.AlertAlertItemQueryFilterAssetArgs
-    ///                 {
-    ///                     Id = myAsset.Id,
-    ///                     Name = myAsset.Name,
-    ///                 },
-    ///                 QueryFilterAttribute = new Splight.Inputs.AlertAlertItemQueryFilterAttributeArgs
-    ///                 {
-    ///                     Id = myAttribute.Id,
-    ///                     Name = myAttribute.Name,
-    ///                 },
-    ///                 QueryGroupFunction = "avg",
-    ///                 QueryGroupUnit = "day",
-    ///                 QueryPlain = Output.JsonSerialize(Output.Create(new[]
-    ///                 {
-    ///                     new Dictionary&lt;string, object?&gt;
-    ///                     {
-    ///                         ["$match"] = new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             ["asset"] = myAsset.Id,
-    ///                             ["attribute"] = myAttribute.Id,
-    ///                         },
-    ///                     },
-    ///                 })),
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -199,6 +105,12 @@ namespace Splight.Splight
         /// </summary>
         [Output("severity")]
         public Output<string> Severity { get; private set; } = null!;
+
+        /// <summary>
+        /// tags of the resource
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<Outputs.AlertTag>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// variable to be used to compare with thresholds
@@ -358,6 +270,18 @@ namespace Splight.Splight
         [Input("severity", required: true)]
         public Input<string> Severity { get; set; } = null!;
 
+        [Input("tags")]
+        private InputList<Inputs.AlertTagArgs>? _tags;
+
+        /// <summary>
+        /// tags of the resource
+        /// </summary>
+        public InputList<Inputs.AlertTagArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.AlertTagArgs>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// variable to be used to compare with thresholds
         /// </summary>
@@ -481,6 +405,18 @@ namespace Splight.Splight
         /// </summary>
         [Input("severity")]
         public Input<string>? Severity { get; set; }
+
+        [Input("tags")]
+        private InputList<Inputs.AlertTagGetArgs>? _tags;
+
+        /// <summary>
+        /// tags of the resource
+        /// </summary>
+        public InputList<Inputs.AlertTagGetArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.AlertTagGetArgs>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// variable to be used to compare with thresholds

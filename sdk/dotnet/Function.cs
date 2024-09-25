@@ -13,149 +13,6 @@ namespace Splight.Splight
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using System.Text.Json;
-    /// using Pulumi;
-    /// using Splight = Splight.Splight;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myAsset = new Splight.Asset("myAsset", new()
-    ///     {
-    ///         Description = "My Asset Description",
-    ///         Geometry = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///         {
-    ///             ["type"] = "GeometryCollection",
-    ///             ["geometries"] = new[]
-    ///             {
-    ///                 new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     ["type"] = "Point",
-    ///                     ["coordinates"] = new[]
-    ///                     {
-    ///                         0,
-    ///                         0,
-    ///                     },
-    ///                 },
-    ///             },
-    ///         }),
-    ///     });
-    /// 
-    ///     var myAttribute = new Splight.AssetAttribute("myAttribute", new()
-    ///     {
-    ///         Type = "Number",
-    ///         Asset = myAsset.Id,
-    ///     });
-    /// 
-    ///     var myTargetAsset = new Splight.Asset("myTargetAsset", new()
-    ///     {
-    ///         Description = "My Target Asset Description",
-    ///         Geometry = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///         {
-    ///             ["type"] = "GeometryCollection",
-    ///             ["geometries"] = new[]
-    ///             {
-    ///                 new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     ["type"] = "Point",
-    ///                     ["coordinates"] = new[]
-    ///                     {
-    ///                         0,
-    ///                         0,
-    ///                     },
-    ///                 },
-    ///             },
-    ///         }),
-    ///     });
-    /// 
-    ///     var myTargetAttribute = new Splight.AssetAttribute("myTargetAttribute", new()
-    ///     {
-    ///         Type = "Number",
-    ///         Asset = myTargetAsset.Id,
-    ///     });
-    /// 
-    ///     var functionTest = new Splight.Function("functionTest", new()
-    ///     {
-    ///         Description = "My Function Description",
-    ///         Type = "rate",
-    ///         RateUnit = "minute",
-    ///         RateValue = 10,
-    ///         TimeWindow = 3600,
-    ///         TargetVariable = "B",
-    ///         TargetAsset = new Splight.Inputs.FunctionTargetAssetArgs
-    ///         {
-    ///             Id = myTargetAsset.Id,
-    ///             Name = myTargetAsset.Name,
-    ///         },
-    ///         TargetAttribute = new Splight.Inputs.FunctionTargetAttributeArgs
-    ///         {
-    ///             Id = myTargetAttribute.Id,
-    ///             Name = myTargetAttribute.Name,
-    ///             Type = "Number",
-    ///         },
-    ///         FunctionItems = new[]
-    ///         {
-    ///             new Splight.Inputs.FunctionFunctionItemArgs
-    ///             {
-    ///                 RefId = "A",
-    ///                 Type = "QUERY",
-    ///                 Expression = "",
-    ///                 ExpressionPlain = "",
-    ///                 QueryFilterAsset = new Splight.Inputs.FunctionFunctionItemQueryFilterAssetArgs
-    ///                 {
-    ///                     Id = myAsset.Id,
-    ///                     Name = myAsset.Name,
-    ///                 },
-    ///                 QueryFilterAttribute = new Splight.Inputs.FunctionFunctionItemQueryFilterAttributeArgs
-    ///                 {
-    ///                     Id = myAttribute.Id,
-    ///                     Name = myAttribute.Name,
-    ///                     Type = "Number",
-    ///                 },
-    ///                 QueryGroupFunction = "avg",
-    ///                 QueryGroupUnit = "day",
-    ///                 QueryPlain = Output.JsonSerialize(Output.Create(new[]
-    ///                 {
-    ///                     new Dictionary&lt;string, object?&gt;
-    ///                     {
-    ///                         ["$match"] = new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             ["asset"] = myAsset.Id,
-    ///                             ["attribute"] = myAttribute.Id,
-    ///                         },
-    ///                     },
-    ///                 })),
-    ///             },
-    ///             new Splight.Inputs.FunctionFunctionItemArgs
-    ///             {
-    ///                 RefId = "B",
-    ///                 Type = "EXPRESSION",
-    ///                 Expression = "A * 2",
-    ///                 ExpressionPlain = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     ["$function"] = new Dictionary&lt;string, object?&gt;
-    ///                     {
-    ///                         ["body"] = "function () { return A * 2 }",
-    ///                         ["args"] = new[]
-    ///                         {
-    ///                         },
-    ///                         ["lang"] = "js",
-    ///                     },
-    ///                 }),
-    ///                 QueryFilterAsset = null,
-    ///                 QueryFilterAttribute = null,
-    ///                 QueryGroupFunction = "",
-    ///                 QueryGroupUnit = "",
-    ///                 QueryPlain = "",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -230,6 +87,12 @@ namespace Splight.Splight
         /// </summary>
         [Output("rateValue")]
         public Output<int> RateValue { get; private set; } = null!;
+
+        /// <summary>
+        /// tags of the resource
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<Outputs.FunctionTag>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Asset filter
@@ -380,6 +243,18 @@ namespace Splight.Splight
         [Input("rateValue")]
         public Input<int>? RateValue { get; set; }
 
+        [Input("tags")]
+        private InputList<Inputs.FunctionTagArgs>? _tags;
+
+        /// <summary>
+        /// tags of the resource
+        /// </summary>
+        public InputList<Inputs.FunctionTagArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.FunctionTagArgs>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// Asset filter
         /// </summary>
@@ -489,6 +364,18 @@ namespace Splight.Splight
         /// </summary>
         [Input("rateValue")]
         public Input<int>? RateValue { get; set; }
+
+        [Input("tags")]
+        private InputList<Inputs.FunctionTagGetArgs>? _tags;
+
+        /// <summary>
+        /// tags of the resource
+        /// </summary>
+        public InputList<Inputs.FunctionTagGetArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.FunctionTagGetArgs>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Asset filter

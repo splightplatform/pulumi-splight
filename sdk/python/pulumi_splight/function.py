@@ -31,7 +31,8 @@ class FunctionArgs:
                  cron_year: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rate_unit: Optional[pulumi.Input[str]] = None,
-                 rate_value: Optional[pulumi.Input[int]] = None):
+                 rate_value: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionTagArgs']]]] = None):
         """
         The set of arguments for constructing a Function resource.
         :param pulumi.Input[str] description: The description of the resource
@@ -50,6 +51,7 @@ class FunctionArgs:
         :param pulumi.Input[str] name: The name of the resource
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionTagArgs']]] tags: tags of the resource
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "function_items", function_items)
@@ -76,6 +78,8 @@ class FunctionArgs:
             pulumi.set(__self__, "rate_unit", rate_unit)
         if rate_value is not None:
             pulumi.set(__self__, "rate_value", rate_value)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -269,6 +273,18 @@ class FunctionArgs:
     def rate_value(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "rate_value", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionTagArgs']]]]:
+        """
+        tags of the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _FunctionState:
@@ -284,6 +300,7 @@ class _FunctionState:
                  name: Optional[pulumi.Input[str]] = None,
                  rate_unit: Optional[pulumi.Input[str]] = None,
                  rate_value: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionTagArgs']]]] = None,
                  target_asset: Optional[pulumi.Input['FunctionTargetAssetArgs']] = None,
                  target_attribute: Optional[pulumi.Input['FunctionTargetAttributeArgs']] = None,
                  target_variable: Optional[pulumi.Input[str]] = None,
@@ -302,6 +319,7 @@ class _FunctionState:
         :param pulumi.Input[str] name: The name of the resource
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionTagArgs']]] tags: tags of the resource
         :param pulumi.Input['FunctionTargetAssetArgs'] target_asset: Asset filter
         :param pulumi.Input['FunctionTargetAttributeArgs'] target_attribute: Attribute filter
         :param pulumi.Input[str] target_variable: variable to be considered to be ingested
@@ -330,6 +348,8 @@ class _FunctionState:
             pulumi.set(__self__, "rate_unit", rate_unit)
         if rate_value is not None:
             pulumi.set(__self__, "rate_value", rate_value)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if target_asset is not None:
             pulumi.set(__self__, "target_asset", target_asset)
         if target_attribute is not None:
@@ -474,6 +494,18 @@ class _FunctionState:
         pulumi.set(self, "rate_value", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionTagArgs']]]]:
+        """
+        tags of the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="targetAsset")
     def target_asset(self) -> Optional[pulumi.Input['FunctionTargetAssetArgs']]:
         """
@@ -550,6 +582,7 @@ class Function(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  rate_unit: Optional[pulumi.Input[str]] = None,
                  rate_value: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FunctionTagArgs', 'FunctionTagArgsDict']]]]] = None,
                  target_asset: Optional[pulumi.Input[Union['FunctionTargetAssetArgs', 'FunctionTargetAssetArgsDict']]] = None,
                  target_attribute: Optional[pulumi.Input[Union['FunctionTargetAttributeArgs', 'FunctionTargetAttributeArgsDict']]] = None,
                  target_variable: Optional[pulumi.Input[str]] = None,
@@ -558,101 +591,6 @@ class Function(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_splight as splight
-
-        my_asset = splight.Asset("myAsset",
-            description="My Asset Description",
-            geometry=json.dumps({
-                "type": "GeometryCollection",
-                "geometries": [{
-                    "type": "Point",
-                    "coordinates": [
-                        0,
-                        0,
-                    ],
-                }],
-            }))
-        my_attribute = splight.AssetAttribute("myAttribute",
-            type="Number",
-            asset=my_asset.id)
-        my_target_asset = splight.Asset("myTargetAsset",
-            description="My Target Asset Description",
-            geometry=json.dumps({
-                "type": "GeometryCollection",
-                "geometries": [{
-                    "type": "Point",
-                    "coordinates": [
-                        0,
-                        0,
-                    ],
-                }],
-            }))
-        my_target_attribute = splight.AssetAttribute("myTargetAttribute",
-            type="Number",
-            asset=my_target_asset.id)
-        function_test = splight.Function("functionTest",
-            description="My Function Description",
-            type="rate",
-            rate_unit="minute",
-            rate_value=10,
-            time_window=3600,
-            target_variable="B",
-            target_asset={
-                "id": my_target_asset.id,
-                "name": my_target_asset.name,
-            },
-            target_attribute={
-                "id": my_target_attribute.id,
-                "name": my_target_attribute.name,
-                "type": "Number",
-            },
-            function_items=[
-                {
-                    "ref_id": "A",
-                    "type": "QUERY",
-                    "expression": "",
-                    "expression_plain": "",
-                    "query_filter_asset": {
-                        "id": my_asset.id,
-                        "name": my_asset.name,
-                    },
-                    "query_filter_attribute": {
-                        "id": my_attribute.id,
-                        "name": my_attribute.name,
-                        "type": "Number",
-                    },
-                    "query_group_function": "avg",
-                    "query_group_unit": "day",
-                    "query_plain": pulumi.Output.json_dumps([{
-                        "_match": {
-                            "asset": my_asset.id,
-                            "attribute": my_attribute.id,
-                        },
-                    }]),
-                },
-                {
-                    "ref_id": "B",
-                    "type": "EXPRESSION",
-                    "expression": "A * 2",
-                    "expression_plain": json.dumps({
-                        "_function": {
-                            "body": "function () { return A * 2 }",
-                            "args": [],
-                            "lang": "js",
-                        },
-                    }),
-                    "query_filter_asset": {},
-                    "query_filter_attribute": {},
-                    "query_group_function": "",
-                    "query_group_unit": "",
-                    "query_plain": "",
-                },
-            ])
-        ```
 
         ## Import
 
@@ -673,6 +611,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the resource
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionTagArgs', 'FunctionTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[Union['FunctionTargetAssetArgs', 'FunctionTargetAssetArgsDict']] target_asset: Asset filter
         :param pulumi.Input[Union['FunctionTargetAttributeArgs', 'FunctionTargetAttributeArgsDict']] target_attribute: Attribute filter
         :param pulumi.Input[str] target_variable: variable to be considered to be ingested
@@ -687,101 +626,6 @@ class Function(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_splight as splight
-
-        my_asset = splight.Asset("myAsset",
-            description="My Asset Description",
-            geometry=json.dumps({
-                "type": "GeometryCollection",
-                "geometries": [{
-                    "type": "Point",
-                    "coordinates": [
-                        0,
-                        0,
-                    ],
-                }],
-            }))
-        my_attribute = splight.AssetAttribute("myAttribute",
-            type="Number",
-            asset=my_asset.id)
-        my_target_asset = splight.Asset("myTargetAsset",
-            description="My Target Asset Description",
-            geometry=json.dumps({
-                "type": "GeometryCollection",
-                "geometries": [{
-                    "type": "Point",
-                    "coordinates": [
-                        0,
-                        0,
-                    ],
-                }],
-            }))
-        my_target_attribute = splight.AssetAttribute("myTargetAttribute",
-            type="Number",
-            asset=my_target_asset.id)
-        function_test = splight.Function("functionTest",
-            description="My Function Description",
-            type="rate",
-            rate_unit="minute",
-            rate_value=10,
-            time_window=3600,
-            target_variable="B",
-            target_asset={
-                "id": my_target_asset.id,
-                "name": my_target_asset.name,
-            },
-            target_attribute={
-                "id": my_target_attribute.id,
-                "name": my_target_attribute.name,
-                "type": "Number",
-            },
-            function_items=[
-                {
-                    "ref_id": "A",
-                    "type": "QUERY",
-                    "expression": "",
-                    "expression_plain": "",
-                    "query_filter_asset": {
-                        "id": my_asset.id,
-                        "name": my_asset.name,
-                    },
-                    "query_filter_attribute": {
-                        "id": my_attribute.id,
-                        "name": my_attribute.name,
-                        "type": "Number",
-                    },
-                    "query_group_function": "avg",
-                    "query_group_unit": "day",
-                    "query_plain": pulumi.Output.json_dumps([{
-                        "_match": {
-                            "asset": my_asset.id,
-                            "attribute": my_attribute.id,
-                        },
-                    }]),
-                },
-                {
-                    "ref_id": "B",
-                    "type": "EXPRESSION",
-                    "expression": "A * 2",
-                    "expression_plain": json.dumps({
-                        "_function": {
-                            "body": "function () { return A * 2 }",
-                            "args": [],
-                            "lang": "js",
-                        },
-                    }),
-                    "query_filter_asset": {},
-                    "query_filter_attribute": {},
-                    "query_group_function": "",
-                    "query_group_unit": "",
-                    "query_plain": "",
-                },
-            ])
-        ```
 
         ## Import
 
@@ -815,6 +659,7 @@ class Function(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  rate_unit: Optional[pulumi.Input[str]] = None,
                  rate_value: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FunctionTagArgs', 'FunctionTagArgsDict']]]]] = None,
                  target_asset: Optional[pulumi.Input[Union['FunctionTargetAssetArgs', 'FunctionTargetAssetArgsDict']]] = None,
                  target_attribute: Optional[pulumi.Input[Union['FunctionTargetAttributeArgs', 'FunctionTargetAttributeArgsDict']]] = None,
                  target_variable: Optional[pulumi.Input[str]] = None,
@@ -844,6 +689,7 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["rate_unit"] = rate_unit
             __props__.__dict__["rate_value"] = rate_value
+            __props__.__dict__["tags"] = tags
             if target_asset is None and not opts.urn:
                 raise TypeError("Missing required property 'target_asset'")
             __props__.__dict__["target_asset"] = target_asset
@@ -880,6 +726,7 @@ class Function(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             rate_unit: Optional[pulumi.Input[str]] = None,
             rate_value: Optional[pulumi.Input[int]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FunctionTagArgs', 'FunctionTagArgsDict']]]]] = None,
             target_asset: Optional[pulumi.Input[Union['FunctionTargetAssetArgs', 'FunctionTargetAssetArgsDict']]] = None,
             target_attribute: Optional[pulumi.Input[Union['FunctionTargetAttributeArgs', 'FunctionTargetAttributeArgsDict']]] = None,
             target_variable: Optional[pulumi.Input[str]] = None,
@@ -903,6 +750,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the resource
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionTagArgs', 'FunctionTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[Union['FunctionTargetAssetArgs', 'FunctionTargetAssetArgsDict']] target_asset: Asset filter
         :param pulumi.Input[Union['FunctionTargetAttributeArgs', 'FunctionTargetAttributeArgsDict']] target_attribute: Attribute filter
         :param pulumi.Input[str] target_variable: variable to be considered to be ingested
@@ -924,6 +772,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["rate_unit"] = rate_unit
         __props__.__dict__["rate_value"] = rate_value
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["target_asset"] = target_asset
         __props__.__dict__["target_attribute"] = target_attribute
         __props__.__dict__["target_variable"] = target_variable
@@ -1018,6 +867,14 @@ class Function(pulumi.CustomResource):
         schedule value
         """
         return pulumi.get(self, "rate_value")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.FunctionTag']]]:
+        """
+        tags of the resource
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="targetAsset")

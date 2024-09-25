@@ -111,6 +111,17 @@ export interface AlertAlertItemQueryFilterAttribute {
     name?: pulumi.Input<string>;
 }
 
+export interface AlertTag {
+    /**
+     * tag id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * tag name
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface AlertThreshold {
     /**
      * [alert|warning|no_alert] status value for the threshold
@@ -1124,6 +1135,17 @@ export interface FunctionFunctionItemQueryFilterAttribute {
      * type of the resource
      */
     type?: pulumi.Input<string>;
+}
+
+export interface FunctionTag {
+    /**
+     * tag id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * tag name
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface FunctionTargetAsset {

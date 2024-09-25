@@ -654,6 +654,112 @@ func (o AlertAlertItemQueryFilterAttributeOutput) Name() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v AlertAlertItemQueryFilterAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+type AlertTag struct {
+	// tag id
+	Id string `pulumi:"id"`
+	// tag name
+	Name string `pulumi:"name"`
+}
+
+// AlertTagInput is an input type that accepts AlertTagArgs and AlertTagOutput values.
+// You can construct a concrete instance of `AlertTagInput` via:
+//
+//	AlertTagArgs{...}
+type AlertTagInput interface {
+	pulumi.Input
+
+	ToAlertTagOutput() AlertTagOutput
+	ToAlertTagOutputWithContext(context.Context) AlertTagOutput
+}
+
+type AlertTagArgs struct {
+	// tag id
+	Id pulumi.StringInput `pulumi:"id"`
+	// tag name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (AlertTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertTag)(nil)).Elem()
+}
+
+func (i AlertTagArgs) ToAlertTagOutput() AlertTagOutput {
+	return i.ToAlertTagOutputWithContext(context.Background())
+}
+
+func (i AlertTagArgs) ToAlertTagOutputWithContext(ctx context.Context) AlertTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertTagOutput)
+}
+
+// AlertTagArrayInput is an input type that accepts AlertTagArray and AlertTagArrayOutput values.
+// You can construct a concrete instance of `AlertTagArrayInput` via:
+//
+//	AlertTagArray{ AlertTagArgs{...} }
+type AlertTagArrayInput interface {
+	pulumi.Input
+
+	ToAlertTagArrayOutput() AlertTagArrayOutput
+	ToAlertTagArrayOutputWithContext(context.Context) AlertTagArrayOutput
+}
+
+type AlertTagArray []AlertTagInput
+
+func (AlertTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertTag)(nil)).Elem()
+}
+
+func (i AlertTagArray) ToAlertTagArrayOutput() AlertTagArrayOutput {
+	return i.ToAlertTagArrayOutputWithContext(context.Background())
+}
+
+func (i AlertTagArray) ToAlertTagArrayOutputWithContext(ctx context.Context) AlertTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertTagArrayOutput)
+}
+
+type AlertTagOutput struct{ *pulumi.OutputState }
+
+func (AlertTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertTag)(nil)).Elem()
+}
+
+func (o AlertTagOutput) ToAlertTagOutput() AlertTagOutput {
+	return o
+}
+
+func (o AlertTagOutput) ToAlertTagOutputWithContext(ctx context.Context) AlertTagOutput {
+	return o
+}
+
+// tag id
+func (o AlertTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// tag name
+func (o AlertTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type AlertTagArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertTag)(nil)).Elem()
+}
+
+func (o AlertTagArrayOutput) ToAlertTagArrayOutput() AlertTagArrayOutput {
+	return o
+}
+
+func (o AlertTagArrayOutput) ToAlertTagArrayOutputWithContext(ctx context.Context) AlertTagArrayOutput {
+	return o
+}
+
+func (o AlertTagArrayOutput) Index(i pulumi.IntInput) AlertTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertTag {
+		return vs[0].([]AlertTag)[vs[1].(int)]
+	}).(AlertTagOutput)
+}
+
 type AlertThreshold struct {
 	// [alert|warning|no_alert] status value for the threshold
 	Status string `pulumi:"status"`
@@ -9790,6 +9896,112 @@ func (o FunctionFunctionItemQueryFilterAttributeOutput) Type() pulumi.StringPtrO
 	return o.ApplyT(func(v FunctionFunctionItemQueryFilterAttribute) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+type FunctionTag struct {
+	// tag id
+	Id string `pulumi:"id"`
+	// tag name
+	Name string `pulumi:"name"`
+}
+
+// FunctionTagInput is an input type that accepts FunctionTagArgs and FunctionTagOutput values.
+// You can construct a concrete instance of `FunctionTagInput` via:
+//
+//	FunctionTagArgs{...}
+type FunctionTagInput interface {
+	pulumi.Input
+
+	ToFunctionTagOutput() FunctionTagOutput
+	ToFunctionTagOutputWithContext(context.Context) FunctionTagOutput
+}
+
+type FunctionTagArgs struct {
+	// tag id
+	Id pulumi.StringInput `pulumi:"id"`
+	// tag name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (FunctionTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionTag)(nil)).Elem()
+}
+
+func (i FunctionTagArgs) ToFunctionTagOutput() FunctionTagOutput {
+	return i.ToFunctionTagOutputWithContext(context.Background())
+}
+
+func (i FunctionTagArgs) ToFunctionTagOutputWithContext(ctx context.Context) FunctionTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionTagOutput)
+}
+
+// FunctionTagArrayInput is an input type that accepts FunctionTagArray and FunctionTagArrayOutput values.
+// You can construct a concrete instance of `FunctionTagArrayInput` via:
+//
+//	FunctionTagArray{ FunctionTagArgs{...} }
+type FunctionTagArrayInput interface {
+	pulumi.Input
+
+	ToFunctionTagArrayOutput() FunctionTagArrayOutput
+	ToFunctionTagArrayOutputWithContext(context.Context) FunctionTagArrayOutput
+}
+
+type FunctionTagArray []FunctionTagInput
+
+func (FunctionTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionTag)(nil)).Elem()
+}
+
+func (i FunctionTagArray) ToFunctionTagArrayOutput() FunctionTagArrayOutput {
+	return i.ToFunctionTagArrayOutputWithContext(context.Background())
+}
+
+func (i FunctionTagArray) ToFunctionTagArrayOutputWithContext(ctx context.Context) FunctionTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionTagArrayOutput)
+}
+
+type FunctionTagOutput struct{ *pulumi.OutputState }
+
+func (FunctionTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionTag)(nil)).Elem()
+}
+
+func (o FunctionTagOutput) ToFunctionTagOutput() FunctionTagOutput {
+	return o
+}
+
+func (o FunctionTagOutput) ToFunctionTagOutputWithContext(ctx context.Context) FunctionTagOutput {
+	return o
+}
+
+// tag id
+func (o FunctionTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// tag name
+func (o FunctionTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type FunctionTagArrayOutput struct{ *pulumi.OutputState }
+
+func (FunctionTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionTag)(nil)).Elem()
+}
+
+func (o FunctionTagArrayOutput) ToFunctionTagArrayOutput() FunctionTagArrayOutput {
+	return o
+}
+
+func (o FunctionTagArrayOutput) ToFunctionTagArrayOutputWithContext(ctx context.Context) FunctionTagArrayOutput {
+	return o
+}
+
+func (o FunctionTagArrayOutput) Index(i pulumi.IntInput) FunctionTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FunctionTag {
+		return vs[0].([]FunctionTag)[vs[1].(int)]
+	}).(FunctionTagOutput)
+}
+
 type FunctionTargetAsset struct {
 	// Id of the resource
 	Id *string `pulumi:"id"`
@@ -18078,6 +18290,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertAlertItemArrayInput)(nil)).Elem(), AlertAlertItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertAlertItemQueryFilterAssetInput)(nil)).Elem(), AlertAlertItemQueryFilterAssetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertAlertItemQueryFilterAttributeInput)(nil)).Elem(), AlertAlertItemQueryFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertTagInput)(nil)).Elem(), AlertTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertTagArrayInput)(nil)).Elem(), AlertTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertThresholdInput)(nil)).Elem(), AlertThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertThresholdArrayInput)(nil)).Elem(), AlertThresholdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetKindInput)(nil)).Elem(), AssetKindArgs{})
@@ -18221,6 +18435,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionFunctionItemArrayInput)(nil)).Elem(), FunctionFunctionItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionFunctionItemQueryFilterAssetInput)(nil)).Elem(), FunctionFunctionItemQueryFilterAssetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionFunctionItemQueryFilterAttributeInput)(nil)).Elem(), FunctionFunctionItemQueryFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTagInput)(nil)).Elem(), FunctionTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTagArrayInput)(nil)).Elem(), FunctionTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTargetAssetInput)(nil)).Elem(), FunctionTargetAssetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTargetAssetPtrInput)(nil)).Elem(), FunctionTargetAssetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTargetAttributeInput)(nil)).Elem(), FunctionTargetAttributeArgs{})
@@ -18324,6 +18540,8 @@ func init() {
 	pulumi.RegisterOutputType(AlertAlertItemArrayOutput{})
 	pulumi.RegisterOutputType(AlertAlertItemQueryFilterAssetOutput{})
 	pulumi.RegisterOutputType(AlertAlertItemQueryFilterAttributeOutput{})
+	pulumi.RegisterOutputType(AlertTagOutput{})
+	pulumi.RegisterOutputType(AlertTagArrayOutput{})
 	pulumi.RegisterOutputType(AlertThresholdOutput{})
 	pulumi.RegisterOutputType(AlertThresholdArrayOutput{})
 	pulumi.RegisterOutputType(AssetKindOutput{})
@@ -18467,6 +18685,8 @@ func init() {
 	pulumi.RegisterOutputType(FunctionFunctionItemArrayOutput{})
 	pulumi.RegisterOutputType(FunctionFunctionItemQueryFilterAssetOutput{})
 	pulumi.RegisterOutputType(FunctionFunctionItemQueryFilterAttributeOutput{})
+	pulumi.RegisterOutputType(FunctionTagOutput{})
+	pulumi.RegisterOutputType(FunctionTagArrayOutput{})
 	pulumi.RegisterOutputType(FunctionTargetAssetOutput{})
 	pulumi.RegisterOutputType(FunctionTargetAssetPtrOutput{})
 	pulumi.RegisterOutputType(FunctionTargetAttributeOutput{})

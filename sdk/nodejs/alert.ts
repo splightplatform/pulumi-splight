@@ -9,67 +9,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as splight from "@splightplatform/pulumi-splight";
- *
- * const myAsset = new splight.Asset("myAsset", {
- *     description: "My Asset Description",
- *     geometry: JSON.stringify({
- *         type: "GeometryCollection",
- *         geometries: [{
- *             type: "Point",
- *             coordinates: [
- *                 0,
- *                 0,
- *             ],
- *         }],
- *     }),
- * });
- * const myAttribute = new splight.AssetAttribute("myAttribute", {
- *     type: "Number",
- *     asset: myAsset.id,
- * });
- * const myAlert = new splight.Alert("myAlert", {
- *     description: "My Alert Description",
- *     type: "rate",
- *     rateUnit: "minute",
- *     rateValue: 10,
- *     timeWindow: 3600,
- *     thresholds: [{
- *         value: 1,
- *         status: "alert",
- *         statusText: "Some warning!",
- *     }],
- *     severity: "sev1",
- *     operator: "lt",
- *     aggregation: "max",
- *     targetVariable: "A",
- *     alertItems: [{
- *         refId: "A",
- *         type: "QUERY",
- *         expression: "",
- *         expressionPlain: "",
- *         queryFilterAsset: {
- *             id: myAsset.id,
- *             name: myAsset.name,
- *         },
- *         queryFilterAttribute: {
- *             id: myAttribute.id,
- *             name: myAttribute.name,
- *         },
- *         queryGroupFunction: "avg",
- *         queryGroupUnit: "day",
- *         queryPlain: pulumi.jsonStringify([{
- *             $match: {
- *                 asset: myAsset.id,
- *                 attribute: myAttribute.id,
- *             },
- *         }]),
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * ```sh
@@ -161,6 +100,10 @@ export class Alert extends pulumi.CustomResource {
      */
     public readonly severity!: pulumi.Output<string>;
     /**
+     * tags of the resource
+     */
+    public readonly tags!: pulumi.Output<outputs.AlertTag[] | undefined>;
+    /**
      * variable to be used to compare with thresholds
      */
     public readonly targetVariable!: pulumi.Output<string>;
@@ -201,6 +144,7 @@ export class Alert extends pulumi.CustomResource {
             resourceInputs["rateUnit"] = state ? state.rateUnit : undefined;
             resourceInputs["rateValue"] = state ? state.rateValue : undefined;
             resourceInputs["severity"] = state ? state.severity : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["targetVariable"] = state ? state.targetVariable : undefined;
             resourceInputs["thresholds"] = state ? state.thresholds : undefined;
             resourceInputs["timeWindow"] = state ? state.timeWindow : undefined;
@@ -248,6 +192,7 @@ export class Alert extends pulumi.CustomResource {
             resourceInputs["rateUnit"] = args ? args.rateUnit : undefined;
             resourceInputs["rateValue"] = args ? args.rateValue : undefined;
             resourceInputs["severity"] = args ? args.severity : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["targetVariable"] = args ? args.targetVariable : undefined;
             resourceInputs["thresholds"] = args ? args.thresholds : undefined;
             resourceInputs["timeWindow"] = args ? args.timeWindow : undefined;
@@ -318,6 +263,10 @@ export interface AlertState {
      * [sev1,...,sev8] severity for the alert
      */
     severity?: pulumi.Input<string>;
+    /**
+     * tags of the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.AlertTag>[]>;
     /**
      * variable to be used to compare with thresholds
      */
@@ -393,6 +342,10 @@ export interface AlertArgs {
      * [sev1,...,sev8] severity for the alert
      */
     severity: pulumi.Input<string>;
+    /**
+     * tags of the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.AlertTag>[]>;
     /**
      * variable to be used to compare with thresholds
      */

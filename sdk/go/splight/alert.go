@@ -14,113 +14,6 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"encoding/json"
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/splightplatform/pulumi-splight/sdk/go/splight"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"type": "GeometryCollection",
-//				"geometries": []map[string]interface{}{
-//					map[string]interface{}{
-//						"type": "Point",
-//						"coordinates": []float64{
-//							0,
-//							0,
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			json0 := string(tmpJSON0)
-//			myAsset, err := splight.NewAsset(ctx, "myAsset", &splight.AssetArgs{
-//				Description: pulumi.String("My Asset Description"),
-//				Geometry:    pulumi.String(json0),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			myAttribute, err := splight.NewAssetAttribute(ctx, "myAttribute", &splight.AssetAttributeArgs{
-//				Type:  pulumi.String("Number"),
-//				Asset: myAsset.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = splight.NewAlert(ctx, "myAlert", &splight.AlertArgs{
-//				Description: pulumi.String("My Alert Description"),
-//				Type:        pulumi.String("rate"),
-//				RateUnit:    pulumi.String("minute"),
-//				RateValue:   pulumi.Int(10),
-//				TimeWindow:  pulumi.Int(3600),
-//				Thresholds: splight.AlertThresholdArray{
-//					&splight.AlertThresholdArgs{
-//						Value:      pulumi.Float64(1),
-//						Status:     pulumi.String("alert"),
-//						StatusText: pulumi.String("Some warning!"),
-//					},
-//				},
-//				Severity:       pulumi.String("sev1"),
-//				Operator:       pulumi.String("lt"),
-//				Aggregation:    pulumi.String("max"),
-//				TargetVariable: pulumi.String("A"),
-//				AlertItems: splight.AlertAlertItemArray{
-//					&splight.AlertAlertItemArgs{
-//						RefId:           pulumi.String("A"),
-//						Type:            pulumi.String("QUERY"),
-//						Expression:      pulumi.String(""),
-//						ExpressionPlain: pulumi.String(""),
-//						QueryFilterAsset: &splight.AlertAlertItemQueryFilterAssetArgs{
-//							Id:   myAsset.ID(),
-//							Name: myAsset.Name,
-//						},
-//						QueryFilterAttribute: &splight.AlertAlertItemQueryFilterAttributeArgs{
-//							Id:   myAttribute.ID(),
-//							Name: myAttribute.Name,
-//						},
-//						QueryGroupFunction: pulumi.String("avg"),
-//						QueryGroupUnit:     pulumi.String("day"),
-//						QueryPlain: pulumi.All(myAsset.ID(), myAttribute.ID()).ApplyT(func(_args []interface{}) (string, error) {
-//							myAssetId := _args[0].(string)
-//							myAttributeId := _args[1].(string)
-//							var _zero string
-//							tmpJSON1, err := json.Marshal([]map[string]interface{}{
-//								map[string]interface{}{
-//									"$match": map[string]interface{}{
-//										"asset":     myAssetId,
-//										"attribute": myAttributeId,
-//									},
-//								},
-//							})
-//							if err != nil {
-//								return _zero, err
-//							}
-//							json1 := string(tmpJSON1)
-//							return json1, nil
-//						}).(pulumi.StringOutput),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh
@@ -157,6 +50,8 @@ type Alert struct {
 	RateValue pulumi.IntOutput `pulumi:"rateValue"`
 	// [sev1,...,sev8] severity for the alert
 	Severity pulumi.StringOutput `pulumi:"severity"`
+	// tags of the resource
+	Tags AlertTagArrayOutput `pulumi:"tags"`
 	// variable to be used to compare with thresholds
 	TargetVariable pulumi.StringOutput       `pulumi:"targetVariable"`
 	Thresholds     AlertThresholdArrayOutput `pulumi:"thresholds"`
@@ -251,6 +146,8 @@ type alertState struct {
 	RateValue *int `pulumi:"rateValue"`
 	// [sev1,...,sev8] severity for the alert
 	Severity *string `pulumi:"severity"`
+	// tags of the resource
+	Tags []AlertTag `pulumi:"tags"`
 	// variable to be used to compare with thresholds
 	TargetVariable *string          `pulumi:"targetVariable"`
 	Thresholds     []AlertThreshold `pulumi:"thresholds"`
@@ -289,6 +186,8 @@ type AlertState struct {
 	RateValue pulumi.IntPtrInput
 	// [sev1,...,sev8] severity for the alert
 	Severity pulumi.StringPtrInput
+	// tags of the resource
+	Tags AlertTagArrayInput
 	// variable to be used to compare with thresholds
 	TargetVariable pulumi.StringPtrInput
 	Thresholds     AlertThresholdArrayInput
@@ -331,6 +230,8 @@ type alertArgs struct {
 	RateValue *int `pulumi:"rateValue"`
 	// [sev1,...,sev8] severity for the alert
 	Severity string `pulumi:"severity"`
+	// tags of the resource
+	Tags []AlertTag `pulumi:"tags"`
 	// variable to be used to compare with thresholds
 	TargetVariable string           `pulumi:"targetVariable"`
 	Thresholds     []AlertThreshold `pulumi:"thresholds"`
@@ -370,6 +271,8 @@ type AlertArgs struct {
 	RateValue pulumi.IntPtrInput
 	// [sev1,...,sev8] severity for the alert
 	Severity pulumi.StringInput
+	// tags of the resource
+	Tags AlertTagArrayInput
 	// variable to be used to compare with thresholds
 	TargetVariable pulumi.StringInput
 	Thresholds     AlertThresholdArrayInput
@@ -534,6 +437,11 @@ func (o AlertOutput) RateValue() pulumi.IntOutput {
 // [sev1,...,sev8] severity for the alert
 func (o AlertOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringOutput { return v.Severity }).(pulumi.StringOutput)
+}
+
+// tags of the resource
+func (o AlertOutput) Tags() AlertTagArrayOutput {
+	return o.ApplyT(func(v *Alert) AlertTagArrayOutput { return v.Tags }).(AlertTagArrayOutput)
 }
 
 // variable to be used to compare with thresholds
