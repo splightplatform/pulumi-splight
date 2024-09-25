@@ -9,105 +9,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as splight from "@splightplatform/pulumi-splight";
- *
- * const myAsset = new splight.Asset("myAsset", {
- *     description: "My Asset Description",
- *     geometry: JSON.stringify({
- *         type: "GeometryCollection",
- *         geometries: [{
- *             type: "Point",
- *             coordinates: [
- *                 0,
- *                 0,
- *             ],
- *         }],
- *     }),
- * });
- * const myAttribute = new splight.AssetAttribute("myAttribute", {
- *     type: "Number",
- *     asset: myAsset.id,
- * });
- * const myTargetAsset = new splight.Asset("myTargetAsset", {
- *     description: "My Target Asset Description",
- *     geometry: JSON.stringify({
- *         type: "GeometryCollection",
- *         geometries: [{
- *             type: "Point",
- *             coordinates: [
- *                 0,
- *                 0,
- *             ],
- *         }],
- *     }),
- * });
- * const myTargetAttribute = new splight.AssetAttribute("myTargetAttribute", {
- *     type: "Number",
- *     asset: myTargetAsset.id,
- * });
- * const functionTest = new splight.Function("functionTest", {
- *     description: "My Function Description",
- *     type: "rate",
- *     rateUnit: "minute",
- *     rateValue: 10,
- *     timeWindow: 3600,
- *     targetVariable: "B",
- *     targetAsset: {
- *         id: myTargetAsset.id,
- *         name: myTargetAsset.name,
- *     },
- *     targetAttribute: {
- *         id: myTargetAttribute.id,
- *         name: myTargetAttribute.name,
- *         type: "Number",
- *     },
- *     functionItems: [
- *         {
- *             refId: "A",
- *             type: "QUERY",
- *             expression: "",
- *             expressionPlain: "",
- *             queryFilterAsset: {
- *                 id: myAsset.id,
- *                 name: myAsset.name,
- *             },
- *             queryFilterAttribute: {
- *                 id: myAttribute.id,
- *                 name: myAttribute.name,
- *                 type: "Number",
- *             },
- *             queryGroupFunction: "avg",
- *             queryGroupUnit: "day",
- *             queryPlain: pulumi.jsonStringify([{
- *                 $match: {
- *                     asset: myAsset.id,
- *                     attribute: myAttribute.id,
- *                 },
- *             }]),
- *         },
- *         {
- *             refId: "B",
- *             type: "EXPRESSION",
- *             expression: "A * 2",
- *             expressionPlain: JSON.stringify({
- *                 $function: {
- *                     body: "function () { return A * 2 }",
- *                     args: [],
- *                     lang: "js",
- *                 },
- *             }),
- *             queryFilterAsset: {},
- *             queryFilterAttribute: {},
- *             queryGroupFunction: "",
- *             queryGroupUnit: "",
- *             queryPlain: "",
- *         },
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * ```sh
@@ -187,6 +88,10 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly rateValue!: pulumi.Output<number>;
     /**
+     * tags of the resource
+     */
+    public readonly tags!: pulumi.Output<outputs.FunctionTag[] | undefined>;
+    /**
      * Asset filter
      */
     public readonly targetAsset!: pulumi.Output<outputs.FunctionTargetAsset>;
@@ -231,6 +136,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["rateUnit"] = state ? state.rateUnit : undefined;
             resourceInputs["rateValue"] = state ? state.rateValue : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["targetAsset"] = state ? state.targetAsset : undefined;
             resourceInputs["targetAttribute"] = state ? state.targetAttribute : undefined;
             resourceInputs["targetVariable"] = state ? state.targetVariable : undefined;
@@ -270,6 +176,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["rateUnit"] = args ? args.rateUnit : undefined;
             resourceInputs["rateValue"] = args ? args.rateValue : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["targetAsset"] = args ? args.targetAsset : undefined;
             resourceInputs["targetAttribute"] = args ? args.targetAttribute : undefined;
             resourceInputs["targetVariable"] = args ? args.targetVariable : undefined;
@@ -329,6 +236,10 @@ export interface FunctionState {
      * schedule value
      */
     rateValue?: pulumi.Input<number>;
+    /**
+     * tags of the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.FunctionTag>[]>;
     /**
      * Asset filter
      */
@@ -399,6 +310,10 @@ export interface FunctionArgs {
      * schedule value
      */
     rateValue?: pulumi.Input<number>;
+    /**
+     * tags of the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.FunctionTag>[]>;
     /**
      * Asset filter
      */

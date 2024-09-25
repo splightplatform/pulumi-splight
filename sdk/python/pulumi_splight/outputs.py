@@ -17,6 +17,7 @@ __all__ = [
     'AlertAlertItem',
     'AlertAlertItemQueryFilterAsset',
     'AlertAlertItemQueryFilterAttribute',
+    'AlertTag',
     'AlertThreshold',
     'AssetKind',
     'AssetTag',
@@ -104,6 +105,7 @@ __all__ = [
     'FunctionFunctionItem',
     'FunctionFunctionItemQueryFilterAsset',
     'FunctionFunctionItemQueryFilterAttribute',
+    'FunctionTag',
     'FunctionTargetAsset',
     'FunctionTargetAttribute',
     'LineAbsorptivity',
@@ -469,6 +471,35 @@ class AlertAlertItemQueryFilterAttribute(dict):
     def name(self) -> Optional[str]:
         """
         name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class AlertTag(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: tag id
+        :param str name: tag name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        tag name
         """
         return pulumi.get(self, "name")
 
@@ -5516,6 +5547,35 @@ class FunctionFunctionItemQueryFilterAttribute(dict):
         type of the resource
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class FunctionTag(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: tag id
+        :param str name: tag name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        tag name
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

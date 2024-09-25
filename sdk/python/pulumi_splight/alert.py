@@ -33,7 +33,8 @@ class AlertArgs:
                  cron_year: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rate_unit: Optional[pulumi.Input[str]] = None,
-                 rate_value: Optional[pulumi.Input[int]] = None):
+                 rate_value: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['AlertTagArgs']]]] = None):
         """
         The set of arguments for constructing a Alert resource.
         :param pulumi.Input[str] aggregation: aggregation to be applied to reads before comparisson
@@ -53,6 +54,7 @@ class AlertArgs:
         :param pulumi.Input[str] name: The name of the resource
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
+        :param pulumi.Input[Sequence[pulumi.Input['AlertTagArgs']]] tags: tags of the resource
         """
         pulumi.set(__self__, "aggregation", aggregation)
         pulumi.set(__self__, "alert_items", alert_items)
@@ -81,6 +83,8 @@ class AlertArgs:
             pulumi.set(__self__, "rate_unit", rate_unit)
         if rate_value is not None:
             pulumi.set(__self__, "rate_value", rate_value)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -295,6 +299,18 @@ class AlertArgs:
     def rate_value(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "rate_value", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertTagArgs']]]]:
+        """
+        tags of the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _AlertState:
@@ -313,6 +329,7 @@ class _AlertState:
                  rate_unit: Optional[pulumi.Input[str]] = None,
                  rate_value: Optional[pulumi.Input[int]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['AlertTagArgs']]]] = None,
                  target_variable: Optional[pulumi.Input[str]] = None,
                  thresholds: Optional[pulumi.Input[Sequence[pulumi.Input['AlertThresholdArgs']]]] = None,
                  time_window: Optional[pulumi.Input[int]] = None,
@@ -333,6 +350,7 @@ class _AlertState:
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
         :param pulumi.Input[str] severity: [sev1,...,sev8] severity for the alert
+        :param pulumi.Input[Sequence[pulumi.Input['AlertTagArgs']]] tags: tags of the resource
         :param pulumi.Input[str] target_variable: variable to be used to compare with thresholds
         :param pulumi.Input[int] time_window: window to fetch data from. Data out of that window will not be considered for evaluation
         :param pulumi.Input[str] type: [cron|rate] type for the cron
@@ -365,6 +383,8 @@ class _AlertState:
             pulumi.set(__self__, "rate_value", rate_value)
         if severity is not None:
             pulumi.set(__self__, "severity", severity)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if target_variable is not None:
             pulumi.set(__self__, "target_variable", target_variable)
         if thresholds is not None:
@@ -543,6 +563,18 @@ class _AlertState:
         pulumi.set(self, "severity", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertTagArgs']]]]:
+        """
+        tags of the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="targetVariable")
     def target_variable(self) -> Optional[pulumi.Input[str]]:
         """
@@ -607,6 +639,7 @@ class Alert(pulumi.CustomResource):
                  rate_unit: Optional[pulumi.Input[str]] = None,
                  rate_value: Optional[pulumi.Input[int]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertTagArgs', 'AlertTagArgsDict']]]]] = None,
                  target_variable: Optional[pulumi.Input[str]] = None,
                  thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertThresholdArgs', 'AlertThresholdArgsDict']]]]] = None,
                  time_window: Optional[pulumi.Input[int]] = None,
@@ -614,65 +647,6 @@ class Alert(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_splight as splight
-
-        my_asset = splight.Asset("myAsset",
-            description="My Asset Description",
-            geometry=json.dumps({
-                "type": "GeometryCollection",
-                "geometries": [{
-                    "type": "Point",
-                    "coordinates": [
-                        0,
-                        0,
-                    ],
-                }],
-            }))
-        my_attribute = splight.AssetAttribute("myAttribute",
-            type="Number",
-            asset=my_asset.id)
-        my_alert = splight.Alert("myAlert",
-            description="My Alert Description",
-            type="rate",
-            rate_unit="minute",
-            rate_value=10,
-            time_window=3600,
-            thresholds=[{
-                "value": 1,
-                "status": "alert",
-                "status_text": "Some warning!",
-            }],
-            severity="sev1",
-            operator="lt",
-            aggregation="max",
-            target_variable="A",
-            alert_items=[{
-                "ref_id": "A",
-                "type": "QUERY",
-                "expression": "",
-                "expression_plain": "",
-                "query_filter_asset": {
-                    "id": my_asset.id,
-                    "name": my_asset.name,
-                },
-                "query_filter_attribute": {
-                    "id": my_attribute.id,
-                    "name": my_attribute.name,
-                },
-                "query_group_function": "avg",
-                "query_group_unit": "day",
-                "query_plain": pulumi.Output.json_dumps([{
-                    "_match": {
-                        "asset": my_asset.id,
-                        "attribute": my_attribute.id,
-                    },
-                }]),
-            }])
-        ```
 
         ## Import
 
@@ -696,6 +670,7 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
         :param pulumi.Input[str] severity: [sev1,...,sev8] severity for the alert
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertTagArgs', 'AlertTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[str] target_variable: variable to be used to compare with thresholds
         :param pulumi.Input[int] time_window: window to fetch data from. Data out of that window will not be considered for evaluation
         :param pulumi.Input[str] type: [cron|rate] type for the cron
@@ -708,65 +683,6 @@ class Alert(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_splight as splight
-
-        my_asset = splight.Asset("myAsset",
-            description="My Asset Description",
-            geometry=json.dumps({
-                "type": "GeometryCollection",
-                "geometries": [{
-                    "type": "Point",
-                    "coordinates": [
-                        0,
-                        0,
-                    ],
-                }],
-            }))
-        my_attribute = splight.AssetAttribute("myAttribute",
-            type="Number",
-            asset=my_asset.id)
-        my_alert = splight.Alert("myAlert",
-            description="My Alert Description",
-            type="rate",
-            rate_unit="minute",
-            rate_value=10,
-            time_window=3600,
-            thresholds=[{
-                "value": 1,
-                "status": "alert",
-                "status_text": "Some warning!",
-            }],
-            severity="sev1",
-            operator="lt",
-            aggregation="max",
-            target_variable="A",
-            alert_items=[{
-                "ref_id": "A",
-                "type": "QUERY",
-                "expression": "",
-                "expression_plain": "",
-                "query_filter_asset": {
-                    "id": my_asset.id,
-                    "name": my_asset.name,
-                },
-                "query_filter_attribute": {
-                    "id": my_attribute.id,
-                    "name": my_attribute.name,
-                },
-                "query_group_function": "avg",
-                "query_group_unit": "day",
-                "query_plain": pulumi.Output.json_dumps([{
-                    "_match": {
-                        "asset": my_asset.id,
-                        "attribute": my_attribute.id,
-                    },
-                }]),
-            }])
-        ```
 
         ## Import
 
@@ -803,6 +719,7 @@ class Alert(pulumi.CustomResource):
                  rate_unit: Optional[pulumi.Input[str]] = None,
                  rate_value: Optional[pulumi.Input[int]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertTagArgs', 'AlertTagArgsDict']]]]] = None,
                  target_variable: Optional[pulumi.Input[str]] = None,
                  thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertThresholdArgs', 'AlertThresholdArgsDict']]]]] = None,
                  time_window: Optional[pulumi.Input[int]] = None,
@@ -840,6 +757,7 @@ class Alert(pulumi.CustomResource):
             if severity is None and not opts.urn:
                 raise TypeError("Missing required property 'severity'")
             __props__.__dict__["severity"] = severity
+            __props__.__dict__["tags"] = tags
             if target_variable is None and not opts.urn:
                 raise TypeError("Missing required property 'target_variable'")
             __props__.__dict__["target_variable"] = target_variable
@@ -876,6 +794,7 @@ class Alert(pulumi.CustomResource):
             rate_unit: Optional[pulumi.Input[str]] = None,
             rate_value: Optional[pulumi.Input[int]] = None,
             severity: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertTagArgs', 'AlertTagArgsDict']]]]] = None,
             target_variable: Optional[pulumi.Input[str]] = None,
             thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertThresholdArgs', 'AlertThresholdArgsDict']]]]] = None,
             time_window: Optional[pulumi.Input[int]] = None,
@@ -901,6 +820,7 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
         :param pulumi.Input[str] severity: [sev1,...,sev8] severity for the alert
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertTagArgs', 'AlertTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[str] target_variable: variable to be used to compare with thresholds
         :param pulumi.Input[int] time_window: window to fetch data from. Data out of that window will not be considered for evaluation
         :param pulumi.Input[str] type: [cron|rate] type for the cron
@@ -923,6 +843,7 @@ class Alert(pulumi.CustomResource):
         __props__.__dict__["rate_unit"] = rate_unit
         __props__.__dict__["rate_value"] = rate_value
         __props__.__dict__["severity"] = severity
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["target_variable"] = target_variable
         __props__.__dict__["thresholds"] = thresholds
         __props__.__dict__["time_window"] = time_window
@@ -1040,6 +961,14 @@ class Alert(pulumi.CustomResource):
         [sev1,...,sev8] severity for the alert
         """
         return pulumi.get(self, "severity")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.AlertTag']]]:
+        """
+        tags of the resource
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="targetVariable")

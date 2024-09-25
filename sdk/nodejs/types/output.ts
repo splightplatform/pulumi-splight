@@ -111,6 +111,17 @@ export interface AlertAlertItemQueryFilterAttribute {
     name?: string;
 }
 
+export interface AlertTag {
+    /**
+     * tag id
+     */
+    id: string;
+    /**
+     * tag name
+     */
+    name: string;
+}
+
 export interface AlertThreshold {
     /**
      * [alert|warning|no_alert] status value for the threshold
@@ -1124,6 +1135,17 @@ export interface FunctionFunctionItemQueryFilterAttribute {
      * type of the resource
      */
     type?: string;
+}
+
+export interface FunctionTag {
+    /**
+     * tag id
+     */
+    id: string;
+    /**
+     * tag name
+     */
+    name: string;
 }
 
 export interface FunctionTargetAsset {

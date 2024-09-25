@@ -14,165 +14,6 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"encoding/json"
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/splightplatform/pulumi-splight/sdk/go/splight"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"type": "GeometryCollection",
-//				"geometries": []map[string]interface{}{
-//					map[string]interface{}{
-//						"type": "Point",
-//						"coordinates": []float64{
-//							0,
-//							0,
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			json0 := string(tmpJSON0)
-//			myAsset, err := splight.NewAsset(ctx, "myAsset", &splight.AssetArgs{
-//				Description: pulumi.String("My Asset Description"),
-//				Geometry:    pulumi.String(json0),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			myAttribute, err := splight.NewAssetAttribute(ctx, "myAttribute", &splight.AssetAttributeArgs{
-//				Type:  pulumi.String("Number"),
-//				Asset: myAsset.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
-//				"type": "GeometryCollection",
-//				"geometries": []map[string]interface{}{
-//					map[string]interface{}{
-//						"type": "Point",
-//						"coordinates": []float64{
-//							0,
-//							0,
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			json1 := string(tmpJSON1)
-//			myTargetAsset, err := splight.NewAsset(ctx, "myTargetAsset", &splight.AssetArgs{
-//				Description: pulumi.String("My Target Asset Description"),
-//				Geometry:    pulumi.String(json1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			myTargetAttribute, err := splight.NewAssetAttribute(ctx, "myTargetAttribute", &splight.AssetAttributeArgs{
-//				Type:  pulumi.String("Number"),
-//				Asset: myTargetAsset.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			tmpJSON2, err := json.Marshal(map[string]interface{}{
-//				"$function": map[string]interface{}{
-//					"body": "function () { return A * 2 }",
-//					"args": []interface{}{},
-//					"lang": "js",
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			json2 := string(tmpJSON2)
-//			_, err = splight.NewFunction(ctx, "functionTest", &splight.FunctionArgs{
-//				Description:    pulumi.String("My Function Description"),
-//				Type:           pulumi.String("rate"),
-//				RateUnit:       pulumi.String("minute"),
-//				RateValue:      pulumi.Int(10),
-//				TimeWindow:     pulumi.Int(3600),
-//				TargetVariable: pulumi.String("B"),
-//				TargetAsset: &splight.FunctionTargetAssetArgs{
-//					Id:   myTargetAsset.ID(),
-//					Name: myTargetAsset.Name,
-//				},
-//				TargetAttribute: &splight.FunctionTargetAttributeArgs{
-//					Id:   myTargetAttribute.ID(),
-//					Name: myTargetAttribute.Name,
-//					Type: pulumi.String("Number"),
-//				},
-//				FunctionItems: splight.FunctionFunctionItemArray{
-//					&splight.FunctionFunctionItemArgs{
-//						RefId:           pulumi.String("A"),
-//						Type:            pulumi.String("QUERY"),
-//						Expression:      pulumi.String(""),
-//						ExpressionPlain: pulumi.String(""),
-//						QueryFilterAsset: &splight.FunctionFunctionItemQueryFilterAssetArgs{
-//							Id:   myAsset.ID(),
-//							Name: myAsset.Name,
-//						},
-//						QueryFilterAttribute: &splight.FunctionFunctionItemQueryFilterAttributeArgs{
-//							Id:   myAttribute.ID(),
-//							Name: myAttribute.Name,
-//							Type: pulumi.String("Number"),
-//						},
-//						QueryGroupFunction: pulumi.String("avg"),
-//						QueryGroupUnit:     pulumi.String("day"),
-//						QueryPlain: pulumi.All(myAsset.ID(), myAttribute.ID()).ApplyT(func(_args []interface{}) (string, error) {
-//							myAssetId := _args[0].(string)
-//							myAttributeId := _args[1].(string)
-//							var _zero string
-//							tmpJSON3, err := json.Marshal([]map[string]interface{}{
-//								map[string]interface{}{
-//									"$match": map[string]interface{}{
-//										"asset":     myAssetId,
-//										"attribute": myAttributeId,
-//									},
-//								},
-//							})
-//							if err != nil {
-//								return _zero, err
-//							}
-//							json3 := string(tmpJSON3)
-//							return json3, nil
-//						}).(pulumi.StringOutput),
-//					},
-//					&splight.FunctionFunctionItemArgs{
-//						RefId:                pulumi.String("B"),
-//						Type:                 pulumi.String("EXPRESSION"),
-//						Expression:           pulumi.String("A * 2"),
-//						ExpressionPlain:      pulumi.String(json2),
-//						QueryFilterAsset:     nil,
-//						QueryFilterAttribute: nil,
-//						QueryGroupFunction:   pulumi.String(""),
-//						QueryGroupUnit:       pulumi.String(""),
-//						QueryPlain:           pulumi.String(""),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh
@@ -203,6 +44,8 @@ type Function struct {
 	RateUnit pulumi.StringOutput `pulumi:"rateUnit"`
 	// schedule value
 	RateValue pulumi.IntOutput `pulumi:"rateValue"`
+	// tags of the resource
+	Tags FunctionTagArrayOutput `pulumi:"tags"`
 	// Asset filter
 	TargetAsset FunctionTargetAssetOutput `pulumi:"targetAsset"`
 	// Attribute filter
@@ -288,6 +131,8 @@ type functionState struct {
 	RateUnit *string `pulumi:"rateUnit"`
 	// schedule value
 	RateValue *int `pulumi:"rateValue"`
+	// tags of the resource
+	Tags []FunctionTag `pulumi:"tags"`
 	// Asset filter
 	TargetAsset *FunctionTargetAsset `pulumi:"targetAsset"`
 	// Attribute filter
@@ -323,6 +168,8 @@ type FunctionState struct {
 	RateUnit pulumi.StringPtrInput
 	// schedule value
 	RateValue pulumi.IntPtrInput
+	// tags of the resource
+	Tags FunctionTagArrayInput
 	// Asset filter
 	TargetAsset FunctionTargetAssetPtrInput
 	// Attribute filter
@@ -362,6 +209,8 @@ type functionArgs struct {
 	RateUnit *string `pulumi:"rateUnit"`
 	// schedule value
 	RateValue *int `pulumi:"rateValue"`
+	// tags of the resource
+	Tags []FunctionTag `pulumi:"tags"`
 	// Asset filter
 	TargetAsset FunctionTargetAsset `pulumi:"targetAsset"`
 	// Attribute filter
@@ -398,6 +247,8 @@ type FunctionArgs struct {
 	RateUnit pulumi.StringPtrInput
 	// schedule value
 	RateValue pulumi.IntPtrInput
+	// tags of the resource
+	Tags FunctionTagArrayInput
 	// Asset filter
 	TargetAsset FunctionTargetAssetInput
 	// Attribute filter
@@ -550,6 +401,11 @@ func (o FunctionOutput) RateUnit() pulumi.StringOutput {
 // schedule value
 func (o FunctionOutput) RateValue() pulumi.IntOutput {
 	return o.ApplyT(func(v *Function) pulumi.IntOutput { return v.RateValue }).(pulumi.IntOutput)
+}
+
+// tags of the resource
+func (o FunctionOutput) Tags() FunctionTagArrayOutput {
+	return o.ApplyT(func(v *Function) FunctionTagArrayOutput { return v.Tags }).(FunctionTagArrayOutput)
 }
 
 // Asset filter
