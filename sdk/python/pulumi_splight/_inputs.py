@@ -19,6 +19,9 @@ __all__ = [
     'AlertTagArgs',
     'AlertThresholdArgs',
     'AssetKindArgs',
+    'AssetRelationAssetArgs',
+    'AssetRelationRelatedAssetArgs',
+    'AssetRelationRelatedAssetKindArgs',
     'AssetTagArgs',
     'CommandActionArgs',
     'CommandActionAssetArgs',
@@ -623,6 +626,117 @@ class AlertThresholdArgs:
 
 @pulumi.input_type
 class AssetKindArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: kind id
+        :param pulumi.Input[str] name: kind name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        kind id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        kind name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class AssetRelationAssetArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: asset id
+        :param pulumi.Input[str] name: asset name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        asset id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        asset name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class AssetRelationRelatedAssetArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: asset id
+        :param pulumi.Input[str] name: asset name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        asset id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        asset name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class AssetRelationRelatedAssetKindArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
                  name: pulumi.Input[str]):

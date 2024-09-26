@@ -20,6 +20,9 @@ __all__ = [
     'AlertTag',
     'AlertThreshold',
     'AssetKind',
+    'AssetRelationAsset',
+    'AssetRelationRelatedAsset',
+    'AssetRelationRelatedAssetKind',
     'AssetTag',
     'CommandAction',
     'CommandActionAsset',
@@ -564,6 +567,93 @@ class AlertThreshold(dict):
 
 @pulumi.output_type
 class AssetKind(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: kind id
+        :param str name: kind name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        kind id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        kind name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class AssetRelationAsset(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: asset id
+        :param str name: asset name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        asset id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        asset name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class AssetRelationRelatedAsset(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: asset id
+        :param str name: asset name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        asset id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        asset name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class AssetRelationRelatedAssetKind(dict):
     def __init__(__self__, *,
                  id: str,
                  name: str):

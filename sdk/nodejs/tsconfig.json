@@ -18,6 +18,7 @@
         "asset.ts",
         "assetAttribute.ts",
         "assetMetadata.ts",
+        "assetRelation.ts",
         "command.ts",
         "component.ts",
         "componentRoutine.ts",

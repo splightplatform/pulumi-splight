@@ -303,6 +303,63 @@
                 "name"
             ]
         },
+        "splight:index/AssetRelationAsset:AssetRelationAsset": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "asset id\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "asset name\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "splight:index/AssetRelationRelatedAsset:AssetRelationRelatedAsset": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "asset id\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "asset name\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "splight:index/AssetRelationRelatedAssetKind:AssetRelationRelatedAssetKind": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "kind id\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "kind name\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
         "splight:index/AssetTag:AssetTag": {
             "properties": {
                 "id": {
@@ -4731,6 +4788,93 @@
                     "value": {
                         "type": "string",
                         "description": "metadata value\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/assetRelation:AssetRelation": {
+            "properties": {
+                "asset": {
+                    "$ref": "#/types/splight:index/AssetRelationAsset:AssetRelationAsset",
+                    "description": "asset where the relation origins\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "relation description\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "relation name\n"
+                },
+                "relatedAsset": {
+                    "$ref": "#/types/splight:index/AssetRelationRelatedAsset:AssetRelationRelatedAsset",
+                    "description": "target asset of the relation\n"
+                },
+                "relatedAssetKind": {
+                    "$ref": "#/types/splight:index/AssetRelationRelatedAssetKind:AssetRelationRelatedAssetKind",
+                    "description": "kind of the target relation asset\n"
+                }
+            },
+            "required": [
+                "asset",
+                "name",
+                "relatedAsset",
+                "relatedAssetKind"
+            ],
+            "inputProperties": {
+                "asset": {
+                    "$ref": "#/types/splight:index/AssetRelationAsset:AssetRelationAsset",
+                    "description": "asset where the relation origins\n",
+                    "willReplaceOnChanges": true
+                },
+                "description": {
+                    "type": "string",
+                    "description": "relation description\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "relation name\n",
+                    "willReplaceOnChanges": true
+                },
+                "relatedAsset": {
+                    "$ref": "#/types/splight:index/AssetRelationRelatedAsset:AssetRelationRelatedAsset",
+                    "description": "target asset of the relation\n"
+                },
+                "relatedAssetKind": {
+                    "$ref": "#/types/splight:index/AssetRelationRelatedAssetKind:AssetRelationRelatedAssetKind",
+                    "description": "kind of the target relation asset\n"
+                }
+            },
+            "requiredInputs": [
+                "asset",
+                "relatedAsset",
+                "relatedAssetKind"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AssetRelation resources.\n",
+                "properties": {
+                    "asset": {
+                        "$ref": "#/types/splight:index/AssetRelationAsset:AssetRelationAsset",
+                        "description": "asset where the relation origins\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "relation description\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "relation name\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "relatedAsset": {
+                        "$ref": "#/types/splight:index/AssetRelationRelatedAsset:AssetRelationRelatedAsset",
+                        "description": "target asset of the relation\n"
+                    },
+                    "relatedAssetKind": {
+                        "$ref": "#/types/splight:index/AssetRelationRelatedAssetKind:AssetRelationRelatedAssetKind",
+                        "description": "kind of the target relation asset\n"
                     }
                 },
                 "type": "object"

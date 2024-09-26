@@ -148,6 +148,39 @@ export interface AssetKind {
     name: pulumi.Input<string>;
 }
 
+export interface AssetRelationAsset {
+    /**
+     * asset id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * asset name
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AssetRelationRelatedAsset {
+    /**
+     * asset id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * asset name
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AssetRelationRelatedAssetKind {
+    /**
+     * kind id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * kind name
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface AssetTag {
     /**
      * tag id
