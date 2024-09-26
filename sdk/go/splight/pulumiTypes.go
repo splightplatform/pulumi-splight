@@ -1031,6 +1031,474 @@ func (o AssetKindPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AssetRelationAsset struct {
+	// asset id
+	Id string `pulumi:"id"`
+	// asset name
+	Name string `pulumi:"name"`
+}
+
+// AssetRelationAssetInput is an input type that accepts AssetRelationAssetArgs and AssetRelationAssetOutput values.
+// You can construct a concrete instance of `AssetRelationAssetInput` via:
+//
+//	AssetRelationAssetArgs{...}
+type AssetRelationAssetInput interface {
+	pulumi.Input
+
+	ToAssetRelationAssetOutput() AssetRelationAssetOutput
+	ToAssetRelationAssetOutputWithContext(context.Context) AssetRelationAssetOutput
+}
+
+type AssetRelationAssetArgs struct {
+	// asset id
+	Id pulumi.StringInput `pulumi:"id"`
+	// asset name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (AssetRelationAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetRelationAsset)(nil)).Elem()
+}
+
+func (i AssetRelationAssetArgs) ToAssetRelationAssetOutput() AssetRelationAssetOutput {
+	return i.ToAssetRelationAssetOutputWithContext(context.Background())
+}
+
+func (i AssetRelationAssetArgs) ToAssetRelationAssetOutputWithContext(ctx context.Context) AssetRelationAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetRelationAssetOutput)
+}
+
+func (i AssetRelationAssetArgs) ToAssetRelationAssetPtrOutput() AssetRelationAssetPtrOutput {
+	return i.ToAssetRelationAssetPtrOutputWithContext(context.Background())
+}
+
+func (i AssetRelationAssetArgs) ToAssetRelationAssetPtrOutputWithContext(ctx context.Context) AssetRelationAssetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetRelationAssetOutput).ToAssetRelationAssetPtrOutputWithContext(ctx)
+}
+
+// AssetRelationAssetPtrInput is an input type that accepts AssetRelationAssetArgs, AssetRelationAssetPtr and AssetRelationAssetPtrOutput values.
+// You can construct a concrete instance of `AssetRelationAssetPtrInput` via:
+//
+//	        AssetRelationAssetArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssetRelationAssetPtrInput interface {
+	pulumi.Input
+
+	ToAssetRelationAssetPtrOutput() AssetRelationAssetPtrOutput
+	ToAssetRelationAssetPtrOutputWithContext(context.Context) AssetRelationAssetPtrOutput
+}
+
+type assetRelationAssetPtrType AssetRelationAssetArgs
+
+func AssetRelationAssetPtr(v *AssetRelationAssetArgs) AssetRelationAssetPtrInput {
+	return (*assetRelationAssetPtrType)(v)
+}
+
+func (*assetRelationAssetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetRelationAsset)(nil)).Elem()
+}
+
+func (i *assetRelationAssetPtrType) ToAssetRelationAssetPtrOutput() AssetRelationAssetPtrOutput {
+	return i.ToAssetRelationAssetPtrOutputWithContext(context.Background())
+}
+
+func (i *assetRelationAssetPtrType) ToAssetRelationAssetPtrOutputWithContext(ctx context.Context) AssetRelationAssetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetRelationAssetPtrOutput)
+}
+
+type AssetRelationAssetOutput struct{ *pulumi.OutputState }
+
+func (AssetRelationAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetRelationAsset)(nil)).Elem()
+}
+
+func (o AssetRelationAssetOutput) ToAssetRelationAssetOutput() AssetRelationAssetOutput {
+	return o
+}
+
+func (o AssetRelationAssetOutput) ToAssetRelationAssetOutputWithContext(ctx context.Context) AssetRelationAssetOutput {
+	return o
+}
+
+func (o AssetRelationAssetOutput) ToAssetRelationAssetPtrOutput() AssetRelationAssetPtrOutput {
+	return o.ToAssetRelationAssetPtrOutputWithContext(context.Background())
+}
+
+func (o AssetRelationAssetOutput) ToAssetRelationAssetPtrOutputWithContext(ctx context.Context) AssetRelationAssetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetRelationAsset) *AssetRelationAsset {
+		return &v
+	}).(AssetRelationAssetPtrOutput)
+}
+
+// asset id
+func (o AssetRelationAssetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetRelationAsset) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// asset name
+func (o AssetRelationAssetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetRelationAsset) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type AssetRelationAssetPtrOutput struct{ *pulumi.OutputState }
+
+func (AssetRelationAssetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetRelationAsset)(nil)).Elem()
+}
+
+func (o AssetRelationAssetPtrOutput) ToAssetRelationAssetPtrOutput() AssetRelationAssetPtrOutput {
+	return o
+}
+
+func (o AssetRelationAssetPtrOutput) ToAssetRelationAssetPtrOutputWithContext(ctx context.Context) AssetRelationAssetPtrOutput {
+	return o
+}
+
+func (o AssetRelationAssetPtrOutput) Elem() AssetRelationAssetOutput {
+	return o.ApplyT(func(v *AssetRelationAsset) AssetRelationAsset {
+		if v != nil {
+			return *v
+		}
+		var ret AssetRelationAsset
+		return ret
+	}).(AssetRelationAssetOutput)
+}
+
+// asset id
+func (o AssetRelationAssetPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetRelationAsset) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// asset name
+func (o AssetRelationAssetPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetRelationAsset) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type AssetRelationRelatedAsset struct {
+	// asset id
+	Id string `pulumi:"id"`
+	// asset name
+	Name string `pulumi:"name"`
+}
+
+// AssetRelationRelatedAssetInput is an input type that accepts AssetRelationRelatedAssetArgs and AssetRelationRelatedAssetOutput values.
+// You can construct a concrete instance of `AssetRelationRelatedAssetInput` via:
+//
+//	AssetRelationRelatedAssetArgs{...}
+type AssetRelationRelatedAssetInput interface {
+	pulumi.Input
+
+	ToAssetRelationRelatedAssetOutput() AssetRelationRelatedAssetOutput
+	ToAssetRelationRelatedAssetOutputWithContext(context.Context) AssetRelationRelatedAssetOutput
+}
+
+type AssetRelationRelatedAssetArgs struct {
+	// asset id
+	Id pulumi.StringInput `pulumi:"id"`
+	// asset name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (AssetRelationRelatedAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetRelationRelatedAsset)(nil)).Elem()
+}
+
+func (i AssetRelationRelatedAssetArgs) ToAssetRelationRelatedAssetOutput() AssetRelationRelatedAssetOutput {
+	return i.ToAssetRelationRelatedAssetOutputWithContext(context.Background())
+}
+
+func (i AssetRelationRelatedAssetArgs) ToAssetRelationRelatedAssetOutputWithContext(ctx context.Context) AssetRelationRelatedAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetRelationRelatedAssetOutput)
+}
+
+func (i AssetRelationRelatedAssetArgs) ToAssetRelationRelatedAssetPtrOutput() AssetRelationRelatedAssetPtrOutput {
+	return i.ToAssetRelationRelatedAssetPtrOutputWithContext(context.Background())
+}
+
+func (i AssetRelationRelatedAssetArgs) ToAssetRelationRelatedAssetPtrOutputWithContext(ctx context.Context) AssetRelationRelatedAssetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetRelationRelatedAssetOutput).ToAssetRelationRelatedAssetPtrOutputWithContext(ctx)
+}
+
+// AssetRelationRelatedAssetPtrInput is an input type that accepts AssetRelationRelatedAssetArgs, AssetRelationRelatedAssetPtr and AssetRelationRelatedAssetPtrOutput values.
+// You can construct a concrete instance of `AssetRelationRelatedAssetPtrInput` via:
+//
+//	        AssetRelationRelatedAssetArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssetRelationRelatedAssetPtrInput interface {
+	pulumi.Input
+
+	ToAssetRelationRelatedAssetPtrOutput() AssetRelationRelatedAssetPtrOutput
+	ToAssetRelationRelatedAssetPtrOutputWithContext(context.Context) AssetRelationRelatedAssetPtrOutput
+}
+
+type assetRelationRelatedAssetPtrType AssetRelationRelatedAssetArgs
+
+func AssetRelationRelatedAssetPtr(v *AssetRelationRelatedAssetArgs) AssetRelationRelatedAssetPtrInput {
+	return (*assetRelationRelatedAssetPtrType)(v)
+}
+
+func (*assetRelationRelatedAssetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetRelationRelatedAsset)(nil)).Elem()
+}
+
+func (i *assetRelationRelatedAssetPtrType) ToAssetRelationRelatedAssetPtrOutput() AssetRelationRelatedAssetPtrOutput {
+	return i.ToAssetRelationRelatedAssetPtrOutputWithContext(context.Background())
+}
+
+func (i *assetRelationRelatedAssetPtrType) ToAssetRelationRelatedAssetPtrOutputWithContext(ctx context.Context) AssetRelationRelatedAssetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetRelationRelatedAssetPtrOutput)
+}
+
+type AssetRelationRelatedAssetOutput struct{ *pulumi.OutputState }
+
+func (AssetRelationRelatedAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetRelationRelatedAsset)(nil)).Elem()
+}
+
+func (o AssetRelationRelatedAssetOutput) ToAssetRelationRelatedAssetOutput() AssetRelationRelatedAssetOutput {
+	return o
+}
+
+func (o AssetRelationRelatedAssetOutput) ToAssetRelationRelatedAssetOutputWithContext(ctx context.Context) AssetRelationRelatedAssetOutput {
+	return o
+}
+
+func (o AssetRelationRelatedAssetOutput) ToAssetRelationRelatedAssetPtrOutput() AssetRelationRelatedAssetPtrOutput {
+	return o.ToAssetRelationRelatedAssetPtrOutputWithContext(context.Background())
+}
+
+func (o AssetRelationRelatedAssetOutput) ToAssetRelationRelatedAssetPtrOutputWithContext(ctx context.Context) AssetRelationRelatedAssetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetRelationRelatedAsset) *AssetRelationRelatedAsset {
+		return &v
+	}).(AssetRelationRelatedAssetPtrOutput)
+}
+
+// asset id
+func (o AssetRelationRelatedAssetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetRelationRelatedAsset) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// asset name
+func (o AssetRelationRelatedAssetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetRelationRelatedAsset) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type AssetRelationRelatedAssetPtrOutput struct{ *pulumi.OutputState }
+
+func (AssetRelationRelatedAssetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetRelationRelatedAsset)(nil)).Elem()
+}
+
+func (o AssetRelationRelatedAssetPtrOutput) ToAssetRelationRelatedAssetPtrOutput() AssetRelationRelatedAssetPtrOutput {
+	return o
+}
+
+func (o AssetRelationRelatedAssetPtrOutput) ToAssetRelationRelatedAssetPtrOutputWithContext(ctx context.Context) AssetRelationRelatedAssetPtrOutput {
+	return o
+}
+
+func (o AssetRelationRelatedAssetPtrOutput) Elem() AssetRelationRelatedAssetOutput {
+	return o.ApplyT(func(v *AssetRelationRelatedAsset) AssetRelationRelatedAsset {
+		if v != nil {
+			return *v
+		}
+		var ret AssetRelationRelatedAsset
+		return ret
+	}).(AssetRelationRelatedAssetOutput)
+}
+
+// asset id
+func (o AssetRelationRelatedAssetPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetRelationRelatedAsset) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// asset name
+func (o AssetRelationRelatedAssetPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetRelationRelatedAsset) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type AssetRelationRelatedAssetKind struct {
+	// kind id
+	Id string `pulumi:"id"`
+	// kind name
+	Name string `pulumi:"name"`
+}
+
+// AssetRelationRelatedAssetKindInput is an input type that accepts AssetRelationRelatedAssetKindArgs and AssetRelationRelatedAssetKindOutput values.
+// You can construct a concrete instance of `AssetRelationRelatedAssetKindInput` via:
+//
+//	AssetRelationRelatedAssetKindArgs{...}
+type AssetRelationRelatedAssetKindInput interface {
+	pulumi.Input
+
+	ToAssetRelationRelatedAssetKindOutput() AssetRelationRelatedAssetKindOutput
+	ToAssetRelationRelatedAssetKindOutputWithContext(context.Context) AssetRelationRelatedAssetKindOutput
+}
+
+type AssetRelationRelatedAssetKindArgs struct {
+	// kind id
+	Id pulumi.StringInput `pulumi:"id"`
+	// kind name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (AssetRelationRelatedAssetKindArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetRelationRelatedAssetKind)(nil)).Elem()
+}
+
+func (i AssetRelationRelatedAssetKindArgs) ToAssetRelationRelatedAssetKindOutput() AssetRelationRelatedAssetKindOutput {
+	return i.ToAssetRelationRelatedAssetKindOutputWithContext(context.Background())
+}
+
+func (i AssetRelationRelatedAssetKindArgs) ToAssetRelationRelatedAssetKindOutputWithContext(ctx context.Context) AssetRelationRelatedAssetKindOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetRelationRelatedAssetKindOutput)
+}
+
+func (i AssetRelationRelatedAssetKindArgs) ToAssetRelationRelatedAssetKindPtrOutput() AssetRelationRelatedAssetKindPtrOutput {
+	return i.ToAssetRelationRelatedAssetKindPtrOutputWithContext(context.Background())
+}
+
+func (i AssetRelationRelatedAssetKindArgs) ToAssetRelationRelatedAssetKindPtrOutputWithContext(ctx context.Context) AssetRelationRelatedAssetKindPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetRelationRelatedAssetKindOutput).ToAssetRelationRelatedAssetKindPtrOutputWithContext(ctx)
+}
+
+// AssetRelationRelatedAssetKindPtrInput is an input type that accepts AssetRelationRelatedAssetKindArgs, AssetRelationRelatedAssetKindPtr and AssetRelationRelatedAssetKindPtrOutput values.
+// You can construct a concrete instance of `AssetRelationRelatedAssetKindPtrInput` via:
+//
+//	        AssetRelationRelatedAssetKindArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssetRelationRelatedAssetKindPtrInput interface {
+	pulumi.Input
+
+	ToAssetRelationRelatedAssetKindPtrOutput() AssetRelationRelatedAssetKindPtrOutput
+	ToAssetRelationRelatedAssetKindPtrOutputWithContext(context.Context) AssetRelationRelatedAssetKindPtrOutput
+}
+
+type assetRelationRelatedAssetKindPtrType AssetRelationRelatedAssetKindArgs
+
+func AssetRelationRelatedAssetKindPtr(v *AssetRelationRelatedAssetKindArgs) AssetRelationRelatedAssetKindPtrInput {
+	return (*assetRelationRelatedAssetKindPtrType)(v)
+}
+
+func (*assetRelationRelatedAssetKindPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetRelationRelatedAssetKind)(nil)).Elem()
+}
+
+func (i *assetRelationRelatedAssetKindPtrType) ToAssetRelationRelatedAssetKindPtrOutput() AssetRelationRelatedAssetKindPtrOutput {
+	return i.ToAssetRelationRelatedAssetKindPtrOutputWithContext(context.Background())
+}
+
+func (i *assetRelationRelatedAssetKindPtrType) ToAssetRelationRelatedAssetKindPtrOutputWithContext(ctx context.Context) AssetRelationRelatedAssetKindPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetRelationRelatedAssetKindPtrOutput)
+}
+
+type AssetRelationRelatedAssetKindOutput struct{ *pulumi.OutputState }
+
+func (AssetRelationRelatedAssetKindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetRelationRelatedAssetKind)(nil)).Elem()
+}
+
+func (o AssetRelationRelatedAssetKindOutput) ToAssetRelationRelatedAssetKindOutput() AssetRelationRelatedAssetKindOutput {
+	return o
+}
+
+func (o AssetRelationRelatedAssetKindOutput) ToAssetRelationRelatedAssetKindOutputWithContext(ctx context.Context) AssetRelationRelatedAssetKindOutput {
+	return o
+}
+
+func (o AssetRelationRelatedAssetKindOutput) ToAssetRelationRelatedAssetKindPtrOutput() AssetRelationRelatedAssetKindPtrOutput {
+	return o.ToAssetRelationRelatedAssetKindPtrOutputWithContext(context.Background())
+}
+
+func (o AssetRelationRelatedAssetKindOutput) ToAssetRelationRelatedAssetKindPtrOutputWithContext(ctx context.Context) AssetRelationRelatedAssetKindPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetRelationRelatedAssetKind) *AssetRelationRelatedAssetKind {
+		return &v
+	}).(AssetRelationRelatedAssetKindPtrOutput)
+}
+
+// kind id
+func (o AssetRelationRelatedAssetKindOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetRelationRelatedAssetKind) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// kind name
+func (o AssetRelationRelatedAssetKindOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetRelationRelatedAssetKind) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type AssetRelationRelatedAssetKindPtrOutput struct{ *pulumi.OutputState }
+
+func (AssetRelationRelatedAssetKindPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetRelationRelatedAssetKind)(nil)).Elem()
+}
+
+func (o AssetRelationRelatedAssetKindPtrOutput) ToAssetRelationRelatedAssetKindPtrOutput() AssetRelationRelatedAssetKindPtrOutput {
+	return o
+}
+
+func (o AssetRelationRelatedAssetKindPtrOutput) ToAssetRelationRelatedAssetKindPtrOutputWithContext(ctx context.Context) AssetRelationRelatedAssetKindPtrOutput {
+	return o
+}
+
+func (o AssetRelationRelatedAssetKindPtrOutput) Elem() AssetRelationRelatedAssetKindOutput {
+	return o.ApplyT(func(v *AssetRelationRelatedAssetKind) AssetRelationRelatedAssetKind {
+		if v != nil {
+			return *v
+		}
+		var ret AssetRelationRelatedAssetKind
+		return ret
+	}).(AssetRelationRelatedAssetKindOutput)
+}
+
+// kind id
+func (o AssetRelationRelatedAssetKindPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetRelationRelatedAssetKind) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// kind name
+func (o AssetRelationRelatedAssetKindPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetRelationRelatedAssetKind) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 type AssetTag struct {
 	// tag id
 	Id string `pulumi:"id"`
@@ -18296,6 +18764,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertThresholdArrayInput)(nil)).Elem(), AlertThresholdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetKindInput)(nil)).Elem(), AssetKindArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetKindPtrInput)(nil)).Elem(), AssetKindArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetRelationAssetInput)(nil)).Elem(), AssetRelationAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetRelationAssetPtrInput)(nil)).Elem(), AssetRelationAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetRelationRelatedAssetInput)(nil)).Elem(), AssetRelationRelatedAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetRelationRelatedAssetPtrInput)(nil)).Elem(), AssetRelationRelatedAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetRelationRelatedAssetKindInput)(nil)).Elem(), AssetRelationRelatedAssetKindArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetRelationRelatedAssetKindPtrInput)(nil)).Elem(), AssetRelationRelatedAssetKindArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetTagInput)(nil)).Elem(), AssetTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetTagArrayInput)(nil)).Elem(), AssetTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CommandActionInput)(nil)).Elem(), CommandActionArgs{})
@@ -18546,6 +19020,12 @@ func init() {
 	pulumi.RegisterOutputType(AlertThresholdArrayOutput{})
 	pulumi.RegisterOutputType(AssetKindOutput{})
 	pulumi.RegisterOutputType(AssetKindPtrOutput{})
+	pulumi.RegisterOutputType(AssetRelationAssetOutput{})
+	pulumi.RegisterOutputType(AssetRelationAssetPtrOutput{})
+	pulumi.RegisterOutputType(AssetRelationRelatedAssetOutput{})
+	pulumi.RegisterOutputType(AssetRelationRelatedAssetPtrOutput{})
+	pulumi.RegisterOutputType(AssetRelationRelatedAssetKindOutput{})
+	pulumi.RegisterOutputType(AssetRelationRelatedAssetKindPtrOutput{})
 	pulumi.RegisterOutputType(AssetTagOutput{})
 	pulumi.RegisterOutputType(AssetTagArrayOutput{})
 	pulumi.RegisterOutputType(CommandActionOutput{})

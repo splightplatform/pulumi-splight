@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AssetAttribute{}
 	case "splight:index/assetMetadata:AssetMetadata":
 		r = &AssetMetadata{}
+	case "splight:index/assetRelation:AssetRelation":
+		r = &AssetRelation{}
 	case "splight:index/command:Command":
 		r = &Command{}
 	case "splight:index/component:Component":
@@ -133,6 +135,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"splight",
 		"index/assetMetadata",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/assetRelation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

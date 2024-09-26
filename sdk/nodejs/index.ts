@@ -30,6 +30,11 @@ export type AssetMetadata = import("./assetMetadata").AssetMetadata;
 export const AssetMetadata: typeof import("./assetMetadata").AssetMetadata = null as any;
 utilities.lazyLoad(exports, ["AssetMetadata"], () => require("./assetMetadata"));
 
+export { AssetRelationArgs, AssetRelationState } from "./assetRelation";
+export type AssetRelation = import("./assetRelation").AssetRelation;
+export const AssetRelation: typeof import("./assetRelation").AssetRelation = null as any;
+utilities.lazyLoad(exports, ["AssetRelation"], () => require("./assetRelation"));
+
 export { CommandArgs, CommandState } from "./command";
 export type Command = import("./command").Command;
 export const Command: typeof import("./command").Command = null as any;
@@ -189,6 +194,8 @@ const _module = {
                 return new AssetAttribute(name, <any>undefined, { urn })
             case "splight:index/assetMetadata:AssetMetadata":
                 return new AssetMetadata(name, <any>undefined, { urn })
+            case "splight:index/assetRelation:AssetRelation":
+                return new AssetRelation(name, <any>undefined, { urn })
             case "splight:index/command:Command":
                 return new Command(name, <any>undefined, { urn })
             case "splight:index/component:Component":
@@ -247,6 +254,7 @@ pulumi.runtime.registerResourceModule("splight", "index/alert", _module)
 pulumi.runtime.registerResourceModule("splight", "index/asset", _module)
 pulumi.runtime.registerResourceModule("splight", "index/assetAttribute", _module)
 pulumi.runtime.registerResourceModule("splight", "index/assetMetadata", _module)
+pulumi.runtime.registerResourceModule("splight", "index/assetRelation", _module)
 pulumi.runtime.registerResourceModule("splight", "index/command", _module)
 pulumi.runtime.registerResourceModule("splight", "index/component", _module)
 pulumi.runtime.registerResourceModule("splight", "index/componentRoutine", _module)

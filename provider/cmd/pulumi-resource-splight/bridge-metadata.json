@@ -65,6 +65,21 @@
                 "current": "splight:index/assetMetadata:AssetMetadata",
                 "majorVersion": 1
             },
+            "splight_asset_relation": {
+                "current": "splight:index/assetRelation:AssetRelation",
+                "majorVersion": 1,
+                "fields": {
+                    "asset": {
+                        "maxItemsOne": true
+                    },
+                    "related_asset": {
+                        "maxItemsOne": true
+                    },
+                    "related_asset_kind": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "splight_command": {
                 "current": "splight:index/command:Command",
                 "majorVersion": 1,

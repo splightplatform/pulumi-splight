@@ -148,6 +148,39 @@ export interface AssetKind {
     name: string;
 }
 
+export interface AssetRelationAsset {
+    /**
+     * asset id
+     */
+    id: string;
+    /**
+     * asset name
+     */
+    name: string;
+}
+
+export interface AssetRelationRelatedAsset {
+    /**
+     * asset id
+     */
+    id: string;
+    /**
+     * asset name
+     */
+    name: string;
+}
+
+export interface AssetRelationRelatedAssetKind {
+    /**
+     * kind id
+     */
+    id: string;
+    /**
+     * kind name
+     */
+    name: string;
+}
+
 export interface AssetTag {
     /**
      * tag id

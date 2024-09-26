@@ -10,6 +10,7 @@ from .alert import *
 from .asset import *
 from .asset_attribute import *
 from .asset_metadata import *
+from .asset_relation import *
 from .command import *
 from .component import *
 from .component_routine import *
@@ -88,6 +89,14 @@ _utilities.register(
   "fqn": "pulumi_splight",
   "classes": {
    "splight:index/assetMetadata:AssetMetadata": "AssetMetadata"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/assetRelation",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/assetRelation:AssetRelation": "AssetRelation"
   }
  },
  {
