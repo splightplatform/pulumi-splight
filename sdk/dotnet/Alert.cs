@@ -101,6 +101,12 @@ namespace Splight.Splight
         public Output<int> RateValue { get; private set; } = null!;
 
         /// <summary>
+        /// related assets of the resource
+        /// </summary>
+        [Output("relatedAssets")]
+        public Output<ImmutableArray<Outputs.AlertRelatedAsset>> RelatedAssets { get; private set; } = null!;
+
+        /// <summary>
         /// [sev1,...,sev8] severity for the alert
         /// </summary>
         [Output("severity")]
@@ -264,6 +270,18 @@ namespace Splight.Splight
         [Input("rateValue")]
         public Input<int>? RateValue { get; set; }
 
+        [Input("relatedAssets")]
+        private InputList<Inputs.AlertRelatedAssetArgs>? _relatedAssets;
+
+        /// <summary>
+        /// related assets of the resource
+        /// </summary>
+        public InputList<Inputs.AlertRelatedAssetArgs> RelatedAssets
+        {
+            get => _relatedAssets ?? (_relatedAssets = new InputList<Inputs.AlertRelatedAssetArgs>());
+            set => _relatedAssets = value;
+        }
+
         /// <summary>
         /// [sev1,...,sev8] severity for the alert
         /// </summary>
@@ -399,6 +417,18 @@ namespace Splight.Splight
         /// </summary>
         [Input("rateValue")]
         public Input<int>? RateValue { get; set; }
+
+        [Input("relatedAssets")]
+        private InputList<Inputs.AlertRelatedAssetGetArgs>? _relatedAssets;
+
+        /// <summary>
+        /// related assets of the resource
+        /// </summary>
+        public InputList<Inputs.AlertRelatedAssetGetArgs> RelatedAssets
+        {
+            get => _relatedAssets ?? (_relatedAssets = new InputList<Inputs.AlertRelatedAssetGetArgs>());
+            set => _relatedAssets = value;
+        }
 
         /// <summary>
         /// [sev1,...,sev8] severity for the alert

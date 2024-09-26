@@ -34,6 +34,7 @@ class AlertArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  rate_unit: Optional[pulumi.Input[str]] = None,
                  rate_value: Optional[pulumi.Input[int]] = None,
+                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input['AlertRelatedAssetArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['AlertTagArgs']]]] = None):
         """
         The set of arguments for constructing a Alert resource.
@@ -54,6 +55,7 @@ class AlertArgs:
         :param pulumi.Input[str] name: The name of the resource
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
+        :param pulumi.Input[Sequence[pulumi.Input['AlertRelatedAssetArgs']]] related_assets: related assets of the resource
         :param pulumi.Input[Sequence[pulumi.Input['AlertTagArgs']]] tags: tags of the resource
         """
         pulumi.set(__self__, "aggregation", aggregation)
@@ -83,6 +85,8 @@ class AlertArgs:
             pulumi.set(__self__, "rate_unit", rate_unit)
         if rate_value is not None:
             pulumi.set(__self__, "rate_value", rate_value)
+        if related_assets is not None:
+            pulumi.set(__self__, "related_assets", related_assets)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -300,6 +304,18 @@ class AlertArgs:
         pulumi.set(self, "rate_value", value)
 
     @property
+    @pulumi.getter(name="relatedAssets")
+    def related_assets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertRelatedAssetArgs']]]]:
+        """
+        related assets of the resource
+        """
+        return pulumi.get(self, "related_assets")
+
+    @related_assets.setter
+    def related_assets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertRelatedAssetArgs']]]]):
+        pulumi.set(self, "related_assets", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertTagArgs']]]]:
         """
@@ -328,6 +344,7 @@ class _AlertState:
                  operator: Optional[pulumi.Input[str]] = None,
                  rate_unit: Optional[pulumi.Input[str]] = None,
                  rate_value: Optional[pulumi.Input[int]] = None,
+                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input['AlertRelatedAssetArgs']]]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['AlertTagArgs']]]] = None,
                  target_variable: Optional[pulumi.Input[str]] = None,
@@ -349,6 +366,7 @@ class _AlertState:
         :param pulumi.Input[str] operator: operator to be used to compare the read value with the threshold value
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
+        :param pulumi.Input[Sequence[pulumi.Input['AlertRelatedAssetArgs']]] related_assets: related assets of the resource
         :param pulumi.Input[str] severity: [sev1,...,sev8] severity for the alert
         :param pulumi.Input[Sequence[pulumi.Input['AlertTagArgs']]] tags: tags of the resource
         :param pulumi.Input[str] target_variable: variable to be used to compare with thresholds
@@ -381,6 +399,8 @@ class _AlertState:
             pulumi.set(__self__, "rate_unit", rate_unit)
         if rate_value is not None:
             pulumi.set(__self__, "rate_value", rate_value)
+        if related_assets is not None:
+            pulumi.set(__self__, "related_assets", related_assets)
         if severity is not None:
             pulumi.set(__self__, "severity", severity)
         if tags is not None:
@@ -551,6 +571,18 @@ class _AlertState:
         pulumi.set(self, "rate_value", value)
 
     @property
+    @pulumi.getter(name="relatedAssets")
+    def related_assets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertRelatedAssetArgs']]]]:
+        """
+        related assets of the resource
+        """
+        return pulumi.get(self, "related_assets")
+
+    @related_assets.setter
+    def related_assets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertRelatedAssetArgs']]]]):
+        pulumi.set(self, "related_assets", value)
+
+    @property
     @pulumi.getter
     def severity(self) -> Optional[pulumi.Input[str]]:
         """
@@ -638,6 +670,7 @@ class Alert(pulumi.CustomResource):
                  operator: Optional[pulumi.Input[str]] = None,
                  rate_unit: Optional[pulumi.Input[str]] = None,
                  rate_value: Optional[pulumi.Input[int]] = None,
+                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertRelatedAssetArgs', 'AlertRelatedAssetArgsDict']]]]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertTagArgs', 'AlertTagArgsDict']]]]] = None,
                  target_variable: Optional[pulumi.Input[str]] = None,
@@ -669,6 +702,7 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[str] operator: operator to be used to compare the read value with the threshold value
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertRelatedAssetArgs', 'AlertRelatedAssetArgsDict']]]] related_assets: related assets of the resource
         :param pulumi.Input[str] severity: [sev1,...,sev8] severity for the alert
         :param pulumi.Input[Sequence[pulumi.Input[Union['AlertTagArgs', 'AlertTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[str] target_variable: variable to be used to compare with thresholds
@@ -718,6 +752,7 @@ class Alert(pulumi.CustomResource):
                  operator: Optional[pulumi.Input[str]] = None,
                  rate_unit: Optional[pulumi.Input[str]] = None,
                  rate_value: Optional[pulumi.Input[int]] = None,
+                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertRelatedAssetArgs', 'AlertRelatedAssetArgsDict']]]]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertTagArgs', 'AlertTagArgsDict']]]]] = None,
                  target_variable: Optional[pulumi.Input[str]] = None,
@@ -754,6 +789,7 @@ class Alert(pulumi.CustomResource):
             __props__.__dict__["operator"] = operator
             __props__.__dict__["rate_unit"] = rate_unit
             __props__.__dict__["rate_value"] = rate_value
+            __props__.__dict__["related_assets"] = related_assets
             if severity is None and not opts.urn:
                 raise TypeError("Missing required property 'severity'")
             __props__.__dict__["severity"] = severity
@@ -793,6 +829,7 @@ class Alert(pulumi.CustomResource):
             operator: Optional[pulumi.Input[str]] = None,
             rate_unit: Optional[pulumi.Input[str]] = None,
             rate_value: Optional[pulumi.Input[int]] = None,
+            related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertRelatedAssetArgs', 'AlertRelatedAssetArgsDict']]]]] = None,
             severity: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertTagArgs', 'AlertTagArgsDict']]]]] = None,
             target_variable: Optional[pulumi.Input[str]] = None,
@@ -819,6 +856,7 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[str] operator: operator to be used to compare the read value with the threshold value
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertRelatedAssetArgs', 'AlertRelatedAssetArgsDict']]]] related_assets: related assets of the resource
         :param pulumi.Input[str] severity: [sev1,...,sev8] severity for the alert
         :param pulumi.Input[Sequence[pulumi.Input[Union['AlertTagArgs', 'AlertTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[str] target_variable: variable to be used to compare with thresholds
@@ -842,6 +880,7 @@ class Alert(pulumi.CustomResource):
         __props__.__dict__["operator"] = operator
         __props__.__dict__["rate_unit"] = rate_unit
         __props__.__dict__["rate_value"] = rate_value
+        __props__.__dict__["related_assets"] = related_assets
         __props__.__dict__["severity"] = severity
         __props__.__dict__["tags"] = tags
         __props__.__dict__["target_variable"] = target_variable
@@ -953,6 +992,14 @@ class Alert(pulumi.CustomResource):
         schedule value
         """
         return pulumi.get(self, "rate_value")
+
+    @property
+    @pulumi.getter(name="relatedAssets")
+    def related_assets(self) -> pulumi.Output[Optional[Sequence['outputs.AlertRelatedAsset']]]:
+        """
+        related assets of the resource
+        """
+        return pulumi.get(self, "related_assets")
 
     @property
     @pulumi.getter

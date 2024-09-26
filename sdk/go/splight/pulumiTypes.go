@@ -654,6 +654,112 @@ func (o AlertAlertItemQueryFilterAttributeOutput) Name() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v AlertAlertItemQueryFilterAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+type AlertRelatedAsset struct {
+	// asset id
+	Id string `pulumi:"id"`
+	// asset name
+	Name string `pulumi:"name"`
+}
+
+// AlertRelatedAssetInput is an input type that accepts AlertRelatedAssetArgs and AlertRelatedAssetOutput values.
+// You can construct a concrete instance of `AlertRelatedAssetInput` via:
+//
+//	AlertRelatedAssetArgs{...}
+type AlertRelatedAssetInput interface {
+	pulumi.Input
+
+	ToAlertRelatedAssetOutput() AlertRelatedAssetOutput
+	ToAlertRelatedAssetOutputWithContext(context.Context) AlertRelatedAssetOutput
+}
+
+type AlertRelatedAssetArgs struct {
+	// asset id
+	Id pulumi.StringInput `pulumi:"id"`
+	// asset name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (AlertRelatedAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRelatedAsset)(nil)).Elem()
+}
+
+func (i AlertRelatedAssetArgs) ToAlertRelatedAssetOutput() AlertRelatedAssetOutput {
+	return i.ToAlertRelatedAssetOutputWithContext(context.Background())
+}
+
+func (i AlertRelatedAssetArgs) ToAlertRelatedAssetOutputWithContext(ctx context.Context) AlertRelatedAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRelatedAssetOutput)
+}
+
+// AlertRelatedAssetArrayInput is an input type that accepts AlertRelatedAssetArray and AlertRelatedAssetArrayOutput values.
+// You can construct a concrete instance of `AlertRelatedAssetArrayInput` via:
+//
+//	AlertRelatedAssetArray{ AlertRelatedAssetArgs{...} }
+type AlertRelatedAssetArrayInput interface {
+	pulumi.Input
+
+	ToAlertRelatedAssetArrayOutput() AlertRelatedAssetArrayOutput
+	ToAlertRelatedAssetArrayOutputWithContext(context.Context) AlertRelatedAssetArrayOutput
+}
+
+type AlertRelatedAssetArray []AlertRelatedAssetInput
+
+func (AlertRelatedAssetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRelatedAsset)(nil)).Elem()
+}
+
+func (i AlertRelatedAssetArray) ToAlertRelatedAssetArrayOutput() AlertRelatedAssetArrayOutput {
+	return i.ToAlertRelatedAssetArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRelatedAssetArray) ToAlertRelatedAssetArrayOutputWithContext(ctx context.Context) AlertRelatedAssetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRelatedAssetArrayOutput)
+}
+
+type AlertRelatedAssetOutput struct{ *pulumi.OutputState }
+
+func (AlertRelatedAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRelatedAsset)(nil)).Elem()
+}
+
+func (o AlertRelatedAssetOutput) ToAlertRelatedAssetOutput() AlertRelatedAssetOutput {
+	return o
+}
+
+func (o AlertRelatedAssetOutput) ToAlertRelatedAssetOutputWithContext(ctx context.Context) AlertRelatedAssetOutput {
+	return o
+}
+
+// asset id
+func (o AlertRelatedAssetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertRelatedAsset) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// asset name
+func (o AlertRelatedAssetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertRelatedAsset) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type AlertRelatedAssetArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRelatedAssetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRelatedAsset)(nil)).Elem()
+}
+
+func (o AlertRelatedAssetArrayOutput) ToAlertRelatedAssetArrayOutput() AlertRelatedAssetArrayOutput {
+	return o
+}
+
+func (o AlertRelatedAssetArrayOutput) ToAlertRelatedAssetArrayOutputWithContext(ctx context.Context) AlertRelatedAssetArrayOutput {
+	return o
+}
+
+func (o AlertRelatedAssetArrayOutput) Index(i pulumi.IntInput) AlertRelatedAssetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRelatedAsset {
+		return vs[0].([]AlertRelatedAsset)[vs[1].(int)]
+	}).(AlertRelatedAssetOutput)
+}
+
 type AlertTag struct {
 	// tag id
 	Id string `pulumi:"id"`
@@ -10364,6 +10470,112 @@ func (o FunctionFunctionItemQueryFilterAttributeOutput) Type() pulumi.StringPtrO
 	return o.ApplyT(func(v FunctionFunctionItemQueryFilterAttribute) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+type FunctionRelatedAsset struct {
+	// asset id
+	Id string `pulumi:"id"`
+	// asset name
+	Name string `pulumi:"name"`
+}
+
+// FunctionRelatedAssetInput is an input type that accepts FunctionRelatedAssetArgs and FunctionRelatedAssetOutput values.
+// You can construct a concrete instance of `FunctionRelatedAssetInput` via:
+//
+//	FunctionRelatedAssetArgs{...}
+type FunctionRelatedAssetInput interface {
+	pulumi.Input
+
+	ToFunctionRelatedAssetOutput() FunctionRelatedAssetOutput
+	ToFunctionRelatedAssetOutputWithContext(context.Context) FunctionRelatedAssetOutput
+}
+
+type FunctionRelatedAssetArgs struct {
+	// asset id
+	Id pulumi.StringInput `pulumi:"id"`
+	// asset name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (FunctionRelatedAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionRelatedAsset)(nil)).Elem()
+}
+
+func (i FunctionRelatedAssetArgs) ToFunctionRelatedAssetOutput() FunctionRelatedAssetOutput {
+	return i.ToFunctionRelatedAssetOutputWithContext(context.Background())
+}
+
+func (i FunctionRelatedAssetArgs) ToFunctionRelatedAssetOutputWithContext(ctx context.Context) FunctionRelatedAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionRelatedAssetOutput)
+}
+
+// FunctionRelatedAssetArrayInput is an input type that accepts FunctionRelatedAssetArray and FunctionRelatedAssetArrayOutput values.
+// You can construct a concrete instance of `FunctionRelatedAssetArrayInput` via:
+//
+//	FunctionRelatedAssetArray{ FunctionRelatedAssetArgs{...} }
+type FunctionRelatedAssetArrayInput interface {
+	pulumi.Input
+
+	ToFunctionRelatedAssetArrayOutput() FunctionRelatedAssetArrayOutput
+	ToFunctionRelatedAssetArrayOutputWithContext(context.Context) FunctionRelatedAssetArrayOutput
+}
+
+type FunctionRelatedAssetArray []FunctionRelatedAssetInput
+
+func (FunctionRelatedAssetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionRelatedAsset)(nil)).Elem()
+}
+
+func (i FunctionRelatedAssetArray) ToFunctionRelatedAssetArrayOutput() FunctionRelatedAssetArrayOutput {
+	return i.ToFunctionRelatedAssetArrayOutputWithContext(context.Background())
+}
+
+func (i FunctionRelatedAssetArray) ToFunctionRelatedAssetArrayOutputWithContext(ctx context.Context) FunctionRelatedAssetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionRelatedAssetArrayOutput)
+}
+
+type FunctionRelatedAssetOutput struct{ *pulumi.OutputState }
+
+func (FunctionRelatedAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionRelatedAsset)(nil)).Elem()
+}
+
+func (o FunctionRelatedAssetOutput) ToFunctionRelatedAssetOutput() FunctionRelatedAssetOutput {
+	return o
+}
+
+func (o FunctionRelatedAssetOutput) ToFunctionRelatedAssetOutputWithContext(ctx context.Context) FunctionRelatedAssetOutput {
+	return o
+}
+
+// asset id
+func (o FunctionRelatedAssetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionRelatedAsset) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// asset name
+func (o FunctionRelatedAssetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionRelatedAsset) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type FunctionRelatedAssetArrayOutput struct{ *pulumi.OutputState }
+
+func (FunctionRelatedAssetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionRelatedAsset)(nil)).Elem()
+}
+
+func (o FunctionRelatedAssetArrayOutput) ToFunctionRelatedAssetArrayOutput() FunctionRelatedAssetArrayOutput {
+	return o
+}
+
+func (o FunctionRelatedAssetArrayOutput) ToFunctionRelatedAssetArrayOutputWithContext(ctx context.Context) FunctionRelatedAssetArrayOutput {
+	return o
+}
+
+func (o FunctionRelatedAssetArrayOutput) Index(i pulumi.IntInput) FunctionRelatedAssetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FunctionRelatedAsset {
+		return vs[0].([]FunctionRelatedAsset)[vs[1].(int)]
+	}).(FunctionRelatedAssetOutput)
+}
+
 type FunctionTag struct {
 	// tag id
 	Id string `pulumi:"id"`
@@ -18758,6 +18970,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertAlertItemArrayInput)(nil)).Elem(), AlertAlertItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertAlertItemQueryFilterAssetInput)(nil)).Elem(), AlertAlertItemQueryFilterAssetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertAlertItemQueryFilterAttributeInput)(nil)).Elem(), AlertAlertItemQueryFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRelatedAssetInput)(nil)).Elem(), AlertRelatedAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRelatedAssetArrayInput)(nil)).Elem(), AlertRelatedAssetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertTagInput)(nil)).Elem(), AlertTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertTagArrayInput)(nil)).Elem(), AlertTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertThresholdInput)(nil)).Elem(), AlertThresholdArgs{})
@@ -18909,6 +19123,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionFunctionItemArrayInput)(nil)).Elem(), FunctionFunctionItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionFunctionItemQueryFilterAssetInput)(nil)).Elem(), FunctionFunctionItemQueryFilterAssetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionFunctionItemQueryFilterAttributeInput)(nil)).Elem(), FunctionFunctionItemQueryFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionRelatedAssetInput)(nil)).Elem(), FunctionRelatedAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionRelatedAssetArrayInput)(nil)).Elem(), FunctionRelatedAssetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTagInput)(nil)).Elem(), FunctionTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTagArrayInput)(nil)).Elem(), FunctionTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTargetAssetInput)(nil)).Elem(), FunctionTargetAssetArgs{})
@@ -19014,6 +19230,8 @@ func init() {
 	pulumi.RegisterOutputType(AlertAlertItemArrayOutput{})
 	pulumi.RegisterOutputType(AlertAlertItemQueryFilterAssetOutput{})
 	pulumi.RegisterOutputType(AlertAlertItemQueryFilterAttributeOutput{})
+	pulumi.RegisterOutputType(AlertRelatedAssetOutput{})
+	pulumi.RegisterOutputType(AlertRelatedAssetArrayOutput{})
 	pulumi.RegisterOutputType(AlertTagOutput{})
 	pulumi.RegisterOutputType(AlertTagArrayOutput{})
 	pulumi.RegisterOutputType(AlertThresholdOutput{})
@@ -19165,6 +19383,8 @@ func init() {
 	pulumi.RegisterOutputType(FunctionFunctionItemArrayOutput{})
 	pulumi.RegisterOutputType(FunctionFunctionItemQueryFilterAssetOutput{})
 	pulumi.RegisterOutputType(FunctionFunctionItemQueryFilterAttributeOutput{})
+	pulumi.RegisterOutputType(FunctionRelatedAssetOutput{})
+	pulumi.RegisterOutputType(FunctionRelatedAssetArrayOutput{})
 	pulumi.RegisterOutputType(FunctionTagOutput{})
 	pulumi.RegisterOutputType(FunctionTagArrayOutput{})
 	pulumi.RegisterOutputType(FunctionTargetAssetOutput{})

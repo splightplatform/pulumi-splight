@@ -37,6 +37,9 @@
                             }
                         }
                     },
+                    "related_assets": {
+                        "maxItemsOne": false
+                    },
                     "tags": {
                         "maxItemsOne": false
                     },
@@ -531,6 +534,9 @@
                                 }
                             }
                         }
+                    },
+                    "related_assets": {
+                        "maxItemsOne": false
                     },
                     "tags": {
                         "maxItemsOne": false

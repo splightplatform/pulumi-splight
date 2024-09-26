@@ -10,6 +10,15 @@ using Pulumi;
 
 namespace Splight.Splight
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import splight:index/assetRelation:AssetRelation [options] splight_relation.&lt;name&gt; &lt;relation_id&gt;
+    /// ```
+    /// </summary>
     [SplightResourceType("splight:index/assetRelation:AssetRelation")]
     public partial class AssetRelation : global::Pulumi.CustomResource
     {
