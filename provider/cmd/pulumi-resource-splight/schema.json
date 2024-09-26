@@ -246,6 +246,23 @@
             },
             "type": "object"
         },
+        "splight:index/AlertRelatedAsset:AlertRelatedAsset": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "asset id\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "asset name\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
         "splight:index/AlertTag:AlertTag": {
             "properties": {
                 "id": {
@@ -2453,6 +2470,23 @@
             },
             "type": "object"
         },
+        "splight:index/FunctionRelatedAsset:FunctionRelatedAsset": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "asset id\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "asset name\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
         "splight:index/FunctionTag:FunctionTag": {
             "properties": {
                 "id": {
@@ -4304,6 +4338,13 @@
                     "type": "integer",
                     "description": "schedule value\n"
                 },
+                "relatedAssets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/AlertRelatedAsset:AlertRelatedAsset"
+                    },
+                    "description": "related assets of the resource\n"
+                },
                 "severity": {
                     "type": "string",
                     "description": "[sev1,...,sev8] severity for the alert\n"
@@ -4410,6 +4451,13 @@
                     "type": "integer",
                     "description": "schedule value\n"
                 },
+                "relatedAssets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/AlertRelatedAsset:AlertRelatedAsset"
+                    },
+                    "description": "related assets of the resource\n"
+                },
                 "severity": {
                     "type": "string",
                     "description": "[sev1,...,sev8] severity for the alert\n"
@@ -4508,6 +4556,13 @@
                     "rateValue": {
                         "type": "integer",
                         "description": "schedule value\n"
+                    },
+                    "relatedAssets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/AlertRelatedAsset:AlertRelatedAsset"
+                        },
+                        "description": "related assets of the resource\n"
                     },
                     "severity": {
                         "type": "string",
@@ -4794,6 +4849,7 @@
             }
         },
         "splight:index/assetRelation:AssetRelation": {
+            "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/assetRelation:AssetRelation [options] splight_relation.\u003cname\u003e \u003crelation_id\u003e\n```\n\n",
             "properties": {
                 "asset": {
                     "$ref": "#/types/splight:index/AssetRelationAsset:AssetRelationAsset",
@@ -10540,6 +10596,13 @@
                     "type": "integer",
                     "description": "schedule value\n"
                 },
+                "relatedAssets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/FunctionRelatedAsset:FunctionRelatedAsset"
+                    },
+                    "description": "related assets of the resource\n"
+                },
                 "tags": {
                     "type": "array",
                     "items": {
@@ -10634,6 +10697,13 @@
                     "type": "integer",
                     "description": "schedule value\n"
                 },
+                "relatedAssets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/FunctionRelatedAsset:FunctionRelatedAsset"
+                    },
+                    "description": "related assets of the resource\n"
+                },
                 "tags": {
                     "type": "array",
                     "items": {
@@ -10720,6 +10790,13 @@
                     "rateValue": {
                         "type": "integer",
                         "description": "schedule value\n"
+                    },
+                    "relatedAssets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/FunctionRelatedAsset:FunctionRelatedAsset"
+                        },
+                        "description": "related assets of the resource\n"
                     },
                     "tags": {
                         "type": "array",

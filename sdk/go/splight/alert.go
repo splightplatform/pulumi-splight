@@ -48,6 +48,8 @@ type Alert struct {
 	RateUnit pulumi.StringOutput `pulumi:"rateUnit"`
 	// schedule value
 	RateValue pulumi.IntOutput `pulumi:"rateValue"`
+	// related assets of the resource
+	RelatedAssets AlertRelatedAssetArrayOutput `pulumi:"relatedAssets"`
 	// [sev1,...,sev8] severity for the alert
 	Severity pulumi.StringOutput `pulumi:"severity"`
 	// tags of the resource
@@ -144,6 +146,8 @@ type alertState struct {
 	RateUnit *string `pulumi:"rateUnit"`
 	// schedule value
 	RateValue *int `pulumi:"rateValue"`
+	// related assets of the resource
+	RelatedAssets []AlertRelatedAsset `pulumi:"relatedAssets"`
 	// [sev1,...,sev8] severity for the alert
 	Severity *string `pulumi:"severity"`
 	// tags of the resource
@@ -184,6 +188,8 @@ type AlertState struct {
 	RateUnit pulumi.StringPtrInput
 	// schedule value
 	RateValue pulumi.IntPtrInput
+	// related assets of the resource
+	RelatedAssets AlertRelatedAssetArrayInput
 	// [sev1,...,sev8] severity for the alert
 	Severity pulumi.StringPtrInput
 	// tags of the resource
@@ -228,6 +234,8 @@ type alertArgs struct {
 	RateUnit *string `pulumi:"rateUnit"`
 	// schedule value
 	RateValue *int `pulumi:"rateValue"`
+	// related assets of the resource
+	RelatedAssets []AlertRelatedAsset `pulumi:"relatedAssets"`
 	// [sev1,...,sev8] severity for the alert
 	Severity string `pulumi:"severity"`
 	// tags of the resource
@@ -269,6 +277,8 @@ type AlertArgs struct {
 	RateUnit pulumi.StringPtrInput
 	// schedule value
 	RateValue pulumi.IntPtrInput
+	// related assets of the resource
+	RelatedAssets AlertRelatedAssetArrayInput
 	// [sev1,...,sev8] severity for the alert
 	Severity pulumi.StringInput
 	// tags of the resource
@@ -432,6 +442,11 @@ func (o AlertOutput) RateUnit() pulumi.StringOutput {
 // schedule value
 func (o AlertOutput) RateValue() pulumi.IntOutput {
 	return o.ApplyT(func(v *Alert) pulumi.IntOutput { return v.RateValue }).(pulumi.IntOutput)
+}
+
+// related assets of the resource
+func (o AlertOutput) RelatedAssets() AlertRelatedAssetArrayOutput {
+	return o.ApplyT(func(v *Alert) AlertRelatedAssetArrayOutput { return v.RelatedAssets }).(AlertRelatedAssetArrayOutput)
 }
 
 // [sev1,...,sev8] severity for the alert

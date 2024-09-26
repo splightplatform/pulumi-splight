@@ -88,6 +88,10 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly rateValue!: pulumi.Output<number>;
     /**
+     * related assets of the resource
+     */
+    public readonly relatedAssets!: pulumi.Output<outputs.FunctionRelatedAsset[] | undefined>;
+    /**
      * tags of the resource
      */
     public readonly tags!: pulumi.Output<outputs.FunctionTag[] | undefined>;
@@ -136,6 +140,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["rateUnit"] = state ? state.rateUnit : undefined;
             resourceInputs["rateValue"] = state ? state.rateValue : undefined;
+            resourceInputs["relatedAssets"] = state ? state.relatedAssets : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["targetAsset"] = state ? state.targetAsset : undefined;
             resourceInputs["targetAttribute"] = state ? state.targetAttribute : undefined;
@@ -176,6 +181,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["rateUnit"] = args ? args.rateUnit : undefined;
             resourceInputs["rateValue"] = args ? args.rateValue : undefined;
+            resourceInputs["relatedAssets"] = args ? args.relatedAssets : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["targetAsset"] = args ? args.targetAsset : undefined;
             resourceInputs["targetAttribute"] = args ? args.targetAttribute : undefined;
@@ -236,6 +242,10 @@ export interface FunctionState {
      * schedule value
      */
     rateValue?: pulumi.Input<number>;
+    /**
+     * related assets of the resource
+     */
+    relatedAssets?: pulumi.Input<pulumi.Input<inputs.FunctionRelatedAsset>[]>;
     /**
      * tags of the resource
      */
@@ -310,6 +320,10 @@ export interface FunctionArgs {
      * schedule value
      */
     rateValue?: pulumi.Input<number>;
+    /**
+     * related assets of the resource
+     */
+    relatedAssets?: pulumi.Input<pulumi.Input<inputs.FunctionRelatedAsset>[]>;
     /**
      * tags of the resource
      */

@@ -111,6 +111,17 @@ export interface AlertAlertItemQueryFilterAttribute {
     name?: string;
 }
 
+export interface AlertRelatedAsset {
+    /**
+     * asset id
+     */
+    id: string;
+    /**
+     * asset name
+     */
+    name: string;
+}
+
 export interface AlertTag {
     /**
      * tag id
@@ -1168,6 +1179,17 @@ export interface FunctionFunctionItemQueryFilterAttribute {
      * type of the resource
      */
     type?: string;
+}
+
+export interface FunctionRelatedAsset {
+    /**
+     * asset id
+     */
+    id: string;
+    /**
+     * asset name
+     */
+    name: string;
 }
 
 export interface FunctionTag {

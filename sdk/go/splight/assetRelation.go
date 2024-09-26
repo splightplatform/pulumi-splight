@@ -12,6 +12,13 @@ import (
 	"github.com/splightplatform/pulumi-splight/sdk/go/splight/internal"
 )
 
+// ## Example Usage
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import splight:index/assetRelation:AssetRelation [options] splight_relation.<name> <relation_id>
+// ```
 type AssetRelation struct {
 	pulumi.CustomResourceState
 

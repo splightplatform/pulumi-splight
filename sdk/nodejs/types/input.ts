@@ -111,6 +111,17 @@ export interface AlertAlertItemQueryFilterAttribute {
     name?: pulumi.Input<string>;
 }
 
+export interface AlertRelatedAsset {
+    /**
+     * asset id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * asset name
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface AlertTag {
     /**
      * tag id
@@ -1168,6 +1179,17 @@ export interface FunctionFunctionItemQueryFilterAttribute {
      * type of the resource
      */
     type?: pulumi.Input<string>;
+}
+
+export interface FunctionRelatedAsset {
+    /**
+     * asset id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * asset name
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface FunctionTag {

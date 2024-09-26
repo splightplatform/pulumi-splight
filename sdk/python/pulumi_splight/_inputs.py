@@ -16,6 +16,7 @@ __all__ = [
     'AlertAlertItemArgs',
     'AlertAlertItemQueryFilterAssetArgs',
     'AlertAlertItemQueryFilterAttributeArgs',
+    'AlertRelatedAssetArgs',
     'AlertTagArgs',
     'AlertThresholdArgs',
     'AssetKindArgs',
@@ -107,6 +108,7 @@ __all__ = [
     'FunctionFunctionItemArgs',
     'FunctionFunctionItemQueryFilterAssetArgs',
     'FunctionFunctionItemQueryFilterAttributeArgs',
+    'FunctionRelatedAssetArgs',
     'FunctionTagArgs',
     'FunctionTargetAssetArgs',
     'FunctionTargetAttributeArgs',
@@ -531,6 +533,43 @@ class AlertAlertItemQueryFilterAttributeArgs:
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class AlertRelatedAssetArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: asset id
+        :param pulumi.Input[str] name: asset name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        asset id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        asset name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
 
@@ -6291,6 +6330,43 @@ class FunctionFunctionItemQueryFilterAttributeArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class FunctionRelatedAssetArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: asset id
+        :param pulumi.Input[str] name: asset name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        asset id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        asset name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type

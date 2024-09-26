@@ -17,6 +17,7 @@ __all__ = [
     'AlertAlertItem',
     'AlertAlertItemQueryFilterAsset',
     'AlertAlertItemQueryFilterAttribute',
+    'AlertRelatedAsset',
     'AlertTag',
     'AlertThreshold',
     'AssetKind',
@@ -108,6 +109,7 @@ __all__ = [
     'FunctionFunctionItem',
     'FunctionFunctionItemQueryFilterAsset',
     'FunctionFunctionItemQueryFilterAttribute',
+    'FunctionRelatedAsset',
     'FunctionTag',
     'FunctionTargetAsset',
     'FunctionTargetAttribute',
@@ -474,6 +476,35 @@ class AlertAlertItemQueryFilterAttribute(dict):
     def name(self) -> Optional[str]:
         """
         name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class AlertRelatedAsset(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: asset id
+        :param str name: asset name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        asset id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        asset name
         """
         return pulumi.get(self, "name")
 
@@ -5637,6 +5668,35 @@ class FunctionFunctionItemQueryFilterAttribute(dict):
         type of the resource
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class FunctionRelatedAsset(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: asset id
+        :param str name: asset name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        asset id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        asset name
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

@@ -198,7 +198,14 @@ class AssetRelation(pulumi.CustomResource):
                  related_asset_kind: Optional[pulumi.Input[Union['AssetRelationRelatedAssetKindArgs', 'AssetRelationRelatedAssetKindArgsDict']]] = None,
                  __props__=None):
         """
-        Create a AssetRelation resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ## Import
+
+        ```sh
+        $ pulumi import splight:index/assetRelation:AssetRelation [options] splight_relation.<name> <relation_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AssetRelationAssetArgs', 'AssetRelationAssetArgsDict']] asset: asset where the relation origins
@@ -214,7 +221,14 @@ class AssetRelation(pulumi.CustomResource):
                  args: AssetRelationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AssetRelation resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ## Import
+
+        ```sh
+        $ pulumi import splight:index/assetRelation:AssetRelation [options] splight_relation.<name> <relation_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param AssetRelationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

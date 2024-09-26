@@ -6,6 +6,15 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import splight:index/assetRelation:AssetRelation [options] splight_relation.<name> <relation_id>
+ * ```
+ */
 export class AssetRelation extends pulumi.CustomResource {
     /**
      * Get an existing AssetRelation resource's state with the given name, ID, and optional extra

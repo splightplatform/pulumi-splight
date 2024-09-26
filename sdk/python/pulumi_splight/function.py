@@ -32,6 +32,7 @@ class FunctionArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  rate_unit: Optional[pulumi.Input[str]] = None,
                  rate_value: Optional[pulumi.Input[int]] = None,
+                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionRelatedAssetArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionTagArgs']]]] = None):
         """
         The set of arguments for constructing a Function resource.
@@ -51,6 +52,7 @@ class FunctionArgs:
         :param pulumi.Input[str] name: The name of the resource
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionRelatedAssetArgs']]] related_assets: related assets of the resource
         :param pulumi.Input[Sequence[pulumi.Input['FunctionTagArgs']]] tags: tags of the resource
         """
         pulumi.set(__self__, "description", description)
@@ -78,6 +80,8 @@ class FunctionArgs:
             pulumi.set(__self__, "rate_unit", rate_unit)
         if rate_value is not None:
             pulumi.set(__self__, "rate_value", rate_value)
+        if related_assets is not None:
+            pulumi.set(__self__, "related_assets", related_assets)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -274,6 +278,18 @@ class FunctionArgs:
         pulumi.set(self, "rate_value", value)
 
     @property
+    @pulumi.getter(name="relatedAssets")
+    def related_assets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionRelatedAssetArgs']]]]:
+        """
+        related assets of the resource
+        """
+        return pulumi.get(self, "related_assets")
+
+    @related_assets.setter
+    def related_assets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionRelatedAssetArgs']]]]):
+        pulumi.set(self, "related_assets", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionTagArgs']]]]:
         """
@@ -300,6 +316,7 @@ class _FunctionState:
                  name: Optional[pulumi.Input[str]] = None,
                  rate_unit: Optional[pulumi.Input[str]] = None,
                  rate_value: Optional[pulumi.Input[int]] = None,
+                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionRelatedAssetArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionTagArgs']]]] = None,
                  target_asset: Optional[pulumi.Input['FunctionTargetAssetArgs']] = None,
                  target_attribute: Optional[pulumi.Input['FunctionTargetAttributeArgs']] = None,
@@ -319,6 +336,7 @@ class _FunctionState:
         :param pulumi.Input[str] name: The name of the resource
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionRelatedAssetArgs']]] related_assets: related assets of the resource
         :param pulumi.Input[Sequence[pulumi.Input['FunctionTagArgs']]] tags: tags of the resource
         :param pulumi.Input['FunctionTargetAssetArgs'] target_asset: Asset filter
         :param pulumi.Input['FunctionTargetAttributeArgs'] target_attribute: Attribute filter
@@ -348,6 +366,8 @@ class _FunctionState:
             pulumi.set(__self__, "rate_unit", rate_unit)
         if rate_value is not None:
             pulumi.set(__self__, "rate_value", rate_value)
+        if related_assets is not None:
+            pulumi.set(__self__, "related_assets", related_assets)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if target_asset is not None:
@@ -494,6 +514,18 @@ class _FunctionState:
         pulumi.set(self, "rate_value", value)
 
     @property
+    @pulumi.getter(name="relatedAssets")
+    def related_assets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionRelatedAssetArgs']]]]:
+        """
+        related assets of the resource
+        """
+        return pulumi.get(self, "related_assets")
+
+    @related_assets.setter
+    def related_assets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionRelatedAssetArgs']]]]):
+        pulumi.set(self, "related_assets", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionTagArgs']]]]:
         """
@@ -582,6 +614,7 @@ class Function(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  rate_unit: Optional[pulumi.Input[str]] = None,
                  rate_value: Optional[pulumi.Input[int]] = None,
+                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FunctionRelatedAssetArgs', 'FunctionRelatedAssetArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FunctionTagArgs', 'FunctionTagArgsDict']]]]] = None,
                  target_asset: Optional[pulumi.Input[Union['FunctionTargetAssetArgs', 'FunctionTargetAssetArgsDict']]] = None,
                  target_attribute: Optional[pulumi.Input[Union['FunctionTargetAttributeArgs', 'FunctionTargetAttributeArgsDict']]] = None,
@@ -611,6 +644,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the resource
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionRelatedAssetArgs', 'FunctionRelatedAssetArgsDict']]]] related_assets: related assets of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionTagArgs', 'FunctionTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[Union['FunctionTargetAssetArgs', 'FunctionTargetAssetArgsDict']] target_asset: Asset filter
         :param pulumi.Input[Union['FunctionTargetAttributeArgs', 'FunctionTargetAttributeArgsDict']] target_attribute: Attribute filter
@@ -659,6 +693,7 @@ class Function(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  rate_unit: Optional[pulumi.Input[str]] = None,
                  rate_value: Optional[pulumi.Input[int]] = None,
+                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FunctionRelatedAssetArgs', 'FunctionRelatedAssetArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FunctionTagArgs', 'FunctionTagArgsDict']]]]] = None,
                  target_asset: Optional[pulumi.Input[Union['FunctionTargetAssetArgs', 'FunctionTargetAssetArgsDict']]] = None,
                  target_attribute: Optional[pulumi.Input[Union['FunctionTargetAttributeArgs', 'FunctionTargetAttributeArgsDict']]] = None,
@@ -689,6 +724,7 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["rate_unit"] = rate_unit
             __props__.__dict__["rate_value"] = rate_value
+            __props__.__dict__["related_assets"] = related_assets
             __props__.__dict__["tags"] = tags
             if target_asset is None and not opts.urn:
                 raise TypeError("Missing required property 'target_asset'")
@@ -726,6 +762,7 @@ class Function(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             rate_unit: Optional[pulumi.Input[str]] = None,
             rate_value: Optional[pulumi.Input[int]] = None,
+            related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FunctionRelatedAssetArgs', 'FunctionRelatedAssetArgsDict']]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FunctionTagArgs', 'FunctionTagArgsDict']]]]] = None,
             target_asset: Optional[pulumi.Input[Union['FunctionTargetAssetArgs', 'FunctionTargetAssetArgsDict']]] = None,
             target_attribute: Optional[pulumi.Input[Union['FunctionTargetAttributeArgs', 'FunctionTargetAttributeArgsDict']]] = None,
@@ -750,6 +787,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the resource
         :param pulumi.Input[str] rate_unit: [day|hour|minute] schedule unit
         :param pulumi.Input[int] rate_value: schedule value
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionRelatedAssetArgs', 'FunctionRelatedAssetArgsDict']]]] related_assets: related assets of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionTagArgs', 'FunctionTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[Union['FunctionTargetAssetArgs', 'FunctionTargetAssetArgsDict']] target_asset: Asset filter
         :param pulumi.Input[Union['FunctionTargetAttributeArgs', 'FunctionTargetAttributeArgsDict']] target_attribute: Attribute filter
@@ -772,6 +810,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["rate_unit"] = rate_unit
         __props__.__dict__["rate_value"] = rate_value
+        __props__.__dict__["related_assets"] = related_assets
         __props__.__dict__["tags"] = tags
         __props__.__dict__["target_asset"] = target_asset
         __props__.__dict__["target_attribute"] = target_attribute
@@ -867,6 +906,14 @@ class Function(pulumi.CustomResource):
         schedule value
         """
         return pulumi.get(self, "rate_value")
+
+    @property
+    @pulumi.getter(name="relatedAssets")
+    def related_assets(self) -> pulumi.Output[Optional[Sequence['outputs.FunctionRelatedAsset']]]:
+        """
+        related assets of the resource
+        """
+        return pulumi.get(self, "related_assets")
 
     @property
     @pulumi.getter

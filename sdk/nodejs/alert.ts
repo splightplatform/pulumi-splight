@@ -96,6 +96,10 @@ export class Alert extends pulumi.CustomResource {
      */
     public readonly rateValue!: pulumi.Output<number>;
     /**
+     * related assets of the resource
+     */
+    public readonly relatedAssets!: pulumi.Output<outputs.AlertRelatedAsset[] | undefined>;
+    /**
      * [sev1,...,sev8] severity for the alert
      */
     public readonly severity!: pulumi.Output<string>;
@@ -143,6 +147,7 @@ export class Alert extends pulumi.CustomResource {
             resourceInputs["operator"] = state ? state.operator : undefined;
             resourceInputs["rateUnit"] = state ? state.rateUnit : undefined;
             resourceInputs["rateValue"] = state ? state.rateValue : undefined;
+            resourceInputs["relatedAssets"] = state ? state.relatedAssets : undefined;
             resourceInputs["severity"] = state ? state.severity : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["targetVariable"] = state ? state.targetVariable : undefined;
@@ -191,6 +196,7 @@ export class Alert extends pulumi.CustomResource {
             resourceInputs["operator"] = args ? args.operator : undefined;
             resourceInputs["rateUnit"] = args ? args.rateUnit : undefined;
             resourceInputs["rateValue"] = args ? args.rateValue : undefined;
+            resourceInputs["relatedAssets"] = args ? args.relatedAssets : undefined;
             resourceInputs["severity"] = args ? args.severity : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["targetVariable"] = args ? args.targetVariable : undefined;
@@ -259,6 +265,10 @@ export interface AlertState {
      * schedule value
      */
     rateValue?: pulumi.Input<number>;
+    /**
+     * related assets of the resource
+     */
+    relatedAssets?: pulumi.Input<pulumi.Input<inputs.AlertRelatedAsset>[]>;
     /**
      * [sev1,...,sev8] severity for the alert
      */
@@ -338,6 +348,10 @@ export interface AlertArgs {
      * schedule value
      */
     rateValue?: pulumi.Input<number>;
+    /**
+     * related assets of the resource
+     */
+    relatedAssets?: pulumi.Input<pulumi.Input<inputs.AlertRelatedAsset>[]>;
     /**
      * [sev1,...,sev8] severity for the alert
      */
