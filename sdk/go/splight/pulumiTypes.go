@@ -15796,112 +15796,6 @@ func (o LineReferenceResistancePtrOutput) Value() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type LineRelatedAsset struct {
-	// asset id
-	Id string `pulumi:"id"`
-	// asset name
-	Name string `pulumi:"name"`
-}
-
-// LineRelatedAssetInput is an input type that accepts LineRelatedAssetArgs and LineRelatedAssetOutput values.
-// You can construct a concrete instance of `LineRelatedAssetInput` via:
-//
-//	LineRelatedAssetArgs{...}
-type LineRelatedAssetInput interface {
-	pulumi.Input
-
-	ToLineRelatedAssetOutput() LineRelatedAssetOutput
-	ToLineRelatedAssetOutputWithContext(context.Context) LineRelatedAssetOutput
-}
-
-type LineRelatedAssetArgs struct {
-	// asset id
-	Id pulumi.StringInput `pulumi:"id"`
-	// asset name
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (LineRelatedAssetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LineRelatedAsset)(nil)).Elem()
-}
-
-func (i LineRelatedAssetArgs) ToLineRelatedAssetOutput() LineRelatedAssetOutput {
-	return i.ToLineRelatedAssetOutputWithContext(context.Background())
-}
-
-func (i LineRelatedAssetArgs) ToLineRelatedAssetOutputWithContext(ctx context.Context) LineRelatedAssetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LineRelatedAssetOutput)
-}
-
-// LineRelatedAssetArrayInput is an input type that accepts LineRelatedAssetArray and LineRelatedAssetArrayOutput values.
-// You can construct a concrete instance of `LineRelatedAssetArrayInput` via:
-//
-//	LineRelatedAssetArray{ LineRelatedAssetArgs{...} }
-type LineRelatedAssetArrayInput interface {
-	pulumi.Input
-
-	ToLineRelatedAssetArrayOutput() LineRelatedAssetArrayOutput
-	ToLineRelatedAssetArrayOutputWithContext(context.Context) LineRelatedAssetArrayOutput
-}
-
-type LineRelatedAssetArray []LineRelatedAssetInput
-
-func (LineRelatedAssetArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LineRelatedAsset)(nil)).Elem()
-}
-
-func (i LineRelatedAssetArray) ToLineRelatedAssetArrayOutput() LineRelatedAssetArrayOutput {
-	return i.ToLineRelatedAssetArrayOutputWithContext(context.Background())
-}
-
-func (i LineRelatedAssetArray) ToLineRelatedAssetArrayOutputWithContext(ctx context.Context) LineRelatedAssetArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LineRelatedAssetArrayOutput)
-}
-
-type LineRelatedAssetOutput struct{ *pulumi.OutputState }
-
-func (LineRelatedAssetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LineRelatedAsset)(nil)).Elem()
-}
-
-func (o LineRelatedAssetOutput) ToLineRelatedAssetOutput() LineRelatedAssetOutput {
-	return o
-}
-
-func (o LineRelatedAssetOutput) ToLineRelatedAssetOutputWithContext(ctx context.Context) LineRelatedAssetOutput {
-	return o
-}
-
-// asset id
-func (o LineRelatedAssetOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LineRelatedAsset) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// asset name
-func (o LineRelatedAssetOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LineRelatedAsset) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type LineRelatedAssetArrayOutput struct{ *pulumi.OutputState }
-
-func (LineRelatedAssetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LineRelatedAsset)(nil)).Elem()
-}
-
-func (o LineRelatedAssetArrayOutput) ToLineRelatedAssetArrayOutput() LineRelatedAssetArrayOutput {
-	return o
-}
-
-func (o LineRelatedAssetArrayOutput) ToLineRelatedAssetArrayOutputWithContext(ctx context.Context) LineRelatedAssetArrayOutput {
-	return o
-}
-
-func (o LineRelatedAssetArrayOutput) Index(i pulumi.IntInput) LineRelatedAssetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LineRelatedAsset {
-		return vs[0].([]LineRelatedAsset)[vs[1].(int)]
-	}).(LineRelatedAssetOutput)
-}
-
 type LineResistance struct {
 	// reference to the asset to be linked to
 	Asset *string `pulumi:"asset"`
@@ -19181,8 +19075,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LineReactivePowerArrayInput)(nil)).Elem(), LineReactivePowerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineReferenceResistanceInput)(nil)).Elem(), LineReferenceResistanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineReferenceResistancePtrInput)(nil)).Elem(), LineReferenceResistanceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LineRelatedAssetInput)(nil)).Elem(), LineRelatedAssetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LineRelatedAssetArrayInput)(nil)).Elem(), LineRelatedAssetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineResistanceInput)(nil)).Elem(), LineResistanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineResistancePtrInput)(nil)).Elem(), LineResistanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineSafetyMarginForPowerInput)(nil)).Elem(), LineSafetyMarginForPowerArgs{})
@@ -19441,8 +19333,6 @@ func init() {
 	pulumi.RegisterOutputType(LineReactivePowerArrayOutput{})
 	pulumi.RegisterOutputType(LineReferenceResistanceOutput{})
 	pulumi.RegisterOutputType(LineReferenceResistancePtrOutput{})
-	pulumi.RegisterOutputType(LineRelatedAssetOutput{})
-	pulumi.RegisterOutputType(LineRelatedAssetArrayOutput{})
 	pulumi.RegisterOutputType(LineResistanceOutput{})
 	pulumi.RegisterOutputType(LineResistancePtrOutput{})
 	pulumi.RegisterOutputType(LineSafetyMarginForPowerOutput{})

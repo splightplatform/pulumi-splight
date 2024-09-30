@@ -137,7 +137,6 @@ __all__ = [
     'LineReactanceArgs',
     'LineReactivePowerArgs',
     'LineReferenceResistanceArgs',
-    'LineRelatedAssetArgs',
     'LineResistanceArgs',
     'LineSafetyMarginForPowerArgs',
     'LineSusceptanceArgs',
@@ -8848,43 +8847,6 @@ class LineReferenceResistanceArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
-
-
-@pulumi.input_type
-class LineRelatedAssetArgs:
-    def __init__(__self__, *,
-                 id: pulumi.Input[str],
-                 name: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] id: asset id
-        :param pulumi.Input[str] name: asset name
-        """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def id(self) -> pulumi.Input[str]:
-        """
-        asset id
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        asset name
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
