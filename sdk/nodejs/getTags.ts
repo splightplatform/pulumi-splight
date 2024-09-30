@@ -17,6 +17,7 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getTags(opts?: pulumi.InvokeOptions): Promise<GetTagsResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("splight:index/getTags:getTags", {
     }, opts);
@@ -43,7 +44,5 @@ export interface GetTagsResult {
  * ```
  */
 export function getTagsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetTagsResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("splight:index/getTags:getTags", {
-    }, opts);
+    return pulumi.output(getTags(opts))
 }
