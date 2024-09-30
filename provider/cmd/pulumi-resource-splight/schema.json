@@ -3537,23 +3537,6 @@
                 }
             }
         },
-        "splight:index/LineRelatedAsset:LineRelatedAsset": {
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "asset id\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "asset name\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "id",
-                "name"
-            ]
-        },
         "splight:index/LineResistance:LineResistance": {
             "properties": {
                 "asset": {
@@ -10981,13 +10964,6 @@
                     "$ref": "#/types/splight:index/LineReferenceResistance:LineReferenceResistance",
                     "description": "attribute of the resource\n"
                 },
-                "relatedAssets": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/splight:index/LineRelatedAsset:LineRelatedAsset"
-                    },
-                    "description": "related assets of the resource\n"
-                },
                 "resistance": {
                     "$ref": "#/types/splight:index/LineResistance:LineResistance",
                     "description": "attribute of the resource\n"
@@ -11141,13 +11117,6 @@
                 "referenceResistance": {
                     "$ref": "#/types/splight:index/LineReferenceResistance:LineReferenceResistance",
                     "description": "attribute of the resource\n"
-                },
-                "relatedAssets": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/splight:index/LineRelatedAsset:LineRelatedAsset"
-                    },
-                    "description": "related assets of the resource\n"
                 },
                 "resistance": {
                     "$ref": "#/types/splight:index/LineResistance:LineResistance",
@@ -11345,13 +11314,6 @@
                     "referenceResistance": {
                         "$ref": "#/types/splight:index/LineReferenceResistance:LineReferenceResistance",
                         "description": "attribute of the resource\n"
-                    },
-                    "relatedAssets": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/splight:index/LineRelatedAsset:LineRelatedAsset"
-                        },
-                        "description": "related assets of the resource\n"
                     },
                     "resistance": {
                         "$ref": "#/types/splight:index/LineResistance:LineResistance",
