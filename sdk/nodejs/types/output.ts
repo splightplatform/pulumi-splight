@@ -1874,6 +1874,17 @@ export interface LineReferenceResistance {
     value: string;
 }
 
+export interface LineRelatedAsset {
+    /**
+     * asset id
+     */
+    id: string;
+    /**
+     * asset name
+     */
+    name: string;
+}
+
 export interface LineResistance {
     /**
      * reference to the asset to be linked to

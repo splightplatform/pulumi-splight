@@ -631,6 +631,9 @@
                     "reference_resistance": {
                         "maxItemsOne": true
                     },
+                    "related_assets": {
+                        "maxItemsOne": false
+                    },
                     "resistance": {
                         "maxItemsOne": true
                     },

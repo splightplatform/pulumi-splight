@@ -197,6 +197,12 @@ namespace Splight.Splight
         public Output<Outputs.LineReferenceResistance> ReferenceResistance { get; private set; } = null!;
 
         /// <summary>
+        /// related assets of the resource
+        /// </summary>
+        [Output("relatedAssets")]
+        public Output<ImmutableArray<Outputs.LineRelatedAsset>> RelatedAssets { get; private set; } = null!;
+
+        /// <summary>
         /// attribute of the resource
         /// </summary>
         [Output("resistance")]
@@ -398,6 +404,18 @@ namespace Splight.Splight
         /// </summary>
         [Input("referenceResistance", required: true)]
         public Input<Inputs.LineReferenceResistanceArgs> ReferenceResistance { get; set; } = null!;
+
+        [Input("relatedAssets")]
+        private InputList<Inputs.LineRelatedAssetArgs>? _relatedAssets;
+
+        /// <summary>
+        /// related assets of the resource
+        /// </summary>
+        public InputList<Inputs.LineRelatedAssetArgs> RelatedAssets
+        {
+            get => _relatedAssets ?? (_relatedAssets = new InputList<Inputs.LineRelatedAssetArgs>());
+            set => _relatedAssets = value;
+        }
 
         /// <summary>
         /// attribute of the resource
@@ -682,6 +700,18 @@ namespace Splight.Splight
         /// </summary>
         [Input("referenceResistance")]
         public Input<Inputs.LineReferenceResistanceGetArgs>? ReferenceResistance { get; set; }
+
+        [Input("relatedAssets")]
+        private InputList<Inputs.LineRelatedAssetGetArgs>? _relatedAssets;
+
+        /// <summary>
+        /// related assets of the resource
+        /// </summary>
+        public InputList<Inputs.LineRelatedAssetGetArgs> RelatedAssets
+        {
+            get => _relatedAssets ?? (_relatedAssets = new InputList<Inputs.LineRelatedAssetGetArgs>());
+            set => _relatedAssets = value;
+        }
 
         /// <summary>
         /// attribute of the resource

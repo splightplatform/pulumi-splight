@@ -1852,6 +1852,17 @@ export interface LineReferenceResistance {
     value: pulumi.Input<string>;
 }
 
+export interface LineRelatedAsset {
+    /**
+     * asset id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * asset name
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface LineResistance {
     /**
      * reference to the asset to be linked to

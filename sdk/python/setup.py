@@ -39,7 +39,6 @@ setup(name='pulumi_splight',
       install_requires=[
           'parver>=0.2.1',
           'pulumi>=3.0.0,<4.0.0',
-          'semver>=2.8.1',
-          'typing-extensions>=4.11,<5; python_version < "3.11"'
+          'semver>=2.8.1'
       ],
       zip_safe=False)

@@ -4,14 +4,9 @@
 
 import copy
 import warnings
-import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-if sys.version_info >= (3, 11):
-    from typing import NotRequired, TypedDict, TypeAlias
-else:
-    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,6 +38,7 @@ class LineArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input['LineRelatedAssetArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['LineTagArgs']]]] = None):
         """
         The set of arguments for constructing a Line resource.
@@ -68,6 +64,7 @@ class LineArgs:
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['LineRelatedAssetArgs']]] related_assets: related assets of the resource
         :param pulumi.Input[Sequence[pulumi.Input['LineTagArgs']]] tags: tags of the resource
         """
         pulumi.set(__self__, "absorptivity", absorptivity)
@@ -95,6 +92,8 @@ class LineArgs:
             pulumi.set(__self__, "geometry", geometry)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if related_assets is not None:
+            pulumi.set(__self__, "related_assets", related_assets)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -363,6 +362,18 @@ class LineArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="relatedAssets")
+    def related_assets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LineRelatedAssetArgs']]]]:
+        """
+        related assets of the resource
+        """
+        return pulumi.get(self, "related_assets")
+
+    @related_assets.setter
+    def related_assets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LineRelatedAssetArgs']]]]):
+        pulumi.set(self, "related_assets", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LineTagArgs']]]]:
         """
@@ -407,6 +418,7 @@ class _LineState:
                  reactance: Optional[pulumi.Input['LineReactanceArgs']] = None,
                  reactive_powers: Optional[pulumi.Input[Sequence[pulumi.Input['LineReactivePowerArgs']]]] = None,
                  reference_resistance: Optional[pulumi.Input['LineReferenceResistanceArgs']] = None,
+                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input['LineRelatedAssetArgs']]]] = None,
                  resistance: Optional[pulumi.Input['LineResistanceArgs']] = None,
                  safety_margin_for_power: Optional[pulumi.Input['LineSafetyMarginForPowerArgs']] = None,
                  susceptance: Optional[pulumi.Input['LineSusceptanceArgs']] = None,
@@ -446,6 +458,7 @@ class _LineState:
         :param pulumi.Input['LineReactanceArgs'] reactance: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['LineReactivePowerArgs']]] reactive_powers: attribute of the resource
         :param pulumi.Input['LineReferenceResistanceArgs'] reference_resistance: attribute of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['LineRelatedAssetArgs']]] related_assets: related assets of the resource
         :param pulumi.Input['LineResistanceArgs'] resistance: attribute of the resource
         :param pulumi.Input['LineSafetyMarginForPowerArgs'] safety_margin_for_power: attribute of the resource
         :param pulumi.Input['LineSusceptanceArgs'] susceptance: attribute of the resource
@@ -513,6 +526,8 @@ class _LineState:
             pulumi.set(__self__, "reactive_powers", reactive_powers)
         if reference_resistance is not None:
             pulumi.set(__self__, "reference_resistance", reference_resistance)
+        if related_assets is not None:
+            pulumi.set(__self__, "related_assets", related_assets)
         if resistance is not None:
             pulumi.set(__self__, "resistance", resistance)
         if safety_margin_for_power is not None:
@@ -879,6 +894,18 @@ class _LineState:
         pulumi.set(self, "reference_resistance", value)
 
     @property
+    @pulumi.getter(name="relatedAssets")
+    def related_assets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LineRelatedAssetArgs']]]]:
+        """
+        related assets of the resource
+        """
+        return pulumi.get(self, "related_assets")
+
+    @related_assets.setter
+    def related_assets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LineRelatedAssetArgs']]]]):
+        pulumi.set(self, "related_assets", value)
+
+    @property
     @pulumi.getter
     def resistance(self) -> Optional[pulumi.Input['LineResistanceArgs']]:
         """
@@ -998,6 +1025,7 @@ class Line(pulumi.CustomResource):
                  number_of_conductors: Optional[pulumi.Input[Union['LineNumberOfConductorsArgs', 'LineNumberOfConductorsArgsDict']]] = None,
                  reactance: Optional[pulumi.Input[Union['LineReactanceArgs', 'LineReactanceArgsDict']]] = None,
                  reference_resistance: Optional[pulumi.Input[Union['LineReferenceResistanceArgs', 'LineReferenceResistanceArgsDict']]] = None,
+                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineRelatedAssetArgs', 'LineRelatedAssetArgsDict']]]]] = None,
                  resistance: Optional[pulumi.Input[Union['LineResistanceArgs', 'LineResistanceArgsDict']]] = None,
                  safety_margin_for_power: Optional[pulumi.Input[Union['LineSafetyMarginForPowerArgs', 'LineSafetyMarginForPowerArgsDict']]] = None,
                  susceptance: Optional[pulumi.Input[Union['LineSusceptanceArgs', 'LineSusceptanceArgsDict']]] = None,
@@ -1033,6 +1061,7 @@ class Line(pulumi.CustomResource):
         :param pulumi.Input[Union['LineNumberOfConductorsArgs', 'LineNumberOfConductorsArgsDict']] number_of_conductors: attribute of the resource
         :param pulumi.Input[Union['LineReactanceArgs', 'LineReactanceArgsDict']] reactance: attribute of the resource
         :param pulumi.Input[Union['LineReferenceResistanceArgs', 'LineReferenceResistanceArgsDict']] reference_resistance: attribute of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LineRelatedAssetArgs', 'LineRelatedAssetArgsDict']]]] related_assets: related assets of the resource
         :param pulumi.Input[Union['LineResistanceArgs', 'LineResistanceArgsDict']] resistance: attribute of the resource
         :param pulumi.Input[Union['LineSafetyMarginForPowerArgs', 'LineSafetyMarginForPowerArgsDict']] safety_margin_for_power: attribute of the resource
         :param pulumi.Input[Union['LineSusceptanceArgs', 'LineSusceptanceArgsDict']] susceptance: attribute of the resource
@@ -1087,6 +1116,7 @@ class Line(pulumi.CustomResource):
                  number_of_conductors: Optional[pulumi.Input[Union['LineNumberOfConductorsArgs', 'LineNumberOfConductorsArgsDict']]] = None,
                  reactance: Optional[pulumi.Input[Union['LineReactanceArgs', 'LineReactanceArgsDict']]] = None,
                  reference_resistance: Optional[pulumi.Input[Union['LineReferenceResistanceArgs', 'LineReferenceResistanceArgsDict']]] = None,
+                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineRelatedAssetArgs', 'LineRelatedAssetArgsDict']]]]] = None,
                  resistance: Optional[pulumi.Input[Union['LineResistanceArgs', 'LineResistanceArgsDict']]] = None,
                  safety_margin_for_power: Optional[pulumi.Input[Union['LineSafetyMarginForPowerArgs', 'LineSafetyMarginForPowerArgsDict']]] = None,
                  susceptance: Optional[pulumi.Input[Union['LineSusceptanceArgs', 'LineSusceptanceArgsDict']]] = None,
@@ -1149,6 +1179,7 @@ class Line(pulumi.CustomResource):
             if reference_resistance is None and not opts.urn:
                 raise TypeError("Missing required property 'reference_resistance'")
             __props__.__dict__["reference_resistance"] = reference_resistance
+            __props__.__dict__["related_assets"] = related_assets
             if resistance is None and not opts.urn:
                 raise TypeError("Missing required property 'resistance'")
             __props__.__dict__["resistance"] = resistance
@@ -1215,6 +1246,7 @@ class Line(pulumi.CustomResource):
             reactance: Optional[pulumi.Input[Union['LineReactanceArgs', 'LineReactanceArgsDict']]] = None,
             reactive_powers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineReactivePowerArgs', 'LineReactivePowerArgsDict']]]]] = None,
             reference_resistance: Optional[pulumi.Input[Union['LineReferenceResistanceArgs', 'LineReferenceResistanceArgsDict']]] = None,
+            related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineRelatedAssetArgs', 'LineRelatedAssetArgsDict']]]]] = None,
             resistance: Optional[pulumi.Input[Union['LineResistanceArgs', 'LineResistanceArgsDict']]] = None,
             safety_margin_for_power: Optional[pulumi.Input[Union['LineSafetyMarginForPowerArgs', 'LineSafetyMarginForPowerArgsDict']]] = None,
             susceptance: Optional[pulumi.Input[Union['LineSusceptanceArgs', 'LineSusceptanceArgsDict']]] = None,
@@ -1259,6 +1291,7 @@ class Line(pulumi.CustomResource):
         :param pulumi.Input[Union['LineReactanceArgs', 'LineReactanceArgsDict']] reactance: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['LineReactivePowerArgs', 'LineReactivePowerArgsDict']]]] reactive_powers: attribute of the resource
         :param pulumi.Input[Union['LineReferenceResistanceArgs', 'LineReferenceResistanceArgsDict']] reference_resistance: attribute of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LineRelatedAssetArgs', 'LineRelatedAssetArgsDict']]]] related_assets: related assets of the resource
         :param pulumi.Input[Union['LineResistanceArgs', 'LineResistanceArgsDict']] resistance: attribute of the resource
         :param pulumi.Input[Union['LineSafetyMarginForPowerArgs', 'LineSafetyMarginForPowerArgsDict']] safety_margin_for_power: attribute of the resource
         :param pulumi.Input[Union['LineSusceptanceArgs', 'LineSusceptanceArgsDict']] susceptance: attribute of the resource
@@ -1301,6 +1334,7 @@ class Line(pulumi.CustomResource):
         __props__.__dict__["reactance"] = reactance
         __props__.__dict__["reactive_powers"] = reactive_powers
         __props__.__dict__["reference_resistance"] = reference_resistance
+        __props__.__dict__["related_assets"] = related_assets
         __props__.__dict__["resistance"] = resistance
         __props__.__dict__["safety_margin_for_power"] = safety_margin_for_power
         __props__.__dict__["susceptance"] = susceptance
@@ -1542,6 +1576,14 @@ class Line(pulumi.CustomResource):
         attribute of the resource
         """
         return pulumi.get(self, "reference_resistance")
+
+    @property
+    @pulumi.getter(name="relatedAssets")
+    def related_assets(self) -> pulumi.Output[Optional[Sequence['outputs.LineRelatedAsset']]]:
+        """
+        related assets of the resource
+        """
+        return pulumi.get(self, "related_assets")
 
     @property
     @pulumi.getter

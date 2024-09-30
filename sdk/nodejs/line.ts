@@ -160,6 +160,10 @@ export class Line extends pulumi.CustomResource {
      */
     public readonly referenceResistance!: pulumi.Output<outputs.LineReferenceResistance>;
     /**
+     * related assets of the resource
+     */
+    public readonly relatedAssets!: pulumi.Output<outputs.LineRelatedAsset[] | undefined>;
+    /**
      * attribute of the resource
      */
     public readonly resistance!: pulumi.Output<outputs.LineResistance>;
@@ -234,6 +238,7 @@ export class Line extends pulumi.CustomResource {
             resourceInputs["reactance"] = state ? state.reactance : undefined;
             resourceInputs["reactivePowers"] = state ? state.reactivePowers : undefined;
             resourceInputs["referenceResistance"] = state ? state.referenceResistance : undefined;
+            resourceInputs["relatedAssets"] = state ? state.relatedAssets : undefined;
             resourceInputs["resistance"] = state ? state.resistance : undefined;
             resourceInputs["safetyMarginForPower"] = state ? state.safetyMarginForPower : undefined;
             resourceInputs["susceptance"] = state ? state.susceptance : undefined;
@@ -319,6 +324,7 @@ export class Line extends pulumi.CustomResource {
             resourceInputs["numberOfConductors"] = args ? args.numberOfConductors : undefined;
             resourceInputs["reactance"] = args ? args.reactance : undefined;
             resourceInputs["referenceResistance"] = args ? args.referenceResistance : undefined;
+            resourceInputs["relatedAssets"] = args ? args.relatedAssets : undefined;
             resourceInputs["resistance"] = args ? args.resistance : undefined;
             resourceInputs["safetyMarginForPower"] = args ? args.safetyMarginForPower : undefined;
             resourceInputs["susceptance"] = args ? args.susceptance : undefined;
@@ -465,6 +471,10 @@ export interface LineState {
      */
     referenceResistance?: pulumi.Input<inputs.LineReferenceResistance>;
     /**
+     * related assets of the resource
+     */
+    relatedAssets?: pulumi.Input<pulumi.Input<inputs.LineRelatedAsset>[]>;
+    /**
      * attribute of the resource
      */
     resistance?: pulumi.Input<inputs.LineResistance>;
@@ -574,6 +584,10 @@ export interface LineArgs {
      * attribute of the resource
      */
     referenceResistance: pulumi.Input<inputs.LineReferenceResistance>;
+    /**
+     * related assets of the resource
+     */
+    relatedAssets?: pulumi.Input<pulumi.Input<inputs.LineRelatedAsset>[]>;
     /**
      * attribute of the resource
      */

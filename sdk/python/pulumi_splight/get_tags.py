@@ -4,14 +4,9 @@
 
 import copy
 import warnings
-import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-if sys.version_info >= (3, 11):
-    from typing import NotRequired, TypedDict, TypeAlias
-else:
-    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -77,6 +72,9 @@ def get_tags(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagsRes
     return AwaitableGetTagsResult(
         id=pulumi.get(__ret__, 'id'),
         tags=pulumi.get(__ret__, 'tags'))
+
+
+@_utilities.lift_output_func(get_tags)
 def get_tags_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagsResult]:
     """
     ## Example Usage
@@ -88,9 +86,4 @@ def get_tags_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Outpu
     tags = splight.get_tags()
     ```
     """
-    __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('splight:index/getTags:getTags', __args__, opts=opts, typ=GetTagsResult)
-    return __ret__.apply(lambda __response__: GetTagsResult(
-        id=pulumi.get(__response__, 'id'),
-        tags=pulumi.get(__response__, 'tags')))
+    ...

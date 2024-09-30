@@ -80,6 +80,8 @@ type Line struct {
 	ReactivePowers LineReactivePowerArrayOutput `pulumi:"reactivePowers"`
 	// attribute of the resource
 	ReferenceResistance LineReferenceResistanceOutput `pulumi:"referenceResistance"`
+	// related assets of the resource
+	RelatedAssets LineRelatedAssetArrayOutput `pulumi:"relatedAssets"`
 	// attribute of the resource
 	Resistance LineResistanceOutput `pulumi:"resistance"`
 	// attribute of the resource
@@ -243,6 +245,8 @@ type lineState struct {
 	ReactivePowers []LineReactivePower `pulumi:"reactivePowers"`
 	// attribute of the resource
 	ReferenceResistance *LineReferenceResistance `pulumi:"referenceResistance"`
+	// related assets of the resource
+	RelatedAssets []LineRelatedAsset `pulumi:"relatedAssets"`
 	// attribute of the resource
 	Resistance *LineResistance `pulumi:"resistance"`
 	// attribute of the resource
@@ -320,6 +324,8 @@ type LineState struct {
 	ReactivePowers LineReactivePowerArrayInput
 	// attribute of the resource
 	ReferenceResistance LineReferenceResistancePtrInput
+	// related assets of the resource
+	RelatedAssets LineRelatedAssetArrayInput
 	// attribute of the resource
 	Resistance LineResistancePtrInput
 	// attribute of the resource
@@ -379,6 +385,8 @@ type lineArgs struct {
 	Reactance LineReactance `pulumi:"reactance"`
 	// attribute of the resource
 	ReferenceResistance LineReferenceResistance `pulumi:"referenceResistance"`
+	// related assets of the resource
+	RelatedAssets []LineRelatedAsset `pulumi:"relatedAssets"`
 	// attribute of the resource
 	Resistance LineResistance `pulumi:"resistance"`
 	// attribute of the resource
@@ -429,6 +437,8 @@ type LineArgs struct {
 	Reactance LineReactanceInput
 	// attribute of the resource
 	ReferenceResistance LineReferenceResistanceInput
+	// related assets of the resource
+	RelatedAssets LineRelatedAssetArrayInput
 	// attribute of the resource
 	Resistance LineResistanceInput
 	// attribute of the resource
@@ -671,6 +681,11 @@ func (o LineOutput) ReactivePowers() LineReactivePowerArrayOutput {
 // attribute of the resource
 func (o LineOutput) ReferenceResistance() LineReferenceResistanceOutput {
 	return o.ApplyT(func(v *Line) LineReferenceResistanceOutput { return v.ReferenceResistance }).(LineReferenceResistanceOutput)
+}
+
+// related assets of the resource
+func (o LineOutput) RelatedAssets() LineRelatedAssetArrayOutput {
+	return o.ApplyT(func(v *Line) LineRelatedAssetArrayOutput { return v.RelatedAssets }).(LineRelatedAssetArrayOutput)
 }
 
 // attribute of the resource
