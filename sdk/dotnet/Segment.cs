@@ -65,12 +65,6 @@ namespace Splight.Splight
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// related assets of the resource
-        /// </summary>
-        [Output("relatedAssets")]
-        public Output<ImmutableArray<Outputs.SegmentRelatedAsset>> RelatedAssets { get; private set; } = null!;
-
-        /// <summary>
         /// tags of the resource
         /// </summary>
         [Output("tags")]
@@ -177,18 +171,6 @@ namespace Splight.Splight
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("relatedAssets")]
-        private InputList<Inputs.SegmentRelatedAssetArgs>? _relatedAssets;
-
-        /// <summary>
-        /// related assets of the resource
-        /// </summary>
-        public InputList<Inputs.SegmentRelatedAssetArgs> RelatedAssets
-        {
-            get => _relatedAssets ?? (_relatedAssets = new InputList<Inputs.SegmentRelatedAssetArgs>());
-            set => _relatedAssets = value;
-        }
-
         [Input("tags")]
         private InputList<Inputs.SegmentTagArgs>? _tags;
 
@@ -256,18 +238,6 @@ namespace Splight.Splight
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        [Input("relatedAssets")]
-        private InputList<Inputs.SegmentRelatedAssetGetArgs>? _relatedAssets;
-
-        /// <summary>
-        /// related assets of the resource
-        /// </summary>
-        public InputList<Inputs.SegmentRelatedAssetGetArgs> RelatedAssets
-        {
-            get => _relatedAssets ?? (_relatedAssets = new InputList<Inputs.SegmentRelatedAssetGetArgs>());
-            set => _relatedAssets = value;
-        }
 
         [Input("tags")]
         private InputList<Inputs.SegmentTagGetArgs>? _tags;

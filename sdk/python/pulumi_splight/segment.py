@@ -22,7 +22,6 @@ class SegmentArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentRelatedAssetArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentTagArgs']]]] = None):
         """
         The set of arguments for constructing a Segment resource.
@@ -32,7 +31,6 @@ class SegmentArgs:
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
-        :param pulumi.Input[Sequence[pulumi.Input['SegmentRelatedAssetArgs']]] related_assets: related assets of the resource
         :param pulumi.Input[Sequence[pulumi.Input['SegmentTagArgs']]] tags: tags of the resource
         """
         pulumi.set(__self__, "altitude", altitude)
@@ -44,8 +42,6 @@ class SegmentArgs:
             pulumi.set(__self__, "geometry", geometry)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if related_assets is not None:
-            pulumi.set(__self__, "related_assets", related_assets)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -122,18 +118,6 @@ class SegmentArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="relatedAssets")
-    def related_assets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SegmentRelatedAssetArgs']]]]:
-        """
-        related assets of the resource
-        """
-        return pulumi.get(self, "related_assets")
-
-    @related_assets.setter
-    def related_assets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentRelatedAssetArgs']]]]):
-        pulumi.set(self, "related_assets", value)
-
-    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SegmentTagArgs']]]]:
         """
@@ -156,7 +140,6 @@ class _SegmentState:
                  geometry: Optional[pulumi.Input[str]] = None,
                  kinds: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentKindArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentRelatedAssetArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentTagArgs']]]] = None,
                  temperatures: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentTemperatureArgs']]]] = None,
                  wind_directions: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentWindDirectionArgs']]]] = None,
@@ -170,7 +153,6 @@ class _SegmentState:
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[Sequence[pulumi.Input['SegmentKindArgs']]] kinds: kind of the resource
         :param pulumi.Input[str] name: name of the resource
-        :param pulumi.Input[Sequence[pulumi.Input['SegmentRelatedAssetArgs']]] related_assets: related assets of the resource
         :param pulumi.Input[Sequence[pulumi.Input['SegmentTagArgs']]] tags: tags of the resource
         :param pulumi.Input[Sequence[pulumi.Input['SegmentTemperatureArgs']]] temperatures: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['SegmentWindDirectionArgs']]] wind_directions: attribute of the resource
@@ -190,8 +172,6 @@ class _SegmentState:
             pulumi.set(__self__, "kinds", kinds)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if related_assets is not None:
-            pulumi.set(__self__, "related_assets", related_assets)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if temperatures is not None:
@@ -286,18 +266,6 @@ class _SegmentState:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="relatedAssets")
-    def related_assets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SegmentRelatedAssetArgs']]]]:
-        """
-        related assets of the resource
-        """
-        return pulumi.get(self, "related_assets")
-
-    @related_assets.setter
-    def related_assets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentRelatedAssetArgs']]]]):
-        pulumi.set(self, "related_assets", value)
-
-    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SegmentTagArgs']]]]:
         """
@@ -357,7 +325,6 @@ class Segment(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SegmentRelatedAssetArgs', 'SegmentRelatedAssetArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SegmentTagArgs', 'SegmentTagArgsDict']]]]] = None,
                  __props__=None):
         """
@@ -377,7 +344,6 @@ class Segment(pulumi.CustomResource):
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentRelatedAssetArgs', 'SegmentRelatedAssetArgsDict']]]] related_assets: related assets of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentTagArgs', 'SegmentTagArgsDict']]]] tags: tags of the resource
         """
         ...
@@ -416,7 +382,6 @@ class Segment(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SegmentRelatedAssetArgs', 'SegmentRelatedAssetArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SegmentTagArgs', 'SegmentTagArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -439,7 +404,6 @@ class Segment(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["geometry"] = geometry
             __props__.__dict__["name"] = name
-            __props__.__dict__["related_assets"] = related_assets
             __props__.__dict__["tags"] = tags
             __props__.__dict__["kinds"] = None
             __props__.__dict__["temperatures"] = None
@@ -462,7 +426,6 @@ class Segment(pulumi.CustomResource):
             geometry: Optional[pulumi.Input[str]] = None,
             kinds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SegmentKindArgs', 'SegmentKindArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            related_assets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SegmentRelatedAssetArgs', 'SegmentRelatedAssetArgsDict']]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SegmentTagArgs', 'SegmentTagArgsDict']]]]] = None,
             temperatures: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SegmentTemperatureArgs', 'SegmentTemperatureArgsDict']]]]] = None,
             wind_directions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SegmentWindDirectionArgs', 'SegmentWindDirectionArgsDict']]]]] = None,
@@ -481,7 +444,6 @@ class Segment(pulumi.CustomResource):
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentKindArgs', 'SegmentKindArgsDict']]]] kinds: kind of the resource
         :param pulumi.Input[str] name: name of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentRelatedAssetArgs', 'SegmentRelatedAssetArgsDict']]]] related_assets: related assets of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentTagArgs', 'SegmentTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentTemperatureArgs', 'SegmentTemperatureArgsDict']]]] temperatures: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentWindDirectionArgs', 'SegmentWindDirectionArgsDict']]]] wind_directions: attribute of the resource
@@ -498,7 +460,6 @@ class Segment(pulumi.CustomResource):
         __props__.__dict__["geometry"] = geometry
         __props__.__dict__["kinds"] = kinds
         __props__.__dict__["name"] = name
-        __props__.__dict__["related_assets"] = related_assets
         __props__.__dict__["tags"] = tags
         __props__.__dict__["temperatures"] = temperatures
         __props__.__dict__["wind_directions"] = wind_directions
@@ -560,14 +521,6 @@ class Segment(pulumi.CustomResource):
         name of the resource
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="relatedAssets")
-    def related_assets(self) -> pulumi.Output[Optional[Sequence['outputs.SegmentRelatedAsset']]]:
-        """
-        related assets of the resource
-        """
-        return pulumi.get(self, "related_assets")
 
     @property
     @pulumi.getter

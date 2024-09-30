@@ -36,8 +36,6 @@ type Segment struct {
 	Kinds SegmentKindArrayOutput `pulumi:"kinds"`
 	// name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// related assets of the resource
-	RelatedAssets SegmentRelatedAssetArrayOutput `pulumi:"relatedAssets"`
 	// tags of the resource
 	Tags SegmentTagArrayOutput `pulumi:"tags"`
 	// attribute of the resource
@@ -101,8 +99,6 @@ type segmentState struct {
 	Kinds []SegmentKind `pulumi:"kinds"`
 	// name of the resource
 	Name *string `pulumi:"name"`
-	// related assets of the resource
-	RelatedAssets []SegmentRelatedAsset `pulumi:"relatedAssets"`
 	// tags of the resource
 	Tags []SegmentTag `pulumi:"tags"`
 	// attribute of the resource
@@ -128,8 +124,6 @@ type SegmentState struct {
 	Kinds SegmentKindArrayInput
 	// name of the resource
 	Name pulumi.StringPtrInput
-	// related assets of the resource
-	RelatedAssets SegmentRelatedAssetArrayInput
 	// tags of the resource
 	Tags SegmentTagArrayInput
 	// attribute of the resource
@@ -157,8 +151,6 @@ type segmentArgs struct {
 	Geometry *string `pulumi:"geometry"`
 	// name of the resource
 	Name *string `pulumi:"name"`
-	// related assets of the resource
-	RelatedAssets []SegmentRelatedAsset `pulumi:"relatedAssets"`
 	// tags of the resource
 	Tags []SegmentTag `pulumi:"tags"`
 }
@@ -177,8 +169,6 @@ type SegmentArgs struct {
 	Geometry pulumi.StringPtrInput
 	// name of the resource
 	Name pulumi.StringPtrInput
-	// related assets of the resource
-	RelatedAssets SegmentRelatedAssetArrayInput
 	// tags of the resource
 	Tags SegmentTagArrayInput
 }
@@ -303,11 +293,6 @@ func (o SegmentOutput) Kinds() SegmentKindArrayOutput {
 // name of the resource
 func (o SegmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Segment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// related assets of the resource
-func (o SegmentOutput) RelatedAssets() SegmentRelatedAssetArrayOutput {
-	return o.ApplyT(func(v *Segment) SegmentRelatedAssetArrayOutput { return v.RelatedAssets }).(SegmentRelatedAssetArrayOutput)
 }
 
 // tags of the resource

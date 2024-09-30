@@ -2372,11 +2372,13 @@
             "properties": {
                 "expression": {
                     "type": "string",
-                    "description": "how the expression is shown (i.e 'A * 2')\n"
+                    "description": "how the expression is shown (i.e 'A * 2')\n",
+                    "willReplaceOnChanges": true
                 },
                 "expressionPlain": {
                     "type": "string",
-                    "description": "actual mongo query containing the expression\n"
+                    "description": "actual mongo query containing the expression\n",
+                    "willReplaceOnChanges": true
                 },
                 "id": {
                     "type": "string",
@@ -2392,23 +2394,28 @@
                 },
                 "queryGroupFunction": {
                     "type": "string",
-                    "description": "function used to aggregate data\n"
+                    "description": "function used to aggregate data\n",
+                    "willReplaceOnChanges": true
                 },
                 "queryGroupUnit": {
                     "type": "string",
-                    "description": "time window to apply the aggregation\n"
+                    "description": "time window to apply the aggregation\n",
+                    "willReplaceOnChanges": true
                 },
                 "queryPlain": {
                     "type": "string",
-                    "description": "actual mongo query\n"
+                    "description": "actual mongo query\n",
+                    "willReplaceOnChanges": true
                 },
                 "refId": {
                     "type": "string",
-                    "description": "identifier of the variable (i.e 'A')\n"
+                    "description": "identifier of the variable (i.e 'A')\n",
+                    "willReplaceOnChanges": true
                 },
                 "type": {
                     "type": "string",
-                    "description": "either QUERY or EXPRESSION\n"
+                    "description": "either QUERY or EXPRESSION\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "type": "object",
@@ -2444,11 +2451,13 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Id of the resource\n"
+                    "description": "Id of the resource\n",
+                    "willReplaceOnChanges": true
                 },
                 "name": {
                     "type": "string",
-                    "description": "name of the resource\n"
+                    "description": "name of the resource\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "type": "object"
@@ -2457,35 +2466,21 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Id of the resource\n"
+                    "description": "Id of the resource\n",
+                    "willReplaceOnChanges": true
                 },
                 "name": {
                     "type": "string",
-                    "description": "name of the resource\n"
+                    "description": "name of the resource\n",
+                    "willReplaceOnChanges": true
                 },
                 "type": {
                     "type": "string",
-                    "description": "type of the resource\n"
+                    "description": "type of the resource\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "type": "object"
-        },
-        "splight:index/FunctionRelatedAsset:FunctionRelatedAsset": {
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "asset id\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "asset name\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "id",
-                "name"
-            ]
         },
         "splight:index/FunctionTag:FunctionTag": {
             "properties": {
@@ -3981,23 +3976,6 @@
                     "type": "string",
                     "description": "kind name\n",
                     "willReplaceOnChanges": true
-                }
-            },
-            "type": "object",
-            "required": [
-                "id",
-                "name"
-            ]
-        },
-        "splight:index/SegmentRelatedAsset:SegmentRelatedAsset": {
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "asset id\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "asset name\n"
                 }
             },
             "type": "object",
@@ -10579,13 +10557,6 @@
                     "type": "integer",
                     "description": "schedule value\n"
                 },
-                "relatedAssets": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/splight:index/FunctionRelatedAsset:FunctionRelatedAsset"
-                    },
-                    "description": "related assets of the resource\n"
-                },
                 "tags": {
                     "type": "array",
                     "items": {
@@ -10680,13 +10651,6 @@
                     "type": "integer",
                     "description": "schedule value\n"
                 },
-                "relatedAssets": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/splight:index/FunctionRelatedAsset:FunctionRelatedAsset"
-                    },
-                    "description": "related assets of the resource\n"
-                },
                 "tags": {
                     "type": "array",
                     "items": {
@@ -10773,13 +10737,6 @@
                     "rateValue": {
                         "type": "integer",
                         "description": "schedule value\n"
-                    },
-                    "relatedAssets": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/splight:index/FunctionRelatedAsset:FunctionRelatedAsset"
-                        },
-                        "description": "related assets of the resource\n"
                     },
                     "tags": {
                         "type": "array",
@@ -11445,13 +11402,6 @@
                     "type": "string",
                     "description": "name of the resource\n"
                 },
-                "relatedAssets": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/splight:index/SegmentRelatedAsset:SegmentRelatedAsset"
-                    },
-                    "description": "related assets of the resource\n"
-                },
                 "tags": {
                     "type": "array",
                     "items": {
@@ -11516,13 +11466,6 @@
                     "type": "string",
                     "description": "name of the resource\n"
                 },
-                "relatedAssets": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/splight:index/SegmentRelatedAsset:SegmentRelatedAsset"
-                    },
-                    "description": "related assets of the resource\n"
-                },
                 "tags": {
                     "type": "array",
                     "items": {
@@ -11569,13 +11512,6 @@
                     "name": {
                         "type": "string",
                         "description": "name of the resource\n"
-                    },
-                    "relatedAssets": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/splight:index/SegmentRelatedAsset:SegmentRelatedAsset"
-                        },
-                        "description": "related assets of the resource\n"
                     },
                     "tags": {
                         "type": "array",

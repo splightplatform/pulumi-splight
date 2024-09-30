@@ -44,8 +44,6 @@ type Function struct {
 	RateUnit pulumi.StringOutput `pulumi:"rateUnit"`
 	// schedule value
 	RateValue pulumi.IntOutput `pulumi:"rateValue"`
-	// related assets of the resource
-	RelatedAssets FunctionRelatedAssetArrayOutput `pulumi:"relatedAssets"`
 	// tags of the resource
 	Tags FunctionTagArrayOutput `pulumi:"tags"`
 	// Asset filter
@@ -133,8 +131,6 @@ type functionState struct {
 	RateUnit *string `pulumi:"rateUnit"`
 	// schedule value
 	RateValue *int `pulumi:"rateValue"`
-	// related assets of the resource
-	RelatedAssets []FunctionRelatedAsset `pulumi:"relatedAssets"`
 	// tags of the resource
 	Tags []FunctionTag `pulumi:"tags"`
 	// Asset filter
@@ -172,8 +168,6 @@ type FunctionState struct {
 	RateUnit pulumi.StringPtrInput
 	// schedule value
 	RateValue pulumi.IntPtrInput
-	// related assets of the resource
-	RelatedAssets FunctionRelatedAssetArrayInput
 	// tags of the resource
 	Tags FunctionTagArrayInput
 	// Asset filter
@@ -215,8 +209,6 @@ type functionArgs struct {
 	RateUnit *string `pulumi:"rateUnit"`
 	// schedule value
 	RateValue *int `pulumi:"rateValue"`
-	// related assets of the resource
-	RelatedAssets []FunctionRelatedAsset `pulumi:"relatedAssets"`
 	// tags of the resource
 	Tags []FunctionTag `pulumi:"tags"`
 	// Asset filter
@@ -255,8 +247,6 @@ type FunctionArgs struct {
 	RateUnit pulumi.StringPtrInput
 	// schedule value
 	RateValue pulumi.IntPtrInput
-	// related assets of the resource
-	RelatedAssets FunctionRelatedAssetArrayInput
 	// tags of the resource
 	Tags FunctionTagArrayInput
 	// Asset filter
@@ -411,11 +401,6 @@ func (o FunctionOutput) RateUnit() pulumi.StringOutput {
 // schedule value
 func (o FunctionOutput) RateValue() pulumi.IntOutput {
 	return o.ApplyT(func(v *Function) pulumi.IntOutput { return v.RateValue }).(pulumi.IntOutput)
-}
-
-// related assets of the resource
-func (o FunctionOutput) RelatedAssets() FunctionRelatedAssetArrayOutput {
-	return o.ApplyT(func(v *Function) FunctionRelatedAssetArrayOutput { return v.RelatedAssets }).(FunctionRelatedAssetArrayOutput)
 }
 
 // tags of the resource
