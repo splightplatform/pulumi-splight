@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -138,7 +143,6 @@ __all__ = [
     'LineReactance',
     'LineReactivePower',
     'LineReferenceResistance',
-    'LineRelatedAsset',
     'LineResistance',
     'LineSafetyMarginForPower',
     'LineSusceptance',
@@ -7602,35 +7606,6 @@ class LineReferenceResistance(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
-
-
-@pulumi.output_type
-class LineRelatedAsset(dict):
-    def __init__(__self__, *,
-                 id: str,
-                 name: str):
-        """
-        :param str id: asset id
-        :param str name: asset name
-        """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        asset id
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        asset name
-        """
-        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

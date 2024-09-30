@@ -4,158 +4,321 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'ActionAssetArgs',
+    'ActionAssetArgsDict',
     'ActionSetpointArgs',
+    'ActionSetpointArgsDict',
     'ActionSetpointAttributeArgs',
+    'ActionSetpointAttributeArgsDict',
     'AlertAlertItemArgs',
+    'AlertAlertItemArgsDict',
     'AlertAlertItemQueryFilterAssetArgs',
+    'AlertAlertItemQueryFilterAssetArgsDict',
     'AlertAlertItemQueryFilterAttributeArgs',
+    'AlertAlertItemQueryFilterAttributeArgsDict',
     'AlertRelatedAssetArgs',
+    'AlertRelatedAssetArgsDict',
     'AlertTagArgs',
+    'AlertTagArgsDict',
     'AlertThresholdArgs',
+    'AlertThresholdArgsDict',
     'AssetKindArgs',
+    'AssetKindArgsDict',
     'AssetRelationAssetArgs',
+    'AssetRelationAssetArgsDict',
     'AssetRelationRelatedAssetArgs',
+    'AssetRelationRelatedAssetArgsDict',
     'AssetRelationRelatedAssetKindArgs',
+    'AssetRelationRelatedAssetKindArgsDict',
     'AssetTagArgs',
+    'AssetTagArgsDict',
     'CommandActionArgs',
+    'CommandActionArgsDict',
     'CommandActionAssetArgs',
+    'CommandActionAssetArgsDict',
     'ComponentInputArgs',
+    'ComponentInputArgsDict',
     'ComponentRoutineConfigArgs',
+    'ComponentRoutineConfigArgsDict',
     'ComponentRoutineInputArgs',
+    'ComponentRoutineInputArgsDict',
     'ComponentRoutineInputValueArgs',
+    'ComponentRoutineInputValueArgsDict',
     'ComponentRoutineOutputArgs',
+    'ComponentRoutineOutputArgsDict',
     'ComponentRoutineOutputValueArgs',
+    'ComponentRoutineOutputValueArgsDict',
     'ComponentTagArgs',
+    'ComponentTagArgsDict',
     'DashboardActionlistChartChartItemArgs',
+    'DashboardActionlistChartChartItemArgsDict',
     'DashboardActionlistChartChartItemQueryFilterAssetArgs',
+    'DashboardActionlistChartChartItemQueryFilterAssetArgsDict',
     'DashboardActionlistChartChartItemQueryFilterAttributeArgs',
+    'DashboardActionlistChartChartItemQueryFilterAttributeArgsDict',
     'DashboardActionlistChartThresholdArgs',
+    'DashboardActionlistChartThresholdArgsDict',
     'DashboardActionlistChartValueMappingArgs',
+    'DashboardActionlistChartValueMappingArgsDict',
     'DashboardAlerteventsChartChartItemArgs',
+    'DashboardAlerteventsChartChartItemArgsDict',
     'DashboardAlerteventsChartChartItemQueryFilterAssetArgs',
+    'DashboardAlerteventsChartChartItemQueryFilterAssetArgsDict',
     'DashboardAlerteventsChartChartItemQueryFilterAttributeArgs',
+    'DashboardAlerteventsChartChartItemQueryFilterAttributeArgsDict',
     'DashboardAlerteventsChartThresholdArgs',
+    'DashboardAlerteventsChartThresholdArgsDict',
     'DashboardAlerteventsChartValueMappingArgs',
+    'DashboardAlerteventsChartValueMappingArgsDict',
     'DashboardAlertlistChartChartItemArgs',
+    'DashboardAlertlistChartChartItemArgsDict',
     'DashboardAlertlistChartChartItemQueryFilterAssetArgs',
+    'DashboardAlertlistChartChartItemQueryFilterAssetArgsDict',
     'DashboardAlertlistChartChartItemQueryFilterAttributeArgs',
+    'DashboardAlertlistChartChartItemQueryFilterAttributeArgsDict',
     'DashboardAlertlistChartThresholdArgs',
+    'DashboardAlertlistChartThresholdArgsDict',
     'DashboardAlertlistChartValueMappingArgs',
+    'DashboardAlertlistChartValueMappingArgsDict',
     'DashboardAssetlistChartChartItemArgs',
+    'DashboardAssetlistChartChartItemArgsDict',
     'DashboardAssetlistChartChartItemQueryFilterAssetArgs',
+    'DashboardAssetlistChartChartItemQueryFilterAssetArgsDict',
     'DashboardAssetlistChartChartItemQueryFilterAttributeArgs',
+    'DashboardAssetlistChartChartItemQueryFilterAttributeArgsDict',
     'DashboardAssetlistChartThresholdArgs',
+    'DashboardAssetlistChartThresholdArgsDict',
     'DashboardAssetlistChartValueMappingArgs',
+    'DashboardAssetlistChartValueMappingArgsDict',
     'DashboardBarChartChartItemArgs',
+    'DashboardBarChartChartItemArgsDict',
     'DashboardBarChartChartItemQueryFilterAssetArgs',
+    'DashboardBarChartChartItemQueryFilterAssetArgsDict',
     'DashboardBarChartChartItemQueryFilterAttributeArgs',
+    'DashboardBarChartChartItemQueryFilterAttributeArgsDict',
     'DashboardBarChartThresholdArgs',
+    'DashboardBarChartThresholdArgsDict',
     'DashboardBarChartValueMappingArgs',
+    'DashboardBarChartValueMappingArgsDict',
     'DashboardBargaugeChartChartItemArgs',
+    'DashboardBargaugeChartChartItemArgsDict',
     'DashboardBargaugeChartChartItemQueryFilterAssetArgs',
+    'DashboardBargaugeChartChartItemQueryFilterAssetArgsDict',
     'DashboardBargaugeChartChartItemQueryFilterAttributeArgs',
+    'DashboardBargaugeChartChartItemQueryFilterAttributeArgsDict',
     'DashboardBargaugeChartThresholdArgs',
+    'DashboardBargaugeChartThresholdArgsDict',
     'DashboardBargaugeChartValueMappingArgs',
+    'DashboardBargaugeChartValueMappingArgsDict',
     'DashboardCommandlistChartChartItemArgs',
+    'DashboardCommandlistChartChartItemArgsDict',
     'DashboardCommandlistChartChartItemQueryFilterAssetArgs',
+    'DashboardCommandlistChartChartItemQueryFilterAssetArgsDict',
     'DashboardCommandlistChartChartItemQueryFilterAttributeArgs',
+    'DashboardCommandlistChartChartItemQueryFilterAttributeArgsDict',
     'DashboardCommandlistChartThresholdArgs',
+    'DashboardCommandlistChartThresholdArgsDict',
     'DashboardCommandlistChartValueMappingArgs',
+    'DashboardCommandlistChartValueMappingArgsDict',
     'DashboardGaugeChartChartItemArgs',
+    'DashboardGaugeChartChartItemArgsDict',
     'DashboardGaugeChartChartItemQueryFilterAssetArgs',
+    'DashboardGaugeChartChartItemQueryFilterAssetArgsDict',
     'DashboardGaugeChartChartItemQueryFilterAttributeArgs',
+    'DashboardGaugeChartChartItemQueryFilterAttributeArgsDict',
     'DashboardGaugeChartThresholdArgs',
+    'DashboardGaugeChartThresholdArgsDict',
     'DashboardGaugeChartValueMappingArgs',
+    'DashboardGaugeChartValueMappingArgsDict',
     'DashboardHistogramChartChartItemArgs',
+    'DashboardHistogramChartChartItemArgsDict',
     'DashboardHistogramChartChartItemQueryFilterAssetArgs',
+    'DashboardHistogramChartChartItemQueryFilterAssetArgsDict',
     'DashboardHistogramChartChartItemQueryFilterAttributeArgs',
+    'DashboardHistogramChartChartItemQueryFilterAttributeArgsDict',
     'DashboardHistogramChartThresholdArgs',
+    'DashboardHistogramChartThresholdArgsDict',
     'DashboardHistogramChartValueMappingArgs',
+    'DashboardHistogramChartValueMappingArgsDict',
     'DashboardImageChartChartItemArgs',
+    'DashboardImageChartChartItemArgsDict',
     'DashboardImageChartChartItemQueryFilterAssetArgs',
+    'DashboardImageChartChartItemQueryFilterAssetArgsDict',
     'DashboardImageChartChartItemQueryFilterAttributeArgs',
+    'DashboardImageChartChartItemQueryFilterAttributeArgsDict',
     'DashboardImageChartThresholdArgs',
+    'DashboardImageChartThresholdArgsDict',
     'DashboardImageChartValueMappingArgs',
+    'DashboardImageChartValueMappingArgsDict',
     'DashboardRelatedAssetArgs',
+    'DashboardRelatedAssetArgsDict',
     'DashboardStatChartChartItemArgs',
+    'DashboardStatChartChartItemArgsDict',
     'DashboardStatChartChartItemQueryFilterAssetArgs',
+    'DashboardStatChartChartItemQueryFilterAssetArgsDict',
     'DashboardStatChartChartItemQueryFilterAttributeArgs',
+    'DashboardStatChartChartItemQueryFilterAttributeArgsDict',
     'DashboardStatChartThresholdArgs',
+    'DashboardStatChartThresholdArgsDict',
     'DashboardStatChartValueMappingArgs',
+    'DashboardStatChartValueMappingArgsDict',
     'DashboardTableChartChartItemArgs',
+    'DashboardTableChartChartItemArgsDict',
     'DashboardTableChartChartItemQueryFilterAssetArgs',
+    'DashboardTableChartChartItemQueryFilterAssetArgsDict',
     'DashboardTableChartChartItemQueryFilterAttributeArgs',
+    'DashboardTableChartChartItemQueryFilterAttributeArgsDict',
     'DashboardTableChartThresholdArgs',
+    'DashboardTableChartThresholdArgsDict',
     'DashboardTableChartValueMappingArgs',
+    'DashboardTableChartValueMappingArgsDict',
     'DashboardTagArgs',
+    'DashboardTagArgsDict',
     'DashboardTextChartChartItemArgs',
+    'DashboardTextChartChartItemArgsDict',
     'DashboardTextChartChartItemQueryFilterAssetArgs',
+    'DashboardTextChartChartItemQueryFilterAssetArgsDict',
     'DashboardTextChartChartItemQueryFilterAttributeArgs',
+    'DashboardTextChartChartItemQueryFilterAttributeArgsDict',
     'DashboardTextChartThresholdArgs',
+    'DashboardTextChartThresholdArgsDict',
     'DashboardTextChartValueMappingArgs',
+    'DashboardTextChartValueMappingArgsDict',
     'DashboardTimeseriesChartChartItemArgs',
+    'DashboardTimeseriesChartChartItemArgsDict',
     'DashboardTimeseriesChartChartItemQueryFilterAssetArgs',
+    'DashboardTimeseriesChartChartItemQueryFilterAssetArgsDict',
     'DashboardTimeseriesChartChartItemQueryFilterAttributeArgs',
+    'DashboardTimeseriesChartChartItemQueryFilterAttributeArgsDict',
     'DashboardTimeseriesChartThresholdArgs',
+    'DashboardTimeseriesChartThresholdArgsDict',
     'DashboardTimeseriesChartValueMappingArgs',
+    'DashboardTimeseriesChartValueMappingArgsDict',
     'FunctionFunctionItemArgs',
+    'FunctionFunctionItemArgsDict',
     'FunctionFunctionItemQueryFilterAssetArgs',
+    'FunctionFunctionItemQueryFilterAssetArgsDict',
     'FunctionFunctionItemQueryFilterAttributeArgs',
+    'FunctionFunctionItemQueryFilterAttributeArgsDict',
     'FunctionRelatedAssetArgs',
+    'FunctionRelatedAssetArgsDict',
     'FunctionTagArgs',
+    'FunctionTagArgsDict',
     'FunctionTargetAssetArgs',
+    'FunctionTargetAssetArgsDict',
     'FunctionTargetAttributeArgs',
+    'FunctionTargetAttributeArgsDict',
     'LineAbsorptivityArgs',
+    'LineAbsorptivityArgsDict',
     'LineActivePowerArgs',
+    'LineActivePowerArgsDict',
     'LineActivePowerEndArgs',
+    'LineActivePowerEndArgsDict',
     'LineAmpacityArgs',
+    'LineAmpacityArgsDict',
     'LineAtmosphereArgs',
+    'LineAtmosphereArgsDict',
     'LineCapacitanceArgs',
+    'LineCapacitanceArgsDict',
     'LineConductanceArgs',
+    'LineConductanceArgsDict',
     'LineCurrentArgs',
+    'LineCurrentArgsDict',
     'LineCurrentRArgs',
+    'LineCurrentRArgsDict',
     'LineCurrentTArgs',
+    'LineCurrentTArgsDict',
     'LineDiameterArgs',
+    'LineDiameterArgsDict',
     'LineEmissivityArgs',
+    'LineEmissivityArgsDict',
     'LineEnergyArgs',
+    'LineEnergyArgsDict',
     'LineKindArgs',
+    'LineKindArgsDict',
     'LineLengthArgs',
+    'LineLengthArgsDict',
     'LineMaxTemperatureArgs',
+    'LineMaxTemperatureArgsDict',
     'LineMaximumAllowedCurrentArgs',
+    'LineMaximumAllowedCurrentArgsDict',
     'LineMaximumAllowedPowerArgs',
+    'LineMaximumAllowedPowerArgsDict',
     'LineMaximumAllowedTemperatureArgs',
+    'LineMaximumAllowedTemperatureArgsDict',
     'LineMaximumAllowedTemperatureLteArgs',
+    'LineMaximumAllowedTemperatureLteArgsDict',
     'LineMaximumAllowedTemperatureSteArgs',
+    'LineMaximumAllowedTemperatureSteArgsDict',
     'LineNumberOfConductorsArgs',
+    'LineNumberOfConductorsArgsDict',
     'LineReactanceArgs',
+    'LineReactanceArgsDict',
     'LineReactivePowerArgs',
+    'LineReactivePowerArgsDict',
     'LineReferenceResistanceArgs',
-    'LineRelatedAssetArgs',
+    'LineReferenceResistanceArgsDict',
     'LineResistanceArgs',
+    'LineResistanceArgsDict',
     'LineSafetyMarginForPowerArgs',
+    'LineSafetyMarginForPowerArgsDict',
     'LineSusceptanceArgs',
+    'LineSusceptanceArgsDict',
     'LineTagArgs',
+    'LineTagArgsDict',
     'LineTemperatureCoeffResistanceArgs',
+    'LineTemperatureCoeffResistanceArgsDict',
     'LineVoltageRArgs',
+    'LineVoltageRArgsDict',
     'LineVoltageStArgs',
+    'LineVoltageStArgsDict',
     'LineVoltageTrArgs',
+    'LineVoltageTrArgsDict',
     'SegmentAltitudeArgs',
+    'SegmentAltitudeArgsDict',
     'SegmentAzimuthArgs',
+    'SegmentAzimuthArgsDict',
     'SegmentCumulativeDistanceArgs',
+    'SegmentCumulativeDistanceArgsDict',
     'SegmentKindArgs',
+    'SegmentKindArgsDict',
     'SegmentRelatedAssetArgs',
+    'SegmentRelatedAssetArgsDict',
     'SegmentTagArgs',
+    'SegmentTagArgsDict',
     'SegmentTemperatureArgs',
+    'SegmentTemperatureArgsDict',
     'SegmentWindDirectionArgs',
+    'SegmentWindDirectionArgsDict',
     'SegmentWindSpeedArgs',
+    'SegmentWindSpeedArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ActionAssetArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        asset id
+        """
+        name: pulumi.Input[str]
+        """
+        asset name
+        """
+elif False:
+    ActionAssetArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionAssetArgs:
@@ -193,6 +356,27 @@ class ActionAssetArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class ActionSetpointArgsDict(TypedDict):
+        attribute: pulumi.Input['ActionSetpointAttributeArgsDict']
+        """
+        the target attribute of the setpoint which should also be an attribute of the specified asset
+        """
+        value: pulumi.Input[str]
+        """
+        JSON encoded scalar value
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        setpoint Id
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        setpoint name
+        """
+elif False:
+    ActionSetpointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionSetpointArgs:
@@ -263,6 +447,19 @@ class ActionSetpointArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class ActionSetpointAttributeArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        attribute id
+        """
+        name: pulumi.Input[str]
+        """
+        attribute name
+        """
+elif False:
+    ActionSetpointAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ActionSetpointAttributeArgs:
     def __init__(__self__, *,
@@ -299,6 +496,51 @@ class ActionSetpointAttributeArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class AlertAlertItemArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        how the expression is shown (i.e 'A * 2')
+        """
+        expression_plain: pulumi.Input[str]
+        """
+        actual mongo query containing the expression
+        """
+        query_filter_asset: pulumi.Input['AlertAlertItemQueryFilterAssetArgsDict']
+        """
+        Asset filter
+        """
+        query_filter_attribute: pulumi.Input['AlertAlertItemQueryFilterAttributeArgsDict']
+        """
+        Attribute filter
+        """
+        query_group_function: pulumi.Input[str]
+        """
+        function used to aggregate data
+        """
+        query_group_unit: pulumi.Input[str]
+        """
+        time window to apply the aggregation
+        """
+        query_plain: pulumi.Input[str]
+        """
+        actual mongo query
+        """
+        ref_id: pulumi.Input[str]
+        """
+        identifier of the variable (i.e 'A')
+        """
+        type: pulumi.Input[str]
+        """
+        either QUERY or EXPRESSION
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the function item
+        """
+elif False:
+    AlertAlertItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AlertAlertItemArgs:
@@ -458,6 +700,19 @@ class AlertAlertItemArgs:
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class AlertAlertItemQueryFilterAssetArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    AlertAlertItemQueryFilterAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AlertAlertItemQueryFilterAssetArgs:
     def __init__(__self__, *,
@@ -496,6 +751,19 @@ class AlertAlertItemQueryFilterAssetArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class AlertAlertItemQueryFilterAttributeArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    AlertAlertItemQueryFilterAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AlertAlertItemQueryFilterAttributeArgs:
@@ -536,6 +804,19 @@ class AlertAlertItemQueryFilterAttributeArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class AlertRelatedAssetArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        asset id
+        """
+        name: pulumi.Input[str]
+        """
+        asset name
+        """
+elif False:
+    AlertRelatedAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AlertRelatedAssetArgs:
     def __init__(__self__, *,
@@ -573,6 +854,19 @@ class AlertRelatedAssetArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class AlertTagArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        tag id
+        """
+        name: pulumi.Input[str]
+        """
+        tag name
+        """
+elif False:
+    AlertTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AlertTagArgs:
     def __init__(__self__, *,
@@ -609,6 +903,23 @@ class AlertTagArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class AlertThresholdArgsDict(TypedDict):
+        status: pulumi.Input[str]
+        """
+        [alert|warning|no_alert] status value for the threshold
+        """
+        value: pulumi.Input[float]
+        """
+        value to be considered to compare
+        """
+        status_text: NotRequired[pulumi.Input[str]]
+        """
+        optional custom value to be displayed in the platform.
+        """
+elif False:
+    AlertThresholdArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AlertThresholdArgs:
@@ -663,6 +974,19 @@ class AlertThresholdArgs:
         pulumi.set(self, "status_text", value)
 
 
+if not MYPY:
+    class AssetKindArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        kind id
+        """
+        name: pulumi.Input[str]
+        """
+        kind name
+        """
+elif False:
+    AssetKindArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AssetKindArgs:
     def __init__(__self__, *,
@@ -699,6 +1023,19 @@ class AssetKindArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class AssetRelationAssetArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        asset id
+        """
+        name: pulumi.Input[str]
+        """
+        asset name
+        """
+elif False:
+    AssetRelationAssetArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AssetRelationAssetArgs:
@@ -737,6 +1074,19 @@ class AssetRelationAssetArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class AssetRelationRelatedAssetArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        asset id
+        """
+        name: pulumi.Input[str]
+        """
+        asset name
+        """
+elif False:
+    AssetRelationRelatedAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AssetRelationRelatedAssetArgs:
     def __init__(__self__, *,
@@ -773,6 +1123,19 @@ class AssetRelationRelatedAssetArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class AssetRelationRelatedAssetKindArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        kind id
+        """
+        name: pulumi.Input[str]
+        """
+        kind name
+        """
+elif False:
+    AssetRelationRelatedAssetKindArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AssetRelationRelatedAssetKindArgs:
@@ -811,6 +1174,19 @@ class AssetRelationRelatedAssetKindArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class AssetTagArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        tag id
+        """
+        name: pulumi.Input[str]
+        """
+        tag name
+        """
+elif False:
+    AssetTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AssetTagArgs:
     def __init__(__self__, *,
@@ -847,6 +1223,23 @@ class AssetTagArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class CommandActionArgsDict(TypedDict):
+        asset: pulumi.Input['CommandActionAssetArgsDict']
+        """
+        asset associated with the action (to be deprecated)
+        """
+        id: pulumi.Input[str]
+        """
+        action Id
+        """
+        name: pulumi.Input[str]
+        """
+        setpoint name
+        """
+elif False:
+    CommandActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CommandActionArgs:
@@ -900,6 +1293,19 @@ class CommandActionArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class CommandActionAssetArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        asset id
+        """
+        name: pulumi.Input[str]
+        """
+        asset name
+        """
+elif False:
+    CommandActionAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CommandActionAssetArgs:
     def __init__(__self__, *,
@@ -936,6 +1342,18 @@ class CommandActionAssetArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class ComponentInputArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        type: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+        multiple: NotRequired[pulumi.Input[bool]]
+        required: NotRequired[pulumi.Input[bool]]
+        sensitive: NotRequired[pulumi.Input[bool]]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    ComponentInputArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ComponentInputArgs:
@@ -1024,6 +1442,18 @@ class ComponentInputArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ComponentRoutineConfigArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        type: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+        multiple: NotRequired[pulumi.Input[bool]]
+        required: NotRequired[pulumi.Input[bool]]
+        sensitive: NotRequired[pulumi.Input[bool]]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    ComponentRoutineConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ComponentRoutineConfigArgs:
     def __init__(__self__, *,
@@ -1110,6 +1540,19 @@ class ComponentRoutineConfigArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ComponentRoutineInputArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        value_type: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+        multiple: NotRequired[pulumi.Input[bool]]
+        required: NotRequired[pulumi.Input[bool]]
+        sensitive: NotRequired[pulumi.Input[bool]]
+        type: NotRequired[pulumi.Input[str]]
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input['ComponentRoutineInputValueArgsDict']]]]
+elif False:
+    ComponentRoutineInputArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ComponentRoutineInputArgs:
@@ -1210,6 +1653,13 @@ class ComponentRoutineInputArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class ComponentRoutineInputValueArgsDict(TypedDict):
+        asset: pulumi.Input[str]
+        attribute: pulumi.Input[str]
+elif False:
+    ComponentRoutineInputValueArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ComponentRoutineInputValueArgs:
     def __init__(__self__, *,
@@ -1236,6 +1686,19 @@ class ComponentRoutineInputValueArgs:
     def attribute(self, value: pulumi.Input[str]):
         pulumi.set(self, "attribute", value)
 
+
+if not MYPY:
+    class ComponentRoutineOutputArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        value_type: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+        multiple: NotRequired[pulumi.Input[bool]]
+        required: NotRequired[pulumi.Input[bool]]
+        sensitive: NotRequired[pulumi.Input[bool]]
+        type: NotRequired[pulumi.Input[str]]
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input['ComponentRoutineOutputValueArgsDict']]]]
+elif False:
+    ComponentRoutineOutputArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ComponentRoutineOutputArgs:
@@ -1336,6 +1799,13 @@ class ComponentRoutineOutputArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class ComponentRoutineOutputValueArgsDict(TypedDict):
+        asset: pulumi.Input[str]
+        attribute: pulumi.Input[str]
+elif False:
+    ComponentRoutineOutputValueArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ComponentRoutineOutputValueArgs:
     def __init__(__self__, *,
@@ -1362,6 +1832,19 @@ class ComponentRoutineOutputValueArgs:
     def attribute(self, value: pulumi.Input[str]):
         pulumi.set(self, "attribute", value)
 
+
+if not MYPY:
+    class ComponentTagArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        tag id
+        """
+        name: pulumi.Input[str]
+        """
+        tag name
+        """
+elif False:
+    ComponentTagArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ComponentTagArgs:
@@ -1399,6 +1882,30 @@ class ComponentTagArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class DashboardActionlistChartChartItemArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        expression_plain: pulumi.Input[str]
+        query_filter_asset: pulumi.Input['DashboardActionlistChartChartItemQueryFilterAssetArgsDict']
+        """
+        Asset filter
+        """
+        query_filter_attribute: pulumi.Input['DashboardActionlistChartChartItemQueryFilterAttributeArgsDict']
+        """
+        Attribute filter
+        """
+        query_plain: pulumi.Input[str]
+        ref_id: pulumi.Input[str]
+        type: pulumi.Input[str]
+        hidden: NotRequired[pulumi.Input[bool]]
+        label: NotRequired[pulumi.Input[str]]
+        query_group_function: NotRequired[pulumi.Input[str]]
+        query_group_unit: NotRequired[pulumi.Input[str]]
+        query_limit: NotRequired[pulumi.Input[int]]
+        query_sort_direction: NotRequired[pulumi.Input[int]]
+elif False:
+    DashboardActionlistChartChartItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardActionlistChartChartItemArgs:
@@ -1564,6 +2071,19 @@ class DashboardActionlistChartChartItemArgs:
         pulumi.set(self, "query_sort_direction", value)
 
 
+if not MYPY:
+    class DashboardActionlistChartChartItemQueryFilterAssetArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardActionlistChartChartItemQueryFilterAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardActionlistChartChartItemQueryFilterAssetArgs:
     def __init__(__self__, *,
@@ -1602,6 +2122,19 @@ class DashboardActionlistChartChartItemQueryFilterAssetArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class DashboardActionlistChartChartItemQueryFilterAttributeArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardActionlistChartChartItemQueryFilterAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardActionlistChartChartItemQueryFilterAttributeArgs:
@@ -1642,6 +2175,14 @@ class DashboardActionlistChartChartItemQueryFilterAttributeArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class DashboardActionlistChartThresholdArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        display_text: pulumi.Input[str]
+        value: pulumi.Input[float]
+elif False:
+    DashboardActionlistChartThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardActionlistChartThresholdArgs:
     def __init__(__self__, *,
@@ -1679,6 +2220,15 @@ class DashboardActionlistChartThresholdArgs:
     def value(self, value: pulumi.Input[float]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class DashboardActionlistChartValueMappingArgsDict(TypedDict):
+        display_text: pulumi.Input[str]
+        match_value: pulumi.Input[str]
+        order: pulumi.Input[int]
+        type: pulumi.Input[str]
+elif False:
+    DashboardActionlistChartValueMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardActionlistChartValueMappingArgs:
@@ -1728,6 +2278,30 @@ class DashboardActionlistChartValueMappingArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class DashboardAlerteventsChartChartItemArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        expression_plain: pulumi.Input[str]
+        query_filter_asset: pulumi.Input['DashboardAlerteventsChartChartItemQueryFilterAssetArgsDict']
+        """
+        Asset filter
+        """
+        query_filter_attribute: pulumi.Input['DashboardAlerteventsChartChartItemQueryFilterAttributeArgsDict']
+        """
+        Attribute filter
+        """
+        query_plain: pulumi.Input[str]
+        ref_id: pulumi.Input[str]
+        type: pulumi.Input[str]
+        hidden: NotRequired[pulumi.Input[bool]]
+        label: NotRequired[pulumi.Input[str]]
+        query_group_function: NotRequired[pulumi.Input[str]]
+        query_group_unit: NotRequired[pulumi.Input[str]]
+        query_limit: NotRequired[pulumi.Input[int]]
+        query_sort_direction: NotRequired[pulumi.Input[int]]
+elif False:
+    DashboardAlerteventsChartChartItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardAlerteventsChartChartItemArgs:
@@ -1893,6 +2467,19 @@ class DashboardAlerteventsChartChartItemArgs:
         pulumi.set(self, "query_sort_direction", value)
 
 
+if not MYPY:
+    class DashboardAlerteventsChartChartItemQueryFilterAssetArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardAlerteventsChartChartItemQueryFilterAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardAlerteventsChartChartItemQueryFilterAssetArgs:
     def __init__(__self__, *,
@@ -1931,6 +2518,19 @@ class DashboardAlerteventsChartChartItemQueryFilterAssetArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class DashboardAlerteventsChartChartItemQueryFilterAttributeArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardAlerteventsChartChartItemQueryFilterAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardAlerteventsChartChartItemQueryFilterAttributeArgs:
@@ -1971,6 +2571,14 @@ class DashboardAlerteventsChartChartItemQueryFilterAttributeArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class DashboardAlerteventsChartThresholdArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        display_text: pulumi.Input[str]
+        value: pulumi.Input[float]
+elif False:
+    DashboardAlerteventsChartThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardAlerteventsChartThresholdArgs:
     def __init__(__self__, *,
@@ -2008,6 +2616,15 @@ class DashboardAlerteventsChartThresholdArgs:
     def value(self, value: pulumi.Input[float]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class DashboardAlerteventsChartValueMappingArgsDict(TypedDict):
+        display_text: pulumi.Input[str]
+        match_value: pulumi.Input[str]
+        order: pulumi.Input[int]
+        type: pulumi.Input[str]
+elif False:
+    DashboardAlerteventsChartValueMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardAlerteventsChartValueMappingArgs:
@@ -2057,6 +2674,30 @@ class DashboardAlerteventsChartValueMappingArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class DashboardAlertlistChartChartItemArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        expression_plain: pulumi.Input[str]
+        query_filter_asset: pulumi.Input['DashboardAlertlistChartChartItemQueryFilterAssetArgsDict']
+        """
+        Asset filter
+        """
+        query_filter_attribute: pulumi.Input['DashboardAlertlistChartChartItemQueryFilterAttributeArgsDict']
+        """
+        Attribute filter
+        """
+        query_plain: pulumi.Input[str]
+        ref_id: pulumi.Input[str]
+        type: pulumi.Input[str]
+        hidden: NotRequired[pulumi.Input[bool]]
+        label: NotRequired[pulumi.Input[str]]
+        query_group_function: NotRequired[pulumi.Input[str]]
+        query_group_unit: NotRequired[pulumi.Input[str]]
+        query_limit: NotRequired[pulumi.Input[int]]
+        query_sort_direction: NotRequired[pulumi.Input[int]]
+elif False:
+    DashboardAlertlistChartChartItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardAlertlistChartChartItemArgs:
@@ -2222,6 +2863,19 @@ class DashboardAlertlistChartChartItemArgs:
         pulumi.set(self, "query_sort_direction", value)
 
 
+if not MYPY:
+    class DashboardAlertlistChartChartItemQueryFilterAssetArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardAlertlistChartChartItemQueryFilterAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardAlertlistChartChartItemQueryFilterAssetArgs:
     def __init__(__self__, *,
@@ -2260,6 +2914,19 @@ class DashboardAlertlistChartChartItemQueryFilterAssetArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class DashboardAlertlistChartChartItemQueryFilterAttributeArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardAlertlistChartChartItemQueryFilterAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardAlertlistChartChartItemQueryFilterAttributeArgs:
@@ -2300,6 +2967,14 @@ class DashboardAlertlistChartChartItemQueryFilterAttributeArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class DashboardAlertlistChartThresholdArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        display_text: pulumi.Input[str]
+        value: pulumi.Input[float]
+elif False:
+    DashboardAlertlistChartThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardAlertlistChartThresholdArgs:
     def __init__(__self__, *,
@@ -2337,6 +3012,15 @@ class DashboardAlertlistChartThresholdArgs:
     def value(self, value: pulumi.Input[float]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class DashboardAlertlistChartValueMappingArgsDict(TypedDict):
+        display_text: pulumi.Input[str]
+        match_value: pulumi.Input[str]
+        order: pulumi.Input[int]
+        type: pulumi.Input[str]
+elif False:
+    DashboardAlertlistChartValueMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardAlertlistChartValueMappingArgs:
@@ -2386,6 +3070,30 @@ class DashboardAlertlistChartValueMappingArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class DashboardAssetlistChartChartItemArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        expression_plain: pulumi.Input[str]
+        query_filter_asset: pulumi.Input['DashboardAssetlistChartChartItemQueryFilterAssetArgsDict']
+        """
+        Asset filter
+        """
+        query_filter_attribute: pulumi.Input['DashboardAssetlistChartChartItemQueryFilterAttributeArgsDict']
+        """
+        Attribute filter
+        """
+        query_plain: pulumi.Input[str]
+        ref_id: pulumi.Input[str]
+        type: pulumi.Input[str]
+        hidden: NotRequired[pulumi.Input[bool]]
+        label: NotRequired[pulumi.Input[str]]
+        query_group_function: NotRequired[pulumi.Input[str]]
+        query_group_unit: NotRequired[pulumi.Input[str]]
+        query_limit: NotRequired[pulumi.Input[int]]
+        query_sort_direction: NotRequired[pulumi.Input[int]]
+elif False:
+    DashboardAssetlistChartChartItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardAssetlistChartChartItemArgs:
@@ -2551,6 +3259,19 @@ class DashboardAssetlistChartChartItemArgs:
         pulumi.set(self, "query_sort_direction", value)
 
 
+if not MYPY:
+    class DashboardAssetlistChartChartItemQueryFilterAssetArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardAssetlistChartChartItemQueryFilterAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardAssetlistChartChartItemQueryFilterAssetArgs:
     def __init__(__self__, *,
@@ -2589,6 +3310,19 @@ class DashboardAssetlistChartChartItemQueryFilterAssetArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class DashboardAssetlistChartChartItemQueryFilterAttributeArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardAssetlistChartChartItemQueryFilterAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardAssetlistChartChartItemQueryFilterAttributeArgs:
@@ -2629,6 +3363,14 @@ class DashboardAssetlistChartChartItemQueryFilterAttributeArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class DashboardAssetlistChartThresholdArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        display_text: pulumi.Input[str]
+        value: pulumi.Input[float]
+elif False:
+    DashboardAssetlistChartThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardAssetlistChartThresholdArgs:
     def __init__(__self__, *,
@@ -2666,6 +3408,15 @@ class DashboardAssetlistChartThresholdArgs:
     def value(self, value: pulumi.Input[float]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class DashboardAssetlistChartValueMappingArgsDict(TypedDict):
+        display_text: pulumi.Input[str]
+        match_value: pulumi.Input[str]
+        order: pulumi.Input[int]
+        type: pulumi.Input[str]
+elif False:
+    DashboardAssetlistChartValueMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardAssetlistChartValueMappingArgs:
@@ -2715,6 +3466,30 @@ class DashboardAssetlistChartValueMappingArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class DashboardBarChartChartItemArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        expression_plain: pulumi.Input[str]
+        query_filter_asset: pulumi.Input['DashboardBarChartChartItemQueryFilterAssetArgsDict']
+        """
+        Asset filter
+        """
+        query_filter_attribute: pulumi.Input['DashboardBarChartChartItemQueryFilterAttributeArgsDict']
+        """
+        Attribute filter
+        """
+        query_plain: pulumi.Input[str]
+        ref_id: pulumi.Input[str]
+        type: pulumi.Input[str]
+        hidden: NotRequired[pulumi.Input[bool]]
+        label: NotRequired[pulumi.Input[str]]
+        query_group_function: NotRequired[pulumi.Input[str]]
+        query_group_unit: NotRequired[pulumi.Input[str]]
+        query_limit: NotRequired[pulumi.Input[int]]
+        query_sort_direction: NotRequired[pulumi.Input[int]]
+elif False:
+    DashboardBarChartChartItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardBarChartChartItemArgs:
@@ -2880,6 +3655,19 @@ class DashboardBarChartChartItemArgs:
         pulumi.set(self, "query_sort_direction", value)
 
 
+if not MYPY:
+    class DashboardBarChartChartItemQueryFilterAssetArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardBarChartChartItemQueryFilterAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardBarChartChartItemQueryFilterAssetArgs:
     def __init__(__self__, *,
@@ -2918,6 +3706,19 @@ class DashboardBarChartChartItemQueryFilterAssetArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class DashboardBarChartChartItemQueryFilterAttributeArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardBarChartChartItemQueryFilterAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardBarChartChartItemQueryFilterAttributeArgs:
@@ -2958,6 +3759,14 @@ class DashboardBarChartChartItemQueryFilterAttributeArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class DashboardBarChartThresholdArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        display_text: pulumi.Input[str]
+        value: pulumi.Input[float]
+elif False:
+    DashboardBarChartThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardBarChartThresholdArgs:
     def __init__(__self__, *,
@@ -2995,6 +3804,15 @@ class DashboardBarChartThresholdArgs:
     def value(self, value: pulumi.Input[float]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class DashboardBarChartValueMappingArgsDict(TypedDict):
+        display_text: pulumi.Input[str]
+        match_value: pulumi.Input[str]
+        order: pulumi.Input[int]
+        type: pulumi.Input[str]
+elif False:
+    DashboardBarChartValueMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardBarChartValueMappingArgs:
@@ -3044,6 +3862,30 @@ class DashboardBarChartValueMappingArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class DashboardBargaugeChartChartItemArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        expression_plain: pulumi.Input[str]
+        query_filter_asset: pulumi.Input['DashboardBargaugeChartChartItemQueryFilterAssetArgsDict']
+        """
+        Asset filter
+        """
+        query_filter_attribute: pulumi.Input['DashboardBargaugeChartChartItemQueryFilterAttributeArgsDict']
+        """
+        Attribute filter
+        """
+        query_plain: pulumi.Input[str]
+        ref_id: pulumi.Input[str]
+        type: pulumi.Input[str]
+        hidden: NotRequired[pulumi.Input[bool]]
+        label: NotRequired[pulumi.Input[str]]
+        query_group_function: NotRequired[pulumi.Input[str]]
+        query_group_unit: NotRequired[pulumi.Input[str]]
+        query_limit: NotRequired[pulumi.Input[int]]
+        query_sort_direction: NotRequired[pulumi.Input[int]]
+elif False:
+    DashboardBargaugeChartChartItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardBargaugeChartChartItemArgs:
@@ -3209,6 +4051,19 @@ class DashboardBargaugeChartChartItemArgs:
         pulumi.set(self, "query_sort_direction", value)
 
 
+if not MYPY:
+    class DashboardBargaugeChartChartItemQueryFilterAssetArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardBargaugeChartChartItemQueryFilterAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardBargaugeChartChartItemQueryFilterAssetArgs:
     def __init__(__self__, *,
@@ -3247,6 +4102,19 @@ class DashboardBargaugeChartChartItemQueryFilterAssetArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class DashboardBargaugeChartChartItemQueryFilterAttributeArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardBargaugeChartChartItemQueryFilterAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardBargaugeChartChartItemQueryFilterAttributeArgs:
@@ -3287,6 +4155,14 @@ class DashboardBargaugeChartChartItemQueryFilterAttributeArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class DashboardBargaugeChartThresholdArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        display_text: pulumi.Input[str]
+        value: pulumi.Input[float]
+elif False:
+    DashboardBargaugeChartThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardBargaugeChartThresholdArgs:
     def __init__(__self__, *,
@@ -3324,6 +4200,15 @@ class DashboardBargaugeChartThresholdArgs:
     def value(self, value: pulumi.Input[float]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class DashboardBargaugeChartValueMappingArgsDict(TypedDict):
+        display_text: pulumi.Input[str]
+        match_value: pulumi.Input[str]
+        order: pulumi.Input[int]
+        type: pulumi.Input[str]
+elif False:
+    DashboardBargaugeChartValueMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardBargaugeChartValueMappingArgs:
@@ -3373,6 +4258,30 @@ class DashboardBargaugeChartValueMappingArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class DashboardCommandlistChartChartItemArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        expression_plain: pulumi.Input[str]
+        query_filter_asset: pulumi.Input['DashboardCommandlistChartChartItemQueryFilterAssetArgsDict']
+        """
+        Asset filter
+        """
+        query_filter_attribute: pulumi.Input['DashboardCommandlistChartChartItemQueryFilterAttributeArgsDict']
+        """
+        Attribute filter
+        """
+        query_plain: pulumi.Input[str]
+        ref_id: pulumi.Input[str]
+        type: pulumi.Input[str]
+        hidden: NotRequired[pulumi.Input[bool]]
+        label: NotRequired[pulumi.Input[str]]
+        query_group_function: NotRequired[pulumi.Input[str]]
+        query_group_unit: NotRequired[pulumi.Input[str]]
+        query_limit: NotRequired[pulumi.Input[int]]
+        query_sort_direction: NotRequired[pulumi.Input[int]]
+elif False:
+    DashboardCommandlistChartChartItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardCommandlistChartChartItemArgs:
@@ -3538,6 +4447,19 @@ class DashboardCommandlistChartChartItemArgs:
         pulumi.set(self, "query_sort_direction", value)
 
 
+if not MYPY:
+    class DashboardCommandlistChartChartItemQueryFilterAssetArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardCommandlistChartChartItemQueryFilterAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardCommandlistChartChartItemQueryFilterAssetArgs:
     def __init__(__self__, *,
@@ -3576,6 +4498,19 @@ class DashboardCommandlistChartChartItemQueryFilterAssetArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class DashboardCommandlistChartChartItemQueryFilterAttributeArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardCommandlistChartChartItemQueryFilterAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardCommandlistChartChartItemQueryFilterAttributeArgs:
@@ -3616,6 +4551,14 @@ class DashboardCommandlistChartChartItemQueryFilterAttributeArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class DashboardCommandlistChartThresholdArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        display_text: pulumi.Input[str]
+        value: pulumi.Input[float]
+elif False:
+    DashboardCommandlistChartThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardCommandlistChartThresholdArgs:
     def __init__(__self__, *,
@@ -3653,6 +4596,15 @@ class DashboardCommandlistChartThresholdArgs:
     def value(self, value: pulumi.Input[float]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class DashboardCommandlistChartValueMappingArgsDict(TypedDict):
+        display_text: pulumi.Input[str]
+        match_value: pulumi.Input[str]
+        order: pulumi.Input[int]
+        type: pulumi.Input[str]
+elif False:
+    DashboardCommandlistChartValueMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardCommandlistChartValueMappingArgs:
@@ -3702,6 +4654,30 @@ class DashboardCommandlistChartValueMappingArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class DashboardGaugeChartChartItemArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        expression_plain: pulumi.Input[str]
+        query_filter_asset: pulumi.Input['DashboardGaugeChartChartItemQueryFilterAssetArgsDict']
+        """
+        Asset filter
+        """
+        query_filter_attribute: pulumi.Input['DashboardGaugeChartChartItemQueryFilterAttributeArgsDict']
+        """
+        Attribute filter
+        """
+        query_plain: pulumi.Input[str]
+        ref_id: pulumi.Input[str]
+        type: pulumi.Input[str]
+        hidden: NotRequired[pulumi.Input[bool]]
+        label: NotRequired[pulumi.Input[str]]
+        query_group_function: NotRequired[pulumi.Input[str]]
+        query_group_unit: NotRequired[pulumi.Input[str]]
+        query_limit: NotRequired[pulumi.Input[int]]
+        query_sort_direction: NotRequired[pulumi.Input[int]]
+elif False:
+    DashboardGaugeChartChartItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardGaugeChartChartItemArgs:
@@ -3867,6 +4843,19 @@ class DashboardGaugeChartChartItemArgs:
         pulumi.set(self, "query_sort_direction", value)
 
 
+if not MYPY:
+    class DashboardGaugeChartChartItemQueryFilterAssetArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardGaugeChartChartItemQueryFilterAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardGaugeChartChartItemQueryFilterAssetArgs:
     def __init__(__self__, *,
@@ -3905,6 +4894,19 @@ class DashboardGaugeChartChartItemQueryFilterAssetArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class DashboardGaugeChartChartItemQueryFilterAttributeArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardGaugeChartChartItemQueryFilterAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardGaugeChartChartItemQueryFilterAttributeArgs:
@@ -3945,6 +4947,14 @@ class DashboardGaugeChartChartItemQueryFilterAttributeArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class DashboardGaugeChartThresholdArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        display_text: pulumi.Input[str]
+        value: pulumi.Input[float]
+elif False:
+    DashboardGaugeChartThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardGaugeChartThresholdArgs:
     def __init__(__self__, *,
@@ -3982,6 +4992,15 @@ class DashboardGaugeChartThresholdArgs:
     def value(self, value: pulumi.Input[float]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class DashboardGaugeChartValueMappingArgsDict(TypedDict):
+        display_text: pulumi.Input[str]
+        match_value: pulumi.Input[str]
+        order: pulumi.Input[int]
+        type: pulumi.Input[str]
+elif False:
+    DashboardGaugeChartValueMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardGaugeChartValueMappingArgs:
@@ -4031,6 +5050,30 @@ class DashboardGaugeChartValueMappingArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class DashboardHistogramChartChartItemArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        expression_plain: pulumi.Input[str]
+        query_filter_asset: pulumi.Input['DashboardHistogramChartChartItemQueryFilterAssetArgsDict']
+        """
+        Asset filter
+        """
+        query_filter_attribute: pulumi.Input['DashboardHistogramChartChartItemQueryFilterAttributeArgsDict']
+        """
+        Attribute filter
+        """
+        query_plain: pulumi.Input[str]
+        ref_id: pulumi.Input[str]
+        type: pulumi.Input[str]
+        hidden: NotRequired[pulumi.Input[bool]]
+        label: NotRequired[pulumi.Input[str]]
+        query_group_function: NotRequired[pulumi.Input[str]]
+        query_group_unit: NotRequired[pulumi.Input[str]]
+        query_limit: NotRequired[pulumi.Input[int]]
+        query_sort_direction: NotRequired[pulumi.Input[int]]
+elif False:
+    DashboardHistogramChartChartItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardHistogramChartChartItemArgs:
@@ -4196,6 +5239,19 @@ class DashboardHistogramChartChartItemArgs:
         pulumi.set(self, "query_sort_direction", value)
 
 
+if not MYPY:
+    class DashboardHistogramChartChartItemQueryFilterAssetArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardHistogramChartChartItemQueryFilterAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardHistogramChartChartItemQueryFilterAssetArgs:
     def __init__(__self__, *,
@@ -4234,6 +5290,19 @@ class DashboardHistogramChartChartItemQueryFilterAssetArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class DashboardHistogramChartChartItemQueryFilterAttributeArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardHistogramChartChartItemQueryFilterAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardHistogramChartChartItemQueryFilterAttributeArgs:
@@ -4274,6 +5343,14 @@ class DashboardHistogramChartChartItemQueryFilterAttributeArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class DashboardHistogramChartThresholdArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        display_text: pulumi.Input[str]
+        value: pulumi.Input[float]
+elif False:
+    DashboardHistogramChartThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardHistogramChartThresholdArgs:
     def __init__(__self__, *,
@@ -4311,6 +5388,15 @@ class DashboardHistogramChartThresholdArgs:
     def value(self, value: pulumi.Input[float]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class DashboardHistogramChartValueMappingArgsDict(TypedDict):
+        display_text: pulumi.Input[str]
+        match_value: pulumi.Input[str]
+        order: pulumi.Input[int]
+        type: pulumi.Input[str]
+elif False:
+    DashboardHistogramChartValueMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardHistogramChartValueMappingArgs:
@@ -4360,6 +5446,30 @@ class DashboardHistogramChartValueMappingArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class DashboardImageChartChartItemArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        expression_plain: pulumi.Input[str]
+        query_filter_asset: pulumi.Input['DashboardImageChartChartItemQueryFilterAssetArgsDict']
+        """
+        Asset filter
+        """
+        query_filter_attribute: pulumi.Input['DashboardImageChartChartItemQueryFilterAttributeArgsDict']
+        """
+        Attribute filter
+        """
+        query_plain: pulumi.Input[str]
+        ref_id: pulumi.Input[str]
+        type: pulumi.Input[str]
+        hidden: NotRequired[pulumi.Input[bool]]
+        label: NotRequired[pulumi.Input[str]]
+        query_group_function: NotRequired[pulumi.Input[str]]
+        query_group_unit: NotRequired[pulumi.Input[str]]
+        query_limit: NotRequired[pulumi.Input[int]]
+        query_sort_direction: NotRequired[pulumi.Input[int]]
+elif False:
+    DashboardImageChartChartItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardImageChartChartItemArgs:
@@ -4525,6 +5635,19 @@ class DashboardImageChartChartItemArgs:
         pulumi.set(self, "query_sort_direction", value)
 
 
+if not MYPY:
+    class DashboardImageChartChartItemQueryFilterAssetArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardImageChartChartItemQueryFilterAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardImageChartChartItemQueryFilterAssetArgs:
     def __init__(__self__, *,
@@ -4563,6 +5686,19 @@ class DashboardImageChartChartItemQueryFilterAssetArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class DashboardImageChartChartItemQueryFilterAttributeArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardImageChartChartItemQueryFilterAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardImageChartChartItemQueryFilterAttributeArgs:
@@ -4603,6 +5739,14 @@ class DashboardImageChartChartItemQueryFilterAttributeArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class DashboardImageChartThresholdArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        display_text: pulumi.Input[str]
+        value: pulumi.Input[float]
+elif False:
+    DashboardImageChartThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardImageChartThresholdArgs:
     def __init__(__self__, *,
@@ -4640,6 +5784,15 @@ class DashboardImageChartThresholdArgs:
     def value(self, value: pulumi.Input[float]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class DashboardImageChartValueMappingArgsDict(TypedDict):
+        display_text: pulumi.Input[str]
+        match_value: pulumi.Input[str]
+        order: pulumi.Input[int]
+        type: pulumi.Input[str]
+elif False:
+    DashboardImageChartValueMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardImageChartValueMappingArgs:
@@ -4690,6 +5843,19 @@ class DashboardImageChartValueMappingArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class DashboardRelatedAssetArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        asset id
+        """
+        name: pulumi.Input[str]
+        """
+        asset name
+        """
+elif False:
+    DashboardRelatedAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardRelatedAssetArgs:
     def __init__(__self__, *,
@@ -4726,6 +5892,30 @@ class DashboardRelatedAssetArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class DashboardStatChartChartItemArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        expression_plain: pulumi.Input[str]
+        query_filter_asset: pulumi.Input['DashboardStatChartChartItemQueryFilterAssetArgsDict']
+        """
+        Asset filter
+        """
+        query_filter_attribute: pulumi.Input['DashboardStatChartChartItemQueryFilterAttributeArgsDict']
+        """
+        Attribute filter
+        """
+        query_plain: pulumi.Input[str]
+        ref_id: pulumi.Input[str]
+        type: pulumi.Input[str]
+        hidden: NotRequired[pulumi.Input[bool]]
+        label: NotRequired[pulumi.Input[str]]
+        query_group_function: NotRequired[pulumi.Input[str]]
+        query_group_unit: NotRequired[pulumi.Input[str]]
+        query_limit: NotRequired[pulumi.Input[int]]
+        query_sort_direction: NotRequired[pulumi.Input[int]]
+elif False:
+    DashboardStatChartChartItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardStatChartChartItemArgs:
@@ -4891,6 +6081,19 @@ class DashboardStatChartChartItemArgs:
         pulumi.set(self, "query_sort_direction", value)
 
 
+if not MYPY:
+    class DashboardStatChartChartItemQueryFilterAssetArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardStatChartChartItemQueryFilterAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardStatChartChartItemQueryFilterAssetArgs:
     def __init__(__self__, *,
@@ -4929,6 +6132,19 @@ class DashboardStatChartChartItemQueryFilterAssetArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class DashboardStatChartChartItemQueryFilterAttributeArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardStatChartChartItemQueryFilterAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardStatChartChartItemQueryFilterAttributeArgs:
@@ -4969,6 +6185,14 @@ class DashboardStatChartChartItemQueryFilterAttributeArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class DashboardStatChartThresholdArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        display_text: pulumi.Input[str]
+        value: pulumi.Input[float]
+elif False:
+    DashboardStatChartThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardStatChartThresholdArgs:
     def __init__(__self__, *,
@@ -5006,6 +6230,15 @@ class DashboardStatChartThresholdArgs:
     def value(self, value: pulumi.Input[float]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class DashboardStatChartValueMappingArgsDict(TypedDict):
+        display_text: pulumi.Input[str]
+        match_value: pulumi.Input[str]
+        order: pulumi.Input[int]
+        type: pulumi.Input[str]
+elif False:
+    DashboardStatChartValueMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardStatChartValueMappingArgs:
@@ -5055,6 +6288,30 @@ class DashboardStatChartValueMappingArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class DashboardTableChartChartItemArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        expression_plain: pulumi.Input[str]
+        query_filter_asset: pulumi.Input['DashboardTableChartChartItemQueryFilterAssetArgsDict']
+        """
+        Asset filter
+        """
+        query_filter_attribute: pulumi.Input['DashboardTableChartChartItemQueryFilterAttributeArgsDict']
+        """
+        Attribute filter
+        """
+        query_plain: pulumi.Input[str]
+        ref_id: pulumi.Input[str]
+        type: pulumi.Input[str]
+        hidden: NotRequired[pulumi.Input[bool]]
+        label: NotRequired[pulumi.Input[str]]
+        query_group_function: NotRequired[pulumi.Input[str]]
+        query_group_unit: NotRequired[pulumi.Input[str]]
+        query_limit: NotRequired[pulumi.Input[int]]
+        query_sort_direction: NotRequired[pulumi.Input[int]]
+elif False:
+    DashboardTableChartChartItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardTableChartChartItemArgs:
@@ -5220,6 +6477,19 @@ class DashboardTableChartChartItemArgs:
         pulumi.set(self, "query_sort_direction", value)
 
 
+if not MYPY:
+    class DashboardTableChartChartItemQueryFilterAssetArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardTableChartChartItemQueryFilterAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardTableChartChartItemQueryFilterAssetArgs:
     def __init__(__self__, *,
@@ -5258,6 +6528,19 @@ class DashboardTableChartChartItemQueryFilterAssetArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class DashboardTableChartChartItemQueryFilterAttributeArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardTableChartChartItemQueryFilterAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardTableChartChartItemQueryFilterAttributeArgs:
@@ -5298,6 +6581,14 @@ class DashboardTableChartChartItemQueryFilterAttributeArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class DashboardTableChartThresholdArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        display_text: pulumi.Input[str]
+        value: pulumi.Input[float]
+elif False:
+    DashboardTableChartThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardTableChartThresholdArgs:
     def __init__(__self__, *,
@@ -5335,6 +6626,15 @@ class DashboardTableChartThresholdArgs:
     def value(self, value: pulumi.Input[float]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class DashboardTableChartValueMappingArgsDict(TypedDict):
+        display_text: pulumi.Input[str]
+        match_value: pulumi.Input[str]
+        order: pulumi.Input[int]
+        type: pulumi.Input[str]
+elif False:
+    DashboardTableChartValueMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardTableChartValueMappingArgs:
@@ -5385,6 +6685,19 @@ class DashboardTableChartValueMappingArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class DashboardTagArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        tag id
+        """
+        name: pulumi.Input[str]
+        """
+        tag name
+        """
+elif False:
+    DashboardTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardTagArgs:
     def __init__(__self__, *,
@@ -5421,6 +6734,30 @@ class DashboardTagArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class DashboardTextChartChartItemArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        expression_plain: pulumi.Input[str]
+        query_filter_asset: pulumi.Input['DashboardTextChartChartItemQueryFilterAssetArgsDict']
+        """
+        Asset filter
+        """
+        query_filter_attribute: pulumi.Input['DashboardTextChartChartItemQueryFilterAttributeArgsDict']
+        """
+        Attribute filter
+        """
+        query_plain: pulumi.Input[str]
+        ref_id: pulumi.Input[str]
+        type: pulumi.Input[str]
+        hidden: NotRequired[pulumi.Input[bool]]
+        label: NotRequired[pulumi.Input[str]]
+        query_group_function: NotRequired[pulumi.Input[str]]
+        query_group_unit: NotRequired[pulumi.Input[str]]
+        query_limit: NotRequired[pulumi.Input[int]]
+        query_sort_direction: NotRequired[pulumi.Input[int]]
+elif False:
+    DashboardTextChartChartItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardTextChartChartItemArgs:
@@ -5586,6 +6923,19 @@ class DashboardTextChartChartItemArgs:
         pulumi.set(self, "query_sort_direction", value)
 
 
+if not MYPY:
+    class DashboardTextChartChartItemQueryFilterAssetArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardTextChartChartItemQueryFilterAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardTextChartChartItemQueryFilterAssetArgs:
     def __init__(__self__, *,
@@ -5624,6 +6974,19 @@ class DashboardTextChartChartItemQueryFilterAssetArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class DashboardTextChartChartItemQueryFilterAttributeArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardTextChartChartItemQueryFilterAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardTextChartChartItemQueryFilterAttributeArgs:
@@ -5664,6 +7027,14 @@ class DashboardTextChartChartItemQueryFilterAttributeArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class DashboardTextChartThresholdArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        display_text: pulumi.Input[str]
+        value: pulumi.Input[float]
+elif False:
+    DashboardTextChartThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardTextChartThresholdArgs:
     def __init__(__self__, *,
@@ -5701,6 +7072,15 @@ class DashboardTextChartThresholdArgs:
     def value(self, value: pulumi.Input[float]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class DashboardTextChartValueMappingArgsDict(TypedDict):
+        display_text: pulumi.Input[str]
+        match_value: pulumi.Input[str]
+        order: pulumi.Input[int]
+        type: pulumi.Input[str]
+elif False:
+    DashboardTextChartValueMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardTextChartValueMappingArgs:
@@ -5750,6 +7130,30 @@ class DashboardTextChartValueMappingArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class DashboardTimeseriesChartChartItemArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        expression_plain: pulumi.Input[str]
+        query_filter_asset: pulumi.Input['DashboardTimeseriesChartChartItemQueryFilterAssetArgsDict']
+        """
+        Asset filter
+        """
+        query_filter_attribute: pulumi.Input['DashboardTimeseriesChartChartItemQueryFilterAttributeArgsDict']
+        """
+        Attribute filter
+        """
+        query_plain: pulumi.Input[str]
+        ref_id: pulumi.Input[str]
+        type: pulumi.Input[str]
+        hidden: NotRequired[pulumi.Input[bool]]
+        label: NotRequired[pulumi.Input[str]]
+        query_group_function: NotRequired[pulumi.Input[str]]
+        query_group_unit: NotRequired[pulumi.Input[str]]
+        query_limit: NotRequired[pulumi.Input[int]]
+        query_sort_direction: NotRequired[pulumi.Input[int]]
+elif False:
+    DashboardTimeseriesChartChartItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardTimeseriesChartChartItemArgs:
@@ -5915,6 +7319,19 @@ class DashboardTimeseriesChartChartItemArgs:
         pulumi.set(self, "query_sort_direction", value)
 
 
+if not MYPY:
+    class DashboardTimeseriesChartChartItemQueryFilterAssetArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardTimeseriesChartChartItemQueryFilterAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardTimeseriesChartChartItemQueryFilterAssetArgs:
     def __init__(__self__, *,
@@ -5953,6 +7370,19 @@ class DashboardTimeseriesChartChartItemQueryFilterAssetArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class DashboardTimeseriesChartChartItemQueryFilterAttributeArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    DashboardTimeseriesChartChartItemQueryFilterAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardTimeseriesChartChartItemQueryFilterAttributeArgs:
@@ -5993,6 +7423,14 @@ class DashboardTimeseriesChartChartItemQueryFilterAttributeArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class DashboardTimeseriesChartThresholdArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        display_text: pulumi.Input[str]
+        value: pulumi.Input[float]
+elif False:
+    DashboardTimeseriesChartThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardTimeseriesChartThresholdArgs:
     def __init__(__self__, *,
@@ -6030,6 +7468,15 @@ class DashboardTimeseriesChartThresholdArgs:
     def value(self, value: pulumi.Input[float]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class DashboardTimeseriesChartValueMappingArgsDict(TypedDict):
+        display_text: pulumi.Input[str]
+        match_value: pulumi.Input[str]
+        order: pulumi.Input[int]
+        type: pulumi.Input[str]
+elif False:
+    DashboardTimeseriesChartValueMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardTimeseriesChartValueMappingArgs:
@@ -6079,6 +7526,51 @@ class DashboardTimeseriesChartValueMappingArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class FunctionFunctionItemArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        how the expression is shown (i.e 'A * 2')
+        """
+        expression_plain: pulumi.Input[str]
+        """
+        actual mongo query containing the expression
+        """
+        query_filter_asset: pulumi.Input['FunctionFunctionItemQueryFilterAssetArgsDict']
+        """
+        Asset filter
+        """
+        query_filter_attribute: pulumi.Input['FunctionFunctionItemQueryFilterAttributeArgsDict']
+        """
+        Attribute filter
+        """
+        query_group_function: pulumi.Input[str]
+        """
+        function used to aggregate data
+        """
+        query_group_unit: pulumi.Input[str]
+        """
+        time window to apply the aggregation
+        """
+        query_plain: pulumi.Input[str]
+        """
+        actual mongo query
+        """
+        ref_id: pulumi.Input[str]
+        """
+        identifier of the variable (i.e 'A')
+        """
+        type: pulumi.Input[str]
+        """
+        either QUERY or EXPRESSION
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the function item
+        """
+elif False:
+    FunctionFunctionItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FunctionFunctionItemArgs:
@@ -6238,6 +7730,19 @@ class FunctionFunctionItemArgs:
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class FunctionFunctionItemQueryFilterAssetArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    FunctionFunctionItemQueryFilterAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FunctionFunctionItemQueryFilterAssetArgs:
     def __init__(__self__, *,
@@ -6276,6 +7781,23 @@ class FunctionFunctionItemQueryFilterAssetArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class FunctionFunctionItemQueryFilterAttributeArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        type of the resource
+        """
+elif False:
+    FunctionFunctionItemQueryFilterAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FunctionFunctionItemQueryFilterAttributeArgs:
@@ -6332,6 +7854,19 @@ class FunctionFunctionItemQueryFilterAttributeArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class FunctionRelatedAssetArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        asset id
+        """
+        name: pulumi.Input[str]
+        """
+        asset name
+        """
+elif False:
+    FunctionRelatedAssetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FunctionRelatedAssetArgs:
     def __init__(__self__, *,
@@ -6369,6 +7904,19 @@ class FunctionRelatedAssetArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class FunctionTagArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        tag id
+        """
+        name: pulumi.Input[str]
+        """
+        tag name
+        """
+elif False:
+    FunctionTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FunctionTagArgs:
     def __init__(__self__, *,
@@ -6405,6 +7953,19 @@ class FunctionTagArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class FunctionTargetAssetArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+elif False:
+    FunctionTargetAssetArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FunctionTargetAssetArgs:
@@ -6444,6 +8005,23 @@ class FunctionTargetAssetArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class FunctionTargetAttributeArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        type of the resource
+        """
+elif False:
+    FunctionTargetAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FunctionTargetAttributeArgs:
@@ -6499,6 +8077,35 @@ class FunctionTargetAttributeArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class LineAbsorptivityArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineAbsorptivityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineAbsorptivityArgs:
@@ -6602,6 +8209,31 @@ class LineAbsorptivityArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class LineActivePowerArgsDict(TypedDict):
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineActivePowerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LineActivePowerArgs:
     def __init__(__self__, *,
@@ -6688,6 +8320,31 @@ class LineActivePowerArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
+
+if not MYPY:
+    class LineActivePowerEndArgsDict(TypedDict):
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineActivePowerEndArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineActivePowerEndArgs:
@@ -6776,6 +8433,31 @@ class LineActivePowerEndArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class LineAmpacityArgsDict(TypedDict):
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineAmpacityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LineAmpacityArgs:
     def __init__(__self__, *,
@@ -6862,6 +8544,35 @@ class LineAmpacityArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
+
+if not MYPY:
+    class LineAtmosphereArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineAtmosphereArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineAtmosphereArgs:
@@ -6965,6 +8676,35 @@ class LineAtmosphereArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class LineCapacitanceArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineCapacitanceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LineCapacitanceArgs:
     def __init__(__self__, *,
@@ -7066,6 +8806,35 @@ class LineCapacitanceArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
+
+if not MYPY:
+    class LineConductanceArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineConductanceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineConductanceArgs:
@@ -7169,6 +8938,31 @@ class LineConductanceArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class LineCurrentArgsDict(TypedDict):
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineCurrentArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LineCurrentArgs:
     def __init__(__self__, *,
@@ -7255,6 +9049,31 @@ class LineCurrentArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
+
+if not MYPY:
+    class LineCurrentRArgsDict(TypedDict):
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineCurrentRArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineCurrentRArgs:
@@ -7343,6 +9162,31 @@ class LineCurrentRArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class LineCurrentTArgsDict(TypedDict):
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineCurrentTArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LineCurrentTArgs:
     def __init__(__self__, *,
@@ -7429,6 +9273,35 @@ class LineCurrentTArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
+
+if not MYPY:
+    class LineDiameterArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineDiameterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineDiameterArgs:
@@ -7532,6 +9405,35 @@ class LineDiameterArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class LineEmissivityArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineEmissivityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LineEmissivityArgs:
     def __init__(__self__, *,
@@ -7634,6 +9536,31 @@ class LineEmissivityArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class LineEnergyArgsDict(TypedDict):
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineEnergyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LineEnergyArgs:
     def __init__(__self__, *,
@@ -7721,6 +9648,19 @@ class LineEnergyArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class LineKindArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        kind id
+        """
+        name: pulumi.Input[str]
+        """
+        kind name
+        """
+elif False:
+    LineKindArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LineKindArgs:
     def __init__(__self__, *,
@@ -7757,6 +9697,35 @@ class LineKindArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class LineLengthArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineLengthArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineLengthArgs:
@@ -7860,6 +9829,31 @@ class LineLengthArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class LineMaxTemperatureArgsDict(TypedDict):
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineMaxTemperatureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LineMaxTemperatureArgs:
     def __init__(__self__, *,
@@ -7946,6 +9940,35 @@ class LineMaxTemperatureArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
+
+if not MYPY:
+    class LineMaximumAllowedCurrentArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineMaximumAllowedCurrentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineMaximumAllowedCurrentArgs:
@@ -8049,6 +10072,35 @@ class LineMaximumAllowedCurrentArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class LineMaximumAllowedPowerArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineMaximumAllowedPowerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LineMaximumAllowedPowerArgs:
     def __init__(__self__, *,
@@ -8150,6 +10202,35 @@ class LineMaximumAllowedPowerArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
+
+if not MYPY:
+    class LineMaximumAllowedTemperatureArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineMaximumAllowedTemperatureArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineMaximumAllowedTemperatureArgs:
@@ -8253,6 +10334,35 @@ class LineMaximumAllowedTemperatureArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class LineMaximumAllowedTemperatureLteArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineMaximumAllowedTemperatureLteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LineMaximumAllowedTemperatureLteArgs:
     def __init__(__self__, *,
@@ -8354,6 +10464,35 @@ class LineMaximumAllowedTemperatureLteArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
+
+if not MYPY:
+    class LineMaximumAllowedTemperatureSteArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineMaximumAllowedTemperatureSteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineMaximumAllowedTemperatureSteArgs:
@@ -8457,6 +10596,35 @@ class LineMaximumAllowedTemperatureSteArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class LineNumberOfConductorsArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineNumberOfConductorsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LineNumberOfConductorsArgs:
     def __init__(__self__, *,
@@ -8558,6 +10726,35 @@ class LineNumberOfConductorsArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
+
+if not MYPY:
+    class LineReactanceArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineReactanceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineReactanceArgs:
@@ -8661,6 +10858,31 @@ class LineReactanceArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class LineReactivePowerArgsDict(TypedDict):
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineReactivePowerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LineReactivePowerArgs:
     def __init__(__self__, *,
@@ -8747,6 +10969,35 @@ class LineReactivePowerArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
+
+if not MYPY:
+    class LineReferenceResistanceArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineReferenceResistanceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineReferenceResistanceArgs:
@@ -8850,42 +11101,34 @@ class LineReferenceResistanceArgs:
         pulumi.set(self, "unit", value)
 
 
-@pulumi.input_type
-class LineRelatedAssetArgs:
-    def __init__(__self__, *,
-                 id: pulumi.Input[str],
-                 name: pulumi.Input[str]):
+if not MYPY:
+    class LineResistanceArgsDict(TypedDict):
+        value: pulumi.Input[str]
         """
-        :param pulumi.Input[str] id: asset id
-        :param pulumi.Input[str] name: asset name
+        metadata value
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def id(self) -> pulumi.Input[str]:
+        asset: NotRequired[pulumi.Input[str]]
         """
-        asset id
+        reference to the asset to be linked to
         """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
+        id: NotRequired[pulumi.Input[str]]
         """
-        asset name
+        id of the resource
         """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineResistanceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineResistanceArgs:
@@ -8989,6 +11232,35 @@ class LineResistanceArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class LineSafetyMarginForPowerArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineSafetyMarginForPowerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LineSafetyMarginForPowerArgs:
     def __init__(__self__, *,
@@ -9090,6 +11362,35 @@ class LineSafetyMarginForPowerArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
+
+if not MYPY:
+    class LineSusceptanceArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineSusceptanceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineSusceptanceArgs:
@@ -9193,6 +11494,19 @@ class LineSusceptanceArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class LineTagArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        tag id
+        """
+        name: pulumi.Input[str]
+        """
+        tag name
+        """
+elif False:
+    LineTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LineTagArgs:
     def __init__(__self__, *,
@@ -9229,6 +11543,35 @@ class LineTagArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class LineTemperatureCoeffResistanceArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineTemperatureCoeffResistanceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineTemperatureCoeffResistanceArgs:
@@ -9332,6 +11675,31 @@ class LineTemperatureCoeffResistanceArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class LineVoltageRArgsDict(TypedDict):
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineVoltageRArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LineVoltageRArgs:
     def __init__(__self__, *,
@@ -9418,6 +11786,31 @@ class LineVoltageRArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
+
+if not MYPY:
+    class LineVoltageStArgsDict(TypedDict):
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineVoltageStArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineVoltageStArgs:
@@ -9506,6 +11899,31 @@ class LineVoltageStArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class LineVoltageTrArgsDict(TypedDict):
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    LineVoltageTrArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LineVoltageTrArgs:
     def __init__(__self__, *,
@@ -9592,6 +12010,35 @@ class LineVoltageTrArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
+
+if not MYPY:
+    class SegmentAltitudeArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    SegmentAltitudeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SegmentAltitudeArgs:
@@ -9695,6 +12142,35 @@ class SegmentAltitudeArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class SegmentAzimuthArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    SegmentAzimuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SegmentAzimuthArgs:
     def __init__(__self__, *,
@@ -9796,6 +12272,35 @@ class SegmentAzimuthArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
+
+if not MYPY:
+    class SegmentCumulativeDistanceArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    SegmentCumulativeDistanceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SegmentCumulativeDistanceArgs:
@@ -9899,6 +12404,19 @@ class SegmentCumulativeDistanceArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class SegmentKindArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        kind id
+        """
+        name: pulumi.Input[str]
+        """
+        kind name
+        """
+elif False:
+    SegmentKindArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SegmentKindArgs:
     def __init__(__self__, *,
@@ -9935,6 +12453,19 @@ class SegmentKindArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class SegmentRelatedAssetArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        asset id
+        """
+        name: pulumi.Input[str]
+        """
+        asset name
+        """
+elif False:
+    SegmentRelatedAssetArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SegmentRelatedAssetArgs:
@@ -9973,6 +12504,19 @@ class SegmentRelatedAssetArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class SegmentTagArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        tag id
+        """
+        name: pulumi.Input[str]
+        """
+        tag name
+        """
+elif False:
+    SegmentTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SegmentTagArgs:
     def __init__(__self__, *,
@@ -10009,6 +12553,31 @@ class SegmentTagArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class SegmentTemperatureArgsDict(TypedDict):
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    SegmentTemperatureArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SegmentTemperatureArgs:
@@ -10097,6 +12666,31 @@ class SegmentTemperatureArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class SegmentWindDirectionArgsDict(TypedDict):
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    SegmentWindDirectionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SegmentWindDirectionArgs:
     def __init__(__self__, *,
@@ -10183,6 +12777,31 @@ class SegmentWindDirectionArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
+
+if not MYPY:
+    class SegmentWindSpeedArgsDict(TypedDict):
+        asset: NotRequired[pulumi.Input[str]]
+        """
+        reference to the asset to be linked to
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        id of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the resource
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        unit of measure
+        """
+elif False:
+    SegmentWindSpeedArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SegmentWindSpeedArgs:
