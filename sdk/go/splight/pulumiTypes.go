@@ -10470,112 +10470,6 @@ func (o FunctionFunctionItemQueryFilterAttributeOutput) Type() pulumi.StringPtrO
 	return o.ApplyT(func(v FunctionFunctionItemQueryFilterAttribute) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type FunctionRelatedAsset struct {
-	// asset id
-	Id string `pulumi:"id"`
-	// asset name
-	Name string `pulumi:"name"`
-}
-
-// FunctionRelatedAssetInput is an input type that accepts FunctionRelatedAssetArgs and FunctionRelatedAssetOutput values.
-// You can construct a concrete instance of `FunctionRelatedAssetInput` via:
-//
-//	FunctionRelatedAssetArgs{...}
-type FunctionRelatedAssetInput interface {
-	pulumi.Input
-
-	ToFunctionRelatedAssetOutput() FunctionRelatedAssetOutput
-	ToFunctionRelatedAssetOutputWithContext(context.Context) FunctionRelatedAssetOutput
-}
-
-type FunctionRelatedAssetArgs struct {
-	// asset id
-	Id pulumi.StringInput `pulumi:"id"`
-	// asset name
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (FunctionRelatedAssetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FunctionRelatedAsset)(nil)).Elem()
-}
-
-func (i FunctionRelatedAssetArgs) ToFunctionRelatedAssetOutput() FunctionRelatedAssetOutput {
-	return i.ToFunctionRelatedAssetOutputWithContext(context.Background())
-}
-
-func (i FunctionRelatedAssetArgs) ToFunctionRelatedAssetOutputWithContext(ctx context.Context) FunctionRelatedAssetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionRelatedAssetOutput)
-}
-
-// FunctionRelatedAssetArrayInput is an input type that accepts FunctionRelatedAssetArray and FunctionRelatedAssetArrayOutput values.
-// You can construct a concrete instance of `FunctionRelatedAssetArrayInput` via:
-//
-//	FunctionRelatedAssetArray{ FunctionRelatedAssetArgs{...} }
-type FunctionRelatedAssetArrayInput interface {
-	pulumi.Input
-
-	ToFunctionRelatedAssetArrayOutput() FunctionRelatedAssetArrayOutput
-	ToFunctionRelatedAssetArrayOutputWithContext(context.Context) FunctionRelatedAssetArrayOutput
-}
-
-type FunctionRelatedAssetArray []FunctionRelatedAssetInput
-
-func (FunctionRelatedAssetArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FunctionRelatedAsset)(nil)).Elem()
-}
-
-func (i FunctionRelatedAssetArray) ToFunctionRelatedAssetArrayOutput() FunctionRelatedAssetArrayOutput {
-	return i.ToFunctionRelatedAssetArrayOutputWithContext(context.Background())
-}
-
-func (i FunctionRelatedAssetArray) ToFunctionRelatedAssetArrayOutputWithContext(ctx context.Context) FunctionRelatedAssetArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionRelatedAssetArrayOutput)
-}
-
-type FunctionRelatedAssetOutput struct{ *pulumi.OutputState }
-
-func (FunctionRelatedAssetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FunctionRelatedAsset)(nil)).Elem()
-}
-
-func (o FunctionRelatedAssetOutput) ToFunctionRelatedAssetOutput() FunctionRelatedAssetOutput {
-	return o
-}
-
-func (o FunctionRelatedAssetOutput) ToFunctionRelatedAssetOutputWithContext(ctx context.Context) FunctionRelatedAssetOutput {
-	return o
-}
-
-// asset id
-func (o FunctionRelatedAssetOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v FunctionRelatedAsset) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// asset name
-func (o FunctionRelatedAssetOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v FunctionRelatedAsset) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type FunctionRelatedAssetArrayOutput struct{ *pulumi.OutputState }
-
-func (FunctionRelatedAssetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FunctionRelatedAsset)(nil)).Elem()
-}
-
-func (o FunctionRelatedAssetArrayOutput) ToFunctionRelatedAssetArrayOutput() FunctionRelatedAssetArrayOutput {
-	return o
-}
-
-func (o FunctionRelatedAssetArrayOutput) ToFunctionRelatedAssetArrayOutputWithContext(ctx context.Context) FunctionRelatedAssetArrayOutput {
-	return o
-}
-
-func (o FunctionRelatedAssetArrayOutput) Index(i pulumi.IntInput) FunctionRelatedAssetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FunctionRelatedAsset {
-		return vs[0].([]FunctionRelatedAsset)[vs[1].(int)]
-	}).(FunctionRelatedAssetOutput)
-}
-
 type FunctionTag struct {
 	// tag id
 	Id string `pulumi:"id"`
@@ -18031,112 +17925,6 @@ func (o SegmentKindArrayOutput) Index(i pulumi.IntInput) SegmentKindOutput {
 	}).(SegmentKindOutput)
 }
 
-type SegmentRelatedAsset struct {
-	// asset id
-	Id string `pulumi:"id"`
-	// asset name
-	Name string `pulumi:"name"`
-}
-
-// SegmentRelatedAssetInput is an input type that accepts SegmentRelatedAssetArgs and SegmentRelatedAssetOutput values.
-// You can construct a concrete instance of `SegmentRelatedAssetInput` via:
-//
-//	SegmentRelatedAssetArgs{...}
-type SegmentRelatedAssetInput interface {
-	pulumi.Input
-
-	ToSegmentRelatedAssetOutput() SegmentRelatedAssetOutput
-	ToSegmentRelatedAssetOutputWithContext(context.Context) SegmentRelatedAssetOutput
-}
-
-type SegmentRelatedAssetArgs struct {
-	// asset id
-	Id pulumi.StringInput `pulumi:"id"`
-	// asset name
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (SegmentRelatedAssetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SegmentRelatedAsset)(nil)).Elem()
-}
-
-func (i SegmentRelatedAssetArgs) ToSegmentRelatedAssetOutput() SegmentRelatedAssetOutput {
-	return i.ToSegmentRelatedAssetOutputWithContext(context.Background())
-}
-
-func (i SegmentRelatedAssetArgs) ToSegmentRelatedAssetOutputWithContext(ctx context.Context) SegmentRelatedAssetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SegmentRelatedAssetOutput)
-}
-
-// SegmentRelatedAssetArrayInput is an input type that accepts SegmentRelatedAssetArray and SegmentRelatedAssetArrayOutput values.
-// You can construct a concrete instance of `SegmentRelatedAssetArrayInput` via:
-//
-//	SegmentRelatedAssetArray{ SegmentRelatedAssetArgs{...} }
-type SegmentRelatedAssetArrayInput interface {
-	pulumi.Input
-
-	ToSegmentRelatedAssetArrayOutput() SegmentRelatedAssetArrayOutput
-	ToSegmentRelatedAssetArrayOutputWithContext(context.Context) SegmentRelatedAssetArrayOutput
-}
-
-type SegmentRelatedAssetArray []SegmentRelatedAssetInput
-
-func (SegmentRelatedAssetArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SegmentRelatedAsset)(nil)).Elem()
-}
-
-func (i SegmentRelatedAssetArray) ToSegmentRelatedAssetArrayOutput() SegmentRelatedAssetArrayOutput {
-	return i.ToSegmentRelatedAssetArrayOutputWithContext(context.Background())
-}
-
-func (i SegmentRelatedAssetArray) ToSegmentRelatedAssetArrayOutputWithContext(ctx context.Context) SegmentRelatedAssetArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SegmentRelatedAssetArrayOutput)
-}
-
-type SegmentRelatedAssetOutput struct{ *pulumi.OutputState }
-
-func (SegmentRelatedAssetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SegmentRelatedAsset)(nil)).Elem()
-}
-
-func (o SegmentRelatedAssetOutput) ToSegmentRelatedAssetOutput() SegmentRelatedAssetOutput {
-	return o
-}
-
-func (o SegmentRelatedAssetOutput) ToSegmentRelatedAssetOutputWithContext(ctx context.Context) SegmentRelatedAssetOutput {
-	return o
-}
-
-// asset id
-func (o SegmentRelatedAssetOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v SegmentRelatedAsset) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// asset name
-func (o SegmentRelatedAssetOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v SegmentRelatedAsset) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type SegmentRelatedAssetArrayOutput struct{ *pulumi.OutputState }
-
-func (SegmentRelatedAssetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SegmentRelatedAsset)(nil)).Elem()
-}
-
-func (o SegmentRelatedAssetArrayOutput) ToSegmentRelatedAssetArrayOutput() SegmentRelatedAssetArrayOutput {
-	return o
-}
-
-func (o SegmentRelatedAssetArrayOutput) ToSegmentRelatedAssetArrayOutputWithContext(ctx context.Context) SegmentRelatedAssetArrayOutput {
-	return o
-}
-
-func (o SegmentRelatedAssetArrayOutput) Index(i pulumi.IntInput) SegmentRelatedAssetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SegmentRelatedAsset {
-		return vs[0].([]SegmentRelatedAsset)[vs[1].(int)]
-	}).(SegmentRelatedAssetOutput)
-}
-
 type SegmentTag struct {
 	// tag id
 	Id string `pulumi:"id"`
@@ -19017,8 +18805,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionFunctionItemArrayInput)(nil)).Elem(), FunctionFunctionItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionFunctionItemQueryFilterAssetInput)(nil)).Elem(), FunctionFunctionItemQueryFilterAssetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionFunctionItemQueryFilterAttributeInput)(nil)).Elem(), FunctionFunctionItemQueryFilterAttributeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FunctionRelatedAssetInput)(nil)).Elem(), FunctionRelatedAssetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FunctionRelatedAssetArrayInput)(nil)).Elem(), FunctionRelatedAssetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTagInput)(nil)).Elem(), FunctionTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTagArrayInput)(nil)).Elem(), FunctionTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTargetAssetInput)(nil)).Elem(), FunctionTargetAssetArgs{})
@@ -19099,8 +18885,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentCumulativeDistancePtrInput)(nil)).Elem(), SegmentCumulativeDistanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentKindInput)(nil)).Elem(), SegmentKindArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentKindArrayInput)(nil)).Elem(), SegmentKindArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SegmentRelatedAssetInput)(nil)).Elem(), SegmentRelatedAssetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SegmentRelatedAssetArrayInput)(nil)).Elem(), SegmentRelatedAssetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentTagInput)(nil)).Elem(), SegmentTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentTagArrayInput)(nil)).Elem(), SegmentTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentTemperatureInput)(nil)).Elem(), SegmentTemperatureArgs{})
@@ -19275,8 +19059,6 @@ func init() {
 	pulumi.RegisterOutputType(FunctionFunctionItemArrayOutput{})
 	pulumi.RegisterOutputType(FunctionFunctionItemQueryFilterAssetOutput{})
 	pulumi.RegisterOutputType(FunctionFunctionItemQueryFilterAttributeOutput{})
-	pulumi.RegisterOutputType(FunctionRelatedAssetOutput{})
-	pulumi.RegisterOutputType(FunctionRelatedAssetArrayOutput{})
 	pulumi.RegisterOutputType(FunctionTagOutput{})
 	pulumi.RegisterOutputType(FunctionTagArrayOutput{})
 	pulumi.RegisterOutputType(FunctionTargetAssetOutput{})
@@ -19357,8 +19139,6 @@ func init() {
 	pulumi.RegisterOutputType(SegmentCumulativeDistancePtrOutput{})
 	pulumi.RegisterOutputType(SegmentKindOutput{})
 	pulumi.RegisterOutputType(SegmentKindArrayOutput{})
-	pulumi.RegisterOutputType(SegmentRelatedAssetOutput{})
-	pulumi.RegisterOutputType(SegmentRelatedAssetArrayOutput{})
 	pulumi.RegisterOutputType(SegmentTagOutput{})
 	pulumi.RegisterOutputType(SegmentTagArrayOutput{})
 	pulumi.RegisterOutputType(SegmentTemperatureOutput{})

@@ -535,9 +535,6 @@
                             }
                         }
                     },
-                    "related_assets": {
-                        "maxItemsOne": false
-                    },
                     "tags": {
                         "maxItemsOne": false
                     },
@@ -675,9 +672,6 @@
                         "maxItemsOne": true
                     },
                     "kind": {
-                        "maxItemsOne": false
-                    },
-                    "related_assets": {
                         "maxItemsOne": false
                     },
                     "tags": {

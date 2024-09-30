@@ -1181,17 +1181,6 @@ export interface FunctionFunctionItemQueryFilterAttribute {
     type?: string;
 }
 
-export interface FunctionRelatedAsset {
-    /**
-     * asset id
-     */
-    id: string;
-    /**
-     * asset name
-     */
-    name: string;
-}
-
 export interface FunctionTag {
     /**
      * tag id
@@ -2150,17 +2139,6 @@ export interface SegmentKind {
     id: string;
     /**
      * kind name
-     */
-    name: string;
-}
-
-export interface SegmentRelatedAsset {
-    /**
-     * asset id
-     */
-    id: string;
-    /**
-     * asset name
      */
     name: string;
 }

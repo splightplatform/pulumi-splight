@@ -109,7 +109,6 @@ __all__ = [
     'FunctionFunctionItem',
     'FunctionFunctionItemQueryFilterAsset',
     'FunctionFunctionItemQueryFilterAttribute',
-    'FunctionRelatedAsset',
     'FunctionTag',
     'FunctionTargetAsset',
     'FunctionTargetAttribute',
@@ -150,7 +149,6 @@ __all__ = [
     'SegmentAzimuth',
     'SegmentCumulativeDistance',
     'SegmentKind',
-    'SegmentRelatedAsset',
     'SegmentTag',
     'SegmentTemperature',
     'SegmentWindDirection',
@@ -5670,35 +5668,6 @@ class FunctionFunctionItemQueryFilterAttribute(dict):
 
 
 @pulumi.output_type
-class FunctionRelatedAsset(dict):
-    def __init__(__self__, *,
-                 id: str,
-                 name: str):
-        """
-        :param str id: asset id
-        :param str name: asset name
-        """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        asset id
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        asset name
-        """
-        return pulumi.get(self, "name")
-
-
-@pulumi.output_type
 class FunctionTag(dict):
     def __init__(__self__, *,
                  id: str,
@@ -8404,35 +8373,6 @@ class SegmentKind(dict):
     def name(self) -> str:
         """
         kind name
-        """
-        return pulumi.get(self, "name")
-
-
-@pulumi.output_type
-class SegmentRelatedAsset(dict):
-    def __init__(__self__, *,
-                 id: str,
-                 name: str):
-        """
-        :param str id: asset id
-        :param str name: asset name
-        """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        asset id
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        asset name
         """
         return pulumi.get(self, "name")
 

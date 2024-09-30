@@ -89,12 +89,6 @@ namespace Splight.Splight
         public Output<int> RateValue { get; private set; } = null!;
 
         /// <summary>
-        /// related assets of the resource
-        /// </summary>
-        [Output("relatedAssets")]
-        public Output<ImmutableArray<Outputs.FunctionRelatedAsset>> RelatedAssets { get; private set; } = null!;
-
-        /// <summary>
         /// tags of the resource
         /// </summary>
         [Output("tags")]
@@ -249,18 +243,6 @@ namespace Splight.Splight
         [Input("rateValue")]
         public Input<int>? RateValue { get; set; }
 
-        [Input("relatedAssets")]
-        private InputList<Inputs.FunctionRelatedAssetArgs>? _relatedAssets;
-
-        /// <summary>
-        /// related assets of the resource
-        /// </summary>
-        public InputList<Inputs.FunctionRelatedAssetArgs> RelatedAssets
-        {
-            get => _relatedAssets ?? (_relatedAssets = new InputList<Inputs.FunctionRelatedAssetArgs>());
-            set => _relatedAssets = value;
-        }
-
         [Input("tags")]
         private InputList<Inputs.FunctionTagArgs>? _tags;
 
@@ -382,18 +364,6 @@ namespace Splight.Splight
         /// </summary>
         [Input("rateValue")]
         public Input<int>? RateValue { get; set; }
-
-        [Input("relatedAssets")]
-        private InputList<Inputs.FunctionRelatedAssetGetArgs>? _relatedAssets;
-
-        /// <summary>
-        /// related assets of the resource
-        /// </summary>
-        public InputList<Inputs.FunctionRelatedAssetGetArgs> RelatedAssets
-        {
-            get => _relatedAssets ?? (_relatedAssets = new InputList<Inputs.FunctionRelatedAssetGetArgs>());
-            set => _relatedAssets = value;
-        }
 
         [Input("tags")]
         private InputList<Inputs.FunctionTagGetArgs>? _tags;

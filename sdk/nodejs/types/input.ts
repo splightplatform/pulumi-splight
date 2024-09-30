@@ -1181,17 +1181,6 @@ export interface FunctionFunctionItemQueryFilterAttribute {
     type?: pulumi.Input<string>;
 }
 
-export interface FunctionRelatedAsset {
-    /**
-     * asset id
-     */
-    id: pulumi.Input<string>;
-    /**
-     * asset name
-     */
-    name: pulumi.Input<string>;
-}
-
 export interface FunctionTag {
     /**
      * tag id
@@ -2128,17 +2117,6 @@ export interface SegmentKind {
     id: pulumi.Input<string>;
     /**
      * kind name
-     */
-    name: pulumi.Input<string>;
-}
-
-export interface SegmentRelatedAsset {
-    /**
-     * asset id
-     */
-    id: pulumi.Input<string>;
-    /**
-     * asset name
      */
     name: pulumi.Input<string>;
 }

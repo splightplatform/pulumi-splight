@@ -72,10 +72,6 @@ export class Segment extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * related assets of the resource
-     */
-    public readonly relatedAssets!: pulumi.Output<outputs.SegmentRelatedAsset[] | undefined>;
-    /**
      * tags of the resource
      */
     public readonly tags!: pulumi.Output<outputs.SegmentTag[] | undefined>;
@@ -112,7 +108,6 @@ export class Segment extends pulumi.CustomResource {
             resourceInputs["geometry"] = state ? state.geometry : undefined;
             resourceInputs["kinds"] = state ? state.kinds : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["relatedAssets"] = state ? state.relatedAssets : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["temperatures"] = state ? state.temperatures : undefined;
             resourceInputs["windDirections"] = state ? state.windDirections : undefined;
@@ -134,7 +129,6 @@ export class Segment extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["relatedAssets"] = args ? args.relatedAssets : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["kinds"] = undefined /*out*/;
             resourceInputs["temperatures"] = undefined /*out*/;
@@ -178,10 +172,6 @@ export interface SegmentState {
      * name of the resource
      */
     name?: pulumi.Input<string>;
-    /**
-     * related assets of the resource
-     */
-    relatedAssets?: pulumi.Input<pulumi.Input<inputs.SegmentRelatedAsset>[]>;
     /**
      * tags of the resource
      */
@@ -228,10 +218,6 @@ export interface SegmentArgs {
      * name of the resource
      */
     name?: pulumi.Input<string>;
-    /**
-     * related assets of the resource
-     */
-    relatedAssets?: pulumi.Input<pulumi.Input<inputs.SegmentRelatedAsset>[]>;
     /**
      * tags of the resource
      */
