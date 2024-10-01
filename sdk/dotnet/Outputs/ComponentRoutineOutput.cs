@@ -18,7 +18,6 @@ namespace Splight.Splight.Outputs
         public readonly bool? Multiple;
         public readonly string Name;
         public readonly bool? Required;
-        public readonly bool? Sensitive;
         public readonly string? Type;
         public readonly string ValueType;
         public readonly ImmutableArray<Outputs.ComponentRoutineOutputValue> Values;
@@ -33,8 +32,6 @@ namespace Splight.Splight.Outputs
 
             bool? required,
 
-            bool? sensitive,
-
             string? type,
 
             string valueType,
@@ -45,7 +42,6 @@ namespace Splight.Splight.Outputs
             Multiple = multiple;
             Name = name;
             Required = required;
-            Sensitive = sensitive;
             Type = type;
             ValueType = valueType;
             Values = values;

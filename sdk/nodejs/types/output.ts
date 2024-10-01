@@ -254,7 +254,6 @@ export interface ComponentRoutineInput {
     multiple?: boolean;
     name: string;
     required?: boolean;
-    sensitive?: boolean;
     type?: string;
     valueType: string;
     values?: outputs.ComponentRoutineInputValue[];
@@ -270,7 +269,6 @@ export interface ComponentRoutineOutput {
     multiple?: boolean;
     name: string;
     required?: boolean;
-    sensitive?: boolean;
     type?: string;
     valueType: string;
     values?: outputs.ComponentRoutineOutputValue[];
