@@ -25,9 +25,6 @@ namespace Splight.Splight.Inputs
         [Input("required")]
         public Input<bool>? Required { get; set; }
 
-        [Input("sensitive")]
-        public Input<bool>? Sensitive { get; set; }
-
         [Input("type")]
         public Input<string>? Type { get; set; }
 

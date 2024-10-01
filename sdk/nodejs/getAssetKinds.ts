@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getAssetKinds(opts?: pulumi.InvokeOptions): Promise<GetAssetKindsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("splight:index/getAssetKinds:getAssetKinds", {
     }, opts);
@@ -44,5 +43,7 @@ export interface GetAssetKindsResult {
  * ```
  */
 export function getAssetKindsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAssetKindsResult> {
-    return pulumi.output(getAssetKinds(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("splight:index/getAssetKinds:getAssetKinds", {
+    }, opts);
 }

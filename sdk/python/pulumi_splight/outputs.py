@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -950,7 +955,6 @@ class ComponentRoutineInput(dict):
                  description: Optional[str] = None,
                  multiple: Optional[bool] = None,
                  required: Optional[bool] = None,
-                 sensitive: Optional[bool] = None,
                  type: Optional[str] = None,
                  values: Optional[Sequence['outputs.ComponentRoutineInputValue']] = None):
         pulumi.set(__self__, "name", name)
@@ -961,8 +965,6 @@ class ComponentRoutineInput(dict):
             pulumi.set(__self__, "multiple", multiple)
         if required is not None:
             pulumi.set(__self__, "required", required)
-        if sensitive is not None:
-            pulumi.set(__self__, "sensitive", sensitive)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if values is not None:
@@ -992,11 +994,6 @@ class ComponentRoutineInput(dict):
     @pulumi.getter
     def required(self) -> Optional[bool]:
         return pulumi.get(self, "required")
-
-    @property
-    @pulumi.getter
-    def sensitive(self) -> Optional[bool]:
-        return pulumi.get(self, "sensitive")
 
     @property
     @pulumi.getter
@@ -1053,7 +1050,6 @@ class ComponentRoutineOutput(dict):
                  description: Optional[str] = None,
                  multiple: Optional[bool] = None,
                  required: Optional[bool] = None,
-                 sensitive: Optional[bool] = None,
                  type: Optional[str] = None,
                  values: Optional[Sequence['outputs.ComponentRoutineOutputValue']] = None):
         pulumi.set(__self__, "name", name)
@@ -1064,8 +1060,6 @@ class ComponentRoutineOutput(dict):
             pulumi.set(__self__, "multiple", multiple)
         if required is not None:
             pulumi.set(__self__, "required", required)
-        if sensitive is not None:
-            pulumi.set(__self__, "sensitive", sensitive)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if values is not None:
@@ -1095,11 +1089,6 @@ class ComponentRoutineOutput(dict):
     @pulumi.getter
     def required(self) -> Optional[bool]:
         return pulumi.get(self, "required")
-
-    @property
-    @pulumi.getter
-    def sensitive(self) -> Optional[bool]:
-        return pulumi.get(self, "sensitive")
 
     @property
     @pulumi.getter

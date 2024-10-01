@@ -2152,7 +2152,6 @@ type ComponentRoutineInputType struct {
 	Multiple    *bool                        `pulumi:"multiple"`
 	Name        string                       `pulumi:"name"`
 	Required    *bool                        `pulumi:"required"`
-	Sensitive   *bool                        `pulumi:"sensitive"`
 	Type        *string                      `pulumi:"type"`
 	ValueType   string                       `pulumi:"valueType"`
 	Values      []ComponentRoutineInputValue `pulumi:"values"`
@@ -2174,7 +2173,6 @@ type ComponentRoutineInputTypeArgs struct {
 	Multiple    pulumi.BoolPtrInput                  `pulumi:"multiple"`
 	Name        pulumi.StringInput                   `pulumi:"name"`
 	Required    pulumi.BoolPtrInput                  `pulumi:"required"`
-	Sensitive   pulumi.BoolPtrInput                  `pulumi:"sensitive"`
 	Type        pulumi.StringPtrInput                `pulumi:"type"`
 	ValueType   pulumi.StringInput                   `pulumi:"valueType"`
 	Values      ComponentRoutineInputValueArrayInput `pulumi:"values"`
@@ -2245,10 +2243,6 @@ func (o ComponentRoutineInputTypeOutput) Name() pulumi.StringOutput {
 
 func (o ComponentRoutineInputTypeOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ComponentRoutineInputType) *bool { return v.Required }).(pulumi.BoolPtrOutput)
-}
-
-func (o ComponentRoutineInputTypeOutput) Sensitive() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ComponentRoutineInputType) *bool { return v.Sensitive }).(pulumi.BoolPtrOutput)
 }
 
 func (o ComponentRoutineInputTypeOutput) Type() pulumi.StringPtrOutput {
@@ -2388,7 +2382,6 @@ type ComponentRoutineOutputType struct {
 	Multiple    *bool                         `pulumi:"multiple"`
 	Name        string                        `pulumi:"name"`
 	Required    *bool                         `pulumi:"required"`
-	Sensitive   *bool                         `pulumi:"sensitive"`
 	Type        *string                       `pulumi:"type"`
 	ValueType   string                        `pulumi:"valueType"`
 	Values      []ComponentRoutineOutputValue `pulumi:"values"`
@@ -2410,7 +2403,6 @@ type ComponentRoutineOutputTypeArgs struct {
 	Multiple    pulumi.BoolPtrInput                   `pulumi:"multiple"`
 	Name        pulumi.StringInput                    `pulumi:"name"`
 	Required    pulumi.BoolPtrInput                   `pulumi:"required"`
-	Sensitive   pulumi.BoolPtrInput                   `pulumi:"sensitive"`
 	Type        pulumi.StringPtrInput                 `pulumi:"type"`
 	ValueType   pulumi.StringInput                    `pulumi:"valueType"`
 	Values      ComponentRoutineOutputValueArrayInput `pulumi:"values"`
@@ -2481,10 +2473,6 @@ func (o ComponentRoutineOutputTypeOutput) Name() pulumi.StringOutput {
 
 func (o ComponentRoutineOutputTypeOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ComponentRoutineOutputType) *bool { return v.Required }).(pulumi.BoolPtrOutput)
-}
-
-func (o ComponentRoutineOutputTypeOutput) Sensitive() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ComponentRoutineOutputType) *bool { return v.Sensitive }).(pulumi.BoolPtrOutput)
 }
 
 func (o ComponentRoutineOutputTypeOutput) Type() pulumi.StringPtrOutput {
