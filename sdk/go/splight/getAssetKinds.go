@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := splight.GetAssetKinds(ctx, map[string]interface{}{}, nil)
+//			_, err := splight.GetAssetKinds(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
