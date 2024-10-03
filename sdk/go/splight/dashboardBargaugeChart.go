@@ -164,8 +164,8 @@ import (
 //						Type:                 pulumi.String("EXPRESSION"),
 //						QueryPlain:           pulumi.String(""),
 //						ExpressionPlain:      pulumi.String(json1),
-//						QueryFilterAsset:     nil,
-//						QueryFilterAttribute: nil,
+//						QueryFilterAsset:     &splight.DashboardBargaugeChartChartItemQueryFilterAssetArgs{},
+//						QueryFilterAttribute: &splight.DashboardBargaugeChartChartItemQueryFilterAttributeArgs{},
 //					},
 //				},
 //				Thresholds: splight.DashboardBargaugeChartThresholdArray{

@@ -139,15 +139,6 @@ class DashboardTab(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumi_splight as splight
-
-        dashboard_tab_test = splight.DashboardTab("dashboardTabTest",
-            dashboard="1234-1234-1234-1234",
-            order=0)
-        ```
-
         ## Import
 
         ```sh
@@ -168,15 +159,6 @@ class DashboardTab(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_splight as splight
-
-        dashboard_tab_test = splight.DashboardTab("dashboardTabTest",
-            dashboard="1234-1234-1234-1234",
-            order=0)
-        ```
 
         ## Import
 

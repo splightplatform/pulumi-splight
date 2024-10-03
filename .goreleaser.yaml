@@ -7,20 +7,13 @@ builds:
       - CGO_ENABLED=0
     binary: pulumi-resource-splight
     dir: provider
-    goos:
-      # FIXME: uncomment when the github.com/pkg/term == 1.2.0
-      # - freebsd
-      - windows
-      - linux
-      - darwin
     goarch:
       - amd64
-      - '386'
-      - arm
       - arm64
-    ignore:
-      - goos: darwin
-        goarch: '386'
+    goos:
+      - darwin
+      - windows
+      - linux
     ldflags:
       - -X github.com/splightplatform/pulumi-splight/provider/pkg/version.Version={{ .Version }}
     main: ./cmd/pulumi-resource-splight

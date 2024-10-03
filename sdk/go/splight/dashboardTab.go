@@ -14,31 +14,6 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/splightplatform/pulumi-splight/sdk/go/splight"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := splight.NewDashboardTab(ctx, "dashboardTabTest", &splight.DashboardTabArgs{
-//				Dashboard: pulumi.String("1234-1234-1234-1234"),
-//				Order:     pulumi.Int(0),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh
