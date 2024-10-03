@@ -13,23 +13,6 @@ namespace Splight.Splight
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Splight = Splight.Splight;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var dashboardTabTest = new Splight.DashboardTab("dashboardTabTest", new()
-    ///     {
-    ///         Dashboard = "1234-1234-1234-1234",
-    ///         Order = 0,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

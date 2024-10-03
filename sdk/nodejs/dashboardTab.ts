@@ -7,16 +7,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as splight from "@splightplatform/pulumi-splight";
- *
- * const dashboardTabTest = new splight.DashboardTab("dashboardTabTest", {
- *     dashboard: "1234-1234-1234-1234",
- *     order: 0,
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

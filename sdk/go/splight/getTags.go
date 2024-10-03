@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := splight.GetTags(ctx, nil, nil)
+//			_, err := splight.GetTags(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
