@@ -1110,6 +1110,28 @@ export interface DashboardTimeseriesChartValueMapping {
     type: pulumi.Input<string>;
 }
 
+export interface FileRelatedAsset {
+    /**
+     * asset id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * asset name
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface FileTag {
+    /**
+     * tag id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * tag name
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface FunctionFunctionItem {
     /**
      * how the expression is shown (i.e 'A * 2')

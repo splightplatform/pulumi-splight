@@ -111,6 +111,8 @@ __all__ = [
     'DashboardTimeseriesChartChartItemQueryFilterAttribute',
     'DashboardTimeseriesChartThreshold',
     'DashboardTimeseriesChartValueMapping',
+    'FileRelatedAsset',
+    'FileTag',
     'FunctionFunctionItem',
     'FunctionFunctionItemQueryFilterAsset',
     'FunctionFunctionItemQueryFilterAttribute',
@@ -5433,6 +5435,64 @@ class DashboardTimeseriesChartValueMapping(dict):
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class FileRelatedAsset(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: asset id
+        :param str name: asset name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        asset id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        asset name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class FileTag(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: tag id
+        :param str name: tag name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        tag name
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

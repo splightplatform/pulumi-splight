@@ -10149,6 +10149,218 @@ func (o DashboardTimeseriesChartValueMappingArrayOutput) Index(i pulumi.IntInput
 	}).(DashboardTimeseriesChartValueMappingOutput)
 }
 
+type FileRelatedAsset struct {
+	// asset id
+	Id string `pulumi:"id"`
+	// asset name
+	Name string `pulumi:"name"`
+}
+
+// FileRelatedAssetInput is an input type that accepts FileRelatedAssetArgs and FileRelatedAssetOutput values.
+// You can construct a concrete instance of `FileRelatedAssetInput` via:
+//
+//	FileRelatedAssetArgs{...}
+type FileRelatedAssetInput interface {
+	pulumi.Input
+
+	ToFileRelatedAssetOutput() FileRelatedAssetOutput
+	ToFileRelatedAssetOutputWithContext(context.Context) FileRelatedAssetOutput
+}
+
+type FileRelatedAssetArgs struct {
+	// asset id
+	Id pulumi.StringInput `pulumi:"id"`
+	// asset name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (FileRelatedAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileRelatedAsset)(nil)).Elem()
+}
+
+func (i FileRelatedAssetArgs) ToFileRelatedAssetOutput() FileRelatedAssetOutput {
+	return i.ToFileRelatedAssetOutputWithContext(context.Background())
+}
+
+func (i FileRelatedAssetArgs) ToFileRelatedAssetOutputWithContext(ctx context.Context) FileRelatedAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileRelatedAssetOutput)
+}
+
+// FileRelatedAssetArrayInput is an input type that accepts FileRelatedAssetArray and FileRelatedAssetArrayOutput values.
+// You can construct a concrete instance of `FileRelatedAssetArrayInput` via:
+//
+//	FileRelatedAssetArray{ FileRelatedAssetArgs{...} }
+type FileRelatedAssetArrayInput interface {
+	pulumi.Input
+
+	ToFileRelatedAssetArrayOutput() FileRelatedAssetArrayOutput
+	ToFileRelatedAssetArrayOutputWithContext(context.Context) FileRelatedAssetArrayOutput
+}
+
+type FileRelatedAssetArray []FileRelatedAssetInput
+
+func (FileRelatedAssetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FileRelatedAsset)(nil)).Elem()
+}
+
+func (i FileRelatedAssetArray) ToFileRelatedAssetArrayOutput() FileRelatedAssetArrayOutput {
+	return i.ToFileRelatedAssetArrayOutputWithContext(context.Background())
+}
+
+func (i FileRelatedAssetArray) ToFileRelatedAssetArrayOutputWithContext(ctx context.Context) FileRelatedAssetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileRelatedAssetArrayOutput)
+}
+
+type FileRelatedAssetOutput struct{ *pulumi.OutputState }
+
+func (FileRelatedAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileRelatedAsset)(nil)).Elem()
+}
+
+func (o FileRelatedAssetOutput) ToFileRelatedAssetOutput() FileRelatedAssetOutput {
+	return o
+}
+
+func (o FileRelatedAssetOutput) ToFileRelatedAssetOutputWithContext(ctx context.Context) FileRelatedAssetOutput {
+	return o
+}
+
+// asset id
+func (o FileRelatedAssetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v FileRelatedAsset) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// asset name
+func (o FileRelatedAssetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FileRelatedAsset) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type FileRelatedAssetArrayOutput struct{ *pulumi.OutputState }
+
+func (FileRelatedAssetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FileRelatedAsset)(nil)).Elem()
+}
+
+func (o FileRelatedAssetArrayOutput) ToFileRelatedAssetArrayOutput() FileRelatedAssetArrayOutput {
+	return o
+}
+
+func (o FileRelatedAssetArrayOutput) ToFileRelatedAssetArrayOutputWithContext(ctx context.Context) FileRelatedAssetArrayOutput {
+	return o
+}
+
+func (o FileRelatedAssetArrayOutput) Index(i pulumi.IntInput) FileRelatedAssetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FileRelatedAsset {
+		return vs[0].([]FileRelatedAsset)[vs[1].(int)]
+	}).(FileRelatedAssetOutput)
+}
+
+type FileTag struct {
+	// tag id
+	Id string `pulumi:"id"`
+	// tag name
+	Name string `pulumi:"name"`
+}
+
+// FileTagInput is an input type that accepts FileTagArgs and FileTagOutput values.
+// You can construct a concrete instance of `FileTagInput` via:
+//
+//	FileTagArgs{...}
+type FileTagInput interface {
+	pulumi.Input
+
+	ToFileTagOutput() FileTagOutput
+	ToFileTagOutputWithContext(context.Context) FileTagOutput
+}
+
+type FileTagArgs struct {
+	// tag id
+	Id pulumi.StringInput `pulumi:"id"`
+	// tag name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (FileTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileTag)(nil)).Elem()
+}
+
+func (i FileTagArgs) ToFileTagOutput() FileTagOutput {
+	return i.ToFileTagOutputWithContext(context.Background())
+}
+
+func (i FileTagArgs) ToFileTagOutputWithContext(ctx context.Context) FileTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileTagOutput)
+}
+
+// FileTagArrayInput is an input type that accepts FileTagArray and FileTagArrayOutput values.
+// You can construct a concrete instance of `FileTagArrayInput` via:
+//
+//	FileTagArray{ FileTagArgs{...} }
+type FileTagArrayInput interface {
+	pulumi.Input
+
+	ToFileTagArrayOutput() FileTagArrayOutput
+	ToFileTagArrayOutputWithContext(context.Context) FileTagArrayOutput
+}
+
+type FileTagArray []FileTagInput
+
+func (FileTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FileTag)(nil)).Elem()
+}
+
+func (i FileTagArray) ToFileTagArrayOutput() FileTagArrayOutput {
+	return i.ToFileTagArrayOutputWithContext(context.Background())
+}
+
+func (i FileTagArray) ToFileTagArrayOutputWithContext(ctx context.Context) FileTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileTagArrayOutput)
+}
+
+type FileTagOutput struct{ *pulumi.OutputState }
+
+func (FileTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileTag)(nil)).Elem()
+}
+
+func (o FileTagOutput) ToFileTagOutput() FileTagOutput {
+	return o
+}
+
+func (o FileTagOutput) ToFileTagOutputWithContext(ctx context.Context) FileTagOutput {
+	return o
+}
+
+// tag id
+func (o FileTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v FileTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// tag name
+func (o FileTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FileTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type FileTagArrayOutput struct{ *pulumi.OutputState }
+
+func (FileTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FileTag)(nil)).Elem()
+}
+
+func (o FileTagArrayOutput) ToFileTagArrayOutput() FileTagArrayOutput {
+	return o
+}
+
+func (o FileTagArrayOutput) ToFileTagArrayOutputWithContext(ctx context.Context) FileTagArrayOutput {
+	return o
+}
+
+func (o FileTagArrayOutput) Index(i pulumi.IntInput) FileTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FileTag {
+		return vs[0].([]FileTag)[vs[1].(int)]
+	}).(FileTagOutput)
+}
+
 type FunctionFunctionItem struct {
 	// how the expression is shown (i.e 'A * 2')
 	Expression string `pulumi:"expression"`
@@ -18789,6 +19001,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeseriesChartThresholdArrayInput)(nil)).Elem(), DashboardTimeseriesChartThresholdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeseriesChartValueMappingInput)(nil)).Elem(), DashboardTimeseriesChartValueMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeseriesChartValueMappingArrayInput)(nil)).Elem(), DashboardTimeseriesChartValueMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileRelatedAssetInput)(nil)).Elem(), FileRelatedAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileRelatedAssetArrayInput)(nil)).Elem(), FileRelatedAssetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileTagInput)(nil)).Elem(), FileTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileTagArrayInput)(nil)).Elem(), FileTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionFunctionItemInput)(nil)).Elem(), FunctionFunctionItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionFunctionItemArrayInput)(nil)).Elem(), FunctionFunctionItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionFunctionItemQueryFilterAssetInput)(nil)).Elem(), FunctionFunctionItemQueryFilterAssetArgs{})
@@ -19043,6 +19259,10 @@ func init() {
 	pulumi.RegisterOutputType(DashboardTimeseriesChartThresholdArrayOutput{})
 	pulumi.RegisterOutputType(DashboardTimeseriesChartValueMappingOutput{})
 	pulumi.RegisterOutputType(DashboardTimeseriesChartValueMappingArrayOutput{})
+	pulumi.RegisterOutputType(FileRelatedAssetOutput{})
+	pulumi.RegisterOutputType(FileRelatedAssetArrayOutput{})
+	pulumi.RegisterOutputType(FileTagOutput{})
+	pulumi.RegisterOutputType(FileTagArrayOutput{})
 	pulumi.RegisterOutputType(FunctionFunctionItemOutput{})
 	pulumi.RegisterOutputType(FunctionFunctionItemArrayOutput{})
 	pulumi.RegisterOutputType(FunctionFunctionItemQueryFilterAssetOutput{})

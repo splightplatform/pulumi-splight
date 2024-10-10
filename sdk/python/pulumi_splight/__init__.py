@@ -30,6 +30,8 @@ from .dashboard_tab import *
 from .dashboard_table_chart import *
 from .dashboard_text_chart import *
 from .dashboard_timeseries_chart import *
+from .file import *
+from .file_folder import *
 from .function import *
 from .get_asset_kinds import *
 from .get_tags import *
@@ -249,6 +251,22 @@ _utilities.register(
   "fqn": "pulumi_splight",
   "classes": {
    "splight:index/dashboardTimeseriesChart:DashboardTimeseriesChart": "DashboardTimeseriesChart"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/file",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/file:File": "File"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/fileFolder",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/fileFolder:FileFolder": "FileFolder"
   }
  },
  {

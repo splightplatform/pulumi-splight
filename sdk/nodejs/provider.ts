@@ -40,9 +40,11 @@ export class Provider extends pulumi.ProviderResource {
         opts = opts || {};
         {
             resourceInputs["hostname"] = args ? args.hostname : undefined;
-            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }

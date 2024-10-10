@@ -518,6 +518,22 @@
                     }
                 }
             },
+            "splight_file": {
+                "current": "splight:index/file:File",
+                "majorVersion": 1,
+                "fields": {
+                    "related_assets": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "splight_file_folder": {
+                "current": "splight:index/fileFolder:FileFolder",
+                "majorVersion": 1
+            },
             "splight_function": {
                 "current": "splight:index/function:Function",
                 "majorVersion": 1,
