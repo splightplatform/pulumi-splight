@@ -44,6 +44,10 @@ namespace Splight.Splight
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/splightplatform",
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -58,7 +62,16 @@ namespace Splight.Splight
         public Input<string>? Hostname { get; set; }
 
         [Input("token")]
-        public Input<string>? Token { get; set; }
+        private Input<string>? _token;
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ProviderArgs()
         {

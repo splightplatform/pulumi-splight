@@ -1110,6 +1110,28 @@ export interface DashboardTimeseriesChartValueMapping {
     type: string;
 }
 
+export interface FileRelatedAsset {
+    /**
+     * asset id
+     */
+    id: string;
+    /**
+     * asset name
+     */
+    name: string;
+}
+
+export interface FileTag {
+    /**
+     * tag id
+     */
+    id: string;
+    /**
+     * tag name
+     */
+    name: string;
+}
+
 export interface FunctionFunctionItem {
     /**
      * how the expression is shown (i.e 'A * 2')

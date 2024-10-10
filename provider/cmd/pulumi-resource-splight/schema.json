@@ -63,7 +63,8 @@
                 "type": "string"
             },
             "token": {
-                "type": "string"
+                "type": "string",
+                "secret": true
             }
         }
     },
@@ -2362,6 +2363,40 @@
                 "type"
             ]
         },
+        "splight:index/FileRelatedAsset:FileRelatedAsset": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "asset id\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "asset name\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "splight:index/FileTag:FileTag": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "tag id\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "tag name\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
         "splight:index/FunctionFunctionItem:FunctionFunctionItem": {
             "properties": {
                 "expression": {
@@ -4155,7 +4190,8 @@
                 "type": "string"
             },
             "token": {
-                "type": "string"
+                "type": "string",
+                "secret": true
             }
         },
         "inputProperties": {
@@ -4163,7 +4199,8 @@
                 "type": "string"
             },
             "token": {
-                "type": "string"
+                "type": "string",
+                "secret": true
             }
         }
     },
@@ -10496,6 +10533,161 @@
                     "yAxisUnit": {
                         "type": "string",
                         "description": "y axis units\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/file:File": {
+            "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/file:File [options] splight_file.\u003cname\u003e \u003cfile_id\u003e\n```\n\n",
+            "properties": {
+                "checksum": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "complementary information to describe the file\n"
+                },
+                "parent": {
+                    "type": "string",
+                    "description": "the id reference for a folder to be placed in\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "the path for the file resource in your system\n"
+                },
+                "relatedAssets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/FileRelatedAsset:FileRelatedAsset"
+                    },
+                    "description": "related assets of the resource\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/FileTag:FileTag"
+                    },
+                    "description": "tags of the resource\n"
+                },
+                "uploaded": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "checksum",
+                "path",
+                "uploaded"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "complementary information to describe the file\n"
+                },
+                "parent": {
+                    "type": "string",
+                    "description": "the id reference for a folder to be placed in\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "the path for the file resource in your system\n",
+                    "willReplaceOnChanges": true
+                },
+                "relatedAssets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/FileRelatedAsset:FileRelatedAsset"
+                    },
+                    "description": "related assets of the resource\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/FileTag:FileTag"
+                    },
+                    "description": "tags of the resource\n"
+                }
+            },
+            "requiredInputs": [
+                "path"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering File resources.\n",
+                "properties": {
+                    "checksum": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "complementary information to describe the file\n"
+                    },
+                    "parent": {
+                        "type": "string",
+                        "description": "the id reference for a folder to be placed in\n"
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "the path for the file resource in your system\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "relatedAssets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/FileRelatedAsset:FileRelatedAsset"
+                        },
+                        "description": "related assets of the resource\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/FileTag:FileTag"
+                        },
+                        "description": "tags of the resource\n"
+                    },
+                    "uploaded": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/fileFolder:FileFolder": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as splight from \"@splightplatform/pulumi-splight\";\n\nconst myFileParentFolder = new splight.FileFolder(\"myFileParentFolder\", {});\nconst myFileFolder = new splight.FileFolder(\"myFileFolder\", {parent: myFileParentFolder.id});\n```\n```python\nimport pulumi\nimport pulumi_splight as splight\n\nmy_file_parent_folder = splight.FileFolder(\"myFileParentFolder\")\nmy_file_folder = splight.FileFolder(\"myFileFolder\", parent=my_file_parent_folder.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Splight = Splight.Splight;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myFileParentFolder = new Splight.FileFolder(\"myFileParentFolder\");\n\n    var myFileFolder = new Splight.FileFolder(\"myFileFolder\", new()\n    {\n        Parent = myFileParentFolder.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/splightplatform/pulumi-splight/sdk/go/splight\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyFileParentFolder, err := splight.NewFileFolder(ctx, \"myFileParentFolder\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = splight.NewFileFolder(ctx, \"myFileFolder\", \u0026splight.FileFolderArgs{\n\t\t\tParent: myFileParentFolder.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.splight.FileFolder;\nimport com.pulumi.splight.FileFolderArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myFileParentFolder = new FileFolder(\"myFileParentFolder\");\n\n        var myFileFolder = new FileFolder(\"myFileFolder\", FileFolderArgs.builder()\n            .parent(myFileParentFolder.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myFileParentFolder:\n    type: splight:FileFolder\n  myFileFolder:\n    type: splight:FileFolder\n    properties:\n      parent: ${myFileParentFolder.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import splight:index/fileFolder:FileFolder [options] splight_file_folder.\u003cname\u003e \u003cfile_folder_id\u003e\n```\n\n",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "folder name\n"
+                },
+                "parent": {
+                    "type": "string",
+                    "description": "optional folder id where to place this folder\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "folder name\n",
+                    "willReplaceOnChanges": true
+                },
+                "parent": {
+                    "type": "string",
+                    "description": "optional folder id where to place this folder\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering FileFolder resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "folder name\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "parent": {
+                        "type": "string",
+                        "description": "optional folder id where to place this folder\n"
                     }
                 },
                 "type": "object"

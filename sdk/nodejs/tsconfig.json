@@ -40,6 +40,8 @@
         "dashboardTableChart.ts",
         "dashboardTextChart.ts",
         "dashboardTimeseriesChart.ts",
+        "file.ts",
+        "fileFolder.ts",
         "function.ts",
         "getAssetKinds.ts",
         "getTags.ts",

@@ -205,6 +205,10 @@ __all__ = [
     'DashboardTimeseriesChartThresholdArgsDict',
     'DashboardTimeseriesChartValueMappingArgs',
     'DashboardTimeseriesChartValueMappingArgsDict',
+    'FileRelatedAssetArgs',
+    'FileRelatedAssetArgsDict',
+    'FileTagArgs',
+    'FileTagArgsDict',
     'FunctionFunctionItemArgs',
     'FunctionFunctionItemArgsDict',
     'FunctionFunctionItemQueryFilterAssetArgs',
@@ -7495,6 +7499,106 @@ class DashboardTimeseriesChartValueMappingArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class FileRelatedAssetArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        asset id
+        """
+        name: pulumi.Input[str]
+        """
+        asset name
+        """
+elif False:
+    FileRelatedAssetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FileRelatedAssetArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: asset id
+        :param pulumi.Input[str] name: asset name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        asset id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        asset name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class FileTagArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        tag id
+        """
+        name: pulumi.Input[str]
+        """
+        tag name
+        """
+elif False:
+    FileTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FileTagArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: tag id
+        :param pulumi.Input[str] name: tag name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        tag name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
 
 if not MYPY:
