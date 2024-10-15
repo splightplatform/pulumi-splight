@@ -83,6 +83,21 @@
                     }
                 }
             },
+            "splight_bus": {
+                "current": "splight:index/bus:Bus",
+                "majorVersion": 1,
+                "fields": {
+                    "kind": {
+                        "maxItemsOne": false
+                    },
+                    "nominal_voltage": {
+                        "maxItemsOne": true
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "splight_command": {
                 "current": "splight:index/command:Command",
                 "majorVersion": 1,
@@ -559,6 +574,84 @@
                     },
                     "target_attribute": {
                         "maxItemsOne": true
+                    }
+                }
+            },
+            "splight_generator": {
+                "current": "splight:index/generator:Generator",
+                "majorVersion": 1,
+                "fields": {
+                    "active_power": {
+                        "maxItemsOne": false
+                    },
+                    "co2_coefficient": {
+                        "maxItemsOne": true
+                    },
+                    "daily_emission_avoided": {
+                        "maxItemsOne": false
+                    },
+                    "daily_energy": {
+                        "maxItemsOne": false
+                    },
+                    "kind": {
+                        "maxItemsOne": false
+                    },
+                    "reactive_power": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "splight_grid": {
+                "current": "splight:index/grid:Grid",
+                "majorVersion": 1,
+                "fields": {
+                    "kind": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "splight_inverter": {
+                "current": "splight:index/inverter:Inverter",
+                "majorVersion": 1,
+                "fields": {
+                    "accumulated_energy": {
+                        "maxItemsOne": false
+                    },
+                    "active_power": {
+                        "maxItemsOne": false
+                    },
+                    "daily_energy": {
+                        "maxItemsOne": false
+                    },
+                    "energy_measurement_type": {
+                        "maxItemsOne": true
+                    },
+                    "kind": {
+                        "maxItemsOne": false
+                    },
+                    "make": {
+                        "maxItemsOne": true
+                    },
+                    "max_active_power": {
+                        "maxItemsOne": true
+                    },
+                    "model": {
+                        "maxItemsOne": true
+                    },
+                    "serial_number": {
+                        "maxItemsOne": true
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "temperature": {
+                        "maxItemsOne": false
                     }
                 }
             },

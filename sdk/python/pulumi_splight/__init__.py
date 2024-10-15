@@ -11,6 +11,7 @@ from .asset import *
 from .asset_attribute import *
 from .asset_metadata import *
 from .asset_relation import *
+from .bus import *
 from .command import *
 from .component import *
 from .component_routine import *
@@ -33,8 +34,11 @@ from .dashboard_timeseries_chart import *
 from .file import *
 from .file_folder import *
 from .function import *
+from .generator import *
 from .get_asset_kinds import *
 from .get_tags import *
+from .grid import *
+from .inverter import *
 from .line import *
 from .provider import *
 from .secret import *
@@ -99,6 +103,14 @@ _utilities.register(
   "fqn": "pulumi_splight",
   "classes": {
    "splight:index/assetRelation:AssetRelation": "AssetRelation"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/bus",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/bus:Bus": "Bus"
   }
  },
  {
@@ -275,6 +287,30 @@ _utilities.register(
   "fqn": "pulumi_splight",
   "classes": {
    "splight:index/function:Function": "Function"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/generator",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/generator:Generator": "Generator"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/grid",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/grid:Grid": "Grid"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/inverter",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/inverter:Inverter": "Inverter"
   }
  },
  {

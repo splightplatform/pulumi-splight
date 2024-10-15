@@ -35,6 +35,11 @@ export type AssetRelation = import("./assetRelation").AssetRelation;
 export const AssetRelation: typeof import("./assetRelation").AssetRelation = null as any;
 utilities.lazyLoad(exports, ["AssetRelation"], () => require("./assetRelation"));
 
+export { BusArgs, BusState } from "./bus";
+export type Bus = import("./bus").Bus;
+export const Bus: typeof import("./bus").Bus = null as any;
+utilities.lazyLoad(exports, ["Bus"], () => require("./bus"));
+
 export { CommandArgs, CommandState } from "./command";
 export type Command = import("./command").Command;
 export const Command: typeof import("./command").Command = null as any;
@@ -145,6 +150,11 @@ export type Function = import("./function").Function;
 export const Function: typeof import("./function").Function = null as any;
 utilities.lazyLoad(exports, ["Function"], () => require("./function"));
 
+export { GeneratorArgs, GeneratorState } from "./generator";
+export type Generator = import("./generator").Generator;
+export const Generator: typeof import("./generator").Generator = null as any;
+utilities.lazyLoad(exports, ["Generator"], () => require("./generator"));
+
 export { GetAssetKindsResult } from "./getAssetKinds";
 export const getAssetKinds: typeof import("./getAssetKinds").getAssetKinds = null as any;
 export const getAssetKindsOutput: typeof import("./getAssetKinds").getAssetKindsOutput = null as any;
@@ -154,6 +164,16 @@ export { GetTagsResult } from "./getTags";
 export const getTags: typeof import("./getTags").getTags = null as any;
 export const getTagsOutput: typeof import("./getTags").getTagsOutput = null as any;
 utilities.lazyLoad(exports, ["getTags","getTagsOutput"], () => require("./getTags"));
+
+export { GridArgs, GridState } from "./grid";
+export type Grid = import("./grid").Grid;
+export const Grid: typeof import("./grid").Grid = null as any;
+utilities.lazyLoad(exports, ["Grid"], () => require("./grid"));
+
+export { InverterArgs, InverterState } from "./inverter";
+export type Inverter = import("./inverter").Inverter;
+export const Inverter: typeof import("./inverter").Inverter = null as any;
+utilities.lazyLoad(exports, ["Inverter"], () => require("./inverter"));
 
 export { LineArgs, LineState } from "./line";
 export type Line = import("./line").Line;
@@ -206,6 +226,8 @@ const _module = {
                 return new AssetMetadata(name, <any>undefined, { urn })
             case "splight:index/assetRelation:AssetRelation":
                 return new AssetRelation(name, <any>undefined, { urn })
+            case "splight:index/bus:Bus":
+                return new Bus(name, <any>undefined, { urn })
             case "splight:index/command:Command":
                 return new Command(name, <any>undefined, { urn })
             case "splight:index/component:Component":
@@ -250,6 +272,12 @@ const _module = {
                 return new FileFolder(name, <any>undefined, { urn })
             case "splight:index/function:Function":
                 return new Function(name, <any>undefined, { urn })
+            case "splight:index/generator:Generator":
+                return new Generator(name, <any>undefined, { urn })
+            case "splight:index/grid:Grid":
+                return new Grid(name, <any>undefined, { urn })
+            case "splight:index/inverter:Inverter":
+                return new Inverter(name, <any>undefined, { urn })
             case "splight:index/line:Line":
                 return new Line(name, <any>undefined, { urn })
             case "splight:index/secret:Secret":
@@ -269,6 +297,7 @@ pulumi.runtime.registerResourceModule("splight", "index/asset", _module)
 pulumi.runtime.registerResourceModule("splight", "index/assetAttribute", _module)
 pulumi.runtime.registerResourceModule("splight", "index/assetMetadata", _module)
 pulumi.runtime.registerResourceModule("splight", "index/assetRelation", _module)
+pulumi.runtime.registerResourceModule("splight", "index/bus", _module)
 pulumi.runtime.registerResourceModule("splight", "index/command", _module)
 pulumi.runtime.registerResourceModule("splight", "index/component", _module)
 pulumi.runtime.registerResourceModule("splight", "index/componentRoutine", _module)
@@ -291,6 +320,9 @@ pulumi.runtime.registerResourceModule("splight", "index/dashboardTimeseriesChart
 pulumi.runtime.registerResourceModule("splight", "index/file", _module)
 pulumi.runtime.registerResourceModule("splight", "index/fileFolder", _module)
 pulumi.runtime.registerResourceModule("splight", "index/function", _module)
+pulumi.runtime.registerResourceModule("splight", "index/generator", _module)
+pulumi.runtime.registerResourceModule("splight", "index/grid", _module)
+pulumi.runtime.registerResourceModule("splight", "index/inverter", _module)
 pulumi.runtime.registerResourceModule("splight", "index/line", _module)
 pulumi.runtime.registerResourceModule("splight", "index/secret", _module)
 pulumi.runtime.registerResourceModule("splight", "index/segment", _module)

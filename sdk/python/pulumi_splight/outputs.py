@@ -30,6 +30,9 @@ __all__ = [
     'AssetRelationRelatedAsset',
     'AssetRelationRelatedAssetKind',
     'AssetTag',
+    'BusKind',
+    'BusNominalVoltage',
+    'BusTag',
     'CommandAction',
     'CommandActionAsset',
     'ComponentInput',
@@ -119,6 +122,26 @@ __all__ = [
     'FunctionTag',
     'FunctionTargetAsset',
     'FunctionTargetAttribute',
+    'GeneratorActivePower',
+    'GeneratorCo2Coefficient',
+    'GeneratorDailyEmissionAvoided',
+    'GeneratorDailyEnergy',
+    'GeneratorKind',
+    'GeneratorReactivePower',
+    'GeneratorTag',
+    'GridKind',
+    'GridTag',
+    'InverterAccumulatedEnergy',
+    'InverterActivePower',
+    'InverterDailyEnergy',
+    'InverterEnergyMeasurementType',
+    'InverterKind',
+    'InverterMake',
+    'InverterMaxActivePower',
+    'InverterModel',
+    'InverterSerialNumber',
+    'InverterTag',
+    'InverterTemperature',
     'LineAbsorptivity',
     'LineActivePower',
     'LineActivePowerEnd',
@@ -718,6 +741,142 @@ class AssetRelationRelatedAssetKind(dict):
 
 @pulumi.output_type
 class AssetTag(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: tag id
+        :param str name: tag name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        tag name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class BusKind(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: kind id
+        :param str name: kind name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        kind id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        kind name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class BusNominalVoltage(dict):
+    def __init__(__self__, *,
+                 value: str,
+                 asset: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None,
+                 unit: Optional[str] = None):
+        """
+        :param str value: metadata value
+        :param str asset: reference to the asset to be linked to
+        :param str id: id of the resource
+        :param str name: name of the resource
+        :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
+        :param str unit: unit of measure
+        """
+        pulumi.set(__self__, "value", value)
+        if asset is not None:
+            pulumi.set(__self__, "asset", asset)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def asset(self) -> Optional[str]:
+        """
+        reference to the asset to be linked to
+        """
+        return pulumi.get(self, "asset")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        id of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[str]:
+        """
+        unit of measure
+        """
+        return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class BusTag(dict):
     def __init__(__self__, *,
                  id: str,
                  name: str):
@@ -5817,6 +5976,1184 @@ class FunctionTargetAttribute(dict):
         type of the resource
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GeneratorActivePower(dict):
+    def __init__(__self__, *,
+                 asset: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None,
+                 unit: Optional[str] = None):
+        """
+        :param str asset: reference to the asset to be linked to
+        :param str id: id of the resource
+        :param str name: name of the resource
+        :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
+        :param str unit: unit of measure
+        """
+        if asset is not None:
+            pulumi.set(__self__, "asset", asset)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter
+    def asset(self) -> Optional[str]:
+        """
+        reference to the asset to be linked to
+        """
+        return pulumi.get(self, "asset")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        id of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[str]:
+        """
+        unit of measure
+        """
+        return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class GeneratorCo2Coefficient(dict):
+    def __init__(__self__, *,
+                 value: str,
+                 asset: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None,
+                 unit: Optional[str] = None):
+        """
+        :param str value: metadata value
+        :param str asset: reference to the asset to be linked to
+        :param str id: id of the resource
+        :param str name: name of the resource
+        :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
+        :param str unit: unit of measure
+        """
+        pulumi.set(__self__, "value", value)
+        if asset is not None:
+            pulumi.set(__self__, "asset", asset)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def asset(self) -> Optional[str]:
+        """
+        reference to the asset to be linked to
+        """
+        return pulumi.get(self, "asset")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        id of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[str]:
+        """
+        unit of measure
+        """
+        return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class GeneratorDailyEmissionAvoided(dict):
+    def __init__(__self__, *,
+                 asset: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None,
+                 unit: Optional[str] = None):
+        """
+        :param str asset: reference to the asset to be linked to
+        :param str id: id of the resource
+        :param str name: name of the resource
+        :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
+        :param str unit: unit of measure
+        """
+        if asset is not None:
+            pulumi.set(__self__, "asset", asset)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter
+    def asset(self) -> Optional[str]:
+        """
+        reference to the asset to be linked to
+        """
+        return pulumi.get(self, "asset")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        id of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[str]:
+        """
+        unit of measure
+        """
+        return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class GeneratorDailyEnergy(dict):
+    def __init__(__self__, *,
+                 asset: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None,
+                 unit: Optional[str] = None):
+        """
+        :param str asset: reference to the asset to be linked to
+        :param str id: id of the resource
+        :param str name: name of the resource
+        :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
+        :param str unit: unit of measure
+        """
+        if asset is not None:
+            pulumi.set(__self__, "asset", asset)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter
+    def asset(self) -> Optional[str]:
+        """
+        reference to the asset to be linked to
+        """
+        return pulumi.get(self, "asset")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        id of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[str]:
+        """
+        unit of measure
+        """
+        return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class GeneratorKind(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: kind id
+        :param str name: kind name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        kind id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        kind name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GeneratorReactivePower(dict):
+    def __init__(__self__, *,
+                 asset: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None,
+                 unit: Optional[str] = None):
+        """
+        :param str asset: reference to the asset to be linked to
+        :param str id: id of the resource
+        :param str name: name of the resource
+        :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
+        :param str unit: unit of measure
+        """
+        if asset is not None:
+            pulumi.set(__self__, "asset", asset)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter
+    def asset(self) -> Optional[str]:
+        """
+        reference to the asset to be linked to
+        """
+        return pulumi.get(self, "asset")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        id of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[str]:
+        """
+        unit of measure
+        """
+        return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class GeneratorTag(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: tag id
+        :param str name: tag name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        tag name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GridKind(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: kind id
+        :param str name: kind name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        kind id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        kind name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GridTag(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: tag id
+        :param str name: tag name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        tag name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class InverterAccumulatedEnergy(dict):
+    def __init__(__self__, *,
+                 asset: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None,
+                 unit: Optional[str] = None):
+        """
+        :param str asset: reference to the asset to be linked to
+        :param str id: id of the resource
+        :param str name: name of the resource
+        :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
+        :param str unit: unit of measure
+        """
+        if asset is not None:
+            pulumi.set(__self__, "asset", asset)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter
+    def asset(self) -> Optional[str]:
+        """
+        reference to the asset to be linked to
+        """
+        return pulumi.get(self, "asset")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        id of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[str]:
+        """
+        unit of measure
+        """
+        return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class InverterActivePower(dict):
+    def __init__(__self__, *,
+                 asset: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None,
+                 unit: Optional[str] = None):
+        """
+        :param str asset: reference to the asset to be linked to
+        :param str id: id of the resource
+        :param str name: name of the resource
+        :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
+        :param str unit: unit of measure
+        """
+        if asset is not None:
+            pulumi.set(__self__, "asset", asset)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter
+    def asset(self) -> Optional[str]:
+        """
+        reference to the asset to be linked to
+        """
+        return pulumi.get(self, "asset")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        id of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[str]:
+        """
+        unit of measure
+        """
+        return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class InverterDailyEnergy(dict):
+    def __init__(__self__, *,
+                 asset: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None,
+                 unit: Optional[str] = None):
+        """
+        :param str asset: reference to the asset to be linked to
+        :param str id: id of the resource
+        :param str name: name of the resource
+        :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
+        :param str unit: unit of measure
+        """
+        if asset is not None:
+            pulumi.set(__self__, "asset", asset)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter
+    def asset(self) -> Optional[str]:
+        """
+        reference to the asset to be linked to
+        """
+        return pulumi.get(self, "asset")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        id of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[str]:
+        """
+        unit of measure
+        """
+        return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class InverterEnergyMeasurementType(dict):
+    def __init__(__self__, *,
+                 value: str,
+                 asset: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None,
+                 unit: Optional[str] = None):
+        """
+        :param str value: metadata value
+        :param str asset: reference to the asset to be linked to
+        :param str id: id of the resource
+        :param str name: name of the resource
+        :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
+        :param str unit: unit of measure
+        """
+        pulumi.set(__self__, "value", value)
+        if asset is not None:
+            pulumi.set(__self__, "asset", asset)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def asset(self) -> Optional[str]:
+        """
+        reference to the asset to be linked to
+        """
+        return pulumi.get(self, "asset")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        id of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[str]:
+        """
+        unit of measure
+        """
+        return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class InverterKind(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: kind id
+        :param str name: kind name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        kind id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        kind name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class InverterMake(dict):
+    def __init__(__self__, *,
+                 value: str,
+                 asset: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None,
+                 unit: Optional[str] = None):
+        """
+        :param str value: metadata value
+        :param str asset: reference to the asset to be linked to
+        :param str id: id of the resource
+        :param str name: name of the resource
+        :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
+        :param str unit: unit of measure
+        """
+        pulumi.set(__self__, "value", value)
+        if asset is not None:
+            pulumi.set(__self__, "asset", asset)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def asset(self) -> Optional[str]:
+        """
+        reference to the asset to be linked to
+        """
+        return pulumi.get(self, "asset")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        id of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[str]:
+        """
+        unit of measure
+        """
+        return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class InverterMaxActivePower(dict):
+    def __init__(__self__, *,
+                 value: str,
+                 asset: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None,
+                 unit: Optional[str] = None):
+        """
+        :param str value: metadata value
+        :param str asset: reference to the asset to be linked to
+        :param str id: id of the resource
+        :param str name: name of the resource
+        :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
+        :param str unit: unit of measure
+        """
+        pulumi.set(__self__, "value", value)
+        if asset is not None:
+            pulumi.set(__self__, "asset", asset)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def asset(self) -> Optional[str]:
+        """
+        reference to the asset to be linked to
+        """
+        return pulumi.get(self, "asset")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        id of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[str]:
+        """
+        unit of measure
+        """
+        return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class InverterModel(dict):
+    def __init__(__self__, *,
+                 value: str,
+                 asset: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None,
+                 unit: Optional[str] = None):
+        """
+        :param str value: metadata value
+        :param str asset: reference to the asset to be linked to
+        :param str id: id of the resource
+        :param str name: name of the resource
+        :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
+        :param str unit: unit of measure
+        """
+        pulumi.set(__self__, "value", value)
+        if asset is not None:
+            pulumi.set(__self__, "asset", asset)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def asset(self) -> Optional[str]:
+        """
+        reference to the asset to be linked to
+        """
+        return pulumi.get(self, "asset")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        id of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[str]:
+        """
+        unit of measure
+        """
+        return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class InverterSerialNumber(dict):
+    def __init__(__self__, *,
+                 value: str,
+                 asset: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None,
+                 unit: Optional[str] = None):
+        """
+        :param str value: metadata value
+        :param str asset: reference to the asset to be linked to
+        :param str id: id of the resource
+        :param str name: name of the resource
+        :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
+        :param str unit: unit of measure
+        """
+        pulumi.set(__self__, "value", value)
+        if asset is not None:
+            pulumi.set(__self__, "asset", asset)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def asset(self) -> Optional[str]:
+        """
+        reference to the asset to be linked to
+        """
+        return pulumi.get(self, "asset")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        id of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[str]:
+        """
+        unit of measure
+        """
+        return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class InverterTag(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: tag id
+        :param str name: tag name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        tag name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class InverterTemperature(dict):
+    def __init__(__self__, *,
+                 asset: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None,
+                 unit: Optional[str] = None):
+        """
+        :param str asset: reference to the asset to be linked to
+        :param str id: id of the resource
+        :param str name: name of the resource
+        :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
+        :param str unit: unit of measure
+        """
+        if asset is not None:
+            pulumi.set(__self__, "asset", asset)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter
+    def asset(self) -> Optional[str]:
+        """
+        reference to the asset to be linked to
+        """
+        return pulumi.get(self, "asset")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        id of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[str]:
+        """
+        unit of measure
+        """
+        return pulumi.get(self, "unit")
 
 
 @pulumi.output_type

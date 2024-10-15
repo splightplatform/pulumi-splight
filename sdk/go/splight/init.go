@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AssetMetadata{}
 	case "splight:index/assetRelation:AssetRelation":
 		r = &AssetRelation{}
+	case "splight:index/bus:Bus":
+		r = &Bus{}
 	case "splight:index/command:Command":
 		r = &Command{}
 	case "splight:index/component:Component":
@@ -77,6 +79,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FileFolder{}
 	case "splight:index/function:Function":
 		r = &Function{}
+	case "splight:index/generator:Generator":
+		r = &Generator{}
+	case "splight:index/grid:Grid":
+		r = &Grid{}
+	case "splight:index/inverter:Inverter":
+		r = &Inverter{}
 	case "splight:index/line:Line":
 		r = &Line{}
 	case "splight:index/secret:Secret":
@@ -144,6 +152,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"splight",
 		"index/assetRelation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/bus",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -254,6 +267,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"splight",
 		"index/function",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/generator",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/grid",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/inverter",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
