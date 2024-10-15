@@ -395,6 +395,86 @@
                 "name"
             ]
         },
+        "splight:index/BusKind:BusKind": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "kind id\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "kind name\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "splight:index/BusNominalVoltage:BusNominalVoltage": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/BusTag:BusTag": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "tag id\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "tag name\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
         "splight:index/CommandAction:CommandAction": {
             "properties": {
                 "asset": {
@@ -2557,6 +2637,666 @@
                 }
             },
             "type": "object"
+        },
+        "splight:index/GeneratorActivePower:GeneratorActivePower": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/GeneratorCo2Coefficient:GeneratorCo2Coefficient": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/GeneratorDailyEmissionAvoided:GeneratorDailyEmissionAvoided": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/GeneratorDailyEnergy:GeneratorDailyEnergy": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/GeneratorKind:GeneratorKind": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "kind id\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "kind name\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "splight:index/GeneratorReactivePower:GeneratorReactivePower": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/GeneratorTag:GeneratorTag": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "tag id\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "tag name\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "splight:index/GridKind:GridKind": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "kind id\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "kind name\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "splight:index/GridTag:GridTag": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "tag id\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "tag name\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "splight:index/InverterAccumulatedEnergy:InverterAccumulatedEnergy": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/InverterActivePower:InverterActivePower": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/InverterDailyEnergy:InverterDailyEnergy": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/InverterEnergyMeasurementType:InverterEnergyMeasurementType": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/InverterKind:InverterKind": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "kind id\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "kind name\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "splight:index/InverterMake:InverterMake": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/InverterMaxActivePower:InverterMaxActivePower": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/InverterModel:InverterModel": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/InverterSerialNumber:InverterSerialNumber": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/InverterTag:InverterTag": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "tag id\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "tag name\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "splight:index/InverterTemperature:InverterTemperature": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
         },
         "splight:index/LineAbsorptivity:LineAbsorptivity": {
             "properties": {
@@ -4923,6 +5663,110 @@
                     "relatedAssetKind": {
                         "$ref": "#/types/splight:index/AssetRelationRelatedAssetKind:AssetRelationRelatedAssetKind",
                         "description": "kind of the target relation asset\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/bus:Bus": {
+            "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/bus:Bus [options] splight_bus.\u003cname\u003e \u003cbus_id\u003e\n```\n\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "description of the resource\n"
+                },
+                "geometry": {
+                    "type": "string",
+                    "description": "geo position and shape of the resource\n"
+                },
+                "kinds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/BusKind:BusKind"
+                    },
+                    "description": "kind of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "nominalVoltage": {
+                    "$ref": "#/types/splight:index/BusNominalVoltage:BusNominalVoltage",
+                    "description": "attribute of the resource\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/BusTag:BusTag"
+                    },
+                    "description": "tags of the resource\n"
+                }
+            },
+            "required": [
+                "kinds",
+                "name",
+                "nominalVoltage"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "description of the resource\n"
+                },
+                "geometry": {
+                    "type": "string",
+                    "description": "geo position and shape of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "nominalVoltage": {
+                    "$ref": "#/types/splight:index/BusNominalVoltage:BusNominalVoltage",
+                    "description": "attribute of the resource\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/BusTag:BusTag"
+                    },
+                    "description": "tags of the resource\n"
+                }
+            },
+            "requiredInputs": [
+                "nominalVoltage"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Bus resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "description of the resource\n"
+                    },
+                    "geometry": {
+                        "type": "string",
+                        "description": "geo position and shape of the resource\n"
+                    },
+                    "kinds": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/BusKind:BusKind"
+                        },
+                        "description": "kind of the resource\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "name of the resource\n"
+                    },
+                    "nominalVoltage": {
+                        "$ref": "#/types/splight:index/BusNominalVoltage:BusNominalVoltage",
+                        "description": "attribute of the resource\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/BusTag:BusTag"
+                        },
+                        "description": "tags of the resource\n"
                     }
                 },
                 "type": "object"
@@ -10950,6 +11794,478 @@
                     "type": {
                         "type": "string",
                         "description": "[cron|rate] type for the cron\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/generator:Generator": {
+            "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/generator:Generator [options] splight_generator.\u003cname\u003e \u003cgenerator_id\u003e\n```\n\n",
+            "properties": {
+                "activePowers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/GeneratorActivePower:GeneratorActivePower"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "co2Coefficient": {
+                    "$ref": "#/types/splight:index/GeneratorCo2Coefficient:GeneratorCo2Coefficient",
+                    "description": "attribute of the resource\n"
+                },
+                "dailyEmissionAvoideds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/GeneratorDailyEmissionAvoided:GeneratorDailyEmissionAvoided"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "dailyEnergies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/GeneratorDailyEnergy:GeneratorDailyEnergy"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "description of the resource\n"
+                },
+                "geometry": {
+                    "type": "string",
+                    "description": "geo position and shape of the resource\n"
+                },
+                "kinds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/GeneratorKind:GeneratorKind"
+                    },
+                    "description": "kind of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "reactivePowers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/GeneratorReactivePower:GeneratorReactivePower"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/GeneratorTag:GeneratorTag"
+                    },
+                    "description": "tags of the resource\n"
+                }
+            },
+            "required": [
+                "activePowers",
+                "co2Coefficient",
+                "dailyEmissionAvoideds",
+                "dailyEnergies",
+                "kinds",
+                "name",
+                "reactivePowers"
+            ],
+            "inputProperties": {
+                "co2Coefficient": {
+                    "$ref": "#/types/splight:index/GeneratorCo2Coefficient:GeneratorCo2Coefficient",
+                    "description": "attribute of the resource\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "description of the resource\n"
+                },
+                "geometry": {
+                    "type": "string",
+                    "description": "geo position and shape of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/GeneratorTag:GeneratorTag"
+                    },
+                    "description": "tags of the resource\n"
+                }
+            },
+            "requiredInputs": [
+                "co2Coefficient"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Generator resources.\n",
+                "properties": {
+                    "activePowers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/GeneratorActivePower:GeneratorActivePower"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "co2Coefficient": {
+                        "$ref": "#/types/splight:index/GeneratorCo2Coefficient:GeneratorCo2Coefficient",
+                        "description": "attribute of the resource\n"
+                    },
+                    "dailyEmissionAvoideds": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/GeneratorDailyEmissionAvoided:GeneratorDailyEmissionAvoided"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "dailyEnergies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/GeneratorDailyEnergy:GeneratorDailyEnergy"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "description of the resource\n"
+                    },
+                    "geometry": {
+                        "type": "string",
+                        "description": "geo position and shape of the resource\n"
+                    },
+                    "kinds": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/GeneratorKind:GeneratorKind"
+                        },
+                        "description": "kind of the resource\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "name of the resource\n"
+                    },
+                    "reactivePowers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/GeneratorReactivePower:GeneratorReactivePower"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/GeneratorTag:GeneratorTag"
+                        },
+                        "description": "tags of the resource\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/grid:Grid": {
+            "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/grid:Grid [options] splight_grid.\u003cname\u003e \u003cgrid_id\u003e\n```\n\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "description of the resource\n"
+                },
+                "geometry": {
+                    "type": "string",
+                    "description": "geo position and shape of the resource\n"
+                },
+                "kinds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/GridKind:GridKind"
+                    },
+                    "description": "kind of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/GridTag:GridTag"
+                    },
+                    "description": "tags of the resource\n"
+                }
+            },
+            "required": [
+                "kinds",
+                "name"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "description of the resource\n"
+                },
+                "geometry": {
+                    "type": "string",
+                    "description": "geo position and shape of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/GridTag:GridTag"
+                    },
+                    "description": "tags of the resource\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Grid resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "description of the resource\n"
+                    },
+                    "geometry": {
+                        "type": "string",
+                        "description": "geo position and shape of the resource\n"
+                    },
+                    "kinds": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/GridKind:GridKind"
+                        },
+                        "description": "kind of the resource\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "name of the resource\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/GridTag:GridTag"
+                        },
+                        "description": "tags of the resource\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/inverter:Inverter": {
+            "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/inverter:Inverter [options] splight_inverter.\u003cname\u003e \u003cinverter_id\u003e\n```\n\n",
+            "properties": {
+                "accumulatedEnergies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/InverterAccumulatedEnergy:InverterAccumulatedEnergy"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "activePowers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/InverterActivePower:InverterActivePower"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "dailyEnergies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/InverterDailyEnergy:InverterDailyEnergy"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "description of the resource\n"
+                },
+                "energyMeasurementType": {
+                    "$ref": "#/types/splight:index/InverterEnergyMeasurementType:InverterEnergyMeasurementType",
+                    "description": "attribute of the resource\n"
+                },
+                "geometry": {
+                    "type": "string",
+                    "description": "geo position and shape of the resource\n"
+                },
+                "kinds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/InverterKind:InverterKind"
+                    },
+                    "description": "kind of the resource\n"
+                },
+                "make": {
+                    "$ref": "#/types/splight:index/InverterMake:InverterMake",
+                    "description": "attribute of the resource\n"
+                },
+                "maxActivePower": {
+                    "$ref": "#/types/splight:index/InverterMaxActivePower:InverterMaxActivePower",
+                    "description": "attribute of the resource\n"
+                },
+                "model": {
+                    "$ref": "#/types/splight:index/InverterModel:InverterModel",
+                    "description": "attribute of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "serialNumber": {
+                    "$ref": "#/types/splight:index/InverterSerialNumber:InverterSerialNumber",
+                    "description": "attribute of the resource\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/InverterTag:InverterTag"
+                    },
+                    "description": "tags of the resource\n"
+                },
+                "temperatures": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/InverterTemperature:InverterTemperature"
+                    },
+                    "description": "attribute of the resource\n"
+                }
+            },
+            "required": [
+                "accumulatedEnergies",
+                "activePowers",
+                "dailyEnergies",
+                "energyMeasurementType",
+                "kinds",
+                "make",
+                "maxActivePower",
+                "model",
+                "name",
+                "serialNumber",
+                "temperatures"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "description of the resource\n"
+                },
+                "energyMeasurementType": {
+                    "$ref": "#/types/splight:index/InverterEnergyMeasurementType:InverterEnergyMeasurementType",
+                    "description": "attribute of the resource\n"
+                },
+                "geometry": {
+                    "type": "string",
+                    "description": "geo position and shape of the resource\n"
+                },
+                "make": {
+                    "$ref": "#/types/splight:index/InverterMake:InverterMake",
+                    "description": "attribute of the resource\n"
+                },
+                "maxActivePower": {
+                    "$ref": "#/types/splight:index/InverterMaxActivePower:InverterMaxActivePower",
+                    "description": "attribute of the resource\n"
+                },
+                "model": {
+                    "$ref": "#/types/splight:index/InverterModel:InverterModel",
+                    "description": "attribute of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "serialNumber": {
+                    "$ref": "#/types/splight:index/InverterSerialNumber:InverterSerialNumber",
+                    "description": "attribute of the resource\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/InverterTag:InverterTag"
+                    },
+                    "description": "tags of the resource\n"
+                }
+            },
+            "requiredInputs": [
+                "energyMeasurementType",
+                "make",
+                "maxActivePower",
+                "model",
+                "serialNumber"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Inverter resources.\n",
+                "properties": {
+                    "accumulatedEnergies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/InverterAccumulatedEnergy:InverterAccumulatedEnergy"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "activePowers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/InverterActivePower:InverterActivePower"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "dailyEnergies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/InverterDailyEnergy:InverterDailyEnergy"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "description of the resource\n"
+                    },
+                    "energyMeasurementType": {
+                        "$ref": "#/types/splight:index/InverterEnergyMeasurementType:InverterEnergyMeasurementType",
+                        "description": "attribute of the resource\n"
+                    },
+                    "geometry": {
+                        "type": "string",
+                        "description": "geo position and shape of the resource\n"
+                    },
+                    "kinds": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/InverterKind:InverterKind"
+                        },
+                        "description": "kind of the resource\n"
+                    },
+                    "make": {
+                        "$ref": "#/types/splight:index/InverterMake:InverterMake",
+                        "description": "attribute of the resource\n"
+                    },
+                    "maxActivePower": {
+                        "$ref": "#/types/splight:index/InverterMaxActivePower:InverterMaxActivePower",
+                        "description": "attribute of the resource\n"
+                    },
+                    "model": {
+                        "$ref": "#/types/splight:index/InverterModel:InverterModel",
+                        "description": "attribute of the resource\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "name of the resource\n"
+                    },
+                    "serialNumber": {
+                        "$ref": "#/types/splight:index/InverterSerialNumber:InverterSerialNumber",
+                        "description": "attribute of the resource\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/InverterTag:InverterTag"
+                        },
+                        "description": "tags of the resource\n"
+                    },
+                    "temperatures": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/InverterTemperature:InverterTemperature"
+                        },
+                        "description": "attribute of the resource\n"
                     }
                 },
                 "type": "object"

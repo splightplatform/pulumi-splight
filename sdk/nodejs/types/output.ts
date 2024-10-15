@@ -203,6 +203,55 @@ export interface AssetTag {
     name: string;
 }
 
+export interface BusKind {
+    /**
+     * kind id
+     */
+    id: string;
+    /**
+     * kind name
+     */
+    name: string;
+}
+
+export interface BusNominalVoltage {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface BusTag {
+    /**
+     * tag id
+     */
+    id: string;
+    /**
+     * tag name
+     */
+    name: string;
+}
+
 export interface CommandAction {
     /**
      * asset associated with the action (to be deprecated)
@@ -1238,6 +1287,147 @@ export interface FunctionTargetAttribute {
     type?: string;
 }
 
+export interface GeneratorActivePower {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface GeneratorCo2Coefficient {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface GeneratorDailyEmissionAvoided {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface GeneratorDailyEnergy {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface GeneratorKind {
+    /**
+     * kind id
+     */
+    id: string;
+    /**
+     * kind name
+     */
+    name: string;
+}
+
+export interface GeneratorReactivePower {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface GeneratorTag {
+    /**
+     * tag id
+     */
+    id: string;
+    /**
+     * tag name
+     */
+    name: string;
+}
+
 export interface GetAssetKindsKind {
     /**
      * Id of the resource
@@ -1258,6 +1448,277 @@ export interface GetTagsTag {
      * name of the resource
      */
     name: string;
+}
+
+export interface GridKind {
+    /**
+     * kind id
+     */
+    id: string;
+    /**
+     * kind name
+     */
+    name: string;
+}
+
+export interface GridTag {
+    /**
+     * tag id
+     */
+    id: string;
+    /**
+     * tag name
+     */
+    name: string;
+}
+
+export interface InverterAccumulatedEnergy {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface InverterActivePower {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface InverterDailyEnergy {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface InverterEnergyMeasurementType {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface InverterKind {
+    /**
+     * kind id
+     */
+    id: string;
+    /**
+     * kind name
+     */
+    name: string;
+}
+
+export interface InverterMake {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface InverterMaxActivePower {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface InverterModel {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface InverterSerialNumber {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface InverterTag {
+    /**
+     * tag id
+     */
+    id: string;
+    /**
+     * tag name
+     */
+    name: string;
+}
+
+export interface InverterTemperature {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
 }
 
 export interface LineAbsorptivity {
