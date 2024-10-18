@@ -22272,6 +22272,430 @@ func (o GetAssetKindsKindArrayOutput) Index(i pulumi.IntInput) GetAssetKindsKind
 	}).(GetAssetKindsKindOutput)
 }
 
+type GetBusesTag struct {
+	// Id of the resource
+	Id string `pulumi:"id"`
+	// name of the resource
+	Name string `pulumi:"name"`
+}
+
+// GetBusesTagInput is an input type that accepts GetBusesTagArgs and GetBusesTagOutput values.
+// You can construct a concrete instance of `GetBusesTagInput` via:
+//
+//	GetBusesTagArgs{...}
+type GetBusesTagInput interface {
+	pulumi.Input
+
+	ToGetBusesTagOutput() GetBusesTagOutput
+	ToGetBusesTagOutputWithContext(context.Context) GetBusesTagOutput
+}
+
+type GetBusesTagArgs struct {
+	// Id of the resource
+	Id pulumi.StringInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetBusesTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBusesTag)(nil)).Elem()
+}
+
+func (i GetBusesTagArgs) ToGetBusesTagOutput() GetBusesTagOutput {
+	return i.ToGetBusesTagOutputWithContext(context.Background())
+}
+
+func (i GetBusesTagArgs) ToGetBusesTagOutputWithContext(ctx context.Context) GetBusesTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBusesTagOutput)
+}
+
+// GetBusesTagArrayInput is an input type that accepts GetBusesTagArray and GetBusesTagArrayOutput values.
+// You can construct a concrete instance of `GetBusesTagArrayInput` via:
+//
+//	GetBusesTagArray{ GetBusesTagArgs{...} }
+type GetBusesTagArrayInput interface {
+	pulumi.Input
+
+	ToGetBusesTagArrayOutput() GetBusesTagArrayOutput
+	ToGetBusesTagArrayOutputWithContext(context.Context) GetBusesTagArrayOutput
+}
+
+type GetBusesTagArray []GetBusesTagInput
+
+func (GetBusesTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBusesTag)(nil)).Elem()
+}
+
+func (i GetBusesTagArray) ToGetBusesTagArrayOutput() GetBusesTagArrayOutput {
+	return i.ToGetBusesTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetBusesTagArray) ToGetBusesTagArrayOutputWithContext(ctx context.Context) GetBusesTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBusesTagArrayOutput)
+}
+
+type GetBusesTagOutput struct{ *pulumi.OutputState }
+
+func (GetBusesTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBusesTag)(nil)).Elem()
+}
+
+func (o GetBusesTagOutput) ToGetBusesTagOutput() GetBusesTagOutput {
+	return o
+}
+
+func (o GetBusesTagOutput) ToGetBusesTagOutputWithContext(ctx context.Context) GetBusesTagOutput {
+	return o
+}
+
+// Id of the resource
+func (o GetBusesTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBusesTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// name of the resource
+func (o GetBusesTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBusesTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetBusesTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBusesTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBusesTag)(nil)).Elem()
+}
+
+func (o GetBusesTagArrayOutput) ToGetBusesTagArrayOutput() GetBusesTagArrayOutput {
+	return o
+}
+
+func (o GetBusesTagArrayOutput) ToGetBusesTagArrayOutputWithContext(ctx context.Context) GetBusesTagArrayOutput {
+	return o
+}
+
+func (o GetBusesTagArrayOutput) Index(i pulumi.IntInput) GetBusesTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBusesTag {
+		return vs[0].([]GetBusesTag)[vs[1].(int)]
+	}).(GetBusesTagOutput)
+}
+
+type GetGeneratorsTag struct {
+	// Id of the resource
+	Id string `pulumi:"id"`
+	// name of the resource
+	Name string `pulumi:"name"`
+}
+
+// GetGeneratorsTagInput is an input type that accepts GetGeneratorsTagArgs and GetGeneratorsTagOutput values.
+// You can construct a concrete instance of `GetGeneratorsTagInput` via:
+//
+//	GetGeneratorsTagArgs{...}
+type GetGeneratorsTagInput interface {
+	pulumi.Input
+
+	ToGetGeneratorsTagOutput() GetGeneratorsTagOutput
+	ToGetGeneratorsTagOutputWithContext(context.Context) GetGeneratorsTagOutput
+}
+
+type GetGeneratorsTagArgs struct {
+	// Id of the resource
+	Id pulumi.StringInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetGeneratorsTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGeneratorsTag)(nil)).Elem()
+}
+
+func (i GetGeneratorsTagArgs) ToGetGeneratorsTagOutput() GetGeneratorsTagOutput {
+	return i.ToGetGeneratorsTagOutputWithContext(context.Background())
+}
+
+func (i GetGeneratorsTagArgs) ToGetGeneratorsTagOutputWithContext(ctx context.Context) GetGeneratorsTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGeneratorsTagOutput)
+}
+
+// GetGeneratorsTagArrayInput is an input type that accepts GetGeneratorsTagArray and GetGeneratorsTagArrayOutput values.
+// You can construct a concrete instance of `GetGeneratorsTagArrayInput` via:
+//
+//	GetGeneratorsTagArray{ GetGeneratorsTagArgs{...} }
+type GetGeneratorsTagArrayInput interface {
+	pulumi.Input
+
+	ToGetGeneratorsTagArrayOutput() GetGeneratorsTagArrayOutput
+	ToGetGeneratorsTagArrayOutputWithContext(context.Context) GetGeneratorsTagArrayOutput
+}
+
+type GetGeneratorsTagArray []GetGeneratorsTagInput
+
+func (GetGeneratorsTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGeneratorsTag)(nil)).Elem()
+}
+
+func (i GetGeneratorsTagArray) ToGetGeneratorsTagArrayOutput() GetGeneratorsTagArrayOutput {
+	return i.ToGetGeneratorsTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetGeneratorsTagArray) ToGetGeneratorsTagArrayOutputWithContext(ctx context.Context) GetGeneratorsTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGeneratorsTagArrayOutput)
+}
+
+type GetGeneratorsTagOutput struct{ *pulumi.OutputState }
+
+func (GetGeneratorsTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGeneratorsTag)(nil)).Elem()
+}
+
+func (o GetGeneratorsTagOutput) ToGetGeneratorsTagOutput() GetGeneratorsTagOutput {
+	return o
+}
+
+func (o GetGeneratorsTagOutput) ToGetGeneratorsTagOutputWithContext(ctx context.Context) GetGeneratorsTagOutput {
+	return o
+}
+
+// Id of the resource
+func (o GetGeneratorsTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGeneratorsTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// name of the resource
+func (o GetGeneratorsTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGeneratorsTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetGeneratorsTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGeneratorsTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGeneratorsTag)(nil)).Elem()
+}
+
+func (o GetGeneratorsTagArrayOutput) ToGetGeneratorsTagArrayOutput() GetGeneratorsTagArrayOutput {
+	return o
+}
+
+func (o GetGeneratorsTagArrayOutput) ToGetGeneratorsTagArrayOutputWithContext(ctx context.Context) GetGeneratorsTagArrayOutput {
+	return o
+}
+
+func (o GetGeneratorsTagArrayOutput) Index(i pulumi.IntInput) GetGeneratorsTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGeneratorsTag {
+		return vs[0].([]GetGeneratorsTag)[vs[1].(int)]
+	}).(GetGeneratorsTagOutput)
+}
+
+type GetGridsTag struct {
+	// Id of the resource
+	Id string `pulumi:"id"`
+	// name of the resource
+	Name string `pulumi:"name"`
+}
+
+// GetGridsTagInput is an input type that accepts GetGridsTagArgs and GetGridsTagOutput values.
+// You can construct a concrete instance of `GetGridsTagInput` via:
+//
+//	GetGridsTagArgs{...}
+type GetGridsTagInput interface {
+	pulumi.Input
+
+	ToGetGridsTagOutput() GetGridsTagOutput
+	ToGetGridsTagOutputWithContext(context.Context) GetGridsTagOutput
+}
+
+type GetGridsTagArgs struct {
+	// Id of the resource
+	Id pulumi.StringInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetGridsTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGridsTag)(nil)).Elem()
+}
+
+func (i GetGridsTagArgs) ToGetGridsTagOutput() GetGridsTagOutput {
+	return i.ToGetGridsTagOutputWithContext(context.Background())
+}
+
+func (i GetGridsTagArgs) ToGetGridsTagOutputWithContext(ctx context.Context) GetGridsTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGridsTagOutput)
+}
+
+// GetGridsTagArrayInput is an input type that accepts GetGridsTagArray and GetGridsTagArrayOutput values.
+// You can construct a concrete instance of `GetGridsTagArrayInput` via:
+//
+//	GetGridsTagArray{ GetGridsTagArgs{...} }
+type GetGridsTagArrayInput interface {
+	pulumi.Input
+
+	ToGetGridsTagArrayOutput() GetGridsTagArrayOutput
+	ToGetGridsTagArrayOutputWithContext(context.Context) GetGridsTagArrayOutput
+}
+
+type GetGridsTagArray []GetGridsTagInput
+
+func (GetGridsTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGridsTag)(nil)).Elem()
+}
+
+func (i GetGridsTagArray) ToGetGridsTagArrayOutput() GetGridsTagArrayOutput {
+	return i.ToGetGridsTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetGridsTagArray) ToGetGridsTagArrayOutputWithContext(ctx context.Context) GetGridsTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGridsTagArrayOutput)
+}
+
+type GetGridsTagOutput struct{ *pulumi.OutputState }
+
+func (GetGridsTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGridsTag)(nil)).Elem()
+}
+
+func (o GetGridsTagOutput) ToGetGridsTagOutput() GetGridsTagOutput {
+	return o
+}
+
+func (o GetGridsTagOutput) ToGetGridsTagOutputWithContext(ctx context.Context) GetGridsTagOutput {
+	return o
+}
+
+// Id of the resource
+func (o GetGridsTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGridsTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// name of the resource
+func (o GetGridsTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGridsTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetGridsTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGridsTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGridsTag)(nil)).Elem()
+}
+
+func (o GetGridsTagArrayOutput) ToGetGridsTagArrayOutput() GetGridsTagArrayOutput {
+	return o
+}
+
+func (o GetGridsTagArrayOutput) ToGetGridsTagArrayOutputWithContext(ctx context.Context) GetGridsTagArrayOutput {
+	return o
+}
+
+func (o GetGridsTagArrayOutput) Index(i pulumi.IntInput) GetGridsTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGridsTag {
+		return vs[0].([]GetGridsTag)[vs[1].(int)]
+	}).(GetGridsTagOutput)
+}
+
+type GetLinesTag struct {
+	// Id of the resource
+	Id string `pulumi:"id"`
+	// name of the resource
+	Name string `pulumi:"name"`
+}
+
+// GetLinesTagInput is an input type that accepts GetLinesTagArgs and GetLinesTagOutput values.
+// You can construct a concrete instance of `GetLinesTagInput` via:
+//
+//	GetLinesTagArgs{...}
+type GetLinesTagInput interface {
+	pulumi.Input
+
+	ToGetLinesTagOutput() GetLinesTagOutput
+	ToGetLinesTagOutputWithContext(context.Context) GetLinesTagOutput
+}
+
+type GetLinesTagArgs struct {
+	// Id of the resource
+	Id pulumi.StringInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetLinesTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLinesTag)(nil)).Elem()
+}
+
+func (i GetLinesTagArgs) ToGetLinesTagOutput() GetLinesTagOutput {
+	return i.ToGetLinesTagOutputWithContext(context.Background())
+}
+
+func (i GetLinesTagArgs) ToGetLinesTagOutputWithContext(ctx context.Context) GetLinesTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLinesTagOutput)
+}
+
+// GetLinesTagArrayInput is an input type that accepts GetLinesTagArray and GetLinesTagArrayOutput values.
+// You can construct a concrete instance of `GetLinesTagArrayInput` via:
+//
+//	GetLinesTagArray{ GetLinesTagArgs{...} }
+type GetLinesTagArrayInput interface {
+	pulumi.Input
+
+	ToGetLinesTagArrayOutput() GetLinesTagArrayOutput
+	ToGetLinesTagArrayOutputWithContext(context.Context) GetLinesTagArrayOutput
+}
+
+type GetLinesTagArray []GetLinesTagInput
+
+func (GetLinesTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLinesTag)(nil)).Elem()
+}
+
+func (i GetLinesTagArray) ToGetLinesTagArrayOutput() GetLinesTagArrayOutput {
+	return i.ToGetLinesTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetLinesTagArray) ToGetLinesTagArrayOutputWithContext(ctx context.Context) GetLinesTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLinesTagArrayOutput)
+}
+
+type GetLinesTagOutput struct{ *pulumi.OutputState }
+
+func (GetLinesTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLinesTag)(nil)).Elem()
+}
+
+func (o GetLinesTagOutput) ToGetLinesTagOutput() GetLinesTagOutput {
+	return o
+}
+
+func (o GetLinesTagOutput) ToGetLinesTagOutputWithContext(ctx context.Context) GetLinesTagOutput {
+	return o
+}
+
+// Id of the resource
+func (o GetLinesTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLinesTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// name of the resource
+func (o GetLinesTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLinesTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetLinesTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLinesTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLinesTag)(nil)).Elem()
+}
+
+func (o GetLinesTagArrayOutput) ToGetLinesTagArrayOutput() GetLinesTagArrayOutput {
+	return o
+}
+
+func (o GetLinesTagArrayOutput) ToGetLinesTagArrayOutputWithContext(ctx context.Context) GetLinesTagArrayOutput {
+	return o
+}
+
+func (o GetLinesTagArrayOutput) Index(i pulumi.IntInput) GetLinesTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLinesTag {
+		return vs[0].([]GetLinesTag)[vs[1].(int)]
+	}).(GetLinesTagOutput)
+}
+
 type GetTagsTag struct {
 	// Id of the resource
 	Id string `pulumi:"id"`
@@ -22681,6 +23105,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentWindSpeedArrayInput)(nil)).Elem(), SegmentWindSpeedArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAssetKindsKindInput)(nil)).Elem(), GetAssetKindsKindArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAssetKindsKindArrayInput)(nil)).Elem(), GetAssetKindsKindArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBusesTagInput)(nil)).Elem(), GetBusesTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBusesTagArrayInput)(nil)).Elem(), GetBusesTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGeneratorsTagInput)(nil)).Elem(), GetGeneratorsTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGeneratorsTagArrayInput)(nil)).Elem(), GetGeneratorsTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGridsTagInput)(nil)).Elem(), GetGridsTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGridsTagArrayInput)(nil)).Elem(), GetGridsTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLinesTagInput)(nil)).Elem(), GetLinesTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLinesTagArrayInput)(nil)).Elem(), GetLinesTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagInput)(nil)).Elem(), GetTagsTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagArrayInput)(nil)).Elem(), GetTagsTagArray{})
 	pulumi.RegisterOutputType(ActionAssetOutput{})
@@ -22985,6 +23417,14 @@ func init() {
 	pulumi.RegisterOutputType(SegmentWindSpeedArrayOutput{})
 	pulumi.RegisterOutputType(GetAssetKindsKindOutput{})
 	pulumi.RegisterOutputType(GetAssetKindsKindArrayOutput{})
+	pulumi.RegisterOutputType(GetBusesTagOutput{})
+	pulumi.RegisterOutputType(GetBusesTagArrayOutput{})
+	pulumi.RegisterOutputType(GetGeneratorsTagOutput{})
+	pulumi.RegisterOutputType(GetGeneratorsTagArrayOutput{})
+	pulumi.RegisterOutputType(GetGridsTagOutput{})
+	pulumi.RegisterOutputType(GetGridsTagArrayOutput{})
+	pulumi.RegisterOutputType(GetLinesTagOutput{})
+	pulumi.RegisterOutputType(GetLinesTagArrayOutput{})
 	pulumi.RegisterOutputType(GetTagsTagOutput{})
 	pulumi.RegisterOutputType(GetTagsTagArrayOutput{})
 }

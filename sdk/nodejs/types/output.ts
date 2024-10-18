@@ -1439,6 +1439,50 @@ export interface GetAssetKindsKind {
     name: string;
 }
 
+export interface GetBusesTag {
+    /**
+     * Id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+}
+
+export interface GetGeneratorsTag {
+    /**
+     * Id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+}
+
+export interface GetGridsTag {
+    /**
+     * Id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+}
+
+export interface GetLinesTag {
+    /**
+     * Id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+}
+
 export interface GetTagsTag {
     /**
      * Id of the resource

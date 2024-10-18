@@ -58,7 +58,7 @@ export class AssetRelation extends pulumi.CustomResource {
     /**
      * target asset of the relation
      */
-    public readonly relatedAsset!: pulumi.Output<outputs.AssetRelationRelatedAsset>;
+    public readonly relatedAsset!: pulumi.Output<outputs.AssetRelationRelatedAsset | undefined>;
     /**
      * kind of the target relation asset
      */
@@ -86,9 +86,6 @@ export class AssetRelation extends pulumi.CustomResource {
             const args = argsOrState as AssetRelationArgs | undefined;
             if ((!args || args.asset === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'asset'");
-            }
-            if ((!args || args.relatedAsset === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'relatedAsset'");
             }
             if ((!args || args.relatedAssetKind === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'relatedAssetKind'");
@@ -149,7 +146,7 @@ export interface AssetRelationArgs {
     /**
      * target asset of the relation
      */
-    relatedAsset: pulumi.Input<inputs.AssetRelationRelatedAsset>;
+    relatedAsset?: pulumi.Input<inputs.AssetRelationRelatedAsset>;
     /**
      * kind of the target relation asset
      */

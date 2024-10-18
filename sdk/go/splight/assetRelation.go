@@ -29,7 +29,7 @@ type AssetRelation struct {
 	// relation name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// target asset of the relation
-	RelatedAsset AssetRelationRelatedAssetOutput `pulumi:"relatedAsset"`
+	RelatedAsset AssetRelationRelatedAssetPtrOutput `pulumi:"relatedAsset"`
 	// kind of the target relation asset
 	RelatedAssetKind AssetRelationRelatedAssetKindOutput `pulumi:"relatedAssetKind"`
 }
@@ -43,9 +43,6 @@ func NewAssetRelation(ctx *pulumi.Context,
 
 	if args.Asset == nil {
 		return nil, errors.New("invalid value for required argument 'Asset'")
-	}
-	if args.RelatedAsset == nil {
-		return nil, errors.New("invalid value for required argument 'RelatedAsset'")
 	}
 	if args.RelatedAssetKind == nil {
 		return nil, errors.New("invalid value for required argument 'RelatedAssetKind'")
@@ -110,7 +107,7 @@ type assetRelationArgs struct {
 	// relation name
 	Name *string `pulumi:"name"`
 	// target asset of the relation
-	RelatedAsset AssetRelationRelatedAsset `pulumi:"relatedAsset"`
+	RelatedAsset *AssetRelationRelatedAsset `pulumi:"relatedAsset"`
 	// kind of the target relation asset
 	RelatedAssetKind AssetRelationRelatedAssetKind `pulumi:"relatedAssetKind"`
 }
@@ -124,7 +121,7 @@ type AssetRelationArgs struct {
 	// relation name
 	Name pulumi.StringPtrInput
 	// target asset of the relation
-	RelatedAsset AssetRelationRelatedAssetInput
+	RelatedAsset AssetRelationRelatedAssetPtrInput
 	// kind of the target relation asset
 	RelatedAssetKind AssetRelationRelatedAssetKindInput
 }
@@ -232,8 +229,8 @@ func (o AssetRelationOutput) Name() pulumi.StringOutput {
 }
 
 // target asset of the relation
-func (o AssetRelationOutput) RelatedAsset() AssetRelationRelatedAssetOutput {
-	return o.ApplyT(func(v *AssetRelation) AssetRelationRelatedAssetOutput { return v.RelatedAsset }).(AssetRelationRelatedAssetOutput)
+func (o AssetRelationOutput) RelatedAsset() AssetRelationRelatedAssetPtrOutput {
+	return o.ApplyT(func(v *AssetRelation) AssetRelationRelatedAssetPtrOutput { return v.RelatedAsset }).(AssetRelationRelatedAssetPtrOutput)
 }
 
 // kind of the target relation asset
