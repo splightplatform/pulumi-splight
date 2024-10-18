@@ -22,25 +22,26 @@ __all__ = ['AssetRelationArgs', 'AssetRelation']
 class AssetRelationArgs:
     def __init__(__self__, *,
                  asset: pulumi.Input['AssetRelationAssetArgs'],
-                 related_asset: pulumi.Input['AssetRelationRelatedAssetArgs'],
                  related_asset_kind: pulumi.Input['AssetRelationRelatedAssetKindArgs'],
                  description: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 related_asset: Optional[pulumi.Input['AssetRelationRelatedAssetArgs']] = None):
         """
         The set of arguments for constructing a AssetRelation resource.
         :param pulumi.Input['AssetRelationAssetArgs'] asset: asset where the relation origins
-        :param pulumi.Input['AssetRelationRelatedAssetArgs'] related_asset: target asset of the relation
         :param pulumi.Input['AssetRelationRelatedAssetKindArgs'] related_asset_kind: kind of the target relation asset
         :param pulumi.Input[str] description: relation description
         :param pulumi.Input[str] name: relation name
+        :param pulumi.Input['AssetRelationRelatedAssetArgs'] related_asset: target asset of the relation
         """
         pulumi.set(__self__, "asset", asset)
-        pulumi.set(__self__, "related_asset", related_asset)
         pulumi.set(__self__, "related_asset_kind", related_asset_kind)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if related_asset is not None:
+            pulumi.set(__self__, "related_asset", related_asset)
 
     @property
     @pulumi.getter
@@ -53,18 +54,6 @@ class AssetRelationArgs:
     @asset.setter
     def asset(self, value: pulumi.Input['AssetRelationAssetArgs']):
         pulumi.set(self, "asset", value)
-
-    @property
-    @pulumi.getter(name="relatedAsset")
-    def related_asset(self) -> pulumi.Input['AssetRelationRelatedAssetArgs']:
-        """
-        target asset of the relation
-        """
-        return pulumi.get(self, "related_asset")
-
-    @related_asset.setter
-    def related_asset(self, value: pulumi.Input['AssetRelationRelatedAssetArgs']):
-        pulumi.set(self, "related_asset", value)
 
     @property
     @pulumi.getter(name="relatedAssetKind")
@@ -101,6 +90,18 @@ class AssetRelationArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="relatedAsset")
+    def related_asset(self) -> Optional[pulumi.Input['AssetRelationRelatedAssetArgs']]:
+        """
+        target asset of the relation
+        """
+        return pulumi.get(self, "related_asset")
+
+    @related_asset.setter
+    def related_asset(self, value: Optional[pulumi.Input['AssetRelationRelatedAssetArgs']]):
+        pulumi.set(self, "related_asset", value)
 
 
 @pulumi.input_type
@@ -268,8 +269,6 @@ class AssetRelation(pulumi.CustomResource):
             __props__.__dict__["asset"] = asset
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
-            if related_asset is None and not opts.urn:
-                raise TypeError("Missing required property 'related_asset'")
             __props__.__dict__["related_asset"] = related_asset
             if related_asset_kind is None and not opts.urn:
                 raise TypeError("Missing required property 'related_asset_kind'")
@@ -339,7 +338,7 @@ class AssetRelation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="relatedAsset")
-    def related_asset(self) -> pulumi.Output['outputs.AssetRelationRelatedAsset']:
+    def related_asset(self) -> pulumi.Output[Optional['outputs.AssetRelationRelatedAsset']]:
         """
         target asset of the relation
         """

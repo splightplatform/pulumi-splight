@@ -4900,6 +4900,94 @@
                 }
             }
         },
+        "splight:index/getBusesTag:getBusesTag": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "splight:index/getGeneratorsTag:getGeneratorsTag": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "splight:index/getGridsTag:getGridsTag": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "splight:index/getLinesTag:getLinesTag": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "splight:index/getTagsTag:getTagsTag": {
             "properties": {
                 "id": {
@@ -5607,7 +5695,6 @@
             "required": [
                 "asset",
                 "name",
-                "relatedAsset",
                 "relatedAssetKind"
             ],
             "inputProperties": {
@@ -5636,7 +5723,6 @@
             },
             "requiredInputs": [
                 "asset",
-                "relatedAsset",
                 "relatedAssetKind"
             ],
             "stateInputs": {
@@ -13096,6 +13182,98 @@
                 "type": "object",
                 "required": [
                     "kinds",
+                    "id"
+                ]
+            }
+        },
+        "splight:index/getBuses:getBuses": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as splight from \"@pulumi/splight\";\n\nconst buses = splight.getBuses({});\n```\n```python\nimport pulumi\nimport pulumi_splight as splight\n\nbuses = splight.get_buses()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Splight = Pulumi.Splight;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var buses = Splight.GetBuses.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/splightplatform/pulumi-splight/sdk/go/splight\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := splight.GetBuses(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.splight.SplightFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var buses = SplightFunctions.getBuses();\n\n    }\n}\n```\n```yaml\nvariables:\n  buses:\n    fn::invoke:\n      Function: splight:getBuses\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "outputs": {
+                "description": "A collection of values returned by getBuses.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/getBusesTag:getBusesTag"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "tags",
+                    "id"
+                ]
+            }
+        },
+        "splight:index/getGenerators:getGenerators": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as splight from \"@pulumi/splight\";\n\nconst generators = splight.getGenerators({});\n```\n```python\nimport pulumi\nimport pulumi_splight as splight\n\ngenerators = splight.get_generators()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Splight = Pulumi.Splight;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var generators = Splight.GetGenerators.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/splightplatform/pulumi-splight/sdk/go/splight\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := splight.GetGenerators(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.splight.SplightFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var generators = SplightFunctions.getGenerators();\n\n    }\n}\n```\n```yaml\nvariables:\n  generators:\n    fn::invoke:\n      Function: splight:getGenerators\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "outputs": {
+                "description": "A collection of values returned by getGenerators.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/getGeneratorsTag:getGeneratorsTag"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "tags",
+                    "id"
+                ]
+            }
+        },
+        "splight:index/getGrids:getGrids": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as splight from \"@pulumi/splight\";\n\nconst grids = splight.getGrids({});\n```\n```python\nimport pulumi\nimport pulumi_splight as splight\n\ngrids = splight.get_grids()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Splight = Pulumi.Splight;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var grids = Splight.GetGrids.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/splightplatform/pulumi-splight/sdk/go/splight\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := splight.GetGrids(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.splight.SplightFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var grids = SplightFunctions.getGrids();\n\n    }\n}\n```\n```yaml\nvariables:\n  grids:\n    fn::invoke:\n      Function: splight:getGrids\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "outputs": {
+                "description": "A collection of values returned by getGrids.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/getGridsTag:getGridsTag"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "tags",
+                    "id"
+                ]
+            }
+        },
+        "splight:index/getLines:getLines": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as splight from \"@pulumi/splight\";\n\nconst lines = splight.getLines({});\n```\n```python\nimport pulumi\nimport pulumi_splight as splight\n\nlines = splight.get_lines()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Splight = Pulumi.Splight;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var lines = Splight.GetLines.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/splightplatform/pulumi-splight/sdk/go/splight\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := splight.GetLines(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.splight.SplightFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var lines = SplightFunctions.getLines();\n\n    }\n}\n```\n```yaml\nvariables:\n  lines:\n    fn::invoke:\n      Function: splight:getLines\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "outputs": {
+                "description": "A collection of values returned by getLines.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/getLinesTag:getLinesTag"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "tags",
                     "id"
                 ]
             }

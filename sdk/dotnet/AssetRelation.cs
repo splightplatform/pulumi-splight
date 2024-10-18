@@ -44,7 +44,7 @@ namespace Splight.Splight
         /// target asset of the relation
         /// </summary>
         [Output("relatedAsset")]
-        public Output<Outputs.AssetRelationRelatedAsset> RelatedAsset { get; private set; } = null!;
+        public Output<Outputs.AssetRelationRelatedAsset?> RelatedAsset { get; private set; } = null!;
 
         /// <summary>
         /// kind of the target relation asset
@@ -120,8 +120,8 @@ namespace Splight.Splight
         /// <summary>
         /// target asset of the relation
         /// </summary>
-        [Input("relatedAsset", required: true)]
-        public Input<Inputs.AssetRelationRelatedAssetArgs> RelatedAsset { get; set; } = null!;
+        [Input("relatedAsset")]
+        public Input<Inputs.AssetRelationRelatedAssetArgs>? RelatedAsset { get; set; }
 
         /// <summary>
         /// kind of the target relation asset

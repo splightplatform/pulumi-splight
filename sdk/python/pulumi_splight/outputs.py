@@ -184,6 +184,10 @@ __all__ = [
     'SegmentWindDirection',
     'SegmentWindSpeed',
     'GetAssetKindsKindResult',
+    'GetBusesTagResult',
+    'GetGeneratorsTagResult',
+    'GetGridsTagResult',
+    'GetLinesTagResult',
     'GetTagsTagResult',
 ]
 
@@ -9995,6 +9999,122 @@ class SegmentWindSpeed(dict):
 
 @pulumi.output_type
 class GetAssetKindsKindResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: Id of the resource
+        :param str name: name of the resource
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Id of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetBusesTagResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: Id of the resource
+        :param str name: name of the resource
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Id of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetGeneratorsTagResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: Id of the resource
+        :param str name: name of the resource
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Id of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetGridsTagResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: Id of the resource
+        :param str name: name of the resource
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Id of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetLinesTagResult(dict):
     def __init__(__self__, *,
                  id: str,
                  name: str):

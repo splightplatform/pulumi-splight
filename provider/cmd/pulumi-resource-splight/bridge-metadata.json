@@ -812,6 +812,42 @@
                     }
                 }
             },
+            "splight_buses": {
+                "current": "splight:index/getBuses:getBuses",
+                "majorVersion": 1,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "splight_generators": {
+                "current": "splight:index/getGenerators:getGenerators",
+                "majorVersion": 1,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "splight_grids": {
+                "current": "splight:index/getGrids:getGrids",
+                "majorVersion": 1,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "splight_lines": {
+                "current": "splight:index/getLines:getLines",
+                "majorVersion": 1,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "splight_tags": {
                 "current": "splight:index/getTags:getTags",
                 "majorVersion": 1,
