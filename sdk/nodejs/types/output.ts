@@ -2748,3 +2748,25 @@ export interface SegmentWindSpeed {
     unit: string;
 }
 
+export interface SlackLineKind {
+    /**
+     * kind id
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+}
+
+export interface SlackLineTag {
+    /**
+     * tag id
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+}
+

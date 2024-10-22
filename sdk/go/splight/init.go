@@ -91,6 +91,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Secret{}
 	case "splight:index/segment:Segment":
 		r = &Segment{}
+	case "splight:index/slackLine:SlackLine":
+		r = &SlackLine{}
 	case "splight:index/tag:Tag":
 		r = &Tag{}
 	default:
@@ -297,6 +299,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"splight",
 		"index/segment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/slackLine",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -349,6 +349,10 @@ __all__ = [
     'SegmentWindDirectionArgsDict',
     'SegmentWindSpeedArgs',
     'SegmentWindSpeedArgsDict',
+    'SlackLineKindArgs',
+    'SlackLineKindArgsDict',
+    'SlackLineTagArgs',
+    'SlackLineTagArgsDict',
 ]
 
 MYPY = False
@@ -15121,5 +15125,105 @@ class SegmentWindSpeedArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
+
+
+if not MYPY:
+    class SlackLineKindArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        kind id
+        """
+        name: pulumi.Input[str]
+        """
+        name of the resource
+        """
+elif False:
+    SlackLineKindArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SlackLineKindArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: kind id
+        :param pulumi.Input[str] name: name of the resource
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        kind id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class SlackLineTagArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        tag id
+        """
+        name: pulumi.Input[str]
+        """
+        name of the resource
+        """
+elif False:
+    SlackLineTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SlackLineTagArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: tag id
+        :param pulumi.Input[str] name: name of the resource
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
 

@@ -58,6 +58,7 @@
         "provider.ts",
         "secret.ts",
         "segment.ts",
+        "slackLine.ts",
         "tag.ts",
         "types/index.ts",
         "types/input.ts",
