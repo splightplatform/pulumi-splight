@@ -31,6 +31,7 @@ from .dashboard_tab import *
 from .dashboard_table_chart import *
 from .dashboard_text_chart import *
 from .dashboard_timeseries_chart import *
+from .external_grid import *
 from .file import *
 from .file_folder import *
 from .function import *
@@ -268,6 +269,14 @@ _utilities.register(
   "fqn": "pulumi_splight",
   "classes": {
    "splight:index/dashboardTimeseriesChart:DashboardTimeseriesChart": "DashboardTimeseriesChart"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/externalGrid",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/externalGrid:ExternalGrid": "ExternalGrid"
   }
  },
  {

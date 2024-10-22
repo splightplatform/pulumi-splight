@@ -8,26 +8,29 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace Splight.Splight.Inputs
+namespace Splight.Splight.Outputs
 {
 
-    public sealed class SlackLineTagArgs : global::Pulumi.ResourceArgs
+    [OutputType]
+    public sealed class ExternalGridKind
     {
         /// <summary>
-        /// tag id
+        /// kind id
         /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
-
+        public readonly string Id;
         /// <summary>
-        /// tag name
+        /// kind name
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        public readonly string Name;
 
-        public SlackLineTagArgs()
+        [OutputConstructor]
+        private ExternalGridKind(
+            string id,
+
+            string name)
         {
+            Id = id;
+            Name = name;
         }
-        public static new SlackLineTagArgs Empty => new SlackLineTagArgs();
     }
 }

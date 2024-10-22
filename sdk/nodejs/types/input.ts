@@ -1159,6 +1159,28 @@ export interface DashboardTimeseriesChartValueMapping {
     type: pulumi.Input<string>;
 }
 
+export interface ExternalGridKind {
+    /**
+     * kind id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * kind name
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface ExternalGridTag {
+    /**
+     * tag id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * tag name
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface FileRelatedAsset {
     /**
      * asset id
@@ -2688,7 +2710,7 @@ export interface SlackLineKind {
      */
     id: pulumi.Input<string>;
     /**
-     * name of the resource
+     * kind name
      */
     name: pulumi.Input<string>;
 }
@@ -2699,7 +2721,7 @@ export interface SlackLineTag {
      */
     id: pulumi.Input<string>;
     /**
-     * name of the resource
+     * tag name
      */
     name: pulumi.Input<string>;
 }

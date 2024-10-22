@@ -73,6 +73,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DashboardTextChart{}
 	case "splight:index/dashboardTimeseriesChart:DashboardTimeseriesChart":
 		r = &DashboardTimeseriesChart{}
+	case "splight:index/externalGrid:ExternalGrid":
+		r = &ExternalGrid{}
 	case "splight:index/file:File":
 		r = &File{}
 	case "splight:index/fileFolder:FileFolder":
@@ -254,6 +256,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"splight",
 		"index/dashboardTimeseriesChart",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/externalGrid",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

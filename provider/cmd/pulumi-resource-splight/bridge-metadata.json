@@ -533,6 +533,18 @@
                     }
                 }
             },
+            "splight_external_grid": {
+                "current": "splight:index/externalGrid:ExternalGrid",
+                "majorVersion": 1,
+                "fields": {
+                    "kind": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "splight_file": {
                 "current": "splight:index/file:File",
                 "majorVersion": 1,

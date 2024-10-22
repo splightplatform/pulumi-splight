@@ -41,6 +41,7 @@
         "dashboardTableChart.ts",
         "dashboardTextChart.ts",
         "dashboardTimeseriesChart.ts",
+        "externalGrid.ts",
         "file.ts",
         "fileFolder.ts",
         "function.ts",

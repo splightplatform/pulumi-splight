@@ -11,7 +11,7 @@ using Pulumi;
 namespace Splight.Splight.Inputs
 {
 
-    public sealed class SlackLineTagArgs : global::Pulumi.ResourceArgs
+    public sealed class ExternalGridTagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// tag id
@@ -25,9 +25,9 @@ namespace Splight.Splight.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        public SlackLineTagArgs()
+        public ExternalGridTagArgs()
         {
         }
-        public static new SlackLineTagArgs Empty => new SlackLineTagArgs();
+        public static new ExternalGridTagArgs Empty => new ExternalGridTagArgs();
     }
 }

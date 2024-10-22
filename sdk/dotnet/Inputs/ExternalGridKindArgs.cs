@@ -11,23 +11,23 @@ using Pulumi;
 namespace Splight.Splight.Inputs
 {
 
-    public sealed class SlackLineTagArgs : global::Pulumi.ResourceArgs
+    public sealed class ExternalGridKindArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// tag id
+        /// kind id
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// tag name
+        /// kind name
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        public SlackLineTagArgs()
+        public ExternalGridKindArgs()
         {
         }
-        public static new SlackLineTagArgs Empty => new SlackLineTagArgs();
+        public static new ExternalGridKindArgs Empty => new ExternalGridKindArgs();
     }
 }

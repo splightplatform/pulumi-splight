@@ -135,6 +135,11 @@ export type DashboardTimeseriesChart = import("./dashboardTimeseriesChart").Dash
 export const DashboardTimeseriesChart: typeof import("./dashboardTimeseriesChart").DashboardTimeseriesChart = null as any;
 utilities.lazyLoad(exports, ["DashboardTimeseriesChart"], () => require("./dashboardTimeseriesChart"));
 
+export { ExternalGridArgs, ExternalGridState } from "./externalGrid";
+export type ExternalGrid = import("./externalGrid").ExternalGrid;
+export const ExternalGrid: typeof import("./externalGrid").ExternalGrid = null as any;
+utilities.lazyLoad(exports, ["ExternalGrid"], () => require("./externalGrid"));
+
 export { FileArgs, FileState } from "./file";
 export type File = import("./file").File;
 export const File: typeof import("./file").File = null as any;
@@ -291,6 +296,8 @@ const _module = {
                 return new DashboardTextChart(name, <any>undefined, { urn })
             case "splight:index/dashboardTimeseriesChart:DashboardTimeseriesChart":
                 return new DashboardTimeseriesChart(name, <any>undefined, { urn })
+            case "splight:index/externalGrid:ExternalGrid":
+                return new ExternalGrid(name, <any>undefined, { urn })
             case "splight:index/file:File":
                 return new File(name, <any>undefined, { urn })
             case "splight:index/fileFolder:FileFolder":
@@ -344,6 +351,7 @@ pulumi.runtime.registerResourceModule("splight", "index/dashboardTab", _module)
 pulumi.runtime.registerResourceModule("splight", "index/dashboardTableChart", _module)
 pulumi.runtime.registerResourceModule("splight", "index/dashboardTextChart", _module)
 pulumi.runtime.registerResourceModule("splight", "index/dashboardTimeseriesChart", _module)
+pulumi.runtime.registerResourceModule("splight", "index/externalGrid", _module)
 pulumi.runtime.registerResourceModule("splight", "index/file", _module)
 pulumi.runtime.registerResourceModule("splight", "index/fileFolder", _module)
 pulumi.runtime.registerResourceModule("splight", "index/function", _module)

@@ -19,7 +19,7 @@ namespace Splight.Splight.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// name of the resource
+        /// kind name
         /// </summary>
         public readonly string Name;
 
