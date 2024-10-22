@@ -16,7 +16,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import splight:index/slackLine:SlackLine [options] splight_slack_line.<name> <line_id>
+// $ pulumi import splight:index/slackLine:SlackLine [options] splight_slack_line.<name> <slack_line_id>
 // ```
 type SlackLine struct {
 	pulumi.CustomResourceState

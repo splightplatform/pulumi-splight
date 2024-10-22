@@ -10593,6 +10593,218 @@ func (o DashboardTimeseriesChartValueMappingArrayOutput) Index(i pulumi.IntInput
 	}).(DashboardTimeseriesChartValueMappingOutput)
 }
 
+type ExternalGridKind struct {
+	// kind id
+	Id string `pulumi:"id"`
+	// kind name
+	Name string `pulumi:"name"`
+}
+
+// ExternalGridKindInput is an input type that accepts ExternalGridKindArgs and ExternalGridKindOutput values.
+// You can construct a concrete instance of `ExternalGridKindInput` via:
+//
+//	ExternalGridKindArgs{...}
+type ExternalGridKindInput interface {
+	pulumi.Input
+
+	ToExternalGridKindOutput() ExternalGridKindOutput
+	ToExternalGridKindOutputWithContext(context.Context) ExternalGridKindOutput
+}
+
+type ExternalGridKindArgs struct {
+	// kind id
+	Id pulumi.StringInput `pulumi:"id"`
+	// kind name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ExternalGridKindArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalGridKind)(nil)).Elem()
+}
+
+func (i ExternalGridKindArgs) ToExternalGridKindOutput() ExternalGridKindOutput {
+	return i.ToExternalGridKindOutputWithContext(context.Background())
+}
+
+func (i ExternalGridKindArgs) ToExternalGridKindOutputWithContext(ctx context.Context) ExternalGridKindOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalGridKindOutput)
+}
+
+// ExternalGridKindArrayInput is an input type that accepts ExternalGridKindArray and ExternalGridKindArrayOutput values.
+// You can construct a concrete instance of `ExternalGridKindArrayInput` via:
+//
+//	ExternalGridKindArray{ ExternalGridKindArgs{...} }
+type ExternalGridKindArrayInput interface {
+	pulumi.Input
+
+	ToExternalGridKindArrayOutput() ExternalGridKindArrayOutput
+	ToExternalGridKindArrayOutputWithContext(context.Context) ExternalGridKindArrayOutput
+}
+
+type ExternalGridKindArray []ExternalGridKindInput
+
+func (ExternalGridKindArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExternalGridKind)(nil)).Elem()
+}
+
+func (i ExternalGridKindArray) ToExternalGridKindArrayOutput() ExternalGridKindArrayOutput {
+	return i.ToExternalGridKindArrayOutputWithContext(context.Background())
+}
+
+func (i ExternalGridKindArray) ToExternalGridKindArrayOutputWithContext(ctx context.Context) ExternalGridKindArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalGridKindArrayOutput)
+}
+
+type ExternalGridKindOutput struct{ *pulumi.OutputState }
+
+func (ExternalGridKindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalGridKind)(nil)).Elem()
+}
+
+func (o ExternalGridKindOutput) ToExternalGridKindOutput() ExternalGridKindOutput {
+	return o
+}
+
+func (o ExternalGridKindOutput) ToExternalGridKindOutputWithContext(ctx context.Context) ExternalGridKindOutput {
+	return o
+}
+
+// kind id
+func (o ExternalGridKindOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalGridKind) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// kind name
+func (o ExternalGridKindOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalGridKind) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ExternalGridKindArrayOutput struct{ *pulumi.OutputState }
+
+func (ExternalGridKindArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExternalGridKind)(nil)).Elem()
+}
+
+func (o ExternalGridKindArrayOutput) ToExternalGridKindArrayOutput() ExternalGridKindArrayOutput {
+	return o
+}
+
+func (o ExternalGridKindArrayOutput) ToExternalGridKindArrayOutputWithContext(ctx context.Context) ExternalGridKindArrayOutput {
+	return o
+}
+
+func (o ExternalGridKindArrayOutput) Index(i pulumi.IntInput) ExternalGridKindOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExternalGridKind {
+		return vs[0].([]ExternalGridKind)[vs[1].(int)]
+	}).(ExternalGridKindOutput)
+}
+
+type ExternalGridTag struct {
+	// tag id
+	Id string `pulumi:"id"`
+	// tag name
+	Name string `pulumi:"name"`
+}
+
+// ExternalGridTagInput is an input type that accepts ExternalGridTagArgs and ExternalGridTagOutput values.
+// You can construct a concrete instance of `ExternalGridTagInput` via:
+//
+//	ExternalGridTagArgs{...}
+type ExternalGridTagInput interface {
+	pulumi.Input
+
+	ToExternalGridTagOutput() ExternalGridTagOutput
+	ToExternalGridTagOutputWithContext(context.Context) ExternalGridTagOutput
+}
+
+type ExternalGridTagArgs struct {
+	// tag id
+	Id pulumi.StringInput `pulumi:"id"`
+	// tag name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ExternalGridTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalGridTag)(nil)).Elem()
+}
+
+func (i ExternalGridTagArgs) ToExternalGridTagOutput() ExternalGridTagOutput {
+	return i.ToExternalGridTagOutputWithContext(context.Background())
+}
+
+func (i ExternalGridTagArgs) ToExternalGridTagOutputWithContext(ctx context.Context) ExternalGridTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalGridTagOutput)
+}
+
+// ExternalGridTagArrayInput is an input type that accepts ExternalGridTagArray and ExternalGridTagArrayOutput values.
+// You can construct a concrete instance of `ExternalGridTagArrayInput` via:
+//
+//	ExternalGridTagArray{ ExternalGridTagArgs{...} }
+type ExternalGridTagArrayInput interface {
+	pulumi.Input
+
+	ToExternalGridTagArrayOutput() ExternalGridTagArrayOutput
+	ToExternalGridTagArrayOutputWithContext(context.Context) ExternalGridTagArrayOutput
+}
+
+type ExternalGridTagArray []ExternalGridTagInput
+
+func (ExternalGridTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExternalGridTag)(nil)).Elem()
+}
+
+func (i ExternalGridTagArray) ToExternalGridTagArrayOutput() ExternalGridTagArrayOutput {
+	return i.ToExternalGridTagArrayOutputWithContext(context.Background())
+}
+
+func (i ExternalGridTagArray) ToExternalGridTagArrayOutputWithContext(ctx context.Context) ExternalGridTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalGridTagArrayOutput)
+}
+
+type ExternalGridTagOutput struct{ *pulumi.OutputState }
+
+func (ExternalGridTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalGridTag)(nil)).Elem()
+}
+
+func (o ExternalGridTagOutput) ToExternalGridTagOutput() ExternalGridTagOutput {
+	return o
+}
+
+func (o ExternalGridTagOutput) ToExternalGridTagOutputWithContext(ctx context.Context) ExternalGridTagOutput {
+	return o
+}
+
+// tag id
+func (o ExternalGridTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalGridTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// tag name
+func (o ExternalGridTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalGridTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ExternalGridTagArrayOutput struct{ *pulumi.OutputState }
+
+func (ExternalGridTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExternalGridTag)(nil)).Elem()
+}
+
+func (o ExternalGridTagArrayOutput) ToExternalGridTagArrayOutput() ExternalGridTagArrayOutput {
+	return o
+}
+
+func (o ExternalGridTagArrayOutput) ToExternalGridTagArrayOutputWithContext(ctx context.Context) ExternalGridTagArrayOutput {
+	return o
+}
+
+func (o ExternalGridTagArrayOutput) Index(i pulumi.IntInput) ExternalGridTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExternalGridTag {
+		return vs[0].([]ExternalGridTag)[vs[1].(int)]
+	}).(ExternalGridTagOutput)
+}
+
 type FileRelatedAsset struct {
 	// asset id
 	Id string `pulumi:"id"`
@@ -22169,7 +22381,7 @@ func (o SegmentWindSpeedArrayOutput) Index(i pulumi.IntInput) SegmentWindSpeedOu
 type SlackLineKind struct {
 	// kind id
 	Id string `pulumi:"id"`
-	// name of the resource
+	// kind name
 	Name string `pulumi:"name"`
 }
 
@@ -22187,7 +22399,7 @@ type SlackLineKindInput interface {
 type SlackLineKindArgs struct {
 	// kind id
 	Id pulumi.StringInput `pulumi:"id"`
-	// name of the resource
+	// kind name
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -22247,7 +22459,7 @@ func (o SlackLineKindOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v SlackLineKind) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// name of the resource
+// kind name
 func (o SlackLineKindOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SlackLineKind) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -22275,7 +22487,7 @@ func (o SlackLineKindArrayOutput) Index(i pulumi.IntInput) SlackLineKindOutput {
 type SlackLineTag struct {
 	// tag id
 	Id string `pulumi:"id"`
-	// name of the resource
+	// tag name
 	Name string `pulumi:"name"`
 }
 
@@ -22293,7 +22505,7 @@ type SlackLineTagInput interface {
 type SlackLineTagArgs struct {
 	// tag id
 	Id pulumi.StringInput `pulumi:"id"`
-	// name of the resource
+	// tag name
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -22353,7 +22565,7 @@ func (o SlackLineTagOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v SlackLineTag) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// name of the resource
+// tag name
 func (o SlackLineTagOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SlackLineTag) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -23179,6 +23391,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeseriesChartThresholdArrayInput)(nil)).Elem(), DashboardTimeseriesChartThresholdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeseriesChartValueMappingInput)(nil)).Elem(), DashboardTimeseriesChartValueMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeseriesChartValueMappingArrayInput)(nil)).Elem(), DashboardTimeseriesChartValueMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalGridKindInput)(nil)).Elem(), ExternalGridKindArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalGridKindArrayInput)(nil)).Elem(), ExternalGridKindArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalGridTagInput)(nil)).Elem(), ExternalGridTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalGridTagArrayInput)(nil)).Elem(), ExternalGridTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileRelatedAssetInput)(nil)).Elem(), FileRelatedAssetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileRelatedAssetArrayInput)(nil)).Elem(), FileRelatedAssetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileTagInput)(nil)).Elem(), FileTagArgs{})
@@ -23495,6 +23711,10 @@ func init() {
 	pulumi.RegisterOutputType(DashboardTimeseriesChartThresholdArrayOutput{})
 	pulumi.RegisterOutputType(DashboardTimeseriesChartValueMappingOutput{})
 	pulumi.RegisterOutputType(DashboardTimeseriesChartValueMappingArrayOutput{})
+	pulumi.RegisterOutputType(ExternalGridKindOutput{})
+	pulumi.RegisterOutputType(ExternalGridKindArrayOutput{})
+	pulumi.RegisterOutputType(ExternalGridTagOutput{})
+	pulumi.RegisterOutputType(ExternalGridTagArrayOutput{})
 	pulumi.RegisterOutputType(FileRelatedAssetOutput{})
 	pulumi.RegisterOutputType(FileRelatedAssetArrayOutput{})
 	pulumi.RegisterOutputType(FileTagOutput{})

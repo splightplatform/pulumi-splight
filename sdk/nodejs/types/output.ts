@@ -1159,6 +1159,28 @@ export interface DashboardTimeseriesChartValueMapping {
     type: string;
 }
 
+export interface ExternalGridKind {
+    /**
+     * kind id
+     */
+    id: string;
+    /**
+     * kind name
+     */
+    name: string;
+}
+
+export interface ExternalGridTag {
+    /**
+     * tag id
+     */
+    id: string;
+    /**
+     * tag name
+     */
+    name: string;
+}
+
 export interface FileRelatedAsset {
     /**
      * asset id
@@ -2754,7 +2776,7 @@ export interface SlackLineKind {
      */
     id: string;
     /**
-     * name of the resource
+     * kind name
      */
     name: string;
 }
@@ -2765,7 +2787,7 @@ export interface SlackLineTag {
      */
     id: string;
     /**
-     * name of the resource
+     * tag name
      */
     name: string;
 }

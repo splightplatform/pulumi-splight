@@ -211,6 +211,10 @@ __all__ = [
     'DashboardTimeseriesChartThresholdArgsDict',
     'DashboardTimeseriesChartValueMappingArgs',
     'DashboardTimeseriesChartValueMappingArgsDict',
+    'ExternalGridKindArgs',
+    'ExternalGridKindArgsDict',
+    'ExternalGridTagArgs',
+    'ExternalGridTagArgsDict',
     'FileRelatedAssetArgs',
     'FileRelatedAssetArgsDict',
     'FileTagArgs',
@@ -7783,6 +7787,106 @@ class DashboardTimeseriesChartValueMappingArgs:
 
 
 if not MYPY:
+    class ExternalGridKindArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        kind id
+        """
+        name: pulumi.Input[str]
+        """
+        kind name
+        """
+elif False:
+    ExternalGridKindArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ExternalGridKindArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: kind id
+        :param pulumi.Input[str] name: kind name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        kind id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        kind name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class ExternalGridTagArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        tag id
+        """
+        name: pulumi.Input[str]
+        """
+        tag name
+        """
+elif False:
+    ExternalGridTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ExternalGridTagArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: tag id
+        :param pulumi.Input[str] name: tag name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        tag name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
     class FileRelatedAssetArgsDict(TypedDict):
         id: pulumi.Input[str]
         """
@@ -15135,7 +15239,7 @@ if not MYPY:
         """
         name: pulumi.Input[str]
         """
-        name of the resource
+        kind name
         """
 elif False:
     SlackLineKindArgsDict: TypeAlias = Mapping[str, Any]
@@ -15147,7 +15251,7 @@ class SlackLineKindArgs:
                  name: pulumi.Input[str]):
         """
         :param pulumi.Input[str] id: kind id
-        :param pulumi.Input[str] name: name of the resource
+        :param pulumi.Input[str] name: kind name
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -15168,7 +15272,7 @@ class SlackLineKindArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        name of the resource
+        kind name
         """
         return pulumi.get(self, "name")
 
@@ -15185,7 +15289,7 @@ if not MYPY:
         """
         name: pulumi.Input[str]
         """
-        name of the resource
+        tag name
         """
 elif False:
     SlackLineTagArgsDict: TypeAlias = Mapping[str, Any]
@@ -15197,7 +15301,7 @@ class SlackLineTagArgs:
                  name: pulumi.Input[str]):
         """
         :param pulumi.Input[str] id: tag id
-        :param pulumi.Input[str] name: name of the resource
+        :param pulumi.Input[str] name: tag name
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -15218,7 +15322,7 @@ class SlackLineTagArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        name of the resource
+        tag name
         """
         return pulumi.get(self, "name")
 

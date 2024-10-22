@@ -16,11 +16,11 @@ namespace Splight.Splight
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import splight:index/slackLine:SlackLine [options] splight_slack_line.&lt;name&gt; &lt;slack_line_id&gt;
+    /// $ pulumi import splight:index/externalGrid:ExternalGrid [options] splight_external_grid.&lt;name&gt; &lt;external_grid_id&gt;
     /// ```
     /// </summary>
-    [SplightResourceType("splight:index/slackLine:SlackLine")]
-    public partial class SlackLine : global::Pulumi.CustomResource
+    [SplightResourceType("splight:index/externalGrid:ExternalGrid")]
+    public partial class ExternalGrid : global::Pulumi.CustomResource
     {
         /// <summary>
         /// description of the resource
@@ -38,7 +38,7 @@ namespace Splight.Splight
         /// kind of the resource
         /// </summary>
         [Output("kinds")]
-        public Output<ImmutableArray<Outputs.SlackLineKind>> Kinds { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ExternalGridKind>> Kinds { get; private set; } = null!;
 
         /// <summary>
         /// name of the resource
@@ -50,23 +50,23 @@ namespace Splight.Splight
         /// tags of the resource
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableArray<Outputs.SlackLineTag>> Tags { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ExternalGridTag>> Tags { get; private set; } = null!;
 
 
         /// <summary>
-        /// Create a SlackLine resource with the given unique name, arguments, and options.
+        /// Create a ExternalGrid resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public SlackLine(string name, SlackLineArgs? args = null, CustomResourceOptions? options = null)
-            : base("splight:index/slackLine:SlackLine", name, args ?? new SlackLineArgs(), MakeResourceOptions(options, ""))
+        public ExternalGrid(string name, ExternalGridArgs? args = null, CustomResourceOptions? options = null)
+            : base("splight:index/externalGrid:ExternalGrid", name, args ?? new ExternalGridArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private SlackLine(string name, Input<string> id, SlackLineState? state = null, CustomResourceOptions? options = null)
-            : base("splight:index/slackLine:SlackLine", name, state, MakeResourceOptions(options, id))
+        private ExternalGrid(string name, Input<string> id, ExternalGridState? state = null, CustomResourceOptions? options = null)
+            : base("splight:index/externalGrid:ExternalGrid", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -83,7 +83,7 @@ namespace Splight.Splight
             return merged;
         }
         /// <summary>
-        /// Get an existing SlackLine resource's state with the given name, ID, and optional extra
+        /// Get an existing ExternalGrid resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -91,13 +91,13 @@ namespace Splight.Splight
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static SlackLine Get(string name, Input<string> id, SlackLineState? state = null, CustomResourceOptions? options = null)
+        public static ExternalGrid Get(string name, Input<string> id, ExternalGridState? state = null, CustomResourceOptions? options = null)
         {
-            return new SlackLine(name, id, state, options);
+            return new ExternalGrid(name, id, state, options);
         }
     }
 
-    public sealed class SlackLineArgs : global::Pulumi.ResourceArgs
+    public sealed class ExternalGridArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// description of the resource
@@ -118,24 +118,24 @@ namespace Splight.Splight
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
-        private InputList<Inputs.SlackLineTagArgs>? _tags;
+        private InputList<Inputs.ExternalGridTagArgs>? _tags;
 
         /// <summary>
         /// tags of the resource
         /// </summary>
-        public InputList<Inputs.SlackLineTagArgs> Tags
+        public InputList<Inputs.ExternalGridTagArgs> Tags
         {
-            get => _tags ?? (_tags = new InputList<Inputs.SlackLineTagArgs>());
+            get => _tags ?? (_tags = new InputList<Inputs.ExternalGridTagArgs>());
             set => _tags = value;
         }
 
-        public SlackLineArgs()
+        public ExternalGridArgs()
         {
         }
-        public static new SlackLineArgs Empty => new SlackLineArgs();
+        public static new ExternalGridArgs Empty => new ExternalGridArgs();
     }
 
-    public sealed class SlackLineState : global::Pulumi.ResourceArgs
+    public sealed class ExternalGridState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// description of the resource
@@ -150,14 +150,14 @@ namespace Splight.Splight
         public Input<string>? Geometry { get; set; }
 
         [Input("kinds")]
-        private InputList<Inputs.SlackLineKindGetArgs>? _kinds;
+        private InputList<Inputs.ExternalGridKindGetArgs>? _kinds;
 
         /// <summary>
         /// kind of the resource
         /// </summary>
-        public InputList<Inputs.SlackLineKindGetArgs> Kinds
+        public InputList<Inputs.ExternalGridKindGetArgs> Kinds
         {
-            get => _kinds ?? (_kinds = new InputList<Inputs.SlackLineKindGetArgs>());
+            get => _kinds ?? (_kinds = new InputList<Inputs.ExternalGridKindGetArgs>());
             set => _kinds = value;
         }
 
@@ -168,20 +168,20 @@ namespace Splight.Splight
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
-        private InputList<Inputs.SlackLineTagGetArgs>? _tags;
+        private InputList<Inputs.ExternalGridTagGetArgs>? _tags;
 
         /// <summary>
         /// tags of the resource
         /// </summary>
-        public InputList<Inputs.SlackLineTagGetArgs> Tags
+        public InputList<Inputs.ExternalGridTagGetArgs> Tags
         {
-            get => _tags ?? (_tags = new InputList<Inputs.SlackLineTagGetArgs>());
+            get => _tags ?? (_tags = new InputList<Inputs.ExternalGridTagGetArgs>());
             set => _tags = value;
         }
 
-        public SlackLineState()
+        public ExternalGridState()
         {
         }
-        public static new SlackLineState Empty => new SlackLineState();
+        public static new ExternalGridState Empty => new ExternalGridState();
     }
 }

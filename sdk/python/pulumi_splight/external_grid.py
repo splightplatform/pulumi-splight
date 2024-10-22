@@ -16,21 +16,21 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SlackLineArgs', 'SlackLine']
+__all__ = ['ExternalGridArgs', 'ExternalGrid']
 
 @pulumi.input_type
-class SlackLineArgs:
+class ExternalGridArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['SlackLineTagArgs']]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalGridTagArgs']]]] = None):
         """
-        The set of arguments for constructing a SlackLine resource.
+        The set of arguments for constructing a ExternalGrid resource.
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
-        :param pulumi.Input[Sequence[pulumi.Input['SlackLineTagArgs']]] tags: tags of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['ExternalGridTagArgs']]] tags: tags of the resource
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -79,32 +79,32 @@ class SlackLineArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SlackLineTagArgs']]]]:
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExternalGridTagArgs']]]]:
         """
         tags of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SlackLineTagArgs']]]]):
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalGridTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
-class _SlackLineState:
+class _ExternalGridState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
-                 kinds: Optional[pulumi.Input[Sequence[pulumi.Input['SlackLineKindArgs']]]] = None,
+                 kinds: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalGridKindArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['SlackLineTagArgs']]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalGridTagArgs']]]] = None):
         """
-        Input properties used for looking up and filtering SlackLine resources.
+        Input properties used for looking up and filtering ExternalGrid resources.
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
-        :param pulumi.Input[Sequence[pulumi.Input['SlackLineKindArgs']]] kinds: kind of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['ExternalGridKindArgs']]] kinds: kind of the resource
         :param pulumi.Input[str] name: name of the resource
-        :param pulumi.Input[Sequence[pulumi.Input['SlackLineTagArgs']]] tags: tags of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['ExternalGridTagArgs']]] tags: tags of the resource
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -143,14 +143,14 @@ class _SlackLineState:
 
     @property
     @pulumi.getter
-    def kinds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SlackLineKindArgs']]]]:
+    def kinds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExternalGridKindArgs']]]]:
         """
         kind of the resource
         """
         return pulumi.get(self, "kinds")
 
     @kinds.setter
-    def kinds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SlackLineKindArgs']]]]):
+    def kinds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalGridKindArgs']]]]):
         pulumi.set(self, "kinds", value)
 
     @property
@@ -167,18 +167,18 @@ class _SlackLineState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SlackLineTagArgs']]]]:
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExternalGridTagArgs']]]]:
         """
         tags of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SlackLineTagArgs']]]]):
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalGridTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
 
-class SlackLine(pulumi.CustomResource):
+class ExternalGrid(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -186,7 +186,7 @@ class SlackLine(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SlackLineTagArgs', 'SlackLineTagArgsDict']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalGridTagArgs', 'ExternalGridTagArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -194,7 +194,7 @@ class SlackLine(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import splight:index/slackLine:SlackLine [options] splight_slack_line.<name> <slack_line_id>
+        $ pulumi import splight:index/externalGrid:ExternalGrid [options] splight_external_grid.<name> <external_grid_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -202,13 +202,13 @@ class SlackLine(pulumi.CustomResource):
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SlackLineTagArgs', 'SlackLineTagArgsDict']]]] tags: tags of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalGridTagArgs', 'ExternalGridTagArgsDict']]]] tags: tags of the resource
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[SlackLineArgs] = None,
+                 args: Optional[ExternalGridArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -216,16 +216,16 @@ class SlackLine(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import splight:index/slackLine:SlackLine [options] splight_slack_line.<name> <slack_line_id>
+        $ pulumi import splight:index/externalGrid:ExternalGrid [options] splight_external_grid.<name> <external_grid_id>
         ```
 
         :param str resource_name: The name of the resource.
-        :param SlackLineArgs args: The arguments to use to populate this resource's properties.
+        :param ExternalGridArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SlackLineArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ExternalGridArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -237,7 +237,7 @@ class SlackLine(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SlackLineTagArgs', 'SlackLineTagArgsDict']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalGridTagArgs', 'ExternalGridTagArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -245,15 +245,15 @@ class SlackLine(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SlackLineArgs.__new__(SlackLineArgs)
+            __props__ = ExternalGridArgs.__new__(ExternalGridArgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["geometry"] = geometry
             __props__.__dict__["name"] = name
             __props__.__dict__["tags"] = tags
             __props__.__dict__["kinds"] = None
-        super(SlackLine, __self__).__init__(
-            'splight:index/slackLine:SlackLine',
+        super(ExternalGrid, __self__).__init__(
+            'splight:index/externalGrid:ExternalGrid',
             resource_name,
             __props__,
             opts)
@@ -264,11 +264,11 @@ class SlackLine(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             geometry: Optional[pulumi.Input[str]] = None,
-            kinds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SlackLineKindArgs', 'SlackLineKindArgsDict']]]]] = None,
+            kinds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalGridKindArgs', 'ExternalGridKindArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SlackLineTagArgs', 'SlackLineTagArgsDict']]]]] = None) -> 'SlackLine':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalGridTagArgs', 'ExternalGridTagArgsDict']]]]] = None) -> 'ExternalGrid':
         """
-        Get an existing SlackLine resource's state with the given name, id, and optional extra
+        Get an existing ExternalGrid resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -276,20 +276,20 @@ class SlackLine(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SlackLineKindArgs', 'SlackLineKindArgsDict']]]] kinds: kind of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalGridKindArgs', 'ExternalGridKindArgsDict']]]] kinds: kind of the resource
         :param pulumi.Input[str] name: name of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SlackLineTagArgs', 'SlackLineTagArgsDict']]]] tags: tags of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalGridTagArgs', 'ExternalGridTagArgsDict']]]] tags: tags of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _SlackLineState.__new__(_SlackLineState)
+        __props__ = _ExternalGridState.__new__(_ExternalGridState)
 
         __props__.__dict__["description"] = description
         __props__.__dict__["geometry"] = geometry
         __props__.__dict__["kinds"] = kinds
         __props__.__dict__["name"] = name
         __props__.__dict__["tags"] = tags
-        return SlackLine(resource_name, opts=opts, __props__=__props__)
+        return ExternalGrid(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
@@ -309,7 +309,7 @@ class SlackLine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def kinds(self) -> pulumi.Output[Sequence['outputs.SlackLineKind']]:
+    def kinds(self) -> pulumi.Output[Sequence['outputs.ExternalGridKind']]:
         """
         kind of the resource
         """
@@ -325,7 +325,7 @@ class SlackLine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.SlackLineTag']]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.ExternalGridTag']]]:
         """
         tags of the resource
         """

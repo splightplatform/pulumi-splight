@@ -12,12 +12,12 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import splight:index/slackLine:SlackLine [options] splight_slack_line.<name> <slack_line_id>
+ * $ pulumi import splight:index/externalGrid:ExternalGrid [options] splight_external_grid.<name> <external_grid_id>
  * ```
  */
-export class SlackLine extends pulumi.CustomResource {
+export class ExternalGrid extends pulumi.CustomResource {
     /**
-     * Get an existing SlackLine resource's state with the given name, ID, and optional extra
+     * Get an existing ExternalGrid resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -25,22 +25,22 @@ export class SlackLine extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SlackLineState, opts?: pulumi.CustomResourceOptions): SlackLine {
-        return new SlackLine(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ExternalGridState, opts?: pulumi.CustomResourceOptions): ExternalGrid {
+        return new ExternalGrid(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'splight:index/slackLine:SlackLine';
+    public static readonly __pulumiType = 'splight:index/externalGrid:ExternalGrid';
 
     /**
-     * Returns true if the given object is an instance of SlackLine.  This is designed to work even
+     * Returns true if the given object is an instance of ExternalGrid.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is SlackLine {
+    public static isInstance(obj: any): obj is ExternalGrid {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === SlackLine.__pulumiType;
+        return obj['__pulumiType'] === ExternalGrid.__pulumiType;
     }
 
     /**
@@ -54,7 +54,7 @@ export class SlackLine extends pulumi.CustomResource {
     /**
      * kind of the resource
      */
-    public /*out*/ readonly kinds!: pulumi.Output<outputs.SlackLineKind[]>;
+    public /*out*/ readonly kinds!: pulumi.Output<outputs.ExternalGridKind[]>;
     /**
      * name of the resource
      */
@@ -62,28 +62,28 @@ export class SlackLine extends pulumi.CustomResource {
     /**
      * tags of the resource
      */
-    public readonly tags!: pulumi.Output<outputs.SlackLineTag[] | undefined>;
+    public readonly tags!: pulumi.Output<outputs.ExternalGridTag[] | undefined>;
 
     /**
-     * Create a SlackLine resource with the given unique name, arguments, and options.
+     * Create a ExternalGrid resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: SlackLineArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: SlackLineArgs | SlackLineState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: ExternalGridArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ExternalGridArgs | ExternalGridState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as SlackLineState | undefined;
+            const state = argsOrState as ExternalGridState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["geometry"] = state ? state.geometry : undefined;
             resourceInputs["kinds"] = state ? state.kinds : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
-            const args = argsOrState as SlackLineArgs | undefined;
+            const args = argsOrState as ExternalGridArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -91,14 +91,14 @@ export class SlackLine extends pulumi.CustomResource {
             resourceInputs["kinds"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(SlackLine.__pulumiType, name, resourceInputs, opts);
+        super(ExternalGrid.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering SlackLine resources.
+ * Input properties used for looking up and filtering ExternalGrid resources.
  */
-export interface SlackLineState {
+export interface ExternalGridState {
     /**
      * description of the resource
      */
@@ -110,7 +110,7 @@ export interface SlackLineState {
     /**
      * kind of the resource
      */
-    kinds?: pulumi.Input<pulumi.Input<inputs.SlackLineKind>[]>;
+    kinds?: pulumi.Input<pulumi.Input<inputs.ExternalGridKind>[]>;
     /**
      * name of the resource
      */
@@ -118,13 +118,13 @@ export interface SlackLineState {
     /**
      * tags of the resource
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.SlackLineTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.ExternalGridTag>[]>;
 }
 
 /**
- * The set of arguments for constructing a SlackLine resource.
+ * The set of arguments for constructing a ExternalGrid resource.
  */
-export interface SlackLineArgs {
+export interface ExternalGridArgs {
     /**
      * description of the resource
      */
@@ -140,5 +140,5 @@ export interface SlackLineArgs {
     /**
      * tags of the resource
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.SlackLineTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.ExternalGridTag>[]>;
 }

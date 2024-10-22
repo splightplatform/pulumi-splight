@@ -20,7 +20,7 @@ namespace Splight.Splight.Inputs
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// name of the resource
+        /// tag name
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

@@ -114,6 +114,8 @@ __all__ = [
     'DashboardTimeseriesChartChartItemQueryFilterAttribute',
     'DashboardTimeseriesChartThreshold',
     'DashboardTimeseriesChartValueMapping',
+    'ExternalGridKind',
+    'ExternalGridTag',
     'FileRelatedAsset',
     'FileTag',
     'FunctionFunctionItem',
@@ -5603,6 +5605,64 @@ class DashboardTimeseriesChartValueMapping(dict):
 
 
 @pulumi.output_type
+class ExternalGridKind(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: kind id
+        :param str name: kind name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        kind id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        kind name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ExternalGridTag(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: tag id
+        :param str name: tag name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        tag name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class FileRelatedAsset(dict):
     def __init__(__self__, *,
                  id: str,
@@ -10006,7 +10066,7 @@ class SlackLineKind(dict):
                  name: str):
         """
         :param str id: kind id
-        :param str name: name of the resource
+        :param str name: kind name
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -10023,7 +10083,7 @@ class SlackLineKind(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        name of the resource
+        kind name
         """
         return pulumi.get(self, "name")
 
@@ -10035,7 +10095,7 @@ class SlackLineTag(dict):
                  name: str):
         """
         :param str id: tag id
-        :param str name: name of the resource
+        :param str name: tag name
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -10052,7 +10112,7 @@ class SlackLineTag(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        name of the resource
+        tag name
         """
         return pulumi.get(self, "name")
 
