@@ -2681,3 +2681,25 @@ export interface SegmentWindSpeed {
      */
     unit?: pulumi.Input<string>;
 }
+
+export interface SlackLineKind {
+    /**
+     * kind id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface SlackLineTag {
+    /**
+     * tag id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name: pulumi.Input<string>;
+}

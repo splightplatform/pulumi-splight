@@ -797,6 +797,18 @@
                     }
                 }
             },
+            "splight_slack_line": {
+                "current": "splight:index/slackLine:SlackLine",
+                "majorVersion": 1,
+                "fields": {
+                    "kind": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "splight_tag": {
                 "current": "splight:index/tag:Tag",
                 "majorVersion": 1

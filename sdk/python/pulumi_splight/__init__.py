@@ -47,6 +47,7 @@ from .line import *
 from .provider import *
 from .secret import *
 from .segment import *
+from .slack_line import *
 from .tag import *
 from ._inputs import *
 from . import outputs
@@ -339,6 +340,14 @@ _utilities.register(
   "fqn": "pulumi_splight",
   "classes": {
    "splight:index/segment:Segment": "Segment"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/slackLine",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/slackLine:SlackLine": "SlackLine"
   }
  },
  {

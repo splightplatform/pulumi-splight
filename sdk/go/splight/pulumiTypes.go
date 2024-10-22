@@ -22166,6 +22166,218 @@ func (o SegmentWindSpeedArrayOutput) Index(i pulumi.IntInput) SegmentWindSpeedOu
 	}).(SegmentWindSpeedOutput)
 }
 
+type SlackLineKind struct {
+	// kind id
+	Id string `pulumi:"id"`
+	// name of the resource
+	Name string `pulumi:"name"`
+}
+
+// SlackLineKindInput is an input type that accepts SlackLineKindArgs and SlackLineKindOutput values.
+// You can construct a concrete instance of `SlackLineKindInput` via:
+//
+//	SlackLineKindArgs{...}
+type SlackLineKindInput interface {
+	pulumi.Input
+
+	ToSlackLineKindOutput() SlackLineKindOutput
+	ToSlackLineKindOutputWithContext(context.Context) SlackLineKindOutput
+}
+
+type SlackLineKindArgs struct {
+	// kind id
+	Id pulumi.StringInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (SlackLineKindArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlackLineKind)(nil)).Elem()
+}
+
+func (i SlackLineKindArgs) ToSlackLineKindOutput() SlackLineKindOutput {
+	return i.ToSlackLineKindOutputWithContext(context.Background())
+}
+
+func (i SlackLineKindArgs) ToSlackLineKindOutputWithContext(ctx context.Context) SlackLineKindOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlackLineKindOutput)
+}
+
+// SlackLineKindArrayInput is an input type that accepts SlackLineKindArray and SlackLineKindArrayOutput values.
+// You can construct a concrete instance of `SlackLineKindArrayInput` via:
+//
+//	SlackLineKindArray{ SlackLineKindArgs{...} }
+type SlackLineKindArrayInput interface {
+	pulumi.Input
+
+	ToSlackLineKindArrayOutput() SlackLineKindArrayOutput
+	ToSlackLineKindArrayOutputWithContext(context.Context) SlackLineKindArrayOutput
+}
+
+type SlackLineKindArray []SlackLineKindInput
+
+func (SlackLineKindArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SlackLineKind)(nil)).Elem()
+}
+
+func (i SlackLineKindArray) ToSlackLineKindArrayOutput() SlackLineKindArrayOutput {
+	return i.ToSlackLineKindArrayOutputWithContext(context.Background())
+}
+
+func (i SlackLineKindArray) ToSlackLineKindArrayOutputWithContext(ctx context.Context) SlackLineKindArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlackLineKindArrayOutput)
+}
+
+type SlackLineKindOutput struct{ *pulumi.OutputState }
+
+func (SlackLineKindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlackLineKind)(nil)).Elem()
+}
+
+func (o SlackLineKindOutput) ToSlackLineKindOutput() SlackLineKindOutput {
+	return o
+}
+
+func (o SlackLineKindOutput) ToSlackLineKindOutputWithContext(ctx context.Context) SlackLineKindOutput {
+	return o
+}
+
+// kind id
+func (o SlackLineKindOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v SlackLineKind) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// name of the resource
+func (o SlackLineKindOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SlackLineKind) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type SlackLineKindArrayOutput struct{ *pulumi.OutputState }
+
+func (SlackLineKindArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SlackLineKind)(nil)).Elem()
+}
+
+func (o SlackLineKindArrayOutput) ToSlackLineKindArrayOutput() SlackLineKindArrayOutput {
+	return o
+}
+
+func (o SlackLineKindArrayOutput) ToSlackLineKindArrayOutputWithContext(ctx context.Context) SlackLineKindArrayOutput {
+	return o
+}
+
+func (o SlackLineKindArrayOutput) Index(i pulumi.IntInput) SlackLineKindOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SlackLineKind {
+		return vs[0].([]SlackLineKind)[vs[1].(int)]
+	}).(SlackLineKindOutput)
+}
+
+type SlackLineTag struct {
+	// tag id
+	Id string `pulumi:"id"`
+	// name of the resource
+	Name string `pulumi:"name"`
+}
+
+// SlackLineTagInput is an input type that accepts SlackLineTagArgs and SlackLineTagOutput values.
+// You can construct a concrete instance of `SlackLineTagInput` via:
+//
+//	SlackLineTagArgs{...}
+type SlackLineTagInput interface {
+	pulumi.Input
+
+	ToSlackLineTagOutput() SlackLineTagOutput
+	ToSlackLineTagOutputWithContext(context.Context) SlackLineTagOutput
+}
+
+type SlackLineTagArgs struct {
+	// tag id
+	Id pulumi.StringInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (SlackLineTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlackLineTag)(nil)).Elem()
+}
+
+func (i SlackLineTagArgs) ToSlackLineTagOutput() SlackLineTagOutput {
+	return i.ToSlackLineTagOutputWithContext(context.Background())
+}
+
+func (i SlackLineTagArgs) ToSlackLineTagOutputWithContext(ctx context.Context) SlackLineTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlackLineTagOutput)
+}
+
+// SlackLineTagArrayInput is an input type that accepts SlackLineTagArray and SlackLineTagArrayOutput values.
+// You can construct a concrete instance of `SlackLineTagArrayInput` via:
+//
+//	SlackLineTagArray{ SlackLineTagArgs{...} }
+type SlackLineTagArrayInput interface {
+	pulumi.Input
+
+	ToSlackLineTagArrayOutput() SlackLineTagArrayOutput
+	ToSlackLineTagArrayOutputWithContext(context.Context) SlackLineTagArrayOutput
+}
+
+type SlackLineTagArray []SlackLineTagInput
+
+func (SlackLineTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SlackLineTag)(nil)).Elem()
+}
+
+func (i SlackLineTagArray) ToSlackLineTagArrayOutput() SlackLineTagArrayOutput {
+	return i.ToSlackLineTagArrayOutputWithContext(context.Background())
+}
+
+func (i SlackLineTagArray) ToSlackLineTagArrayOutputWithContext(ctx context.Context) SlackLineTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlackLineTagArrayOutput)
+}
+
+type SlackLineTagOutput struct{ *pulumi.OutputState }
+
+func (SlackLineTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlackLineTag)(nil)).Elem()
+}
+
+func (o SlackLineTagOutput) ToSlackLineTagOutput() SlackLineTagOutput {
+	return o
+}
+
+func (o SlackLineTagOutput) ToSlackLineTagOutputWithContext(ctx context.Context) SlackLineTagOutput {
+	return o
+}
+
+// tag id
+func (o SlackLineTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v SlackLineTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// name of the resource
+func (o SlackLineTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SlackLineTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type SlackLineTagArrayOutput struct{ *pulumi.OutputState }
+
+func (SlackLineTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SlackLineTag)(nil)).Elem()
+}
+
+func (o SlackLineTagArrayOutput) ToSlackLineTagArrayOutput() SlackLineTagArrayOutput {
+	return o
+}
+
+func (o SlackLineTagArrayOutput) ToSlackLineTagArrayOutputWithContext(ctx context.Context) SlackLineTagArrayOutput {
+	return o
+}
+
+func (o SlackLineTagArrayOutput) Index(i pulumi.IntInput) SlackLineTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SlackLineTag {
+		return vs[0].([]SlackLineTag)[vs[1].(int)]
+	}).(SlackLineTagOutput)
+}
+
 type GetAssetKindsKind struct {
 	// Id of the resource
 	Id string `pulumi:"id"`
@@ -23103,6 +23315,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentWindDirectionArrayInput)(nil)).Elem(), SegmentWindDirectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentWindSpeedInput)(nil)).Elem(), SegmentWindSpeedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentWindSpeedArrayInput)(nil)).Elem(), SegmentWindSpeedArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlackLineKindInput)(nil)).Elem(), SlackLineKindArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlackLineKindArrayInput)(nil)).Elem(), SlackLineKindArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlackLineTagInput)(nil)).Elem(), SlackLineTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlackLineTagArrayInput)(nil)).Elem(), SlackLineTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAssetKindsKindInput)(nil)).Elem(), GetAssetKindsKindArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAssetKindsKindArrayInput)(nil)).Elem(), GetAssetKindsKindArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBusesTagInput)(nil)).Elem(), GetBusesTagArgs{})
@@ -23415,6 +23631,10 @@ func init() {
 	pulumi.RegisterOutputType(SegmentWindDirectionArrayOutput{})
 	pulumi.RegisterOutputType(SegmentWindSpeedOutput{})
 	pulumi.RegisterOutputType(SegmentWindSpeedArrayOutput{})
+	pulumi.RegisterOutputType(SlackLineKindOutput{})
+	pulumi.RegisterOutputType(SlackLineKindArrayOutput{})
+	pulumi.RegisterOutputType(SlackLineTagOutput{})
+	pulumi.RegisterOutputType(SlackLineTagArrayOutput{})
 	pulumi.RegisterOutputType(GetAssetKindsKindOutput{})
 	pulumi.RegisterOutputType(GetAssetKindsKindArrayOutput{})
 	pulumi.RegisterOutputType(GetBusesTagOutput{})

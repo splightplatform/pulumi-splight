@@ -4878,6 +4878,42 @@
                 }
             }
         },
+        "splight:index/SlackLineKind:SlackLineKind": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "kind id\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "splight:index/SlackLineTag:SlackLineTag": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "tag id\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
         "splight:index/getAssetKindsKind:getAssetKindsKind": {
             "properties": {
                 "id": {
@@ -13128,6 +13164,94 @@
                             "$ref": "#/types/splight:index/SegmentWindSpeed:SegmentWindSpeed"
                         },
                         "description": "attribute of the resource\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/slackLine:SlackLine": {
+            "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/slackLine:SlackLine [options] splight_slack_line.\u003cname\u003e \u003cline_id\u003e\n```\n\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "description of the resource\n"
+                },
+                "geometry": {
+                    "type": "string",
+                    "description": "geo position and shape of the resource\n"
+                },
+                "kinds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/SlackLineKind:SlackLineKind"
+                    },
+                    "description": "kind of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/SlackLineTag:SlackLineTag"
+                    },
+                    "description": "tags of the resource\n"
+                }
+            },
+            "required": [
+                "kinds",
+                "name"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "description of the resource\n"
+                },
+                "geometry": {
+                    "type": "string",
+                    "description": "geo position and shape of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/SlackLineTag:SlackLineTag"
+                    },
+                    "description": "tags of the resource\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SlackLine resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "description of the resource\n"
+                    },
+                    "geometry": {
+                        "type": "string",
+                        "description": "geo position and shape of the resource\n"
+                    },
+                    "kinds": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/SlackLineKind:SlackLineKind"
+                        },
+                        "description": "kind of the resource\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "name of the resource\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/SlackLineTag:SlackLineTag"
+                        },
+                        "description": "tags of the resource\n"
                     }
                 },
                 "type": "object"

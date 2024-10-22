@@ -183,6 +183,8 @@ __all__ = [
     'SegmentTemperature',
     'SegmentWindDirection',
     'SegmentWindSpeed',
+    'SlackLineKind',
+    'SlackLineTag',
     'GetAssetKindsKindResult',
     'GetBusesTagResult',
     'GetGeneratorsTagResult',
@@ -9995,6 +9997,64 @@ class SegmentWindSpeed(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class SlackLineKind(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: kind id
+        :param str name: name of the resource
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        kind id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class SlackLineTag(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: tag id
+        :param str name: name of the resource
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

@@ -215,6 +215,11 @@ export type Segment = import("./segment").Segment;
 export const Segment: typeof import("./segment").Segment = null as any;
 utilities.lazyLoad(exports, ["Segment"], () => require("./segment"));
 
+export { SlackLineArgs, SlackLineState } from "./slackLine";
+export type SlackLine = import("./slackLine").SlackLine;
+export const SlackLine: typeof import("./slackLine").SlackLine = null as any;
+utilities.lazyLoad(exports, ["SlackLine"], () => require("./slackLine"));
+
 export { TagArgs, TagState } from "./tag";
 export type Tag = import("./tag").Tag;
 export const Tag: typeof import("./tag").Tag = null as any;
@@ -304,6 +309,8 @@ const _module = {
                 return new Secret(name, <any>undefined, { urn })
             case "splight:index/segment:Segment":
                 return new Segment(name, <any>undefined, { urn })
+            case "splight:index/slackLine:SlackLine":
+                return new SlackLine(name, <any>undefined, { urn })
             case "splight:index/tag:Tag":
                 return new Tag(name, <any>undefined, { urn })
             default:
@@ -346,6 +353,7 @@ pulumi.runtime.registerResourceModule("splight", "index/inverter", _module)
 pulumi.runtime.registerResourceModule("splight", "index/line", _module)
 pulumi.runtime.registerResourceModule("splight", "index/secret", _module)
 pulumi.runtime.registerResourceModule("splight", "index/segment", _module)
+pulumi.runtime.registerResourceModule("splight", "index/slackLine", _module)
 pulumi.runtime.registerResourceModule("splight", "index/tag", _module)
 pulumi.runtime.registerResourcePackage("splight", {
     version: utilities.getVersion(),
