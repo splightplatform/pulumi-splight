@@ -14384,6 +14384,139 @@ func (o InverterModelPtrOutput) Value() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type InverterRawDailyEnergy struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// InverterRawDailyEnergyInput is an input type that accepts InverterRawDailyEnergyArgs and InverterRawDailyEnergyOutput values.
+// You can construct a concrete instance of `InverterRawDailyEnergyInput` via:
+//
+//	InverterRawDailyEnergyArgs{...}
+type InverterRawDailyEnergyInput interface {
+	pulumi.Input
+
+	ToInverterRawDailyEnergyOutput() InverterRawDailyEnergyOutput
+	ToInverterRawDailyEnergyOutputWithContext(context.Context) InverterRawDailyEnergyOutput
+}
+
+type InverterRawDailyEnergyArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (InverterRawDailyEnergyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InverterRawDailyEnergy)(nil)).Elem()
+}
+
+func (i InverterRawDailyEnergyArgs) ToInverterRawDailyEnergyOutput() InverterRawDailyEnergyOutput {
+	return i.ToInverterRawDailyEnergyOutputWithContext(context.Background())
+}
+
+func (i InverterRawDailyEnergyArgs) ToInverterRawDailyEnergyOutputWithContext(ctx context.Context) InverterRawDailyEnergyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InverterRawDailyEnergyOutput)
+}
+
+// InverterRawDailyEnergyArrayInput is an input type that accepts InverterRawDailyEnergyArray and InverterRawDailyEnergyArrayOutput values.
+// You can construct a concrete instance of `InverterRawDailyEnergyArrayInput` via:
+//
+//	InverterRawDailyEnergyArray{ InverterRawDailyEnergyArgs{...} }
+type InverterRawDailyEnergyArrayInput interface {
+	pulumi.Input
+
+	ToInverterRawDailyEnergyArrayOutput() InverterRawDailyEnergyArrayOutput
+	ToInverterRawDailyEnergyArrayOutputWithContext(context.Context) InverterRawDailyEnergyArrayOutput
+}
+
+type InverterRawDailyEnergyArray []InverterRawDailyEnergyInput
+
+func (InverterRawDailyEnergyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InverterRawDailyEnergy)(nil)).Elem()
+}
+
+func (i InverterRawDailyEnergyArray) ToInverterRawDailyEnergyArrayOutput() InverterRawDailyEnergyArrayOutput {
+	return i.ToInverterRawDailyEnergyArrayOutputWithContext(context.Background())
+}
+
+func (i InverterRawDailyEnergyArray) ToInverterRawDailyEnergyArrayOutputWithContext(ctx context.Context) InverterRawDailyEnergyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InverterRawDailyEnergyArrayOutput)
+}
+
+type InverterRawDailyEnergyOutput struct{ *pulumi.OutputState }
+
+func (InverterRawDailyEnergyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InverterRawDailyEnergy)(nil)).Elem()
+}
+
+func (o InverterRawDailyEnergyOutput) ToInverterRawDailyEnergyOutput() InverterRawDailyEnergyOutput {
+	return o
+}
+
+func (o InverterRawDailyEnergyOutput) ToInverterRawDailyEnergyOutputWithContext(ctx context.Context) InverterRawDailyEnergyOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o InverterRawDailyEnergyOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InverterRawDailyEnergy) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o InverterRawDailyEnergyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InverterRawDailyEnergy) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o InverterRawDailyEnergyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InverterRawDailyEnergy) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o InverterRawDailyEnergyOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InverterRawDailyEnergy) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o InverterRawDailyEnergyOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InverterRawDailyEnergy) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type InverterRawDailyEnergyArrayOutput struct{ *pulumi.OutputState }
+
+func (InverterRawDailyEnergyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InverterRawDailyEnergy)(nil)).Elem()
+}
+
+func (o InverterRawDailyEnergyArrayOutput) ToInverterRawDailyEnergyArrayOutput() InverterRawDailyEnergyArrayOutput {
+	return o
+}
+
+func (o InverterRawDailyEnergyArrayOutput) ToInverterRawDailyEnergyArrayOutputWithContext(ctx context.Context) InverterRawDailyEnergyArrayOutput {
+	return o
+}
+
+func (o InverterRawDailyEnergyArrayOutput) Index(i pulumi.IntInput) InverterRawDailyEnergyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InverterRawDailyEnergy {
+		return vs[0].([]InverterRawDailyEnergy)[vs[1].(int)]
+	}).(InverterRawDailyEnergyOutput)
+}
+
 type InverterSerialNumber struct {
 	// reference to the asset to be linked to
 	Asset *string `pulumi:"asset"`
@@ -23443,6 +23576,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InverterMaxActivePowerPtrInput)(nil)).Elem(), InverterMaxActivePowerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InverterModelInput)(nil)).Elem(), InverterModelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InverterModelPtrInput)(nil)).Elem(), InverterModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InverterRawDailyEnergyInput)(nil)).Elem(), InverterRawDailyEnergyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InverterRawDailyEnergyArrayInput)(nil)).Elem(), InverterRawDailyEnergyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InverterSerialNumberInput)(nil)).Elem(), InverterSerialNumberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InverterSerialNumberPtrInput)(nil)).Elem(), InverterSerialNumberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InverterTagInput)(nil)).Elem(), InverterTagArgs{})
@@ -23763,6 +23898,8 @@ func init() {
 	pulumi.RegisterOutputType(InverterMaxActivePowerPtrOutput{})
 	pulumi.RegisterOutputType(InverterModelOutput{})
 	pulumi.RegisterOutputType(InverterModelPtrOutput{})
+	pulumi.RegisterOutputType(InverterRawDailyEnergyOutput{})
+	pulumi.RegisterOutputType(InverterRawDailyEnergyArrayOutput{})
 	pulumi.RegisterOutputType(InverterSerialNumberOutput{})
 	pulumi.RegisterOutputType(InverterSerialNumberPtrOutput{})
 	pulumi.RegisterOutputType(InverterTagOutput{})

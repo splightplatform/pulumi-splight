@@ -1660,6 +1660,29 @@ export interface InverterModel {
     value: pulumi.Input<string>;
 }
 
+export interface InverterRawDailyEnergy {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+}
+
 export interface InverterSerialNumber {
     /**
      * reference to the asset to be linked to

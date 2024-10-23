@@ -656,6 +656,9 @@
                     "model": {
                         "maxItemsOne": true
                     },
+                    "raw_daily_energy": {
+                        "maxItemsOne": false
+                    },
                     "serial_number": {
                         "maxItemsOne": true
                     },

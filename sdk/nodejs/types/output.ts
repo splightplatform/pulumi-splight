@@ -1726,6 +1726,29 @@ export interface InverterModel {
     value: string;
 }
 
+export interface InverterRawDailyEnergy {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
 export interface InverterSerialNumber {
     /**
      * reference to the asset to be linked to

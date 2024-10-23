@@ -90,6 +90,10 @@ export class Inverter extends pulumi.CustomResource {
     /**
      * attribute of the resource
      */
+    public /*out*/ readonly rawDailyEnergies!: pulumi.Output<outputs.InverterRawDailyEnergy[]>;
+    /**
+     * attribute of the resource
+     */
     public readonly serialNumber!: pulumi.Output<outputs.InverterSerialNumber>;
     /**
      * tags of the resource
@@ -124,6 +128,7 @@ export class Inverter extends pulumi.CustomResource {
             resourceInputs["maxActivePower"] = state ? state.maxActivePower : undefined;
             resourceInputs["model"] = state ? state.model : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["rawDailyEnergies"] = state ? state.rawDailyEnergies : undefined;
             resourceInputs["serialNumber"] = state ? state.serialNumber : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["temperatures"] = state ? state.temperatures : undefined;
@@ -157,6 +162,7 @@ export class Inverter extends pulumi.CustomResource {
             resourceInputs["activePowers"] = undefined /*out*/;
             resourceInputs["dailyEnergies"] = undefined /*out*/;
             resourceInputs["kinds"] = undefined /*out*/;
+            resourceInputs["rawDailyEnergies"] = undefined /*out*/;
             resourceInputs["temperatures"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -212,6 +218,10 @@ export interface InverterState {
      * name of the resource
      */
     name?: pulumi.Input<string>;
+    /**
+     * attribute of the resource
+     */
+    rawDailyEnergies?: pulumi.Input<pulumi.Input<inputs.InverterRawDailyEnergy>[]>;
     /**
      * attribute of the resource
      */

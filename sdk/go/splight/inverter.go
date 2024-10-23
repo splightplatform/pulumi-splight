@@ -45,6 +45,8 @@ type Inverter struct {
 	// name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// attribute of the resource
+	RawDailyEnergies InverterRawDailyEnergyArrayOutput `pulumi:"rawDailyEnergies"`
+	// attribute of the resource
 	SerialNumber InverterSerialNumberOutput `pulumi:"serialNumber"`
 	// tags of the resource
 	Tags InverterTagArrayOutput `pulumi:"tags"`
@@ -120,6 +122,8 @@ type inverterState struct {
 	// name of the resource
 	Name *string `pulumi:"name"`
 	// attribute of the resource
+	RawDailyEnergies []InverterRawDailyEnergy `pulumi:"rawDailyEnergies"`
+	// attribute of the resource
 	SerialNumber *InverterSerialNumber `pulumi:"serialNumber"`
 	// tags of the resource
 	Tags []InverterTag `pulumi:"tags"`
@@ -150,6 +154,8 @@ type InverterState struct {
 	Model InverterModelPtrInput
 	// name of the resource
 	Name pulumi.StringPtrInput
+	// attribute of the resource
+	RawDailyEnergies InverterRawDailyEnergyArrayInput
 	// attribute of the resource
 	SerialNumber InverterSerialNumberPtrInput
 	// tags of the resource
@@ -345,6 +351,11 @@ func (o InverterOutput) Model() InverterModelOutput {
 // name of the resource
 func (o InverterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Inverter) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// attribute of the resource
+func (o InverterOutput) RawDailyEnergies() InverterRawDailyEnergyArrayOutput {
+	return o.ApplyT(func(v *Inverter) InverterRawDailyEnergyArrayOutput { return v.RawDailyEnergies }).(InverterRawDailyEnergyArrayOutput)
 }
 
 // attribute of the resource
