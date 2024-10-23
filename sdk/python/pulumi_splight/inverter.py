@@ -179,6 +179,7 @@ class _InverterState:
                  max_active_power: Optional[pulumi.Input['InverterMaxActivePowerArgs']] = None,
                  model: Optional[pulumi.Input['InverterModelArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 raw_daily_energies: Optional[pulumi.Input[Sequence[pulumi.Input['InverterRawDailyEnergyArgs']]]] = None,
                  serial_number: Optional[pulumi.Input['InverterSerialNumberArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['InverterTagArgs']]]] = None,
                  temperatures: Optional[pulumi.Input[Sequence[pulumi.Input['InverterTemperatureArgs']]]] = None):
@@ -195,6 +196,7 @@ class _InverterState:
         :param pulumi.Input['InverterMaxActivePowerArgs'] max_active_power: attribute of the resource
         :param pulumi.Input['InverterModelArgs'] model: attribute of the resource
         :param pulumi.Input[str] name: name of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['InverterRawDailyEnergyArgs']]] raw_daily_energies: attribute of the resource
         :param pulumi.Input['InverterSerialNumberArgs'] serial_number: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['InverterTagArgs']]] tags: tags of the resource
         :param pulumi.Input[Sequence[pulumi.Input['InverterTemperatureArgs']]] temperatures: attribute of the resource
@@ -221,6 +223,8 @@ class _InverterState:
             pulumi.set(__self__, "model", model)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if raw_daily_energies is not None:
+            pulumi.set(__self__, "raw_daily_energies", raw_daily_energies)
         if serial_number is not None:
             pulumi.set(__self__, "serial_number", serial_number)
         if tags is not None:
@@ -359,6 +363,18 @@ class _InverterState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="rawDailyEnergies")
+    def raw_daily_energies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InverterRawDailyEnergyArgs']]]]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "raw_daily_energies")
+
+    @raw_daily_energies.setter
+    def raw_daily_energies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InverterRawDailyEnergyArgs']]]]):
+        pulumi.set(self, "raw_daily_energies", value)
 
     @property
     @pulumi.getter(name="serialNumber")
@@ -504,6 +520,7 @@ class Inverter(pulumi.CustomResource):
             __props__.__dict__["active_powers"] = None
             __props__.__dict__["daily_energies"] = None
             __props__.__dict__["kinds"] = None
+            __props__.__dict__["raw_daily_energies"] = None
             __props__.__dict__["temperatures"] = None
         super(Inverter, __self__).__init__(
             'splight:index/inverter:Inverter',
@@ -526,6 +543,7 @@ class Inverter(pulumi.CustomResource):
             max_active_power: Optional[pulumi.Input[Union['InverterMaxActivePowerArgs', 'InverterMaxActivePowerArgsDict']]] = None,
             model: Optional[pulumi.Input[Union['InverterModelArgs', 'InverterModelArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            raw_daily_energies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InverterRawDailyEnergyArgs', 'InverterRawDailyEnergyArgsDict']]]]] = None,
             serial_number: Optional[pulumi.Input[Union['InverterSerialNumberArgs', 'InverterSerialNumberArgsDict']]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InverterTagArgs', 'InverterTagArgsDict']]]]] = None,
             temperatures: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InverterTemperatureArgs', 'InverterTemperatureArgsDict']]]]] = None) -> 'Inverter':
@@ -547,6 +565,7 @@ class Inverter(pulumi.CustomResource):
         :param pulumi.Input[Union['InverterMaxActivePowerArgs', 'InverterMaxActivePowerArgsDict']] max_active_power: attribute of the resource
         :param pulumi.Input[Union['InverterModelArgs', 'InverterModelArgsDict']] model: attribute of the resource
         :param pulumi.Input[str] name: name of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InverterRawDailyEnergyArgs', 'InverterRawDailyEnergyArgsDict']]]] raw_daily_energies: attribute of the resource
         :param pulumi.Input[Union['InverterSerialNumberArgs', 'InverterSerialNumberArgsDict']] serial_number: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['InverterTagArgs', 'InverterTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['InverterTemperatureArgs', 'InverterTemperatureArgsDict']]]] temperatures: attribute of the resource
@@ -566,6 +585,7 @@ class Inverter(pulumi.CustomResource):
         __props__.__dict__["max_active_power"] = max_active_power
         __props__.__dict__["model"] = model
         __props__.__dict__["name"] = name
+        __props__.__dict__["raw_daily_energies"] = raw_daily_energies
         __props__.__dict__["serial_number"] = serial_number
         __props__.__dict__["tags"] = tags
         __props__.__dict__["temperatures"] = temperatures
@@ -658,6 +678,14 @@ class Inverter(pulumi.CustomResource):
         name of the resource
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="rawDailyEnergies")
+    def raw_daily_energies(self) -> pulumi.Output[Sequence['outputs.InverterRawDailyEnergy']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "raw_daily_energies")
 
     @property
     @pulumi.getter(name="serialNumber")

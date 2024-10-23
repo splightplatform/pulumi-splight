@@ -91,6 +91,12 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
+        [Output("rawDailyEnergies")]
+        public Output<ImmutableArray<Outputs.InverterRawDailyEnergy>> RawDailyEnergies { get; private set; } = null!;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
         [Output("serialNumber")]
         public Output<Outputs.InverterSerialNumber> SerialNumber { get; private set; } = null!;
 
@@ -310,6 +316,18 @@ namespace Splight.Splight
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("rawDailyEnergies")]
+        private InputList<Inputs.InverterRawDailyEnergyGetArgs>? _rawDailyEnergies;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        public InputList<Inputs.InverterRawDailyEnergyGetArgs> RawDailyEnergies
+        {
+            get => _rawDailyEnergies ?? (_rawDailyEnergies = new InputList<Inputs.InverterRawDailyEnergyGetArgs>());
+            set => _rawDailyEnergies = value;
+        }
 
         /// <summary>
         /// attribute of the resource

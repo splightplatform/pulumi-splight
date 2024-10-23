@@ -3237,6 +3237,42 @@
                 }
             }
         },
+        "splight:index/InverterRawDailyEnergy:InverterRawDailyEnergy": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
         "splight:index/InverterSerialNumber:InverterSerialNumber": {
             "properties": {
                 "asset": {
@@ -12356,6 +12392,13 @@
                     "type": "string",
                     "description": "name of the resource\n"
                 },
+                "rawDailyEnergies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/InverterRawDailyEnergy:InverterRawDailyEnergy"
+                    },
+                    "description": "attribute of the resource\n"
+                },
                 "serialNumber": {
                     "$ref": "#/types/splight:index/InverterSerialNumber:InverterSerialNumber",
                     "description": "attribute of the resource\n"
@@ -12385,6 +12428,7 @@
                 "maxActivePower",
                 "model",
                 "name",
+                "rawDailyEnergies",
                 "serialNumber",
                 "temperatures"
             ],
@@ -12494,6 +12538,13 @@
                     "name": {
                         "type": "string",
                         "description": "name of the resource\n"
+                    },
+                    "rawDailyEnergies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/InverterRawDailyEnergy:InverterRawDailyEnergy"
+                        },
+                        "description": "attribute of the resource\n"
                     },
                     "serialNumber": {
                         "$ref": "#/types/splight:index/InverterSerialNumber:InverterSerialNumber",

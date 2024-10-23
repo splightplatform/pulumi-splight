@@ -141,6 +141,7 @@ __all__ = [
     'InverterMake',
     'InverterMaxActivePower',
     'InverterModel',
+    'InverterRawDailyEnergy',
     'InverterSerialNumber',
     'InverterTag',
     'InverterTemperature',
@@ -7006,6 +7007,73 @@ class InverterModel(dict):
         metadata value
         """
         return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def asset(self) -> Optional[str]:
+        """
+        reference to the asset to be linked to
+        """
+        return pulumi.get(self, "asset")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        id of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        [String|Boolean|Number] type of the data to be ingested in this attribute
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[str]:
+        """
+        unit of measure
+        """
+        return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class InverterRawDailyEnergy(dict):
+    def __init__(__self__, *,
+                 asset: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None,
+                 unit: Optional[str] = None):
+        """
+        :param str asset: reference to the asset to be linked to
+        :param str id: id of the resource
+        :param str name: name of the resource
+        :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
+        :param str unit: unit of measure
+        """
+        if asset is not None:
+            pulumi.set(__self__, "asset", asset)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
 
     @property
     @pulumi.getter
