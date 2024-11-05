@@ -48,6 +48,18 @@
                     }
                 }
             },
+            "splight_algorithm": {
+                "current": "splight:index/algorithm:Algorithm",
+                "majorVersion": 1,
+                "fields": {
+                    "input": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "splight_asset": {
                 "current": "splight:index/asset:Asset",
                 "majorVersion": 1,
@@ -114,18 +126,6 @@
                     }
                 }
             },
-            "splight_component": {
-                "current": "splight:index/component:Component",
-                "majorVersion": 1,
-                "fields": {
-                    "input": {
-                        "maxItemsOne": false
-                    },
-                    "tags": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
             "splight_component_routine": {
                 "current": "splight:index/componentRoutine:ComponentRoutine",
                 "majorVersion": 1,
@@ -152,6 +152,18 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "splight_connector": {
+                "current": "splight:index/connector:Connector",
+                "majorVersion": 1,
+                "fields": {
+                    "input": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -778,6 +790,10 @@
                     }
                 }
             },
+            "splight_node": {
+                "current": "splight:index/node:Node",
+                "majorVersion": 1
+            },
             "splight_secret": {
                 "current": "splight:index/secret:Secret",
                 "majorVersion": 1
@@ -808,6 +824,24 @@
                         "maxItemsOne": false
                     },
                     "wind_speed": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "splight_server": {
+                "current": "splight:index/server:Server",
+                "majorVersion": 1,
+                "fields": {
+                    "config": {
+                        "maxItemsOne": false
+                    },
+                    "env_vars": {
+                        "maxItemsOne": false
+                    },
+                    "ports": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
                         "maxItemsOne": false
                     }
                 }

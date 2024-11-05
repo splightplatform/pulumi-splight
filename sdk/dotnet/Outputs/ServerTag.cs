@@ -12,7 +12,7 @@ namespace Splight.Splight.Outputs
 {
 
     [OutputType]
-    public sealed class ComponentTag
+    public sealed class ServerTag
     {
         /// <summary>
         /// tag id
@@ -24,7 +24,7 @@ namespace Splight.Splight.Outputs
         public readonly string Name;
 
         [OutputConstructor]
-        private ComponentTag(
+        private ServerTag(
             string id,
 
             string name)

@@ -148,6 +148,27 @@ export interface AlertThreshold {
     value: number;
 }
 
+export interface AlgorithmInput {
+    description?: string;
+    multiple?: boolean;
+    name: string;
+    required?: boolean;
+    sensitive?: boolean;
+    type: string;
+    value?: string;
+}
+
+export interface AlgorithmTag {
+    /**
+     * tag id
+     */
+    id: string;
+    /**
+     * tag name
+     */
+    name: string;
+}
+
 export interface AssetKind {
     /**
      * kind id
@@ -278,16 +299,6 @@ export interface CommandActionAsset {
     name: string;
 }
 
-export interface ComponentInput {
-    description?: string;
-    multiple?: boolean;
-    name: string;
-    required?: boolean;
-    sensitive?: boolean;
-    type: string;
-    value?: string;
-}
-
 export interface ComponentRoutineConfig {
     description?: string;
     multiple?: boolean;
@@ -328,7 +339,17 @@ export interface ComponentRoutineOutputValue {
     attribute: string;
 }
 
-export interface ComponentTag {
+export interface ConnectorInput {
+    description?: string;
+    multiple?: boolean;
+    name: string;
+    required?: boolean;
+    sensitive?: boolean;
+    type: string;
+    value?: string;
+}
+
+export interface ConnectorTag {
     /**
      * tag id
      */
@@ -2791,6 +2812,39 @@ export interface SegmentWindSpeed {
      * unit of measure
      */
     unit: string;
+}
+
+export interface ServerConfig {
+    description?: string;
+    multiple?: boolean;
+    name: string;
+    required?: boolean;
+    sensitive?: boolean;
+    type: string;
+    value?: string;
+}
+
+export interface ServerEnvVar {
+    name: string;
+    value: string;
+}
+
+export interface ServerPort {
+    exposedPort: number;
+    internalPort: number;
+    name: string;
+    protocol: string;
+}
+
+export interface ServerTag {
+    /**
+     * tag id
+     */
+    id: string;
+    /**
+     * tag name
+     */
+    name: string;
 }
 
 export interface SlackLineKind {

@@ -33,6 +33,10 @@ __all__ = [
     'AlertTagArgsDict',
     'AlertThresholdArgs',
     'AlertThresholdArgsDict',
+    'AlgorithmInputArgs',
+    'AlgorithmInputArgsDict',
+    'AlgorithmTagArgs',
+    'AlgorithmTagArgsDict',
     'AssetKindArgs',
     'AssetKindArgsDict',
     'AssetRelationAssetArgs',
@@ -53,8 +57,6 @@ __all__ = [
     'CommandActionArgsDict',
     'CommandActionAssetArgs',
     'CommandActionAssetArgsDict',
-    'ComponentInputArgs',
-    'ComponentInputArgsDict',
     'ComponentRoutineConfigArgs',
     'ComponentRoutineConfigArgsDict',
     'ComponentRoutineInputArgs',
@@ -65,8 +67,10 @@ __all__ = [
     'ComponentRoutineOutputArgsDict',
     'ComponentRoutineOutputValueArgs',
     'ComponentRoutineOutputValueArgsDict',
-    'ComponentTagArgs',
-    'ComponentTagArgsDict',
+    'ConnectorInputArgs',
+    'ConnectorInputArgsDict',
+    'ConnectorTagArgs',
+    'ConnectorTagArgsDict',
     'DashboardActionlistChartChartItemArgs',
     'DashboardActionlistChartChartItemArgsDict',
     'DashboardActionlistChartChartItemQueryFilterAssetArgs',
@@ -355,6 +359,14 @@ __all__ = [
     'SegmentWindDirectionArgsDict',
     'SegmentWindSpeedArgs',
     'SegmentWindSpeedArgsDict',
+    'ServerConfigArgs',
+    'ServerConfigArgsDict',
+    'ServerEnvVarArgs',
+    'ServerEnvVarArgsDict',
+    'ServerPortArgs',
+    'ServerPortArgsDict',
+    'ServerTagArgs',
+    'ServerTagArgsDict',
     'SlackLineKindArgs',
     'SlackLineKindArgsDict',
     'SlackLineTagArgs',
@@ -1031,6 +1043,155 @@ class AlertThresholdArgs:
 
 
 if not MYPY:
+    class AlgorithmInputArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        type: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+        multiple: NotRequired[pulumi.Input[bool]]
+        required: NotRequired[pulumi.Input[bool]]
+        sensitive: NotRequired[pulumi.Input[bool]]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    AlgorithmInputArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlgorithmInputArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 multiple: Optional[pulumi.Input[bool]] = None,
+                 required: Optional[pulumi.Input[bool]] = None,
+                 sensitive: Optional[pulumi.Input[bool]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if multiple is not None:
+            pulumi.set(__self__, "multiple", multiple)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if sensitive is not None:
+            pulumi.set(__self__, "sensitive", sensitive)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def multiple(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "multiple")
+
+    @multiple.setter
+    def multiple(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multiple", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter
+    def sensitive(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "sensitive")
+
+    @sensitive.setter
+    def sensitive(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "sensitive", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class AlgorithmTagArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        tag id
+        """
+        name: pulumi.Input[str]
+        """
+        tag name
+        """
+elif False:
+    AlgorithmTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlgorithmTagArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: tag id
+        :param pulumi.Input[str] name: tag name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        tag name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
     class AssetKindArgsDict(TypedDict):
         id: pulumi.Input[str]
         """
@@ -1631,105 +1792,6 @@ class CommandActionAssetArgs:
 
 
 if not MYPY:
-    class ComponentInputArgsDict(TypedDict):
-        name: pulumi.Input[str]
-        type: pulumi.Input[str]
-        description: NotRequired[pulumi.Input[str]]
-        multiple: NotRequired[pulumi.Input[bool]]
-        required: NotRequired[pulumi.Input[bool]]
-        sensitive: NotRequired[pulumi.Input[bool]]
-        value: NotRequired[pulumi.Input[str]]
-elif False:
-    ComponentInputArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class ComponentInputArgs:
-    def __init__(__self__, *,
-                 name: pulumi.Input[str],
-                 type: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None,
-                 multiple: Optional[pulumi.Input[bool]] = None,
-                 required: Optional[pulumi.Input[bool]] = None,
-                 sensitive: Optional[pulumi.Input[bool]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if multiple is not None:
-            pulumi.set(__self__, "multiple", multiple)
-        if required is not None:
-            pulumi.set(__self__, "required", required)
-        if sensitive is not None:
-            pulumi.set(__self__, "sensitive", sensitive)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def multiple(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "multiple")
-
-    @multiple.setter
-    def multiple(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "multiple", value)
-
-    @property
-    @pulumi.getter
-    def required(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "required")
-
-    @required.setter
-    def required(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "required", value)
-
-    @property
-    @pulumi.getter
-    def sensitive(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "sensitive")
-
-    @sensitive.setter
-    def sensitive(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "sensitive", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
-
-if not MYPY:
     class ComponentRoutineConfigArgsDict(TypedDict):
         name: pulumi.Input[str]
         type: pulumi.Input[str]
@@ -2095,7 +2157,106 @@ class ComponentRoutineOutputValueArgs:
 
 
 if not MYPY:
-    class ComponentTagArgsDict(TypedDict):
+    class ConnectorInputArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        type: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+        multiple: NotRequired[pulumi.Input[bool]]
+        required: NotRequired[pulumi.Input[bool]]
+        sensitive: NotRequired[pulumi.Input[bool]]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    ConnectorInputArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectorInputArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 multiple: Optional[pulumi.Input[bool]] = None,
+                 required: Optional[pulumi.Input[bool]] = None,
+                 sensitive: Optional[pulumi.Input[bool]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if multiple is not None:
+            pulumi.set(__self__, "multiple", multiple)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if sensitive is not None:
+            pulumi.set(__self__, "sensitive", sensitive)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def multiple(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "multiple")
+
+    @multiple.setter
+    def multiple(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multiple", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter
+    def sensitive(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "sensitive")
+
+    @sensitive.setter
+    def sensitive(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "sensitive", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class ConnectorTagArgsDict(TypedDict):
         id: pulumi.Input[str]
         """
         tag id
@@ -2105,10 +2266,10 @@ if not MYPY:
         tag name
         """
 elif False:
-    ComponentTagArgsDict: TypeAlias = Mapping[str, Any]
+    ConnectorTagArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class ComponentTagArgs:
+class ConnectorTagArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
                  name: pulumi.Input[str]):
@@ -15343,6 +15504,247 @@ class SegmentWindSpeedArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
+
+
+if not MYPY:
+    class ServerConfigArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        type: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+        multiple: NotRequired[pulumi.Input[bool]]
+        required: NotRequired[pulumi.Input[bool]]
+        sensitive: NotRequired[pulumi.Input[bool]]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    ServerConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServerConfigArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 multiple: Optional[pulumi.Input[bool]] = None,
+                 required: Optional[pulumi.Input[bool]] = None,
+                 sensitive: Optional[pulumi.Input[bool]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if multiple is not None:
+            pulumi.set(__self__, "multiple", multiple)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if sensitive is not None:
+            pulumi.set(__self__, "sensitive", sensitive)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def multiple(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "multiple")
+
+    @multiple.setter
+    def multiple(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multiple", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter
+    def sensitive(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "sensitive")
+
+    @sensitive.setter
+    def sensitive(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "sensitive", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class ServerEnvVarArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        value: pulumi.Input[str]
+elif False:
+    ServerEnvVarArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServerEnvVarArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class ServerPortArgsDict(TypedDict):
+        exposed_port: pulumi.Input[int]
+        internal_port: pulumi.Input[int]
+        name: pulumi.Input[str]
+        protocol: pulumi.Input[str]
+elif False:
+    ServerPortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServerPortArgs:
+    def __init__(__self__, *,
+                 exposed_port: pulumi.Input[int],
+                 internal_port: pulumi.Input[int],
+                 name: pulumi.Input[str],
+                 protocol: pulumi.Input[str]):
+        pulumi.set(__self__, "exposed_port", exposed_port)
+        pulumi.set(__self__, "internal_port", internal_port)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter(name="exposedPort")
+    def exposed_port(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "exposed_port")
+
+    @exposed_port.setter
+    def exposed_port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "exposed_port", value)
+
+    @property
+    @pulumi.getter(name="internalPort")
+    def internal_port(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "internal_port")
+
+    @internal_port.setter
+    def internal_port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "internal_port", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: pulumi.Input[str]):
+        pulumi.set(self, "protocol", value)
+
+
+if not MYPY:
+    class ServerTagArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        tag id
+        """
+        name: pulumi.Input[str]
+        """
+        tag name
+        """
+elif False:
+    ServerTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServerTagArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: tag id
+        :param pulumi.Input[str] name: tag name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        tag name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
 
 if not MYPY:
