@@ -11,7 +11,7 @@ using Pulumi;
 namespace Splight.Splight.Inputs
 {
 
-    public sealed class ComponentInputGetArgs : global::Pulumi.ResourceArgs
+    public sealed class ConnectorInputGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -34,9 +34,9 @@ namespace Splight.Splight.Inputs
         [Input("value")]
         public Input<string>? Value { get; set; }
 
-        public ComponentInputGetArgs()
+        public ConnectorInputGetArgs()
         {
         }
-        public static new ComponentInputGetArgs Empty => new ComponentInputGetArgs();
+        public static new ConnectorInputGetArgs Empty => new ConnectorInputGetArgs();
     }
 }

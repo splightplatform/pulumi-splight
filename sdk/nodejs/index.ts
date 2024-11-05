@@ -15,6 +15,11 @@ export type Alert = import("./alert").Alert;
 export const Alert: typeof import("./alert").Alert = null as any;
 utilities.lazyLoad(exports, ["Alert"], () => require("./alert"));
 
+export { AlgorithmArgs, AlgorithmState } from "./algorithm";
+export type Algorithm = import("./algorithm").Algorithm;
+export const Algorithm: typeof import("./algorithm").Algorithm = null as any;
+utilities.lazyLoad(exports, ["Algorithm"], () => require("./algorithm"));
+
 export { AssetArgs, AssetState } from "./asset";
 export type Asset = import("./asset").Asset;
 export const Asset: typeof import("./asset").Asset = null as any;
@@ -45,15 +50,15 @@ export type Command = import("./command").Command;
 export const Command: typeof import("./command").Command = null as any;
 utilities.lazyLoad(exports, ["Command"], () => require("./command"));
 
-export { ComponentArgs, ComponentState } from "./component";
-export type Component = import("./component").Component;
-export const Component: typeof import("./component").Component = null as any;
-utilities.lazyLoad(exports, ["Component"], () => require("./component"));
-
 export { ComponentRoutineArgs, ComponentRoutineState } from "./componentRoutine";
 export type ComponentRoutine = import("./componentRoutine").ComponentRoutine;
 export const ComponentRoutine: typeof import("./componentRoutine").ComponentRoutine = null as any;
 utilities.lazyLoad(exports, ["ComponentRoutine"], () => require("./componentRoutine"));
+
+export { ConnectorArgs, ConnectorState } from "./connector";
+export type Connector = import("./connector").Connector;
+export const Connector: typeof import("./connector").Connector = null as any;
+utilities.lazyLoad(exports, ["Connector"], () => require("./connector"));
 
 export { DashboardArgs, DashboardState } from "./dashboard";
 export type Dashboard = import("./dashboard").Dashboard;
@@ -205,6 +210,11 @@ export type Line = import("./line").Line;
 export const Line: typeof import("./line").Line = null as any;
 utilities.lazyLoad(exports, ["Line"], () => require("./line"));
 
+export { NodeArgs, NodeState } from "./node";
+export type Node = import("./node").Node;
+export const Node: typeof import("./node").Node = null as any;
+utilities.lazyLoad(exports, ["Node"], () => require("./node"));
+
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
@@ -219,6 +229,11 @@ export { SegmentArgs, SegmentState } from "./segment";
 export type Segment = import("./segment").Segment;
 export const Segment: typeof import("./segment").Segment = null as any;
 utilities.lazyLoad(exports, ["Segment"], () => require("./segment"));
+
+export { ServerArgs, ServerState } from "./server";
+export type Server = import("./server").Server;
+export const Server: typeof import("./server").Server = null as any;
+utilities.lazyLoad(exports, ["Server"], () => require("./server"));
 
 export { SlackLineArgs, SlackLineState } from "./slackLine";
 export type SlackLine = import("./slackLine").SlackLine;
@@ -248,6 +263,8 @@ const _module = {
                 return new Action(name, <any>undefined, { urn })
             case "splight:index/alert:Alert":
                 return new Alert(name, <any>undefined, { urn })
+            case "splight:index/algorithm:Algorithm":
+                return new Algorithm(name, <any>undefined, { urn })
             case "splight:index/asset:Asset":
                 return new Asset(name, <any>undefined, { urn })
             case "splight:index/assetAttribute:AssetAttribute":
@@ -260,10 +277,10 @@ const _module = {
                 return new Bus(name, <any>undefined, { urn })
             case "splight:index/command:Command":
                 return new Command(name, <any>undefined, { urn })
-            case "splight:index/component:Component":
-                return new Component(name, <any>undefined, { urn })
             case "splight:index/componentRoutine:ComponentRoutine":
                 return new ComponentRoutine(name, <any>undefined, { urn })
+            case "splight:index/connector:Connector":
+                return new Connector(name, <any>undefined, { urn })
             case "splight:index/dashboard:Dashboard":
                 return new Dashboard(name, <any>undefined, { urn })
             case "splight:index/dashboardActionlistChart:DashboardActionlistChart":
@@ -312,10 +329,14 @@ const _module = {
                 return new Inverter(name, <any>undefined, { urn })
             case "splight:index/line:Line":
                 return new Line(name, <any>undefined, { urn })
+            case "splight:index/node:Node":
+                return new Node(name, <any>undefined, { urn })
             case "splight:index/secret:Secret":
                 return new Secret(name, <any>undefined, { urn })
             case "splight:index/segment:Segment":
                 return new Segment(name, <any>undefined, { urn })
+            case "splight:index/server:Server":
+                return new Server(name, <any>undefined, { urn })
             case "splight:index/slackLine:SlackLine":
                 return new SlackLine(name, <any>undefined, { urn })
             case "splight:index/tag:Tag":
@@ -327,14 +348,15 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("splight", "index/action", _module)
 pulumi.runtime.registerResourceModule("splight", "index/alert", _module)
+pulumi.runtime.registerResourceModule("splight", "index/algorithm", _module)
 pulumi.runtime.registerResourceModule("splight", "index/asset", _module)
 pulumi.runtime.registerResourceModule("splight", "index/assetAttribute", _module)
 pulumi.runtime.registerResourceModule("splight", "index/assetMetadata", _module)
 pulumi.runtime.registerResourceModule("splight", "index/assetRelation", _module)
 pulumi.runtime.registerResourceModule("splight", "index/bus", _module)
 pulumi.runtime.registerResourceModule("splight", "index/command", _module)
-pulumi.runtime.registerResourceModule("splight", "index/component", _module)
 pulumi.runtime.registerResourceModule("splight", "index/componentRoutine", _module)
+pulumi.runtime.registerResourceModule("splight", "index/connector", _module)
 pulumi.runtime.registerResourceModule("splight", "index/dashboard", _module)
 pulumi.runtime.registerResourceModule("splight", "index/dashboardActionlistChart", _module)
 pulumi.runtime.registerResourceModule("splight", "index/dashboardAlerteventsChart", _module)
@@ -359,8 +381,10 @@ pulumi.runtime.registerResourceModule("splight", "index/generator", _module)
 pulumi.runtime.registerResourceModule("splight", "index/grid", _module)
 pulumi.runtime.registerResourceModule("splight", "index/inverter", _module)
 pulumi.runtime.registerResourceModule("splight", "index/line", _module)
+pulumi.runtime.registerResourceModule("splight", "index/node", _module)
 pulumi.runtime.registerResourceModule("splight", "index/secret", _module)
 pulumi.runtime.registerResourceModule("splight", "index/segment", _module)
+pulumi.runtime.registerResourceModule("splight", "index/server", _module)
 pulumi.runtime.registerResourceModule("splight", "index/slackLine", _module)
 pulumi.runtime.registerResourceModule("splight", "index/tag", _module)
 pulumi.runtime.registerResourcePackage("splight", {

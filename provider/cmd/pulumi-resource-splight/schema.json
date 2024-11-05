@@ -302,6 +302,53 @@
                 "value"
             ]
         },
+        "splight:index/AlgorithmInput:AlgorithmInput": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "multiple": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "sensitive": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "type"
+            ]
+        },
+        "splight:index/AlgorithmTag:AlgorithmTag": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "tag id\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "tag name\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
         "splight:index/AssetKind:AssetKind": {
             "properties": {
                 "id": {
@@ -514,36 +561,6 @@
                 "name"
             ]
         },
-        "splight:index/ComponentInput:ComponentInput": {
-            "properties": {
-                "description": {
-                    "type": "string"
-                },
-                "multiple": {
-                    "type": "boolean"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "required": {
-                    "type": "boolean"
-                },
-                "sensitive": {
-                    "type": "boolean"
-                },
-                "type": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "name",
-                "type"
-            ]
-        },
         "splight:index/ComponentRoutineConfig:ComponentRoutineConfig": {
             "properties": {
                 "description": {
@@ -670,7 +687,37 @@
                 "attribute"
             ]
         },
-        "splight:index/ComponentTag:ComponentTag": {
+        "splight:index/ConnectorInput:ConnectorInput": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "multiple": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "sensitive": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "type"
+            ]
+        },
+        "splight:index/ConnectorTag:ConnectorTag": {
             "properties": {
                 "id": {
                     "type": "string",
@@ -4950,6 +4997,91 @@
                 }
             }
         },
+        "splight:index/ServerConfig:ServerConfig": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "multiple": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "sensitive": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "type"
+            ]
+        },
+        "splight:index/ServerEnvVar:ServerEnvVar": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "value"
+            ]
+        },
+        "splight:index/ServerPort:ServerPort": {
+            "properties": {
+                "exposedPort": {
+                    "type": "integer"
+                },
+                "internalPort": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "protocol": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "exposedPort",
+                "internalPort",
+                "name",
+                "protocol"
+            ]
+        },
+        "splight:index/ServerTag:ServerTag": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "tag id\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "tag name\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
         "splight:index/SlackLineKind:SlackLineKind": {
             "properties": {
                 "id": {
@@ -5525,6 +5657,152 @@
                 "type": "object"
             }
         },
+        "splight:index/algorithm:Algorithm": {
+            "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/algorithm:Algorithm [options] splight_algorithm.\u003cname\u003e \u003calgorithm_id\u003e\n```\n\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "optional description to add details of the resource\n"
+                },
+                "inputs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/AlgorithmInput:AlgorithmInput"
+                    },
+                    "description": "static config parameters of the routine\n"
+                },
+                "logLevel": {
+                    "type": "string",
+                    "description": "log level of the algorithm\n"
+                },
+                "machineInstanceSize": {
+                    "type": "string",
+                    "description": "instance size\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "the name of the algorithm to be created\n"
+                },
+                "node": {
+                    "type": "string",
+                    "description": "id of the compute node where the algorithm runs\n"
+                },
+                "restartPolicy": {
+                    "type": "string",
+                    "description": "restart policy of the algorithm\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/AlgorithmTag:AlgorithmTag"
+                    },
+                    "description": "tags of the resource\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "[NAME-VERSION] the version of the hub algorithm\n"
+                }
+            },
+            "required": [
+                "name",
+                "version"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "optional description to add details of the resource\n"
+                },
+                "inputs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/AlgorithmInput:AlgorithmInput"
+                    },
+                    "description": "static config parameters of the routine\n"
+                },
+                "logLevel": {
+                    "type": "string",
+                    "description": "log level of the algorithm\n"
+                },
+                "machineInstanceSize": {
+                    "type": "string",
+                    "description": "instance size\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "the name of the algorithm to be created\n"
+                },
+                "node": {
+                    "type": "string",
+                    "description": "id of the compute node where the algorithm runs\n"
+                },
+                "restartPolicy": {
+                    "type": "string",
+                    "description": "restart policy of the algorithm\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/AlgorithmTag:AlgorithmTag"
+                    },
+                    "description": "tags of the resource\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "[NAME-VERSION] the version of the hub algorithm\n"
+                }
+            },
+            "requiredInputs": [
+                "version"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Algorithm resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "optional description to add details of the resource\n"
+                    },
+                    "inputs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/AlgorithmInput:AlgorithmInput"
+                        },
+                        "description": "static config parameters of the routine\n"
+                    },
+                    "logLevel": {
+                        "type": "string",
+                        "description": "log level of the algorithm\n"
+                    },
+                    "machineInstanceSize": {
+                        "type": "string",
+                        "description": "instance size\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "the name of the algorithm to be created\n"
+                    },
+                    "node": {
+                        "type": "string",
+                        "description": "id of the compute node where the algorithm runs\n"
+                    },
+                    "restartPolicy": {
+                        "type": "string",
+                        "description": "restart policy of the algorithm\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/AlgorithmTag:AlgorithmTag"
+                        },
+                        "description": "tags of the resource\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "[NAME-VERSION] the version of the hub algorithm\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "splight:index/asset:Asset": {
             "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/asset:Asset [options] splight_asset.\u003cname\u003e \u003casset_id\u003e\n```\n\n",
             "properties": {
@@ -6031,104 +6309,6 @@
                 "type": "object"
             }
         },
-        "splight:index/component:Component": {
-            "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/component:Component [options] splight_component.\u003cname\u003e \u003ccomponent_id\u003e\n```\n\n",
-            "properties": {
-                "description": {
-                    "type": "string",
-                    "description": "optional description to add details of the resource\n"
-                },
-                "inputs": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/splight:index/ComponentInput:ComponentInput"
-                    },
-                    "description": "static config parameters of the routine\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "the name of the component to be created\n"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/splight:index/ComponentTag:ComponentTag"
-                    },
-                    "description": "tags of the resource\n"
-                },
-                "version": {
-                    "type": "string",
-                    "description": "[NAME-VERSION] the version of the hub component\n"
-                }
-            },
-            "required": [
-                "name",
-                "version"
-            ],
-            "inputProperties": {
-                "description": {
-                    "type": "string",
-                    "description": "optional description to add details of the resource\n"
-                },
-                "inputs": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/splight:index/ComponentInput:ComponentInput"
-                    },
-                    "description": "static config parameters of the routine\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "the name of the component to be created\n"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/splight:index/ComponentTag:ComponentTag"
-                    },
-                    "description": "tags of the resource\n"
-                },
-                "version": {
-                    "type": "string",
-                    "description": "[NAME-VERSION] the version of the hub component\n"
-                }
-            },
-            "requiredInputs": [
-                "version"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering Component resources.\n",
-                "properties": {
-                    "description": {
-                        "type": "string",
-                        "description": "optional description to add details of the resource\n"
-                    },
-                    "inputs": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/splight:index/ComponentInput:ComponentInput"
-                        },
-                        "description": "static config parameters of the routine\n"
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "the name of the component to be created\n"
-                    },
-                    "tags": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/splight:index/ComponentTag:ComponentTag"
-                        },
-                        "description": "tags of the resource\n"
-                    },
-                    "version": {
-                        "type": "string",
-                        "description": "[NAME-VERSION] the version of the hub component\n"
-                    }
-                },
-                "type": "object"
-            }
-        },
         "splight:index/componentRoutine:ComponentRoutine": {
             "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/componentRoutine:ComponentRoutine [options] splight_component_routine.\u003cname\u003e \u003ccomponent_routine_id\u003e\n```\n\n",
             "properties": {
@@ -6257,6 +6437,152 @@
                     "type": {
                         "type": "string",
                         "description": "[IncomingRoutine|OutgoingRoutine] direction of the data flow (from device to system or from system to device)\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/connector:Connector": {
+            "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/connector:Connector [options] splight_connector.\u003cname\u003e \u003cconnector_id\u003e\n```\n\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "optional description to add details of the resource\n"
+                },
+                "inputs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ConnectorInput:ConnectorInput"
+                    },
+                    "description": "static config parameters of the routine\n"
+                },
+                "logLevel": {
+                    "type": "string",
+                    "description": "log level of the connector\n"
+                },
+                "machineInstanceSize": {
+                    "type": "string",
+                    "description": "instance size\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "the name of the connector to be created\n"
+                },
+                "node": {
+                    "type": "string",
+                    "description": "id of the compute node where the connector runs\n"
+                },
+                "restartPolicy": {
+                    "type": "string",
+                    "description": "restart policy of the connector\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ConnectorTag:ConnectorTag"
+                    },
+                    "description": "tags of the resource\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "[NAME-VERSION] the version of the hub connector\n"
+                }
+            },
+            "required": [
+                "name",
+                "version"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "optional description to add details of the resource\n"
+                },
+                "inputs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ConnectorInput:ConnectorInput"
+                    },
+                    "description": "static config parameters of the routine\n"
+                },
+                "logLevel": {
+                    "type": "string",
+                    "description": "log level of the connector\n"
+                },
+                "machineInstanceSize": {
+                    "type": "string",
+                    "description": "instance size\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "the name of the connector to be created\n"
+                },
+                "node": {
+                    "type": "string",
+                    "description": "id of the compute node where the connector runs\n"
+                },
+                "restartPolicy": {
+                    "type": "string",
+                    "description": "restart policy of the connector\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ConnectorTag:ConnectorTag"
+                    },
+                    "description": "tags of the resource\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "[NAME-VERSION] the version of the hub connector\n"
+                }
+            },
+            "requiredInputs": [
+                "version"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Connector resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "optional description to add details of the resource\n"
+                    },
+                    "inputs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/ConnectorInput:ConnectorInput"
+                        },
+                        "description": "static config parameters of the routine\n"
+                    },
+                    "logLevel": {
+                        "type": "string",
+                        "description": "log level of the connector\n"
+                    },
+                    "machineInstanceSize": {
+                        "type": "string",
+                        "description": "instance size\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "the name of the connector to be created\n"
+                    },
+                    "node": {
+                        "type": "string",
+                        "description": "id of the compute node where the connector runs\n"
+                    },
+                    "restartPolicy": {
+                        "type": "string",
+                        "description": "restart policy of the connector\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/ConnectorTag:ConnectorTag"
+                        },
+                        "description": "tags of the resource\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "[NAME-VERSION] the version of the hub connector\n"
                     }
                 },
                 "type": "object"
@@ -13119,6 +13445,54 @@
                 "type": "object"
             }
         },
+        "splight:index/node:Node": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as splight from \"@splightplatform/pulumi-splight\";\n\nconst myNode = new splight.Node(\"myNode\", {type: \"splight_hosted\"});\n```\n```python\nimport pulumi\nimport pulumi_splight as splight\n\nmy_node = splight.Node(\"myNode\", type=\"splight_hosted\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Splight = Splight.Splight;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myNode = new Splight.Node(\"myNode\", new()\n    {\n        Type = \"splight_hosted\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/splightplatform/pulumi-splight/sdk/go/splight\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := splight.NewNode(ctx, \"myNode\", \u0026splight.NodeArgs{\n\t\t\tType: pulumi.String(\"splight_hosted\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.splight.Node;\nimport com.pulumi.splight.NodeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myNode = new Node(\"myNode\", NodeArgs.builder()\n            .type(\"splight_hosted\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myNode:\n    type: splight:Node\n    properties:\n      type: splight_hosted\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import splight:index/node:Node [options] splight_node.\u003cname\u003e \u003cnode_id\u003e\n```\n\n",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "either splight*hosted or self*hosted\n"
+                }
+            },
+            "required": [
+                "name",
+                "type"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n",
+                    "willReplaceOnChanges": true
+                },
+                "type": {
+                    "type": "string",
+                    "description": "either splight*hosted or self*hosted\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Node resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "name of the resource\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "either splight*hosted or self*hosted\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "splight:index/secret:Secret": {
             "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as splight from \"@splightplatform/pulumi-splight\";\n\nconst mySecret = new splight.Secret(\"mySecret\", {rawValue: \"My Secret Value\"});\n```\n```python\nimport pulumi\nimport pulumi_splight as splight\n\nmy_secret = splight.Secret(\"mySecret\", raw_value=\"My Secret Value\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Splight = Splight.Splight;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mySecret = new Splight.Secret(\"mySecret\", new()\n    {\n        RawValue = \"My Secret Value\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/splightplatform/pulumi-splight/sdk/go/splight\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := splight.NewSecret(ctx, \"mySecret\", \u0026splight.SecretArgs{\n\t\t\tRawValue: pulumi.String(\"My Secret Value\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.splight.Secret;\nimport com.pulumi.splight.SecretArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mySecret = new Secret(\"mySecret\", SecretArgs.builder()\n            .rawValue(\"My Secret Value\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mySecret:\n    type: splight:Secret\n    properties:\n      rawValue: My Secret Value\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import splight:index/secret:Secret [options] splight_secret.\u003cname\u003e \u003csecret_id\u003e\n```\n\n",
             "properties": {
@@ -13339,6 +13713,194 @@
                             "$ref": "#/types/splight:index/SegmentWindSpeed:SegmentWindSpeed"
                         },
                         "description": "attribute of the resource\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/server:Server": {
+            "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/server:Server [options] splight_server.\u003cname\u003e \u003cserver_id\u003e\n```\n\n",
+            "properties": {
+                "configs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ServerConfig:ServerConfig"
+                    },
+                    "description": "static config parameters of the routine\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "optional description to add details of the resource\n"
+                },
+                "envVars": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ServerEnvVar:ServerEnvVar"
+                    },
+                    "description": "environment variables for the server\n"
+                },
+                "logLevel": {
+                    "type": "string",
+                    "description": "log level of the server\n"
+                },
+                "machineInstanceSize": {
+                    "type": "string",
+                    "description": "instance size\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "the name of the server to be created\n"
+                },
+                "node": {
+                    "type": "string",
+                    "description": "id of the compute node where the server runs\n"
+                },
+                "ports": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ServerPort:ServerPort"
+                    },
+                    "description": "ports of the server\n"
+                },
+                "restartPolicy": {
+                    "type": "string",
+                    "description": "restart policy of the server\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ServerTag:ServerTag"
+                    },
+                    "description": "tags of the resource\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "[NAME-VERSION] the version of the hub server\n"
+                }
+            },
+            "required": [
+                "name",
+                "version"
+            ],
+            "inputProperties": {
+                "configs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ServerConfig:ServerConfig"
+                    },
+                    "description": "static config parameters of the routine\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "optional description to add details of the resource\n"
+                },
+                "envVars": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ServerEnvVar:ServerEnvVar"
+                    },
+                    "description": "environment variables for the server\n"
+                },
+                "logLevel": {
+                    "type": "string",
+                    "description": "log level of the server\n"
+                },
+                "machineInstanceSize": {
+                    "type": "string",
+                    "description": "instance size\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "the name of the server to be created\n"
+                },
+                "node": {
+                    "type": "string",
+                    "description": "id of the compute node where the server runs\n"
+                },
+                "ports": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ServerPort:ServerPort"
+                    },
+                    "description": "ports of the server\n"
+                },
+                "restartPolicy": {
+                    "type": "string",
+                    "description": "restart policy of the server\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ServerTag:ServerTag"
+                    },
+                    "description": "tags of the resource\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "[NAME-VERSION] the version of the hub server\n"
+                }
+            },
+            "requiredInputs": [
+                "version"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Server resources.\n",
+                "properties": {
+                    "configs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/ServerConfig:ServerConfig"
+                        },
+                        "description": "static config parameters of the routine\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "optional description to add details of the resource\n"
+                    },
+                    "envVars": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/ServerEnvVar:ServerEnvVar"
+                        },
+                        "description": "environment variables for the server\n"
+                    },
+                    "logLevel": {
+                        "type": "string",
+                        "description": "log level of the server\n"
+                    },
+                    "machineInstanceSize": {
+                        "type": "string",
+                        "description": "instance size\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "the name of the server to be created\n"
+                    },
+                    "node": {
+                        "type": "string",
+                        "description": "id of the compute node where the server runs\n"
+                    },
+                    "ports": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/ServerPort:ServerPort"
+                        },
+                        "description": "ports of the server\n"
+                    },
+                    "restartPolicy": {
+                        "type": "string",
+                        "description": "restart policy of the server\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/ServerTag:ServerTag"
+                        },
+                        "description": "tags of the resource\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "[NAME-VERSION] the version of the hub server\n"
                     }
                 },
                 "type": "object"

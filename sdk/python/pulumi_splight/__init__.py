@@ -7,14 +7,15 @@ import typing
 # Export this package's modules as members:
 from .action import *
 from .alert import *
+from .algorithm import *
 from .asset import *
 from .asset_attribute import *
 from .asset_metadata import *
 from .asset_relation import *
 from .bus import *
 from .command import *
-from .component import *
 from .component_routine import *
+from .connector import *
 from .dashboard import *
 from .dashboard_actionlist_chart import *
 from .dashboard_alertevents_chart import *
@@ -45,9 +46,11 @@ from .get_tags import *
 from .grid import *
 from .inverter import *
 from .line import *
+from .node import *
 from .provider import *
 from .secret import *
 from .segment import *
+from .server import *
 from .slack_line import *
 from .tag import *
 from ._inputs import *
@@ -77,6 +80,14 @@ _utilities.register(
   "fqn": "pulumi_splight",
   "classes": {
    "splight:index/alert:Alert": "Alert"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/algorithm",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/algorithm:Algorithm": "Algorithm"
   }
  },
  {
@@ -129,18 +140,18 @@ _utilities.register(
  },
  {
   "pkg": "splight",
-  "mod": "index/component",
-  "fqn": "pulumi_splight",
-  "classes": {
-   "splight:index/component:Component": "Component"
-  }
- },
- {
-  "pkg": "splight",
   "mod": "index/componentRoutine",
   "fqn": "pulumi_splight",
   "classes": {
    "splight:index/componentRoutine:ComponentRoutine": "ComponentRoutine"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/connector",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/connector:Connector": "Connector"
   }
  },
  {
@@ -337,6 +348,14 @@ _utilities.register(
  },
  {
   "pkg": "splight",
+  "mod": "index/node",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/node:Node": "Node"
+  }
+ },
+ {
+  "pkg": "splight",
   "mod": "index/secret",
   "fqn": "pulumi_splight",
   "classes": {
@@ -349,6 +368,14 @@ _utilities.register(
   "fqn": "pulumi_splight",
   "classes": {
    "splight:index/segment:Segment": "Segment"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/server",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/server:Server": "Server"
   }
  },
  {

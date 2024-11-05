@@ -148,6 +148,27 @@ export interface AlertThreshold {
     value: pulumi.Input<number>;
 }
 
+export interface AlgorithmInput {
+    description?: pulumi.Input<string>;
+    multiple?: pulumi.Input<boolean>;
+    name: pulumi.Input<string>;
+    required?: pulumi.Input<boolean>;
+    sensitive?: pulumi.Input<boolean>;
+    type: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface AlgorithmTag {
+    /**
+     * tag id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * tag name
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface AssetKind {
     /**
      * kind id
@@ -278,16 +299,6 @@ export interface CommandActionAsset {
     name: pulumi.Input<string>;
 }
 
-export interface ComponentInput {
-    description?: pulumi.Input<string>;
-    multiple?: pulumi.Input<boolean>;
-    name: pulumi.Input<string>;
-    required?: pulumi.Input<boolean>;
-    sensitive?: pulumi.Input<boolean>;
-    type: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
-}
-
 export interface ComponentRoutineConfig {
     description?: pulumi.Input<string>;
     multiple?: pulumi.Input<boolean>;
@@ -328,7 +339,17 @@ export interface ComponentRoutineOutputValue {
     attribute: pulumi.Input<string>;
 }
 
-export interface ComponentTag {
+export interface ConnectorInput {
+    description?: pulumi.Input<string>;
+    multiple?: pulumi.Input<boolean>;
+    name: pulumi.Input<string>;
+    required?: pulumi.Input<boolean>;
+    sensitive?: pulumi.Input<boolean>;
+    type: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface ConnectorTag {
     /**
      * tag id
      */
@@ -2725,6 +2746,39 @@ export interface SegmentWindSpeed {
      * unit of measure
      */
     unit?: pulumi.Input<string>;
+}
+
+export interface ServerConfig {
+    description?: pulumi.Input<string>;
+    multiple?: pulumi.Input<boolean>;
+    name: pulumi.Input<string>;
+    required?: pulumi.Input<boolean>;
+    sensitive?: pulumi.Input<boolean>;
+    type: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface ServerEnvVar {
+    name: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface ServerPort {
+    exposedPort: pulumi.Input<number>;
+    internalPort: pulumi.Input<number>;
+    name: pulumi.Input<string>;
+    protocol: pulumi.Input<string>;
+}
+
+export interface ServerTag {
+    /**
+     * tag id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * tag name
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface SlackLineKind {

@@ -11,7 +11,7 @@ using Pulumi;
 namespace Splight.Splight.Inputs
 {
 
-    public sealed class ComponentTagArgs : global::Pulumi.ResourceArgs
+    public sealed class ServerTagGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// tag id
@@ -25,9 +25,9 @@ namespace Splight.Splight.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        public ComponentTagArgs()
+        public ServerTagGetArgs()
         {
         }
-        public static new ComponentTagArgs Empty => new ComponentTagArgs();
+        public static new ServerTagGetArgs Empty => new ServerTagGetArgs();
     }
 }

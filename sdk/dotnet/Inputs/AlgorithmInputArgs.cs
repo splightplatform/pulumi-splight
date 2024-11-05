@@ -11,7 +11,7 @@ using Pulumi;
 namespace Splight.Splight.Inputs
 {
 
-    public sealed class ComponentInputArgs : global::Pulumi.ResourceArgs
+    public sealed class AlgorithmInputArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -34,9 +34,9 @@ namespace Splight.Splight.Inputs
         [Input("value")]
         public Input<string>? Value { get; set; }
 
-        public ComponentInputArgs()
+        public AlgorithmInputArgs()
         {
         }
-        public static new ComponentInputArgs Empty => new ComponentInputArgs();
+        public static new AlgorithmInputArgs Empty => new AlgorithmInputArgs();
     }
 }

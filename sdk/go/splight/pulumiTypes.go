@@ -981,6 +981,242 @@ func (o AlertThresholdArrayOutput) Index(i pulumi.IntInput) AlertThresholdOutput
 	}).(AlertThresholdOutput)
 }
 
+type AlgorithmInputType struct {
+	Description *string `pulumi:"description"`
+	Multiple    *bool   `pulumi:"multiple"`
+	Name        string  `pulumi:"name"`
+	Required    *bool   `pulumi:"required"`
+	Sensitive   *bool   `pulumi:"sensitive"`
+	Type        string  `pulumi:"type"`
+	Value       *string `pulumi:"value"`
+}
+
+// AlgorithmInputTypeInput is an input type that accepts AlgorithmInputTypeArgs and AlgorithmInputTypeOutput values.
+// You can construct a concrete instance of `AlgorithmInputTypeInput` via:
+//
+//	AlgorithmInputTypeArgs{...}
+type AlgorithmInputTypeInput interface {
+	pulumi.Input
+
+	ToAlgorithmInputTypeOutput() AlgorithmInputTypeOutput
+	ToAlgorithmInputTypeOutputWithContext(context.Context) AlgorithmInputTypeOutput
+}
+
+type AlgorithmInputTypeArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Multiple    pulumi.BoolPtrInput   `pulumi:"multiple"`
+	Name        pulumi.StringInput    `pulumi:"name"`
+	Required    pulumi.BoolPtrInput   `pulumi:"required"`
+	Sensitive   pulumi.BoolPtrInput   `pulumi:"sensitive"`
+	Type        pulumi.StringInput    `pulumi:"type"`
+	Value       pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AlgorithmInputTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlgorithmInputType)(nil)).Elem()
+}
+
+func (i AlgorithmInputTypeArgs) ToAlgorithmInputTypeOutput() AlgorithmInputTypeOutput {
+	return i.ToAlgorithmInputTypeOutputWithContext(context.Background())
+}
+
+func (i AlgorithmInputTypeArgs) ToAlgorithmInputTypeOutputWithContext(ctx context.Context) AlgorithmInputTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlgorithmInputTypeOutput)
+}
+
+// AlgorithmInputTypeArrayInput is an input type that accepts AlgorithmInputTypeArray and AlgorithmInputTypeArrayOutput values.
+// You can construct a concrete instance of `AlgorithmInputTypeArrayInput` via:
+//
+//	AlgorithmInputTypeArray{ AlgorithmInputTypeArgs{...} }
+type AlgorithmInputTypeArrayInput interface {
+	pulumi.Input
+
+	ToAlgorithmInputTypeArrayOutput() AlgorithmInputTypeArrayOutput
+	ToAlgorithmInputTypeArrayOutputWithContext(context.Context) AlgorithmInputTypeArrayOutput
+}
+
+type AlgorithmInputTypeArray []AlgorithmInputTypeInput
+
+func (AlgorithmInputTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlgorithmInputType)(nil)).Elem()
+}
+
+func (i AlgorithmInputTypeArray) ToAlgorithmInputTypeArrayOutput() AlgorithmInputTypeArrayOutput {
+	return i.ToAlgorithmInputTypeArrayOutputWithContext(context.Background())
+}
+
+func (i AlgorithmInputTypeArray) ToAlgorithmInputTypeArrayOutputWithContext(ctx context.Context) AlgorithmInputTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlgorithmInputTypeArrayOutput)
+}
+
+type AlgorithmInputTypeOutput struct{ *pulumi.OutputState }
+
+func (AlgorithmInputTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlgorithmInputType)(nil)).Elem()
+}
+
+func (o AlgorithmInputTypeOutput) ToAlgorithmInputTypeOutput() AlgorithmInputTypeOutput {
+	return o
+}
+
+func (o AlgorithmInputTypeOutput) ToAlgorithmInputTypeOutputWithContext(ctx context.Context) AlgorithmInputTypeOutput {
+	return o
+}
+
+func (o AlgorithmInputTypeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlgorithmInputType) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AlgorithmInputTypeOutput) Multiple() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlgorithmInputType) *bool { return v.Multiple }).(pulumi.BoolPtrOutput)
+}
+
+func (o AlgorithmInputTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AlgorithmInputType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AlgorithmInputTypeOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlgorithmInputType) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+func (o AlgorithmInputTypeOutput) Sensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlgorithmInputType) *bool { return v.Sensitive }).(pulumi.BoolPtrOutput)
+}
+
+func (o AlgorithmInputTypeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AlgorithmInputType) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o AlgorithmInputTypeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlgorithmInputType) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AlgorithmInputTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (AlgorithmInputTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlgorithmInputType)(nil)).Elem()
+}
+
+func (o AlgorithmInputTypeArrayOutput) ToAlgorithmInputTypeArrayOutput() AlgorithmInputTypeArrayOutput {
+	return o
+}
+
+func (o AlgorithmInputTypeArrayOutput) ToAlgorithmInputTypeArrayOutputWithContext(ctx context.Context) AlgorithmInputTypeArrayOutput {
+	return o
+}
+
+func (o AlgorithmInputTypeArrayOutput) Index(i pulumi.IntInput) AlgorithmInputTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlgorithmInputType {
+		return vs[0].([]AlgorithmInputType)[vs[1].(int)]
+	}).(AlgorithmInputTypeOutput)
+}
+
+type AlgorithmTag struct {
+	// tag id
+	Id string `pulumi:"id"`
+	// tag name
+	Name string `pulumi:"name"`
+}
+
+// AlgorithmTagInput is an input type that accepts AlgorithmTagArgs and AlgorithmTagOutput values.
+// You can construct a concrete instance of `AlgorithmTagInput` via:
+//
+//	AlgorithmTagArgs{...}
+type AlgorithmTagInput interface {
+	pulumi.Input
+
+	ToAlgorithmTagOutput() AlgorithmTagOutput
+	ToAlgorithmTagOutputWithContext(context.Context) AlgorithmTagOutput
+}
+
+type AlgorithmTagArgs struct {
+	// tag id
+	Id pulumi.StringInput `pulumi:"id"`
+	// tag name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (AlgorithmTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlgorithmTag)(nil)).Elem()
+}
+
+func (i AlgorithmTagArgs) ToAlgorithmTagOutput() AlgorithmTagOutput {
+	return i.ToAlgorithmTagOutputWithContext(context.Background())
+}
+
+func (i AlgorithmTagArgs) ToAlgorithmTagOutputWithContext(ctx context.Context) AlgorithmTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlgorithmTagOutput)
+}
+
+// AlgorithmTagArrayInput is an input type that accepts AlgorithmTagArray and AlgorithmTagArrayOutput values.
+// You can construct a concrete instance of `AlgorithmTagArrayInput` via:
+//
+//	AlgorithmTagArray{ AlgorithmTagArgs{...} }
+type AlgorithmTagArrayInput interface {
+	pulumi.Input
+
+	ToAlgorithmTagArrayOutput() AlgorithmTagArrayOutput
+	ToAlgorithmTagArrayOutputWithContext(context.Context) AlgorithmTagArrayOutput
+}
+
+type AlgorithmTagArray []AlgorithmTagInput
+
+func (AlgorithmTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlgorithmTag)(nil)).Elem()
+}
+
+func (i AlgorithmTagArray) ToAlgorithmTagArrayOutput() AlgorithmTagArrayOutput {
+	return i.ToAlgorithmTagArrayOutputWithContext(context.Background())
+}
+
+func (i AlgorithmTagArray) ToAlgorithmTagArrayOutputWithContext(ctx context.Context) AlgorithmTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlgorithmTagArrayOutput)
+}
+
+type AlgorithmTagOutput struct{ *pulumi.OutputState }
+
+func (AlgorithmTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlgorithmTag)(nil)).Elem()
+}
+
+func (o AlgorithmTagOutput) ToAlgorithmTagOutput() AlgorithmTagOutput {
+	return o
+}
+
+func (o AlgorithmTagOutput) ToAlgorithmTagOutputWithContext(ctx context.Context) AlgorithmTagOutput {
+	return o
+}
+
+// tag id
+func (o AlgorithmTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AlgorithmTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// tag name
+func (o AlgorithmTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AlgorithmTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type AlgorithmTagArrayOutput struct{ *pulumi.OutputState }
+
+func (AlgorithmTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlgorithmTag)(nil)).Elem()
+}
+
+func (o AlgorithmTagArrayOutput) ToAlgorithmTagArrayOutput() AlgorithmTagArrayOutput {
+	return o
+}
+
+func (o AlgorithmTagArrayOutput) ToAlgorithmTagArrayOutputWithContext(ctx context.Context) AlgorithmTagArrayOutput {
+	return o
+}
+
+func (o AlgorithmTagArrayOutput) Index(i pulumi.IntInput) AlgorithmTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlgorithmTag {
+		return vs[0].([]AlgorithmTag)[vs[1].(int)]
+	}).(AlgorithmTagOutput)
+}
+
 type AssetKind struct {
 	// kind id
 	Id string `pulumi:"id"`
@@ -2331,136 +2567,6 @@ func (o CommandActionAssetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CommandActionAsset) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type ComponentInputType struct {
-	Description *string `pulumi:"description"`
-	Multiple    *bool   `pulumi:"multiple"`
-	Name        string  `pulumi:"name"`
-	Required    *bool   `pulumi:"required"`
-	Sensitive   *bool   `pulumi:"sensitive"`
-	Type        string  `pulumi:"type"`
-	Value       *string `pulumi:"value"`
-}
-
-// ComponentInputTypeInput is an input type that accepts ComponentInputTypeArgs and ComponentInputTypeOutput values.
-// You can construct a concrete instance of `ComponentInputTypeInput` via:
-//
-//	ComponentInputTypeArgs{...}
-type ComponentInputTypeInput interface {
-	pulumi.Input
-
-	ToComponentInputTypeOutput() ComponentInputTypeOutput
-	ToComponentInputTypeOutputWithContext(context.Context) ComponentInputTypeOutput
-}
-
-type ComponentInputTypeArgs struct {
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	Multiple    pulumi.BoolPtrInput   `pulumi:"multiple"`
-	Name        pulumi.StringInput    `pulumi:"name"`
-	Required    pulumi.BoolPtrInput   `pulumi:"required"`
-	Sensitive   pulumi.BoolPtrInput   `pulumi:"sensitive"`
-	Type        pulumi.StringInput    `pulumi:"type"`
-	Value       pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (ComponentInputTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComponentInputType)(nil)).Elem()
-}
-
-func (i ComponentInputTypeArgs) ToComponentInputTypeOutput() ComponentInputTypeOutput {
-	return i.ToComponentInputTypeOutputWithContext(context.Background())
-}
-
-func (i ComponentInputTypeArgs) ToComponentInputTypeOutputWithContext(ctx context.Context) ComponentInputTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComponentInputTypeOutput)
-}
-
-// ComponentInputTypeArrayInput is an input type that accepts ComponentInputTypeArray and ComponentInputTypeArrayOutput values.
-// You can construct a concrete instance of `ComponentInputTypeArrayInput` via:
-//
-//	ComponentInputTypeArray{ ComponentInputTypeArgs{...} }
-type ComponentInputTypeArrayInput interface {
-	pulumi.Input
-
-	ToComponentInputTypeArrayOutput() ComponentInputTypeArrayOutput
-	ToComponentInputTypeArrayOutputWithContext(context.Context) ComponentInputTypeArrayOutput
-}
-
-type ComponentInputTypeArray []ComponentInputTypeInput
-
-func (ComponentInputTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ComponentInputType)(nil)).Elem()
-}
-
-func (i ComponentInputTypeArray) ToComponentInputTypeArrayOutput() ComponentInputTypeArrayOutput {
-	return i.ToComponentInputTypeArrayOutputWithContext(context.Background())
-}
-
-func (i ComponentInputTypeArray) ToComponentInputTypeArrayOutputWithContext(ctx context.Context) ComponentInputTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComponentInputTypeArrayOutput)
-}
-
-type ComponentInputTypeOutput struct{ *pulumi.OutputState }
-
-func (ComponentInputTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComponentInputType)(nil)).Elem()
-}
-
-func (o ComponentInputTypeOutput) ToComponentInputTypeOutput() ComponentInputTypeOutput {
-	return o
-}
-
-func (o ComponentInputTypeOutput) ToComponentInputTypeOutputWithContext(ctx context.Context) ComponentInputTypeOutput {
-	return o
-}
-
-func (o ComponentInputTypeOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ComponentInputType) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-func (o ComponentInputTypeOutput) Multiple() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ComponentInputType) *bool { return v.Multiple }).(pulumi.BoolPtrOutput)
-}
-
-func (o ComponentInputTypeOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v ComponentInputType) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o ComponentInputTypeOutput) Required() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ComponentInputType) *bool { return v.Required }).(pulumi.BoolPtrOutput)
-}
-
-func (o ComponentInputTypeOutput) Sensitive() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ComponentInputType) *bool { return v.Sensitive }).(pulumi.BoolPtrOutput)
-}
-
-func (o ComponentInputTypeOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ComponentInputType) string { return v.Type }).(pulumi.StringOutput)
-}
-
-func (o ComponentInputTypeOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ComponentInputType) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type ComponentInputTypeArrayOutput struct{ *pulumi.OutputState }
-
-func (ComponentInputTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ComponentInputType)(nil)).Elem()
-}
-
-func (o ComponentInputTypeArrayOutput) ToComponentInputTypeArrayOutput() ComponentInputTypeArrayOutput {
-	return o
-}
-
-func (o ComponentInputTypeArrayOutput) ToComponentInputTypeArrayOutputWithContext(ctx context.Context) ComponentInputTypeArrayOutput {
-	return o
-}
-
-func (o ComponentInputTypeArrayOutput) Index(i pulumi.IntInput) ComponentInputTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComponentInputType {
-		return vs[0].([]ComponentInputType)[vs[1].(int)]
-	}).(ComponentInputTypeOutput)
-}
-
 type ComponentRoutineConfig struct {
 	Description *string `pulumi:"description"`
 	Multiple    *bool   `pulumi:"multiple"`
@@ -3051,110 +3157,240 @@ func (o ComponentRoutineOutputValueArrayOutput) Index(i pulumi.IntInput) Compone
 	}).(ComponentRoutineOutputValueOutput)
 }
 
-type ComponentTag struct {
+type ConnectorInputType struct {
+	Description *string `pulumi:"description"`
+	Multiple    *bool   `pulumi:"multiple"`
+	Name        string  `pulumi:"name"`
+	Required    *bool   `pulumi:"required"`
+	Sensitive   *bool   `pulumi:"sensitive"`
+	Type        string  `pulumi:"type"`
+	Value       *string `pulumi:"value"`
+}
+
+// ConnectorInputTypeInput is an input type that accepts ConnectorInputTypeArgs and ConnectorInputTypeOutput values.
+// You can construct a concrete instance of `ConnectorInputTypeInput` via:
+//
+//	ConnectorInputTypeArgs{...}
+type ConnectorInputTypeInput interface {
+	pulumi.Input
+
+	ToConnectorInputTypeOutput() ConnectorInputTypeOutput
+	ToConnectorInputTypeOutputWithContext(context.Context) ConnectorInputTypeOutput
+}
+
+type ConnectorInputTypeArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Multiple    pulumi.BoolPtrInput   `pulumi:"multiple"`
+	Name        pulumi.StringInput    `pulumi:"name"`
+	Required    pulumi.BoolPtrInput   `pulumi:"required"`
+	Sensitive   pulumi.BoolPtrInput   `pulumi:"sensitive"`
+	Type        pulumi.StringInput    `pulumi:"type"`
+	Value       pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ConnectorInputTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorInputType)(nil)).Elem()
+}
+
+func (i ConnectorInputTypeArgs) ToConnectorInputTypeOutput() ConnectorInputTypeOutput {
+	return i.ToConnectorInputTypeOutputWithContext(context.Background())
+}
+
+func (i ConnectorInputTypeArgs) ToConnectorInputTypeOutputWithContext(ctx context.Context) ConnectorInputTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorInputTypeOutput)
+}
+
+// ConnectorInputTypeArrayInput is an input type that accepts ConnectorInputTypeArray and ConnectorInputTypeArrayOutput values.
+// You can construct a concrete instance of `ConnectorInputTypeArrayInput` via:
+//
+//	ConnectorInputTypeArray{ ConnectorInputTypeArgs{...} }
+type ConnectorInputTypeArrayInput interface {
+	pulumi.Input
+
+	ToConnectorInputTypeArrayOutput() ConnectorInputTypeArrayOutput
+	ToConnectorInputTypeArrayOutputWithContext(context.Context) ConnectorInputTypeArrayOutput
+}
+
+type ConnectorInputTypeArray []ConnectorInputTypeInput
+
+func (ConnectorInputTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorInputType)(nil)).Elem()
+}
+
+func (i ConnectorInputTypeArray) ToConnectorInputTypeArrayOutput() ConnectorInputTypeArrayOutput {
+	return i.ToConnectorInputTypeArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectorInputTypeArray) ToConnectorInputTypeArrayOutputWithContext(ctx context.Context) ConnectorInputTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorInputTypeArrayOutput)
+}
+
+type ConnectorInputTypeOutput struct{ *pulumi.OutputState }
+
+func (ConnectorInputTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorInputType)(nil)).Elem()
+}
+
+func (o ConnectorInputTypeOutput) ToConnectorInputTypeOutput() ConnectorInputTypeOutput {
+	return o
+}
+
+func (o ConnectorInputTypeOutput) ToConnectorInputTypeOutputWithContext(ctx context.Context) ConnectorInputTypeOutput {
+	return o
+}
+
+func (o ConnectorInputTypeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorInputType) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorInputTypeOutput) Multiple() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectorInputType) *bool { return v.Multiple }).(pulumi.BoolPtrOutput)
+}
+
+func (o ConnectorInputTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorInputType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ConnectorInputTypeOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectorInputType) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+func (o ConnectorInputTypeOutput) Sensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectorInputType) *bool { return v.Sensitive }).(pulumi.BoolPtrOutput)
+}
+
+func (o ConnectorInputTypeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorInputType) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o ConnectorInputTypeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorInputType) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ConnectorInputTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectorInputTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorInputType)(nil)).Elem()
+}
+
+func (o ConnectorInputTypeArrayOutput) ToConnectorInputTypeArrayOutput() ConnectorInputTypeArrayOutput {
+	return o
+}
+
+func (o ConnectorInputTypeArrayOutput) ToConnectorInputTypeArrayOutputWithContext(ctx context.Context) ConnectorInputTypeArrayOutput {
+	return o
+}
+
+func (o ConnectorInputTypeArrayOutput) Index(i pulumi.IntInput) ConnectorInputTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorInputType {
+		return vs[0].([]ConnectorInputType)[vs[1].(int)]
+	}).(ConnectorInputTypeOutput)
+}
+
+type ConnectorTag struct {
 	// tag id
 	Id string `pulumi:"id"`
 	// tag name
 	Name string `pulumi:"name"`
 }
 
-// ComponentTagInput is an input type that accepts ComponentTagArgs and ComponentTagOutput values.
-// You can construct a concrete instance of `ComponentTagInput` via:
+// ConnectorTagInput is an input type that accepts ConnectorTagArgs and ConnectorTagOutput values.
+// You can construct a concrete instance of `ConnectorTagInput` via:
 //
-//	ComponentTagArgs{...}
-type ComponentTagInput interface {
+//	ConnectorTagArgs{...}
+type ConnectorTagInput interface {
 	pulumi.Input
 
-	ToComponentTagOutput() ComponentTagOutput
-	ToComponentTagOutputWithContext(context.Context) ComponentTagOutput
+	ToConnectorTagOutput() ConnectorTagOutput
+	ToConnectorTagOutputWithContext(context.Context) ConnectorTagOutput
 }
 
-type ComponentTagArgs struct {
+type ConnectorTagArgs struct {
 	// tag id
 	Id pulumi.StringInput `pulumi:"id"`
 	// tag name
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
-func (ComponentTagArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComponentTag)(nil)).Elem()
+func (ConnectorTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorTag)(nil)).Elem()
 }
 
-func (i ComponentTagArgs) ToComponentTagOutput() ComponentTagOutput {
-	return i.ToComponentTagOutputWithContext(context.Background())
+func (i ConnectorTagArgs) ToConnectorTagOutput() ConnectorTagOutput {
+	return i.ToConnectorTagOutputWithContext(context.Background())
 }
 
-func (i ComponentTagArgs) ToComponentTagOutputWithContext(ctx context.Context) ComponentTagOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComponentTagOutput)
+func (i ConnectorTagArgs) ToConnectorTagOutputWithContext(ctx context.Context) ConnectorTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorTagOutput)
 }
 
-// ComponentTagArrayInput is an input type that accepts ComponentTagArray and ComponentTagArrayOutput values.
-// You can construct a concrete instance of `ComponentTagArrayInput` via:
+// ConnectorTagArrayInput is an input type that accepts ConnectorTagArray and ConnectorTagArrayOutput values.
+// You can construct a concrete instance of `ConnectorTagArrayInput` via:
 //
-//	ComponentTagArray{ ComponentTagArgs{...} }
-type ComponentTagArrayInput interface {
+//	ConnectorTagArray{ ConnectorTagArgs{...} }
+type ConnectorTagArrayInput interface {
 	pulumi.Input
 
-	ToComponentTagArrayOutput() ComponentTagArrayOutput
-	ToComponentTagArrayOutputWithContext(context.Context) ComponentTagArrayOutput
+	ToConnectorTagArrayOutput() ConnectorTagArrayOutput
+	ToConnectorTagArrayOutputWithContext(context.Context) ConnectorTagArrayOutput
 }
 
-type ComponentTagArray []ComponentTagInput
+type ConnectorTagArray []ConnectorTagInput
 
-func (ComponentTagArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ComponentTag)(nil)).Elem()
+func (ConnectorTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorTag)(nil)).Elem()
 }
 
-func (i ComponentTagArray) ToComponentTagArrayOutput() ComponentTagArrayOutput {
-	return i.ToComponentTagArrayOutputWithContext(context.Background())
+func (i ConnectorTagArray) ToConnectorTagArrayOutput() ConnectorTagArrayOutput {
+	return i.ToConnectorTagArrayOutputWithContext(context.Background())
 }
 
-func (i ComponentTagArray) ToComponentTagArrayOutputWithContext(ctx context.Context) ComponentTagArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComponentTagArrayOutput)
+func (i ConnectorTagArray) ToConnectorTagArrayOutputWithContext(ctx context.Context) ConnectorTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorTagArrayOutput)
 }
 
-type ComponentTagOutput struct{ *pulumi.OutputState }
+type ConnectorTagOutput struct{ *pulumi.OutputState }
 
-func (ComponentTagOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComponentTag)(nil)).Elem()
+func (ConnectorTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorTag)(nil)).Elem()
 }
 
-func (o ComponentTagOutput) ToComponentTagOutput() ComponentTagOutput {
+func (o ConnectorTagOutput) ToConnectorTagOutput() ConnectorTagOutput {
 	return o
 }
 
-func (o ComponentTagOutput) ToComponentTagOutputWithContext(ctx context.Context) ComponentTagOutput {
+func (o ConnectorTagOutput) ToConnectorTagOutputWithContext(ctx context.Context) ConnectorTagOutput {
 	return o
 }
 
 // tag id
-func (o ComponentTagOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ComponentTag) string { return v.Id }).(pulumi.StringOutput)
+func (o ConnectorTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorTag) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // tag name
-func (o ComponentTagOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v ComponentTag) string { return v.Name }).(pulumi.StringOutput)
+func (o ConnectorTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorTag) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type ComponentTagArrayOutput struct{ *pulumi.OutputState }
+type ConnectorTagArrayOutput struct{ *pulumi.OutputState }
 
-func (ComponentTagArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ComponentTag)(nil)).Elem()
+func (ConnectorTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorTag)(nil)).Elem()
 }
 
-func (o ComponentTagArrayOutput) ToComponentTagArrayOutput() ComponentTagArrayOutput {
+func (o ConnectorTagArrayOutput) ToConnectorTagArrayOutput() ConnectorTagArrayOutput {
 	return o
 }
 
-func (o ComponentTagArrayOutput) ToComponentTagArrayOutputWithContext(ctx context.Context) ComponentTagArrayOutput {
+func (o ConnectorTagArrayOutput) ToConnectorTagArrayOutputWithContext(ctx context.Context) ConnectorTagArrayOutput {
 	return o
 }
 
-func (o ComponentTagArrayOutput) Index(i pulumi.IntInput) ComponentTagOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComponentTag {
-		return vs[0].([]ComponentTag)[vs[1].(int)]
-	}).(ComponentTagOutput)
+func (o ConnectorTagArrayOutput) Index(i pulumi.IntInput) ConnectorTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorTag {
+		return vs[0].([]ConnectorTag)[vs[1].(int)]
+	}).(ConnectorTagOutput)
 }
 
 type DashboardActionlistChartChartItem struct {
@@ -22511,6 +22747,454 @@ func (o SegmentWindSpeedArrayOutput) Index(i pulumi.IntInput) SegmentWindSpeedOu
 	}).(SegmentWindSpeedOutput)
 }
 
+type ServerConfig struct {
+	Description *string `pulumi:"description"`
+	Multiple    *bool   `pulumi:"multiple"`
+	Name        string  `pulumi:"name"`
+	Required    *bool   `pulumi:"required"`
+	Sensitive   *bool   `pulumi:"sensitive"`
+	Type        string  `pulumi:"type"`
+	Value       *string `pulumi:"value"`
+}
+
+// ServerConfigInput is an input type that accepts ServerConfigArgs and ServerConfigOutput values.
+// You can construct a concrete instance of `ServerConfigInput` via:
+//
+//	ServerConfigArgs{...}
+type ServerConfigInput interface {
+	pulumi.Input
+
+	ToServerConfigOutput() ServerConfigOutput
+	ToServerConfigOutputWithContext(context.Context) ServerConfigOutput
+}
+
+type ServerConfigArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Multiple    pulumi.BoolPtrInput   `pulumi:"multiple"`
+	Name        pulumi.StringInput    `pulumi:"name"`
+	Required    pulumi.BoolPtrInput   `pulumi:"required"`
+	Sensitive   pulumi.BoolPtrInput   `pulumi:"sensitive"`
+	Type        pulumi.StringInput    `pulumi:"type"`
+	Value       pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ServerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerConfig)(nil)).Elem()
+}
+
+func (i ServerConfigArgs) ToServerConfigOutput() ServerConfigOutput {
+	return i.ToServerConfigOutputWithContext(context.Background())
+}
+
+func (i ServerConfigArgs) ToServerConfigOutputWithContext(ctx context.Context) ServerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerConfigOutput)
+}
+
+// ServerConfigArrayInput is an input type that accepts ServerConfigArray and ServerConfigArrayOutput values.
+// You can construct a concrete instance of `ServerConfigArrayInput` via:
+//
+//	ServerConfigArray{ ServerConfigArgs{...} }
+type ServerConfigArrayInput interface {
+	pulumi.Input
+
+	ToServerConfigArrayOutput() ServerConfigArrayOutput
+	ToServerConfigArrayOutputWithContext(context.Context) ServerConfigArrayOutput
+}
+
+type ServerConfigArray []ServerConfigInput
+
+func (ServerConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerConfig)(nil)).Elem()
+}
+
+func (i ServerConfigArray) ToServerConfigArrayOutput() ServerConfigArrayOutput {
+	return i.ToServerConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ServerConfigArray) ToServerConfigArrayOutputWithContext(ctx context.Context) ServerConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerConfigArrayOutput)
+}
+
+type ServerConfigOutput struct{ *pulumi.OutputState }
+
+func (ServerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerConfig)(nil)).Elem()
+}
+
+func (o ServerConfigOutput) ToServerConfigOutput() ServerConfigOutput {
+	return o
+}
+
+func (o ServerConfigOutput) ToServerConfigOutputWithContext(ctx context.Context) ServerConfigOutput {
+	return o
+}
+
+func (o ServerConfigOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ServerConfigOutput) Multiple() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServerConfig) *bool { return v.Multiple }).(pulumi.BoolPtrOutput)
+}
+
+func (o ServerConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerConfig) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ServerConfigOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServerConfig) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+func (o ServerConfigOutput) Sensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServerConfig) *bool { return v.Sensitive }).(pulumi.BoolPtrOutput)
+}
+
+func (o ServerConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o ServerConfigOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerConfig) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ServerConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerConfig)(nil)).Elem()
+}
+
+func (o ServerConfigArrayOutput) ToServerConfigArrayOutput() ServerConfigArrayOutput {
+	return o
+}
+
+func (o ServerConfigArrayOutput) ToServerConfigArrayOutputWithContext(ctx context.Context) ServerConfigArrayOutput {
+	return o
+}
+
+func (o ServerConfigArrayOutput) Index(i pulumi.IntInput) ServerConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerConfig {
+		return vs[0].([]ServerConfig)[vs[1].(int)]
+	}).(ServerConfigOutput)
+}
+
+type ServerEnvVar struct {
+	Name  string `pulumi:"name"`
+	Value string `pulumi:"value"`
+}
+
+// ServerEnvVarInput is an input type that accepts ServerEnvVarArgs and ServerEnvVarOutput values.
+// You can construct a concrete instance of `ServerEnvVarInput` via:
+//
+//	ServerEnvVarArgs{...}
+type ServerEnvVarInput interface {
+	pulumi.Input
+
+	ToServerEnvVarOutput() ServerEnvVarOutput
+	ToServerEnvVarOutputWithContext(context.Context) ServerEnvVarOutput
+}
+
+type ServerEnvVarArgs struct {
+	Name  pulumi.StringInput `pulumi:"name"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ServerEnvVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerEnvVar)(nil)).Elem()
+}
+
+func (i ServerEnvVarArgs) ToServerEnvVarOutput() ServerEnvVarOutput {
+	return i.ToServerEnvVarOutputWithContext(context.Background())
+}
+
+func (i ServerEnvVarArgs) ToServerEnvVarOutputWithContext(ctx context.Context) ServerEnvVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerEnvVarOutput)
+}
+
+// ServerEnvVarArrayInput is an input type that accepts ServerEnvVarArray and ServerEnvVarArrayOutput values.
+// You can construct a concrete instance of `ServerEnvVarArrayInput` via:
+//
+//	ServerEnvVarArray{ ServerEnvVarArgs{...} }
+type ServerEnvVarArrayInput interface {
+	pulumi.Input
+
+	ToServerEnvVarArrayOutput() ServerEnvVarArrayOutput
+	ToServerEnvVarArrayOutputWithContext(context.Context) ServerEnvVarArrayOutput
+}
+
+type ServerEnvVarArray []ServerEnvVarInput
+
+func (ServerEnvVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerEnvVar)(nil)).Elem()
+}
+
+func (i ServerEnvVarArray) ToServerEnvVarArrayOutput() ServerEnvVarArrayOutput {
+	return i.ToServerEnvVarArrayOutputWithContext(context.Background())
+}
+
+func (i ServerEnvVarArray) ToServerEnvVarArrayOutputWithContext(ctx context.Context) ServerEnvVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerEnvVarArrayOutput)
+}
+
+type ServerEnvVarOutput struct{ *pulumi.OutputState }
+
+func (ServerEnvVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerEnvVar)(nil)).Elem()
+}
+
+func (o ServerEnvVarOutput) ToServerEnvVarOutput() ServerEnvVarOutput {
+	return o
+}
+
+func (o ServerEnvVarOutput) ToServerEnvVarOutputWithContext(ctx context.Context) ServerEnvVarOutput {
+	return o
+}
+
+func (o ServerEnvVarOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerEnvVar) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ServerEnvVarOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerEnvVar) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ServerEnvVarArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerEnvVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerEnvVar)(nil)).Elem()
+}
+
+func (o ServerEnvVarArrayOutput) ToServerEnvVarArrayOutput() ServerEnvVarArrayOutput {
+	return o
+}
+
+func (o ServerEnvVarArrayOutput) ToServerEnvVarArrayOutputWithContext(ctx context.Context) ServerEnvVarArrayOutput {
+	return o
+}
+
+func (o ServerEnvVarArrayOutput) Index(i pulumi.IntInput) ServerEnvVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerEnvVar {
+		return vs[0].([]ServerEnvVar)[vs[1].(int)]
+	}).(ServerEnvVarOutput)
+}
+
+type ServerPort struct {
+	ExposedPort  int    `pulumi:"exposedPort"`
+	InternalPort int    `pulumi:"internalPort"`
+	Name         string `pulumi:"name"`
+	Protocol     string `pulumi:"protocol"`
+}
+
+// ServerPortInput is an input type that accepts ServerPortArgs and ServerPortOutput values.
+// You can construct a concrete instance of `ServerPortInput` via:
+//
+//	ServerPortArgs{...}
+type ServerPortInput interface {
+	pulumi.Input
+
+	ToServerPortOutput() ServerPortOutput
+	ToServerPortOutputWithContext(context.Context) ServerPortOutput
+}
+
+type ServerPortArgs struct {
+	ExposedPort  pulumi.IntInput    `pulumi:"exposedPort"`
+	InternalPort pulumi.IntInput    `pulumi:"internalPort"`
+	Name         pulumi.StringInput `pulumi:"name"`
+	Protocol     pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (ServerPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerPort)(nil)).Elem()
+}
+
+func (i ServerPortArgs) ToServerPortOutput() ServerPortOutput {
+	return i.ToServerPortOutputWithContext(context.Background())
+}
+
+func (i ServerPortArgs) ToServerPortOutputWithContext(ctx context.Context) ServerPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerPortOutput)
+}
+
+// ServerPortArrayInput is an input type that accepts ServerPortArray and ServerPortArrayOutput values.
+// You can construct a concrete instance of `ServerPortArrayInput` via:
+//
+//	ServerPortArray{ ServerPortArgs{...} }
+type ServerPortArrayInput interface {
+	pulumi.Input
+
+	ToServerPortArrayOutput() ServerPortArrayOutput
+	ToServerPortArrayOutputWithContext(context.Context) ServerPortArrayOutput
+}
+
+type ServerPortArray []ServerPortInput
+
+func (ServerPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerPort)(nil)).Elem()
+}
+
+func (i ServerPortArray) ToServerPortArrayOutput() ServerPortArrayOutput {
+	return i.ToServerPortArrayOutputWithContext(context.Background())
+}
+
+func (i ServerPortArray) ToServerPortArrayOutputWithContext(ctx context.Context) ServerPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerPortArrayOutput)
+}
+
+type ServerPortOutput struct{ *pulumi.OutputState }
+
+func (ServerPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerPort)(nil)).Elem()
+}
+
+func (o ServerPortOutput) ToServerPortOutput() ServerPortOutput {
+	return o
+}
+
+func (o ServerPortOutput) ToServerPortOutputWithContext(ctx context.Context) ServerPortOutput {
+	return o
+}
+
+func (o ServerPortOutput) ExposedPort() pulumi.IntOutput {
+	return o.ApplyT(func(v ServerPort) int { return v.ExposedPort }).(pulumi.IntOutput)
+}
+
+func (o ServerPortOutput) InternalPort() pulumi.IntOutput {
+	return o.ApplyT(func(v ServerPort) int { return v.InternalPort }).(pulumi.IntOutput)
+}
+
+func (o ServerPortOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerPort) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ServerPortOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerPort) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type ServerPortArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerPort)(nil)).Elem()
+}
+
+func (o ServerPortArrayOutput) ToServerPortArrayOutput() ServerPortArrayOutput {
+	return o
+}
+
+func (o ServerPortArrayOutput) ToServerPortArrayOutputWithContext(ctx context.Context) ServerPortArrayOutput {
+	return o
+}
+
+func (o ServerPortArrayOutput) Index(i pulumi.IntInput) ServerPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerPort {
+		return vs[0].([]ServerPort)[vs[1].(int)]
+	}).(ServerPortOutput)
+}
+
+type ServerTag struct {
+	// tag id
+	Id string `pulumi:"id"`
+	// tag name
+	Name string `pulumi:"name"`
+}
+
+// ServerTagInput is an input type that accepts ServerTagArgs and ServerTagOutput values.
+// You can construct a concrete instance of `ServerTagInput` via:
+//
+//	ServerTagArgs{...}
+type ServerTagInput interface {
+	pulumi.Input
+
+	ToServerTagOutput() ServerTagOutput
+	ToServerTagOutputWithContext(context.Context) ServerTagOutput
+}
+
+type ServerTagArgs struct {
+	// tag id
+	Id pulumi.StringInput `pulumi:"id"`
+	// tag name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ServerTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerTag)(nil)).Elem()
+}
+
+func (i ServerTagArgs) ToServerTagOutput() ServerTagOutput {
+	return i.ToServerTagOutputWithContext(context.Background())
+}
+
+func (i ServerTagArgs) ToServerTagOutputWithContext(ctx context.Context) ServerTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTagOutput)
+}
+
+// ServerTagArrayInput is an input type that accepts ServerTagArray and ServerTagArrayOutput values.
+// You can construct a concrete instance of `ServerTagArrayInput` via:
+//
+//	ServerTagArray{ ServerTagArgs{...} }
+type ServerTagArrayInput interface {
+	pulumi.Input
+
+	ToServerTagArrayOutput() ServerTagArrayOutput
+	ToServerTagArrayOutputWithContext(context.Context) ServerTagArrayOutput
+}
+
+type ServerTagArray []ServerTagInput
+
+func (ServerTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerTag)(nil)).Elem()
+}
+
+func (i ServerTagArray) ToServerTagArrayOutput() ServerTagArrayOutput {
+	return i.ToServerTagArrayOutputWithContext(context.Background())
+}
+
+func (i ServerTagArray) ToServerTagArrayOutputWithContext(ctx context.Context) ServerTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTagArrayOutput)
+}
+
+type ServerTagOutput struct{ *pulumi.OutputState }
+
+func (ServerTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerTag)(nil)).Elem()
+}
+
+func (o ServerTagOutput) ToServerTagOutput() ServerTagOutput {
+	return o
+}
+
+func (o ServerTagOutput) ToServerTagOutputWithContext(ctx context.Context) ServerTagOutput {
+	return o
+}
+
+// tag id
+func (o ServerTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// tag name
+func (o ServerTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ServerTagArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerTag)(nil)).Elem()
+}
+
+func (o ServerTagArrayOutput) ToServerTagArrayOutput() ServerTagArrayOutput {
+	return o
+}
+
+func (o ServerTagArrayOutput) ToServerTagArrayOutputWithContext(ctx context.Context) ServerTagArrayOutput {
+	return o
+}
+
+func (o ServerTagArrayOutput) Index(i pulumi.IntInput) ServerTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerTag {
+		return vs[0].([]ServerTag)[vs[1].(int)]
+	}).(ServerTagOutput)
+}
+
 type SlackLineKind struct {
 	// kind id
 	Id string `pulumi:"id"`
@@ -23375,6 +24059,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertTagArrayInput)(nil)).Elem(), AlertTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertThresholdInput)(nil)).Elem(), AlertThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertThresholdArrayInput)(nil)).Elem(), AlertThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlgorithmInputTypeInput)(nil)).Elem(), AlgorithmInputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlgorithmInputTypeArrayInput)(nil)).Elem(), AlgorithmInputTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlgorithmTagInput)(nil)).Elem(), AlgorithmTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlgorithmTagArrayInput)(nil)).Elem(), AlgorithmTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetKindInput)(nil)).Elem(), AssetKindArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetKindPtrInput)(nil)).Elem(), AssetKindArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetRelationAssetInput)(nil)).Elem(), AssetRelationAssetArgs{})
@@ -23394,8 +24082,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CommandActionInput)(nil)).Elem(), CommandActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CommandActionArrayInput)(nil)).Elem(), CommandActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CommandActionAssetInput)(nil)).Elem(), CommandActionAssetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComponentInputTypeInput)(nil)).Elem(), ComponentInputTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComponentInputTypeArrayInput)(nil)).Elem(), ComponentInputTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineConfigInput)(nil)).Elem(), ComponentRoutineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineConfigArrayInput)(nil)).Elem(), ComponentRoutineConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineInputTypeInput)(nil)).Elem(), ComponentRoutineInputTypeArgs{})
@@ -23406,8 +24092,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineOutputTypeArrayInput)(nil)).Elem(), ComponentRoutineOutputTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineOutputValueInput)(nil)).Elem(), ComponentRoutineOutputValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineOutputValueArrayInput)(nil)).Elem(), ComponentRoutineOutputValueArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComponentTagInput)(nil)).Elem(), ComponentTagArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComponentTagArrayInput)(nil)).Elem(), ComponentTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorInputTypeInput)(nil)).Elem(), ConnectorInputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorInputTypeArrayInput)(nil)).Elem(), ConnectorInputTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorTagInput)(nil)).Elem(), ConnectorTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorTagArrayInput)(nil)).Elem(), ConnectorTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardActionlistChartChartItemInput)(nil)).Elem(), DashboardActionlistChartChartItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardActionlistChartChartItemArrayInput)(nil)).Elem(), DashboardActionlistChartChartItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardActionlistChartChartItemQueryFilterAssetInput)(nil)).Elem(), DashboardActionlistChartChartItemQueryFilterAssetArgs{})
@@ -23666,6 +24354,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentWindDirectionArrayInput)(nil)).Elem(), SegmentWindDirectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentWindSpeedInput)(nil)).Elem(), SegmentWindSpeedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentWindSpeedArrayInput)(nil)).Elem(), SegmentWindSpeedArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerConfigInput)(nil)).Elem(), ServerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerConfigArrayInput)(nil)).Elem(), ServerConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerEnvVarInput)(nil)).Elem(), ServerEnvVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerEnvVarArrayInput)(nil)).Elem(), ServerEnvVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerPortInput)(nil)).Elem(), ServerPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerPortArrayInput)(nil)).Elem(), ServerPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerTagInput)(nil)).Elem(), ServerTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerTagArrayInput)(nil)).Elem(), ServerTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlackLineKindInput)(nil)).Elem(), SlackLineKindArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlackLineKindArrayInput)(nil)).Elem(), SlackLineKindArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlackLineTagInput)(nil)).Elem(), SlackLineTagArgs{})
@@ -23697,6 +24393,10 @@ func init() {
 	pulumi.RegisterOutputType(AlertTagArrayOutput{})
 	pulumi.RegisterOutputType(AlertThresholdOutput{})
 	pulumi.RegisterOutputType(AlertThresholdArrayOutput{})
+	pulumi.RegisterOutputType(AlgorithmInputTypeOutput{})
+	pulumi.RegisterOutputType(AlgorithmInputTypeArrayOutput{})
+	pulumi.RegisterOutputType(AlgorithmTagOutput{})
+	pulumi.RegisterOutputType(AlgorithmTagArrayOutput{})
 	pulumi.RegisterOutputType(AssetKindOutput{})
 	pulumi.RegisterOutputType(AssetKindPtrOutput{})
 	pulumi.RegisterOutputType(AssetRelationAssetOutput{})
@@ -23716,8 +24416,6 @@ func init() {
 	pulumi.RegisterOutputType(CommandActionOutput{})
 	pulumi.RegisterOutputType(CommandActionArrayOutput{})
 	pulumi.RegisterOutputType(CommandActionAssetOutput{})
-	pulumi.RegisterOutputType(ComponentInputTypeOutput{})
-	pulumi.RegisterOutputType(ComponentInputTypeArrayOutput{})
 	pulumi.RegisterOutputType(ComponentRoutineConfigOutput{})
 	pulumi.RegisterOutputType(ComponentRoutineConfigArrayOutput{})
 	pulumi.RegisterOutputType(ComponentRoutineInputTypeOutput{})
@@ -23728,8 +24426,10 @@ func init() {
 	pulumi.RegisterOutputType(ComponentRoutineOutputTypeArrayOutput{})
 	pulumi.RegisterOutputType(ComponentRoutineOutputValueOutput{})
 	pulumi.RegisterOutputType(ComponentRoutineOutputValueArrayOutput{})
-	pulumi.RegisterOutputType(ComponentTagOutput{})
-	pulumi.RegisterOutputType(ComponentTagArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorInputTypeOutput{})
+	pulumi.RegisterOutputType(ConnectorInputTypeArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorTagOutput{})
+	pulumi.RegisterOutputType(ConnectorTagArrayOutput{})
 	pulumi.RegisterOutputType(DashboardActionlistChartChartItemOutput{})
 	pulumi.RegisterOutputType(DashboardActionlistChartChartItemArrayOutput{})
 	pulumi.RegisterOutputType(DashboardActionlistChartChartItemQueryFilterAssetOutput{})
@@ -23988,6 +24688,14 @@ func init() {
 	pulumi.RegisterOutputType(SegmentWindDirectionArrayOutput{})
 	pulumi.RegisterOutputType(SegmentWindSpeedOutput{})
 	pulumi.RegisterOutputType(SegmentWindSpeedArrayOutput{})
+	pulumi.RegisterOutputType(ServerConfigOutput{})
+	pulumi.RegisterOutputType(ServerConfigArrayOutput{})
+	pulumi.RegisterOutputType(ServerEnvVarOutput{})
+	pulumi.RegisterOutputType(ServerEnvVarArrayOutput{})
+	pulumi.RegisterOutputType(ServerPortOutput{})
+	pulumi.RegisterOutputType(ServerPortArrayOutput{})
+	pulumi.RegisterOutputType(ServerTagOutput{})
+	pulumi.RegisterOutputType(ServerTagArrayOutput{})
 	pulumi.RegisterOutputType(SlackLineKindOutput{})
 	pulumi.RegisterOutputType(SlackLineKindArrayOutput{})
 	pulumi.RegisterOutputType(SlackLineTagOutput{})

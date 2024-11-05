@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Action{}
 	case "splight:index/alert:Alert":
 		r = &Alert{}
+	case "splight:index/algorithm:Algorithm":
+		r = &Algorithm{}
 	case "splight:index/asset:Asset":
 		r = &Asset{}
 	case "splight:index/assetAttribute:AssetAttribute":
@@ -37,10 +39,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Bus{}
 	case "splight:index/command:Command":
 		r = &Command{}
-	case "splight:index/component:Component":
-		r = &Component{}
 	case "splight:index/componentRoutine:ComponentRoutine":
 		r = &ComponentRoutine{}
+	case "splight:index/connector:Connector":
+		r = &Connector{}
 	case "splight:index/dashboard:Dashboard":
 		r = &Dashboard{}
 	case "splight:index/dashboardActionlistChart:DashboardActionlistChart":
@@ -89,10 +91,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Inverter{}
 	case "splight:index/line:Line":
 		r = &Line{}
+	case "splight:index/node:Node":
+		r = &Node{}
 	case "splight:index/secret:Secret":
 		r = &Secret{}
 	case "splight:index/segment:Segment":
 		r = &Segment{}
+	case "splight:index/server:Server":
+		r = &Server{}
 	case "splight:index/slackLine:SlackLine":
 		r = &SlackLine{}
 	case "splight:index/tag:Tag":
@@ -140,6 +146,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"splight",
+		"index/algorithm",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
 		"index/asset",
 		&module{version},
 	)
@@ -170,12 +181,12 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"splight",
-		"index/component",
+		"index/componentRoutine",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"splight",
-		"index/componentRoutine",
+		"index/connector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -300,12 +311,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"splight",
+		"index/node",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
 		"index/secret",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"splight",
 		"index/segment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/server",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

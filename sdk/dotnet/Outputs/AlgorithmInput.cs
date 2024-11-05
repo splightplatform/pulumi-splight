@@ -12,7 +12,7 @@ namespace Splight.Splight.Outputs
 {
 
     [OutputType]
-    public sealed class ComponentInput
+    public sealed class AlgorithmInput
     {
         public readonly string? Description;
         public readonly bool? Multiple;
@@ -23,7 +23,7 @@ namespace Splight.Splight.Outputs
         public readonly string? Value;
 
         [OutputConstructor]
-        private ComponentInput(
+        private AlgorithmInput(
             string? description,
 
             bool? multiple,
