@@ -22,6 +22,8 @@ import (
 type Bus struct {
 	pulumi.CustomResourceState
 
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrOutput `pulumi:"customTimezone"`
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// geo position and shape of the resource
@@ -69,6 +71,8 @@ func GetBus(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Bus resources.
 type busState struct {
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -84,6 +88,8 @@ type busState struct {
 }
 
 type BusState struct {
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -103,6 +109,8 @@ func (BusState) ElementType() reflect.Type {
 }
 
 type busArgs struct {
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -117,6 +125,8 @@ type busArgs struct {
 
 // The set of arguments for constructing a Bus resource.
 type BusArgs struct {
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -214,6 +224,11 @@ func (o BusOutput) ToBusOutput() BusOutput {
 
 func (o BusOutput) ToBusOutputWithContext(ctx context.Context) BusOutput {
 	return o
+}
+
+// timezone that overrides location-based timezone of the resource
+func (o BusOutput) CustomTimezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Bus) pulumi.StringPtrOutput { return v.CustomTimezone }).(pulumi.StringPtrOutput)
 }
 
 // description of the resource

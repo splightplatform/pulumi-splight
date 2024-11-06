@@ -52,6 +52,10 @@ export class Inverter extends pulumi.CustomResource {
      */
     public /*out*/ readonly activePowers!: pulumi.Output<outputs.InverterActivePower[]>;
     /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    public readonly customTimezone!: pulumi.Output<string | undefined>;
+    /**
      * attribute of the resource
      */
     public /*out*/ readonly dailyEnergies!: pulumi.Output<outputs.InverterDailyEnergy[]>;
@@ -119,6 +123,7 @@ export class Inverter extends pulumi.CustomResource {
             const state = argsOrState as InverterState | undefined;
             resourceInputs["accumulatedEnergies"] = state ? state.accumulatedEnergies : undefined;
             resourceInputs["activePowers"] = state ? state.activePowers : undefined;
+            resourceInputs["customTimezone"] = state ? state.customTimezone : undefined;
             resourceInputs["dailyEnergies"] = state ? state.dailyEnergies : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["energyMeasurementType"] = state ? state.energyMeasurementType : undefined;
@@ -149,6 +154,7 @@ export class Inverter extends pulumi.CustomResource {
             if ((!args || args.serialNumber === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serialNumber'");
             }
+            resourceInputs["customTimezone"] = args ? args.customTimezone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["energyMeasurementType"] = args ? args.energyMeasurementType : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
@@ -182,6 +188,10 @@ export interface InverterState {
      * attribute of the resource
      */
     activePowers?: pulumi.Input<pulumi.Input<inputs.InverterActivePower>[]>;
+    /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * attribute of the resource
      */
@@ -240,6 +250,10 @@ export interface InverterState {
  * The set of arguments for constructing a Inverter resource.
  */
 export interface InverterArgs {
+    /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */

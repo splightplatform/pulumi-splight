@@ -21,6 +21,8 @@ import (
 type ExternalGrid struct {
 	pulumi.CustomResourceState
 
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrOutput `pulumi:"customTimezone"`
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// geo position and shape of the resource
@@ -63,6 +65,8 @@ func GetExternalGrid(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ExternalGrid resources.
 type externalGridState struct {
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -76,6 +80,8 @@ type externalGridState struct {
 }
 
 type ExternalGridState struct {
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -93,6 +99,8 @@ func (ExternalGridState) ElementType() reflect.Type {
 }
 
 type externalGridArgs struct {
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -105,6 +113,8 @@ type externalGridArgs struct {
 
 // The set of arguments for constructing a ExternalGrid resource.
 type ExternalGridArgs struct {
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -200,6 +210,11 @@ func (o ExternalGridOutput) ToExternalGridOutput() ExternalGridOutput {
 
 func (o ExternalGridOutput) ToExternalGridOutputWithContext(ctx context.Context) ExternalGridOutput {
 	return o
+}
+
+// timezone that overrides location-based timezone of the resource
+func (o ExternalGridOutput) CustomTimezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalGrid) pulumi.StringPtrOutput { return v.CustomTimezone }).(pulumi.StringPtrOutput)
 }
 
 // description of the resource

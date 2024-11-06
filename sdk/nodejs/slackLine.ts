@@ -44,6 +44,10 @@ export class SlackLine extends pulumi.CustomResource {
     }
 
     /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    public readonly customTimezone!: pulumi.Output<string | undefined>;
+    /**
      * description of the resource
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -77,6 +81,7 @@ export class SlackLine extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SlackLineState | undefined;
+            resourceInputs["customTimezone"] = state ? state.customTimezone : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["geometry"] = state ? state.geometry : undefined;
             resourceInputs["kinds"] = state ? state.kinds : undefined;
@@ -84,6 +89,7 @@ export class SlackLine extends pulumi.CustomResource {
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as SlackLineArgs | undefined;
+            resourceInputs["customTimezone"] = args ? args.customTimezone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -99,6 +105,10 @@ export class SlackLine extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SlackLine resources.
  */
 export interface SlackLineState {
+    /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */
@@ -125,6 +135,10 @@ export interface SlackLineState {
  * The set of arguments for constructing a SlackLine resource.
  */
 export interface SlackLineArgs {
+    /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */

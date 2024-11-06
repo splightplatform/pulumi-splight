@@ -89,6 +89,12 @@ namespace Splight.Splight
         public Output<ImmutableArray<Outputs.LineCurrent>> Currents { get; private set; } = null!;
 
         /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Output("customTimezone")]
+        public Output<string?> CustomTimezone { get; private set; } = null!;
+
+        /// <summary>
         /// description of the resource
         /// </summary>
         [Output("description")]
@@ -314,6 +320,12 @@ namespace Splight.Splight
         /// </summary>
         [Input("conductance", required: true)]
         public Input<Inputs.LineConductanceArgs> Conductance { get; set; } = null!;
+
+        /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Input("customTimezone")]
+        public Input<string>? CustomTimezone { get; set; }
 
         /// <summary>
         /// description of the resource
@@ -550,6 +562,12 @@ namespace Splight.Splight
             get => _currents ?? (_currents = new InputList<Inputs.LineCurrentGetArgs>());
             set => _currents = value;
         }
+
+        /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Input("customTimezone")]
+        public Input<string>? CustomTimezone { get; set; }
 
         /// <summary>
         /// description of the resource

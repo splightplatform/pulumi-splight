@@ -5806,6 +5806,10 @@
         "splight:index/asset:Asset": {
             "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/asset:Asset [options] splight_asset.\u003cname\u003e \u003casset_id\u003e\n```\n\n",
             "properties": {
+                "customTimezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "description of the resource\n"
@@ -5835,6 +5839,10 @@
                 "name"
             ],
             "inputProperties": {
+                "customTimezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "description of the resource\n"
@@ -5866,6 +5874,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Asset resources.\n",
                 "properties": {
+                    "customTimezone": {
+                        "type": "string",
+                        "description": "timezone that overrides location-based timezone of the resource\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "description of the resource\n"
@@ -6143,6 +6155,10 @@
         "splight:index/bus:Bus": {
             "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/bus:Bus [options] splight_bus.\u003cname\u003e \u003cbus_id\u003e\n```\n\n",
             "properties": {
+                "customTimezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "description of the resource\n"
@@ -6180,6 +6196,10 @@
                 "nominalVoltage"
             ],
             "inputProperties": {
+                "customTimezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "description of the resource\n"
@@ -6210,6 +6230,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Bus resources.\n",
                 "properties": {
+                    "customTimezone": {
+                        "type": "string",
+                        "description": "timezone that overrides location-based timezone of the resource\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "description of the resource\n"
@@ -11905,6 +11929,10 @@
         "splight:index/externalGrid:ExternalGrid": {
             "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/externalGrid:ExternalGrid [options] splight_external_grid.\u003cname\u003e \u003cexternal_grid_id\u003e\n```\n\n",
             "properties": {
+                "customTimezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "description of the resource\n"
@@ -11937,6 +11965,10 @@
                 "name"
             ],
             "inputProperties": {
+                "customTimezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "description of the resource\n"
@@ -11960,6 +11992,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ExternalGrid resources.\n",
                 "properties": {
+                    "customTimezone": {
+                        "type": "string",
+                        "description": "timezone that overrides location-based timezone of the resource\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "description of the resource\n"
@@ -12421,6 +12457,10 @@
                     "$ref": "#/types/splight:index/GeneratorCo2Coefficient:GeneratorCo2Coefficient",
                     "description": "attribute of the resource\n"
                 },
+                "customTimezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
+                },
                 "dailyEmissionAvoideds": {
                     "type": "array",
                     "items": {
@@ -12483,6 +12523,10 @@
                     "$ref": "#/types/splight:index/GeneratorCo2Coefficient:GeneratorCo2Coefficient",
                     "description": "attribute of the resource\n"
                 },
+                "customTimezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "description of the resource\n"
@@ -12519,6 +12563,10 @@
                     "co2Coefficient": {
                         "$ref": "#/types/splight:index/GeneratorCo2Coefficient:GeneratorCo2Coefficient",
                         "description": "attribute of the resource\n"
+                    },
+                    "customTimezone": {
+                        "type": "string",
+                        "description": "timezone that overrides location-based timezone of the resource\n"
                     },
                     "dailyEmissionAvoideds": {
                         "type": "array",
@@ -12574,6 +12622,10 @@
         "splight:index/grid:Grid": {
             "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/grid:Grid [options] splight_grid.\u003cname\u003e \u003cgrid_id\u003e\n```\n\n",
             "properties": {
+                "customTimezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "description of the resource\n"
@@ -12606,6 +12658,10 @@
                 "name"
             ],
             "inputProperties": {
+                "customTimezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "description of the resource\n"
@@ -12629,6 +12685,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Grid resources.\n",
                 "properties": {
+                    "customTimezone": {
+                        "type": "string",
+                        "description": "timezone that overrides location-based timezone of the resource\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "description of the resource\n"
@@ -12675,6 +12735,10 @@
                         "$ref": "#/types/splight:index/InverterActivePower:InverterActivePower"
                     },
                     "description": "attribute of the resource\n"
+                },
+                "customTimezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
                 },
                 "dailyEnergies": {
                     "type": "array",
@@ -12759,6 +12823,10 @@
                 "temperatures"
             ],
             "inputProperties": {
+                "customTimezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "description of the resource\n"
@@ -12822,6 +12890,10 @@
                             "$ref": "#/types/splight:index/InverterActivePower:InverterActivePower"
                         },
                         "description": "attribute of the resource\n"
+                    },
+                    "customTimezone": {
+                        "type": "string",
+                        "description": "timezone that overrides location-based timezone of the resource\n"
                     },
                     "dailyEnergies": {
                         "type": "array",
@@ -12961,6 +13033,10 @@
                         "$ref": "#/types/splight:index/LineCurrent:LineCurrent"
                     },
                     "description": "attribute of the resource\n"
+                },
+                "customTimezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
                 },
                 "description": {
                     "type": "string",
@@ -13144,6 +13220,10 @@
                     "$ref": "#/types/splight:index/LineConductance:LineConductance",
                     "description": "attribute of the resource\n"
                 },
+                "customTimezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "description of the resource\n"
@@ -13312,6 +13392,10 @@
                             "$ref": "#/types/splight:index/LineCurrent:LineCurrent"
                         },
                         "description": "attribute of the resource\n"
+                    },
+                    "customTimezone": {
+                        "type": "string",
+                        "description": "timezone that overrides location-based timezone of the resource\n"
                     },
                     "description": {
                         "type": "string",
@@ -13556,6 +13640,10 @@
                     "$ref": "#/types/splight:index/SegmentCumulativeDistance:SegmentCumulativeDistance",
                     "description": "attribute of the resource\n"
                 },
+                "customTimezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "description of the resource\n"
@@ -13627,6 +13715,10 @@
                     "$ref": "#/types/splight:index/SegmentCumulativeDistance:SegmentCumulativeDistance",
                     "description": "attribute of the resource\n"
                 },
+                "customTimezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "description of the resource\n"
@@ -13666,6 +13758,10 @@
                     "cumulativeDistance": {
                         "$ref": "#/types/splight:index/SegmentCumulativeDistance:SegmentCumulativeDistance",
                         "description": "attribute of the resource\n"
+                    },
+                    "customTimezone": {
+                        "type": "string",
+                        "description": "timezone that overrides location-based timezone of the resource\n"
                     },
                     "description": {
                         "type": "string",
@@ -13909,6 +14005,10 @@
         "splight:index/slackLine:SlackLine": {
             "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/slackLine:SlackLine [options] splight_slack_line.\u003cname\u003e \u003cslack_line_id\u003e\n```\n\n",
             "properties": {
+                "customTimezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "description of the resource\n"
@@ -13941,6 +14041,10 @@
                 "name"
             ],
             "inputProperties": {
+                "customTimezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "description of the resource\n"
@@ -13964,6 +14068,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering SlackLine resources.\n",
                 "properties": {
+                    "customTimezone": {
+                        "type": "string",
+                        "description": "timezone that overrides location-based timezone of the resource\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "description of the resource\n"

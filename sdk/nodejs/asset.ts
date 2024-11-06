@@ -44,6 +44,10 @@ export class Asset extends pulumi.CustomResource {
     }
 
     /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    public readonly customTimezone!: pulumi.Output<string | undefined>;
+    /**
      * description of the resource
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -77,6 +81,7 @@ export class Asset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AssetState | undefined;
+            resourceInputs["customTimezone"] = state ? state.customTimezone : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["geometry"] = state ? state.geometry : undefined;
             resourceInputs["kind"] = state ? state.kind : undefined;
@@ -87,6 +92,7 @@ export class Asset extends pulumi.CustomResource {
             if ((!args || args.geometry === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'geometry'");
             }
+            resourceInputs["customTimezone"] = args ? args.customTimezone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
@@ -102,6 +108,10 @@ export class Asset extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Asset resources.
  */
 export interface AssetState {
+    /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */
@@ -128,6 +138,10 @@ export interface AssetState {
  * The set of arguments for constructing a Asset resource.
  */
 export interface AssetArgs {
+    /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */

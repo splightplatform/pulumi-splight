@@ -21,6 +21,8 @@ import (
 type SlackLine struct {
 	pulumi.CustomResourceState
 
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrOutput `pulumi:"customTimezone"`
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// geo position and shape of the resource
@@ -63,6 +65,8 @@ func GetSlackLine(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SlackLine resources.
 type slackLineState struct {
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -76,6 +80,8 @@ type slackLineState struct {
 }
 
 type SlackLineState struct {
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -93,6 +99,8 @@ func (SlackLineState) ElementType() reflect.Type {
 }
 
 type slackLineArgs struct {
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -105,6 +113,8 @@ type slackLineArgs struct {
 
 // The set of arguments for constructing a SlackLine resource.
 type SlackLineArgs struct {
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -200,6 +210,11 @@ func (o SlackLineOutput) ToSlackLineOutput() SlackLineOutput {
 
 func (o SlackLineOutput) ToSlackLineOutputWithContext(ctx context.Context) SlackLineOutput {
 	return o
+}
+
+// timezone that overrides location-based timezone of the resource
+func (o SlackLineOutput) CustomTimezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SlackLine) pulumi.StringPtrOutput { return v.CustomTimezone }).(pulumi.StringPtrOutput)
 }
 
 // description of the resource

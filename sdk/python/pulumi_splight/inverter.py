@@ -26,6 +26,7 @@ class InverterArgs:
                  max_active_power: pulumi.Input['InverterMaxActivePowerArgs'],
                  model: pulumi.Input['InverterModelArgs'],
                  serial_number: pulumi.Input['InverterSerialNumberArgs'],
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -37,6 +38,7 @@ class InverterArgs:
         :param pulumi.Input['InverterMaxActivePowerArgs'] max_active_power: attribute of the resource
         :param pulumi.Input['InverterModelArgs'] model: attribute of the resource
         :param pulumi.Input['InverterSerialNumberArgs'] serial_number: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
@@ -47,6 +49,8 @@ class InverterArgs:
         pulumi.set(__self__, "max_active_power", max_active_power)
         pulumi.set(__self__, "model", model)
         pulumi.set(__self__, "serial_number", serial_number)
+        if custom_timezone is not None:
+            pulumi.set(__self__, "custom_timezone", custom_timezone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
@@ -117,6 +121,18 @@ class InverterArgs:
         pulumi.set(self, "serial_number", value)
 
     @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        timezone that overrides location-based timezone of the resource
+        """
+        return pulumi.get(self, "custom_timezone")
+
+    @custom_timezone.setter
+    def custom_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_timezone", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -170,6 +186,7 @@ class _InverterState:
     def __init__(__self__, *,
                  accumulated_energies: Optional[pulumi.Input[Sequence[pulumi.Input['InverterAccumulatedEnergyArgs']]]] = None,
                  active_powers: Optional[pulumi.Input[Sequence[pulumi.Input['InverterActivePowerArgs']]]] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  daily_energies: Optional[pulumi.Input[Sequence[pulumi.Input['InverterDailyEnergyArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  energy_measurement_type: Optional[pulumi.Input['InverterEnergyMeasurementTypeArgs']] = None,
@@ -187,6 +204,7 @@ class _InverterState:
         Input properties used for looking up and filtering Inverter resources.
         :param pulumi.Input[Sequence[pulumi.Input['InverterAccumulatedEnergyArgs']]] accumulated_energies: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['InverterActivePowerArgs']]] active_powers: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[Sequence[pulumi.Input['InverterDailyEnergyArgs']]] daily_energies: attribute of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input['InverterEnergyMeasurementTypeArgs'] energy_measurement_type: attribute of the resource
@@ -205,6 +223,8 @@ class _InverterState:
             pulumi.set(__self__, "accumulated_energies", accumulated_energies)
         if active_powers is not None:
             pulumi.set(__self__, "active_powers", active_powers)
+        if custom_timezone is not None:
+            pulumi.set(__self__, "custom_timezone", custom_timezone)
         if daily_energies is not None:
             pulumi.set(__self__, "daily_energies", daily_energies)
         if description is not None:
@@ -255,6 +275,18 @@ class _InverterState:
     @active_powers.setter
     def active_powers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InverterActivePowerArgs']]]]):
         pulumi.set(self, "active_powers", value)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        timezone that overrides location-based timezone of the resource
+        """
+        return pulumi.get(self, "custom_timezone")
+
+    @custom_timezone.setter
+    def custom_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_timezone", value)
 
     @property
     @pulumi.getter(name="dailyEnergies")
@@ -418,6 +450,7 @@ class Inverter(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  energy_measurement_type: Optional[pulumi.Input[Union['InverterEnergyMeasurementTypeArgs', 'InverterEnergyMeasurementTypeArgsDict']]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
@@ -439,6 +472,7 @@ class Inverter(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] custom_timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[Union['InverterEnergyMeasurementTypeArgs', 'InverterEnergyMeasurementTypeArgsDict']] energy_measurement_type: attribute of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
@@ -479,6 +513,7 @@ class Inverter(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  energy_measurement_type: Optional[pulumi.Input[Union['InverterEnergyMeasurementTypeArgs', 'InverterEnergyMeasurementTypeArgsDict']]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
@@ -497,6 +532,7 @@ class Inverter(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InverterArgs.__new__(InverterArgs)
 
+            __props__.__dict__["custom_timezone"] = custom_timezone
             __props__.__dict__["description"] = description
             if energy_measurement_type is None and not opts.urn:
                 raise TypeError("Missing required property 'energy_measurement_type'")
@@ -534,6 +570,7 @@ class Inverter(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             accumulated_energies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InverterAccumulatedEnergyArgs', 'InverterAccumulatedEnergyArgsDict']]]]] = None,
             active_powers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InverterActivePowerArgs', 'InverterActivePowerArgsDict']]]]] = None,
+            custom_timezone: Optional[pulumi.Input[str]] = None,
             daily_energies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InverterDailyEnergyArgs', 'InverterDailyEnergyArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             energy_measurement_type: Optional[pulumi.Input[Union['InverterEnergyMeasurementTypeArgs', 'InverterEnergyMeasurementTypeArgsDict']]] = None,
@@ -556,6 +593,7 @@ class Inverter(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InverterAccumulatedEnergyArgs', 'InverterAccumulatedEnergyArgsDict']]]] accumulated_energies: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['InverterActivePowerArgs', 'InverterActivePowerArgsDict']]]] active_powers: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['InverterDailyEnergyArgs', 'InverterDailyEnergyArgsDict']]]] daily_energies: attribute of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[Union['InverterEnergyMeasurementTypeArgs', 'InverterEnergyMeasurementTypeArgsDict']] energy_measurement_type: attribute of the resource
@@ -576,6 +614,7 @@ class Inverter(pulumi.CustomResource):
 
         __props__.__dict__["accumulated_energies"] = accumulated_energies
         __props__.__dict__["active_powers"] = active_powers
+        __props__.__dict__["custom_timezone"] = custom_timezone
         __props__.__dict__["daily_energies"] = daily_energies
         __props__.__dict__["description"] = description
         __props__.__dict__["energy_measurement_type"] = energy_measurement_type
@@ -606,6 +645,14 @@ class Inverter(pulumi.CustomResource):
         attribute of the resource
         """
         return pulumi.get(self, "active_powers")
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> pulumi.Output[Optional[str]]:
+        """
+        timezone that overrides location-based timezone of the resource
+        """
+        return pulumi.get(self, "custom_timezone")
 
     @property
     @pulumi.getter(name="dailyEnergies")

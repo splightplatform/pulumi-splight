@@ -21,17 +21,21 @@ __all__ = ['SlackLineArgs', 'SlackLine']
 @pulumi.input_type
 class SlackLineArgs:
     def __init__(__self__, *,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['SlackLineTagArgs']]]] = None):
         """
         The set of arguments for constructing a SlackLine resource.
+        :param pulumi.Input[str] custom_timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input['SlackLineTagArgs']]] tags: tags of the resource
         """
+        if custom_timezone is not None:
+            pulumi.set(__self__, "custom_timezone", custom_timezone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
@@ -40,6 +44,18 @@ class SlackLineArgs:
             pulumi.set(__self__, "name", name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        timezone that overrides location-based timezone of the resource
+        """
+        return pulumi.get(self, "custom_timezone")
+
+    @custom_timezone.setter
+    def custom_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_timezone", value)
 
     @property
     @pulumi.getter
@@ -93,6 +109,7 @@ class SlackLineArgs:
 @pulumi.input_type
 class _SlackLineState:
     def __init__(__self__, *,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  kinds: Optional[pulumi.Input[Sequence[pulumi.Input['SlackLineKindArgs']]]] = None,
@@ -100,12 +117,15 @@ class _SlackLineState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['SlackLineTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering SlackLine resources.
+        :param pulumi.Input[str] custom_timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[Sequence[pulumi.Input['SlackLineKindArgs']]] kinds: kind of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input['SlackLineTagArgs']]] tags: tags of the resource
         """
+        if custom_timezone is not None:
+            pulumi.set(__self__, "custom_timezone", custom_timezone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
@@ -116,6 +136,18 @@ class _SlackLineState:
             pulumi.set(__self__, "name", name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        timezone that overrides location-based timezone of the resource
+        """
+        return pulumi.get(self, "custom_timezone")
+
+    @custom_timezone.setter
+    def custom_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_timezone", value)
 
     @property
     @pulumi.getter
@@ -183,6 +215,7 @@ class SlackLine(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -199,6 +232,7 @@ class SlackLine(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] custom_timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
@@ -234,6 +268,7 @@ class SlackLine(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -247,6 +282,7 @@ class SlackLine(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SlackLineArgs.__new__(SlackLineArgs)
 
+            __props__.__dict__["custom_timezone"] = custom_timezone
             __props__.__dict__["description"] = description
             __props__.__dict__["geometry"] = geometry
             __props__.__dict__["name"] = name
@@ -262,6 +298,7 @@ class SlackLine(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            custom_timezone: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             geometry: Optional[pulumi.Input[str]] = None,
             kinds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SlackLineKindArgs', 'SlackLineKindArgsDict']]]]] = None,
@@ -274,6 +311,7 @@ class SlackLine(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] custom_timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['SlackLineKindArgs', 'SlackLineKindArgsDict']]]] kinds: kind of the resource
@@ -284,12 +322,21 @@ class SlackLine(pulumi.CustomResource):
 
         __props__ = _SlackLineState.__new__(_SlackLineState)
 
+        __props__.__dict__["custom_timezone"] = custom_timezone
         __props__.__dict__["description"] = description
         __props__.__dict__["geometry"] = geometry
         __props__.__dict__["kinds"] = kinds
         __props__.__dict__["name"] = name
         __props__.__dict__["tags"] = tags
         return SlackLine(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> pulumi.Output[Optional[str]]:
+        """
+        timezone that overrides location-based timezone of the resource
+        """
+        return pulumi.get(self, "custom_timezone")
 
     @property
     @pulumi.getter

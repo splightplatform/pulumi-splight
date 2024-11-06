@@ -52,6 +52,10 @@ export class Generator extends pulumi.CustomResource {
      */
     public readonly co2Coefficient!: pulumi.Output<outputs.GeneratorCo2Coefficient>;
     /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    public readonly customTimezone!: pulumi.Output<string | undefined>;
+    /**
      * attribute of the resource
      */
     public /*out*/ readonly dailyEmissionAvoideds!: pulumi.Output<outputs.GeneratorDailyEmissionAvoided[]>;
@@ -99,6 +103,7 @@ export class Generator extends pulumi.CustomResource {
             const state = argsOrState as GeneratorState | undefined;
             resourceInputs["activePowers"] = state ? state.activePowers : undefined;
             resourceInputs["co2Coefficient"] = state ? state.co2Coefficient : undefined;
+            resourceInputs["customTimezone"] = state ? state.customTimezone : undefined;
             resourceInputs["dailyEmissionAvoideds"] = state ? state.dailyEmissionAvoideds : undefined;
             resourceInputs["dailyEnergies"] = state ? state.dailyEnergies : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -113,6 +118,7 @@ export class Generator extends pulumi.CustomResource {
                 throw new Error("Missing required property 'co2Coefficient'");
             }
             resourceInputs["co2Coefficient"] = args ? args.co2Coefficient : undefined;
+            resourceInputs["customTimezone"] = args ? args.customTimezone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -140,6 +146,10 @@ export interface GeneratorState {
      * attribute of the resource
      */
     co2Coefficient?: pulumi.Input<inputs.GeneratorCo2Coefficient>;
+    /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * attribute of the resource
      */
@@ -182,6 +192,10 @@ export interface GeneratorArgs {
      * attribute of the resource
      */
     co2Coefficient: pulumi.Input<inputs.GeneratorCo2Coefficient>;
+    /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */

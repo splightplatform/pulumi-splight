@@ -24,6 +24,7 @@ class SegmentArgs:
                  altitude: pulumi.Input['SegmentAltitudeArgs'],
                  azimuth: pulumi.Input['SegmentAzimuthArgs'],
                  cumulative_distance: pulumi.Input['SegmentCumulativeDistanceArgs'],
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -33,6 +34,7 @@ class SegmentArgs:
         :param pulumi.Input['SegmentAltitudeArgs'] altitude: attribute of the resource
         :param pulumi.Input['SegmentAzimuthArgs'] azimuth: attribute of the resource
         :param pulumi.Input['SegmentCumulativeDistanceArgs'] cumulative_distance: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
@@ -41,6 +43,8 @@ class SegmentArgs:
         pulumi.set(__self__, "altitude", altitude)
         pulumi.set(__self__, "azimuth", azimuth)
         pulumi.set(__self__, "cumulative_distance", cumulative_distance)
+        if custom_timezone is not None:
+            pulumi.set(__self__, "custom_timezone", custom_timezone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
@@ -85,6 +89,18 @@ class SegmentArgs:
     @cumulative_distance.setter
     def cumulative_distance(self, value: pulumi.Input['SegmentCumulativeDistanceArgs']):
         pulumi.set(self, "cumulative_distance", value)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        timezone that overrides location-based timezone of the resource
+        """
+        return pulumi.get(self, "custom_timezone")
+
+    @custom_timezone.setter
+    def custom_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_timezone", value)
 
     @property
     @pulumi.getter
@@ -141,6 +157,7 @@ class _SegmentState:
                  altitude: Optional[pulumi.Input['SegmentAltitudeArgs']] = None,
                  azimuth: Optional[pulumi.Input['SegmentAzimuthArgs']] = None,
                  cumulative_distance: Optional[pulumi.Input['SegmentCumulativeDistanceArgs']] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  kinds: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentKindArgs']]]] = None,
@@ -154,6 +171,7 @@ class _SegmentState:
         :param pulumi.Input['SegmentAltitudeArgs'] altitude: attribute of the resource
         :param pulumi.Input['SegmentAzimuthArgs'] azimuth: attribute of the resource
         :param pulumi.Input['SegmentCumulativeDistanceArgs'] cumulative_distance: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[Sequence[pulumi.Input['SegmentKindArgs']]] kinds: kind of the resource
@@ -169,6 +187,8 @@ class _SegmentState:
             pulumi.set(__self__, "azimuth", azimuth)
         if cumulative_distance is not None:
             pulumi.set(__self__, "cumulative_distance", cumulative_distance)
+        if custom_timezone is not None:
+            pulumi.set(__self__, "custom_timezone", custom_timezone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
@@ -221,6 +241,18 @@ class _SegmentState:
     @cumulative_distance.setter
     def cumulative_distance(self, value: Optional[pulumi.Input['SegmentCumulativeDistanceArgs']]):
         pulumi.set(self, "cumulative_distance", value)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        timezone that overrides location-based timezone of the resource
+        """
+        return pulumi.get(self, "custom_timezone")
+
+    @custom_timezone.setter
+    def custom_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_timezone", value)
 
     @property
     @pulumi.getter
@@ -327,6 +359,7 @@ class Segment(pulumi.CustomResource):
                  altitude: Optional[pulumi.Input[Union['SegmentAltitudeArgs', 'SegmentAltitudeArgsDict']]] = None,
                  azimuth: Optional[pulumi.Input[Union['SegmentAzimuthArgs', 'SegmentAzimuthArgsDict']]] = None,
                  cumulative_distance: Optional[pulumi.Input[Union['SegmentCumulativeDistanceArgs', 'SegmentCumulativeDistanceArgsDict']]] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -346,6 +379,7 @@ class Segment(pulumi.CustomResource):
         :param pulumi.Input[Union['SegmentAltitudeArgs', 'SegmentAltitudeArgsDict']] altitude: attribute of the resource
         :param pulumi.Input[Union['SegmentAzimuthArgs', 'SegmentAzimuthArgsDict']] azimuth: attribute of the resource
         :param pulumi.Input[Union['SegmentCumulativeDistanceArgs', 'SegmentCumulativeDistanceArgsDict']] cumulative_distance: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
@@ -384,6 +418,7 @@ class Segment(pulumi.CustomResource):
                  altitude: Optional[pulumi.Input[Union['SegmentAltitudeArgs', 'SegmentAltitudeArgsDict']]] = None,
                  azimuth: Optional[pulumi.Input[Union['SegmentAzimuthArgs', 'SegmentAzimuthArgsDict']]] = None,
                  cumulative_distance: Optional[pulumi.Input[Union['SegmentCumulativeDistanceArgs', 'SegmentCumulativeDistanceArgsDict']]] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -406,6 +441,7 @@ class Segment(pulumi.CustomResource):
             if cumulative_distance is None and not opts.urn:
                 raise TypeError("Missing required property 'cumulative_distance'")
             __props__.__dict__["cumulative_distance"] = cumulative_distance
+            __props__.__dict__["custom_timezone"] = custom_timezone
             __props__.__dict__["description"] = description
             __props__.__dict__["geometry"] = geometry
             __props__.__dict__["name"] = name
@@ -427,6 +463,7 @@ class Segment(pulumi.CustomResource):
             altitude: Optional[pulumi.Input[Union['SegmentAltitudeArgs', 'SegmentAltitudeArgsDict']]] = None,
             azimuth: Optional[pulumi.Input[Union['SegmentAzimuthArgs', 'SegmentAzimuthArgsDict']]] = None,
             cumulative_distance: Optional[pulumi.Input[Union['SegmentCumulativeDistanceArgs', 'SegmentCumulativeDistanceArgsDict']]] = None,
+            custom_timezone: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             geometry: Optional[pulumi.Input[str]] = None,
             kinds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SegmentKindArgs', 'SegmentKindArgsDict']]]]] = None,
@@ -445,6 +482,7 @@ class Segment(pulumi.CustomResource):
         :param pulumi.Input[Union['SegmentAltitudeArgs', 'SegmentAltitudeArgsDict']] altitude: attribute of the resource
         :param pulumi.Input[Union['SegmentAzimuthArgs', 'SegmentAzimuthArgsDict']] azimuth: attribute of the resource
         :param pulumi.Input[Union['SegmentCumulativeDistanceArgs', 'SegmentCumulativeDistanceArgsDict']] cumulative_distance: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentKindArgs', 'SegmentKindArgsDict']]]] kinds: kind of the resource
@@ -461,6 +499,7 @@ class Segment(pulumi.CustomResource):
         __props__.__dict__["altitude"] = altitude
         __props__.__dict__["azimuth"] = azimuth
         __props__.__dict__["cumulative_distance"] = cumulative_distance
+        __props__.__dict__["custom_timezone"] = custom_timezone
         __props__.__dict__["description"] = description
         __props__.__dict__["geometry"] = geometry
         __props__.__dict__["kinds"] = kinds
@@ -494,6 +533,14 @@ class Segment(pulumi.CustomResource):
         attribute of the resource
         """
         return pulumi.get(self, "cumulative_distance")
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> pulumi.Output[Optional[str]]:
+        """
+        timezone that overrides location-based timezone of the resource
+        """
+        return pulumi.get(self, "custom_timezone")
 
     @property
     @pulumi.getter

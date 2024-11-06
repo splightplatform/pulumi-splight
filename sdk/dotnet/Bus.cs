@@ -23,6 +23,12 @@ namespace Splight.Splight
     public partial class Bus : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Output("customTimezone")]
+        public Output<string?> CustomTimezone { get; private set; } = null!;
+
+        /// <summary>
         /// description of the resource
         /// </summary>
         [Output("description")]
@@ -106,6 +112,12 @@ namespace Splight.Splight
     public sealed class BusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Input("customTimezone")]
+        public Input<string>? CustomTimezone { get; set; }
+
+        /// <summary>
         /// description of the resource
         /// </summary>
         [Input("description")]
@@ -149,6 +161,12 @@ namespace Splight.Splight
 
     public sealed class BusState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Input("customTimezone")]
+        public Input<string>? CustomTimezone { get; set; }
+
         /// <summary>
         /// description of the resource
         /// </summary>
