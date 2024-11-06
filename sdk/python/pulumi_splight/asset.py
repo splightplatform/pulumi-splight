@@ -22,6 +22,7 @@ __all__ = ['AssetArgs', 'Asset']
 class AssetArgs:
     def __init__(__self__, *,
                  geometry: pulumi.Input[str],
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input['AssetKindArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -29,12 +30,15 @@ class AssetArgs:
         """
         The set of arguments for constructing a Asset resource.
         :param pulumi.Input[str] geometry: GeoJSON GeomtryCollection
+        :param pulumi.Input[str] custom_timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input['AssetKindArgs'] kind: kind of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input['AssetTagArgs']]] tags: tags of the resource
         """
         pulumi.set(__self__, "geometry", geometry)
+        if custom_timezone is not None:
+            pulumi.set(__self__, "custom_timezone", custom_timezone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if kind is not None:
@@ -55,6 +59,18 @@ class AssetArgs:
     @geometry.setter
     def geometry(self, value: pulumi.Input[str]):
         pulumi.set(self, "geometry", value)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        timezone that overrides location-based timezone of the resource
+        """
+        return pulumi.get(self, "custom_timezone")
+
+    @custom_timezone.setter
+    def custom_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_timezone", value)
 
     @property
     @pulumi.getter
@@ -108,6 +124,7 @@ class AssetArgs:
 @pulumi.input_type
 class _AssetState:
     def __init__(__self__, *,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input['AssetKindArgs']] = None,
@@ -115,12 +132,15 @@ class _AssetState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['AssetTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering Asset resources.
+        :param pulumi.Input[str] custom_timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: GeoJSON GeomtryCollection
         :param pulumi.Input['AssetKindArgs'] kind: kind of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input['AssetTagArgs']]] tags: tags of the resource
         """
+        if custom_timezone is not None:
+            pulumi.set(__self__, "custom_timezone", custom_timezone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
@@ -131,6 +151,18 @@ class _AssetState:
             pulumi.set(__self__, "name", name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        timezone that overrides location-based timezone of the resource
+        """
+        return pulumi.get(self, "custom_timezone")
+
+    @custom_timezone.setter
+    def custom_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_timezone", value)
 
     @property
     @pulumi.getter
@@ -198,6 +230,7 @@ class Asset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[Union['AssetKindArgs', 'AssetKindArgsDict']]] = None,
@@ -215,6 +248,7 @@ class Asset(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] custom_timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: GeoJSON GeomtryCollection
         :param pulumi.Input[Union['AssetKindArgs', 'AssetKindArgsDict']] kind: kind of the resource
@@ -251,6 +285,7 @@ class Asset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[Union['AssetKindArgs', 'AssetKindArgsDict']]] = None,
@@ -265,6 +300,7 @@ class Asset(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AssetArgs.__new__(AssetArgs)
 
+            __props__.__dict__["custom_timezone"] = custom_timezone
             __props__.__dict__["description"] = description
             if geometry is None and not opts.urn:
                 raise TypeError("Missing required property 'geometry'")
@@ -282,6 +318,7 @@ class Asset(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            custom_timezone: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             geometry: Optional[pulumi.Input[str]] = None,
             kind: Optional[pulumi.Input[Union['AssetKindArgs', 'AssetKindArgsDict']]] = None,
@@ -294,6 +331,7 @@ class Asset(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] custom_timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: GeoJSON GeomtryCollection
         :param pulumi.Input[Union['AssetKindArgs', 'AssetKindArgsDict']] kind: kind of the resource
@@ -304,12 +342,21 @@ class Asset(pulumi.CustomResource):
 
         __props__ = _AssetState.__new__(_AssetState)
 
+        __props__.__dict__["custom_timezone"] = custom_timezone
         __props__.__dict__["description"] = description
         __props__.__dict__["geometry"] = geometry
         __props__.__dict__["kind"] = kind
         __props__.__dict__["name"] = name
         __props__.__dict__["tags"] = tags
         return Asset(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> pulumi.Output[Optional[str]]:
+        """
+        timezone that overrides location-based timezone of the resource
+        """
+        return pulumi.get(self, "custom_timezone")
 
     @property
     @pulumi.getter

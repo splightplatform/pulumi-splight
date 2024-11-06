@@ -41,6 +41,12 @@ namespace Splight.Splight
         public Output<Outputs.SegmentCumulativeDistance> CumulativeDistance { get; private set; } = null!;
 
         /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Output("customTimezone")]
+        public Output<string?> CustomTimezone { get; private set; } = null!;
+
+        /// <summary>
         /// description of the resource
         /// </summary>
         [Output("description")]
@@ -154,6 +160,12 @@ namespace Splight.Splight
         public Input<Inputs.SegmentCumulativeDistanceArgs> CumulativeDistance { get; set; } = null!;
 
         /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Input("customTimezone")]
+        public Input<string>? CustomTimezone { get; set; }
+
+        /// <summary>
         /// description of the resource
         /// </summary>
         [Input("description")]
@@ -208,6 +220,12 @@ namespace Splight.Splight
         /// </summary>
         [Input("cumulativeDistance")]
         public Input<Inputs.SegmentCumulativeDistanceGetArgs>? CumulativeDistance { get; set; }
+
+        /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Input("customTimezone")]
+        public Input<string>? CustomTimezone { get; set; }
 
         /// <summary>
         /// description of the resource

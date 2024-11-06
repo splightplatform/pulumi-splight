@@ -44,6 +44,8 @@ type Line struct {
 	CurrentTs LineCurrentTArrayOutput `pulumi:"currentTs"`
 	// attribute of the resource
 	Currents LineCurrentArrayOutput `pulumi:"currents"`
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrOutput `pulumi:"customTimezone"`
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// attribute of the resource
@@ -207,6 +209,8 @@ type lineState struct {
 	CurrentTs []LineCurrentT `pulumi:"currentTs"`
 	// attribute of the resource
 	Currents []LineCurrent `pulumi:"currents"`
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// attribute of the resource
@@ -284,6 +288,8 @@ type LineState struct {
 	CurrentTs LineCurrentTArrayInput
 	// attribute of the resource
 	Currents LineCurrentArrayInput
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// attribute of the resource
@@ -351,6 +357,8 @@ type lineArgs struct {
 	Capacitance LineCapacitance `pulumi:"capacitance"`
 	// attribute of the resource
 	Conductance LineConductance `pulumi:"conductance"`
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// attribute of the resource
@@ -401,6 +409,8 @@ type LineArgs struct {
 	Capacitance LineCapacitanceInput
 	// attribute of the resource
 	Conductance LineConductanceInput
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// attribute of the resource
@@ -581,6 +591,11 @@ func (o LineOutput) CurrentTs() LineCurrentTArrayOutput {
 // attribute of the resource
 func (o LineOutput) Currents() LineCurrentArrayOutput {
 	return o.ApplyT(func(v *Line) LineCurrentArrayOutput { return v.Currents }).(LineCurrentArrayOutput)
+}
+
+// timezone that overrides location-based timezone of the resource
+func (o LineOutput) CustomTimezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Line) pulumi.StringPtrOutput { return v.CustomTimezone }).(pulumi.StringPtrOutput)
 }
 
 // description of the resource

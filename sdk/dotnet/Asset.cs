@@ -23,6 +23,12 @@ namespace Splight.Splight
     public partial class Asset : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Output("customTimezone")]
+        public Output<string?> CustomTimezone { get; private set; } = null!;
+
+        /// <summary>
         /// description of the resource
         /// </summary>
         [Output("description")]
@@ -100,6 +106,12 @@ namespace Splight.Splight
     public sealed class AssetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Input("customTimezone")]
+        public Input<string>? CustomTimezone { get; set; }
+
+        /// <summary>
         /// description of the resource
         /// </summary>
         [Input("description")]
@@ -143,6 +155,12 @@ namespace Splight.Splight
 
     public sealed class AssetState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Input("customTimezone")]
+        public Input<string>? CustomTimezone { get; set; }
+
         /// <summary>
         /// description of the resource
         /// </summary>

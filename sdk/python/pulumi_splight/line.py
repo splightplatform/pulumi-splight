@@ -40,6 +40,7 @@ class LineArgs:
                  safety_margin_for_power: pulumi.Input['LineSafetyMarginForPowerArgs'],
                  susceptance: pulumi.Input['LineSusceptanceArgs'],
                  temperature_coeff_resistance: pulumi.Input['LineTemperatureCoeffResistanceArgs'],
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -65,6 +66,7 @@ class LineArgs:
         :param pulumi.Input['LineSafetyMarginForPowerArgs'] safety_margin_for_power: attribute of the resource
         :param pulumi.Input['LineSusceptanceArgs'] susceptance: attribute of the resource
         :param pulumi.Input['LineTemperatureCoeffResistanceArgs'] temperature_coeff_resistance: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
@@ -89,6 +91,8 @@ class LineArgs:
         pulumi.set(__self__, "safety_margin_for_power", safety_margin_for_power)
         pulumi.set(__self__, "susceptance", susceptance)
         pulumi.set(__self__, "temperature_coeff_resistance", temperature_coeff_resistance)
+        if custom_timezone is not None:
+            pulumi.set(__self__, "custom_timezone", custom_timezone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
@@ -327,6 +331,18 @@ class LineArgs:
         pulumi.set(self, "temperature_coeff_resistance", value)
 
     @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        timezone that overrides location-based timezone of the resource
+        """
+        return pulumi.get(self, "custom_timezone")
+
+    @custom_timezone.setter
+    def custom_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_timezone", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -389,6 +405,7 @@ class _LineState:
                  current_s: Optional[pulumi.Input[Sequence[pulumi.Input['LineCurrentArgs']]]] = None,
                  current_ts: Optional[pulumi.Input[Sequence[pulumi.Input['LineCurrentTArgs']]]] = None,
                  currents: Optional[pulumi.Input[Sequence[pulumi.Input['LineCurrentArgs']]]] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  diameter: Optional[pulumi.Input['LineDiameterArgs']] = None,
                  emissivity: Optional[pulumi.Input['LineEmissivityArgs']] = None,
@@ -428,6 +445,7 @@ class _LineState:
         :param pulumi.Input[Sequence[pulumi.Input['LineCurrentArgs']]] current_s: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['LineCurrentTArgs']]] current_ts: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['LineCurrentArgs']]] currents: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input['LineDiameterArgs'] diameter: attribute of the resource
         :param pulumi.Input['LineEmissivityArgs'] emissivity: attribute of the resource
@@ -477,6 +495,8 @@ class _LineState:
             pulumi.set(__self__, "current_ts", current_ts)
         if currents is not None:
             pulumi.set(__self__, "currents", currents)
+        if custom_timezone is not None:
+            pulumi.set(__self__, "custom_timezone", custom_timezone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if diameter is not None:
@@ -661,6 +681,18 @@ class _LineState:
     @currents.setter
     def currents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LineCurrentArgs']]]]):
         pulumi.set(self, "currents", value)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        timezone that overrides location-based timezone of the resource
+        """
+        return pulumi.get(self, "custom_timezone")
+
+    @custom_timezone.setter
+    def custom_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_timezone", value)
 
     @property
     @pulumi.getter
@@ -984,6 +1016,7 @@ class Line(pulumi.CustomResource):
                  atmosphere: Optional[pulumi.Input[Union['LineAtmosphereArgs', 'LineAtmosphereArgsDict']]] = None,
                  capacitance: Optional[pulumi.Input[Union['LineCapacitanceArgs', 'LineCapacitanceArgsDict']]] = None,
                  conductance: Optional[pulumi.Input[Union['LineConductanceArgs', 'LineConductanceArgsDict']]] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  diameter: Optional[pulumi.Input[Union['LineDiameterArgs', 'LineDiameterArgsDict']]] = None,
                  emissivity: Optional[pulumi.Input[Union['LineEmissivityArgs', 'LineEmissivityArgsDict']]] = None,
@@ -1019,6 +1052,7 @@ class Line(pulumi.CustomResource):
         :param pulumi.Input[Union['LineAtmosphereArgs', 'LineAtmosphereArgsDict']] atmosphere: attribute of the resource
         :param pulumi.Input[Union['LineCapacitanceArgs', 'LineCapacitanceArgsDict']] capacitance: attribute of the resource
         :param pulumi.Input[Union['LineConductanceArgs', 'LineConductanceArgsDict']] conductance: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[Union['LineDiameterArgs', 'LineDiameterArgsDict']] diameter: attribute of the resource
         :param pulumi.Input[Union['LineEmissivityArgs', 'LineEmissivityArgsDict']] emissivity: attribute of the resource
@@ -1073,6 +1107,7 @@ class Line(pulumi.CustomResource):
                  atmosphere: Optional[pulumi.Input[Union['LineAtmosphereArgs', 'LineAtmosphereArgsDict']]] = None,
                  capacitance: Optional[pulumi.Input[Union['LineCapacitanceArgs', 'LineCapacitanceArgsDict']]] = None,
                  conductance: Optional[pulumi.Input[Union['LineConductanceArgs', 'LineConductanceArgsDict']]] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  diameter: Optional[pulumi.Input[Union['LineDiameterArgs', 'LineDiameterArgsDict']]] = None,
                  emissivity: Optional[pulumi.Input[Union['LineEmissivityArgs', 'LineEmissivityArgsDict']]] = None,
@@ -1113,6 +1148,7 @@ class Line(pulumi.CustomResource):
             if conductance is None and not opts.urn:
                 raise TypeError("Missing required property 'conductance'")
             __props__.__dict__["conductance"] = conductance
+            __props__.__dict__["custom_timezone"] = custom_timezone
             __props__.__dict__["description"] = description
             if diameter is None and not opts.urn:
                 raise TypeError("Missing required property 'diameter'")
@@ -1197,6 +1233,7 @@ class Line(pulumi.CustomResource):
             current_s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineCurrentArgs', 'LineCurrentArgsDict']]]]] = None,
             current_ts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineCurrentTArgs', 'LineCurrentTArgsDict']]]]] = None,
             currents: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineCurrentArgs', 'LineCurrentArgsDict']]]]] = None,
+            custom_timezone: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             diameter: Optional[pulumi.Input[Union['LineDiameterArgs', 'LineDiameterArgsDict']]] = None,
             emissivity: Optional[pulumi.Input[Union['LineEmissivityArgs', 'LineEmissivityArgsDict']]] = None,
@@ -1241,6 +1278,7 @@ class Line(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['LineCurrentArgs', 'LineCurrentArgsDict']]]] current_s: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['LineCurrentTArgs', 'LineCurrentTArgsDict']]]] current_ts: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['LineCurrentArgs', 'LineCurrentArgsDict']]]] currents: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[Union['LineDiameterArgs', 'LineDiameterArgsDict']] diameter: attribute of the resource
         :param pulumi.Input[Union['LineEmissivityArgs', 'LineEmissivityArgsDict']] emissivity: attribute of the resource
@@ -1283,6 +1321,7 @@ class Line(pulumi.CustomResource):
         __props__.__dict__["current_s"] = current_s
         __props__.__dict__["current_ts"] = current_ts
         __props__.__dict__["currents"] = currents
+        __props__.__dict__["custom_timezone"] = custom_timezone
         __props__.__dict__["description"] = description
         __props__.__dict__["diameter"] = diameter
         __props__.__dict__["emissivity"] = emissivity
@@ -1398,6 +1437,14 @@ class Line(pulumi.CustomResource):
         attribute of the resource
         """
         return pulumi.get(self, "currents")
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> pulumi.Output[Optional[str]]:
+        """
+        timezone that overrides location-based timezone of the resource
+        """
+        return pulumi.get(self, "custom_timezone")
 
     @property
     @pulumi.getter

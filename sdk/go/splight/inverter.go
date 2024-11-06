@@ -26,6 +26,8 @@ type Inverter struct {
 	AccumulatedEnergies InverterAccumulatedEnergyArrayOutput `pulumi:"accumulatedEnergies"`
 	// attribute of the resource
 	ActivePowers InverterActivePowerArrayOutput `pulumi:"activePowers"`
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrOutput `pulumi:"customTimezone"`
 	// attribute of the resource
 	DailyEnergies InverterDailyEnergyArrayOutput `pulumi:"dailyEnergies"`
 	// description of the resource
@@ -103,6 +105,8 @@ type inverterState struct {
 	AccumulatedEnergies []InverterAccumulatedEnergy `pulumi:"accumulatedEnergies"`
 	// attribute of the resource
 	ActivePowers []InverterActivePower `pulumi:"activePowers"`
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// attribute of the resource
 	DailyEnergies []InverterDailyEnergy `pulumi:"dailyEnergies"`
 	// description of the resource
@@ -136,6 +140,8 @@ type InverterState struct {
 	AccumulatedEnergies InverterAccumulatedEnergyArrayInput
 	// attribute of the resource
 	ActivePowers InverterActivePowerArrayInput
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrInput
 	// attribute of the resource
 	DailyEnergies InverterDailyEnergyArrayInput
 	// description of the resource
@@ -169,6 +175,8 @@ func (InverterState) ElementType() reflect.Type {
 }
 
 type inverterArgs struct {
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// attribute of the resource
@@ -191,6 +199,8 @@ type inverterArgs struct {
 
 // The set of arguments for constructing a Inverter resource.
 type InverterArgs struct {
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// attribute of the resource
@@ -306,6 +316,11 @@ func (o InverterOutput) AccumulatedEnergies() InverterAccumulatedEnergyArrayOutp
 // attribute of the resource
 func (o InverterOutput) ActivePowers() InverterActivePowerArrayOutput {
 	return o.ApplyT(func(v *Inverter) InverterActivePowerArrayOutput { return v.ActivePowers }).(InverterActivePowerArrayOutput)
+}
+
+// timezone that overrides location-based timezone of the resource
+func (o InverterOutput) CustomTimezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Inverter) pulumi.StringPtrOutput { return v.CustomTimezone }).(pulumi.StringPtrOutput)
 }
 
 // attribute of the resource

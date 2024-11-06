@@ -22,6 +22,8 @@ import (
 type Asset struct {
 	pulumi.CustomResourceState
 
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrOutput `pulumi:"customTimezone"`
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// GeoJSON GeomtryCollection
@@ -67,6 +69,8 @@ func GetAsset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Asset resources.
 type assetState struct {
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// GeoJSON GeomtryCollection
@@ -80,6 +84,8 @@ type assetState struct {
 }
 
 type AssetState struct {
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// GeoJSON GeomtryCollection
@@ -97,6 +103,8 @@ func (AssetState) ElementType() reflect.Type {
 }
 
 type assetArgs struct {
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// GeoJSON GeomtryCollection
@@ -111,6 +119,8 @@ type assetArgs struct {
 
 // The set of arguments for constructing a Asset resource.
 type AssetArgs struct {
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// GeoJSON GeomtryCollection
@@ -208,6 +218,11 @@ func (o AssetOutput) ToAssetOutput() AssetOutput {
 
 func (o AssetOutput) ToAssetOutputWithContext(ctx context.Context) AssetOutput {
 	return o
+}
+
+// timezone that overrides location-based timezone of the resource
+func (o AssetOutput) CustomTimezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringPtrOutput { return v.CustomTimezone }).(pulumi.StringPtrOutput)
 }
 
 // description of the resource

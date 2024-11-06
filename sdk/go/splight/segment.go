@@ -28,6 +28,8 @@ type Segment struct {
 	Azimuth SegmentAzimuthOutput `pulumi:"azimuth"`
 	// attribute of the resource
 	CumulativeDistance SegmentCumulativeDistanceOutput `pulumi:"cumulativeDistance"`
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrOutput `pulumi:"customTimezone"`
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// geo position and shape of the resource
@@ -91,6 +93,8 @@ type segmentState struct {
 	Azimuth *SegmentAzimuth `pulumi:"azimuth"`
 	// attribute of the resource
 	CumulativeDistance *SegmentCumulativeDistance `pulumi:"cumulativeDistance"`
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -116,6 +120,8 @@ type SegmentState struct {
 	Azimuth SegmentAzimuthPtrInput
 	// attribute of the resource
 	CumulativeDistance SegmentCumulativeDistancePtrInput
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -145,6 +151,8 @@ type segmentArgs struct {
 	Azimuth SegmentAzimuth `pulumi:"azimuth"`
 	// attribute of the resource
 	CumulativeDistance SegmentCumulativeDistance `pulumi:"cumulativeDistance"`
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -163,6 +171,8 @@ type SegmentArgs struct {
 	Azimuth SegmentAzimuthInput
 	// attribute of the resource
 	CumulativeDistance SegmentCumulativeDistanceInput
+	// timezone that overrides location-based timezone of the resource
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -273,6 +283,11 @@ func (o SegmentOutput) Azimuth() SegmentAzimuthOutput {
 // attribute of the resource
 func (o SegmentOutput) CumulativeDistance() SegmentCumulativeDistanceOutput {
 	return o.ApplyT(func(v *Segment) SegmentCumulativeDistanceOutput { return v.CumulativeDistance }).(SegmentCumulativeDistanceOutput)
+}
+
+// timezone that overrides location-based timezone of the resource
+func (o SegmentOutput) CustomTimezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Segment) pulumi.StringPtrOutput { return v.CustomTimezone }).(pulumi.StringPtrOutput)
 }
 
 // description of the resource
