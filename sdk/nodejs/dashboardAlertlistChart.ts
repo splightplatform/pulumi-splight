@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * const assetTest = new splight.Asset("assetTest", {
  *     description: "Created with Terraform",
+ *     timezone: "America/Los_Angeles",
  *     geometry: JSON.stringify({
  *         type: "GeometryCollection",
  *         geometries: [],

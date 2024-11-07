@@ -52,10 +52,6 @@ export class Generator extends pulumi.CustomResource {
      */
     public readonly co2Coefficient!: pulumi.Output<outputs.GeneratorCo2Coefficient>;
     /**
-     * timezone that overrides location-based timezone of the resource
-     */
-    public readonly customTimezone!: pulumi.Output<string | undefined>;
-    /**
      * attribute of the resource
      */
     public /*out*/ readonly dailyEmissionAvoideds!: pulumi.Output<outputs.GeneratorDailyEmissionAvoided[]>;
@@ -87,6 +83,10 @@ export class Generator extends pulumi.CustomResource {
      * tags of the resource
      */
     public readonly tags!: pulumi.Output<outputs.GeneratorTag[] | undefined>;
+    /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    public readonly timezone!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Generator resource with the given unique name, arguments, and options.
@@ -103,7 +103,6 @@ export class Generator extends pulumi.CustomResource {
             const state = argsOrState as GeneratorState | undefined;
             resourceInputs["activePowers"] = state ? state.activePowers : undefined;
             resourceInputs["co2Coefficient"] = state ? state.co2Coefficient : undefined;
-            resourceInputs["customTimezone"] = state ? state.customTimezone : undefined;
             resourceInputs["dailyEmissionAvoideds"] = state ? state.dailyEmissionAvoideds : undefined;
             resourceInputs["dailyEnergies"] = state ? state.dailyEnergies : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -112,17 +111,18 @@ export class Generator extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["reactivePowers"] = state ? state.reactivePowers : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["timezone"] = state ? state.timezone : undefined;
         } else {
             const args = argsOrState as GeneratorArgs | undefined;
             if ((!args || args.co2Coefficient === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'co2Coefficient'");
             }
             resourceInputs["co2Coefficient"] = args ? args.co2Coefficient : undefined;
-            resourceInputs["customTimezone"] = args ? args.customTimezone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["activePowers"] = undefined /*out*/;
             resourceInputs["dailyEmissionAvoideds"] = undefined /*out*/;
             resourceInputs["dailyEnergies"] = undefined /*out*/;
@@ -146,10 +146,6 @@ export interface GeneratorState {
      * attribute of the resource
      */
     co2Coefficient?: pulumi.Input<inputs.GeneratorCo2Coefficient>;
-    /**
-     * timezone that overrides location-based timezone of the resource
-     */
-    customTimezone?: pulumi.Input<string>;
     /**
      * attribute of the resource
      */
@@ -182,6 +178,10 @@ export interface GeneratorState {
      * tags of the resource
      */
     tags?: pulumi.Input<pulumi.Input<inputs.GeneratorTag>[]>;
+    /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    timezone?: pulumi.Input<string>;
 }
 
 /**
@@ -192,10 +192,6 @@ export interface GeneratorArgs {
      * attribute of the resource
      */
     co2Coefficient: pulumi.Input<inputs.GeneratorCo2Coefficient>;
-    /**
-     * timezone that overrides location-based timezone of the resource
-     */
-    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */
@@ -212,4 +208,8 @@ export interface GeneratorArgs {
      * tags of the resource
      */
     tags?: pulumi.Input<pulumi.Input<inputs.GeneratorTag>[]>;
+    /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    timezone?: pulumi.Input<string>;
 }

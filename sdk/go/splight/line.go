@@ -44,8 +44,6 @@ type Line struct {
 	CurrentTs LineCurrentTArrayOutput `pulumi:"currentTs"`
 	// attribute of the resource
 	Currents LineCurrentArrayOutput `pulumi:"currents"`
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone pulumi.StringPtrOutput `pulumi:"customTimezone"`
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// attribute of the resource
@@ -92,6 +90,8 @@ type Line struct {
 	Tags LineTagArrayOutput `pulumi:"tags"`
 	// attribute of the resource
 	TemperatureCoeffResistance LineTemperatureCoeffResistanceOutput `pulumi:"temperatureCoeffResistance"`
+	// timezone that overrides location-based timezone of the resource
+	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 	// attribute of the resource
 	VoltageRs LineVoltageRArrayOutput `pulumi:"voltageRs"`
 	// attribute of the resource
@@ -209,8 +209,6 @@ type lineState struct {
 	CurrentTs []LineCurrentT `pulumi:"currentTs"`
 	// attribute of the resource
 	Currents []LineCurrent `pulumi:"currents"`
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// attribute of the resource
@@ -257,6 +255,8 @@ type lineState struct {
 	Tags []LineTag `pulumi:"tags"`
 	// attribute of the resource
 	TemperatureCoeffResistance *LineTemperatureCoeffResistance `pulumi:"temperatureCoeffResistance"`
+	// timezone that overrides location-based timezone of the resource
+	Timezone *string `pulumi:"timezone"`
 	// attribute of the resource
 	VoltageRs []LineVoltageR `pulumi:"voltageRs"`
 	// attribute of the resource
@@ -288,8 +288,6 @@ type LineState struct {
 	CurrentTs LineCurrentTArrayInput
 	// attribute of the resource
 	Currents LineCurrentArrayInput
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// attribute of the resource
@@ -336,6 +334,8 @@ type LineState struct {
 	Tags LineTagArrayInput
 	// attribute of the resource
 	TemperatureCoeffResistance LineTemperatureCoeffResistancePtrInput
+	// timezone that overrides location-based timezone of the resource
+	Timezone pulumi.StringPtrInput
 	// attribute of the resource
 	VoltageRs LineVoltageRArrayInput
 	// attribute of the resource
@@ -357,8 +357,6 @@ type lineArgs struct {
 	Capacitance LineCapacitance `pulumi:"capacitance"`
 	// attribute of the resource
 	Conductance LineConductance `pulumi:"conductance"`
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// attribute of the resource
@@ -397,6 +395,8 @@ type lineArgs struct {
 	Tags []LineTag `pulumi:"tags"`
 	// attribute of the resource
 	TemperatureCoeffResistance LineTemperatureCoeffResistance `pulumi:"temperatureCoeffResistance"`
+	// timezone that overrides location-based timezone of the resource
+	Timezone *string `pulumi:"timezone"`
 }
 
 // The set of arguments for constructing a Line resource.
@@ -409,8 +409,6 @@ type LineArgs struct {
 	Capacitance LineCapacitanceInput
 	// attribute of the resource
 	Conductance LineConductanceInput
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// attribute of the resource
@@ -449,6 +447,8 @@ type LineArgs struct {
 	Tags LineTagArrayInput
 	// attribute of the resource
 	TemperatureCoeffResistance LineTemperatureCoeffResistanceInput
+	// timezone that overrides location-based timezone of the resource
+	Timezone pulumi.StringPtrInput
 }
 
 func (LineArgs) ElementType() reflect.Type {
@@ -593,11 +593,6 @@ func (o LineOutput) Currents() LineCurrentArrayOutput {
 	return o.ApplyT(func(v *Line) LineCurrentArrayOutput { return v.Currents }).(LineCurrentArrayOutput)
 }
 
-// timezone that overrides location-based timezone of the resource
-func (o LineOutput) CustomTimezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Line) pulumi.StringPtrOutput { return v.CustomTimezone }).(pulumi.StringPtrOutput)
-}
-
 // description of the resource
 func (o LineOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Line) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -711,6 +706,11 @@ func (o LineOutput) Tags() LineTagArrayOutput {
 // attribute of the resource
 func (o LineOutput) TemperatureCoeffResistance() LineTemperatureCoeffResistanceOutput {
 	return o.ApplyT(func(v *Line) LineTemperatureCoeffResistanceOutput { return v.TemperatureCoeffResistance }).(LineTemperatureCoeffResistanceOutput)
+}
+
+// timezone that overrides location-based timezone of the resource
+func (o LineOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Line) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
 }
 
 // attribute of the resource

@@ -21,8 +21,6 @@ import (
 type Grid struct {
 	pulumi.CustomResourceState
 
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone pulumi.StringPtrOutput `pulumi:"customTimezone"`
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// geo position and shape of the resource
@@ -33,6 +31,8 @@ type Grid struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// tags of the resource
 	Tags GridTagArrayOutput `pulumi:"tags"`
+	// timezone that overrides location-based timezone of the resource
+	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 }
 
 // NewGrid registers a new resource with the given unique name, arguments, and options.
@@ -65,8 +65,6 @@ func GetGrid(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Grid resources.
 type gridState struct {
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -77,11 +75,11 @@ type gridState struct {
 	Name *string `pulumi:"name"`
 	// tags of the resource
 	Tags []GridTag `pulumi:"tags"`
+	// timezone that overrides location-based timezone of the resource
+	Timezone *string `pulumi:"timezone"`
 }
 
 type GridState struct {
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -92,6 +90,8 @@ type GridState struct {
 	Name pulumi.StringPtrInput
 	// tags of the resource
 	Tags GridTagArrayInput
+	// timezone that overrides location-based timezone of the resource
+	Timezone pulumi.StringPtrInput
 }
 
 func (GridState) ElementType() reflect.Type {
@@ -99,8 +99,6 @@ func (GridState) ElementType() reflect.Type {
 }
 
 type gridArgs struct {
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -109,12 +107,12 @@ type gridArgs struct {
 	Name *string `pulumi:"name"`
 	// tags of the resource
 	Tags []GridTag `pulumi:"tags"`
+	// timezone that overrides location-based timezone of the resource
+	Timezone *string `pulumi:"timezone"`
 }
 
 // The set of arguments for constructing a Grid resource.
 type GridArgs struct {
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -123,6 +121,8 @@ type GridArgs struct {
 	Name pulumi.StringPtrInput
 	// tags of the resource
 	Tags GridTagArrayInput
+	// timezone that overrides location-based timezone of the resource
+	Timezone pulumi.StringPtrInput
 }
 
 func (GridArgs) ElementType() reflect.Type {
@@ -212,11 +212,6 @@ func (o GridOutput) ToGridOutputWithContext(ctx context.Context) GridOutput {
 	return o
 }
 
-// timezone that overrides location-based timezone of the resource
-func (o GridOutput) CustomTimezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Grid) pulumi.StringPtrOutput { return v.CustomTimezone }).(pulumi.StringPtrOutput)
-}
-
 // description of the resource
 func (o GridOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Grid) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -240,6 +235,11 @@ func (o GridOutput) Name() pulumi.StringOutput {
 // tags of the resource
 func (o GridOutput) Tags() GridTagArrayOutput {
 	return o.ApplyT(func(v *Grid) GridTagArrayOutput { return v.Tags }).(GridTagArrayOutput)
+}
+
+// timezone that overrides location-based timezone of the resource
+func (o GridOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Grid) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
 }
 
 type GridArrayOutput struct{ *pulumi.OutputState }

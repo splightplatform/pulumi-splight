@@ -25,6 +25,7 @@ namespace Splight.Splight
     ///     var assetTest = new Splight.Asset("assetTest", new()
     ///     {
     ///         Description = "Created with Terraform",
+    ///         Timezone = "America/Los_Angeles",
     ///         Geometry = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
     ///             ["type"] = "GeometryCollection",

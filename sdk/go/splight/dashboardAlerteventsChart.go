@@ -38,6 +38,7 @@ import (
 //			json0 := string(tmpJSON0)
 //			assetTest, err := splight.NewAsset(ctx, "assetTest", &splight.AssetArgs{
 //				Description: pulumi.String("Created with Terraform"),
+//				Timezone:    pulumi.String("America/Los_Angeles"),
 //				Geometry:    pulumi.String(json0),
 //			})
 //			if err != nil {

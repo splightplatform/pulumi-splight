@@ -26,8 +26,6 @@ type Generator struct {
 	ActivePowers GeneratorActivePowerArrayOutput `pulumi:"activePowers"`
 	// attribute of the resource
 	Co2Coefficient GeneratorCo2CoefficientOutput `pulumi:"co2Coefficient"`
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone pulumi.StringPtrOutput `pulumi:"customTimezone"`
 	// attribute of the resource
 	DailyEmissionAvoideds GeneratorDailyEmissionAvoidedArrayOutput `pulumi:"dailyEmissionAvoideds"`
 	// attribute of the resource
@@ -44,6 +42,8 @@ type Generator struct {
 	ReactivePowers GeneratorReactivePowerArrayOutput `pulumi:"reactivePowers"`
 	// tags of the resource
 	Tags GeneratorTagArrayOutput `pulumi:"tags"`
+	// timezone that overrides location-based timezone of the resource
+	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 }
 
 // NewGenerator registers a new resource with the given unique name, arguments, and options.
@@ -83,8 +83,6 @@ type generatorState struct {
 	ActivePowers []GeneratorActivePower `pulumi:"activePowers"`
 	// attribute of the resource
 	Co2Coefficient *GeneratorCo2Coefficient `pulumi:"co2Coefficient"`
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone *string `pulumi:"customTimezone"`
 	// attribute of the resource
 	DailyEmissionAvoideds []GeneratorDailyEmissionAvoided `pulumi:"dailyEmissionAvoideds"`
 	// attribute of the resource
@@ -101,6 +99,8 @@ type generatorState struct {
 	ReactivePowers []GeneratorReactivePower `pulumi:"reactivePowers"`
 	// tags of the resource
 	Tags []GeneratorTag `pulumi:"tags"`
+	// timezone that overrides location-based timezone of the resource
+	Timezone *string `pulumi:"timezone"`
 }
 
 type GeneratorState struct {
@@ -108,8 +108,6 @@ type GeneratorState struct {
 	ActivePowers GeneratorActivePowerArrayInput
 	// attribute of the resource
 	Co2Coefficient GeneratorCo2CoefficientPtrInput
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone pulumi.StringPtrInput
 	// attribute of the resource
 	DailyEmissionAvoideds GeneratorDailyEmissionAvoidedArrayInput
 	// attribute of the resource
@@ -126,6 +124,8 @@ type GeneratorState struct {
 	ReactivePowers GeneratorReactivePowerArrayInput
 	// tags of the resource
 	Tags GeneratorTagArrayInput
+	// timezone that overrides location-based timezone of the resource
+	Timezone pulumi.StringPtrInput
 }
 
 func (GeneratorState) ElementType() reflect.Type {
@@ -135,8 +135,6 @@ func (GeneratorState) ElementType() reflect.Type {
 type generatorArgs struct {
 	// attribute of the resource
 	Co2Coefficient GeneratorCo2Coefficient `pulumi:"co2Coefficient"`
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -145,14 +143,14 @@ type generatorArgs struct {
 	Name *string `pulumi:"name"`
 	// tags of the resource
 	Tags []GeneratorTag `pulumi:"tags"`
+	// timezone that overrides location-based timezone of the resource
+	Timezone *string `pulumi:"timezone"`
 }
 
 // The set of arguments for constructing a Generator resource.
 type GeneratorArgs struct {
 	// attribute of the resource
 	Co2Coefficient GeneratorCo2CoefficientInput
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -161,6 +159,8 @@ type GeneratorArgs struct {
 	Name pulumi.StringPtrInput
 	// tags of the resource
 	Tags GeneratorTagArrayInput
+	// timezone that overrides location-based timezone of the resource
+	Timezone pulumi.StringPtrInput
 }
 
 func (GeneratorArgs) ElementType() reflect.Type {
@@ -260,11 +260,6 @@ func (o GeneratorOutput) Co2Coefficient() GeneratorCo2CoefficientOutput {
 	return o.ApplyT(func(v *Generator) GeneratorCo2CoefficientOutput { return v.Co2Coefficient }).(GeneratorCo2CoefficientOutput)
 }
 
-// timezone that overrides location-based timezone of the resource
-func (o GeneratorOutput) CustomTimezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Generator) pulumi.StringPtrOutput { return v.CustomTimezone }).(pulumi.StringPtrOutput)
-}
-
 // attribute of the resource
 func (o GeneratorOutput) DailyEmissionAvoideds() GeneratorDailyEmissionAvoidedArrayOutput {
 	return o.ApplyT(func(v *Generator) GeneratorDailyEmissionAvoidedArrayOutput { return v.DailyEmissionAvoideds }).(GeneratorDailyEmissionAvoidedArrayOutput)
@@ -303,6 +298,11 @@ func (o GeneratorOutput) ReactivePowers() GeneratorReactivePowerArrayOutput {
 // tags of the resource
 func (o GeneratorOutput) Tags() GeneratorTagArrayOutput {
 	return o.ApplyT(func(v *Generator) GeneratorTagArrayOutput { return v.Tags }).(GeneratorTagArrayOutput)
+}
+
+// timezone that overrides location-based timezone of the resource
+func (o GeneratorOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Generator) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
 }
 
 type GeneratorArrayOutput struct{ *pulumi.OutputState }
