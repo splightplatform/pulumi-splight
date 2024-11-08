@@ -23,12 +23,6 @@ namespace Splight.Splight
     public partial class Asset : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
-        /// </summary>
-        [Output("customTimezone")]
-        public Output<string?> CustomTimezone { get; private set; } = null!;
-
-        /// <summary>
         /// description of the resource
         /// </summary>
         [Output("description")]
@@ -57,6 +51,12 @@ namespace Splight.Splight
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.AssetTag>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Output("timezone")]
+        public Output<string?> Timezone { get; private set; } = null!;
 
 
         /// <summary>
@@ -106,12 +106,6 @@ namespace Splight.Splight
     public sealed class AssetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
-        /// </summary>
-        [Input("customTimezone")]
-        public Input<string>? CustomTimezone { get; set; }
-
-        /// <summary>
         /// description of the resource
         /// </summary>
         [Input("description")]
@@ -147,6 +141,12 @@ namespace Splight.Splight
             set => _tags = value;
         }
 
+        /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Input("timezone")]
+        public Input<string>? Timezone { get; set; }
+
         public AssetArgs()
         {
         }
@@ -155,12 +155,6 @@ namespace Splight.Splight
 
     public sealed class AssetState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// timezone that overrides location-based timezone of the resource
-        /// </summary>
-        [Input("customTimezone")]
-        public Input<string>? CustomTimezone { get; set; }
-
         /// <summary>
         /// description of the resource
         /// </summary>
@@ -196,6 +190,12 @@ namespace Splight.Splight
             get => _tags ?? (_tags = new InputList<Inputs.AssetTagGetArgs>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Input("timezone")]
+        public Input<string>? Timezone { get; set; }
 
         public AssetState()
         {

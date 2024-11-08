@@ -22,8 +22,6 @@ import (
 type Bus struct {
 	pulumi.CustomResourceState
 
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone pulumi.StringPtrOutput `pulumi:"customTimezone"`
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// geo position and shape of the resource
@@ -36,6 +34,8 @@ type Bus struct {
 	NominalVoltage BusNominalVoltageOutput `pulumi:"nominalVoltage"`
 	// tags of the resource
 	Tags BusTagArrayOutput `pulumi:"tags"`
+	// timezone that overrides location-based timezone of the resource
+	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 }
 
 // NewBus registers a new resource with the given unique name, arguments, and options.
@@ -71,8 +71,6 @@ func GetBus(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Bus resources.
 type busState struct {
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -85,11 +83,11 @@ type busState struct {
 	NominalVoltage *BusNominalVoltage `pulumi:"nominalVoltage"`
 	// tags of the resource
 	Tags []BusTag `pulumi:"tags"`
+	// timezone that overrides location-based timezone of the resource
+	Timezone *string `pulumi:"timezone"`
 }
 
 type BusState struct {
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -102,6 +100,8 @@ type BusState struct {
 	NominalVoltage BusNominalVoltagePtrInput
 	// tags of the resource
 	Tags BusTagArrayInput
+	// timezone that overrides location-based timezone of the resource
+	Timezone pulumi.StringPtrInput
 }
 
 func (BusState) ElementType() reflect.Type {
@@ -109,8 +109,6 @@ func (BusState) ElementType() reflect.Type {
 }
 
 type busArgs struct {
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -121,12 +119,12 @@ type busArgs struct {
 	NominalVoltage BusNominalVoltage `pulumi:"nominalVoltage"`
 	// tags of the resource
 	Tags []BusTag `pulumi:"tags"`
+	// timezone that overrides location-based timezone of the resource
+	Timezone *string `pulumi:"timezone"`
 }
 
 // The set of arguments for constructing a Bus resource.
 type BusArgs struct {
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -137,6 +135,8 @@ type BusArgs struct {
 	NominalVoltage BusNominalVoltageInput
 	// tags of the resource
 	Tags BusTagArrayInput
+	// timezone that overrides location-based timezone of the resource
+	Timezone pulumi.StringPtrInput
 }
 
 func (BusArgs) ElementType() reflect.Type {
@@ -226,11 +226,6 @@ func (o BusOutput) ToBusOutputWithContext(ctx context.Context) BusOutput {
 	return o
 }
 
-// timezone that overrides location-based timezone of the resource
-func (o BusOutput) CustomTimezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Bus) pulumi.StringPtrOutput { return v.CustomTimezone }).(pulumi.StringPtrOutput)
-}
-
 // description of the resource
 func (o BusOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Bus) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -259,6 +254,11 @@ func (o BusOutput) NominalVoltage() BusNominalVoltageOutput {
 // tags of the resource
 func (o BusOutput) Tags() BusTagArrayOutput {
 	return o.ApplyT(func(v *Bus) BusTagArrayOutput { return v.Tags }).(BusTagArrayOutput)
+}
+
+// timezone that overrides location-based timezone of the resource
+func (o BusOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Bus) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
 }
 
 type BusArrayOutput struct{ *pulumi.OutputState }

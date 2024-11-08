@@ -41,12 +41,6 @@ namespace Splight.Splight
         public Output<Outputs.SegmentCumulativeDistance> CumulativeDistance { get; private set; } = null!;
 
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
-        /// </summary>
-        [Output("customTimezone")]
-        public Output<string?> CustomTimezone { get; private set; } = null!;
-
-        /// <summary>
         /// description of the resource
         /// </summary>
         [Output("description")]
@@ -81,6 +75,12 @@ namespace Splight.Splight
         /// </summary>
         [Output("temperatures")]
         public Output<ImmutableArray<Outputs.SegmentTemperature>> Temperatures { get; private set; } = null!;
+
+        /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Output("timezone")]
+        public Output<string?> Timezone { get; private set; } = null!;
 
         /// <summary>
         /// attribute of the resource
@@ -160,12 +160,6 @@ namespace Splight.Splight
         public Input<Inputs.SegmentCumulativeDistanceArgs> CumulativeDistance { get; set; } = null!;
 
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
-        /// </summary>
-        [Input("customTimezone")]
-        public Input<string>? CustomTimezone { get; set; }
-
-        /// <summary>
         /// description of the resource
         /// </summary>
         [Input("description")]
@@ -195,6 +189,12 @@ namespace Splight.Splight
             set => _tags = value;
         }
 
+        /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Input("timezone")]
+        public Input<string>? Timezone { get; set; }
+
         public SegmentArgs()
         {
         }
@@ -220,12 +220,6 @@ namespace Splight.Splight
         /// </summary>
         [Input("cumulativeDistance")]
         public Input<Inputs.SegmentCumulativeDistanceGetArgs>? CumulativeDistance { get; set; }
-
-        /// <summary>
-        /// timezone that overrides location-based timezone of the resource
-        /// </summary>
-        [Input("customTimezone")]
-        public Input<string>? CustomTimezone { get; set; }
 
         /// <summary>
         /// description of the resource
@@ -280,6 +274,12 @@ namespace Splight.Splight
             get => _temperatures ?? (_temperatures = new InputList<Inputs.SegmentTemperatureGetArgs>());
             set => _temperatures = value;
         }
+
+        /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Input("timezone")]
+        public Input<string>? Timezone { get; set; }
 
         [Input("windDirections")]
         private InputList<Inputs.SegmentWindDirectionGetArgs>? _windDirections;

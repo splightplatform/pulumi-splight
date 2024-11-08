@@ -148,6 +148,7 @@ class Command(pulumi.CustomResource):
 
         my_asset = splight.Asset("myAsset",
             description="My Asset Description",
+            timezone="America/Los_Angeles",
             geometry=json.dumps({
                 "type": "GeometryCollection",
                 "geometries": [{
@@ -212,6 +213,7 @@ class Command(pulumi.CustomResource):
 
         my_asset = splight.Asset("myAsset",
             description="My Asset Description",
+            timezone="America/Los_Angeles",
             geometry=json.dumps({
                 "type": "GeometryCollection",
                 "geometries": [{

@@ -25,6 +25,7 @@ namespace Splight.Splight
     ///     var myAsset = new Splight.Asset("myAsset", new()
     ///     {
     ///         Description = "My Asset Description",
+    ///         Timezone = "America/Los_Angeles",
     ///         Geometry = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
     ///             ["type"] = "GeometryCollection",

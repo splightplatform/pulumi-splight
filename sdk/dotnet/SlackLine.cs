@@ -23,12 +23,6 @@ namespace Splight.Splight
     public partial class SlackLine : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
-        /// </summary>
-        [Output("customTimezone")]
-        public Output<string?> CustomTimezone { get; private set; } = null!;
-
-        /// <summary>
         /// description of the resource
         /// </summary>
         [Output("description")]
@@ -57,6 +51,12 @@ namespace Splight.Splight
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.SlackLineTag>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Output("timezone")]
+        public Output<string?> Timezone { get; private set; } = null!;
 
 
         /// <summary>
@@ -106,12 +106,6 @@ namespace Splight.Splight
     public sealed class SlackLineArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
-        /// </summary>
-        [Input("customTimezone")]
-        public Input<string>? CustomTimezone { get; set; }
-
-        /// <summary>
         /// description of the resource
         /// </summary>
         [Input("description")]
@@ -141,6 +135,12 @@ namespace Splight.Splight
             set => _tags = value;
         }
 
+        /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Input("timezone")]
+        public Input<string>? Timezone { get; set; }
+
         public SlackLineArgs()
         {
         }
@@ -149,12 +149,6 @@ namespace Splight.Splight
 
     public sealed class SlackLineState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// timezone that overrides location-based timezone of the resource
-        /// </summary>
-        [Input("customTimezone")]
-        public Input<string>? CustomTimezone { get; set; }
-
         /// <summary>
         /// description of the resource
         /// </summary>
@@ -196,6 +190,12 @@ namespace Splight.Splight
             get => _tags ?? (_tags = new InputList<Inputs.SlackLineTagGetArgs>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Input("timezone")]
+        public Input<string>? Timezone { get; set; }
 
         public SlackLineState()
         {

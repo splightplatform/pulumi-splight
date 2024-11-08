@@ -35,12 +35,6 @@ namespace Splight.Splight
         public Output<Outputs.GeneratorCo2Coefficient> Co2Coefficient { get; private set; } = null!;
 
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
-        /// </summary>
-        [Output("customTimezone")]
-        public Output<string?> CustomTimezone { get; private set; } = null!;
-
-        /// <summary>
         /// attribute of the resource
         /// </summary>
         [Output("dailyEmissionAvoideds")]
@@ -87,6 +81,12 @@ namespace Splight.Splight
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.GeneratorTag>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Output("timezone")]
+        public Output<string?> Timezone { get; private set; } = null!;
 
 
         /// <summary>
@@ -142,12 +142,6 @@ namespace Splight.Splight
         public Input<Inputs.GeneratorCo2CoefficientArgs> Co2Coefficient { get; set; } = null!;
 
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
-        /// </summary>
-        [Input("customTimezone")]
-        public Input<string>? CustomTimezone { get; set; }
-
-        /// <summary>
         /// description of the resource
         /// </summary>
         [Input("description")]
@@ -177,6 +171,12 @@ namespace Splight.Splight
             set => _tags = value;
         }
 
+        /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Input("timezone")]
+        public Input<string>? Timezone { get; set; }
+
         public GeneratorArgs()
         {
         }
@@ -202,12 +202,6 @@ namespace Splight.Splight
         /// </summary>
         [Input("co2Coefficient")]
         public Input<Inputs.GeneratorCo2CoefficientGetArgs>? Co2Coefficient { get; set; }
-
-        /// <summary>
-        /// timezone that overrides location-based timezone of the resource
-        /// </summary>
-        [Input("customTimezone")]
-        public Input<string>? CustomTimezone { get; set; }
 
         [Input("dailyEmissionAvoideds")]
         private InputList<Inputs.GeneratorDailyEmissionAvoidedGetArgs>? _dailyEmissionAvoideds;
@@ -286,6 +280,12 @@ namespace Splight.Splight
             get => _tags ?? (_tags = new InputList<Inputs.GeneratorTagGetArgs>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Input("timezone")]
+        public Input<string>? Timezone { get; set; }
 
         public GeneratorState()
         {

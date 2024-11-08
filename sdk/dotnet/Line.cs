@@ -89,12 +89,6 @@ namespace Splight.Splight
         public Output<ImmutableArray<Outputs.LineCurrent>> Currents { get; private set; } = null!;
 
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
-        /// </summary>
-        [Output("customTimezone")]
-        public Output<string?> CustomTimezone { get; private set; } = null!;
-
-        /// <summary>
         /// description of the resource
         /// </summary>
         [Output("description")]
@@ -233,6 +227,12 @@ namespace Splight.Splight
         public Output<Outputs.LineTemperatureCoeffResistance> TemperatureCoeffResistance { get; private set; } = null!;
 
         /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Output("timezone")]
+        public Output<string?> Timezone { get; private set; } = null!;
+
+        /// <summary>
         /// attribute of the resource
         /// </summary>
         [Output("voltageRs")]
@@ -320,12 +320,6 @@ namespace Splight.Splight
         /// </summary>
         [Input("conductance", required: true)]
         public Input<Inputs.LineConductanceArgs> Conductance { get; set; } = null!;
-
-        /// <summary>
-        /// timezone that overrides location-based timezone of the resource
-        /// </summary>
-        [Input("customTimezone")]
-        public Input<string>? CustomTimezone { get; set; }
 
         /// <summary>
         /// description of the resource
@@ -447,6 +441,12 @@ namespace Splight.Splight
         [Input("temperatureCoeffResistance", required: true)]
         public Input<Inputs.LineTemperatureCoeffResistanceArgs> TemperatureCoeffResistance { get; set; } = null!;
 
+        /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Input("timezone")]
+        public Input<string>? Timezone { get; set; }
+
         public LineArgs()
         {
         }
@@ -562,12 +562,6 @@ namespace Splight.Splight
             get => _currents ?? (_currents = new InputList<Inputs.LineCurrentGetArgs>());
             set => _currents = value;
         }
-
-        /// <summary>
-        /// timezone that overrides location-based timezone of the resource
-        /// </summary>
-        [Input("customTimezone")]
-        public Input<string>? CustomTimezone { get; set; }
 
         /// <summary>
         /// description of the resource
@@ -736,6 +730,12 @@ namespace Splight.Splight
         /// </summary>
         [Input("temperatureCoeffResistance")]
         public Input<Inputs.LineTemperatureCoeffResistanceGetArgs>? TemperatureCoeffResistance { get; set; }
+
+        /// <summary>
+        /// timezone that overrides location-based timezone of the resource
+        /// </summary>
+        [Input("timezone")]
+        public Input<string>? Timezone { get; set; }
 
         [Input("voltageRs")]
         private InputList<Inputs.LineVoltageRGetArgs>? _voltageRs;

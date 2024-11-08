@@ -44,10 +44,6 @@ export class Bus extends pulumi.CustomResource {
     }
 
     /**
-     * timezone that overrides location-based timezone of the resource
-     */
-    public readonly customTimezone!: pulumi.Output<string | undefined>;
-    /**
      * description of the resource
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -71,6 +67,10 @@ export class Bus extends pulumi.CustomResource {
      * tags of the resource
      */
     public readonly tags!: pulumi.Output<outputs.BusTag[] | undefined>;
+    /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    public readonly timezone!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Bus resource with the given unique name, arguments, and options.
@@ -85,24 +85,24 @@ export class Bus extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BusState | undefined;
-            resourceInputs["customTimezone"] = state ? state.customTimezone : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["geometry"] = state ? state.geometry : undefined;
             resourceInputs["kinds"] = state ? state.kinds : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nominalVoltage"] = state ? state.nominalVoltage : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["timezone"] = state ? state.timezone : undefined;
         } else {
             const args = argsOrState as BusArgs | undefined;
             if ((!args || args.nominalVoltage === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nominalVoltage'");
             }
-            resourceInputs["customTimezone"] = args ? args.customTimezone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nominalVoltage"] = args ? args.nominalVoltage : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["kinds"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -114,10 +114,6 @@ export class Bus extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Bus resources.
  */
 export interface BusState {
-    /**
-     * timezone that overrides location-based timezone of the resource
-     */
-    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */
@@ -142,16 +138,16 @@ export interface BusState {
      * tags of the resource
      */
     tags?: pulumi.Input<pulumi.Input<inputs.BusTag>[]>;
+    /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    timezone?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Bus resource.
  */
 export interface BusArgs {
-    /**
-     * timezone that overrides location-based timezone of the resource
-     */
-    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */
@@ -172,4 +168,8 @@ export interface BusArgs {
      * tags of the resource
      */
     tags?: pulumi.Input<pulumi.Input<inputs.BusTag>[]>;
+    /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    timezone?: pulumi.Input<string>;
 }

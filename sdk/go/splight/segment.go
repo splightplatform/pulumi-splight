@@ -28,8 +28,6 @@ type Segment struct {
 	Azimuth SegmentAzimuthOutput `pulumi:"azimuth"`
 	// attribute of the resource
 	CumulativeDistance SegmentCumulativeDistanceOutput `pulumi:"cumulativeDistance"`
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone pulumi.StringPtrOutput `pulumi:"customTimezone"`
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// geo position and shape of the resource
@@ -42,6 +40,8 @@ type Segment struct {
 	Tags SegmentTagArrayOutput `pulumi:"tags"`
 	// attribute of the resource
 	Temperatures SegmentTemperatureArrayOutput `pulumi:"temperatures"`
+	// timezone that overrides location-based timezone of the resource
+	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 	// attribute of the resource
 	WindDirections SegmentWindDirectionArrayOutput `pulumi:"windDirections"`
 	// attribute of the resource
@@ -93,8 +93,6 @@ type segmentState struct {
 	Azimuth *SegmentAzimuth `pulumi:"azimuth"`
 	// attribute of the resource
 	CumulativeDistance *SegmentCumulativeDistance `pulumi:"cumulativeDistance"`
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -107,6 +105,8 @@ type segmentState struct {
 	Tags []SegmentTag `pulumi:"tags"`
 	// attribute of the resource
 	Temperatures []SegmentTemperature `pulumi:"temperatures"`
+	// timezone that overrides location-based timezone of the resource
+	Timezone *string `pulumi:"timezone"`
 	// attribute of the resource
 	WindDirections []SegmentWindDirection `pulumi:"windDirections"`
 	// attribute of the resource
@@ -120,8 +120,6 @@ type SegmentState struct {
 	Azimuth SegmentAzimuthPtrInput
 	// attribute of the resource
 	CumulativeDistance SegmentCumulativeDistancePtrInput
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -134,6 +132,8 @@ type SegmentState struct {
 	Tags SegmentTagArrayInput
 	// attribute of the resource
 	Temperatures SegmentTemperatureArrayInput
+	// timezone that overrides location-based timezone of the resource
+	Timezone pulumi.StringPtrInput
 	// attribute of the resource
 	WindDirections SegmentWindDirectionArrayInput
 	// attribute of the resource
@@ -151,8 +151,6 @@ type segmentArgs struct {
 	Azimuth SegmentAzimuth `pulumi:"azimuth"`
 	// attribute of the resource
 	CumulativeDistance SegmentCumulativeDistance `pulumi:"cumulativeDistance"`
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -161,6 +159,8 @@ type segmentArgs struct {
 	Name *string `pulumi:"name"`
 	// tags of the resource
 	Tags []SegmentTag `pulumi:"tags"`
+	// timezone that overrides location-based timezone of the resource
+	Timezone *string `pulumi:"timezone"`
 }
 
 // The set of arguments for constructing a Segment resource.
@@ -171,8 +171,6 @@ type SegmentArgs struct {
 	Azimuth SegmentAzimuthInput
 	// attribute of the resource
 	CumulativeDistance SegmentCumulativeDistanceInput
-	// timezone that overrides location-based timezone of the resource
-	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -181,6 +179,8 @@ type SegmentArgs struct {
 	Name pulumi.StringPtrInput
 	// tags of the resource
 	Tags SegmentTagArrayInput
+	// timezone that overrides location-based timezone of the resource
+	Timezone pulumi.StringPtrInput
 }
 
 func (SegmentArgs) ElementType() reflect.Type {
@@ -285,11 +285,6 @@ func (o SegmentOutput) CumulativeDistance() SegmentCumulativeDistanceOutput {
 	return o.ApplyT(func(v *Segment) SegmentCumulativeDistanceOutput { return v.CumulativeDistance }).(SegmentCumulativeDistanceOutput)
 }
 
-// timezone that overrides location-based timezone of the resource
-func (o SegmentOutput) CustomTimezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Segment) pulumi.StringPtrOutput { return v.CustomTimezone }).(pulumi.StringPtrOutput)
-}
-
 // description of the resource
 func (o SegmentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Segment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -318,6 +313,11 @@ func (o SegmentOutput) Tags() SegmentTagArrayOutput {
 // attribute of the resource
 func (o SegmentOutput) Temperatures() SegmentTemperatureArrayOutput {
 	return o.ApplyT(func(v *Segment) SegmentTemperatureArrayOutput { return v.Temperatures }).(SegmentTemperatureArrayOutput)
+}
+
+// timezone that overrides location-based timezone of the resource
+func (o SegmentOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Segment) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
 }
 
 // attribute of the resource

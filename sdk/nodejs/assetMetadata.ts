@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * const myAsset = new splight.Asset("myAsset", {
  *     description: "My Asset Description",
+ *     timezone: "America/Los_Angeles",
  *     geometry: JSON.stringify({
  *         type: "GeometryCollection",
  *         geometries: [{

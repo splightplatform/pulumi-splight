@@ -56,10 +56,6 @@ export class Segment extends pulumi.CustomResource {
      */
     public readonly cumulativeDistance!: pulumi.Output<outputs.SegmentCumulativeDistance>;
     /**
-     * timezone that overrides location-based timezone of the resource
-     */
-    public readonly customTimezone!: pulumi.Output<string | undefined>;
-    /**
      * description of the resource
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -83,6 +79,10 @@ export class Segment extends pulumi.CustomResource {
      * attribute of the resource
      */
     public /*out*/ readonly temperatures!: pulumi.Output<outputs.SegmentTemperature[]>;
+    /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    public readonly timezone!: pulumi.Output<string | undefined>;
     /**
      * attribute of the resource
      */
@@ -108,13 +108,13 @@ export class Segment extends pulumi.CustomResource {
             resourceInputs["altitude"] = state ? state.altitude : undefined;
             resourceInputs["azimuth"] = state ? state.azimuth : undefined;
             resourceInputs["cumulativeDistance"] = state ? state.cumulativeDistance : undefined;
-            resourceInputs["customTimezone"] = state ? state.customTimezone : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["geometry"] = state ? state.geometry : undefined;
             resourceInputs["kinds"] = state ? state.kinds : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["temperatures"] = state ? state.temperatures : undefined;
+            resourceInputs["timezone"] = state ? state.timezone : undefined;
             resourceInputs["windDirections"] = state ? state.windDirections : undefined;
             resourceInputs["windSpeeds"] = state ? state.windSpeeds : undefined;
         } else {
@@ -131,11 +131,11 @@ export class Segment extends pulumi.CustomResource {
             resourceInputs["altitude"] = args ? args.altitude : undefined;
             resourceInputs["azimuth"] = args ? args.azimuth : undefined;
             resourceInputs["cumulativeDistance"] = args ? args.cumulativeDistance : undefined;
-            resourceInputs["customTimezone"] = args ? args.customTimezone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["kinds"] = undefined /*out*/;
             resourceInputs["temperatures"] = undefined /*out*/;
             resourceInputs["windDirections"] = undefined /*out*/;
@@ -163,10 +163,6 @@ export interface SegmentState {
      */
     cumulativeDistance?: pulumi.Input<inputs.SegmentCumulativeDistance>;
     /**
-     * timezone that overrides location-based timezone of the resource
-     */
-    customTimezone?: pulumi.Input<string>;
-    /**
      * description of the resource
      */
     description?: pulumi.Input<string>;
@@ -190,6 +186,10 @@ export interface SegmentState {
      * attribute of the resource
      */
     temperatures?: pulumi.Input<pulumi.Input<inputs.SegmentTemperature>[]>;
+    /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    timezone?: pulumi.Input<string>;
     /**
      * attribute of the resource
      */
@@ -217,10 +217,6 @@ export interface SegmentArgs {
      */
     cumulativeDistance: pulumi.Input<inputs.SegmentCumulativeDistance>;
     /**
-     * timezone that overrides location-based timezone of the resource
-     */
-    customTimezone?: pulumi.Input<string>;
-    /**
      * description of the resource
      */
     description?: pulumi.Input<string>;
@@ -236,4 +232,8 @@ export interface SegmentArgs {
      * tags of the resource
      */
     tags?: pulumi.Input<pulumi.Input<inputs.SegmentTag>[]>;
+    /**
+     * timezone that overrides location-based timezone of the resource
+     */
+    timezone?: pulumi.Input<string>;
 }

@@ -896,6 +896,7 @@ class DashboardBargaugeChart(pulumi.CustomResource):
 
         asset_test = splight.Asset("assetTest",
             description="Created with Terraform",
+            timezone="America/Los_Angeles",
             geometry=json.dumps({
                 "type": "GeometryCollection",
                 "geometries": [],
@@ -1054,6 +1055,7 @@ class DashboardBargaugeChart(pulumi.CustomResource):
 
         asset_test = splight.Asset("assetTest",
             description="Created with Terraform",
+            timezone="America/Los_Angeles",
             geometry=json.dumps({
                 "type": "GeometryCollection",
                 "geometries": [],
