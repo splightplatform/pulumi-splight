@@ -34,7 +34,7 @@ class AssetArgs:
         :param pulumi.Input['AssetKindArgs'] kind: kind of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input['AssetTagArgs']]] tags: tags of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
+        :param pulumi.Input[str] timezone: timezone of the resource (overriden by the location if set)
         """
         pulumi.set(__self__, "geometry", geometry)
         if description is not None:
@@ -112,7 +112,7 @@ class AssetArgs:
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
-        timezone that overrides location-based timezone of the resource
+        timezone of the resource (overriden by the location if set)
         """
         return pulumi.get(self, "timezone")
 
@@ -137,7 +137,7 @@ class _AssetState:
         :param pulumi.Input['AssetKindArgs'] kind: kind of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input['AssetTagArgs']]] tags: tags of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
+        :param pulumi.Input[str] timezone: timezone of the resource (overriden by the location if set)
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -216,7 +216,7 @@ class _AssetState:
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
-        timezone that overrides location-based timezone of the resource
+        timezone of the resource (overriden by the location if set)
         """
         return pulumi.get(self, "timezone")
 
@@ -253,7 +253,7 @@ class Asset(pulumi.CustomResource):
         :param pulumi.Input[Union['AssetKindArgs', 'AssetKindArgsDict']] kind: kind of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['AssetTagArgs', 'AssetTagArgsDict']]]] tags: tags of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
+        :param pulumi.Input[str] timezone: timezone of the resource (overriden by the location if set)
         """
         ...
     @overload
@@ -336,7 +336,7 @@ class Asset(pulumi.CustomResource):
         :param pulumi.Input[Union['AssetKindArgs', 'AssetKindArgsDict']] kind: kind of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['AssetTagArgs', 'AssetTagArgsDict']]]] tags: tags of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
+        :param pulumi.Input[str] timezone: timezone of the resource (overriden by the location if set)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -394,7 +394,7 @@ class Asset(pulumi.CustomResource):
     @pulumi.getter
     def timezone(self) -> pulumi.Output[Optional[str]]:
         """
-        timezone that overrides location-based timezone of the resource
+        timezone of the resource (overriden by the location if set)
         """
         return pulumi.get(self, "timezone")
 

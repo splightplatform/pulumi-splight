@@ -64,7 +64,7 @@ export class Asset extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<outputs.AssetTag[] | undefined>;
     /**
-     * timezone that overrides location-based timezone of the resource
+     * timezone of the resource (overriden by the location if set)
      */
     public readonly timezone!: pulumi.Output<string | undefined>;
 
@@ -129,7 +129,7 @@ export interface AssetState {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.AssetTag>[]>;
     /**
-     * timezone that overrides location-based timezone of the resource
+     * timezone of the resource (overriden by the location if set)
      */
     timezone?: pulumi.Input<string>;
 }
@@ -159,7 +159,7 @@ export interface AssetArgs {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.AssetTag>[]>;
     /**
-     * timezone that overrides location-based timezone of the resource
+     * timezone of the resource (overriden by the location if set)
      */
     timezone?: pulumi.Input<string>;
 }

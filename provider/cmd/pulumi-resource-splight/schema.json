@@ -5831,7 +5831,7 @@
                 },
                 "timezone": {
                     "type": "string",
-                    "description": "timezone that overrides location-based timezone of the resource\n"
+                    "description": "timezone of the resource (overriden by the location if set)\n"
                 }
             },
             "required": [
@@ -5865,7 +5865,7 @@
                 },
                 "timezone": {
                     "type": "string",
-                    "description": "timezone that overrides location-based timezone of the resource\n"
+                    "description": "timezone of the resource (overriden by the location if set)\n"
                 }
             },
             "requiredInputs": [
@@ -5900,7 +5900,7 @@
                     },
                     "timezone": {
                         "type": "string",
-                        "description": "timezone that overrides location-based timezone of the resource\n"
+                        "description": "timezone of the resource (overriden by the location if set)\n"
                     }
                 },
                 "type": "object"
