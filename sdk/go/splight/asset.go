@@ -32,7 +32,7 @@ type Asset struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// tags of the resource
 	Tags AssetTagArrayOutput `pulumi:"tags"`
-	// timezone that overrides location-based timezone of the resource
+	// timezone of the resource (overriden by the location if set)
 	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 }
 
@@ -79,7 +79,7 @@ type assetState struct {
 	Name *string `pulumi:"name"`
 	// tags of the resource
 	Tags []AssetTag `pulumi:"tags"`
-	// timezone that overrides location-based timezone of the resource
+	// timezone of the resource (overriden by the location if set)
 	Timezone *string `pulumi:"timezone"`
 }
 
@@ -94,7 +94,7 @@ type AssetState struct {
 	Name pulumi.StringPtrInput
 	// tags of the resource
 	Tags AssetTagArrayInput
-	// timezone that overrides location-based timezone of the resource
+	// timezone of the resource (overriden by the location if set)
 	Timezone pulumi.StringPtrInput
 }
 
@@ -113,7 +113,7 @@ type assetArgs struct {
 	Name *string `pulumi:"name"`
 	// tags of the resource
 	Tags []AssetTag `pulumi:"tags"`
-	// timezone that overrides location-based timezone of the resource
+	// timezone of the resource (overriden by the location if set)
 	Timezone *string `pulumi:"timezone"`
 }
 
@@ -129,7 +129,7 @@ type AssetArgs struct {
 	Name pulumi.StringPtrInput
 	// tags of the resource
 	Tags AssetTagArrayInput
-	// timezone that overrides location-based timezone of the resource
+	// timezone of the resource (overriden by the location if set)
 	Timezone pulumi.StringPtrInput
 }
 
@@ -245,7 +245,7 @@ func (o AssetOutput) Tags() AssetTagArrayOutput {
 	return o.ApplyT(func(v *Asset) AssetTagArrayOutput { return v.Tags }).(AssetTagArrayOutput)
 }
 
-// timezone that overrides location-based timezone of the resource
+// timezone of the resource (overriden by the location if set)
 func (o AssetOutput) Timezone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
 }

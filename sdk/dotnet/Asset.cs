@@ -53,7 +53,7 @@ namespace Splight.Splight
         public Output<ImmutableArray<Outputs.AssetTag>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
+        /// timezone of the resource (overriden by the location if set)
         /// </summary>
         [Output("timezone")]
         public Output<string?> Timezone { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Splight.Splight
         }
 
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
+        /// timezone of the resource (overriden by the location if set)
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
@@ -192,7 +192,7 @@ namespace Splight.Splight
         }
 
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
+        /// timezone of the resource (overriden by the location if set)
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
