@@ -299,6 +299,16 @@ export interface CommandActionAsset {
     name: string;
 }
 
+export interface ComponentInput {
+    description?: string;
+    multiple?: boolean;
+    name: string;
+    required?: boolean;
+    sensitive?: boolean;
+    type: string;
+    value?: string;
+}
+
 export interface ComponentRoutineConfig {
     description?: string;
     multiple?: boolean;
@@ -337,6 +347,17 @@ export interface ComponentRoutineOutput {
 export interface ComponentRoutineOutputValue {
     asset: string;
     attribute: string;
+}
+
+export interface ComponentTag {
+    /**
+     * tag id
+     */
+    id: string;
+    /**
+     * tag name
+     */
+    name: string;
 }
 
 export interface ConnectorInput {

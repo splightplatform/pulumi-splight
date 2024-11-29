@@ -50,6 +50,11 @@ export type Command = import("./command").Command;
 export const Command: typeof import("./command").Command = null as any;
 utilities.lazyLoad(exports, ["Command"], () => require("./command"));
 
+export { ComponentArgs, ComponentState } from "./component";
+export type Component = import("./component").Component;
+export const Component: typeof import("./component").Component = null as any;
+utilities.lazyLoad(exports, ["Component"], () => require("./component"));
+
 export { ComponentRoutineArgs, ComponentRoutineState } from "./componentRoutine";
 export type ComponentRoutine = import("./componentRoutine").ComponentRoutine;
 export const ComponentRoutine: typeof import("./componentRoutine").ComponentRoutine = null as any;
@@ -277,6 +282,8 @@ const _module = {
                 return new Bus(name, <any>undefined, { urn })
             case "splight:index/command:Command":
                 return new Command(name, <any>undefined, { urn })
+            case "splight:index/component:Component":
+                return new Component(name, <any>undefined, { urn })
             case "splight:index/componentRoutine:ComponentRoutine":
                 return new ComponentRoutine(name, <any>undefined, { urn })
             case "splight:index/connector:Connector":
@@ -355,6 +362,7 @@ pulumi.runtime.registerResourceModule("splight", "index/assetMetadata", _module)
 pulumi.runtime.registerResourceModule("splight", "index/assetRelation", _module)
 pulumi.runtime.registerResourceModule("splight", "index/bus", _module)
 pulumi.runtime.registerResourceModule("splight", "index/command", _module)
+pulumi.runtime.registerResourceModule("splight", "index/component", _module)
 pulumi.runtime.registerResourceModule("splight", "index/componentRoutine", _module)
 pulumi.runtime.registerResourceModule("splight", "index/connector", _module)
 pulumi.runtime.registerResourceModule("splight", "index/dashboard", _module)

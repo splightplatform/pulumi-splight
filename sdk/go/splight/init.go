@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Bus{}
 	case "splight:index/command:Command":
 		r = &Command{}
+	case "splight:index/component:Component":
+		r = &Component{}
 	case "splight:index/componentRoutine:ComponentRoutine":
 		r = &ComponentRoutine{}
 	case "splight:index/connector:Connector":
@@ -177,6 +179,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"splight",
 		"index/command",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/component",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

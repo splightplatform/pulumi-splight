@@ -2567,6 +2567,136 @@ func (o CommandActionAssetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CommandActionAsset) string { return v.Name }).(pulumi.StringOutput)
 }
 
+type ComponentInputType struct {
+	Description *string `pulumi:"description"`
+	Multiple    *bool   `pulumi:"multiple"`
+	Name        string  `pulumi:"name"`
+	Required    *bool   `pulumi:"required"`
+	Sensitive   *bool   `pulumi:"sensitive"`
+	Type        string  `pulumi:"type"`
+	Value       *string `pulumi:"value"`
+}
+
+// ComponentInputTypeInput is an input type that accepts ComponentInputTypeArgs and ComponentInputTypeOutput values.
+// You can construct a concrete instance of `ComponentInputTypeInput` via:
+//
+//	ComponentInputTypeArgs{...}
+type ComponentInputTypeInput interface {
+	pulumi.Input
+
+	ToComponentInputTypeOutput() ComponentInputTypeOutput
+	ToComponentInputTypeOutputWithContext(context.Context) ComponentInputTypeOutput
+}
+
+type ComponentInputTypeArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Multiple    pulumi.BoolPtrInput   `pulumi:"multiple"`
+	Name        pulumi.StringInput    `pulumi:"name"`
+	Required    pulumi.BoolPtrInput   `pulumi:"required"`
+	Sensitive   pulumi.BoolPtrInput   `pulumi:"sensitive"`
+	Type        pulumi.StringInput    `pulumi:"type"`
+	Value       pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ComponentInputTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComponentInputType)(nil)).Elem()
+}
+
+func (i ComponentInputTypeArgs) ToComponentInputTypeOutput() ComponentInputTypeOutput {
+	return i.ToComponentInputTypeOutputWithContext(context.Background())
+}
+
+func (i ComponentInputTypeArgs) ToComponentInputTypeOutputWithContext(ctx context.Context) ComponentInputTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComponentInputTypeOutput)
+}
+
+// ComponentInputTypeArrayInput is an input type that accepts ComponentInputTypeArray and ComponentInputTypeArrayOutput values.
+// You can construct a concrete instance of `ComponentInputTypeArrayInput` via:
+//
+//	ComponentInputTypeArray{ ComponentInputTypeArgs{...} }
+type ComponentInputTypeArrayInput interface {
+	pulumi.Input
+
+	ToComponentInputTypeArrayOutput() ComponentInputTypeArrayOutput
+	ToComponentInputTypeArrayOutputWithContext(context.Context) ComponentInputTypeArrayOutput
+}
+
+type ComponentInputTypeArray []ComponentInputTypeInput
+
+func (ComponentInputTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComponentInputType)(nil)).Elem()
+}
+
+func (i ComponentInputTypeArray) ToComponentInputTypeArrayOutput() ComponentInputTypeArrayOutput {
+	return i.ToComponentInputTypeArrayOutputWithContext(context.Background())
+}
+
+func (i ComponentInputTypeArray) ToComponentInputTypeArrayOutputWithContext(ctx context.Context) ComponentInputTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComponentInputTypeArrayOutput)
+}
+
+type ComponentInputTypeOutput struct{ *pulumi.OutputState }
+
+func (ComponentInputTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComponentInputType)(nil)).Elem()
+}
+
+func (o ComponentInputTypeOutput) ToComponentInputTypeOutput() ComponentInputTypeOutput {
+	return o
+}
+
+func (o ComponentInputTypeOutput) ToComponentInputTypeOutputWithContext(ctx context.Context) ComponentInputTypeOutput {
+	return o
+}
+
+func (o ComponentInputTypeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComponentInputType) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ComponentInputTypeOutput) Multiple() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ComponentInputType) *bool { return v.Multiple }).(pulumi.BoolPtrOutput)
+}
+
+func (o ComponentInputTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ComponentInputType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ComponentInputTypeOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ComponentInputType) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+func (o ComponentInputTypeOutput) Sensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ComponentInputType) *bool { return v.Sensitive }).(pulumi.BoolPtrOutput)
+}
+
+func (o ComponentInputTypeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ComponentInputType) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o ComponentInputTypeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComponentInputType) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ComponentInputTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (ComponentInputTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComponentInputType)(nil)).Elem()
+}
+
+func (o ComponentInputTypeArrayOutput) ToComponentInputTypeArrayOutput() ComponentInputTypeArrayOutput {
+	return o
+}
+
+func (o ComponentInputTypeArrayOutput) ToComponentInputTypeArrayOutputWithContext(ctx context.Context) ComponentInputTypeArrayOutput {
+	return o
+}
+
+func (o ComponentInputTypeArrayOutput) Index(i pulumi.IntInput) ComponentInputTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComponentInputType {
+		return vs[0].([]ComponentInputType)[vs[1].(int)]
+	}).(ComponentInputTypeOutput)
+}
+
 type ComponentRoutineConfig struct {
 	Description *string `pulumi:"description"`
 	Multiple    *bool   `pulumi:"multiple"`
@@ -3155,6 +3285,112 @@ func (o ComponentRoutineOutputValueArrayOutput) Index(i pulumi.IntInput) Compone
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComponentRoutineOutputValue {
 		return vs[0].([]ComponentRoutineOutputValue)[vs[1].(int)]
 	}).(ComponentRoutineOutputValueOutput)
+}
+
+type ComponentTag struct {
+	// tag id
+	Id string `pulumi:"id"`
+	// tag name
+	Name string `pulumi:"name"`
+}
+
+// ComponentTagInput is an input type that accepts ComponentTagArgs and ComponentTagOutput values.
+// You can construct a concrete instance of `ComponentTagInput` via:
+//
+//	ComponentTagArgs{...}
+type ComponentTagInput interface {
+	pulumi.Input
+
+	ToComponentTagOutput() ComponentTagOutput
+	ToComponentTagOutputWithContext(context.Context) ComponentTagOutput
+}
+
+type ComponentTagArgs struct {
+	// tag id
+	Id pulumi.StringInput `pulumi:"id"`
+	// tag name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ComponentTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComponentTag)(nil)).Elem()
+}
+
+func (i ComponentTagArgs) ToComponentTagOutput() ComponentTagOutput {
+	return i.ToComponentTagOutputWithContext(context.Background())
+}
+
+func (i ComponentTagArgs) ToComponentTagOutputWithContext(ctx context.Context) ComponentTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComponentTagOutput)
+}
+
+// ComponentTagArrayInput is an input type that accepts ComponentTagArray and ComponentTagArrayOutput values.
+// You can construct a concrete instance of `ComponentTagArrayInput` via:
+//
+//	ComponentTagArray{ ComponentTagArgs{...} }
+type ComponentTagArrayInput interface {
+	pulumi.Input
+
+	ToComponentTagArrayOutput() ComponentTagArrayOutput
+	ToComponentTagArrayOutputWithContext(context.Context) ComponentTagArrayOutput
+}
+
+type ComponentTagArray []ComponentTagInput
+
+func (ComponentTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComponentTag)(nil)).Elem()
+}
+
+func (i ComponentTagArray) ToComponentTagArrayOutput() ComponentTagArrayOutput {
+	return i.ToComponentTagArrayOutputWithContext(context.Background())
+}
+
+func (i ComponentTagArray) ToComponentTagArrayOutputWithContext(ctx context.Context) ComponentTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComponentTagArrayOutput)
+}
+
+type ComponentTagOutput struct{ *pulumi.OutputState }
+
+func (ComponentTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComponentTag)(nil)).Elem()
+}
+
+func (o ComponentTagOutput) ToComponentTagOutput() ComponentTagOutput {
+	return o
+}
+
+func (o ComponentTagOutput) ToComponentTagOutputWithContext(ctx context.Context) ComponentTagOutput {
+	return o
+}
+
+// tag id
+func (o ComponentTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ComponentTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// tag name
+func (o ComponentTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ComponentTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ComponentTagArrayOutput struct{ *pulumi.OutputState }
+
+func (ComponentTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComponentTag)(nil)).Elem()
+}
+
+func (o ComponentTagArrayOutput) ToComponentTagArrayOutput() ComponentTagArrayOutput {
+	return o
+}
+
+func (o ComponentTagArrayOutput) ToComponentTagArrayOutputWithContext(ctx context.Context) ComponentTagArrayOutput {
+	return o
+}
+
+func (o ComponentTagArrayOutput) Index(i pulumi.IntInput) ComponentTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComponentTag {
+		return vs[0].([]ComponentTag)[vs[1].(int)]
+	}).(ComponentTagOutput)
 }
 
 type ConnectorInputType struct {
@@ -24082,6 +24318,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CommandActionInput)(nil)).Elem(), CommandActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CommandActionArrayInput)(nil)).Elem(), CommandActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CommandActionAssetInput)(nil)).Elem(), CommandActionAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComponentInputTypeInput)(nil)).Elem(), ComponentInputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComponentInputTypeArrayInput)(nil)).Elem(), ComponentInputTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineConfigInput)(nil)).Elem(), ComponentRoutineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineConfigArrayInput)(nil)).Elem(), ComponentRoutineConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineInputTypeInput)(nil)).Elem(), ComponentRoutineInputTypeArgs{})
@@ -24092,6 +24330,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineOutputTypeArrayInput)(nil)).Elem(), ComponentRoutineOutputTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineOutputValueInput)(nil)).Elem(), ComponentRoutineOutputValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentRoutineOutputValueArrayInput)(nil)).Elem(), ComponentRoutineOutputValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComponentTagInput)(nil)).Elem(), ComponentTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComponentTagArrayInput)(nil)).Elem(), ComponentTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorInputTypeInput)(nil)).Elem(), ConnectorInputTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorInputTypeArrayInput)(nil)).Elem(), ConnectorInputTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorTagInput)(nil)).Elem(), ConnectorTagArgs{})
@@ -24416,6 +24656,8 @@ func init() {
 	pulumi.RegisterOutputType(CommandActionOutput{})
 	pulumi.RegisterOutputType(CommandActionArrayOutput{})
 	pulumi.RegisterOutputType(CommandActionAssetOutput{})
+	pulumi.RegisterOutputType(ComponentInputTypeOutput{})
+	pulumi.RegisterOutputType(ComponentInputTypeArrayOutput{})
 	pulumi.RegisterOutputType(ComponentRoutineConfigOutput{})
 	pulumi.RegisterOutputType(ComponentRoutineConfigArrayOutput{})
 	pulumi.RegisterOutputType(ComponentRoutineInputTypeOutput{})
@@ -24426,6 +24668,8 @@ func init() {
 	pulumi.RegisterOutputType(ComponentRoutineOutputTypeArrayOutput{})
 	pulumi.RegisterOutputType(ComponentRoutineOutputValueOutput{})
 	pulumi.RegisterOutputType(ComponentRoutineOutputValueArrayOutput{})
+	pulumi.RegisterOutputType(ComponentTagOutput{})
+	pulumi.RegisterOutputType(ComponentTagArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorInputTypeOutput{})
 	pulumi.RegisterOutputType(ConnectorInputTypeArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorTagOutput{})

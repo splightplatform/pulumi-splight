@@ -37,11 +37,13 @@ __all__ = [
     'BusTag',
     'CommandAction',
     'CommandActionAsset',
+    'ComponentInput',
     'ComponentRoutineConfig',
     'ComponentRoutineInput',
     'ComponentRoutineInputValue',
     'ComponentRoutineOutput',
     'ComponentRoutineOutputValue',
+    'ComponentTag',
     'ConnectorInput',
     'ConnectorTag',
     'DashboardActionlistChartChartItem',
@@ -1077,6 +1079,65 @@ class CommandActionAsset(dict):
 
 
 @pulumi.output_type
+class ComponentInput(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 type: str,
+                 description: Optional[str] = None,
+                 multiple: Optional[bool] = None,
+                 required: Optional[bool] = None,
+                 sensitive: Optional[bool] = None,
+                 value: Optional[str] = None):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if multiple is not None:
+            pulumi.set(__self__, "multiple", multiple)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if sensitive is not None:
+            pulumi.set(__self__, "sensitive", sensitive)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def multiple(self) -> Optional[bool]:
+        return pulumi.get(self, "multiple")
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[bool]:
+        return pulumi.get(self, "required")
+
+    @property
+    @pulumi.getter
+    def sensitive(self) -> Optional[bool]:
+        return pulumi.get(self, "sensitive")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class ComponentRoutineConfig(dict):
     def __init__(__self__, *,
                  name: str,
@@ -1323,6 +1384,35 @@ class ComponentRoutineOutputValue(dict):
     @pulumi.getter
     def attribute(self) -> str:
         return pulumi.get(self, "attribute")
+
+
+@pulumi.output_type
+class ComponentTag(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: tag id
+        :param str name: tag name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        tag name
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

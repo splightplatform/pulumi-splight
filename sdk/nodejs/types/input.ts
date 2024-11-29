@@ -299,6 +299,16 @@ export interface CommandActionAsset {
     name: pulumi.Input<string>;
 }
 
+export interface ComponentInput {
+    description?: pulumi.Input<string>;
+    multiple?: pulumi.Input<boolean>;
+    name: pulumi.Input<string>;
+    required?: pulumi.Input<boolean>;
+    sensitive?: pulumi.Input<boolean>;
+    type: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
 export interface ComponentRoutineConfig {
     description?: pulumi.Input<string>;
     multiple?: pulumi.Input<boolean>;
@@ -337,6 +347,17 @@ export interface ComponentRoutineOutput {
 export interface ComponentRoutineOutputValue {
     asset: pulumi.Input<string>;
     attribute: pulumi.Input<string>;
+}
+
+export interface ComponentTag {
+    /**
+     * tag id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * tag name
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface ConnectorInput {
