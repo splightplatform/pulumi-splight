@@ -1,6 +1,6 @@
 {
   "resource": true,
   "name": "splight",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "server": "github://api.github.com/splightplatform"
 }
