@@ -126,6 +126,18 @@
                     }
                 }
             },
+            "splight_component": {
+                "current": "splight:index/component:Component",
+                "majorVersion": 1,
+                "fields": {
+                    "input": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "splight_component_routine": {
                 "current": "splight:index/componentRoutine:ComponentRoutine",
                 "majorVersion": 1,

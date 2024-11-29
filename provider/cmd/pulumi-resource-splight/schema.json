@@ -561,6 +561,36 @@
                 "name"
             ]
         },
+        "splight:index/ComponentInput:ComponentInput": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "multiple": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "sensitive": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "type"
+            ]
+        },
         "splight:index/ComponentRoutineConfig:ComponentRoutineConfig": {
             "properties": {
                 "description": {
@@ -685,6 +715,23 @@
             "required": [
                 "asset",
                 "attribute"
+            ]
+        },
+        "splight:index/ComponentTag:ComponentTag": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "tag id\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "tag name\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
             ]
         },
         "splight:index/ConnectorInput:ConnectorInput": {
@@ -6328,6 +6375,152 @@
                     "name": {
                         "type": "string",
                         "description": "the name of the command to be created\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/component:Component": {
+            "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/component:Component [options] splight_component.\u003cname\u003e \u003ccomponent_id\u003e\n```\n\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "optional description to add details of the resource\n"
+                },
+                "inputs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ComponentInput:ComponentInput"
+                    },
+                    "description": "static config parameters of the routine\n"
+                },
+                "logLevel": {
+                    "type": "string",
+                    "description": "log level of the component\n"
+                },
+                "machineInstanceSize": {
+                    "type": "string",
+                    "description": "instance size\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "the name of the component to be created\n"
+                },
+                "node": {
+                    "type": "string",
+                    "description": "id of the compute node where the component runs\n"
+                },
+                "restartPolicy": {
+                    "type": "string",
+                    "description": "restart policy of the component\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ComponentTag:ComponentTag"
+                    },
+                    "description": "tags of the resource\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "[NAME-VERSION] the version of the hub component\n"
+                }
+            },
+            "required": [
+                "name",
+                "version"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "optional description to add details of the resource\n"
+                },
+                "inputs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ComponentInput:ComponentInput"
+                    },
+                    "description": "static config parameters of the routine\n"
+                },
+                "logLevel": {
+                    "type": "string",
+                    "description": "log level of the component\n"
+                },
+                "machineInstanceSize": {
+                    "type": "string",
+                    "description": "instance size\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "the name of the component to be created\n"
+                },
+                "node": {
+                    "type": "string",
+                    "description": "id of the compute node where the component runs\n"
+                },
+                "restartPolicy": {
+                    "type": "string",
+                    "description": "restart policy of the component\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/ComponentTag:ComponentTag"
+                    },
+                    "description": "tags of the resource\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "[NAME-VERSION] the version of the hub component\n"
+                }
+            },
+            "requiredInputs": [
+                "version"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Component resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "optional description to add details of the resource\n"
+                    },
+                    "inputs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/ComponentInput:ComponentInput"
+                        },
+                        "description": "static config parameters of the routine\n"
+                    },
+                    "logLevel": {
+                        "type": "string",
+                        "description": "log level of the component\n"
+                    },
+                    "machineInstanceSize": {
+                        "type": "string",
+                        "description": "instance size\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "the name of the component to be created\n"
+                    },
+                    "node": {
+                        "type": "string",
+                        "description": "id of the compute node where the component runs\n"
+                    },
+                    "restartPolicy": {
+                        "type": "string",
+                        "description": "restart policy of the component\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/ComponentTag:ComponentTag"
+                        },
+                        "description": "tags of the resource\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "[NAME-VERSION] the version of the hub component\n"
                     }
                 },
                 "type": "object"

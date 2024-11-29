@@ -14,6 +14,7 @@ from .asset_metadata import *
 from .asset_relation import *
 from .bus import *
 from .command import *
+from .component import *
 from .component_routine import *
 from .connector import *
 from .dashboard import *
@@ -136,6 +137,14 @@ _utilities.register(
   "fqn": "pulumi_splight",
   "classes": {
    "splight:index/command:Command": "Command"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/component",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/component:Component": "Component"
   }
  },
  {
