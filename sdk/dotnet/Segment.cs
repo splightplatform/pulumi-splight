@@ -65,6 +65,24 @@ namespace Splight.Splight
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Output("referenceSag")]
+        public Output<Outputs.SegmentReferenceSag> ReferenceSag { get; private set; } = null!;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Output("referenceTemperature")]
+        public Output<Outputs.SegmentReferenceTemperature> ReferenceTemperature { get; private set; } = null!;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Output("spanLength")]
+        public Output<Outputs.SegmentSpanLength> SpanLength { get; private set; } = null!;
+
+        /// <summary>
         /// tags of the resource
         /// </summary>
         [Output("tags")]
@@ -177,6 +195,24 @@ namespace Splight.Splight
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Input("referenceSag", required: true)]
+        public Input<Inputs.SegmentReferenceSagArgs> ReferenceSag { get; set; } = null!;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Input("referenceTemperature", required: true)]
+        public Input<Inputs.SegmentReferenceTemperatureArgs> ReferenceTemperature { get; set; } = null!;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Input("spanLength", required: true)]
+        public Input<Inputs.SegmentSpanLengthArgs> SpanLength { get; set; } = null!;
+
         [Input("tags")]
         private InputList<Inputs.SegmentTagArgs>? _tags;
 
@@ -250,6 +286,24 @@ namespace Splight.Splight
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Input("referenceSag")]
+        public Input<Inputs.SegmentReferenceSagGetArgs>? ReferenceSag { get; set; }
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Input("referenceTemperature")]
+        public Input<Inputs.SegmentReferenceTemperatureGetArgs>? ReferenceTemperature { get; set; }
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Input("spanLength")]
+        public Input<Inputs.SegmentSpanLengthGetArgs>? SpanLength { get; set; }
 
         [Input("tags")]
         private InputList<Inputs.SegmentTagGetArgs>? _tags;

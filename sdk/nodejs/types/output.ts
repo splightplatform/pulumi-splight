@@ -224,6 +224,29 @@ export interface AssetTag {
     name: string;
 }
 
+export interface BusActivePower {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
 export interface BusKind {
     /**
      * kind id
@@ -235,7 +258,7 @@ export interface BusKind {
     name: string;
 }
 
-export interface BusNominalVoltage {
+export interface BusNominalVoltageKv {
     /**
      * reference to the asset to be linked to
      */
@@ -260,6 +283,29 @@ export interface BusNominalVoltage {
      * metadata value
      */
     value: string;
+}
+
+export interface BusReactivePower {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
 }
 
 export interface BusTag {
@@ -1458,7 +1504,53 @@ export interface GeneratorKind {
     name: string;
 }
 
+export interface GeneratorMonthlyEnergy {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
 export interface GeneratorReactivePower {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface GeneratorSwitchStatus {
     /**
      * reference to the asset to be linked to
      */
@@ -1818,6 +1910,29 @@ export interface InverterSerialNumber {
     value: string;
 }
 
+export interface InverterSwitchStatus {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
 export interface InverterTag {
     /**
      * tag id
@@ -2003,6 +2118,60 @@ export interface LineCapacitance {
 }
 
 export interface LineConductance {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineConductorMass {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineContingency {
     /**
      * reference to the asset to be linked to
      */
@@ -2529,7 +2698,88 @@ export interface LineSafetyMarginForPower {
     value: string;
 }
 
+export interface LineSpecificHeat {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
 export interface LineSusceptance {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineSwitchStatusEnd {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineSwitchStatusStart {
     /**
      * reference to the asset to be linked to
      */
@@ -2586,6 +2836,33 @@ export interface LineTemperatureCoeffResistance {
     type: string;
     /**
      * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface LineThermalElongationCoef {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit
      */
     unit: string;
     /**
@@ -2755,6 +3032,87 @@ export interface SegmentKind {
     name: string;
 }
 
+export interface SegmentReferenceSag {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface SegmentReferenceTemperature {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface SegmentSpanLength {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
 export interface SegmentTag {
     /**
      * tag id
@@ -2879,6 +3237,60 @@ export interface SlackLineKind {
     name: string;
 }
 
+export interface SlackLineSwitchStatusEnd {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface SlackLineSwitchStatusStart {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
 export interface SlackLineTag {
     /**
      * tag id
@@ -2888,5 +3300,596 @@ export interface SlackLineTag {
      * tag name
      */
     name: string;
+}
+
+export interface TransformerActivePowerHv {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface TransformerActivePowerLoss {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface TransformerActivePowerLv {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface TransformerCapacitance {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface TransformerConductance {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface TransformerContingency {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface TransformerCurrentHv {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface TransformerCurrentLv {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface TransformerKind {
+    /**
+     * kind id
+     */
+    id: string;
+    /**
+     * kind name
+     */
+    name: string;
+}
+
+export interface TransformerMaximumAllowedCurrent {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface TransformerMaximumAllowedPower {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface TransformerReactance {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface TransformerReactivePowerHv {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface TransformerReactivePowerLoss {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface TransformerReactivePowerLv {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface TransformerResistance {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface TransformerSafetyMarginForPower {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface TransformerStandardType {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface TransformerSwitchStatusHv {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface TransformerSwitchStatusLv {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface TransformerTag {
+    /**
+     * tag id
+     */
+    id: string;
+    /**
+     * tag name
+     */
+    name: string;
+}
+
+export interface TransformerTapPos {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
+}
+
+export interface TransformerVoltageHv {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface TransformerVoltageLv {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+}
+
+export interface TransformerXnOhm {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset: string;
+    /**
+     * id of the resource
+     */
+    id: string;
+    /**
+     * name of the resource
+     */
+    name: string;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type: string;
+    /**
+     * unit of measure
+     */
+    unit: string;
+    /**
+     * metadata value
+     */
+    value: string;
 }
 

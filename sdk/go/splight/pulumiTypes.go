@@ -1947,6 +1947,139 @@ func (o AssetTagArrayOutput) Index(i pulumi.IntInput) AssetTagOutput {
 	}).(AssetTagOutput)
 }
 
+type BusActivePower struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// BusActivePowerInput is an input type that accepts BusActivePowerArgs and BusActivePowerOutput values.
+// You can construct a concrete instance of `BusActivePowerInput` via:
+//
+//	BusActivePowerArgs{...}
+type BusActivePowerInput interface {
+	pulumi.Input
+
+	ToBusActivePowerOutput() BusActivePowerOutput
+	ToBusActivePowerOutputWithContext(context.Context) BusActivePowerOutput
+}
+
+type BusActivePowerArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (BusActivePowerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BusActivePower)(nil)).Elem()
+}
+
+func (i BusActivePowerArgs) ToBusActivePowerOutput() BusActivePowerOutput {
+	return i.ToBusActivePowerOutputWithContext(context.Background())
+}
+
+func (i BusActivePowerArgs) ToBusActivePowerOutputWithContext(ctx context.Context) BusActivePowerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BusActivePowerOutput)
+}
+
+// BusActivePowerArrayInput is an input type that accepts BusActivePowerArray and BusActivePowerArrayOutput values.
+// You can construct a concrete instance of `BusActivePowerArrayInput` via:
+//
+//	BusActivePowerArray{ BusActivePowerArgs{...} }
+type BusActivePowerArrayInput interface {
+	pulumi.Input
+
+	ToBusActivePowerArrayOutput() BusActivePowerArrayOutput
+	ToBusActivePowerArrayOutputWithContext(context.Context) BusActivePowerArrayOutput
+}
+
+type BusActivePowerArray []BusActivePowerInput
+
+func (BusActivePowerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BusActivePower)(nil)).Elem()
+}
+
+func (i BusActivePowerArray) ToBusActivePowerArrayOutput() BusActivePowerArrayOutput {
+	return i.ToBusActivePowerArrayOutputWithContext(context.Background())
+}
+
+func (i BusActivePowerArray) ToBusActivePowerArrayOutputWithContext(ctx context.Context) BusActivePowerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BusActivePowerArrayOutput)
+}
+
+type BusActivePowerOutput struct{ *pulumi.OutputState }
+
+func (BusActivePowerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BusActivePower)(nil)).Elem()
+}
+
+func (o BusActivePowerOutput) ToBusActivePowerOutput() BusActivePowerOutput {
+	return o
+}
+
+func (o BusActivePowerOutput) ToBusActivePowerOutputWithContext(ctx context.Context) BusActivePowerOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o BusActivePowerOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BusActivePower) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o BusActivePowerOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BusActivePower) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o BusActivePowerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BusActivePower) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o BusActivePowerOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BusActivePower) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o BusActivePowerOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BusActivePower) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type BusActivePowerArrayOutput struct{ *pulumi.OutputState }
+
+func (BusActivePowerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BusActivePower)(nil)).Elem()
+}
+
+func (o BusActivePowerArrayOutput) ToBusActivePowerArrayOutput() BusActivePowerArrayOutput {
+	return o
+}
+
+func (o BusActivePowerArrayOutput) ToBusActivePowerArrayOutputWithContext(ctx context.Context) BusActivePowerArrayOutput {
+	return o
+}
+
+func (o BusActivePowerArrayOutput) Index(i pulumi.IntInput) BusActivePowerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BusActivePower {
+		return vs[0].([]BusActivePower)[vs[1].(int)]
+	}).(BusActivePowerOutput)
+}
+
 type BusKind struct {
 	// kind id
 	Id string `pulumi:"id"`
@@ -2053,7 +2186,7 @@ func (o BusKindArrayOutput) Index(i pulumi.IntInput) BusKindOutput {
 	}).(BusKindOutput)
 }
 
-type BusNominalVoltage struct {
+type BusNominalVoltageKv struct {
 	// reference to the asset to be linked to
 	Asset *string `pulumi:"asset"`
 	// id of the resource
@@ -2068,18 +2201,18 @@ type BusNominalVoltage struct {
 	Value string `pulumi:"value"`
 }
 
-// BusNominalVoltageInput is an input type that accepts BusNominalVoltageArgs and BusNominalVoltageOutput values.
-// You can construct a concrete instance of `BusNominalVoltageInput` via:
+// BusNominalVoltageKvInput is an input type that accepts BusNominalVoltageKvArgs and BusNominalVoltageKvOutput values.
+// You can construct a concrete instance of `BusNominalVoltageKvInput` via:
 //
-//	BusNominalVoltageArgs{...}
-type BusNominalVoltageInput interface {
+//	BusNominalVoltageKvArgs{...}
+type BusNominalVoltageKvInput interface {
 	pulumi.Input
 
-	ToBusNominalVoltageOutput() BusNominalVoltageOutput
-	ToBusNominalVoltageOutputWithContext(context.Context) BusNominalVoltageOutput
+	ToBusNominalVoltageKvOutput() BusNominalVoltageKvOutput
+	ToBusNominalVoltageKvOutputWithContext(context.Context) BusNominalVoltageKvOutput
 }
 
-type BusNominalVoltageArgs struct {
+type BusNominalVoltageKvArgs struct {
 	// reference to the asset to be linked to
 	Asset pulumi.StringPtrInput `pulumi:"asset"`
 	// id of the resource
@@ -2094,140 +2227,140 @@ type BusNominalVoltageArgs struct {
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
-func (BusNominalVoltageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BusNominalVoltage)(nil)).Elem()
+func (BusNominalVoltageKvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BusNominalVoltageKv)(nil)).Elem()
 }
 
-func (i BusNominalVoltageArgs) ToBusNominalVoltageOutput() BusNominalVoltageOutput {
-	return i.ToBusNominalVoltageOutputWithContext(context.Background())
+func (i BusNominalVoltageKvArgs) ToBusNominalVoltageKvOutput() BusNominalVoltageKvOutput {
+	return i.ToBusNominalVoltageKvOutputWithContext(context.Background())
 }
 
-func (i BusNominalVoltageArgs) ToBusNominalVoltageOutputWithContext(ctx context.Context) BusNominalVoltageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BusNominalVoltageOutput)
+func (i BusNominalVoltageKvArgs) ToBusNominalVoltageKvOutputWithContext(ctx context.Context) BusNominalVoltageKvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BusNominalVoltageKvOutput)
 }
 
-func (i BusNominalVoltageArgs) ToBusNominalVoltagePtrOutput() BusNominalVoltagePtrOutput {
-	return i.ToBusNominalVoltagePtrOutputWithContext(context.Background())
+func (i BusNominalVoltageKvArgs) ToBusNominalVoltageKvPtrOutput() BusNominalVoltageKvPtrOutput {
+	return i.ToBusNominalVoltageKvPtrOutputWithContext(context.Background())
 }
 
-func (i BusNominalVoltageArgs) ToBusNominalVoltagePtrOutputWithContext(ctx context.Context) BusNominalVoltagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BusNominalVoltageOutput).ToBusNominalVoltagePtrOutputWithContext(ctx)
+func (i BusNominalVoltageKvArgs) ToBusNominalVoltageKvPtrOutputWithContext(ctx context.Context) BusNominalVoltageKvPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BusNominalVoltageKvOutput).ToBusNominalVoltageKvPtrOutputWithContext(ctx)
 }
 
-// BusNominalVoltagePtrInput is an input type that accepts BusNominalVoltageArgs, BusNominalVoltagePtr and BusNominalVoltagePtrOutput values.
-// You can construct a concrete instance of `BusNominalVoltagePtrInput` via:
+// BusNominalVoltageKvPtrInput is an input type that accepts BusNominalVoltageKvArgs, BusNominalVoltageKvPtr and BusNominalVoltageKvPtrOutput values.
+// You can construct a concrete instance of `BusNominalVoltageKvPtrInput` via:
 //
-//	        BusNominalVoltageArgs{...}
+//	        BusNominalVoltageKvArgs{...}
 //
 //	or:
 //
 //	        nil
-type BusNominalVoltagePtrInput interface {
+type BusNominalVoltageKvPtrInput interface {
 	pulumi.Input
 
-	ToBusNominalVoltagePtrOutput() BusNominalVoltagePtrOutput
-	ToBusNominalVoltagePtrOutputWithContext(context.Context) BusNominalVoltagePtrOutput
+	ToBusNominalVoltageKvPtrOutput() BusNominalVoltageKvPtrOutput
+	ToBusNominalVoltageKvPtrOutputWithContext(context.Context) BusNominalVoltageKvPtrOutput
 }
 
-type busNominalVoltagePtrType BusNominalVoltageArgs
+type busNominalVoltageKvPtrType BusNominalVoltageKvArgs
 
-func BusNominalVoltagePtr(v *BusNominalVoltageArgs) BusNominalVoltagePtrInput {
-	return (*busNominalVoltagePtrType)(v)
+func BusNominalVoltageKvPtr(v *BusNominalVoltageKvArgs) BusNominalVoltageKvPtrInput {
+	return (*busNominalVoltageKvPtrType)(v)
 }
 
-func (*busNominalVoltagePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BusNominalVoltage)(nil)).Elem()
+func (*busNominalVoltageKvPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BusNominalVoltageKv)(nil)).Elem()
 }
 
-func (i *busNominalVoltagePtrType) ToBusNominalVoltagePtrOutput() BusNominalVoltagePtrOutput {
-	return i.ToBusNominalVoltagePtrOutputWithContext(context.Background())
+func (i *busNominalVoltageKvPtrType) ToBusNominalVoltageKvPtrOutput() BusNominalVoltageKvPtrOutput {
+	return i.ToBusNominalVoltageKvPtrOutputWithContext(context.Background())
 }
 
-func (i *busNominalVoltagePtrType) ToBusNominalVoltagePtrOutputWithContext(ctx context.Context) BusNominalVoltagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BusNominalVoltagePtrOutput)
+func (i *busNominalVoltageKvPtrType) ToBusNominalVoltageKvPtrOutputWithContext(ctx context.Context) BusNominalVoltageKvPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BusNominalVoltageKvPtrOutput)
 }
 
-type BusNominalVoltageOutput struct{ *pulumi.OutputState }
+type BusNominalVoltageKvOutput struct{ *pulumi.OutputState }
 
-func (BusNominalVoltageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BusNominalVoltage)(nil)).Elem()
+func (BusNominalVoltageKvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BusNominalVoltageKv)(nil)).Elem()
 }
 
-func (o BusNominalVoltageOutput) ToBusNominalVoltageOutput() BusNominalVoltageOutput {
+func (o BusNominalVoltageKvOutput) ToBusNominalVoltageKvOutput() BusNominalVoltageKvOutput {
 	return o
 }
 
-func (o BusNominalVoltageOutput) ToBusNominalVoltageOutputWithContext(ctx context.Context) BusNominalVoltageOutput {
+func (o BusNominalVoltageKvOutput) ToBusNominalVoltageKvOutputWithContext(ctx context.Context) BusNominalVoltageKvOutput {
 	return o
 }
 
-func (o BusNominalVoltageOutput) ToBusNominalVoltagePtrOutput() BusNominalVoltagePtrOutput {
-	return o.ToBusNominalVoltagePtrOutputWithContext(context.Background())
+func (o BusNominalVoltageKvOutput) ToBusNominalVoltageKvPtrOutput() BusNominalVoltageKvPtrOutput {
+	return o.ToBusNominalVoltageKvPtrOutputWithContext(context.Background())
 }
 
-func (o BusNominalVoltageOutput) ToBusNominalVoltagePtrOutputWithContext(ctx context.Context) BusNominalVoltagePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BusNominalVoltage) *BusNominalVoltage {
+func (o BusNominalVoltageKvOutput) ToBusNominalVoltageKvPtrOutputWithContext(ctx context.Context) BusNominalVoltageKvPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BusNominalVoltageKv) *BusNominalVoltageKv {
 		return &v
-	}).(BusNominalVoltagePtrOutput)
+	}).(BusNominalVoltageKvPtrOutput)
 }
 
 // reference to the asset to be linked to
-func (o BusNominalVoltageOutput) Asset() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BusNominalVoltage) *string { return v.Asset }).(pulumi.StringPtrOutput)
+func (o BusNominalVoltageKvOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BusNominalVoltageKv) *string { return v.Asset }).(pulumi.StringPtrOutput)
 }
 
 // id of the resource
-func (o BusNominalVoltageOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BusNominalVoltage) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o BusNominalVoltageKvOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BusNominalVoltageKv) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // name of the resource
-func (o BusNominalVoltageOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BusNominalVoltage) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o BusNominalVoltageKvOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BusNominalVoltageKv) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // [String|Boolean|Number] type of the data to be ingested in this attribute
-func (o BusNominalVoltageOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BusNominalVoltage) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o BusNominalVoltageKvOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BusNominalVoltageKv) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 // unit of measure
-func (o BusNominalVoltageOutput) Unit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BusNominalVoltage) *string { return v.Unit }).(pulumi.StringPtrOutput)
+func (o BusNominalVoltageKvOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BusNominalVoltageKv) *string { return v.Unit }).(pulumi.StringPtrOutput)
 }
 
 // metadata value
-func (o BusNominalVoltageOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v BusNominalVoltage) string { return v.Value }).(pulumi.StringOutput)
+func (o BusNominalVoltageKvOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v BusNominalVoltageKv) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type BusNominalVoltagePtrOutput struct{ *pulumi.OutputState }
+type BusNominalVoltageKvPtrOutput struct{ *pulumi.OutputState }
 
-func (BusNominalVoltagePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BusNominalVoltage)(nil)).Elem()
+func (BusNominalVoltageKvPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BusNominalVoltageKv)(nil)).Elem()
 }
 
-func (o BusNominalVoltagePtrOutput) ToBusNominalVoltagePtrOutput() BusNominalVoltagePtrOutput {
+func (o BusNominalVoltageKvPtrOutput) ToBusNominalVoltageKvPtrOutput() BusNominalVoltageKvPtrOutput {
 	return o
 }
 
-func (o BusNominalVoltagePtrOutput) ToBusNominalVoltagePtrOutputWithContext(ctx context.Context) BusNominalVoltagePtrOutput {
+func (o BusNominalVoltageKvPtrOutput) ToBusNominalVoltageKvPtrOutputWithContext(ctx context.Context) BusNominalVoltageKvPtrOutput {
 	return o
 }
 
-func (o BusNominalVoltagePtrOutput) Elem() BusNominalVoltageOutput {
-	return o.ApplyT(func(v *BusNominalVoltage) BusNominalVoltage {
+func (o BusNominalVoltageKvPtrOutput) Elem() BusNominalVoltageKvOutput {
+	return o.ApplyT(func(v *BusNominalVoltageKv) BusNominalVoltageKv {
 		if v != nil {
 			return *v
 		}
-		var ret BusNominalVoltage
+		var ret BusNominalVoltageKv
 		return ret
-	}).(BusNominalVoltageOutput)
+	}).(BusNominalVoltageKvOutput)
 }
 
 // reference to the asset to be linked to
-func (o BusNominalVoltagePtrOutput) Asset() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BusNominalVoltage) *string {
+func (o BusNominalVoltageKvPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BusNominalVoltageKv) *string {
 		if v == nil {
 			return nil
 		}
@@ -2236,8 +2369,8 @@ func (o BusNominalVoltagePtrOutput) Asset() pulumi.StringPtrOutput {
 }
 
 // id of the resource
-func (o BusNominalVoltagePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BusNominalVoltage) *string {
+func (o BusNominalVoltageKvPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BusNominalVoltageKv) *string {
 		if v == nil {
 			return nil
 		}
@@ -2246,8 +2379,8 @@ func (o BusNominalVoltagePtrOutput) Id() pulumi.StringPtrOutput {
 }
 
 // name of the resource
-func (o BusNominalVoltagePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BusNominalVoltage) *string {
+func (o BusNominalVoltageKvPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BusNominalVoltageKv) *string {
 		if v == nil {
 			return nil
 		}
@@ -2256,8 +2389,8 @@ func (o BusNominalVoltagePtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 // [String|Boolean|Number] type of the data to be ingested in this attribute
-func (o BusNominalVoltagePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BusNominalVoltage) *string {
+func (o BusNominalVoltageKvPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BusNominalVoltageKv) *string {
 		if v == nil {
 			return nil
 		}
@@ -2266,8 +2399,8 @@ func (o BusNominalVoltagePtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // unit of measure
-func (o BusNominalVoltagePtrOutput) Unit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BusNominalVoltage) *string {
+func (o BusNominalVoltageKvPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BusNominalVoltageKv) *string {
 		if v == nil {
 			return nil
 		}
@@ -2276,13 +2409,146 @@ func (o BusNominalVoltagePtrOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o BusNominalVoltagePtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BusNominalVoltage) *string {
+func (o BusNominalVoltageKvPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BusNominalVoltageKv) *string {
 		if v == nil {
 			return nil
 		}
 		return &v.Value
 	}).(pulumi.StringPtrOutput)
+}
+
+type BusReactivePower struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// BusReactivePowerInput is an input type that accepts BusReactivePowerArgs and BusReactivePowerOutput values.
+// You can construct a concrete instance of `BusReactivePowerInput` via:
+//
+//	BusReactivePowerArgs{...}
+type BusReactivePowerInput interface {
+	pulumi.Input
+
+	ToBusReactivePowerOutput() BusReactivePowerOutput
+	ToBusReactivePowerOutputWithContext(context.Context) BusReactivePowerOutput
+}
+
+type BusReactivePowerArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (BusReactivePowerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BusReactivePower)(nil)).Elem()
+}
+
+func (i BusReactivePowerArgs) ToBusReactivePowerOutput() BusReactivePowerOutput {
+	return i.ToBusReactivePowerOutputWithContext(context.Background())
+}
+
+func (i BusReactivePowerArgs) ToBusReactivePowerOutputWithContext(ctx context.Context) BusReactivePowerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BusReactivePowerOutput)
+}
+
+// BusReactivePowerArrayInput is an input type that accepts BusReactivePowerArray and BusReactivePowerArrayOutput values.
+// You can construct a concrete instance of `BusReactivePowerArrayInput` via:
+//
+//	BusReactivePowerArray{ BusReactivePowerArgs{...} }
+type BusReactivePowerArrayInput interface {
+	pulumi.Input
+
+	ToBusReactivePowerArrayOutput() BusReactivePowerArrayOutput
+	ToBusReactivePowerArrayOutputWithContext(context.Context) BusReactivePowerArrayOutput
+}
+
+type BusReactivePowerArray []BusReactivePowerInput
+
+func (BusReactivePowerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BusReactivePower)(nil)).Elem()
+}
+
+func (i BusReactivePowerArray) ToBusReactivePowerArrayOutput() BusReactivePowerArrayOutput {
+	return i.ToBusReactivePowerArrayOutputWithContext(context.Background())
+}
+
+func (i BusReactivePowerArray) ToBusReactivePowerArrayOutputWithContext(ctx context.Context) BusReactivePowerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BusReactivePowerArrayOutput)
+}
+
+type BusReactivePowerOutput struct{ *pulumi.OutputState }
+
+func (BusReactivePowerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BusReactivePower)(nil)).Elem()
+}
+
+func (o BusReactivePowerOutput) ToBusReactivePowerOutput() BusReactivePowerOutput {
+	return o
+}
+
+func (o BusReactivePowerOutput) ToBusReactivePowerOutputWithContext(ctx context.Context) BusReactivePowerOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o BusReactivePowerOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BusReactivePower) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o BusReactivePowerOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BusReactivePower) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o BusReactivePowerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BusReactivePower) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o BusReactivePowerOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BusReactivePower) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o BusReactivePowerOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BusReactivePower) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type BusReactivePowerArrayOutput struct{ *pulumi.OutputState }
+
+func (BusReactivePowerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BusReactivePower)(nil)).Elem()
+}
+
+func (o BusReactivePowerArrayOutput) ToBusReactivePowerArrayOutput() BusReactivePowerArrayOutput {
+	return o
+}
+
+func (o BusReactivePowerArrayOutput) ToBusReactivePowerArrayOutputWithContext(ctx context.Context) BusReactivePowerArrayOutput {
+	return o
+}
+
+func (o BusReactivePowerArrayOutput) Index(i pulumi.IntInput) BusReactivePowerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BusReactivePower {
+		return vs[0].([]BusReactivePower)[vs[1].(int)]
+	}).(BusReactivePowerOutput)
 }
 
 type BusTag struct {
@@ -12972,6 +13238,139 @@ func (o GeneratorKindArrayOutput) Index(i pulumi.IntInput) GeneratorKindOutput {
 	}).(GeneratorKindOutput)
 }
 
+type GeneratorMonthlyEnergy struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// GeneratorMonthlyEnergyInput is an input type that accepts GeneratorMonthlyEnergyArgs and GeneratorMonthlyEnergyOutput values.
+// You can construct a concrete instance of `GeneratorMonthlyEnergyInput` via:
+//
+//	GeneratorMonthlyEnergyArgs{...}
+type GeneratorMonthlyEnergyInput interface {
+	pulumi.Input
+
+	ToGeneratorMonthlyEnergyOutput() GeneratorMonthlyEnergyOutput
+	ToGeneratorMonthlyEnergyOutputWithContext(context.Context) GeneratorMonthlyEnergyOutput
+}
+
+type GeneratorMonthlyEnergyArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (GeneratorMonthlyEnergyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorMonthlyEnergy)(nil)).Elem()
+}
+
+func (i GeneratorMonthlyEnergyArgs) ToGeneratorMonthlyEnergyOutput() GeneratorMonthlyEnergyOutput {
+	return i.ToGeneratorMonthlyEnergyOutputWithContext(context.Background())
+}
+
+func (i GeneratorMonthlyEnergyArgs) ToGeneratorMonthlyEnergyOutputWithContext(ctx context.Context) GeneratorMonthlyEnergyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorMonthlyEnergyOutput)
+}
+
+// GeneratorMonthlyEnergyArrayInput is an input type that accepts GeneratorMonthlyEnergyArray and GeneratorMonthlyEnergyArrayOutput values.
+// You can construct a concrete instance of `GeneratorMonthlyEnergyArrayInput` via:
+//
+//	GeneratorMonthlyEnergyArray{ GeneratorMonthlyEnergyArgs{...} }
+type GeneratorMonthlyEnergyArrayInput interface {
+	pulumi.Input
+
+	ToGeneratorMonthlyEnergyArrayOutput() GeneratorMonthlyEnergyArrayOutput
+	ToGeneratorMonthlyEnergyArrayOutputWithContext(context.Context) GeneratorMonthlyEnergyArrayOutput
+}
+
+type GeneratorMonthlyEnergyArray []GeneratorMonthlyEnergyInput
+
+func (GeneratorMonthlyEnergyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeneratorMonthlyEnergy)(nil)).Elem()
+}
+
+func (i GeneratorMonthlyEnergyArray) ToGeneratorMonthlyEnergyArrayOutput() GeneratorMonthlyEnergyArrayOutput {
+	return i.ToGeneratorMonthlyEnergyArrayOutputWithContext(context.Background())
+}
+
+func (i GeneratorMonthlyEnergyArray) ToGeneratorMonthlyEnergyArrayOutputWithContext(ctx context.Context) GeneratorMonthlyEnergyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorMonthlyEnergyArrayOutput)
+}
+
+type GeneratorMonthlyEnergyOutput struct{ *pulumi.OutputState }
+
+func (GeneratorMonthlyEnergyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorMonthlyEnergy)(nil)).Elem()
+}
+
+func (o GeneratorMonthlyEnergyOutput) ToGeneratorMonthlyEnergyOutput() GeneratorMonthlyEnergyOutput {
+	return o
+}
+
+func (o GeneratorMonthlyEnergyOutput) ToGeneratorMonthlyEnergyOutputWithContext(ctx context.Context) GeneratorMonthlyEnergyOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o GeneratorMonthlyEnergyOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorMonthlyEnergy) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o GeneratorMonthlyEnergyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorMonthlyEnergy) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o GeneratorMonthlyEnergyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorMonthlyEnergy) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o GeneratorMonthlyEnergyOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorMonthlyEnergy) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o GeneratorMonthlyEnergyOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorMonthlyEnergy) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type GeneratorMonthlyEnergyArrayOutput struct{ *pulumi.OutputState }
+
+func (GeneratorMonthlyEnergyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeneratorMonthlyEnergy)(nil)).Elem()
+}
+
+func (o GeneratorMonthlyEnergyArrayOutput) ToGeneratorMonthlyEnergyArrayOutput() GeneratorMonthlyEnergyArrayOutput {
+	return o
+}
+
+func (o GeneratorMonthlyEnergyArrayOutput) ToGeneratorMonthlyEnergyArrayOutputWithContext(ctx context.Context) GeneratorMonthlyEnergyArrayOutput {
+	return o
+}
+
+func (o GeneratorMonthlyEnergyArrayOutput) Index(i pulumi.IntInput) GeneratorMonthlyEnergyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GeneratorMonthlyEnergy {
+		return vs[0].([]GeneratorMonthlyEnergy)[vs[1].(int)]
+	}).(GeneratorMonthlyEnergyOutput)
+}
+
 type GeneratorReactivePower struct {
 	// reference to the asset to be linked to
 	Asset *string `pulumi:"asset"`
@@ -13103,6 +13502,139 @@ func (o GeneratorReactivePowerArrayOutput) Index(i pulumi.IntInput) GeneratorRea
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GeneratorReactivePower {
 		return vs[0].([]GeneratorReactivePower)[vs[1].(int)]
 	}).(GeneratorReactivePowerOutput)
+}
+
+type GeneratorSwitchStatus struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// GeneratorSwitchStatusInput is an input type that accepts GeneratorSwitchStatusArgs and GeneratorSwitchStatusOutput values.
+// You can construct a concrete instance of `GeneratorSwitchStatusInput` via:
+//
+//	GeneratorSwitchStatusArgs{...}
+type GeneratorSwitchStatusInput interface {
+	pulumi.Input
+
+	ToGeneratorSwitchStatusOutput() GeneratorSwitchStatusOutput
+	ToGeneratorSwitchStatusOutputWithContext(context.Context) GeneratorSwitchStatusOutput
+}
+
+type GeneratorSwitchStatusArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (GeneratorSwitchStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSwitchStatus)(nil)).Elem()
+}
+
+func (i GeneratorSwitchStatusArgs) ToGeneratorSwitchStatusOutput() GeneratorSwitchStatusOutput {
+	return i.ToGeneratorSwitchStatusOutputWithContext(context.Background())
+}
+
+func (i GeneratorSwitchStatusArgs) ToGeneratorSwitchStatusOutputWithContext(ctx context.Context) GeneratorSwitchStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSwitchStatusOutput)
+}
+
+// GeneratorSwitchStatusArrayInput is an input type that accepts GeneratorSwitchStatusArray and GeneratorSwitchStatusArrayOutput values.
+// You can construct a concrete instance of `GeneratorSwitchStatusArrayInput` via:
+//
+//	GeneratorSwitchStatusArray{ GeneratorSwitchStatusArgs{...} }
+type GeneratorSwitchStatusArrayInput interface {
+	pulumi.Input
+
+	ToGeneratorSwitchStatusArrayOutput() GeneratorSwitchStatusArrayOutput
+	ToGeneratorSwitchStatusArrayOutputWithContext(context.Context) GeneratorSwitchStatusArrayOutput
+}
+
+type GeneratorSwitchStatusArray []GeneratorSwitchStatusInput
+
+func (GeneratorSwitchStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeneratorSwitchStatus)(nil)).Elem()
+}
+
+func (i GeneratorSwitchStatusArray) ToGeneratorSwitchStatusArrayOutput() GeneratorSwitchStatusArrayOutput {
+	return i.ToGeneratorSwitchStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GeneratorSwitchStatusArray) ToGeneratorSwitchStatusArrayOutputWithContext(ctx context.Context) GeneratorSwitchStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSwitchStatusArrayOutput)
+}
+
+type GeneratorSwitchStatusOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSwitchStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSwitchStatus)(nil)).Elem()
+}
+
+func (o GeneratorSwitchStatusOutput) ToGeneratorSwitchStatusOutput() GeneratorSwitchStatusOutput {
+	return o
+}
+
+func (o GeneratorSwitchStatusOutput) ToGeneratorSwitchStatusOutputWithContext(ctx context.Context) GeneratorSwitchStatusOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o GeneratorSwitchStatusOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSwitchStatus) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o GeneratorSwitchStatusOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSwitchStatus) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o GeneratorSwitchStatusOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSwitchStatus) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o GeneratorSwitchStatusOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSwitchStatus) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o GeneratorSwitchStatusOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSwitchStatus) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type GeneratorSwitchStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSwitchStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeneratorSwitchStatus)(nil)).Elem()
+}
+
+func (o GeneratorSwitchStatusArrayOutput) ToGeneratorSwitchStatusArrayOutput() GeneratorSwitchStatusArrayOutput {
+	return o
+}
+
+func (o GeneratorSwitchStatusArrayOutput) ToGeneratorSwitchStatusArrayOutputWithContext(ctx context.Context) GeneratorSwitchStatusArrayOutput {
+	return o
+}
+
+func (o GeneratorSwitchStatusArrayOutput) Index(i pulumi.IntInput) GeneratorSwitchStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GeneratorSwitchStatus {
+		return vs[0].([]GeneratorSwitchStatus)[vs[1].(int)]
+	}).(GeneratorSwitchStatusOutput)
 }
 
 type GeneratorTag struct {
@@ -15221,6 +15753,139 @@ func (o InverterSerialNumberPtrOutput) Value() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type InverterSwitchStatus struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// InverterSwitchStatusInput is an input type that accepts InverterSwitchStatusArgs and InverterSwitchStatusOutput values.
+// You can construct a concrete instance of `InverterSwitchStatusInput` via:
+//
+//	InverterSwitchStatusArgs{...}
+type InverterSwitchStatusInput interface {
+	pulumi.Input
+
+	ToInverterSwitchStatusOutput() InverterSwitchStatusOutput
+	ToInverterSwitchStatusOutputWithContext(context.Context) InverterSwitchStatusOutput
+}
+
+type InverterSwitchStatusArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (InverterSwitchStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InverterSwitchStatus)(nil)).Elem()
+}
+
+func (i InverterSwitchStatusArgs) ToInverterSwitchStatusOutput() InverterSwitchStatusOutput {
+	return i.ToInverterSwitchStatusOutputWithContext(context.Background())
+}
+
+func (i InverterSwitchStatusArgs) ToInverterSwitchStatusOutputWithContext(ctx context.Context) InverterSwitchStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InverterSwitchStatusOutput)
+}
+
+// InverterSwitchStatusArrayInput is an input type that accepts InverterSwitchStatusArray and InverterSwitchStatusArrayOutput values.
+// You can construct a concrete instance of `InverterSwitchStatusArrayInput` via:
+//
+//	InverterSwitchStatusArray{ InverterSwitchStatusArgs{...} }
+type InverterSwitchStatusArrayInput interface {
+	pulumi.Input
+
+	ToInverterSwitchStatusArrayOutput() InverterSwitchStatusArrayOutput
+	ToInverterSwitchStatusArrayOutputWithContext(context.Context) InverterSwitchStatusArrayOutput
+}
+
+type InverterSwitchStatusArray []InverterSwitchStatusInput
+
+func (InverterSwitchStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InverterSwitchStatus)(nil)).Elem()
+}
+
+func (i InverterSwitchStatusArray) ToInverterSwitchStatusArrayOutput() InverterSwitchStatusArrayOutput {
+	return i.ToInverterSwitchStatusArrayOutputWithContext(context.Background())
+}
+
+func (i InverterSwitchStatusArray) ToInverterSwitchStatusArrayOutputWithContext(ctx context.Context) InverterSwitchStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InverterSwitchStatusArrayOutput)
+}
+
+type InverterSwitchStatusOutput struct{ *pulumi.OutputState }
+
+func (InverterSwitchStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InverterSwitchStatus)(nil)).Elem()
+}
+
+func (o InverterSwitchStatusOutput) ToInverterSwitchStatusOutput() InverterSwitchStatusOutput {
+	return o
+}
+
+func (o InverterSwitchStatusOutput) ToInverterSwitchStatusOutputWithContext(ctx context.Context) InverterSwitchStatusOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o InverterSwitchStatusOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InverterSwitchStatus) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o InverterSwitchStatusOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InverterSwitchStatus) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o InverterSwitchStatusOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InverterSwitchStatus) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o InverterSwitchStatusOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InverterSwitchStatus) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o InverterSwitchStatusOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InverterSwitchStatus) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type InverterSwitchStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (InverterSwitchStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InverterSwitchStatus)(nil)).Elem()
+}
+
+func (o InverterSwitchStatusArrayOutput) ToInverterSwitchStatusArrayOutput() InverterSwitchStatusArrayOutput {
+	return o
+}
+
+func (o InverterSwitchStatusArrayOutput) ToInverterSwitchStatusArrayOutputWithContext(ctx context.Context) InverterSwitchStatusArrayOutput {
+	return o
+}
+
+func (o InverterSwitchStatusArrayOutput) Index(i pulumi.IntInput) InverterSwitchStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InverterSwitchStatus {
+		return vs[0].([]InverterSwitchStatus)[vs[1].(int)]
+	}).(InverterSwitchStatusOutput)
+}
+
 type InverterTag struct {
 	// tag id
 	Id string `pulumi:"id"`
@@ -16785,6 +17450,380 @@ func (o LineConductancePtrOutput) Value() pulumi.StringPtrOutput {
 		}
 		return &v.Value
 	}).(pulumi.StringPtrOutput)
+}
+
+type LineConductorMass struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineConductorMassInput is an input type that accepts LineConductorMassArgs and LineConductorMassOutput values.
+// You can construct a concrete instance of `LineConductorMassInput` via:
+//
+//	LineConductorMassArgs{...}
+type LineConductorMassInput interface {
+	pulumi.Input
+
+	ToLineConductorMassOutput() LineConductorMassOutput
+	ToLineConductorMassOutputWithContext(context.Context) LineConductorMassOutput
+}
+
+type LineConductorMassArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineConductorMassArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineConductorMass)(nil)).Elem()
+}
+
+func (i LineConductorMassArgs) ToLineConductorMassOutput() LineConductorMassOutput {
+	return i.ToLineConductorMassOutputWithContext(context.Background())
+}
+
+func (i LineConductorMassArgs) ToLineConductorMassOutputWithContext(ctx context.Context) LineConductorMassOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineConductorMassOutput)
+}
+
+func (i LineConductorMassArgs) ToLineConductorMassPtrOutput() LineConductorMassPtrOutput {
+	return i.ToLineConductorMassPtrOutputWithContext(context.Background())
+}
+
+func (i LineConductorMassArgs) ToLineConductorMassPtrOutputWithContext(ctx context.Context) LineConductorMassPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineConductorMassOutput).ToLineConductorMassPtrOutputWithContext(ctx)
+}
+
+// LineConductorMassPtrInput is an input type that accepts LineConductorMassArgs, LineConductorMassPtr and LineConductorMassPtrOutput values.
+// You can construct a concrete instance of `LineConductorMassPtrInput` via:
+//
+//	        LineConductorMassArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineConductorMassPtrInput interface {
+	pulumi.Input
+
+	ToLineConductorMassPtrOutput() LineConductorMassPtrOutput
+	ToLineConductorMassPtrOutputWithContext(context.Context) LineConductorMassPtrOutput
+}
+
+type lineConductorMassPtrType LineConductorMassArgs
+
+func LineConductorMassPtr(v *LineConductorMassArgs) LineConductorMassPtrInput {
+	return (*lineConductorMassPtrType)(v)
+}
+
+func (*lineConductorMassPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineConductorMass)(nil)).Elem()
+}
+
+func (i *lineConductorMassPtrType) ToLineConductorMassPtrOutput() LineConductorMassPtrOutput {
+	return i.ToLineConductorMassPtrOutputWithContext(context.Background())
+}
+
+func (i *lineConductorMassPtrType) ToLineConductorMassPtrOutputWithContext(ctx context.Context) LineConductorMassPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineConductorMassPtrOutput)
+}
+
+type LineConductorMassOutput struct{ *pulumi.OutputState }
+
+func (LineConductorMassOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineConductorMass)(nil)).Elem()
+}
+
+func (o LineConductorMassOutput) ToLineConductorMassOutput() LineConductorMassOutput {
+	return o
+}
+
+func (o LineConductorMassOutput) ToLineConductorMassOutputWithContext(ctx context.Context) LineConductorMassOutput {
+	return o
+}
+
+func (o LineConductorMassOutput) ToLineConductorMassPtrOutput() LineConductorMassPtrOutput {
+	return o.ToLineConductorMassPtrOutputWithContext(context.Background())
+}
+
+func (o LineConductorMassOutput) ToLineConductorMassPtrOutputWithContext(ctx context.Context) LineConductorMassPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineConductorMass) *LineConductorMass {
+		return &v
+	}).(LineConductorMassPtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineConductorMassOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineConductorMass) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineConductorMassOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineConductorMass) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineConductorMassOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineConductorMass) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineConductorMassOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineConductorMass) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit
+func (o LineConductorMassOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineConductorMass) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineConductorMassOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineConductorMass) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineConductorMassPtrOutput struct{ *pulumi.OutputState }
+
+func (LineConductorMassPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineConductorMass)(nil)).Elem()
+}
+
+func (o LineConductorMassPtrOutput) ToLineConductorMassPtrOutput() LineConductorMassPtrOutput {
+	return o
+}
+
+func (o LineConductorMassPtrOutput) ToLineConductorMassPtrOutputWithContext(ctx context.Context) LineConductorMassPtrOutput {
+	return o
+}
+
+func (o LineConductorMassPtrOutput) Elem() LineConductorMassOutput {
+	return o.ApplyT(func(v *LineConductorMass) LineConductorMass {
+		if v != nil {
+			return *v
+		}
+		var ret LineConductorMass
+		return ret
+	}).(LineConductorMassOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineConductorMassPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineConductorMass) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineConductorMassPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineConductorMass) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineConductorMassPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineConductorMass) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineConductorMassPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineConductorMass) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit
+func (o LineConductorMassPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineConductorMass) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineConductorMassPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineConductorMass) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineContingency struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineContingencyInput is an input type that accepts LineContingencyArgs and LineContingencyOutput values.
+// You can construct a concrete instance of `LineContingencyInput` via:
+//
+//	LineContingencyArgs{...}
+type LineContingencyInput interface {
+	pulumi.Input
+
+	ToLineContingencyOutput() LineContingencyOutput
+	ToLineContingencyOutputWithContext(context.Context) LineContingencyOutput
+}
+
+type LineContingencyArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineContingencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineContingency)(nil)).Elem()
+}
+
+func (i LineContingencyArgs) ToLineContingencyOutput() LineContingencyOutput {
+	return i.ToLineContingencyOutputWithContext(context.Background())
+}
+
+func (i LineContingencyArgs) ToLineContingencyOutputWithContext(ctx context.Context) LineContingencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineContingencyOutput)
+}
+
+// LineContingencyArrayInput is an input type that accepts LineContingencyArray and LineContingencyArrayOutput values.
+// You can construct a concrete instance of `LineContingencyArrayInput` via:
+//
+//	LineContingencyArray{ LineContingencyArgs{...} }
+type LineContingencyArrayInput interface {
+	pulumi.Input
+
+	ToLineContingencyArrayOutput() LineContingencyArrayOutput
+	ToLineContingencyArrayOutputWithContext(context.Context) LineContingencyArrayOutput
+}
+
+type LineContingencyArray []LineContingencyInput
+
+func (LineContingencyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineContingency)(nil)).Elem()
+}
+
+func (i LineContingencyArray) ToLineContingencyArrayOutput() LineContingencyArrayOutput {
+	return i.ToLineContingencyArrayOutputWithContext(context.Background())
+}
+
+func (i LineContingencyArray) ToLineContingencyArrayOutputWithContext(ctx context.Context) LineContingencyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineContingencyArrayOutput)
+}
+
+type LineContingencyOutput struct{ *pulumi.OutputState }
+
+func (LineContingencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineContingency)(nil)).Elem()
+}
+
+func (o LineContingencyOutput) ToLineContingencyOutput() LineContingencyOutput {
+	return o
+}
+
+func (o LineContingencyOutput) ToLineContingencyOutputWithContext(ctx context.Context) LineContingencyOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o LineContingencyOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineContingency) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineContingencyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineContingency) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineContingencyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineContingency) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineContingencyOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineContingency) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineContingencyOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineContingency) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineContingencyOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineContingency) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineContingencyArrayOutput struct{ *pulumi.OutputState }
+
+func (LineContingencyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineContingency)(nil)).Elem()
+}
+
+func (o LineContingencyArrayOutput) ToLineContingencyArrayOutput() LineContingencyArrayOutput {
+	return o
+}
+
+func (o LineContingencyArrayOutput) ToLineContingencyArrayOutputWithContext(ctx context.Context) LineContingencyArrayOutput {
+	return o
+}
+
+func (o LineContingencyArrayOutput) Index(i pulumi.IntInput) LineContingencyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LineContingency {
+		return vs[0].([]LineContingency)[vs[1].(int)]
+	}).(LineContingencyOutput)
 }
 
 type LineCurrent struct {
@@ -20707,6 +21746,238 @@ func (o LineSafetyMarginForPowerPtrOutput) Value() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type LineSpecificHeat struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineSpecificHeatInput is an input type that accepts LineSpecificHeatArgs and LineSpecificHeatOutput values.
+// You can construct a concrete instance of `LineSpecificHeatInput` via:
+//
+//	LineSpecificHeatArgs{...}
+type LineSpecificHeatInput interface {
+	pulumi.Input
+
+	ToLineSpecificHeatOutput() LineSpecificHeatOutput
+	ToLineSpecificHeatOutputWithContext(context.Context) LineSpecificHeatOutput
+}
+
+type LineSpecificHeatArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineSpecificHeatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineSpecificHeat)(nil)).Elem()
+}
+
+func (i LineSpecificHeatArgs) ToLineSpecificHeatOutput() LineSpecificHeatOutput {
+	return i.ToLineSpecificHeatOutputWithContext(context.Background())
+}
+
+func (i LineSpecificHeatArgs) ToLineSpecificHeatOutputWithContext(ctx context.Context) LineSpecificHeatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineSpecificHeatOutput)
+}
+
+func (i LineSpecificHeatArgs) ToLineSpecificHeatPtrOutput() LineSpecificHeatPtrOutput {
+	return i.ToLineSpecificHeatPtrOutputWithContext(context.Background())
+}
+
+func (i LineSpecificHeatArgs) ToLineSpecificHeatPtrOutputWithContext(ctx context.Context) LineSpecificHeatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineSpecificHeatOutput).ToLineSpecificHeatPtrOutputWithContext(ctx)
+}
+
+// LineSpecificHeatPtrInput is an input type that accepts LineSpecificHeatArgs, LineSpecificHeatPtr and LineSpecificHeatPtrOutput values.
+// You can construct a concrete instance of `LineSpecificHeatPtrInput` via:
+//
+//	        LineSpecificHeatArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineSpecificHeatPtrInput interface {
+	pulumi.Input
+
+	ToLineSpecificHeatPtrOutput() LineSpecificHeatPtrOutput
+	ToLineSpecificHeatPtrOutputWithContext(context.Context) LineSpecificHeatPtrOutput
+}
+
+type lineSpecificHeatPtrType LineSpecificHeatArgs
+
+func LineSpecificHeatPtr(v *LineSpecificHeatArgs) LineSpecificHeatPtrInput {
+	return (*lineSpecificHeatPtrType)(v)
+}
+
+func (*lineSpecificHeatPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineSpecificHeat)(nil)).Elem()
+}
+
+func (i *lineSpecificHeatPtrType) ToLineSpecificHeatPtrOutput() LineSpecificHeatPtrOutput {
+	return i.ToLineSpecificHeatPtrOutputWithContext(context.Background())
+}
+
+func (i *lineSpecificHeatPtrType) ToLineSpecificHeatPtrOutputWithContext(ctx context.Context) LineSpecificHeatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineSpecificHeatPtrOutput)
+}
+
+type LineSpecificHeatOutput struct{ *pulumi.OutputState }
+
+func (LineSpecificHeatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineSpecificHeat)(nil)).Elem()
+}
+
+func (o LineSpecificHeatOutput) ToLineSpecificHeatOutput() LineSpecificHeatOutput {
+	return o
+}
+
+func (o LineSpecificHeatOutput) ToLineSpecificHeatOutputWithContext(ctx context.Context) LineSpecificHeatOutput {
+	return o
+}
+
+func (o LineSpecificHeatOutput) ToLineSpecificHeatPtrOutput() LineSpecificHeatPtrOutput {
+	return o.ToLineSpecificHeatPtrOutputWithContext(context.Background())
+}
+
+func (o LineSpecificHeatOutput) ToLineSpecificHeatPtrOutputWithContext(ctx context.Context) LineSpecificHeatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineSpecificHeat) *LineSpecificHeat {
+		return &v
+	}).(LineSpecificHeatPtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineSpecificHeatOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSpecificHeat) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineSpecificHeatOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSpecificHeat) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineSpecificHeatOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSpecificHeat) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineSpecificHeatOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSpecificHeat) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineSpecificHeatOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSpecificHeat) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineSpecificHeatOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineSpecificHeat) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineSpecificHeatPtrOutput struct{ *pulumi.OutputState }
+
+func (LineSpecificHeatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineSpecificHeat)(nil)).Elem()
+}
+
+func (o LineSpecificHeatPtrOutput) ToLineSpecificHeatPtrOutput() LineSpecificHeatPtrOutput {
+	return o
+}
+
+func (o LineSpecificHeatPtrOutput) ToLineSpecificHeatPtrOutputWithContext(ctx context.Context) LineSpecificHeatPtrOutput {
+	return o
+}
+
+func (o LineSpecificHeatPtrOutput) Elem() LineSpecificHeatOutput {
+	return o.ApplyT(func(v *LineSpecificHeat) LineSpecificHeat {
+		if v != nil {
+			return *v
+		}
+		var ret LineSpecificHeat
+		return ret
+	}).(LineSpecificHeatOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineSpecificHeatPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineSpecificHeat) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineSpecificHeatPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineSpecificHeat) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineSpecificHeatPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineSpecificHeat) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineSpecificHeatPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineSpecificHeat) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineSpecificHeatPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineSpecificHeat) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineSpecificHeatPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineSpecificHeat) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
 type LineSusceptance struct {
 	// reference to the asset to be linked to
 	Asset *string `pulumi:"asset"`
@@ -20937,6 +22208,290 @@ func (o LineSusceptancePtrOutput) Value() pulumi.StringPtrOutput {
 		}
 		return &v.Value
 	}).(pulumi.StringPtrOutput)
+}
+
+type LineSwitchStatusEnd struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineSwitchStatusEndInput is an input type that accepts LineSwitchStatusEndArgs and LineSwitchStatusEndOutput values.
+// You can construct a concrete instance of `LineSwitchStatusEndInput` via:
+//
+//	LineSwitchStatusEndArgs{...}
+type LineSwitchStatusEndInput interface {
+	pulumi.Input
+
+	ToLineSwitchStatusEndOutput() LineSwitchStatusEndOutput
+	ToLineSwitchStatusEndOutputWithContext(context.Context) LineSwitchStatusEndOutput
+}
+
+type LineSwitchStatusEndArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineSwitchStatusEndArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineSwitchStatusEnd)(nil)).Elem()
+}
+
+func (i LineSwitchStatusEndArgs) ToLineSwitchStatusEndOutput() LineSwitchStatusEndOutput {
+	return i.ToLineSwitchStatusEndOutputWithContext(context.Background())
+}
+
+func (i LineSwitchStatusEndArgs) ToLineSwitchStatusEndOutputWithContext(ctx context.Context) LineSwitchStatusEndOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineSwitchStatusEndOutput)
+}
+
+// LineSwitchStatusEndArrayInput is an input type that accepts LineSwitchStatusEndArray and LineSwitchStatusEndArrayOutput values.
+// You can construct a concrete instance of `LineSwitchStatusEndArrayInput` via:
+//
+//	LineSwitchStatusEndArray{ LineSwitchStatusEndArgs{...} }
+type LineSwitchStatusEndArrayInput interface {
+	pulumi.Input
+
+	ToLineSwitchStatusEndArrayOutput() LineSwitchStatusEndArrayOutput
+	ToLineSwitchStatusEndArrayOutputWithContext(context.Context) LineSwitchStatusEndArrayOutput
+}
+
+type LineSwitchStatusEndArray []LineSwitchStatusEndInput
+
+func (LineSwitchStatusEndArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineSwitchStatusEnd)(nil)).Elem()
+}
+
+func (i LineSwitchStatusEndArray) ToLineSwitchStatusEndArrayOutput() LineSwitchStatusEndArrayOutput {
+	return i.ToLineSwitchStatusEndArrayOutputWithContext(context.Background())
+}
+
+func (i LineSwitchStatusEndArray) ToLineSwitchStatusEndArrayOutputWithContext(ctx context.Context) LineSwitchStatusEndArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineSwitchStatusEndArrayOutput)
+}
+
+type LineSwitchStatusEndOutput struct{ *pulumi.OutputState }
+
+func (LineSwitchStatusEndOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineSwitchStatusEnd)(nil)).Elem()
+}
+
+func (o LineSwitchStatusEndOutput) ToLineSwitchStatusEndOutput() LineSwitchStatusEndOutput {
+	return o
+}
+
+func (o LineSwitchStatusEndOutput) ToLineSwitchStatusEndOutputWithContext(ctx context.Context) LineSwitchStatusEndOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o LineSwitchStatusEndOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSwitchStatusEnd) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineSwitchStatusEndOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSwitchStatusEnd) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineSwitchStatusEndOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSwitchStatusEnd) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineSwitchStatusEndOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSwitchStatusEnd) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineSwitchStatusEndOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSwitchStatusEnd) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineSwitchStatusEndOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineSwitchStatusEnd) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineSwitchStatusEndArrayOutput struct{ *pulumi.OutputState }
+
+func (LineSwitchStatusEndArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineSwitchStatusEnd)(nil)).Elem()
+}
+
+func (o LineSwitchStatusEndArrayOutput) ToLineSwitchStatusEndArrayOutput() LineSwitchStatusEndArrayOutput {
+	return o
+}
+
+func (o LineSwitchStatusEndArrayOutput) ToLineSwitchStatusEndArrayOutputWithContext(ctx context.Context) LineSwitchStatusEndArrayOutput {
+	return o
+}
+
+func (o LineSwitchStatusEndArrayOutput) Index(i pulumi.IntInput) LineSwitchStatusEndOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LineSwitchStatusEnd {
+		return vs[0].([]LineSwitchStatusEnd)[vs[1].(int)]
+	}).(LineSwitchStatusEndOutput)
+}
+
+type LineSwitchStatusStart struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineSwitchStatusStartInput is an input type that accepts LineSwitchStatusStartArgs and LineSwitchStatusStartOutput values.
+// You can construct a concrete instance of `LineSwitchStatusStartInput` via:
+//
+//	LineSwitchStatusStartArgs{...}
+type LineSwitchStatusStartInput interface {
+	pulumi.Input
+
+	ToLineSwitchStatusStartOutput() LineSwitchStatusStartOutput
+	ToLineSwitchStatusStartOutputWithContext(context.Context) LineSwitchStatusStartOutput
+}
+
+type LineSwitchStatusStartArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineSwitchStatusStartArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineSwitchStatusStart)(nil)).Elem()
+}
+
+func (i LineSwitchStatusStartArgs) ToLineSwitchStatusStartOutput() LineSwitchStatusStartOutput {
+	return i.ToLineSwitchStatusStartOutputWithContext(context.Background())
+}
+
+func (i LineSwitchStatusStartArgs) ToLineSwitchStatusStartOutputWithContext(ctx context.Context) LineSwitchStatusStartOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineSwitchStatusStartOutput)
+}
+
+// LineSwitchStatusStartArrayInput is an input type that accepts LineSwitchStatusStartArray and LineSwitchStatusStartArrayOutput values.
+// You can construct a concrete instance of `LineSwitchStatusStartArrayInput` via:
+//
+//	LineSwitchStatusStartArray{ LineSwitchStatusStartArgs{...} }
+type LineSwitchStatusStartArrayInput interface {
+	pulumi.Input
+
+	ToLineSwitchStatusStartArrayOutput() LineSwitchStatusStartArrayOutput
+	ToLineSwitchStatusStartArrayOutputWithContext(context.Context) LineSwitchStatusStartArrayOutput
+}
+
+type LineSwitchStatusStartArray []LineSwitchStatusStartInput
+
+func (LineSwitchStatusStartArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineSwitchStatusStart)(nil)).Elem()
+}
+
+func (i LineSwitchStatusStartArray) ToLineSwitchStatusStartArrayOutput() LineSwitchStatusStartArrayOutput {
+	return i.ToLineSwitchStatusStartArrayOutputWithContext(context.Background())
+}
+
+func (i LineSwitchStatusStartArray) ToLineSwitchStatusStartArrayOutputWithContext(ctx context.Context) LineSwitchStatusStartArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineSwitchStatusStartArrayOutput)
+}
+
+type LineSwitchStatusStartOutput struct{ *pulumi.OutputState }
+
+func (LineSwitchStatusStartOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineSwitchStatusStart)(nil)).Elem()
+}
+
+func (o LineSwitchStatusStartOutput) ToLineSwitchStatusStartOutput() LineSwitchStatusStartOutput {
+	return o
+}
+
+func (o LineSwitchStatusStartOutput) ToLineSwitchStatusStartOutputWithContext(ctx context.Context) LineSwitchStatusStartOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o LineSwitchStatusStartOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSwitchStatusStart) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineSwitchStatusStartOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSwitchStatusStart) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineSwitchStatusStartOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSwitchStatusStart) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineSwitchStatusStartOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSwitchStatusStart) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o LineSwitchStatusStartOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSwitchStatusStart) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineSwitchStatusStartOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineSwitchStatusStart) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineSwitchStatusStartArrayOutput struct{ *pulumi.OutputState }
+
+func (LineSwitchStatusStartArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LineSwitchStatusStart)(nil)).Elem()
+}
+
+func (o LineSwitchStatusStartArrayOutput) ToLineSwitchStatusStartArrayOutput() LineSwitchStatusStartArrayOutput {
+	return o
+}
+
+func (o LineSwitchStatusStartArrayOutput) ToLineSwitchStatusStartArrayOutputWithContext(ctx context.Context) LineSwitchStatusStartArrayOutput {
+	return o
+}
+
+func (o LineSwitchStatusStartArrayOutput) Index(i pulumi.IntInput) LineSwitchStatusStartOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LineSwitchStatusStart {
+		return vs[0].([]LineSwitchStatusStart)[vs[1].(int)]
+	}).(LineSwitchStatusStartOutput)
 }
 
 type LineTag struct {
@@ -21270,6 +22825,238 @@ func (o LineTemperatureCoeffResistancePtrOutput) Unit() pulumi.StringPtrOutput {
 // metadata value
 func (o LineTemperatureCoeffResistancePtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LineTemperatureCoeffResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type LineThermalElongationCoef struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// LineThermalElongationCoefInput is an input type that accepts LineThermalElongationCoefArgs and LineThermalElongationCoefOutput values.
+// You can construct a concrete instance of `LineThermalElongationCoefInput` via:
+//
+//	LineThermalElongationCoefArgs{...}
+type LineThermalElongationCoefInput interface {
+	pulumi.Input
+
+	ToLineThermalElongationCoefOutput() LineThermalElongationCoefOutput
+	ToLineThermalElongationCoefOutputWithContext(context.Context) LineThermalElongationCoefOutput
+}
+
+type LineThermalElongationCoefArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LineThermalElongationCoefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineThermalElongationCoef)(nil)).Elem()
+}
+
+func (i LineThermalElongationCoefArgs) ToLineThermalElongationCoefOutput() LineThermalElongationCoefOutput {
+	return i.ToLineThermalElongationCoefOutputWithContext(context.Background())
+}
+
+func (i LineThermalElongationCoefArgs) ToLineThermalElongationCoefOutputWithContext(ctx context.Context) LineThermalElongationCoefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineThermalElongationCoefOutput)
+}
+
+func (i LineThermalElongationCoefArgs) ToLineThermalElongationCoefPtrOutput() LineThermalElongationCoefPtrOutput {
+	return i.ToLineThermalElongationCoefPtrOutputWithContext(context.Background())
+}
+
+func (i LineThermalElongationCoefArgs) ToLineThermalElongationCoefPtrOutputWithContext(ctx context.Context) LineThermalElongationCoefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineThermalElongationCoefOutput).ToLineThermalElongationCoefPtrOutputWithContext(ctx)
+}
+
+// LineThermalElongationCoefPtrInput is an input type that accepts LineThermalElongationCoefArgs, LineThermalElongationCoefPtr and LineThermalElongationCoefPtrOutput values.
+// You can construct a concrete instance of `LineThermalElongationCoefPtrInput` via:
+//
+//	        LineThermalElongationCoefArgs{...}
+//
+//	or:
+//
+//	        nil
+type LineThermalElongationCoefPtrInput interface {
+	pulumi.Input
+
+	ToLineThermalElongationCoefPtrOutput() LineThermalElongationCoefPtrOutput
+	ToLineThermalElongationCoefPtrOutputWithContext(context.Context) LineThermalElongationCoefPtrOutput
+}
+
+type lineThermalElongationCoefPtrType LineThermalElongationCoefArgs
+
+func LineThermalElongationCoefPtr(v *LineThermalElongationCoefArgs) LineThermalElongationCoefPtrInput {
+	return (*lineThermalElongationCoefPtrType)(v)
+}
+
+func (*lineThermalElongationCoefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineThermalElongationCoef)(nil)).Elem()
+}
+
+func (i *lineThermalElongationCoefPtrType) ToLineThermalElongationCoefPtrOutput() LineThermalElongationCoefPtrOutput {
+	return i.ToLineThermalElongationCoefPtrOutputWithContext(context.Background())
+}
+
+func (i *lineThermalElongationCoefPtrType) ToLineThermalElongationCoefPtrOutputWithContext(ctx context.Context) LineThermalElongationCoefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LineThermalElongationCoefPtrOutput)
+}
+
+type LineThermalElongationCoefOutput struct{ *pulumi.OutputState }
+
+func (LineThermalElongationCoefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LineThermalElongationCoef)(nil)).Elem()
+}
+
+func (o LineThermalElongationCoefOutput) ToLineThermalElongationCoefOutput() LineThermalElongationCoefOutput {
+	return o
+}
+
+func (o LineThermalElongationCoefOutput) ToLineThermalElongationCoefOutputWithContext(ctx context.Context) LineThermalElongationCoefOutput {
+	return o
+}
+
+func (o LineThermalElongationCoefOutput) ToLineThermalElongationCoefPtrOutput() LineThermalElongationCoefPtrOutput {
+	return o.ToLineThermalElongationCoefPtrOutputWithContext(context.Background())
+}
+
+func (o LineThermalElongationCoefOutput) ToLineThermalElongationCoefPtrOutputWithContext(ctx context.Context) LineThermalElongationCoefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LineThermalElongationCoef) *LineThermalElongationCoef {
+		return &v
+	}).(LineThermalElongationCoefPtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineThermalElongationCoefOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineThermalElongationCoef) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineThermalElongationCoefOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineThermalElongationCoef) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineThermalElongationCoefOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineThermalElongationCoef) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineThermalElongationCoefOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineThermalElongationCoef) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit
+func (o LineThermalElongationCoefOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineThermalElongationCoef) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineThermalElongationCoefOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LineThermalElongationCoef) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LineThermalElongationCoefPtrOutput struct{ *pulumi.OutputState }
+
+func (LineThermalElongationCoefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LineThermalElongationCoef)(nil)).Elem()
+}
+
+func (o LineThermalElongationCoefPtrOutput) ToLineThermalElongationCoefPtrOutput() LineThermalElongationCoefPtrOutput {
+	return o
+}
+
+func (o LineThermalElongationCoefPtrOutput) ToLineThermalElongationCoefPtrOutputWithContext(ctx context.Context) LineThermalElongationCoefPtrOutput {
+	return o
+}
+
+func (o LineThermalElongationCoefPtrOutput) Elem() LineThermalElongationCoefOutput {
+	return o.ApplyT(func(v *LineThermalElongationCoef) LineThermalElongationCoef {
+		if v != nil {
+			return *v
+		}
+		var ret LineThermalElongationCoef
+		return ret
+	}).(LineThermalElongationCoefOutput)
+}
+
+// reference to the asset to be linked to
+func (o LineThermalElongationCoefPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineThermalElongationCoef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o LineThermalElongationCoefPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineThermalElongationCoef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o LineThermalElongationCoefPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineThermalElongationCoef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o LineThermalElongationCoefPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineThermalElongationCoef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit
+func (o LineThermalElongationCoefPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineThermalElongationCoef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o LineThermalElongationCoefPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LineThermalElongationCoef) *string {
 		if v == nil {
 			return nil
 		}
@@ -22478,6 +24265,702 @@ func (o SegmentKindArrayOutput) Index(i pulumi.IntInput) SegmentKindOutput {
 	}).(SegmentKindOutput)
 }
 
+type SegmentReferenceSag struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// SegmentReferenceSagInput is an input type that accepts SegmentReferenceSagArgs and SegmentReferenceSagOutput values.
+// You can construct a concrete instance of `SegmentReferenceSagInput` via:
+//
+//	SegmentReferenceSagArgs{...}
+type SegmentReferenceSagInput interface {
+	pulumi.Input
+
+	ToSegmentReferenceSagOutput() SegmentReferenceSagOutput
+	ToSegmentReferenceSagOutputWithContext(context.Context) SegmentReferenceSagOutput
+}
+
+type SegmentReferenceSagArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (SegmentReferenceSagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentReferenceSag)(nil)).Elem()
+}
+
+func (i SegmentReferenceSagArgs) ToSegmentReferenceSagOutput() SegmentReferenceSagOutput {
+	return i.ToSegmentReferenceSagOutputWithContext(context.Background())
+}
+
+func (i SegmentReferenceSagArgs) ToSegmentReferenceSagOutputWithContext(ctx context.Context) SegmentReferenceSagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentReferenceSagOutput)
+}
+
+func (i SegmentReferenceSagArgs) ToSegmentReferenceSagPtrOutput() SegmentReferenceSagPtrOutput {
+	return i.ToSegmentReferenceSagPtrOutputWithContext(context.Background())
+}
+
+func (i SegmentReferenceSagArgs) ToSegmentReferenceSagPtrOutputWithContext(ctx context.Context) SegmentReferenceSagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentReferenceSagOutput).ToSegmentReferenceSagPtrOutputWithContext(ctx)
+}
+
+// SegmentReferenceSagPtrInput is an input type that accepts SegmentReferenceSagArgs, SegmentReferenceSagPtr and SegmentReferenceSagPtrOutput values.
+// You can construct a concrete instance of `SegmentReferenceSagPtrInput` via:
+//
+//	        SegmentReferenceSagArgs{...}
+//
+//	or:
+//
+//	        nil
+type SegmentReferenceSagPtrInput interface {
+	pulumi.Input
+
+	ToSegmentReferenceSagPtrOutput() SegmentReferenceSagPtrOutput
+	ToSegmentReferenceSagPtrOutputWithContext(context.Context) SegmentReferenceSagPtrOutput
+}
+
+type segmentReferenceSagPtrType SegmentReferenceSagArgs
+
+func SegmentReferenceSagPtr(v *SegmentReferenceSagArgs) SegmentReferenceSagPtrInput {
+	return (*segmentReferenceSagPtrType)(v)
+}
+
+func (*segmentReferenceSagPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SegmentReferenceSag)(nil)).Elem()
+}
+
+func (i *segmentReferenceSagPtrType) ToSegmentReferenceSagPtrOutput() SegmentReferenceSagPtrOutput {
+	return i.ToSegmentReferenceSagPtrOutputWithContext(context.Background())
+}
+
+func (i *segmentReferenceSagPtrType) ToSegmentReferenceSagPtrOutputWithContext(ctx context.Context) SegmentReferenceSagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentReferenceSagPtrOutput)
+}
+
+type SegmentReferenceSagOutput struct{ *pulumi.OutputState }
+
+func (SegmentReferenceSagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentReferenceSag)(nil)).Elem()
+}
+
+func (o SegmentReferenceSagOutput) ToSegmentReferenceSagOutput() SegmentReferenceSagOutput {
+	return o
+}
+
+func (o SegmentReferenceSagOutput) ToSegmentReferenceSagOutputWithContext(ctx context.Context) SegmentReferenceSagOutput {
+	return o
+}
+
+func (o SegmentReferenceSagOutput) ToSegmentReferenceSagPtrOutput() SegmentReferenceSagPtrOutput {
+	return o.ToSegmentReferenceSagPtrOutputWithContext(context.Background())
+}
+
+func (o SegmentReferenceSagOutput) ToSegmentReferenceSagPtrOutputWithContext(ctx context.Context) SegmentReferenceSagPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SegmentReferenceSag) *SegmentReferenceSag {
+		return &v
+	}).(SegmentReferenceSagPtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o SegmentReferenceSagOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentReferenceSag) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o SegmentReferenceSagOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentReferenceSag) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o SegmentReferenceSagOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentReferenceSag) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o SegmentReferenceSagOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentReferenceSag) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o SegmentReferenceSagOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentReferenceSag) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o SegmentReferenceSagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SegmentReferenceSag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type SegmentReferenceSagPtrOutput struct{ *pulumi.OutputState }
+
+func (SegmentReferenceSagPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SegmentReferenceSag)(nil)).Elem()
+}
+
+func (o SegmentReferenceSagPtrOutput) ToSegmentReferenceSagPtrOutput() SegmentReferenceSagPtrOutput {
+	return o
+}
+
+func (o SegmentReferenceSagPtrOutput) ToSegmentReferenceSagPtrOutputWithContext(ctx context.Context) SegmentReferenceSagPtrOutput {
+	return o
+}
+
+func (o SegmentReferenceSagPtrOutput) Elem() SegmentReferenceSagOutput {
+	return o.ApplyT(func(v *SegmentReferenceSag) SegmentReferenceSag {
+		if v != nil {
+			return *v
+		}
+		var ret SegmentReferenceSag
+		return ret
+	}).(SegmentReferenceSagOutput)
+}
+
+// reference to the asset to be linked to
+func (o SegmentReferenceSagPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentReferenceSag) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o SegmentReferenceSagPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentReferenceSag) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o SegmentReferenceSagPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentReferenceSag) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o SegmentReferenceSagPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentReferenceSag) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o SegmentReferenceSagPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentReferenceSag) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o SegmentReferenceSagPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentReferenceSag) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type SegmentReferenceTemperature struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// SegmentReferenceTemperatureInput is an input type that accepts SegmentReferenceTemperatureArgs and SegmentReferenceTemperatureOutput values.
+// You can construct a concrete instance of `SegmentReferenceTemperatureInput` via:
+//
+//	SegmentReferenceTemperatureArgs{...}
+type SegmentReferenceTemperatureInput interface {
+	pulumi.Input
+
+	ToSegmentReferenceTemperatureOutput() SegmentReferenceTemperatureOutput
+	ToSegmentReferenceTemperatureOutputWithContext(context.Context) SegmentReferenceTemperatureOutput
+}
+
+type SegmentReferenceTemperatureArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (SegmentReferenceTemperatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentReferenceTemperature)(nil)).Elem()
+}
+
+func (i SegmentReferenceTemperatureArgs) ToSegmentReferenceTemperatureOutput() SegmentReferenceTemperatureOutput {
+	return i.ToSegmentReferenceTemperatureOutputWithContext(context.Background())
+}
+
+func (i SegmentReferenceTemperatureArgs) ToSegmentReferenceTemperatureOutputWithContext(ctx context.Context) SegmentReferenceTemperatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentReferenceTemperatureOutput)
+}
+
+func (i SegmentReferenceTemperatureArgs) ToSegmentReferenceTemperaturePtrOutput() SegmentReferenceTemperaturePtrOutput {
+	return i.ToSegmentReferenceTemperaturePtrOutputWithContext(context.Background())
+}
+
+func (i SegmentReferenceTemperatureArgs) ToSegmentReferenceTemperaturePtrOutputWithContext(ctx context.Context) SegmentReferenceTemperaturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentReferenceTemperatureOutput).ToSegmentReferenceTemperaturePtrOutputWithContext(ctx)
+}
+
+// SegmentReferenceTemperaturePtrInput is an input type that accepts SegmentReferenceTemperatureArgs, SegmentReferenceTemperaturePtr and SegmentReferenceTemperaturePtrOutput values.
+// You can construct a concrete instance of `SegmentReferenceTemperaturePtrInput` via:
+//
+//	        SegmentReferenceTemperatureArgs{...}
+//
+//	or:
+//
+//	        nil
+type SegmentReferenceTemperaturePtrInput interface {
+	pulumi.Input
+
+	ToSegmentReferenceTemperaturePtrOutput() SegmentReferenceTemperaturePtrOutput
+	ToSegmentReferenceTemperaturePtrOutputWithContext(context.Context) SegmentReferenceTemperaturePtrOutput
+}
+
+type segmentReferenceTemperaturePtrType SegmentReferenceTemperatureArgs
+
+func SegmentReferenceTemperaturePtr(v *SegmentReferenceTemperatureArgs) SegmentReferenceTemperaturePtrInput {
+	return (*segmentReferenceTemperaturePtrType)(v)
+}
+
+func (*segmentReferenceTemperaturePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SegmentReferenceTemperature)(nil)).Elem()
+}
+
+func (i *segmentReferenceTemperaturePtrType) ToSegmentReferenceTemperaturePtrOutput() SegmentReferenceTemperaturePtrOutput {
+	return i.ToSegmentReferenceTemperaturePtrOutputWithContext(context.Background())
+}
+
+func (i *segmentReferenceTemperaturePtrType) ToSegmentReferenceTemperaturePtrOutputWithContext(ctx context.Context) SegmentReferenceTemperaturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentReferenceTemperaturePtrOutput)
+}
+
+type SegmentReferenceTemperatureOutput struct{ *pulumi.OutputState }
+
+func (SegmentReferenceTemperatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentReferenceTemperature)(nil)).Elem()
+}
+
+func (o SegmentReferenceTemperatureOutput) ToSegmentReferenceTemperatureOutput() SegmentReferenceTemperatureOutput {
+	return o
+}
+
+func (o SegmentReferenceTemperatureOutput) ToSegmentReferenceTemperatureOutputWithContext(ctx context.Context) SegmentReferenceTemperatureOutput {
+	return o
+}
+
+func (o SegmentReferenceTemperatureOutput) ToSegmentReferenceTemperaturePtrOutput() SegmentReferenceTemperaturePtrOutput {
+	return o.ToSegmentReferenceTemperaturePtrOutputWithContext(context.Background())
+}
+
+func (o SegmentReferenceTemperatureOutput) ToSegmentReferenceTemperaturePtrOutputWithContext(ctx context.Context) SegmentReferenceTemperaturePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SegmentReferenceTemperature) *SegmentReferenceTemperature {
+		return &v
+	}).(SegmentReferenceTemperaturePtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o SegmentReferenceTemperatureOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentReferenceTemperature) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o SegmentReferenceTemperatureOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentReferenceTemperature) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o SegmentReferenceTemperatureOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentReferenceTemperature) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o SegmentReferenceTemperatureOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentReferenceTemperature) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o SegmentReferenceTemperatureOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentReferenceTemperature) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o SegmentReferenceTemperatureOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SegmentReferenceTemperature) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type SegmentReferenceTemperaturePtrOutput struct{ *pulumi.OutputState }
+
+func (SegmentReferenceTemperaturePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SegmentReferenceTemperature)(nil)).Elem()
+}
+
+func (o SegmentReferenceTemperaturePtrOutput) ToSegmentReferenceTemperaturePtrOutput() SegmentReferenceTemperaturePtrOutput {
+	return o
+}
+
+func (o SegmentReferenceTemperaturePtrOutput) ToSegmentReferenceTemperaturePtrOutputWithContext(ctx context.Context) SegmentReferenceTemperaturePtrOutput {
+	return o
+}
+
+func (o SegmentReferenceTemperaturePtrOutput) Elem() SegmentReferenceTemperatureOutput {
+	return o.ApplyT(func(v *SegmentReferenceTemperature) SegmentReferenceTemperature {
+		if v != nil {
+			return *v
+		}
+		var ret SegmentReferenceTemperature
+		return ret
+	}).(SegmentReferenceTemperatureOutput)
+}
+
+// reference to the asset to be linked to
+func (o SegmentReferenceTemperaturePtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentReferenceTemperature) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o SegmentReferenceTemperaturePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentReferenceTemperature) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o SegmentReferenceTemperaturePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentReferenceTemperature) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o SegmentReferenceTemperaturePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentReferenceTemperature) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o SegmentReferenceTemperaturePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentReferenceTemperature) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o SegmentReferenceTemperaturePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentReferenceTemperature) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type SegmentSpanLength struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// SegmentSpanLengthInput is an input type that accepts SegmentSpanLengthArgs and SegmentSpanLengthOutput values.
+// You can construct a concrete instance of `SegmentSpanLengthInput` via:
+//
+//	SegmentSpanLengthArgs{...}
+type SegmentSpanLengthInput interface {
+	pulumi.Input
+
+	ToSegmentSpanLengthOutput() SegmentSpanLengthOutput
+	ToSegmentSpanLengthOutputWithContext(context.Context) SegmentSpanLengthOutput
+}
+
+type SegmentSpanLengthArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (SegmentSpanLengthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentSpanLength)(nil)).Elem()
+}
+
+func (i SegmentSpanLengthArgs) ToSegmentSpanLengthOutput() SegmentSpanLengthOutput {
+	return i.ToSegmentSpanLengthOutputWithContext(context.Background())
+}
+
+func (i SegmentSpanLengthArgs) ToSegmentSpanLengthOutputWithContext(ctx context.Context) SegmentSpanLengthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentSpanLengthOutput)
+}
+
+func (i SegmentSpanLengthArgs) ToSegmentSpanLengthPtrOutput() SegmentSpanLengthPtrOutput {
+	return i.ToSegmentSpanLengthPtrOutputWithContext(context.Background())
+}
+
+func (i SegmentSpanLengthArgs) ToSegmentSpanLengthPtrOutputWithContext(ctx context.Context) SegmentSpanLengthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentSpanLengthOutput).ToSegmentSpanLengthPtrOutputWithContext(ctx)
+}
+
+// SegmentSpanLengthPtrInput is an input type that accepts SegmentSpanLengthArgs, SegmentSpanLengthPtr and SegmentSpanLengthPtrOutput values.
+// You can construct a concrete instance of `SegmentSpanLengthPtrInput` via:
+//
+//	        SegmentSpanLengthArgs{...}
+//
+//	or:
+//
+//	        nil
+type SegmentSpanLengthPtrInput interface {
+	pulumi.Input
+
+	ToSegmentSpanLengthPtrOutput() SegmentSpanLengthPtrOutput
+	ToSegmentSpanLengthPtrOutputWithContext(context.Context) SegmentSpanLengthPtrOutput
+}
+
+type segmentSpanLengthPtrType SegmentSpanLengthArgs
+
+func SegmentSpanLengthPtr(v *SegmentSpanLengthArgs) SegmentSpanLengthPtrInput {
+	return (*segmentSpanLengthPtrType)(v)
+}
+
+func (*segmentSpanLengthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SegmentSpanLength)(nil)).Elem()
+}
+
+func (i *segmentSpanLengthPtrType) ToSegmentSpanLengthPtrOutput() SegmentSpanLengthPtrOutput {
+	return i.ToSegmentSpanLengthPtrOutputWithContext(context.Background())
+}
+
+func (i *segmentSpanLengthPtrType) ToSegmentSpanLengthPtrOutputWithContext(ctx context.Context) SegmentSpanLengthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SegmentSpanLengthPtrOutput)
+}
+
+type SegmentSpanLengthOutput struct{ *pulumi.OutputState }
+
+func (SegmentSpanLengthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SegmentSpanLength)(nil)).Elem()
+}
+
+func (o SegmentSpanLengthOutput) ToSegmentSpanLengthOutput() SegmentSpanLengthOutput {
+	return o
+}
+
+func (o SegmentSpanLengthOutput) ToSegmentSpanLengthOutputWithContext(ctx context.Context) SegmentSpanLengthOutput {
+	return o
+}
+
+func (o SegmentSpanLengthOutput) ToSegmentSpanLengthPtrOutput() SegmentSpanLengthPtrOutput {
+	return o.ToSegmentSpanLengthPtrOutputWithContext(context.Background())
+}
+
+func (o SegmentSpanLengthOutput) ToSegmentSpanLengthPtrOutputWithContext(ctx context.Context) SegmentSpanLengthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SegmentSpanLength) *SegmentSpanLength {
+		return &v
+	}).(SegmentSpanLengthPtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o SegmentSpanLengthOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentSpanLength) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o SegmentSpanLengthOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentSpanLength) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o SegmentSpanLengthOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentSpanLength) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o SegmentSpanLengthOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentSpanLength) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o SegmentSpanLengthOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentSpanLength) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o SegmentSpanLengthOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SegmentSpanLength) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type SegmentSpanLengthPtrOutput struct{ *pulumi.OutputState }
+
+func (SegmentSpanLengthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SegmentSpanLength)(nil)).Elem()
+}
+
+func (o SegmentSpanLengthPtrOutput) ToSegmentSpanLengthPtrOutput() SegmentSpanLengthPtrOutput {
+	return o
+}
+
+func (o SegmentSpanLengthPtrOutput) ToSegmentSpanLengthPtrOutputWithContext(ctx context.Context) SegmentSpanLengthPtrOutput {
+	return o
+}
+
+func (o SegmentSpanLengthPtrOutput) Elem() SegmentSpanLengthOutput {
+	return o.ApplyT(func(v *SegmentSpanLength) SegmentSpanLength {
+		if v != nil {
+			return *v
+		}
+		var ret SegmentSpanLength
+		return ret
+	}).(SegmentSpanLengthOutput)
+}
+
+// reference to the asset to be linked to
+func (o SegmentSpanLengthPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentSpanLength) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o SegmentSpanLengthPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentSpanLength) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o SegmentSpanLengthPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentSpanLength) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o SegmentSpanLengthPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentSpanLength) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o SegmentSpanLengthPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentSpanLength) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o SegmentSpanLengthPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SegmentSpanLength) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
 type SegmentTag struct {
 	// tag id
 	Id string `pulumi:"id"`
@@ -23537,6 +26020,290 @@ func (o SlackLineKindArrayOutput) Index(i pulumi.IntInput) SlackLineKindOutput {
 	}).(SlackLineKindOutput)
 }
 
+type SlackLineSwitchStatusEnd struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// SlackLineSwitchStatusEndInput is an input type that accepts SlackLineSwitchStatusEndArgs and SlackLineSwitchStatusEndOutput values.
+// You can construct a concrete instance of `SlackLineSwitchStatusEndInput` via:
+//
+//	SlackLineSwitchStatusEndArgs{...}
+type SlackLineSwitchStatusEndInput interface {
+	pulumi.Input
+
+	ToSlackLineSwitchStatusEndOutput() SlackLineSwitchStatusEndOutput
+	ToSlackLineSwitchStatusEndOutputWithContext(context.Context) SlackLineSwitchStatusEndOutput
+}
+
+type SlackLineSwitchStatusEndArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (SlackLineSwitchStatusEndArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlackLineSwitchStatusEnd)(nil)).Elem()
+}
+
+func (i SlackLineSwitchStatusEndArgs) ToSlackLineSwitchStatusEndOutput() SlackLineSwitchStatusEndOutput {
+	return i.ToSlackLineSwitchStatusEndOutputWithContext(context.Background())
+}
+
+func (i SlackLineSwitchStatusEndArgs) ToSlackLineSwitchStatusEndOutputWithContext(ctx context.Context) SlackLineSwitchStatusEndOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlackLineSwitchStatusEndOutput)
+}
+
+// SlackLineSwitchStatusEndArrayInput is an input type that accepts SlackLineSwitchStatusEndArray and SlackLineSwitchStatusEndArrayOutput values.
+// You can construct a concrete instance of `SlackLineSwitchStatusEndArrayInput` via:
+//
+//	SlackLineSwitchStatusEndArray{ SlackLineSwitchStatusEndArgs{...} }
+type SlackLineSwitchStatusEndArrayInput interface {
+	pulumi.Input
+
+	ToSlackLineSwitchStatusEndArrayOutput() SlackLineSwitchStatusEndArrayOutput
+	ToSlackLineSwitchStatusEndArrayOutputWithContext(context.Context) SlackLineSwitchStatusEndArrayOutput
+}
+
+type SlackLineSwitchStatusEndArray []SlackLineSwitchStatusEndInput
+
+func (SlackLineSwitchStatusEndArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SlackLineSwitchStatusEnd)(nil)).Elem()
+}
+
+func (i SlackLineSwitchStatusEndArray) ToSlackLineSwitchStatusEndArrayOutput() SlackLineSwitchStatusEndArrayOutput {
+	return i.ToSlackLineSwitchStatusEndArrayOutputWithContext(context.Background())
+}
+
+func (i SlackLineSwitchStatusEndArray) ToSlackLineSwitchStatusEndArrayOutputWithContext(ctx context.Context) SlackLineSwitchStatusEndArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlackLineSwitchStatusEndArrayOutput)
+}
+
+type SlackLineSwitchStatusEndOutput struct{ *pulumi.OutputState }
+
+func (SlackLineSwitchStatusEndOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlackLineSwitchStatusEnd)(nil)).Elem()
+}
+
+func (o SlackLineSwitchStatusEndOutput) ToSlackLineSwitchStatusEndOutput() SlackLineSwitchStatusEndOutput {
+	return o
+}
+
+func (o SlackLineSwitchStatusEndOutput) ToSlackLineSwitchStatusEndOutputWithContext(ctx context.Context) SlackLineSwitchStatusEndOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o SlackLineSwitchStatusEndOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlackLineSwitchStatusEnd) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o SlackLineSwitchStatusEndOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlackLineSwitchStatusEnd) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o SlackLineSwitchStatusEndOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlackLineSwitchStatusEnd) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o SlackLineSwitchStatusEndOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlackLineSwitchStatusEnd) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o SlackLineSwitchStatusEndOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlackLineSwitchStatusEnd) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o SlackLineSwitchStatusEndOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SlackLineSwitchStatusEnd) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type SlackLineSwitchStatusEndArrayOutput struct{ *pulumi.OutputState }
+
+func (SlackLineSwitchStatusEndArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SlackLineSwitchStatusEnd)(nil)).Elem()
+}
+
+func (o SlackLineSwitchStatusEndArrayOutput) ToSlackLineSwitchStatusEndArrayOutput() SlackLineSwitchStatusEndArrayOutput {
+	return o
+}
+
+func (o SlackLineSwitchStatusEndArrayOutput) ToSlackLineSwitchStatusEndArrayOutputWithContext(ctx context.Context) SlackLineSwitchStatusEndArrayOutput {
+	return o
+}
+
+func (o SlackLineSwitchStatusEndArrayOutput) Index(i pulumi.IntInput) SlackLineSwitchStatusEndOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SlackLineSwitchStatusEnd {
+		return vs[0].([]SlackLineSwitchStatusEnd)[vs[1].(int)]
+	}).(SlackLineSwitchStatusEndOutput)
+}
+
+type SlackLineSwitchStatusStart struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// SlackLineSwitchStatusStartInput is an input type that accepts SlackLineSwitchStatusStartArgs and SlackLineSwitchStatusStartOutput values.
+// You can construct a concrete instance of `SlackLineSwitchStatusStartInput` via:
+//
+//	SlackLineSwitchStatusStartArgs{...}
+type SlackLineSwitchStatusStartInput interface {
+	pulumi.Input
+
+	ToSlackLineSwitchStatusStartOutput() SlackLineSwitchStatusStartOutput
+	ToSlackLineSwitchStatusStartOutputWithContext(context.Context) SlackLineSwitchStatusStartOutput
+}
+
+type SlackLineSwitchStatusStartArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (SlackLineSwitchStatusStartArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlackLineSwitchStatusStart)(nil)).Elem()
+}
+
+func (i SlackLineSwitchStatusStartArgs) ToSlackLineSwitchStatusStartOutput() SlackLineSwitchStatusStartOutput {
+	return i.ToSlackLineSwitchStatusStartOutputWithContext(context.Background())
+}
+
+func (i SlackLineSwitchStatusStartArgs) ToSlackLineSwitchStatusStartOutputWithContext(ctx context.Context) SlackLineSwitchStatusStartOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlackLineSwitchStatusStartOutput)
+}
+
+// SlackLineSwitchStatusStartArrayInput is an input type that accepts SlackLineSwitchStatusStartArray and SlackLineSwitchStatusStartArrayOutput values.
+// You can construct a concrete instance of `SlackLineSwitchStatusStartArrayInput` via:
+//
+//	SlackLineSwitchStatusStartArray{ SlackLineSwitchStatusStartArgs{...} }
+type SlackLineSwitchStatusStartArrayInput interface {
+	pulumi.Input
+
+	ToSlackLineSwitchStatusStartArrayOutput() SlackLineSwitchStatusStartArrayOutput
+	ToSlackLineSwitchStatusStartArrayOutputWithContext(context.Context) SlackLineSwitchStatusStartArrayOutput
+}
+
+type SlackLineSwitchStatusStartArray []SlackLineSwitchStatusStartInput
+
+func (SlackLineSwitchStatusStartArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SlackLineSwitchStatusStart)(nil)).Elem()
+}
+
+func (i SlackLineSwitchStatusStartArray) ToSlackLineSwitchStatusStartArrayOutput() SlackLineSwitchStatusStartArrayOutput {
+	return i.ToSlackLineSwitchStatusStartArrayOutputWithContext(context.Background())
+}
+
+func (i SlackLineSwitchStatusStartArray) ToSlackLineSwitchStatusStartArrayOutputWithContext(ctx context.Context) SlackLineSwitchStatusStartArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlackLineSwitchStatusStartArrayOutput)
+}
+
+type SlackLineSwitchStatusStartOutput struct{ *pulumi.OutputState }
+
+func (SlackLineSwitchStatusStartOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlackLineSwitchStatusStart)(nil)).Elem()
+}
+
+func (o SlackLineSwitchStatusStartOutput) ToSlackLineSwitchStatusStartOutput() SlackLineSwitchStatusStartOutput {
+	return o
+}
+
+func (o SlackLineSwitchStatusStartOutput) ToSlackLineSwitchStatusStartOutputWithContext(ctx context.Context) SlackLineSwitchStatusStartOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o SlackLineSwitchStatusStartOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlackLineSwitchStatusStart) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o SlackLineSwitchStatusStartOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlackLineSwitchStatusStart) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o SlackLineSwitchStatusStartOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlackLineSwitchStatusStart) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o SlackLineSwitchStatusStartOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlackLineSwitchStatusStart) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o SlackLineSwitchStatusStartOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlackLineSwitchStatusStart) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o SlackLineSwitchStatusStartOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SlackLineSwitchStatusStart) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type SlackLineSwitchStatusStartArrayOutput struct{ *pulumi.OutputState }
+
+func (SlackLineSwitchStatusStartArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SlackLineSwitchStatusStart)(nil)).Elem()
+}
+
+func (o SlackLineSwitchStatusStartArrayOutput) ToSlackLineSwitchStatusStartArrayOutput() SlackLineSwitchStatusStartArrayOutput {
+	return o
+}
+
+func (o SlackLineSwitchStatusStartArrayOutput) ToSlackLineSwitchStatusStartArrayOutputWithContext(ctx context.Context) SlackLineSwitchStatusStartArrayOutput {
+	return o
+}
+
+func (o SlackLineSwitchStatusStartArrayOutput) Index(i pulumi.IntInput) SlackLineSwitchStatusStartOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SlackLineSwitchStatusStart {
+		return vs[0].([]SlackLineSwitchStatusStart)[vs[1].(int)]
+	}).(SlackLineSwitchStatusStartOutput)
+}
+
 type SlackLineTag struct {
 	// tag id
 	Id string `pulumi:"id"`
@@ -23641,6 +26408,4267 @@ func (o SlackLineTagArrayOutput) Index(i pulumi.IntInput) SlackLineTagOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SlackLineTag {
 		return vs[0].([]SlackLineTag)[vs[1].(int)]
 	}).(SlackLineTagOutput)
+}
+
+type TransformerActivePowerHv struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// TransformerActivePowerHvInput is an input type that accepts TransformerActivePowerHvArgs and TransformerActivePowerHvOutput values.
+// You can construct a concrete instance of `TransformerActivePowerHvInput` via:
+//
+//	TransformerActivePowerHvArgs{...}
+type TransformerActivePowerHvInput interface {
+	pulumi.Input
+
+	ToTransformerActivePowerHvOutput() TransformerActivePowerHvOutput
+	ToTransformerActivePowerHvOutputWithContext(context.Context) TransformerActivePowerHvOutput
+}
+
+type TransformerActivePowerHvArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (TransformerActivePowerHvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerActivePowerHv)(nil)).Elem()
+}
+
+func (i TransformerActivePowerHvArgs) ToTransformerActivePowerHvOutput() TransformerActivePowerHvOutput {
+	return i.ToTransformerActivePowerHvOutputWithContext(context.Background())
+}
+
+func (i TransformerActivePowerHvArgs) ToTransformerActivePowerHvOutputWithContext(ctx context.Context) TransformerActivePowerHvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerActivePowerHvOutput)
+}
+
+// TransformerActivePowerHvArrayInput is an input type that accepts TransformerActivePowerHvArray and TransformerActivePowerHvArrayOutput values.
+// You can construct a concrete instance of `TransformerActivePowerHvArrayInput` via:
+//
+//	TransformerActivePowerHvArray{ TransformerActivePowerHvArgs{...} }
+type TransformerActivePowerHvArrayInput interface {
+	pulumi.Input
+
+	ToTransformerActivePowerHvArrayOutput() TransformerActivePowerHvArrayOutput
+	ToTransformerActivePowerHvArrayOutputWithContext(context.Context) TransformerActivePowerHvArrayOutput
+}
+
+type TransformerActivePowerHvArray []TransformerActivePowerHvInput
+
+func (TransformerActivePowerHvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerActivePowerHv)(nil)).Elem()
+}
+
+func (i TransformerActivePowerHvArray) ToTransformerActivePowerHvArrayOutput() TransformerActivePowerHvArrayOutput {
+	return i.ToTransformerActivePowerHvArrayOutputWithContext(context.Background())
+}
+
+func (i TransformerActivePowerHvArray) ToTransformerActivePowerHvArrayOutputWithContext(ctx context.Context) TransformerActivePowerHvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerActivePowerHvArrayOutput)
+}
+
+type TransformerActivePowerHvOutput struct{ *pulumi.OutputState }
+
+func (TransformerActivePowerHvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerActivePowerHv)(nil)).Elem()
+}
+
+func (o TransformerActivePowerHvOutput) ToTransformerActivePowerHvOutput() TransformerActivePowerHvOutput {
+	return o
+}
+
+func (o TransformerActivePowerHvOutput) ToTransformerActivePowerHvOutputWithContext(ctx context.Context) TransformerActivePowerHvOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o TransformerActivePowerHvOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerActivePowerHv) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerActivePowerHvOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerActivePowerHv) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerActivePowerHvOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerActivePowerHv) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerActivePowerHvOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerActivePowerHv) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerActivePowerHvOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerActivePowerHv) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type TransformerActivePowerHvArrayOutput struct{ *pulumi.OutputState }
+
+func (TransformerActivePowerHvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerActivePowerHv)(nil)).Elem()
+}
+
+func (o TransformerActivePowerHvArrayOutput) ToTransformerActivePowerHvArrayOutput() TransformerActivePowerHvArrayOutput {
+	return o
+}
+
+func (o TransformerActivePowerHvArrayOutput) ToTransformerActivePowerHvArrayOutputWithContext(ctx context.Context) TransformerActivePowerHvArrayOutput {
+	return o
+}
+
+func (o TransformerActivePowerHvArrayOutput) Index(i pulumi.IntInput) TransformerActivePowerHvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformerActivePowerHv {
+		return vs[0].([]TransformerActivePowerHv)[vs[1].(int)]
+	}).(TransformerActivePowerHvOutput)
+}
+
+type TransformerActivePowerLoss struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// TransformerActivePowerLossInput is an input type that accepts TransformerActivePowerLossArgs and TransformerActivePowerLossOutput values.
+// You can construct a concrete instance of `TransformerActivePowerLossInput` via:
+//
+//	TransformerActivePowerLossArgs{...}
+type TransformerActivePowerLossInput interface {
+	pulumi.Input
+
+	ToTransformerActivePowerLossOutput() TransformerActivePowerLossOutput
+	ToTransformerActivePowerLossOutputWithContext(context.Context) TransformerActivePowerLossOutput
+}
+
+type TransformerActivePowerLossArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (TransformerActivePowerLossArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerActivePowerLoss)(nil)).Elem()
+}
+
+func (i TransformerActivePowerLossArgs) ToTransformerActivePowerLossOutput() TransformerActivePowerLossOutput {
+	return i.ToTransformerActivePowerLossOutputWithContext(context.Background())
+}
+
+func (i TransformerActivePowerLossArgs) ToTransformerActivePowerLossOutputWithContext(ctx context.Context) TransformerActivePowerLossOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerActivePowerLossOutput)
+}
+
+// TransformerActivePowerLossArrayInput is an input type that accepts TransformerActivePowerLossArray and TransformerActivePowerLossArrayOutput values.
+// You can construct a concrete instance of `TransformerActivePowerLossArrayInput` via:
+//
+//	TransformerActivePowerLossArray{ TransformerActivePowerLossArgs{...} }
+type TransformerActivePowerLossArrayInput interface {
+	pulumi.Input
+
+	ToTransformerActivePowerLossArrayOutput() TransformerActivePowerLossArrayOutput
+	ToTransformerActivePowerLossArrayOutputWithContext(context.Context) TransformerActivePowerLossArrayOutput
+}
+
+type TransformerActivePowerLossArray []TransformerActivePowerLossInput
+
+func (TransformerActivePowerLossArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerActivePowerLoss)(nil)).Elem()
+}
+
+func (i TransformerActivePowerLossArray) ToTransformerActivePowerLossArrayOutput() TransformerActivePowerLossArrayOutput {
+	return i.ToTransformerActivePowerLossArrayOutputWithContext(context.Background())
+}
+
+func (i TransformerActivePowerLossArray) ToTransformerActivePowerLossArrayOutputWithContext(ctx context.Context) TransformerActivePowerLossArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerActivePowerLossArrayOutput)
+}
+
+type TransformerActivePowerLossOutput struct{ *pulumi.OutputState }
+
+func (TransformerActivePowerLossOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerActivePowerLoss)(nil)).Elem()
+}
+
+func (o TransformerActivePowerLossOutput) ToTransformerActivePowerLossOutput() TransformerActivePowerLossOutput {
+	return o
+}
+
+func (o TransformerActivePowerLossOutput) ToTransformerActivePowerLossOutputWithContext(ctx context.Context) TransformerActivePowerLossOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o TransformerActivePowerLossOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerActivePowerLoss) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerActivePowerLossOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerActivePowerLoss) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerActivePowerLossOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerActivePowerLoss) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerActivePowerLossOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerActivePowerLoss) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerActivePowerLossOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerActivePowerLoss) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type TransformerActivePowerLossArrayOutput struct{ *pulumi.OutputState }
+
+func (TransformerActivePowerLossArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerActivePowerLoss)(nil)).Elem()
+}
+
+func (o TransformerActivePowerLossArrayOutput) ToTransformerActivePowerLossArrayOutput() TransformerActivePowerLossArrayOutput {
+	return o
+}
+
+func (o TransformerActivePowerLossArrayOutput) ToTransformerActivePowerLossArrayOutputWithContext(ctx context.Context) TransformerActivePowerLossArrayOutput {
+	return o
+}
+
+func (o TransformerActivePowerLossArrayOutput) Index(i pulumi.IntInput) TransformerActivePowerLossOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformerActivePowerLoss {
+		return vs[0].([]TransformerActivePowerLoss)[vs[1].(int)]
+	}).(TransformerActivePowerLossOutput)
+}
+
+type TransformerActivePowerLv struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// TransformerActivePowerLvInput is an input type that accepts TransformerActivePowerLvArgs and TransformerActivePowerLvOutput values.
+// You can construct a concrete instance of `TransformerActivePowerLvInput` via:
+//
+//	TransformerActivePowerLvArgs{...}
+type TransformerActivePowerLvInput interface {
+	pulumi.Input
+
+	ToTransformerActivePowerLvOutput() TransformerActivePowerLvOutput
+	ToTransformerActivePowerLvOutputWithContext(context.Context) TransformerActivePowerLvOutput
+}
+
+type TransformerActivePowerLvArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (TransformerActivePowerLvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerActivePowerLv)(nil)).Elem()
+}
+
+func (i TransformerActivePowerLvArgs) ToTransformerActivePowerLvOutput() TransformerActivePowerLvOutput {
+	return i.ToTransformerActivePowerLvOutputWithContext(context.Background())
+}
+
+func (i TransformerActivePowerLvArgs) ToTransformerActivePowerLvOutputWithContext(ctx context.Context) TransformerActivePowerLvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerActivePowerLvOutput)
+}
+
+// TransformerActivePowerLvArrayInput is an input type that accepts TransformerActivePowerLvArray and TransformerActivePowerLvArrayOutput values.
+// You can construct a concrete instance of `TransformerActivePowerLvArrayInput` via:
+//
+//	TransformerActivePowerLvArray{ TransformerActivePowerLvArgs{...} }
+type TransformerActivePowerLvArrayInput interface {
+	pulumi.Input
+
+	ToTransformerActivePowerLvArrayOutput() TransformerActivePowerLvArrayOutput
+	ToTransformerActivePowerLvArrayOutputWithContext(context.Context) TransformerActivePowerLvArrayOutput
+}
+
+type TransformerActivePowerLvArray []TransformerActivePowerLvInput
+
+func (TransformerActivePowerLvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerActivePowerLv)(nil)).Elem()
+}
+
+func (i TransformerActivePowerLvArray) ToTransformerActivePowerLvArrayOutput() TransformerActivePowerLvArrayOutput {
+	return i.ToTransformerActivePowerLvArrayOutputWithContext(context.Background())
+}
+
+func (i TransformerActivePowerLvArray) ToTransformerActivePowerLvArrayOutputWithContext(ctx context.Context) TransformerActivePowerLvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerActivePowerLvArrayOutput)
+}
+
+type TransformerActivePowerLvOutput struct{ *pulumi.OutputState }
+
+func (TransformerActivePowerLvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerActivePowerLv)(nil)).Elem()
+}
+
+func (o TransformerActivePowerLvOutput) ToTransformerActivePowerLvOutput() TransformerActivePowerLvOutput {
+	return o
+}
+
+func (o TransformerActivePowerLvOutput) ToTransformerActivePowerLvOutputWithContext(ctx context.Context) TransformerActivePowerLvOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o TransformerActivePowerLvOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerActivePowerLv) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerActivePowerLvOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerActivePowerLv) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerActivePowerLvOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerActivePowerLv) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerActivePowerLvOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerActivePowerLv) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerActivePowerLvOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerActivePowerLv) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type TransformerActivePowerLvArrayOutput struct{ *pulumi.OutputState }
+
+func (TransformerActivePowerLvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerActivePowerLv)(nil)).Elem()
+}
+
+func (o TransformerActivePowerLvArrayOutput) ToTransformerActivePowerLvArrayOutput() TransformerActivePowerLvArrayOutput {
+	return o
+}
+
+func (o TransformerActivePowerLvArrayOutput) ToTransformerActivePowerLvArrayOutputWithContext(ctx context.Context) TransformerActivePowerLvArrayOutput {
+	return o
+}
+
+func (o TransformerActivePowerLvArrayOutput) Index(i pulumi.IntInput) TransformerActivePowerLvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformerActivePowerLv {
+		return vs[0].([]TransformerActivePowerLv)[vs[1].(int)]
+	}).(TransformerActivePowerLvOutput)
+}
+
+type TransformerCapacitance struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// TransformerCapacitanceInput is an input type that accepts TransformerCapacitanceArgs and TransformerCapacitanceOutput values.
+// You can construct a concrete instance of `TransformerCapacitanceInput` via:
+//
+//	TransformerCapacitanceArgs{...}
+type TransformerCapacitanceInput interface {
+	pulumi.Input
+
+	ToTransformerCapacitanceOutput() TransformerCapacitanceOutput
+	ToTransformerCapacitanceOutputWithContext(context.Context) TransformerCapacitanceOutput
+}
+
+type TransformerCapacitanceArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (TransformerCapacitanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerCapacitance)(nil)).Elem()
+}
+
+func (i TransformerCapacitanceArgs) ToTransformerCapacitanceOutput() TransformerCapacitanceOutput {
+	return i.ToTransformerCapacitanceOutputWithContext(context.Background())
+}
+
+func (i TransformerCapacitanceArgs) ToTransformerCapacitanceOutputWithContext(ctx context.Context) TransformerCapacitanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerCapacitanceOutput)
+}
+
+func (i TransformerCapacitanceArgs) ToTransformerCapacitancePtrOutput() TransformerCapacitancePtrOutput {
+	return i.ToTransformerCapacitancePtrOutputWithContext(context.Background())
+}
+
+func (i TransformerCapacitanceArgs) ToTransformerCapacitancePtrOutputWithContext(ctx context.Context) TransformerCapacitancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerCapacitanceOutput).ToTransformerCapacitancePtrOutputWithContext(ctx)
+}
+
+// TransformerCapacitancePtrInput is an input type that accepts TransformerCapacitanceArgs, TransformerCapacitancePtr and TransformerCapacitancePtrOutput values.
+// You can construct a concrete instance of `TransformerCapacitancePtrInput` via:
+//
+//	        TransformerCapacitanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransformerCapacitancePtrInput interface {
+	pulumi.Input
+
+	ToTransformerCapacitancePtrOutput() TransformerCapacitancePtrOutput
+	ToTransformerCapacitancePtrOutputWithContext(context.Context) TransformerCapacitancePtrOutput
+}
+
+type transformerCapacitancePtrType TransformerCapacitanceArgs
+
+func TransformerCapacitancePtr(v *TransformerCapacitanceArgs) TransformerCapacitancePtrInput {
+	return (*transformerCapacitancePtrType)(v)
+}
+
+func (*transformerCapacitancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformerCapacitance)(nil)).Elem()
+}
+
+func (i *transformerCapacitancePtrType) ToTransformerCapacitancePtrOutput() TransformerCapacitancePtrOutput {
+	return i.ToTransformerCapacitancePtrOutputWithContext(context.Background())
+}
+
+func (i *transformerCapacitancePtrType) ToTransformerCapacitancePtrOutputWithContext(ctx context.Context) TransformerCapacitancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerCapacitancePtrOutput)
+}
+
+type TransformerCapacitanceOutput struct{ *pulumi.OutputState }
+
+func (TransformerCapacitanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerCapacitance)(nil)).Elem()
+}
+
+func (o TransformerCapacitanceOutput) ToTransformerCapacitanceOutput() TransformerCapacitanceOutput {
+	return o
+}
+
+func (o TransformerCapacitanceOutput) ToTransformerCapacitanceOutputWithContext(ctx context.Context) TransformerCapacitanceOutput {
+	return o
+}
+
+func (o TransformerCapacitanceOutput) ToTransformerCapacitancePtrOutput() TransformerCapacitancePtrOutput {
+	return o.ToTransformerCapacitancePtrOutputWithContext(context.Background())
+}
+
+func (o TransformerCapacitanceOutput) ToTransformerCapacitancePtrOutputWithContext(ctx context.Context) TransformerCapacitancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransformerCapacitance) *TransformerCapacitance {
+		return &v
+	}).(TransformerCapacitancePtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o TransformerCapacitanceOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerCapacitance) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerCapacitanceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerCapacitance) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerCapacitanceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerCapacitance) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerCapacitanceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerCapacitance) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerCapacitanceOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerCapacitance) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o TransformerCapacitanceOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformerCapacitance) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type TransformerCapacitancePtrOutput struct{ *pulumi.OutputState }
+
+func (TransformerCapacitancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformerCapacitance)(nil)).Elem()
+}
+
+func (o TransformerCapacitancePtrOutput) ToTransformerCapacitancePtrOutput() TransformerCapacitancePtrOutput {
+	return o
+}
+
+func (o TransformerCapacitancePtrOutput) ToTransformerCapacitancePtrOutputWithContext(ctx context.Context) TransformerCapacitancePtrOutput {
+	return o
+}
+
+func (o TransformerCapacitancePtrOutput) Elem() TransformerCapacitanceOutput {
+	return o.ApplyT(func(v *TransformerCapacitance) TransformerCapacitance {
+		if v != nil {
+			return *v
+		}
+		var ret TransformerCapacitance
+		return ret
+	}).(TransformerCapacitanceOutput)
+}
+
+// reference to the asset to be linked to
+func (o TransformerCapacitancePtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerCapacitance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerCapacitancePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerCapacitance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerCapacitancePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerCapacitance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerCapacitancePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerCapacitance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerCapacitancePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerCapacitance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o TransformerCapacitancePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerCapacitance) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransformerConductance struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// TransformerConductanceInput is an input type that accepts TransformerConductanceArgs and TransformerConductanceOutput values.
+// You can construct a concrete instance of `TransformerConductanceInput` via:
+//
+//	TransformerConductanceArgs{...}
+type TransformerConductanceInput interface {
+	pulumi.Input
+
+	ToTransformerConductanceOutput() TransformerConductanceOutput
+	ToTransformerConductanceOutputWithContext(context.Context) TransformerConductanceOutput
+}
+
+type TransformerConductanceArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (TransformerConductanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerConductance)(nil)).Elem()
+}
+
+func (i TransformerConductanceArgs) ToTransformerConductanceOutput() TransformerConductanceOutput {
+	return i.ToTransformerConductanceOutputWithContext(context.Background())
+}
+
+func (i TransformerConductanceArgs) ToTransformerConductanceOutputWithContext(ctx context.Context) TransformerConductanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerConductanceOutput)
+}
+
+func (i TransformerConductanceArgs) ToTransformerConductancePtrOutput() TransformerConductancePtrOutput {
+	return i.ToTransformerConductancePtrOutputWithContext(context.Background())
+}
+
+func (i TransformerConductanceArgs) ToTransformerConductancePtrOutputWithContext(ctx context.Context) TransformerConductancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerConductanceOutput).ToTransformerConductancePtrOutputWithContext(ctx)
+}
+
+// TransformerConductancePtrInput is an input type that accepts TransformerConductanceArgs, TransformerConductancePtr and TransformerConductancePtrOutput values.
+// You can construct a concrete instance of `TransformerConductancePtrInput` via:
+//
+//	        TransformerConductanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransformerConductancePtrInput interface {
+	pulumi.Input
+
+	ToTransformerConductancePtrOutput() TransformerConductancePtrOutput
+	ToTransformerConductancePtrOutputWithContext(context.Context) TransformerConductancePtrOutput
+}
+
+type transformerConductancePtrType TransformerConductanceArgs
+
+func TransformerConductancePtr(v *TransformerConductanceArgs) TransformerConductancePtrInput {
+	return (*transformerConductancePtrType)(v)
+}
+
+func (*transformerConductancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformerConductance)(nil)).Elem()
+}
+
+func (i *transformerConductancePtrType) ToTransformerConductancePtrOutput() TransformerConductancePtrOutput {
+	return i.ToTransformerConductancePtrOutputWithContext(context.Background())
+}
+
+func (i *transformerConductancePtrType) ToTransformerConductancePtrOutputWithContext(ctx context.Context) TransformerConductancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerConductancePtrOutput)
+}
+
+type TransformerConductanceOutput struct{ *pulumi.OutputState }
+
+func (TransformerConductanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerConductance)(nil)).Elem()
+}
+
+func (o TransformerConductanceOutput) ToTransformerConductanceOutput() TransformerConductanceOutput {
+	return o
+}
+
+func (o TransformerConductanceOutput) ToTransformerConductanceOutputWithContext(ctx context.Context) TransformerConductanceOutput {
+	return o
+}
+
+func (o TransformerConductanceOutput) ToTransformerConductancePtrOutput() TransformerConductancePtrOutput {
+	return o.ToTransformerConductancePtrOutputWithContext(context.Background())
+}
+
+func (o TransformerConductanceOutput) ToTransformerConductancePtrOutputWithContext(ctx context.Context) TransformerConductancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransformerConductance) *TransformerConductance {
+		return &v
+	}).(TransformerConductancePtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o TransformerConductanceOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerConductance) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerConductanceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerConductance) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerConductanceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerConductance) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerConductanceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerConductance) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerConductanceOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerConductance) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o TransformerConductanceOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformerConductance) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type TransformerConductancePtrOutput struct{ *pulumi.OutputState }
+
+func (TransformerConductancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformerConductance)(nil)).Elem()
+}
+
+func (o TransformerConductancePtrOutput) ToTransformerConductancePtrOutput() TransformerConductancePtrOutput {
+	return o
+}
+
+func (o TransformerConductancePtrOutput) ToTransformerConductancePtrOutputWithContext(ctx context.Context) TransformerConductancePtrOutput {
+	return o
+}
+
+func (o TransformerConductancePtrOutput) Elem() TransformerConductanceOutput {
+	return o.ApplyT(func(v *TransformerConductance) TransformerConductance {
+		if v != nil {
+			return *v
+		}
+		var ret TransformerConductance
+		return ret
+	}).(TransformerConductanceOutput)
+}
+
+// reference to the asset to be linked to
+func (o TransformerConductancePtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerConductance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerConductancePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerConductance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerConductancePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerConductance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerConductancePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerConductance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerConductancePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerConductance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o TransformerConductancePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerConductance) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransformerContingency struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// TransformerContingencyInput is an input type that accepts TransformerContingencyArgs and TransformerContingencyOutput values.
+// You can construct a concrete instance of `TransformerContingencyInput` via:
+//
+//	TransformerContingencyArgs{...}
+type TransformerContingencyInput interface {
+	pulumi.Input
+
+	ToTransformerContingencyOutput() TransformerContingencyOutput
+	ToTransformerContingencyOutputWithContext(context.Context) TransformerContingencyOutput
+}
+
+type TransformerContingencyArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (TransformerContingencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerContingency)(nil)).Elem()
+}
+
+func (i TransformerContingencyArgs) ToTransformerContingencyOutput() TransformerContingencyOutput {
+	return i.ToTransformerContingencyOutputWithContext(context.Background())
+}
+
+func (i TransformerContingencyArgs) ToTransformerContingencyOutputWithContext(ctx context.Context) TransformerContingencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerContingencyOutput)
+}
+
+// TransformerContingencyArrayInput is an input type that accepts TransformerContingencyArray and TransformerContingencyArrayOutput values.
+// You can construct a concrete instance of `TransformerContingencyArrayInput` via:
+//
+//	TransformerContingencyArray{ TransformerContingencyArgs{...} }
+type TransformerContingencyArrayInput interface {
+	pulumi.Input
+
+	ToTransformerContingencyArrayOutput() TransformerContingencyArrayOutput
+	ToTransformerContingencyArrayOutputWithContext(context.Context) TransformerContingencyArrayOutput
+}
+
+type TransformerContingencyArray []TransformerContingencyInput
+
+func (TransformerContingencyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerContingency)(nil)).Elem()
+}
+
+func (i TransformerContingencyArray) ToTransformerContingencyArrayOutput() TransformerContingencyArrayOutput {
+	return i.ToTransformerContingencyArrayOutputWithContext(context.Background())
+}
+
+func (i TransformerContingencyArray) ToTransformerContingencyArrayOutputWithContext(ctx context.Context) TransformerContingencyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerContingencyArrayOutput)
+}
+
+type TransformerContingencyOutput struct{ *pulumi.OutputState }
+
+func (TransformerContingencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerContingency)(nil)).Elem()
+}
+
+func (o TransformerContingencyOutput) ToTransformerContingencyOutput() TransformerContingencyOutput {
+	return o
+}
+
+func (o TransformerContingencyOutput) ToTransformerContingencyOutputWithContext(ctx context.Context) TransformerContingencyOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o TransformerContingencyOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerContingency) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerContingencyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerContingency) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerContingencyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerContingency) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerContingencyOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerContingency) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerContingencyOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerContingency) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type TransformerContingencyArrayOutput struct{ *pulumi.OutputState }
+
+func (TransformerContingencyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerContingency)(nil)).Elem()
+}
+
+func (o TransformerContingencyArrayOutput) ToTransformerContingencyArrayOutput() TransformerContingencyArrayOutput {
+	return o
+}
+
+func (o TransformerContingencyArrayOutput) ToTransformerContingencyArrayOutputWithContext(ctx context.Context) TransformerContingencyArrayOutput {
+	return o
+}
+
+func (o TransformerContingencyArrayOutput) Index(i pulumi.IntInput) TransformerContingencyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformerContingency {
+		return vs[0].([]TransformerContingency)[vs[1].(int)]
+	}).(TransformerContingencyOutput)
+}
+
+type TransformerCurrentHv struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// TransformerCurrentHvInput is an input type that accepts TransformerCurrentHvArgs and TransformerCurrentHvOutput values.
+// You can construct a concrete instance of `TransformerCurrentHvInput` via:
+//
+//	TransformerCurrentHvArgs{...}
+type TransformerCurrentHvInput interface {
+	pulumi.Input
+
+	ToTransformerCurrentHvOutput() TransformerCurrentHvOutput
+	ToTransformerCurrentHvOutputWithContext(context.Context) TransformerCurrentHvOutput
+}
+
+type TransformerCurrentHvArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (TransformerCurrentHvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerCurrentHv)(nil)).Elem()
+}
+
+func (i TransformerCurrentHvArgs) ToTransformerCurrentHvOutput() TransformerCurrentHvOutput {
+	return i.ToTransformerCurrentHvOutputWithContext(context.Background())
+}
+
+func (i TransformerCurrentHvArgs) ToTransformerCurrentHvOutputWithContext(ctx context.Context) TransformerCurrentHvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerCurrentHvOutput)
+}
+
+// TransformerCurrentHvArrayInput is an input type that accepts TransformerCurrentHvArray and TransformerCurrentHvArrayOutput values.
+// You can construct a concrete instance of `TransformerCurrentHvArrayInput` via:
+//
+//	TransformerCurrentHvArray{ TransformerCurrentHvArgs{...} }
+type TransformerCurrentHvArrayInput interface {
+	pulumi.Input
+
+	ToTransformerCurrentHvArrayOutput() TransformerCurrentHvArrayOutput
+	ToTransformerCurrentHvArrayOutputWithContext(context.Context) TransformerCurrentHvArrayOutput
+}
+
+type TransformerCurrentHvArray []TransformerCurrentHvInput
+
+func (TransformerCurrentHvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerCurrentHv)(nil)).Elem()
+}
+
+func (i TransformerCurrentHvArray) ToTransformerCurrentHvArrayOutput() TransformerCurrentHvArrayOutput {
+	return i.ToTransformerCurrentHvArrayOutputWithContext(context.Background())
+}
+
+func (i TransformerCurrentHvArray) ToTransformerCurrentHvArrayOutputWithContext(ctx context.Context) TransformerCurrentHvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerCurrentHvArrayOutput)
+}
+
+type TransformerCurrentHvOutput struct{ *pulumi.OutputState }
+
+func (TransformerCurrentHvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerCurrentHv)(nil)).Elem()
+}
+
+func (o TransformerCurrentHvOutput) ToTransformerCurrentHvOutput() TransformerCurrentHvOutput {
+	return o
+}
+
+func (o TransformerCurrentHvOutput) ToTransformerCurrentHvOutputWithContext(ctx context.Context) TransformerCurrentHvOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o TransformerCurrentHvOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerCurrentHv) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerCurrentHvOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerCurrentHv) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerCurrentHvOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerCurrentHv) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerCurrentHvOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerCurrentHv) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerCurrentHvOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerCurrentHv) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type TransformerCurrentHvArrayOutput struct{ *pulumi.OutputState }
+
+func (TransformerCurrentHvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerCurrentHv)(nil)).Elem()
+}
+
+func (o TransformerCurrentHvArrayOutput) ToTransformerCurrentHvArrayOutput() TransformerCurrentHvArrayOutput {
+	return o
+}
+
+func (o TransformerCurrentHvArrayOutput) ToTransformerCurrentHvArrayOutputWithContext(ctx context.Context) TransformerCurrentHvArrayOutput {
+	return o
+}
+
+func (o TransformerCurrentHvArrayOutput) Index(i pulumi.IntInput) TransformerCurrentHvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformerCurrentHv {
+		return vs[0].([]TransformerCurrentHv)[vs[1].(int)]
+	}).(TransformerCurrentHvOutput)
+}
+
+type TransformerCurrentLv struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// TransformerCurrentLvInput is an input type that accepts TransformerCurrentLvArgs and TransformerCurrentLvOutput values.
+// You can construct a concrete instance of `TransformerCurrentLvInput` via:
+//
+//	TransformerCurrentLvArgs{...}
+type TransformerCurrentLvInput interface {
+	pulumi.Input
+
+	ToTransformerCurrentLvOutput() TransformerCurrentLvOutput
+	ToTransformerCurrentLvOutputWithContext(context.Context) TransformerCurrentLvOutput
+}
+
+type TransformerCurrentLvArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (TransformerCurrentLvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerCurrentLv)(nil)).Elem()
+}
+
+func (i TransformerCurrentLvArgs) ToTransformerCurrentLvOutput() TransformerCurrentLvOutput {
+	return i.ToTransformerCurrentLvOutputWithContext(context.Background())
+}
+
+func (i TransformerCurrentLvArgs) ToTransformerCurrentLvOutputWithContext(ctx context.Context) TransformerCurrentLvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerCurrentLvOutput)
+}
+
+// TransformerCurrentLvArrayInput is an input type that accepts TransformerCurrentLvArray and TransformerCurrentLvArrayOutput values.
+// You can construct a concrete instance of `TransformerCurrentLvArrayInput` via:
+//
+//	TransformerCurrentLvArray{ TransformerCurrentLvArgs{...} }
+type TransformerCurrentLvArrayInput interface {
+	pulumi.Input
+
+	ToTransformerCurrentLvArrayOutput() TransformerCurrentLvArrayOutput
+	ToTransformerCurrentLvArrayOutputWithContext(context.Context) TransformerCurrentLvArrayOutput
+}
+
+type TransformerCurrentLvArray []TransformerCurrentLvInput
+
+func (TransformerCurrentLvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerCurrentLv)(nil)).Elem()
+}
+
+func (i TransformerCurrentLvArray) ToTransformerCurrentLvArrayOutput() TransformerCurrentLvArrayOutput {
+	return i.ToTransformerCurrentLvArrayOutputWithContext(context.Background())
+}
+
+func (i TransformerCurrentLvArray) ToTransformerCurrentLvArrayOutputWithContext(ctx context.Context) TransformerCurrentLvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerCurrentLvArrayOutput)
+}
+
+type TransformerCurrentLvOutput struct{ *pulumi.OutputState }
+
+func (TransformerCurrentLvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerCurrentLv)(nil)).Elem()
+}
+
+func (o TransformerCurrentLvOutput) ToTransformerCurrentLvOutput() TransformerCurrentLvOutput {
+	return o
+}
+
+func (o TransformerCurrentLvOutput) ToTransformerCurrentLvOutputWithContext(ctx context.Context) TransformerCurrentLvOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o TransformerCurrentLvOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerCurrentLv) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerCurrentLvOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerCurrentLv) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerCurrentLvOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerCurrentLv) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerCurrentLvOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerCurrentLv) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerCurrentLvOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerCurrentLv) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type TransformerCurrentLvArrayOutput struct{ *pulumi.OutputState }
+
+func (TransformerCurrentLvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerCurrentLv)(nil)).Elem()
+}
+
+func (o TransformerCurrentLvArrayOutput) ToTransformerCurrentLvArrayOutput() TransformerCurrentLvArrayOutput {
+	return o
+}
+
+func (o TransformerCurrentLvArrayOutput) ToTransformerCurrentLvArrayOutputWithContext(ctx context.Context) TransformerCurrentLvArrayOutput {
+	return o
+}
+
+func (o TransformerCurrentLvArrayOutput) Index(i pulumi.IntInput) TransformerCurrentLvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformerCurrentLv {
+		return vs[0].([]TransformerCurrentLv)[vs[1].(int)]
+	}).(TransformerCurrentLvOutput)
+}
+
+type TransformerKind struct {
+	// kind id
+	Id string `pulumi:"id"`
+	// kind name
+	Name string `pulumi:"name"`
+}
+
+// TransformerKindInput is an input type that accepts TransformerKindArgs and TransformerKindOutput values.
+// You can construct a concrete instance of `TransformerKindInput` via:
+//
+//	TransformerKindArgs{...}
+type TransformerKindInput interface {
+	pulumi.Input
+
+	ToTransformerKindOutput() TransformerKindOutput
+	ToTransformerKindOutputWithContext(context.Context) TransformerKindOutput
+}
+
+type TransformerKindArgs struct {
+	// kind id
+	Id pulumi.StringInput `pulumi:"id"`
+	// kind name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (TransformerKindArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerKind)(nil)).Elem()
+}
+
+func (i TransformerKindArgs) ToTransformerKindOutput() TransformerKindOutput {
+	return i.ToTransformerKindOutputWithContext(context.Background())
+}
+
+func (i TransformerKindArgs) ToTransformerKindOutputWithContext(ctx context.Context) TransformerKindOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerKindOutput)
+}
+
+// TransformerKindArrayInput is an input type that accepts TransformerKindArray and TransformerKindArrayOutput values.
+// You can construct a concrete instance of `TransformerKindArrayInput` via:
+//
+//	TransformerKindArray{ TransformerKindArgs{...} }
+type TransformerKindArrayInput interface {
+	pulumi.Input
+
+	ToTransformerKindArrayOutput() TransformerKindArrayOutput
+	ToTransformerKindArrayOutputWithContext(context.Context) TransformerKindArrayOutput
+}
+
+type TransformerKindArray []TransformerKindInput
+
+func (TransformerKindArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerKind)(nil)).Elem()
+}
+
+func (i TransformerKindArray) ToTransformerKindArrayOutput() TransformerKindArrayOutput {
+	return i.ToTransformerKindArrayOutputWithContext(context.Background())
+}
+
+func (i TransformerKindArray) ToTransformerKindArrayOutputWithContext(ctx context.Context) TransformerKindArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerKindArrayOutput)
+}
+
+type TransformerKindOutput struct{ *pulumi.OutputState }
+
+func (TransformerKindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerKind)(nil)).Elem()
+}
+
+func (o TransformerKindOutput) ToTransformerKindOutput() TransformerKindOutput {
+	return o
+}
+
+func (o TransformerKindOutput) ToTransformerKindOutputWithContext(ctx context.Context) TransformerKindOutput {
+	return o
+}
+
+// kind id
+func (o TransformerKindOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformerKind) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// kind name
+func (o TransformerKindOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformerKind) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type TransformerKindArrayOutput struct{ *pulumi.OutputState }
+
+func (TransformerKindArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerKind)(nil)).Elem()
+}
+
+func (o TransformerKindArrayOutput) ToTransformerKindArrayOutput() TransformerKindArrayOutput {
+	return o
+}
+
+func (o TransformerKindArrayOutput) ToTransformerKindArrayOutputWithContext(ctx context.Context) TransformerKindArrayOutput {
+	return o
+}
+
+func (o TransformerKindArrayOutput) Index(i pulumi.IntInput) TransformerKindOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformerKind {
+		return vs[0].([]TransformerKind)[vs[1].(int)]
+	}).(TransformerKindOutput)
+}
+
+type TransformerMaximumAllowedCurrent struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// TransformerMaximumAllowedCurrentInput is an input type that accepts TransformerMaximumAllowedCurrentArgs and TransformerMaximumAllowedCurrentOutput values.
+// You can construct a concrete instance of `TransformerMaximumAllowedCurrentInput` via:
+//
+//	TransformerMaximumAllowedCurrentArgs{...}
+type TransformerMaximumAllowedCurrentInput interface {
+	pulumi.Input
+
+	ToTransformerMaximumAllowedCurrentOutput() TransformerMaximumAllowedCurrentOutput
+	ToTransformerMaximumAllowedCurrentOutputWithContext(context.Context) TransformerMaximumAllowedCurrentOutput
+}
+
+type TransformerMaximumAllowedCurrentArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (TransformerMaximumAllowedCurrentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerMaximumAllowedCurrent)(nil)).Elem()
+}
+
+func (i TransformerMaximumAllowedCurrentArgs) ToTransformerMaximumAllowedCurrentOutput() TransformerMaximumAllowedCurrentOutput {
+	return i.ToTransformerMaximumAllowedCurrentOutputWithContext(context.Background())
+}
+
+func (i TransformerMaximumAllowedCurrentArgs) ToTransformerMaximumAllowedCurrentOutputWithContext(ctx context.Context) TransformerMaximumAllowedCurrentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerMaximumAllowedCurrentOutput)
+}
+
+func (i TransformerMaximumAllowedCurrentArgs) ToTransformerMaximumAllowedCurrentPtrOutput() TransformerMaximumAllowedCurrentPtrOutput {
+	return i.ToTransformerMaximumAllowedCurrentPtrOutputWithContext(context.Background())
+}
+
+func (i TransformerMaximumAllowedCurrentArgs) ToTransformerMaximumAllowedCurrentPtrOutputWithContext(ctx context.Context) TransformerMaximumAllowedCurrentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerMaximumAllowedCurrentOutput).ToTransformerMaximumAllowedCurrentPtrOutputWithContext(ctx)
+}
+
+// TransformerMaximumAllowedCurrentPtrInput is an input type that accepts TransformerMaximumAllowedCurrentArgs, TransformerMaximumAllowedCurrentPtr and TransformerMaximumAllowedCurrentPtrOutput values.
+// You can construct a concrete instance of `TransformerMaximumAllowedCurrentPtrInput` via:
+//
+//	        TransformerMaximumAllowedCurrentArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransformerMaximumAllowedCurrentPtrInput interface {
+	pulumi.Input
+
+	ToTransformerMaximumAllowedCurrentPtrOutput() TransformerMaximumAllowedCurrentPtrOutput
+	ToTransformerMaximumAllowedCurrentPtrOutputWithContext(context.Context) TransformerMaximumAllowedCurrentPtrOutput
+}
+
+type transformerMaximumAllowedCurrentPtrType TransformerMaximumAllowedCurrentArgs
+
+func TransformerMaximumAllowedCurrentPtr(v *TransformerMaximumAllowedCurrentArgs) TransformerMaximumAllowedCurrentPtrInput {
+	return (*transformerMaximumAllowedCurrentPtrType)(v)
+}
+
+func (*transformerMaximumAllowedCurrentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformerMaximumAllowedCurrent)(nil)).Elem()
+}
+
+func (i *transformerMaximumAllowedCurrentPtrType) ToTransformerMaximumAllowedCurrentPtrOutput() TransformerMaximumAllowedCurrentPtrOutput {
+	return i.ToTransformerMaximumAllowedCurrentPtrOutputWithContext(context.Background())
+}
+
+func (i *transformerMaximumAllowedCurrentPtrType) ToTransformerMaximumAllowedCurrentPtrOutputWithContext(ctx context.Context) TransformerMaximumAllowedCurrentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerMaximumAllowedCurrentPtrOutput)
+}
+
+type TransformerMaximumAllowedCurrentOutput struct{ *pulumi.OutputState }
+
+func (TransformerMaximumAllowedCurrentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerMaximumAllowedCurrent)(nil)).Elem()
+}
+
+func (o TransformerMaximumAllowedCurrentOutput) ToTransformerMaximumAllowedCurrentOutput() TransformerMaximumAllowedCurrentOutput {
+	return o
+}
+
+func (o TransformerMaximumAllowedCurrentOutput) ToTransformerMaximumAllowedCurrentOutputWithContext(ctx context.Context) TransformerMaximumAllowedCurrentOutput {
+	return o
+}
+
+func (o TransformerMaximumAllowedCurrentOutput) ToTransformerMaximumAllowedCurrentPtrOutput() TransformerMaximumAllowedCurrentPtrOutput {
+	return o.ToTransformerMaximumAllowedCurrentPtrOutputWithContext(context.Background())
+}
+
+func (o TransformerMaximumAllowedCurrentOutput) ToTransformerMaximumAllowedCurrentPtrOutputWithContext(ctx context.Context) TransformerMaximumAllowedCurrentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransformerMaximumAllowedCurrent) *TransformerMaximumAllowedCurrent {
+		return &v
+	}).(TransformerMaximumAllowedCurrentPtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o TransformerMaximumAllowedCurrentOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerMaximumAllowedCurrent) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerMaximumAllowedCurrentOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerMaximumAllowedCurrent) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerMaximumAllowedCurrentOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerMaximumAllowedCurrent) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerMaximumAllowedCurrentOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerMaximumAllowedCurrent) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerMaximumAllowedCurrentOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerMaximumAllowedCurrent) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o TransformerMaximumAllowedCurrentOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformerMaximumAllowedCurrent) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type TransformerMaximumAllowedCurrentPtrOutput struct{ *pulumi.OutputState }
+
+func (TransformerMaximumAllowedCurrentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformerMaximumAllowedCurrent)(nil)).Elem()
+}
+
+func (o TransformerMaximumAllowedCurrentPtrOutput) ToTransformerMaximumAllowedCurrentPtrOutput() TransformerMaximumAllowedCurrentPtrOutput {
+	return o
+}
+
+func (o TransformerMaximumAllowedCurrentPtrOutput) ToTransformerMaximumAllowedCurrentPtrOutputWithContext(ctx context.Context) TransformerMaximumAllowedCurrentPtrOutput {
+	return o
+}
+
+func (o TransformerMaximumAllowedCurrentPtrOutput) Elem() TransformerMaximumAllowedCurrentOutput {
+	return o.ApplyT(func(v *TransformerMaximumAllowedCurrent) TransformerMaximumAllowedCurrent {
+		if v != nil {
+			return *v
+		}
+		var ret TransformerMaximumAllowedCurrent
+		return ret
+	}).(TransformerMaximumAllowedCurrentOutput)
+}
+
+// reference to the asset to be linked to
+func (o TransformerMaximumAllowedCurrentPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerMaximumAllowedCurrent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerMaximumAllowedCurrentPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerMaximumAllowedCurrent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerMaximumAllowedCurrentPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerMaximumAllowedCurrent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerMaximumAllowedCurrentPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerMaximumAllowedCurrent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerMaximumAllowedCurrentPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerMaximumAllowedCurrent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o TransformerMaximumAllowedCurrentPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerMaximumAllowedCurrent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransformerMaximumAllowedPower struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// TransformerMaximumAllowedPowerInput is an input type that accepts TransformerMaximumAllowedPowerArgs and TransformerMaximumAllowedPowerOutput values.
+// You can construct a concrete instance of `TransformerMaximumAllowedPowerInput` via:
+//
+//	TransformerMaximumAllowedPowerArgs{...}
+type TransformerMaximumAllowedPowerInput interface {
+	pulumi.Input
+
+	ToTransformerMaximumAllowedPowerOutput() TransformerMaximumAllowedPowerOutput
+	ToTransformerMaximumAllowedPowerOutputWithContext(context.Context) TransformerMaximumAllowedPowerOutput
+}
+
+type TransformerMaximumAllowedPowerArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (TransformerMaximumAllowedPowerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerMaximumAllowedPower)(nil)).Elem()
+}
+
+func (i TransformerMaximumAllowedPowerArgs) ToTransformerMaximumAllowedPowerOutput() TransformerMaximumAllowedPowerOutput {
+	return i.ToTransformerMaximumAllowedPowerOutputWithContext(context.Background())
+}
+
+func (i TransformerMaximumAllowedPowerArgs) ToTransformerMaximumAllowedPowerOutputWithContext(ctx context.Context) TransformerMaximumAllowedPowerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerMaximumAllowedPowerOutput)
+}
+
+func (i TransformerMaximumAllowedPowerArgs) ToTransformerMaximumAllowedPowerPtrOutput() TransformerMaximumAllowedPowerPtrOutput {
+	return i.ToTransformerMaximumAllowedPowerPtrOutputWithContext(context.Background())
+}
+
+func (i TransformerMaximumAllowedPowerArgs) ToTransformerMaximumAllowedPowerPtrOutputWithContext(ctx context.Context) TransformerMaximumAllowedPowerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerMaximumAllowedPowerOutput).ToTransformerMaximumAllowedPowerPtrOutputWithContext(ctx)
+}
+
+// TransformerMaximumAllowedPowerPtrInput is an input type that accepts TransformerMaximumAllowedPowerArgs, TransformerMaximumAllowedPowerPtr and TransformerMaximumAllowedPowerPtrOutput values.
+// You can construct a concrete instance of `TransformerMaximumAllowedPowerPtrInput` via:
+//
+//	        TransformerMaximumAllowedPowerArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransformerMaximumAllowedPowerPtrInput interface {
+	pulumi.Input
+
+	ToTransformerMaximumAllowedPowerPtrOutput() TransformerMaximumAllowedPowerPtrOutput
+	ToTransformerMaximumAllowedPowerPtrOutputWithContext(context.Context) TransformerMaximumAllowedPowerPtrOutput
+}
+
+type transformerMaximumAllowedPowerPtrType TransformerMaximumAllowedPowerArgs
+
+func TransformerMaximumAllowedPowerPtr(v *TransformerMaximumAllowedPowerArgs) TransformerMaximumAllowedPowerPtrInput {
+	return (*transformerMaximumAllowedPowerPtrType)(v)
+}
+
+func (*transformerMaximumAllowedPowerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformerMaximumAllowedPower)(nil)).Elem()
+}
+
+func (i *transformerMaximumAllowedPowerPtrType) ToTransformerMaximumAllowedPowerPtrOutput() TransformerMaximumAllowedPowerPtrOutput {
+	return i.ToTransformerMaximumAllowedPowerPtrOutputWithContext(context.Background())
+}
+
+func (i *transformerMaximumAllowedPowerPtrType) ToTransformerMaximumAllowedPowerPtrOutputWithContext(ctx context.Context) TransformerMaximumAllowedPowerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerMaximumAllowedPowerPtrOutput)
+}
+
+type TransformerMaximumAllowedPowerOutput struct{ *pulumi.OutputState }
+
+func (TransformerMaximumAllowedPowerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerMaximumAllowedPower)(nil)).Elem()
+}
+
+func (o TransformerMaximumAllowedPowerOutput) ToTransformerMaximumAllowedPowerOutput() TransformerMaximumAllowedPowerOutput {
+	return o
+}
+
+func (o TransformerMaximumAllowedPowerOutput) ToTransformerMaximumAllowedPowerOutputWithContext(ctx context.Context) TransformerMaximumAllowedPowerOutput {
+	return o
+}
+
+func (o TransformerMaximumAllowedPowerOutput) ToTransformerMaximumAllowedPowerPtrOutput() TransformerMaximumAllowedPowerPtrOutput {
+	return o.ToTransformerMaximumAllowedPowerPtrOutputWithContext(context.Background())
+}
+
+func (o TransformerMaximumAllowedPowerOutput) ToTransformerMaximumAllowedPowerPtrOutputWithContext(ctx context.Context) TransformerMaximumAllowedPowerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransformerMaximumAllowedPower) *TransformerMaximumAllowedPower {
+		return &v
+	}).(TransformerMaximumAllowedPowerPtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o TransformerMaximumAllowedPowerOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerMaximumAllowedPower) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerMaximumAllowedPowerOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerMaximumAllowedPower) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerMaximumAllowedPowerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerMaximumAllowedPower) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerMaximumAllowedPowerOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerMaximumAllowedPower) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerMaximumAllowedPowerOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerMaximumAllowedPower) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o TransformerMaximumAllowedPowerOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformerMaximumAllowedPower) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type TransformerMaximumAllowedPowerPtrOutput struct{ *pulumi.OutputState }
+
+func (TransformerMaximumAllowedPowerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformerMaximumAllowedPower)(nil)).Elem()
+}
+
+func (o TransformerMaximumAllowedPowerPtrOutput) ToTransformerMaximumAllowedPowerPtrOutput() TransformerMaximumAllowedPowerPtrOutput {
+	return o
+}
+
+func (o TransformerMaximumAllowedPowerPtrOutput) ToTransformerMaximumAllowedPowerPtrOutputWithContext(ctx context.Context) TransformerMaximumAllowedPowerPtrOutput {
+	return o
+}
+
+func (o TransformerMaximumAllowedPowerPtrOutput) Elem() TransformerMaximumAllowedPowerOutput {
+	return o.ApplyT(func(v *TransformerMaximumAllowedPower) TransformerMaximumAllowedPower {
+		if v != nil {
+			return *v
+		}
+		var ret TransformerMaximumAllowedPower
+		return ret
+	}).(TransformerMaximumAllowedPowerOutput)
+}
+
+// reference to the asset to be linked to
+func (o TransformerMaximumAllowedPowerPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerMaximumAllowedPower) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerMaximumAllowedPowerPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerMaximumAllowedPower) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerMaximumAllowedPowerPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerMaximumAllowedPower) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerMaximumAllowedPowerPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerMaximumAllowedPower) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerMaximumAllowedPowerPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerMaximumAllowedPower) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o TransformerMaximumAllowedPowerPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerMaximumAllowedPower) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransformerReactance struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// TransformerReactanceInput is an input type that accepts TransformerReactanceArgs and TransformerReactanceOutput values.
+// You can construct a concrete instance of `TransformerReactanceInput` via:
+//
+//	TransformerReactanceArgs{...}
+type TransformerReactanceInput interface {
+	pulumi.Input
+
+	ToTransformerReactanceOutput() TransformerReactanceOutput
+	ToTransformerReactanceOutputWithContext(context.Context) TransformerReactanceOutput
+}
+
+type TransformerReactanceArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (TransformerReactanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerReactance)(nil)).Elem()
+}
+
+func (i TransformerReactanceArgs) ToTransformerReactanceOutput() TransformerReactanceOutput {
+	return i.ToTransformerReactanceOutputWithContext(context.Background())
+}
+
+func (i TransformerReactanceArgs) ToTransformerReactanceOutputWithContext(ctx context.Context) TransformerReactanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerReactanceOutput)
+}
+
+func (i TransformerReactanceArgs) ToTransformerReactancePtrOutput() TransformerReactancePtrOutput {
+	return i.ToTransformerReactancePtrOutputWithContext(context.Background())
+}
+
+func (i TransformerReactanceArgs) ToTransformerReactancePtrOutputWithContext(ctx context.Context) TransformerReactancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerReactanceOutput).ToTransformerReactancePtrOutputWithContext(ctx)
+}
+
+// TransformerReactancePtrInput is an input type that accepts TransformerReactanceArgs, TransformerReactancePtr and TransformerReactancePtrOutput values.
+// You can construct a concrete instance of `TransformerReactancePtrInput` via:
+//
+//	        TransformerReactanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransformerReactancePtrInput interface {
+	pulumi.Input
+
+	ToTransformerReactancePtrOutput() TransformerReactancePtrOutput
+	ToTransformerReactancePtrOutputWithContext(context.Context) TransformerReactancePtrOutput
+}
+
+type transformerReactancePtrType TransformerReactanceArgs
+
+func TransformerReactancePtr(v *TransformerReactanceArgs) TransformerReactancePtrInput {
+	return (*transformerReactancePtrType)(v)
+}
+
+func (*transformerReactancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformerReactance)(nil)).Elem()
+}
+
+func (i *transformerReactancePtrType) ToTransformerReactancePtrOutput() TransformerReactancePtrOutput {
+	return i.ToTransformerReactancePtrOutputWithContext(context.Background())
+}
+
+func (i *transformerReactancePtrType) ToTransformerReactancePtrOutputWithContext(ctx context.Context) TransformerReactancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerReactancePtrOutput)
+}
+
+type TransformerReactanceOutput struct{ *pulumi.OutputState }
+
+func (TransformerReactanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerReactance)(nil)).Elem()
+}
+
+func (o TransformerReactanceOutput) ToTransformerReactanceOutput() TransformerReactanceOutput {
+	return o
+}
+
+func (o TransformerReactanceOutput) ToTransformerReactanceOutputWithContext(ctx context.Context) TransformerReactanceOutput {
+	return o
+}
+
+func (o TransformerReactanceOutput) ToTransformerReactancePtrOutput() TransformerReactancePtrOutput {
+	return o.ToTransformerReactancePtrOutputWithContext(context.Background())
+}
+
+func (o TransformerReactanceOutput) ToTransformerReactancePtrOutputWithContext(ctx context.Context) TransformerReactancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransformerReactance) *TransformerReactance {
+		return &v
+	}).(TransformerReactancePtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o TransformerReactanceOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactance) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerReactanceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactance) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerReactanceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactance) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerReactanceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactance) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerReactanceOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactance) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o TransformerReactanceOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformerReactance) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type TransformerReactancePtrOutput struct{ *pulumi.OutputState }
+
+func (TransformerReactancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformerReactance)(nil)).Elem()
+}
+
+func (o TransformerReactancePtrOutput) ToTransformerReactancePtrOutput() TransformerReactancePtrOutput {
+	return o
+}
+
+func (o TransformerReactancePtrOutput) ToTransformerReactancePtrOutputWithContext(ctx context.Context) TransformerReactancePtrOutput {
+	return o
+}
+
+func (o TransformerReactancePtrOutput) Elem() TransformerReactanceOutput {
+	return o.ApplyT(func(v *TransformerReactance) TransformerReactance {
+		if v != nil {
+			return *v
+		}
+		var ret TransformerReactance
+		return ret
+	}).(TransformerReactanceOutput)
+}
+
+// reference to the asset to be linked to
+func (o TransformerReactancePtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerReactance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerReactancePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerReactance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerReactancePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerReactance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerReactancePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerReactance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerReactancePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerReactance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o TransformerReactancePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerReactance) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransformerReactivePowerHv struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// TransformerReactivePowerHvInput is an input type that accepts TransformerReactivePowerHvArgs and TransformerReactivePowerHvOutput values.
+// You can construct a concrete instance of `TransformerReactivePowerHvInput` via:
+//
+//	TransformerReactivePowerHvArgs{...}
+type TransformerReactivePowerHvInput interface {
+	pulumi.Input
+
+	ToTransformerReactivePowerHvOutput() TransformerReactivePowerHvOutput
+	ToTransformerReactivePowerHvOutputWithContext(context.Context) TransformerReactivePowerHvOutput
+}
+
+type TransformerReactivePowerHvArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (TransformerReactivePowerHvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerReactivePowerHv)(nil)).Elem()
+}
+
+func (i TransformerReactivePowerHvArgs) ToTransformerReactivePowerHvOutput() TransformerReactivePowerHvOutput {
+	return i.ToTransformerReactivePowerHvOutputWithContext(context.Background())
+}
+
+func (i TransformerReactivePowerHvArgs) ToTransformerReactivePowerHvOutputWithContext(ctx context.Context) TransformerReactivePowerHvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerReactivePowerHvOutput)
+}
+
+// TransformerReactivePowerHvArrayInput is an input type that accepts TransformerReactivePowerHvArray and TransformerReactivePowerHvArrayOutput values.
+// You can construct a concrete instance of `TransformerReactivePowerHvArrayInput` via:
+//
+//	TransformerReactivePowerHvArray{ TransformerReactivePowerHvArgs{...} }
+type TransformerReactivePowerHvArrayInput interface {
+	pulumi.Input
+
+	ToTransformerReactivePowerHvArrayOutput() TransformerReactivePowerHvArrayOutput
+	ToTransformerReactivePowerHvArrayOutputWithContext(context.Context) TransformerReactivePowerHvArrayOutput
+}
+
+type TransformerReactivePowerHvArray []TransformerReactivePowerHvInput
+
+func (TransformerReactivePowerHvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerReactivePowerHv)(nil)).Elem()
+}
+
+func (i TransformerReactivePowerHvArray) ToTransformerReactivePowerHvArrayOutput() TransformerReactivePowerHvArrayOutput {
+	return i.ToTransformerReactivePowerHvArrayOutputWithContext(context.Background())
+}
+
+func (i TransformerReactivePowerHvArray) ToTransformerReactivePowerHvArrayOutputWithContext(ctx context.Context) TransformerReactivePowerHvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerReactivePowerHvArrayOutput)
+}
+
+type TransformerReactivePowerHvOutput struct{ *pulumi.OutputState }
+
+func (TransformerReactivePowerHvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerReactivePowerHv)(nil)).Elem()
+}
+
+func (o TransformerReactivePowerHvOutput) ToTransformerReactivePowerHvOutput() TransformerReactivePowerHvOutput {
+	return o
+}
+
+func (o TransformerReactivePowerHvOutput) ToTransformerReactivePowerHvOutputWithContext(ctx context.Context) TransformerReactivePowerHvOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o TransformerReactivePowerHvOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactivePowerHv) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerReactivePowerHvOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactivePowerHv) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerReactivePowerHvOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactivePowerHv) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerReactivePowerHvOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactivePowerHv) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerReactivePowerHvOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactivePowerHv) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type TransformerReactivePowerHvArrayOutput struct{ *pulumi.OutputState }
+
+func (TransformerReactivePowerHvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerReactivePowerHv)(nil)).Elem()
+}
+
+func (o TransformerReactivePowerHvArrayOutput) ToTransformerReactivePowerHvArrayOutput() TransformerReactivePowerHvArrayOutput {
+	return o
+}
+
+func (o TransformerReactivePowerHvArrayOutput) ToTransformerReactivePowerHvArrayOutputWithContext(ctx context.Context) TransformerReactivePowerHvArrayOutput {
+	return o
+}
+
+func (o TransformerReactivePowerHvArrayOutput) Index(i pulumi.IntInput) TransformerReactivePowerHvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformerReactivePowerHv {
+		return vs[0].([]TransformerReactivePowerHv)[vs[1].(int)]
+	}).(TransformerReactivePowerHvOutput)
+}
+
+type TransformerReactivePowerLoss struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// TransformerReactivePowerLossInput is an input type that accepts TransformerReactivePowerLossArgs and TransformerReactivePowerLossOutput values.
+// You can construct a concrete instance of `TransformerReactivePowerLossInput` via:
+//
+//	TransformerReactivePowerLossArgs{...}
+type TransformerReactivePowerLossInput interface {
+	pulumi.Input
+
+	ToTransformerReactivePowerLossOutput() TransformerReactivePowerLossOutput
+	ToTransformerReactivePowerLossOutputWithContext(context.Context) TransformerReactivePowerLossOutput
+}
+
+type TransformerReactivePowerLossArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (TransformerReactivePowerLossArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerReactivePowerLoss)(nil)).Elem()
+}
+
+func (i TransformerReactivePowerLossArgs) ToTransformerReactivePowerLossOutput() TransformerReactivePowerLossOutput {
+	return i.ToTransformerReactivePowerLossOutputWithContext(context.Background())
+}
+
+func (i TransformerReactivePowerLossArgs) ToTransformerReactivePowerLossOutputWithContext(ctx context.Context) TransformerReactivePowerLossOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerReactivePowerLossOutput)
+}
+
+// TransformerReactivePowerLossArrayInput is an input type that accepts TransformerReactivePowerLossArray and TransformerReactivePowerLossArrayOutput values.
+// You can construct a concrete instance of `TransformerReactivePowerLossArrayInput` via:
+//
+//	TransformerReactivePowerLossArray{ TransformerReactivePowerLossArgs{...} }
+type TransformerReactivePowerLossArrayInput interface {
+	pulumi.Input
+
+	ToTransformerReactivePowerLossArrayOutput() TransformerReactivePowerLossArrayOutput
+	ToTransformerReactivePowerLossArrayOutputWithContext(context.Context) TransformerReactivePowerLossArrayOutput
+}
+
+type TransformerReactivePowerLossArray []TransformerReactivePowerLossInput
+
+func (TransformerReactivePowerLossArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerReactivePowerLoss)(nil)).Elem()
+}
+
+func (i TransformerReactivePowerLossArray) ToTransformerReactivePowerLossArrayOutput() TransformerReactivePowerLossArrayOutput {
+	return i.ToTransformerReactivePowerLossArrayOutputWithContext(context.Background())
+}
+
+func (i TransformerReactivePowerLossArray) ToTransformerReactivePowerLossArrayOutputWithContext(ctx context.Context) TransformerReactivePowerLossArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerReactivePowerLossArrayOutput)
+}
+
+type TransformerReactivePowerLossOutput struct{ *pulumi.OutputState }
+
+func (TransformerReactivePowerLossOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerReactivePowerLoss)(nil)).Elem()
+}
+
+func (o TransformerReactivePowerLossOutput) ToTransformerReactivePowerLossOutput() TransformerReactivePowerLossOutput {
+	return o
+}
+
+func (o TransformerReactivePowerLossOutput) ToTransformerReactivePowerLossOutputWithContext(ctx context.Context) TransformerReactivePowerLossOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o TransformerReactivePowerLossOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactivePowerLoss) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerReactivePowerLossOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactivePowerLoss) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerReactivePowerLossOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactivePowerLoss) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerReactivePowerLossOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactivePowerLoss) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerReactivePowerLossOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactivePowerLoss) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type TransformerReactivePowerLossArrayOutput struct{ *pulumi.OutputState }
+
+func (TransformerReactivePowerLossArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerReactivePowerLoss)(nil)).Elem()
+}
+
+func (o TransformerReactivePowerLossArrayOutput) ToTransformerReactivePowerLossArrayOutput() TransformerReactivePowerLossArrayOutput {
+	return o
+}
+
+func (o TransformerReactivePowerLossArrayOutput) ToTransformerReactivePowerLossArrayOutputWithContext(ctx context.Context) TransformerReactivePowerLossArrayOutput {
+	return o
+}
+
+func (o TransformerReactivePowerLossArrayOutput) Index(i pulumi.IntInput) TransformerReactivePowerLossOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformerReactivePowerLoss {
+		return vs[0].([]TransformerReactivePowerLoss)[vs[1].(int)]
+	}).(TransformerReactivePowerLossOutput)
+}
+
+type TransformerReactivePowerLv struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// TransformerReactivePowerLvInput is an input type that accepts TransformerReactivePowerLvArgs and TransformerReactivePowerLvOutput values.
+// You can construct a concrete instance of `TransformerReactivePowerLvInput` via:
+//
+//	TransformerReactivePowerLvArgs{...}
+type TransformerReactivePowerLvInput interface {
+	pulumi.Input
+
+	ToTransformerReactivePowerLvOutput() TransformerReactivePowerLvOutput
+	ToTransformerReactivePowerLvOutputWithContext(context.Context) TransformerReactivePowerLvOutput
+}
+
+type TransformerReactivePowerLvArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (TransformerReactivePowerLvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerReactivePowerLv)(nil)).Elem()
+}
+
+func (i TransformerReactivePowerLvArgs) ToTransformerReactivePowerLvOutput() TransformerReactivePowerLvOutput {
+	return i.ToTransformerReactivePowerLvOutputWithContext(context.Background())
+}
+
+func (i TransformerReactivePowerLvArgs) ToTransformerReactivePowerLvOutputWithContext(ctx context.Context) TransformerReactivePowerLvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerReactivePowerLvOutput)
+}
+
+// TransformerReactivePowerLvArrayInput is an input type that accepts TransformerReactivePowerLvArray and TransformerReactivePowerLvArrayOutput values.
+// You can construct a concrete instance of `TransformerReactivePowerLvArrayInput` via:
+//
+//	TransformerReactivePowerLvArray{ TransformerReactivePowerLvArgs{...} }
+type TransformerReactivePowerLvArrayInput interface {
+	pulumi.Input
+
+	ToTransformerReactivePowerLvArrayOutput() TransformerReactivePowerLvArrayOutput
+	ToTransformerReactivePowerLvArrayOutputWithContext(context.Context) TransformerReactivePowerLvArrayOutput
+}
+
+type TransformerReactivePowerLvArray []TransformerReactivePowerLvInput
+
+func (TransformerReactivePowerLvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerReactivePowerLv)(nil)).Elem()
+}
+
+func (i TransformerReactivePowerLvArray) ToTransformerReactivePowerLvArrayOutput() TransformerReactivePowerLvArrayOutput {
+	return i.ToTransformerReactivePowerLvArrayOutputWithContext(context.Background())
+}
+
+func (i TransformerReactivePowerLvArray) ToTransformerReactivePowerLvArrayOutputWithContext(ctx context.Context) TransformerReactivePowerLvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerReactivePowerLvArrayOutput)
+}
+
+type TransformerReactivePowerLvOutput struct{ *pulumi.OutputState }
+
+func (TransformerReactivePowerLvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerReactivePowerLv)(nil)).Elem()
+}
+
+func (o TransformerReactivePowerLvOutput) ToTransformerReactivePowerLvOutput() TransformerReactivePowerLvOutput {
+	return o
+}
+
+func (o TransformerReactivePowerLvOutput) ToTransformerReactivePowerLvOutputWithContext(ctx context.Context) TransformerReactivePowerLvOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o TransformerReactivePowerLvOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactivePowerLv) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerReactivePowerLvOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactivePowerLv) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerReactivePowerLvOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactivePowerLv) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerReactivePowerLvOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactivePowerLv) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerReactivePowerLvOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactivePowerLv) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type TransformerReactivePowerLvArrayOutput struct{ *pulumi.OutputState }
+
+func (TransformerReactivePowerLvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerReactivePowerLv)(nil)).Elem()
+}
+
+func (o TransformerReactivePowerLvArrayOutput) ToTransformerReactivePowerLvArrayOutput() TransformerReactivePowerLvArrayOutput {
+	return o
+}
+
+func (o TransformerReactivePowerLvArrayOutput) ToTransformerReactivePowerLvArrayOutputWithContext(ctx context.Context) TransformerReactivePowerLvArrayOutput {
+	return o
+}
+
+func (o TransformerReactivePowerLvArrayOutput) Index(i pulumi.IntInput) TransformerReactivePowerLvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformerReactivePowerLv {
+		return vs[0].([]TransformerReactivePowerLv)[vs[1].(int)]
+	}).(TransformerReactivePowerLvOutput)
+}
+
+type TransformerResistance struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// TransformerResistanceInput is an input type that accepts TransformerResistanceArgs and TransformerResistanceOutput values.
+// You can construct a concrete instance of `TransformerResistanceInput` via:
+//
+//	TransformerResistanceArgs{...}
+type TransformerResistanceInput interface {
+	pulumi.Input
+
+	ToTransformerResistanceOutput() TransformerResistanceOutput
+	ToTransformerResistanceOutputWithContext(context.Context) TransformerResistanceOutput
+}
+
+type TransformerResistanceArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (TransformerResistanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerResistance)(nil)).Elem()
+}
+
+func (i TransformerResistanceArgs) ToTransformerResistanceOutput() TransformerResistanceOutput {
+	return i.ToTransformerResistanceOutputWithContext(context.Background())
+}
+
+func (i TransformerResistanceArgs) ToTransformerResistanceOutputWithContext(ctx context.Context) TransformerResistanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerResistanceOutput)
+}
+
+func (i TransformerResistanceArgs) ToTransformerResistancePtrOutput() TransformerResistancePtrOutput {
+	return i.ToTransformerResistancePtrOutputWithContext(context.Background())
+}
+
+func (i TransformerResistanceArgs) ToTransformerResistancePtrOutputWithContext(ctx context.Context) TransformerResistancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerResistanceOutput).ToTransformerResistancePtrOutputWithContext(ctx)
+}
+
+// TransformerResistancePtrInput is an input type that accepts TransformerResistanceArgs, TransformerResistancePtr and TransformerResistancePtrOutput values.
+// You can construct a concrete instance of `TransformerResistancePtrInput` via:
+//
+//	        TransformerResistanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransformerResistancePtrInput interface {
+	pulumi.Input
+
+	ToTransformerResistancePtrOutput() TransformerResistancePtrOutput
+	ToTransformerResistancePtrOutputWithContext(context.Context) TransformerResistancePtrOutput
+}
+
+type transformerResistancePtrType TransformerResistanceArgs
+
+func TransformerResistancePtr(v *TransformerResistanceArgs) TransformerResistancePtrInput {
+	return (*transformerResistancePtrType)(v)
+}
+
+func (*transformerResistancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformerResistance)(nil)).Elem()
+}
+
+func (i *transformerResistancePtrType) ToTransformerResistancePtrOutput() TransformerResistancePtrOutput {
+	return i.ToTransformerResistancePtrOutputWithContext(context.Background())
+}
+
+func (i *transformerResistancePtrType) ToTransformerResistancePtrOutputWithContext(ctx context.Context) TransformerResistancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerResistancePtrOutput)
+}
+
+type TransformerResistanceOutput struct{ *pulumi.OutputState }
+
+func (TransformerResistanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerResistance)(nil)).Elem()
+}
+
+func (o TransformerResistanceOutput) ToTransformerResistanceOutput() TransformerResistanceOutput {
+	return o
+}
+
+func (o TransformerResistanceOutput) ToTransformerResistanceOutputWithContext(ctx context.Context) TransformerResistanceOutput {
+	return o
+}
+
+func (o TransformerResistanceOutput) ToTransformerResistancePtrOutput() TransformerResistancePtrOutput {
+	return o.ToTransformerResistancePtrOutputWithContext(context.Background())
+}
+
+func (o TransformerResistanceOutput) ToTransformerResistancePtrOutputWithContext(ctx context.Context) TransformerResistancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransformerResistance) *TransformerResistance {
+		return &v
+	}).(TransformerResistancePtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o TransformerResistanceOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerResistance) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerResistanceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerResistance) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerResistanceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerResistance) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerResistanceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerResistance) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerResistanceOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerResistance) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o TransformerResistanceOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformerResistance) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type TransformerResistancePtrOutput struct{ *pulumi.OutputState }
+
+func (TransformerResistancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformerResistance)(nil)).Elem()
+}
+
+func (o TransformerResistancePtrOutput) ToTransformerResistancePtrOutput() TransformerResistancePtrOutput {
+	return o
+}
+
+func (o TransformerResistancePtrOutput) ToTransformerResistancePtrOutputWithContext(ctx context.Context) TransformerResistancePtrOutput {
+	return o
+}
+
+func (o TransformerResistancePtrOutput) Elem() TransformerResistanceOutput {
+	return o.ApplyT(func(v *TransformerResistance) TransformerResistance {
+		if v != nil {
+			return *v
+		}
+		var ret TransformerResistance
+		return ret
+	}).(TransformerResistanceOutput)
+}
+
+// reference to the asset to be linked to
+func (o TransformerResistancePtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerResistancePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerResistancePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerResistancePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerResistancePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o TransformerResistancePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerResistance) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransformerSafetyMarginForPower struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// TransformerSafetyMarginForPowerInput is an input type that accepts TransformerSafetyMarginForPowerArgs and TransformerSafetyMarginForPowerOutput values.
+// You can construct a concrete instance of `TransformerSafetyMarginForPowerInput` via:
+//
+//	TransformerSafetyMarginForPowerArgs{...}
+type TransformerSafetyMarginForPowerInput interface {
+	pulumi.Input
+
+	ToTransformerSafetyMarginForPowerOutput() TransformerSafetyMarginForPowerOutput
+	ToTransformerSafetyMarginForPowerOutputWithContext(context.Context) TransformerSafetyMarginForPowerOutput
+}
+
+type TransformerSafetyMarginForPowerArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (TransformerSafetyMarginForPowerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerSafetyMarginForPower)(nil)).Elem()
+}
+
+func (i TransformerSafetyMarginForPowerArgs) ToTransformerSafetyMarginForPowerOutput() TransformerSafetyMarginForPowerOutput {
+	return i.ToTransformerSafetyMarginForPowerOutputWithContext(context.Background())
+}
+
+func (i TransformerSafetyMarginForPowerArgs) ToTransformerSafetyMarginForPowerOutputWithContext(ctx context.Context) TransformerSafetyMarginForPowerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerSafetyMarginForPowerOutput)
+}
+
+func (i TransformerSafetyMarginForPowerArgs) ToTransformerSafetyMarginForPowerPtrOutput() TransformerSafetyMarginForPowerPtrOutput {
+	return i.ToTransformerSafetyMarginForPowerPtrOutputWithContext(context.Background())
+}
+
+func (i TransformerSafetyMarginForPowerArgs) ToTransformerSafetyMarginForPowerPtrOutputWithContext(ctx context.Context) TransformerSafetyMarginForPowerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerSafetyMarginForPowerOutput).ToTransformerSafetyMarginForPowerPtrOutputWithContext(ctx)
+}
+
+// TransformerSafetyMarginForPowerPtrInput is an input type that accepts TransformerSafetyMarginForPowerArgs, TransformerSafetyMarginForPowerPtr and TransformerSafetyMarginForPowerPtrOutput values.
+// You can construct a concrete instance of `TransformerSafetyMarginForPowerPtrInput` via:
+//
+//	        TransformerSafetyMarginForPowerArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransformerSafetyMarginForPowerPtrInput interface {
+	pulumi.Input
+
+	ToTransformerSafetyMarginForPowerPtrOutput() TransformerSafetyMarginForPowerPtrOutput
+	ToTransformerSafetyMarginForPowerPtrOutputWithContext(context.Context) TransformerSafetyMarginForPowerPtrOutput
+}
+
+type transformerSafetyMarginForPowerPtrType TransformerSafetyMarginForPowerArgs
+
+func TransformerSafetyMarginForPowerPtr(v *TransformerSafetyMarginForPowerArgs) TransformerSafetyMarginForPowerPtrInput {
+	return (*transformerSafetyMarginForPowerPtrType)(v)
+}
+
+func (*transformerSafetyMarginForPowerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformerSafetyMarginForPower)(nil)).Elem()
+}
+
+func (i *transformerSafetyMarginForPowerPtrType) ToTransformerSafetyMarginForPowerPtrOutput() TransformerSafetyMarginForPowerPtrOutput {
+	return i.ToTransformerSafetyMarginForPowerPtrOutputWithContext(context.Background())
+}
+
+func (i *transformerSafetyMarginForPowerPtrType) ToTransformerSafetyMarginForPowerPtrOutputWithContext(ctx context.Context) TransformerSafetyMarginForPowerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerSafetyMarginForPowerPtrOutput)
+}
+
+type TransformerSafetyMarginForPowerOutput struct{ *pulumi.OutputState }
+
+func (TransformerSafetyMarginForPowerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerSafetyMarginForPower)(nil)).Elem()
+}
+
+func (o TransformerSafetyMarginForPowerOutput) ToTransformerSafetyMarginForPowerOutput() TransformerSafetyMarginForPowerOutput {
+	return o
+}
+
+func (o TransformerSafetyMarginForPowerOutput) ToTransformerSafetyMarginForPowerOutputWithContext(ctx context.Context) TransformerSafetyMarginForPowerOutput {
+	return o
+}
+
+func (o TransformerSafetyMarginForPowerOutput) ToTransformerSafetyMarginForPowerPtrOutput() TransformerSafetyMarginForPowerPtrOutput {
+	return o.ToTransformerSafetyMarginForPowerPtrOutputWithContext(context.Background())
+}
+
+func (o TransformerSafetyMarginForPowerOutput) ToTransformerSafetyMarginForPowerPtrOutputWithContext(ctx context.Context) TransformerSafetyMarginForPowerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransformerSafetyMarginForPower) *TransformerSafetyMarginForPower {
+		return &v
+	}).(TransformerSafetyMarginForPowerPtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o TransformerSafetyMarginForPowerOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerSafetyMarginForPower) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerSafetyMarginForPowerOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerSafetyMarginForPower) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerSafetyMarginForPowerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerSafetyMarginForPower) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerSafetyMarginForPowerOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerSafetyMarginForPower) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerSafetyMarginForPowerOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerSafetyMarginForPower) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o TransformerSafetyMarginForPowerOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformerSafetyMarginForPower) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type TransformerSafetyMarginForPowerPtrOutput struct{ *pulumi.OutputState }
+
+func (TransformerSafetyMarginForPowerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformerSafetyMarginForPower)(nil)).Elem()
+}
+
+func (o TransformerSafetyMarginForPowerPtrOutput) ToTransformerSafetyMarginForPowerPtrOutput() TransformerSafetyMarginForPowerPtrOutput {
+	return o
+}
+
+func (o TransformerSafetyMarginForPowerPtrOutput) ToTransformerSafetyMarginForPowerPtrOutputWithContext(ctx context.Context) TransformerSafetyMarginForPowerPtrOutput {
+	return o
+}
+
+func (o TransformerSafetyMarginForPowerPtrOutput) Elem() TransformerSafetyMarginForPowerOutput {
+	return o.ApplyT(func(v *TransformerSafetyMarginForPower) TransformerSafetyMarginForPower {
+		if v != nil {
+			return *v
+		}
+		var ret TransformerSafetyMarginForPower
+		return ret
+	}).(TransformerSafetyMarginForPowerOutput)
+}
+
+// reference to the asset to be linked to
+func (o TransformerSafetyMarginForPowerPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerSafetyMarginForPower) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerSafetyMarginForPowerPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerSafetyMarginForPower) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerSafetyMarginForPowerPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerSafetyMarginForPower) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerSafetyMarginForPowerPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerSafetyMarginForPower) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerSafetyMarginForPowerPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerSafetyMarginForPower) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o TransformerSafetyMarginForPowerPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerSafetyMarginForPower) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransformerStandardType struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// TransformerStandardTypeInput is an input type that accepts TransformerStandardTypeArgs and TransformerStandardTypeOutput values.
+// You can construct a concrete instance of `TransformerStandardTypeInput` via:
+//
+//	TransformerStandardTypeArgs{...}
+type TransformerStandardTypeInput interface {
+	pulumi.Input
+
+	ToTransformerStandardTypeOutput() TransformerStandardTypeOutput
+	ToTransformerStandardTypeOutputWithContext(context.Context) TransformerStandardTypeOutput
+}
+
+type TransformerStandardTypeArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (TransformerStandardTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerStandardType)(nil)).Elem()
+}
+
+func (i TransformerStandardTypeArgs) ToTransformerStandardTypeOutput() TransformerStandardTypeOutput {
+	return i.ToTransformerStandardTypeOutputWithContext(context.Background())
+}
+
+func (i TransformerStandardTypeArgs) ToTransformerStandardTypeOutputWithContext(ctx context.Context) TransformerStandardTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerStandardTypeOutput)
+}
+
+func (i TransformerStandardTypeArgs) ToTransformerStandardTypePtrOutput() TransformerStandardTypePtrOutput {
+	return i.ToTransformerStandardTypePtrOutputWithContext(context.Background())
+}
+
+func (i TransformerStandardTypeArgs) ToTransformerStandardTypePtrOutputWithContext(ctx context.Context) TransformerStandardTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerStandardTypeOutput).ToTransformerStandardTypePtrOutputWithContext(ctx)
+}
+
+// TransformerStandardTypePtrInput is an input type that accepts TransformerStandardTypeArgs, TransformerStandardTypePtr and TransformerStandardTypePtrOutput values.
+// You can construct a concrete instance of `TransformerStandardTypePtrInput` via:
+//
+//	        TransformerStandardTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransformerStandardTypePtrInput interface {
+	pulumi.Input
+
+	ToTransformerStandardTypePtrOutput() TransformerStandardTypePtrOutput
+	ToTransformerStandardTypePtrOutputWithContext(context.Context) TransformerStandardTypePtrOutput
+}
+
+type transformerStandardTypePtrType TransformerStandardTypeArgs
+
+func TransformerStandardTypePtr(v *TransformerStandardTypeArgs) TransformerStandardTypePtrInput {
+	return (*transformerStandardTypePtrType)(v)
+}
+
+func (*transformerStandardTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformerStandardType)(nil)).Elem()
+}
+
+func (i *transformerStandardTypePtrType) ToTransformerStandardTypePtrOutput() TransformerStandardTypePtrOutput {
+	return i.ToTransformerStandardTypePtrOutputWithContext(context.Background())
+}
+
+func (i *transformerStandardTypePtrType) ToTransformerStandardTypePtrOutputWithContext(ctx context.Context) TransformerStandardTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerStandardTypePtrOutput)
+}
+
+type TransformerStandardTypeOutput struct{ *pulumi.OutputState }
+
+func (TransformerStandardTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerStandardType)(nil)).Elem()
+}
+
+func (o TransformerStandardTypeOutput) ToTransformerStandardTypeOutput() TransformerStandardTypeOutput {
+	return o
+}
+
+func (o TransformerStandardTypeOutput) ToTransformerStandardTypeOutputWithContext(ctx context.Context) TransformerStandardTypeOutput {
+	return o
+}
+
+func (o TransformerStandardTypeOutput) ToTransformerStandardTypePtrOutput() TransformerStandardTypePtrOutput {
+	return o.ToTransformerStandardTypePtrOutputWithContext(context.Background())
+}
+
+func (o TransformerStandardTypeOutput) ToTransformerStandardTypePtrOutputWithContext(ctx context.Context) TransformerStandardTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransformerStandardType) *TransformerStandardType {
+		return &v
+	}).(TransformerStandardTypePtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o TransformerStandardTypeOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerStandardType) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerStandardTypeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerStandardType) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerStandardTypeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerStandardType) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerStandardTypeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerStandardType) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerStandardTypeOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerStandardType) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o TransformerStandardTypeOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformerStandardType) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type TransformerStandardTypePtrOutput struct{ *pulumi.OutputState }
+
+func (TransformerStandardTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformerStandardType)(nil)).Elem()
+}
+
+func (o TransformerStandardTypePtrOutput) ToTransformerStandardTypePtrOutput() TransformerStandardTypePtrOutput {
+	return o
+}
+
+func (o TransformerStandardTypePtrOutput) ToTransformerStandardTypePtrOutputWithContext(ctx context.Context) TransformerStandardTypePtrOutput {
+	return o
+}
+
+func (o TransformerStandardTypePtrOutput) Elem() TransformerStandardTypeOutput {
+	return o.ApplyT(func(v *TransformerStandardType) TransformerStandardType {
+		if v != nil {
+			return *v
+		}
+		var ret TransformerStandardType
+		return ret
+	}).(TransformerStandardTypeOutput)
+}
+
+// reference to the asset to be linked to
+func (o TransformerStandardTypePtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerStandardType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerStandardTypePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerStandardType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerStandardTypePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerStandardType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerStandardTypePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerStandardType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerStandardTypePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerStandardType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o TransformerStandardTypePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerStandardType) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransformerSwitchStatusHv struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// TransformerSwitchStatusHvInput is an input type that accepts TransformerSwitchStatusHvArgs and TransformerSwitchStatusHvOutput values.
+// You can construct a concrete instance of `TransformerSwitchStatusHvInput` via:
+//
+//	TransformerSwitchStatusHvArgs{...}
+type TransformerSwitchStatusHvInput interface {
+	pulumi.Input
+
+	ToTransformerSwitchStatusHvOutput() TransformerSwitchStatusHvOutput
+	ToTransformerSwitchStatusHvOutputWithContext(context.Context) TransformerSwitchStatusHvOutput
+}
+
+type TransformerSwitchStatusHvArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (TransformerSwitchStatusHvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerSwitchStatusHv)(nil)).Elem()
+}
+
+func (i TransformerSwitchStatusHvArgs) ToTransformerSwitchStatusHvOutput() TransformerSwitchStatusHvOutput {
+	return i.ToTransformerSwitchStatusHvOutputWithContext(context.Background())
+}
+
+func (i TransformerSwitchStatusHvArgs) ToTransformerSwitchStatusHvOutputWithContext(ctx context.Context) TransformerSwitchStatusHvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerSwitchStatusHvOutput)
+}
+
+// TransformerSwitchStatusHvArrayInput is an input type that accepts TransformerSwitchStatusHvArray and TransformerSwitchStatusHvArrayOutput values.
+// You can construct a concrete instance of `TransformerSwitchStatusHvArrayInput` via:
+//
+//	TransformerSwitchStatusHvArray{ TransformerSwitchStatusHvArgs{...} }
+type TransformerSwitchStatusHvArrayInput interface {
+	pulumi.Input
+
+	ToTransformerSwitchStatusHvArrayOutput() TransformerSwitchStatusHvArrayOutput
+	ToTransformerSwitchStatusHvArrayOutputWithContext(context.Context) TransformerSwitchStatusHvArrayOutput
+}
+
+type TransformerSwitchStatusHvArray []TransformerSwitchStatusHvInput
+
+func (TransformerSwitchStatusHvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerSwitchStatusHv)(nil)).Elem()
+}
+
+func (i TransformerSwitchStatusHvArray) ToTransformerSwitchStatusHvArrayOutput() TransformerSwitchStatusHvArrayOutput {
+	return i.ToTransformerSwitchStatusHvArrayOutputWithContext(context.Background())
+}
+
+func (i TransformerSwitchStatusHvArray) ToTransformerSwitchStatusHvArrayOutputWithContext(ctx context.Context) TransformerSwitchStatusHvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerSwitchStatusHvArrayOutput)
+}
+
+type TransformerSwitchStatusHvOutput struct{ *pulumi.OutputState }
+
+func (TransformerSwitchStatusHvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerSwitchStatusHv)(nil)).Elem()
+}
+
+func (o TransformerSwitchStatusHvOutput) ToTransformerSwitchStatusHvOutput() TransformerSwitchStatusHvOutput {
+	return o
+}
+
+func (o TransformerSwitchStatusHvOutput) ToTransformerSwitchStatusHvOutputWithContext(ctx context.Context) TransformerSwitchStatusHvOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o TransformerSwitchStatusHvOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerSwitchStatusHv) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerSwitchStatusHvOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerSwitchStatusHv) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerSwitchStatusHvOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerSwitchStatusHv) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerSwitchStatusHvOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerSwitchStatusHv) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerSwitchStatusHvOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerSwitchStatusHv) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type TransformerSwitchStatusHvArrayOutput struct{ *pulumi.OutputState }
+
+func (TransformerSwitchStatusHvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerSwitchStatusHv)(nil)).Elem()
+}
+
+func (o TransformerSwitchStatusHvArrayOutput) ToTransformerSwitchStatusHvArrayOutput() TransformerSwitchStatusHvArrayOutput {
+	return o
+}
+
+func (o TransformerSwitchStatusHvArrayOutput) ToTransformerSwitchStatusHvArrayOutputWithContext(ctx context.Context) TransformerSwitchStatusHvArrayOutput {
+	return o
+}
+
+func (o TransformerSwitchStatusHvArrayOutput) Index(i pulumi.IntInput) TransformerSwitchStatusHvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformerSwitchStatusHv {
+		return vs[0].([]TransformerSwitchStatusHv)[vs[1].(int)]
+	}).(TransformerSwitchStatusHvOutput)
+}
+
+type TransformerSwitchStatusLv struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// TransformerSwitchStatusLvInput is an input type that accepts TransformerSwitchStatusLvArgs and TransformerSwitchStatusLvOutput values.
+// You can construct a concrete instance of `TransformerSwitchStatusLvInput` via:
+//
+//	TransformerSwitchStatusLvArgs{...}
+type TransformerSwitchStatusLvInput interface {
+	pulumi.Input
+
+	ToTransformerSwitchStatusLvOutput() TransformerSwitchStatusLvOutput
+	ToTransformerSwitchStatusLvOutputWithContext(context.Context) TransformerSwitchStatusLvOutput
+}
+
+type TransformerSwitchStatusLvArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (TransformerSwitchStatusLvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerSwitchStatusLv)(nil)).Elem()
+}
+
+func (i TransformerSwitchStatusLvArgs) ToTransformerSwitchStatusLvOutput() TransformerSwitchStatusLvOutput {
+	return i.ToTransformerSwitchStatusLvOutputWithContext(context.Background())
+}
+
+func (i TransformerSwitchStatusLvArgs) ToTransformerSwitchStatusLvOutputWithContext(ctx context.Context) TransformerSwitchStatusLvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerSwitchStatusLvOutput)
+}
+
+// TransformerSwitchStatusLvArrayInput is an input type that accepts TransformerSwitchStatusLvArray and TransformerSwitchStatusLvArrayOutput values.
+// You can construct a concrete instance of `TransformerSwitchStatusLvArrayInput` via:
+//
+//	TransformerSwitchStatusLvArray{ TransformerSwitchStatusLvArgs{...} }
+type TransformerSwitchStatusLvArrayInput interface {
+	pulumi.Input
+
+	ToTransformerSwitchStatusLvArrayOutput() TransformerSwitchStatusLvArrayOutput
+	ToTransformerSwitchStatusLvArrayOutputWithContext(context.Context) TransformerSwitchStatusLvArrayOutput
+}
+
+type TransformerSwitchStatusLvArray []TransformerSwitchStatusLvInput
+
+func (TransformerSwitchStatusLvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerSwitchStatusLv)(nil)).Elem()
+}
+
+func (i TransformerSwitchStatusLvArray) ToTransformerSwitchStatusLvArrayOutput() TransformerSwitchStatusLvArrayOutput {
+	return i.ToTransformerSwitchStatusLvArrayOutputWithContext(context.Background())
+}
+
+func (i TransformerSwitchStatusLvArray) ToTransformerSwitchStatusLvArrayOutputWithContext(ctx context.Context) TransformerSwitchStatusLvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerSwitchStatusLvArrayOutput)
+}
+
+type TransformerSwitchStatusLvOutput struct{ *pulumi.OutputState }
+
+func (TransformerSwitchStatusLvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerSwitchStatusLv)(nil)).Elem()
+}
+
+func (o TransformerSwitchStatusLvOutput) ToTransformerSwitchStatusLvOutput() TransformerSwitchStatusLvOutput {
+	return o
+}
+
+func (o TransformerSwitchStatusLvOutput) ToTransformerSwitchStatusLvOutputWithContext(ctx context.Context) TransformerSwitchStatusLvOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o TransformerSwitchStatusLvOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerSwitchStatusLv) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerSwitchStatusLvOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerSwitchStatusLv) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerSwitchStatusLvOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerSwitchStatusLv) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerSwitchStatusLvOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerSwitchStatusLv) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerSwitchStatusLvOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerSwitchStatusLv) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type TransformerSwitchStatusLvArrayOutput struct{ *pulumi.OutputState }
+
+func (TransformerSwitchStatusLvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerSwitchStatusLv)(nil)).Elem()
+}
+
+func (o TransformerSwitchStatusLvArrayOutput) ToTransformerSwitchStatusLvArrayOutput() TransformerSwitchStatusLvArrayOutput {
+	return o
+}
+
+func (o TransformerSwitchStatusLvArrayOutput) ToTransformerSwitchStatusLvArrayOutputWithContext(ctx context.Context) TransformerSwitchStatusLvArrayOutput {
+	return o
+}
+
+func (o TransformerSwitchStatusLvArrayOutput) Index(i pulumi.IntInput) TransformerSwitchStatusLvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformerSwitchStatusLv {
+		return vs[0].([]TransformerSwitchStatusLv)[vs[1].(int)]
+	}).(TransformerSwitchStatusLvOutput)
+}
+
+type TransformerTag struct {
+	// tag id
+	Id string `pulumi:"id"`
+	// tag name
+	Name string `pulumi:"name"`
+}
+
+// TransformerTagInput is an input type that accepts TransformerTagArgs and TransformerTagOutput values.
+// You can construct a concrete instance of `TransformerTagInput` via:
+//
+//	TransformerTagArgs{...}
+type TransformerTagInput interface {
+	pulumi.Input
+
+	ToTransformerTagOutput() TransformerTagOutput
+	ToTransformerTagOutputWithContext(context.Context) TransformerTagOutput
+}
+
+type TransformerTagArgs struct {
+	// tag id
+	Id pulumi.StringInput `pulumi:"id"`
+	// tag name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (TransformerTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerTag)(nil)).Elem()
+}
+
+func (i TransformerTagArgs) ToTransformerTagOutput() TransformerTagOutput {
+	return i.ToTransformerTagOutputWithContext(context.Background())
+}
+
+func (i TransformerTagArgs) ToTransformerTagOutputWithContext(ctx context.Context) TransformerTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerTagOutput)
+}
+
+// TransformerTagArrayInput is an input type that accepts TransformerTagArray and TransformerTagArrayOutput values.
+// You can construct a concrete instance of `TransformerTagArrayInput` via:
+//
+//	TransformerTagArray{ TransformerTagArgs{...} }
+type TransformerTagArrayInput interface {
+	pulumi.Input
+
+	ToTransformerTagArrayOutput() TransformerTagArrayOutput
+	ToTransformerTagArrayOutputWithContext(context.Context) TransformerTagArrayOutput
+}
+
+type TransformerTagArray []TransformerTagInput
+
+func (TransformerTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerTag)(nil)).Elem()
+}
+
+func (i TransformerTagArray) ToTransformerTagArrayOutput() TransformerTagArrayOutput {
+	return i.ToTransformerTagArrayOutputWithContext(context.Background())
+}
+
+func (i TransformerTagArray) ToTransformerTagArrayOutputWithContext(ctx context.Context) TransformerTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerTagArrayOutput)
+}
+
+type TransformerTagOutput struct{ *pulumi.OutputState }
+
+func (TransformerTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerTag)(nil)).Elem()
+}
+
+func (o TransformerTagOutput) ToTransformerTagOutput() TransformerTagOutput {
+	return o
+}
+
+func (o TransformerTagOutput) ToTransformerTagOutputWithContext(ctx context.Context) TransformerTagOutput {
+	return o
+}
+
+// tag id
+func (o TransformerTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformerTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// tag name
+func (o TransformerTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformerTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type TransformerTagArrayOutput struct{ *pulumi.OutputState }
+
+func (TransformerTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerTag)(nil)).Elem()
+}
+
+func (o TransformerTagArrayOutput) ToTransformerTagArrayOutput() TransformerTagArrayOutput {
+	return o
+}
+
+func (o TransformerTagArrayOutput) ToTransformerTagArrayOutputWithContext(ctx context.Context) TransformerTagArrayOutput {
+	return o
+}
+
+func (o TransformerTagArrayOutput) Index(i pulumi.IntInput) TransformerTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformerTag {
+		return vs[0].([]TransformerTag)[vs[1].(int)]
+	}).(TransformerTagOutput)
+}
+
+type TransformerTapPos struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// TransformerTapPosInput is an input type that accepts TransformerTapPosArgs and TransformerTapPosOutput values.
+// You can construct a concrete instance of `TransformerTapPosInput` via:
+//
+//	TransformerTapPosArgs{...}
+type TransformerTapPosInput interface {
+	pulumi.Input
+
+	ToTransformerTapPosOutput() TransformerTapPosOutput
+	ToTransformerTapPosOutputWithContext(context.Context) TransformerTapPosOutput
+}
+
+type TransformerTapPosArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (TransformerTapPosArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerTapPos)(nil)).Elem()
+}
+
+func (i TransformerTapPosArgs) ToTransformerTapPosOutput() TransformerTapPosOutput {
+	return i.ToTransformerTapPosOutputWithContext(context.Background())
+}
+
+func (i TransformerTapPosArgs) ToTransformerTapPosOutputWithContext(ctx context.Context) TransformerTapPosOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerTapPosOutput)
+}
+
+func (i TransformerTapPosArgs) ToTransformerTapPosPtrOutput() TransformerTapPosPtrOutput {
+	return i.ToTransformerTapPosPtrOutputWithContext(context.Background())
+}
+
+func (i TransformerTapPosArgs) ToTransformerTapPosPtrOutputWithContext(ctx context.Context) TransformerTapPosPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerTapPosOutput).ToTransformerTapPosPtrOutputWithContext(ctx)
+}
+
+// TransformerTapPosPtrInput is an input type that accepts TransformerTapPosArgs, TransformerTapPosPtr and TransformerTapPosPtrOutput values.
+// You can construct a concrete instance of `TransformerTapPosPtrInput` via:
+//
+//	        TransformerTapPosArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransformerTapPosPtrInput interface {
+	pulumi.Input
+
+	ToTransformerTapPosPtrOutput() TransformerTapPosPtrOutput
+	ToTransformerTapPosPtrOutputWithContext(context.Context) TransformerTapPosPtrOutput
+}
+
+type transformerTapPosPtrType TransformerTapPosArgs
+
+func TransformerTapPosPtr(v *TransformerTapPosArgs) TransformerTapPosPtrInput {
+	return (*transformerTapPosPtrType)(v)
+}
+
+func (*transformerTapPosPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformerTapPos)(nil)).Elem()
+}
+
+func (i *transformerTapPosPtrType) ToTransformerTapPosPtrOutput() TransformerTapPosPtrOutput {
+	return i.ToTransformerTapPosPtrOutputWithContext(context.Background())
+}
+
+func (i *transformerTapPosPtrType) ToTransformerTapPosPtrOutputWithContext(ctx context.Context) TransformerTapPosPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerTapPosPtrOutput)
+}
+
+type TransformerTapPosOutput struct{ *pulumi.OutputState }
+
+func (TransformerTapPosOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerTapPos)(nil)).Elem()
+}
+
+func (o TransformerTapPosOutput) ToTransformerTapPosOutput() TransformerTapPosOutput {
+	return o
+}
+
+func (o TransformerTapPosOutput) ToTransformerTapPosOutputWithContext(ctx context.Context) TransformerTapPosOutput {
+	return o
+}
+
+func (o TransformerTapPosOutput) ToTransformerTapPosPtrOutput() TransformerTapPosPtrOutput {
+	return o.ToTransformerTapPosPtrOutputWithContext(context.Background())
+}
+
+func (o TransformerTapPosOutput) ToTransformerTapPosPtrOutputWithContext(ctx context.Context) TransformerTapPosPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransformerTapPos) *TransformerTapPos {
+		return &v
+	}).(TransformerTapPosPtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o TransformerTapPosOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerTapPos) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerTapPosOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerTapPos) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerTapPosOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerTapPos) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerTapPosOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerTapPos) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerTapPosOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerTapPos) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o TransformerTapPosOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformerTapPos) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type TransformerTapPosPtrOutput struct{ *pulumi.OutputState }
+
+func (TransformerTapPosPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformerTapPos)(nil)).Elem()
+}
+
+func (o TransformerTapPosPtrOutput) ToTransformerTapPosPtrOutput() TransformerTapPosPtrOutput {
+	return o
+}
+
+func (o TransformerTapPosPtrOutput) ToTransformerTapPosPtrOutputWithContext(ctx context.Context) TransformerTapPosPtrOutput {
+	return o
+}
+
+func (o TransformerTapPosPtrOutput) Elem() TransformerTapPosOutput {
+	return o.ApplyT(func(v *TransformerTapPos) TransformerTapPos {
+		if v != nil {
+			return *v
+		}
+		var ret TransformerTapPos
+		return ret
+	}).(TransformerTapPosOutput)
+}
+
+// reference to the asset to be linked to
+func (o TransformerTapPosPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerTapPos) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerTapPosPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerTapPos) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerTapPosPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerTapPos) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerTapPosPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerTapPos) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerTapPosPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerTapPos) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o TransformerTapPosPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerTapPos) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransformerVoltageHv struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// TransformerVoltageHvInput is an input type that accepts TransformerVoltageHvArgs and TransformerVoltageHvOutput values.
+// You can construct a concrete instance of `TransformerVoltageHvInput` via:
+//
+//	TransformerVoltageHvArgs{...}
+type TransformerVoltageHvInput interface {
+	pulumi.Input
+
+	ToTransformerVoltageHvOutput() TransformerVoltageHvOutput
+	ToTransformerVoltageHvOutputWithContext(context.Context) TransformerVoltageHvOutput
+}
+
+type TransformerVoltageHvArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (TransformerVoltageHvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerVoltageHv)(nil)).Elem()
+}
+
+func (i TransformerVoltageHvArgs) ToTransformerVoltageHvOutput() TransformerVoltageHvOutput {
+	return i.ToTransformerVoltageHvOutputWithContext(context.Background())
+}
+
+func (i TransformerVoltageHvArgs) ToTransformerVoltageHvOutputWithContext(ctx context.Context) TransformerVoltageHvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerVoltageHvOutput)
+}
+
+// TransformerVoltageHvArrayInput is an input type that accepts TransformerVoltageHvArray and TransformerVoltageHvArrayOutput values.
+// You can construct a concrete instance of `TransformerVoltageHvArrayInput` via:
+//
+//	TransformerVoltageHvArray{ TransformerVoltageHvArgs{...} }
+type TransformerVoltageHvArrayInput interface {
+	pulumi.Input
+
+	ToTransformerVoltageHvArrayOutput() TransformerVoltageHvArrayOutput
+	ToTransformerVoltageHvArrayOutputWithContext(context.Context) TransformerVoltageHvArrayOutput
+}
+
+type TransformerVoltageHvArray []TransformerVoltageHvInput
+
+func (TransformerVoltageHvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerVoltageHv)(nil)).Elem()
+}
+
+func (i TransformerVoltageHvArray) ToTransformerVoltageHvArrayOutput() TransformerVoltageHvArrayOutput {
+	return i.ToTransformerVoltageHvArrayOutputWithContext(context.Background())
+}
+
+func (i TransformerVoltageHvArray) ToTransformerVoltageHvArrayOutputWithContext(ctx context.Context) TransformerVoltageHvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerVoltageHvArrayOutput)
+}
+
+type TransformerVoltageHvOutput struct{ *pulumi.OutputState }
+
+func (TransformerVoltageHvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerVoltageHv)(nil)).Elem()
+}
+
+func (o TransformerVoltageHvOutput) ToTransformerVoltageHvOutput() TransformerVoltageHvOutput {
+	return o
+}
+
+func (o TransformerVoltageHvOutput) ToTransformerVoltageHvOutputWithContext(ctx context.Context) TransformerVoltageHvOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o TransformerVoltageHvOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerVoltageHv) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerVoltageHvOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerVoltageHv) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerVoltageHvOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerVoltageHv) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerVoltageHvOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerVoltageHv) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerVoltageHvOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerVoltageHv) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type TransformerVoltageHvArrayOutput struct{ *pulumi.OutputState }
+
+func (TransformerVoltageHvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerVoltageHv)(nil)).Elem()
+}
+
+func (o TransformerVoltageHvArrayOutput) ToTransformerVoltageHvArrayOutput() TransformerVoltageHvArrayOutput {
+	return o
+}
+
+func (o TransformerVoltageHvArrayOutput) ToTransformerVoltageHvArrayOutputWithContext(ctx context.Context) TransformerVoltageHvArrayOutput {
+	return o
+}
+
+func (o TransformerVoltageHvArrayOutput) Index(i pulumi.IntInput) TransformerVoltageHvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformerVoltageHv {
+		return vs[0].([]TransformerVoltageHv)[vs[1].(int)]
+	}).(TransformerVoltageHvOutput)
+}
+
+type TransformerVoltageLv struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+}
+
+// TransformerVoltageLvInput is an input type that accepts TransformerVoltageLvArgs and TransformerVoltageLvOutput values.
+// You can construct a concrete instance of `TransformerVoltageLvInput` via:
+//
+//	TransformerVoltageLvArgs{...}
+type TransformerVoltageLvInput interface {
+	pulumi.Input
+
+	ToTransformerVoltageLvOutput() TransformerVoltageLvOutput
+	ToTransformerVoltageLvOutputWithContext(context.Context) TransformerVoltageLvOutput
+}
+
+type TransformerVoltageLvArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (TransformerVoltageLvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerVoltageLv)(nil)).Elem()
+}
+
+func (i TransformerVoltageLvArgs) ToTransformerVoltageLvOutput() TransformerVoltageLvOutput {
+	return i.ToTransformerVoltageLvOutputWithContext(context.Background())
+}
+
+func (i TransformerVoltageLvArgs) ToTransformerVoltageLvOutputWithContext(ctx context.Context) TransformerVoltageLvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerVoltageLvOutput)
+}
+
+// TransformerVoltageLvArrayInput is an input type that accepts TransformerVoltageLvArray and TransformerVoltageLvArrayOutput values.
+// You can construct a concrete instance of `TransformerVoltageLvArrayInput` via:
+//
+//	TransformerVoltageLvArray{ TransformerVoltageLvArgs{...} }
+type TransformerVoltageLvArrayInput interface {
+	pulumi.Input
+
+	ToTransformerVoltageLvArrayOutput() TransformerVoltageLvArrayOutput
+	ToTransformerVoltageLvArrayOutputWithContext(context.Context) TransformerVoltageLvArrayOutput
+}
+
+type TransformerVoltageLvArray []TransformerVoltageLvInput
+
+func (TransformerVoltageLvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerVoltageLv)(nil)).Elem()
+}
+
+func (i TransformerVoltageLvArray) ToTransformerVoltageLvArrayOutput() TransformerVoltageLvArrayOutput {
+	return i.ToTransformerVoltageLvArrayOutputWithContext(context.Background())
+}
+
+func (i TransformerVoltageLvArray) ToTransformerVoltageLvArrayOutputWithContext(ctx context.Context) TransformerVoltageLvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerVoltageLvArrayOutput)
+}
+
+type TransformerVoltageLvOutput struct{ *pulumi.OutputState }
+
+func (TransformerVoltageLvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerVoltageLv)(nil)).Elem()
+}
+
+func (o TransformerVoltageLvOutput) ToTransformerVoltageLvOutput() TransformerVoltageLvOutput {
+	return o
+}
+
+func (o TransformerVoltageLvOutput) ToTransformerVoltageLvOutputWithContext(ctx context.Context) TransformerVoltageLvOutput {
+	return o
+}
+
+// reference to the asset to be linked to
+func (o TransformerVoltageLvOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerVoltageLv) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerVoltageLvOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerVoltageLv) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerVoltageLvOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerVoltageLv) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerVoltageLvOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerVoltageLv) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerVoltageLvOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerVoltageLv) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type TransformerVoltageLvArrayOutput struct{ *pulumi.OutputState }
+
+func (TransformerVoltageLvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransformerVoltageLv)(nil)).Elem()
+}
+
+func (o TransformerVoltageLvArrayOutput) ToTransformerVoltageLvArrayOutput() TransformerVoltageLvArrayOutput {
+	return o
+}
+
+func (o TransformerVoltageLvArrayOutput) ToTransformerVoltageLvArrayOutputWithContext(ctx context.Context) TransformerVoltageLvArrayOutput {
+	return o
+}
+
+func (o TransformerVoltageLvArrayOutput) Index(i pulumi.IntInput) TransformerVoltageLvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformerVoltageLv {
+		return vs[0].([]TransformerVoltageLv)[vs[1].(int)]
+	}).(TransformerVoltageLvOutput)
+}
+
+type TransformerXnOhm struct {
+	// reference to the asset to be linked to
+	Asset *string `pulumi:"asset"`
+	// id of the resource
+	Id *string `pulumi:"id"`
+	// name of the resource
+	Name *string `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type *string `pulumi:"type"`
+	// unit of measure
+	Unit *string `pulumi:"unit"`
+	// metadata value
+	Value string `pulumi:"value"`
+}
+
+// TransformerXnOhmInput is an input type that accepts TransformerXnOhmArgs and TransformerXnOhmOutput values.
+// You can construct a concrete instance of `TransformerXnOhmInput` via:
+//
+//	TransformerXnOhmArgs{...}
+type TransformerXnOhmInput interface {
+	pulumi.Input
+
+	ToTransformerXnOhmOutput() TransformerXnOhmOutput
+	ToTransformerXnOhmOutputWithContext(context.Context) TransformerXnOhmOutput
+}
+
+type TransformerXnOhmArgs struct {
+	// reference to the asset to be linked to
+	Asset pulumi.StringPtrInput `pulumi:"asset"`
+	// id of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [String|Boolean|Number] type of the data to be ingested in this attribute
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// unit of measure
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// metadata value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (TransformerXnOhmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerXnOhm)(nil)).Elem()
+}
+
+func (i TransformerXnOhmArgs) ToTransformerXnOhmOutput() TransformerXnOhmOutput {
+	return i.ToTransformerXnOhmOutputWithContext(context.Background())
+}
+
+func (i TransformerXnOhmArgs) ToTransformerXnOhmOutputWithContext(ctx context.Context) TransformerXnOhmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerXnOhmOutput)
+}
+
+func (i TransformerXnOhmArgs) ToTransformerXnOhmPtrOutput() TransformerXnOhmPtrOutput {
+	return i.ToTransformerXnOhmPtrOutputWithContext(context.Background())
+}
+
+func (i TransformerXnOhmArgs) ToTransformerXnOhmPtrOutputWithContext(ctx context.Context) TransformerXnOhmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerXnOhmOutput).ToTransformerXnOhmPtrOutputWithContext(ctx)
+}
+
+// TransformerXnOhmPtrInput is an input type that accepts TransformerXnOhmArgs, TransformerXnOhmPtr and TransformerXnOhmPtrOutput values.
+// You can construct a concrete instance of `TransformerXnOhmPtrInput` via:
+//
+//	        TransformerXnOhmArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransformerXnOhmPtrInput interface {
+	pulumi.Input
+
+	ToTransformerXnOhmPtrOutput() TransformerXnOhmPtrOutput
+	ToTransformerXnOhmPtrOutputWithContext(context.Context) TransformerXnOhmPtrOutput
+}
+
+type transformerXnOhmPtrType TransformerXnOhmArgs
+
+func TransformerXnOhmPtr(v *TransformerXnOhmArgs) TransformerXnOhmPtrInput {
+	return (*transformerXnOhmPtrType)(v)
+}
+
+func (*transformerXnOhmPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformerXnOhm)(nil)).Elem()
+}
+
+func (i *transformerXnOhmPtrType) ToTransformerXnOhmPtrOutput() TransformerXnOhmPtrOutput {
+	return i.ToTransformerXnOhmPtrOutputWithContext(context.Background())
+}
+
+func (i *transformerXnOhmPtrType) ToTransformerXnOhmPtrOutputWithContext(ctx context.Context) TransformerXnOhmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransformerXnOhmPtrOutput)
+}
+
+type TransformerXnOhmOutput struct{ *pulumi.OutputState }
+
+func (TransformerXnOhmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformerXnOhm)(nil)).Elem()
+}
+
+func (o TransformerXnOhmOutput) ToTransformerXnOhmOutput() TransformerXnOhmOutput {
+	return o
+}
+
+func (o TransformerXnOhmOutput) ToTransformerXnOhmOutputWithContext(ctx context.Context) TransformerXnOhmOutput {
+	return o
+}
+
+func (o TransformerXnOhmOutput) ToTransformerXnOhmPtrOutput() TransformerXnOhmPtrOutput {
+	return o.ToTransformerXnOhmPtrOutputWithContext(context.Background())
+}
+
+func (o TransformerXnOhmOutput) ToTransformerXnOhmPtrOutputWithContext(ctx context.Context) TransformerXnOhmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransformerXnOhm) *TransformerXnOhm {
+		return &v
+	}).(TransformerXnOhmPtrOutput)
+}
+
+// reference to the asset to be linked to
+func (o TransformerXnOhmOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerXnOhm) *string { return v.Asset }).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerXnOhmOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerXnOhm) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerXnOhmOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerXnOhm) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerXnOhmOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerXnOhm) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerXnOhmOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerXnOhm) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o TransformerXnOhmOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformerXnOhm) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type TransformerXnOhmPtrOutput struct{ *pulumi.OutputState }
+
+func (TransformerXnOhmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformerXnOhm)(nil)).Elem()
+}
+
+func (o TransformerXnOhmPtrOutput) ToTransformerXnOhmPtrOutput() TransformerXnOhmPtrOutput {
+	return o
+}
+
+func (o TransformerXnOhmPtrOutput) ToTransformerXnOhmPtrOutputWithContext(ctx context.Context) TransformerXnOhmPtrOutput {
+	return o
+}
+
+func (o TransformerXnOhmPtrOutput) Elem() TransformerXnOhmOutput {
+	return o.ApplyT(func(v *TransformerXnOhm) TransformerXnOhm {
+		if v != nil {
+			return *v
+		}
+		var ret TransformerXnOhm
+		return ret
+	}).(TransformerXnOhmOutput)
+}
+
+// reference to the asset to be linked to
+func (o TransformerXnOhmPtrOutput) Asset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerXnOhm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Asset
+	}).(pulumi.StringPtrOutput)
+}
+
+// id of the resource
+func (o TransformerXnOhmPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerXnOhm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the resource
+func (o TransformerXnOhmPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerXnOhm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [String|Boolean|Number] type of the data to be ingested in this attribute
+func (o TransformerXnOhmPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerXnOhm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// unit of measure
+func (o TransformerXnOhmPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerXnOhm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// metadata value
+func (o TransformerXnOhmPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransformerXnOhm) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetAssetKindsKind struct {
@@ -24309,10 +31337,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetRelationRelatedAssetKindPtrInput)(nil)).Elem(), AssetRelationRelatedAssetKindArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetTagInput)(nil)).Elem(), AssetTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetTagArrayInput)(nil)).Elem(), AssetTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BusActivePowerInput)(nil)).Elem(), BusActivePowerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BusActivePowerArrayInput)(nil)).Elem(), BusActivePowerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BusKindInput)(nil)).Elem(), BusKindArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BusKindArrayInput)(nil)).Elem(), BusKindArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BusNominalVoltageInput)(nil)).Elem(), BusNominalVoltageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BusNominalVoltagePtrInput)(nil)).Elem(), BusNominalVoltageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BusNominalVoltageKvInput)(nil)).Elem(), BusNominalVoltageKvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BusNominalVoltageKvPtrInput)(nil)).Elem(), BusNominalVoltageKvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BusReactivePowerInput)(nil)).Elem(), BusReactivePowerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BusReactivePowerArrayInput)(nil)).Elem(), BusReactivePowerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BusTagInput)(nil)).Elem(), BusTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BusTagArrayInput)(nil)).Elem(), BusTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CommandActionInput)(nil)).Elem(), CommandActionArgs{})
@@ -24480,8 +31512,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorDailyEnergyArrayInput)(nil)).Elem(), GeneratorDailyEnergyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorKindInput)(nil)).Elem(), GeneratorKindArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorKindArrayInput)(nil)).Elem(), GeneratorKindArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorMonthlyEnergyInput)(nil)).Elem(), GeneratorMonthlyEnergyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorMonthlyEnergyArrayInput)(nil)).Elem(), GeneratorMonthlyEnergyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorReactivePowerInput)(nil)).Elem(), GeneratorReactivePowerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorReactivePowerArrayInput)(nil)).Elem(), GeneratorReactivePowerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSwitchStatusInput)(nil)).Elem(), GeneratorSwitchStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSwitchStatusArrayInput)(nil)).Elem(), GeneratorSwitchStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorTagInput)(nil)).Elem(), GeneratorTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorTagArrayInput)(nil)).Elem(), GeneratorTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GridKindInput)(nil)).Elem(), GridKindArgs{})
@@ -24508,6 +31544,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InverterRawDailyEnergyArrayInput)(nil)).Elem(), InverterRawDailyEnergyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InverterSerialNumberInput)(nil)).Elem(), InverterSerialNumberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InverterSerialNumberPtrInput)(nil)).Elem(), InverterSerialNumberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InverterSwitchStatusInput)(nil)).Elem(), InverterSwitchStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InverterSwitchStatusArrayInput)(nil)).Elem(), InverterSwitchStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InverterTagInput)(nil)).Elem(), InverterTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InverterTagArrayInput)(nil)).Elem(), InverterTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InverterTemperatureInput)(nil)).Elem(), InverterTemperatureArgs{})
@@ -24526,6 +31564,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LineCapacitancePtrInput)(nil)).Elem(), LineCapacitanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineConductanceInput)(nil)).Elem(), LineConductanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineConductancePtrInput)(nil)).Elem(), LineConductanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineConductorMassInput)(nil)).Elem(), LineConductorMassArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineConductorMassPtrInput)(nil)).Elem(), LineConductorMassArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineContingencyInput)(nil)).Elem(), LineContingencyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineContingencyArrayInput)(nil)).Elem(), LineContingencyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineCurrentInput)(nil)).Elem(), LineCurrentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineCurrentArrayInput)(nil)).Elem(), LineCurrentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineCurrentRInput)(nil)).Elem(), LineCurrentRArgs{})
@@ -24566,12 +31608,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LineResistancePtrInput)(nil)).Elem(), LineResistanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineSafetyMarginForPowerInput)(nil)).Elem(), LineSafetyMarginForPowerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineSafetyMarginForPowerPtrInput)(nil)).Elem(), LineSafetyMarginForPowerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineSpecificHeatInput)(nil)).Elem(), LineSpecificHeatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineSpecificHeatPtrInput)(nil)).Elem(), LineSpecificHeatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineSusceptanceInput)(nil)).Elem(), LineSusceptanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineSusceptancePtrInput)(nil)).Elem(), LineSusceptanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineSwitchStatusEndInput)(nil)).Elem(), LineSwitchStatusEndArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineSwitchStatusEndArrayInput)(nil)).Elem(), LineSwitchStatusEndArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineSwitchStatusStartInput)(nil)).Elem(), LineSwitchStatusStartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineSwitchStatusStartArrayInput)(nil)).Elem(), LineSwitchStatusStartArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineTagInput)(nil)).Elem(), LineTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineTagArrayInput)(nil)).Elem(), LineTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineTemperatureCoeffResistanceInput)(nil)).Elem(), LineTemperatureCoeffResistanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineTemperatureCoeffResistancePtrInput)(nil)).Elem(), LineTemperatureCoeffResistanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineThermalElongationCoefInput)(nil)).Elem(), LineThermalElongationCoefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LineThermalElongationCoefPtrInput)(nil)).Elem(), LineThermalElongationCoefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineVoltageRInput)(nil)).Elem(), LineVoltageRArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineVoltageRArrayInput)(nil)).Elem(), LineVoltageRArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LineVoltageStInput)(nil)).Elem(), LineVoltageStArgs{})
@@ -24586,6 +31636,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentCumulativeDistancePtrInput)(nil)).Elem(), SegmentCumulativeDistanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentKindInput)(nil)).Elem(), SegmentKindArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentKindArrayInput)(nil)).Elem(), SegmentKindArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentReferenceSagInput)(nil)).Elem(), SegmentReferenceSagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentReferenceSagPtrInput)(nil)).Elem(), SegmentReferenceSagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentReferenceTemperatureInput)(nil)).Elem(), SegmentReferenceTemperatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentReferenceTemperaturePtrInput)(nil)).Elem(), SegmentReferenceTemperatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentSpanLengthInput)(nil)).Elem(), SegmentSpanLengthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SegmentSpanLengthPtrInput)(nil)).Elem(), SegmentSpanLengthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentTagInput)(nil)).Elem(), SegmentTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentTagArrayInput)(nil)).Elem(), SegmentTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentTemperatureInput)(nil)).Elem(), SegmentTemperatureArgs{})
@@ -24604,8 +31660,62 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTagArrayInput)(nil)).Elem(), ServerTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlackLineKindInput)(nil)).Elem(), SlackLineKindArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlackLineKindArrayInput)(nil)).Elem(), SlackLineKindArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlackLineSwitchStatusEndInput)(nil)).Elem(), SlackLineSwitchStatusEndArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlackLineSwitchStatusEndArrayInput)(nil)).Elem(), SlackLineSwitchStatusEndArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlackLineSwitchStatusStartInput)(nil)).Elem(), SlackLineSwitchStatusStartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlackLineSwitchStatusStartArrayInput)(nil)).Elem(), SlackLineSwitchStatusStartArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlackLineTagInput)(nil)).Elem(), SlackLineTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlackLineTagArrayInput)(nil)).Elem(), SlackLineTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerActivePowerHvInput)(nil)).Elem(), TransformerActivePowerHvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerActivePowerHvArrayInput)(nil)).Elem(), TransformerActivePowerHvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerActivePowerLossInput)(nil)).Elem(), TransformerActivePowerLossArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerActivePowerLossArrayInput)(nil)).Elem(), TransformerActivePowerLossArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerActivePowerLvInput)(nil)).Elem(), TransformerActivePowerLvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerActivePowerLvArrayInput)(nil)).Elem(), TransformerActivePowerLvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerCapacitanceInput)(nil)).Elem(), TransformerCapacitanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerCapacitancePtrInput)(nil)).Elem(), TransformerCapacitanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerConductanceInput)(nil)).Elem(), TransformerConductanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerConductancePtrInput)(nil)).Elem(), TransformerConductanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerContingencyInput)(nil)).Elem(), TransformerContingencyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerContingencyArrayInput)(nil)).Elem(), TransformerContingencyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerCurrentHvInput)(nil)).Elem(), TransformerCurrentHvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerCurrentHvArrayInput)(nil)).Elem(), TransformerCurrentHvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerCurrentLvInput)(nil)).Elem(), TransformerCurrentLvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerCurrentLvArrayInput)(nil)).Elem(), TransformerCurrentLvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerKindInput)(nil)).Elem(), TransformerKindArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerKindArrayInput)(nil)).Elem(), TransformerKindArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerMaximumAllowedCurrentInput)(nil)).Elem(), TransformerMaximumAllowedCurrentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerMaximumAllowedCurrentPtrInput)(nil)).Elem(), TransformerMaximumAllowedCurrentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerMaximumAllowedPowerInput)(nil)).Elem(), TransformerMaximumAllowedPowerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerMaximumAllowedPowerPtrInput)(nil)).Elem(), TransformerMaximumAllowedPowerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerReactanceInput)(nil)).Elem(), TransformerReactanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerReactancePtrInput)(nil)).Elem(), TransformerReactanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerReactivePowerHvInput)(nil)).Elem(), TransformerReactivePowerHvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerReactivePowerHvArrayInput)(nil)).Elem(), TransformerReactivePowerHvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerReactivePowerLossInput)(nil)).Elem(), TransformerReactivePowerLossArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerReactivePowerLossArrayInput)(nil)).Elem(), TransformerReactivePowerLossArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerReactivePowerLvInput)(nil)).Elem(), TransformerReactivePowerLvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerReactivePowerLvArrayInput)(nil)).Elem(), TransformerReactivePowerLvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerResistanceInput)(nil)).Elem(), TransformerResistanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerResistancePtrInput)(nil)).Elem(), TransformerResistanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerSafetyMarginForPowerInput)(nil)).Elem(), TransformerSafetyMarginForPowerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerSafetyMarginForPowerPtrInput)(nil)).Elem(), TransformerSafetyMarginForPowerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerStandardTypeInput)(nil)).Elem(), TransformerStandardTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerStandardTypePtrInput)(nil)).Elem(), TransformerStandardTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerSwitchStatusHvInput)(nil)).Elem(), TransformerSwitchStatusHvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerSwitchStatusHvArrayInput)(nil)).Elem(), TransformerSwitchStatusHvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerSwitchStatusLvInput)(nil)).Elem(), TransformerSwitchStatusLvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerSwitchStatusLvArrayInput)(nil)).Elem(), TransformerSwitchStatusLvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerTagInput)(nil)).Elem(), TransformerTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerTagArrayInput)(nil)).Elem(), TransformerTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerTapPosInput)(nil)).Elem(), TransformerTapPosArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerTapPosPtrInput)(nil)).Elem(), TransformerTapPosArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerVoltageHvInput)(nil)).Elem(), TransformerVoltageHvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerVoltageHvArrayInput)(nil)).Elem(), TransformerVoltageHvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerVoltageLvInput)(nil)).Elem(), TransformerVoltageLvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerVoltageLvArrayInput)(nil)).Elem(), TransformerVoltageLvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerXnOhmInput)(nil)).Elem(), TransformerXnOhmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformerXnOhmPtrInput)(nil)).Elem(), TransformerXnOhmArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAssetKindsKindInput)(nil)).Elem(), GetAssetKindsKindArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAssetKindsKindArrayInput)(nil)).Elem(), GetAssetKindsKindArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBusesTagInput)(nil)).Elem(), GetBusesTagArgs{})
@@ -24647,10 +31757,14 @@ func init() {
 	pulumi.RegisterOutputType(AssetRelationRelatedAssetKindPtrOutput{})
 	pulumi.RegisterOutputType(AssetTagOutput{})
 	pulumi.RegisterOutputType(AssetTagArrayOutput{})
+	pulumi.RegisterOutputType(BusActivePowerOutput{})
+	pulumi.RegisterOutputType(BusActivePowerArrayOutput{})
 	pulumi.RegisterOutputType(BusKindOutput{})
 	pulumi.RegisterOutputType(BusKindArrayOutput{})
-	pulumi.RegisterOutputType(BusNominalVoltageOutput{})
-	pulumi.RegisterOutputType(BusNominalVoltagePtrOutput{})
+	pulumi.RegisterOutputType(BusNominalVoltageKvOutput{})
+	pulumi.RegisterOutputType(BusNominalVoltageKvPtrOutput{})
+	pulumi.RegisterOutputType(BusReactivePowerOutput{})
+	pulumi.RegisterOutputType(BusReactivePowerArrayOutput{})
 	pulumi.RegisterOutputType(BusTagOutput{})
 	pulumi.RegisterOutputType(BusTagArrayOutput{})
 	pulumi.RegisterOutputType(CommandActionOutput{})
@@ -24818,8 +31932,12 @@ func init() {
 	pulumi.RegisterOutputType(GeneratorDailyEnergyArrayOutput{})
 	pulumi.RegisterOutputType(GeneratorKindOutput{})
 	pulumi.RegisterOutputType(GeneratorKindArrayOutput{})
+	pulumi.RegisterOutputType(GeneratorMonthlyEnergyOutput{})
+	pulumi.RegisterOutputType(GeneratorMonthlyEnergyArrayOutput{})
 	pulumi.RegisterOutputType(GeneratorReactivePowerOutput{})
 	pulumi.RegisterOutputType(GeneratorReactivePowerArrayOutput{})
+	pulumi.RegisterOutputType(GeneratorSwitchStatusOutput{})
+	pulumi.RegisterOutputType(GeneratorSwitchStatusArrayOutput{})
 	pulumi.RegisterOutputType(GeneratorTagOutput{})
 	pulumi.RegisterOutputType(GeneratorTagArrayOutput{})
 	pulumi.RegisterOutputType(GridKindOutput{})
@@ -24846,6 +31964,8 @@ func init() {
 	pulumi.RegisterOutputType(InverterRawDailyEnergyArrayOutput{})
 	pulumi.RegisterOutputType(InverterSerialNumberOutput{})
 	pulumi.RegisterOutputType(InverterSerialNumberPtrOutput{})
+	pulumi.RegisterOutputType(InverterSwitchStatusOutput{})
+	pulumi.RegisterOutputType(InverterSwitchStatusArrayOutput{})
 	pulumi.RegisterOutputType(InverterTagOutput{})
 	pulumi.RegisterOutputType(InverterTagArrayOutput{})
 	pulumi.RegisterOutputType(InverterTemperatureOutput{})
@@ -24864,6 +31984,10 @@ func init() {
 	pulumi.RegisterOutputType(LineCapacitancePtrOutput{})
 	pulumi.RegisterOutputType(LineConductanceOutput{})
 	pulumi.RegisterOutputType(LineConductancePtrOutput{})
+	pulumi.RegisterOutputType(LineConductorMassOutput{})
+	pulumi.RegisterOutputType(LineConductorMassPtrOutput{})
+	pulumi.RegisterOutputType(LineContingencyOutput{})
+	pulumi.RegisterOutputType(LineContingencyArrayOutput{})
 	pulumi.RegisterOutputType(LineCurrentOutput{})
 	pulumi.RegisterOutputType(LineCurrentArrayOutput{})
 	pulumi.RegisterOutputType(LineCurrentROutput{})
@@ -24904,12 +32028,20 @@ func init() {
 	pulumi.RegisterOutputType(LineResistancePtrOutput{})
 	pulumi.RegisterOutputType(LineSafetyMarginForPowerOutput{})
 	pulumi.RegisterOutputType(LineSafetyMarginForPowerPtrOutput{})
+	pulumi.RegisterOutputType(LineSpecificHeatOutput{})
+	pulumi.RegisterOutputType(LineSpecificHeatPtrOutput{})
 	pulumi.RegisterOutputType(LineSusceptanceOutput{})
 	pulumi.RegisterOutputType(LineSusceptancePtrOutput{})
+	pulumi.RegisterOutputType(LineSwitchStatusEndOutput{})
+	pulumi.RegisterOutputType(LineSwitchStatusEndArrayOutput{})
+	pulumi.RegisterOutputType(LineSwitchStatusStartOutput{})
+	pulumi.RegisterOutputType(LineSwitchStatusStartArrayOutput{})
 	pulumi.RegisterOutputType(LineTagOutput{})
 	pulumi.RegisterOutputType(LineTagArrayOutput{})
 	pulumi.RegisterOutputType(LineTemperatureCoeffResistanceOutput{})
 	pulumi.RegisterOutputType(LineTemperatureCoeffResistancePtrOutput{})
+	pulumi.RegisterOutputType(LineThermalElongationCoefOutput{})
+	pulumi.RegisterOutputType(LineThermalElongationCoefPtrOutput{})
 	pulumi.RegisterOutputType(LineVoltageROutput{})
 	pulumi.RegisterOutputType(LineVoltageRArrayOutput{})
 	pulumi.RegisterOutputType(LineVoltageStOutput{})
@@ -24924,6 +32056,12 @@ func init() {
 	pulumi.RegisterOutputType(SegmentCumulativeDistancePtrOutput{})
 	pulumi.RegisterOutputType(SegmentKindOutput{})
 	pulumi.RegisterOutputType(SegmentKindArrayOutput{})
+	pulumi.RegisterOutputType(SegmentReferenceSagOutput{})
+	pulumi.RegisterOutputType(SegmentReferenceSagPtrOutput{})
+	pulumi.RegisterOutputType(SegmentReferenceTemperatureOutput{})
+	pulumi.RegisterOutputType(SegmentReferenceTemperaturePtrOutput{})
+	pulumi.RegisterOutputType(SegmentSpanLengthOutput{})
+	pulumi.RegisterOutputType(SegmentSpanLengthPtrOutput{})
 	pulumi.RegisterOutputType(SegmentTagOutput{})
 	pulumi.RegisterOutputType(SegmentTagArrayOutput{})
 	pulumi.RegisterOutputType(SegmentTemperatureOutput{})
@@ -24942,8 +32080,62 @@ func init() {
 	pulumi.RegisterOutputType(ServerTagArrayOutput{})
 	pulumi.RegisterOutputType(SlackLineKindOutput{})
 	pulumi.RegisterOutputType(SlackLineKindArrayOutput{})
+	pulumi.RegisterOutputType(SlackLineSwitchStatusEndOutput{})
+	pulumi.RegisterOutputType(SlackLineSwitchStatusEndArrayOutput{})
+	pulumi.RegisterOutputType(SlackLineSwitchStatusStartOutput{})
+	pulumi.RegisterOutputType(SlackLineSwitchStatusStartArrayOutput{})
 	pulumi.RegisterOutputType(SlackLineTagOutput{})
 	pulumi.RegisterOutputType(SlackLineTagArrayOutput{})
+	pulumi.RegisterOutputType(TransformerActivePowerHvOutput{})
+	pulumi.RegisterOutputType(TransformerActivePowerHvArrayOutput{})
+	pulumi.RegisterOutputType(TransformerActivePowerLossOutput{})
+	pulumi.RegisterOutputType(TransformerActivePowerLossArrayOutput{})
+	pulumi.RegisterOutputType(TransformerActivePowerLvOutput{})
+	pulumi.RegisterOutputType(TransformerActivePowerLvArrayOutput{})
+	pulumi.RegisterOutputType(TransformerCapacitanceOutput{})
+	pulumi.RegisterOutputType(TransformerCapacitancePtrOutput{})
+	pulumi.RegisterOutputType(TransformerConductanceOutput{})
+	pulumi.RegisterOutputType(TransformerConductancePtrOutput{})
+	pulumi.RegisterOutputType(TransformerContingencyOutput{})
+	pulumi.RegisterOutputType(TransformerContingencyArrayOutput{})
+	pulumi.RegisterOutputType(TransformerCurrentHvOutput{})
+	pulumi.RegisterOutputType(TransformerCurrentHvArrayOutput{})
+	pulumi.RegisterOutputType(TransformerCurrentLvOutput{})
+	pulumi.RegisterOutputType(TransformerCurrentLvArrayOutput{})
+	pulumi.RegisterOutputType(TransformerKindOutput{})
+	pulumi.RegisterOutputType(TransformerKindArrayOutput{})
+	pulumi.RegisterOutputType(TransformerMaximumAllowedCurrentOutput{})
+	pulumi.RegisterOutputType(TransformerMaximumAllowedCurrentPtrOutput{})
+	pulumi.RegisterOutputType(TransformerMaximumAllowedPowerOutput{})
+	pulumi.RegisterOutputType(TransformerMaximumAllowedPowerPtrOutput{})
+	pulumi.RegisterOutputType(TransformerReactanceOutput{})
+	pulumi.RegisterOutputType(TransformerReactancePtrOutput{})
+	pulumi.RegisterOutputType(TransformerReactivePowerHvOutput{})
+	pulumi.RegisterOutputType(TransformerReactivePowerHvArrayOutput{})
+	pulumi.RegisterOutputType(TransformerReactivePowerLossOutput{})
+	pulumi.RegisterOutputType(TransformerReactivePowerLossArrayOutput{})
+	pulumi.RegisterOutputType(TransformerReactivePowerLvOutput{})
+	pulumi.RegisterOutputType(TransformerReactivePowerLvArrayOutput{})
+	pulumi.RegisterOutputType(TransformerResistanceOutput{})
+	pulumi.RegisterOutputType(TransformerResistancePtrOutput{})
+	pulumi.RegisterOutputType(TransformerSafetyMarginForPowerOutput{})
+	pulumi.RegisterOutputType(TransformerSafetyMarginForPowerPtrOutput{})
+	pulumi.RegisterOutputType(TransformerStandardTypeOutput{})
+	pulumi.RegisterOutputType(TransformerStandardTypePtrOutput{})
+	pulumi.RegisterOutputType(TransformerSwitchStatusHvOutput{})
+	pulumi.RegisterOutputType(TransformerSwitchStatusHvArrayOutput{})
+	pulumi.RegisterOutputType(TransformerSwitchStatusLvOutput{})
+	pulumi.RegisterOutputType(TransformerSwitchStatusLvArrayOutput{})
+	pulumi.RegisterOutputType(TransformerTagOutput{})
+	pulumi.RegisterOutputType(TransformerTagArrayOutput{})
+	pulumi.RegisterOutputType(TransformerTapPosOutput{})
+	pulumi.RegisterOutputType(TransformerTapPosPtrOutput{})
+	pulumi.RegisterOutputType(TransformerVoltageHvOutput{})
+	pulumi.RegisterOutputType(TransformerVoltageHvArrayOutput{})
+	pulumi.RegisterOutputType(TransformerVoltageLvOutput{})
+	pulumi.RegisterOutputType(TransformerVoltageLvArrayOutput{})
+	pulumi.RegisterOutputType(TransformerXnOhmOutput{})
+	pulumi.RegisterOutputType(TransformerXnOhmPtrOutput{})
 	pulumi.RegisterOutputType(GetAssetKindsKindOutput{})
 	pulumi.RegisterOutputType(GetAssetKindsKindArrayOutput{})
 	pulumi.RegisterOutputType(GetBusesTagOutput{})

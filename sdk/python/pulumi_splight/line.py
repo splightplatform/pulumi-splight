@@ -25,6 +25,7 @@ class LineArgs:
                  atmosphere: pulumi.Input['LineAtmosphereArgs'],
                  capacitance: pulumi.Input['LineCapacitanceArgs'],
                  conductance: pulumi.Input['LineConductanceArgs'],
+                 conductor_mass: pulumi.Input['LineConductorMassArgs'],
                  diameter: pulumi.Input['LineDiameterArgs'],
                  emissivity: pulumi.Input['LineEmissivityArgs'],
                  length: pulumi.Input['LineLengthArgs'],
@@ -38,8 +39,10 @@ class LineArgs:
                  reference_resistance: pulumi.Input['LineReferenceResistanceArgs'],
                  resistance: pulumi.Input['LineResistanceArgs'],
                  safety_margin_for_power: pulumi.Input['LineSafetyMarginForPowerArgs'],
+                 specific_heat: pulumi.Input['LineSpecificHeatArgs'],
                  susceptance: pulumi.Input['LineSusceptanceArgs'],
                  temperature_coeff_resistance: pulumi.Input['LineTemperatureCoeffResistanceArgs'],
+                 thermal_elongation_coef: pulumi.Input['LineThermalElongationCoefArgs'],
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -51,6 +54,7 @@ class LineArgs:
         :param pulumi.Input['LineAtmosphereArgs'] atmosphere: attribute of the resource
         :param pulumi.Input['LineCapacitanceArgs'] capacitance: attribute of the resource
         :param pulumi.Input['LineConductanceArgs'] conductance: attribute of the resource
+        :param pulumi.Input['LineConductorMassArgs'] conductor_mass: attribute of the resource
         :param pulumi.Input['LineDiameterArgs'] diameter: attribute of the resource
         :param pulumi.Input['LineEmissivityArgs'] emissivity: attribute of the resource
         :param pulumi.Input['LineLengthArgs'] length: attribute of the resource
@@ -64,8 +68,10 @@ class LineArgs:
         :param pulumi.Input['LineReferenceResistanceArgs'] reference_resistance: attribute of the resource
         :param pulumi.Input['LineResistanceArgs'] resistance: attribute of the resource
         :param pulumi.Input['LineSafetyMarginForPowerArgs'] safety_margin_for_power: attribute of the resource
+        :param pulumi.Input['LineSpecificHeatArgs'] specific_heat: attribute of the resource
         :param pulumi.Input['LineSusceptanceArgs'] susceptance: attribute of the resource
         :param pulumi.Input['LineTemperatureCoeffResistanceArgs'] temperature_coeff_resistance: attribute of the resource
+        :param pulumi.Input['LineThermalElongationCoefArgs'] thermal_elongation_coef: attribute of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
@@ -76,6 +82,7 @@ class LineArgs:
         pulumi.set(__self__, "atmosphere", atmosphere)
         pulumi.set(__self__, "capacitance", capacitance)
         pulumi.set(__self__, "conductance", conductance)
+        pulumi.set(__self__, "conductor_mass", conductor_mass)
         pulumi.set(__self__, "diameter", diameter)
         pulumi.set(__self__, "emissivity", emissivity)
         pulumi.set(__self__, "length", length)
@@ -89,8 +96,10 @@ class LineArgs:
         pulumi.set(__self__, "reference_resistance", reference_resistance)
         pulumi.set(__self__, "resistance", resistance)
         pulumi.set(__self__, "safety_margin_for_power", safety_margin_for_power)
+        pulumi.set(__self__, "specific_heat", specific_heat)
         pulumi.set(__self__, "susceptance", susceptance)
         pulumi.set(__self__, "temperature_coeff_resistance", temperature_coeff_resistance)
+        pulumi.set(__self__, "thermal_elongation_coef", thermal_elongation_coef)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
@@ -149,6 +158,18 @@ class LineArgs:
     @conductance.setter
     def conductance(self, value: pulumi.Input['LineConductanceArgs']):
         pulumi.set(self, "conductance", value)
+
+    @property
+    @pulumi.getter(name="conductorMass")
+    def conductor_mass(self) -> pulumi.Input['LineConductorMassArgs']:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "conductor_mass")
+
+    @conductor_mass.setter
+    def conductor_mass(self, value: pulumi.Input['LineConductorMassArgs']):
+        pulumi.set(self, "conductor_mass", value)
 
     @property
     @pulumi.getter
@@ -307,6 +328,18 @@ class LineArgs:
         pulumi.set(self, "safety_margin_for_power", value)
 
     @property
+    @pulumi.getter(name="specificHeat")
+    def specific_heat(self) -> pulumi.Input['LineSpecificHeatArgs']:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "specific_heat")
+
+    @specific_heat.setter
+    def specific_heat(self, value: pulumi.Input['LineSpecificHeatArgs']):
+        pulumi.set(self, "specific_heat", value)
+
+    @property
     @pulumi.getter
     def susceptance(self) -> pulumi.Input['LineSusceptanceArgs']:
         """
@@ -329,6 +362,18 @@ class LineArgs:
     @temperature_coeff_resistance.setter
     def temperature_coeff_resistance(self, value: pulumi.Input['LineTemperatureCoeffResistanceArgs']):
         pulumi.set(self, "temperature_coeff_resistance", value)
+
+    @property
+    @pulumi.getter(name="thermalElongationCoef")
+    def thermal_elongation_coef(self) -> pulumi.Input['LineThermalElongationCoefArgs']:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "thermal_elongation_coef")
+
+    @thermal_elongation_coef.setter
+    def thermal_elongation_coef(self, value: pulumi.Input['LineThermalElongationCoefArgs']):
+        pulumi.set(self, "thermal_elongation_coef", value)
 
     @property
     @pulumi.getter
@@ -401,6 +446,8 @@ class _LineState:
                  atmosphere: Optional[pulumi.Input['LineAtmosphereArgs']] = None,
                  capacitance: Optional[pulumi.Input['LineCapacitanceArgs']] = None,
                  conductance: Optional[pulumi.Input['LineConductanceArgs']] = None,
+                 conductor_mass: Optional[pulumi.Input['LineConductorMassArgs']] = None,
+                 contingencies: Optional[pulumi.Input[Sequence[pulumi.Input['LineContingencyArgs']]]] = None,
                  current_rs: Optional[pulumi.Input[Sequence[pulumi.Input['LineCurrentRArgs']]]] = None,
                  current_s: Optional[pulumi.Input[Sequence[pulumi.Input['LineCurrentArgs']]]] = None,
                  current_ts: Optional[pulumi.Input[Sequence[pulumi.Input['LineCurrentTArgs']]]] = None,
@@ -425,9 +472,13 @@ class _LineState:
                  reference_resistance: Optional[pulumi.Input['LineReferenceResistanceArgs']] = None,
                  resistance: Optional[pulumi.Input['LineResistanceArgs']] = None,
                  safety_margin_for_power: Optional[pulumi.Input['LineSafetyMarginForPowerArgs']] = None,
+                 specific_heat: Optional[pulumi.Input['LineSpecificHeatArgs']] = None,
                  susceptance: Optional[pulumi.Input['LineSusceptanceArgs']] = None,
+                 switch_status_ends: Optional[pulumi.Input[Sequence[pulumi.Input['LineSwitchStatusEndArgs']]]] = None,
+                 switch_status_starts: Optional[pulumi.Input[Sequence[pulumi.Input['LineSwitchStatusStartArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['LineTagArgs']]]] = None,
                  temperature_coeff_resistance: Optional[pulumi.Input['LineTemperatureCoeffResistanceArgs']] = None,
+                 thermal_elongation_coef: Optional[pulumi.Input['LineThermalElongationCoefArgs']] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  voltage_rs: Optional[pulumi.Input[Sequence[pulumi.Input['LineVoltageRArgs']]]] = None,
                  voltage_sts: Optional[pulumi.Input[Sequence[pulumi.Input['LineVoltageStArgs']]]] = None,
@@ -441,6 +492,8 @@ class _LineState:
         :param pulumi.Input['LineAtmosphereArgs'] atmosphere: attribute of the resource
         :param pulumi.Input['LineCapacitanceArgs'] capacitance: attribute of the resource
         :param pulumi.Input['LineConductanceArgs'] conductance: attribute of the resource
+        :param pulumi.Input['LineConductorMassArgs'] conductor_mass: attribute of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['LineContingencyArgs']]] contingencies: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['LineCurrentRArgs']]] current_rs: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['LineCurrentArgs']]] current_s: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['LineCurrentTArgs']]] current_ts: attribute of the resource
@@ -465,9 +518,13 @@ class _LineState:
         :param pulumi.Input['LineReferenceResistanceArgs'] reference_resistance: attribute of the resource
         :param pulumi.Input['LineResistanceArgs'] resistance: attribute of the resource
         :param pulumi.Input['LineSafetyMarginForPowerArgs'] safety_margin_for_power: attribute of the resource
+        :param pulumi.Input['LineSpecificHeatArgs'] specific_heat: attribute of the resource
         :param pulumi.Input['LineSusceptanceArgs'] susceptance: attribute of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['LineSwitchStatusEndArgs']]] switch_status_ends: attribute of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['LineSwitchStatusStartArgs']]] switch_status_starts: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['LineTagArgs']]] tags: tags of the resource
         :param pulumi.Input['LineTemperatureCoeffResistanceArgs'] temperature_coeff_resistance: attribute of the resource
+        :param pulumi.Input['LineThermalElongationCoefArgs'] thermal_elongation_coef: attribute of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[Sequence[pulumi.Input['LineVoltageRArgs']]] voltage_rs: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['LineVoltageStArgs']]] voltage_sts: attribute of the resource
@@ -487,6 +544,10 @@ class _LineState:
             pulumi.set(__self__, "capacitance", capacitance)
         if conductance is not None:
             pulumi.set(__self__, "conductance", conductance)
+        if conductor_mass is not None:
+            pulumi.set(__self__, "conductor_mass", conductor_mass)
+        if contingencies is not None:
+            pulumi.set(__self__, "contingencies", contingencies)
         if current_rs is not None:
             pulumi.set(__self__, "current_rs", current_rs)
         if current_s is not None:
@@ -535,12 +596,20 @@ class _LineState:
             pulumi.set(__self__, "resistance", resistance)
         if safety_margin_for_power is not None:
             pulumi.set(__self__, "safety_margin_for_power", safety_margin_for_power)
+        if specific_heat is not None:
+            pulumi.set(__self__, "specific_heat", specific_heat)
         if susceptance is not None:
             pulumi.set(__self__, "susceptance", susceptance)
+        if switch_status_ends is not None:
+            pulumi.set(__self__, "switch_status_ends", switch_status_ends)
+        if switch_status_starts is not None:
+            pulumi.set(__self__, "switch_status_starts", switch_status_starts)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if temperature_coeff_resistance is not None:
             pulumi.set(__self__, "temperature_coeff_resistance", temperature_coeff_resistance)
+        if thermal_elongation_coef is not None:
+            pulumi.set(__self__, "thermal_elongation_coef", thermal_elongation_coef)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
         if voltage_rs is not None:
@@ -633,6 +702,30 @@ class _LineState:
     @conductance.setter
     def conductance(self, value: Optional[pulumi.Input['LineConductanceArgs']]):
         pulumi.set(self, "conductance", value)
+
+    @property
+    @pulumi.getter(name="conductorMass")
+    def conductor_mass(self) -> Optional[pulumi.Input['LineConductorMassArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "conductor_mass")
+
+    @conductor_mass.setter
+    def conductor_mass(self, value: Optional[pulumi.Input['LineConductorMassArgs']]):
+        pulumi.set(self, "conductor_mass", value)
+
+    @property
+    @pulumi.getter
+    def contingencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LineContingencyArgs']]]]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "contingencies")
+
+    @contingencies.setter
+    def contingencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LineContingencyArgs']]]]):
+        pulumi.set(self, "contingencies", value)
 
     @property
     @pulumi.getter(name="currentRs")
@@ -923,6 +1016,18 @@ class _LineState:
         pulumi.set(self, "safety_margin_for_power", value)
 
     @property
+    @pulumi.getter(name="specificHeat")
+    def specific_heat(self) -> Optional[pulumi.Input['LineSpecificHeatArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "specific_heat")
+
+    @specific_heat.setter
+    def specific_heat(self, value: Optional[pulumi.Input['LineSpecificHeatArgs']]):
+        pulumi.set(self, "specific_heat", value)
+
+    @property
     @pulumi.getter
     def susceptance(self) -> Optional[pulumi.Input['LineSusceptanceArgs']]:
         """
@@ -933,6 +1038,30 @@ class _LineState:
     @susceptance.setter
     def susceptance(self, value: Optional[pulumi.Input['LineSusceptanceArgs']]):
         pulumi.set(self, "susceptance", value)
+
+    @property
+    @pulumi.getter(name="switchStatusEnds")
+    def switch_status_ends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LineSwitchStatusEndArgs']]]]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "switch_status_ends")
+
+    @switch_status_ends.setter
+    def switch_status_ends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LineSwitchStatusEndArgs']]]]):
+        pulumi.set(self, "switch_status_ends", value)
+
+    @property
+    @pulumi.getter(name="switchStatusStarts")
+    def switch_status_starts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LineSwitchStatusStartArgs']]]]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "switch_status_starts")
+
+    @switch_status_starts.setter
+    def switch_status_starts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LineSwitchStatusStartArgs']]]]):
+        pulumi.set(self, "switch_status_starts", value)
 
     @property
     @pulumi.getter
@@ -957,6 +1086,18 @@ class _LineState:
     @temperature_coeff_resistance.setter
     def temperature_coeff_resistance(self, value: Optional[pulumi.Input['LineTemperatureCoeffResistanceArgs']]):
         pulumi.set(self, "temperature_coeff_resistance", value)
+
+    @property
+    @pulumi.getter(name="thermalElongationCoef")
+    def thermal_elongation_coef(self) -> Optional[pulumi.Input['LineThermalElongationCoefArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "thermal_elongation_coef")
+
+    @thermal_elongation_coef.setter
+    def thermal_elongation_coef(self, value: Optional[pulumi.Input['LineThermalElongationCoefArgs']]):
+        pulumi.set(self, "thermal_elongation_coef", value)
 
     @property
     @pulumi.getter
@@ -1016,6 +1157,7 @@ class Line(pulumi.CustomResource):
                  atmosphere: Optional[pulumi.Input[Union['LineAtmosphereArgs', 'LineAtmosphereArgsDict']]] = None,
                  capacitance: Optional[pulumi.Input[Union['LineCapacitanceArgs', 'LineCapacitanceArgsDict']]] = None,
                  conductance: Optional[pulumi.Input[Union['LineConductanceArgs', 'LineConductanceArgsDict']]] = None,
+                 conductor_mass: Optional[pulumi.Input[Union['LineConductorMassArgs', 'LineConductorMassArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  diameter: Optional[pulumi.Input[Union['LineDiameterArgs', 'LineDiameterArgsDict']]] = None,
                  emissivity: Optional[pulumi.Input[Union['LineEmissivityArgs', 'LineEmissivityArgsDict']]] = None,
@@ -1032,9 +1174,11 @@ class Line(pulumi.CustomResource):
                  reference_resistance: Optional[pulumi.Input[Union['LineReferenceResistanceArgs', 'LineReferenceResistanceArgsDict']]] = None,
                  resistance: Optional[pulumi.Input[Union['LineResistanceArgs', 'LineResistanceArgsDict']]] = None,
                  safety_margin_for_power: Optional[pulumi.Input[Union['LineSafetyMarginForPowerArgs', 'LineSafetyMarginForPowerArgsDict']]] = None,
+                 specific_heat: Optional[pulumi.Input[Union['LineSpecificHeatArgs', 'LineSpecificHeatArgsDict']]] = None,
                  susceptance: Optional[pulumi.Input[Union['LineSusceptanceArgs', 'LineSusceptanceArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineTagArgs', 'LineTagArgsDict']]]]] = None,
                  temperature_coeff_resistance: Optional[pulumi.Input[Union['LineTemperatureCoeffResistanceArgs', 'LineTemperatureCoeffResistanceArgsDict']]] = None,
+                 thermal_elongation_coef: Optional[pulumi.Input[Union['LineThermalElongationCoefArgs', 'LineThermalElongationCoefArgsDict']]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -1052,6 +1196,7 @@ class Line(pulumi.CustomResource):
         :param pulumi.Input[Union['LineAtmosphereArgs', 'LineAtmosphereArgsDict']] atmosphere: attribute of the resource
         :param pulumi.Input[Union['LineCapacitanceArgs', 'LineCapacitanceArgsDict']] capacitance: attribute of the resource
         :param pulumi.Input[Union['LineConductanceArgs', 'LineConductanceArgsDict']] conductance: attribute of the resource
+        :param pulumi.Input[Union['LineConductorMassArgs', 'LineConductorMassArgsDict']] conductor_mass: attribute of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[Union['LineDiameterArgs', 'LineDiameterArgsDict']] diameter: attribute of the resource
         :param pulumi.Input[Union['LineEmissivityArgs', 'LineEmissivityArgsDict']] emissivity: attribute of the resource
@@ -1068,9 +1213,11 @@ class Line(pulumi.CustomResource):
         :param pulumi.Input[Union['LineReferenceResistanceArgs', 'LineReferenceResistanceArgsDict']] reference_resistance: attribute of the resource
         :param pulumi.Input[Union['LineResistanceArgs', 'LineResistanceArgsDict']] resistance: attribute of the resource
         :param pulumi.Input[Union['LineSafetyMarginForPowerArgs', 'LineSafetyMarginForPowerArgsDict']] safety_margin_for_power: attribute of the resource
+        :param pulumi.Input[Union['LineSpecificHeatArgs', 'LineSpecificHeatArgsDict']] specific_heat: attribute of the resource
         :param pulumi.Input[Union['LineSusceptanceArgs', 'LineSusceptanceArgsDict']] susceptance: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['LineTagArgs', 'LineTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[Union['LineTemperatureCoeffResistanceArgs', 'LineTemperatureCoeffResistanceArgsDict']] temperature_coeff_resistance: attribute of the resource
+        :param pulumi.Input[Union['LineThermalElongationCoefArgs', 'LineThermalElongationCoefArgsDict']] thermal_elongation_coef: attribute of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
         ...
@@ -1107,6 +1254,7 @@ class Line(pulumi.CustomResource):
                  atmosphere: Optional[pulumi.Input[Union['LineAtmosphereArgs', 'LineAtmosphereArgsDict']]] = None,
                  capacitance: Optional[pulumi.Input[Union['LineCapacitanceArgs', 'LineCapacitanceArgsDict']]] = None,
                  conductance: Optional[pulumi.Input[Union['LineConductanceArgs', 'LineConductanceArgsDict']]] = None,
+                 conductor_mass: Optional[pulumi.Input[Union['LineConductorMassArgs', 'LineConductorMassArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  diameter: Optional[pulumi.Input[Union['LineDiameterArgs', 'LineDiameterArgsDict']]] = None,
                  emissivity: Optional[pulumi.Input[Union['LineEmissivityArgs', 'LineEmissivityArgsDict']]] = None,
@@ -1123,9 +1271,11 @@ class Line(pulumi.CustomResource):
                  reference_resistance: Optional[pulumi.Input[Union['LineReferenceResistanceArgs', 'LineReferenceResistanceArgsDict']]] = None,
                  resistance: Optional[pulumi.Input[Union['LineResistanceArgs', 'LineResistanceArgsDict']]] = None,
                  safety_margin_for_power: Optional[pulumi.Input[Union['LineSafetyMarginForPowerArgs', 'LineSafetyMarginForPowerArgsDict']]] = None,
+                 specific_heat: Optional[pulumi.Input[Union['LineSpecificHeatArgs', 'LineSpecificHeatArgsDict']]] = None,
                  susceptance: Optional[pulumi.Input[Union['LineSusceptanceArgs', 'LineSusceptanceArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineTagArgs', 'LineTagArgsDict']]]]] = None,
                  temperature_coeff_resistance: Optional[pulumi.Input[Union['LineTemperatureCoeffResistanceArgs', 'LineTemperatureCoeffResistanceArgsDict']]] = None,
+                 thermal_elongation_coef: Optional[pulumi.Input[Union['LineThermalElongationCoefArgs', 'LineThermalElongationCoefArgsDict']]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1148,6 +1298,9 @@ class Line(pulumi.CustomResource):
             if conductance is None and not opts.urn:
                 raise TypeError("Missing required property 'conductance'")
             __props__.__dict__["conductance"] = conductance
+            if conductor_mass is None and not opts.urn:
+                raise TypeError("Missing required property 'conductor_mass'")
+            __props__.__dict__["conductor_mass"] = conductor_mass
             __props__.__dict__["description"] = description
             if diameter is None and not opts.urn:
                 raise TypeError("Missing required property 'diameter'")
@@ -1190,6 +1343,9 @@ class Line(pulumi.CustomResource):
             if safety_margin_for_power is None and not opts.urn:
                 raise TypeError("Missing required property 'safety_margin_for_power'")
             __props__.__dict__["safety_margin_for_power"] = safety_margin_for_power
+            if specific_heat is None and not opts.urn:
+                raise TypeError("Missing required property 'specific_heat'")
+            __props__.__dict__["specific_heat"] = specific_heat
             if susceptance is None and not opts.urn:
                 raise TypeError("Missing required property 'susceptance'")
             __props__.__dict__["susceptance"] = susceptance
@@ -1197,10 +1353,14 @@ class Line(pulumi.CustomResource):
             if temperature_coeff_resistance is None and not opts.urn:
                 raise TypeError("Missing required property 'temperature_coeff_resistance'")
             __props__.__dict__["temperature_coeff_resistance"] = temperature_coeff_resistance
+            if thermal_elongation_coef is None and not opts.urn:
+                raise TypeError("Missing required property 'thermal_elongation_coef'")
+            __props__.__dict__["thermal_elongation_coef"] = thermal_elongation_coef
             __props__.__dict__["timezone"] = timezone
             __props__.__dict__["active_power_ends"] = None
             __props__.__dict__["active_powers"] = None
             __props__.__dict__["ampacities"] = None
+            __props__.__dict__["contingencies"] = None
             __props__.__dict__["current_rs"] = None
             __props__.__dict__["current_s"] = None
             __props__.__dict__["current_ts"] = None
@@ -1209,6 +1369,8 @@ class Line(pulumi.CustomResource):
             __props__.__dict__["kinds"] = None
             __props__.__dict__["max_temperatures"] = None
             __props__.__dict__["reactive_powers"] = None
+            __props__.__dict__["switch_status_ends"] = None
+            __props__.__dict__["switch_status_starts"] = None
             __props__.__dict__["voltage_rs"] = None
             __props__.__dict__["voltage_sts"] = None
             __props__.__dict__["voltage_trs"] = None
@@ -1229,6 +1391,8 @@ class Line(pulumi.CustomResource):
             atmosphere: Optional[pulumi.Input[Union['LineAtmosphereArgs', 'LineAtmosphereArgsDict']]] = None,
             capacitance: Optional[pulumi.Input[Union['LineCapacitanceArgs', 'LineCapacitanceArgsDict']]] = None,
             conductance: Optional[pulumi.Input[Union['LineConductanceArgs', 'LineConductanceArgsDict']]] = None,
+            conductor_mass: Optional[pulumi.Input[Union['LineConductorMassArgs', 'LineConductorMassArgsDict']]] = None,
+            contingencies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineContingencyArgs', 'LineContingencyArgsDict']]]]] = None,
             current_rs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineCurrentRArgs', 'LineCurrentRArgsDict']]]]] = None,
             current_s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineCurrentArgs', 'LineCurrentArgsDict']]]]] = None,
             current_ts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineCurrentTArgs', 'LineCurrentTArgsDict']]]]] = None,
@@ -1253,9 +1417,13 @@ class Line(pulumi.CustomResource):
             reference_resistance: Optional[pulumi.Input[Union['LineReferenceResistanceArgs', 'LineReferenceResistanceArgsDict']]] = None,
             resistance: Optional[pulumi.Input[Union['LineResistanceArgs', 'LineResistanceArgsDict']]] = None,
             safety_margin_for_power: Optional[pulumi.Input[Union['LineSafetyMarginForPowerArgs', 'LineSafetyMarginForPowerArgsDict']]] = None,
+            specific_heat: Optional[pulumi.Input[Union['LineSpecificHeatArgs', 'LineSpecificHeatArgsDict']]] = None,
             susceptance: Optional[pulumi.Input[Union['LineSusceptanceArgs', 'LineSusceptanceArgsDict']]] = None,
+            switch_status_ends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineSwitchStatusEndArgs', 'LineSwitchStatusEndArgsDict']]]]] = None,
+            switch_status_starts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineSwitchStatusStartArgs', 'LineSwitchStatusStartArgsDict']]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineTagArgs', 'LineTagArgsDict']]]]] = None,
             temperature_coeff_resistance: Optional[pulumi.Input[Union['LineTemperatureCoeffResistanceArgs', 'LineTemperatureCoeffResistanceArgsDict']]] = None,
+            thermal_elongation_coef: Optional[pulumi.Input[Union['LineThermalElongationCoefArgs', 'LineThermalElongationCoefArgsDict']]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
             voltage_rs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineVoltageRArgs', 'LineVoltageRArgsDict']]]]] = None,
             voltage_sts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineVoltageStArgs', 'LineVoltageStArgsDict']]]]] = None,
@@ -1274,6 +1442,8 @@ class Line(pulumi.CustomResource):
         :param pulumi.Input[Union['LineAtmosphereArgs', 'LineAtmosphereArgsDict']] atmosphere: attribute of the resource
         :param pulumi.Input[Union['LineCapacitanceArgs', 'LineCapacitanceArgsDict']] capacitance: attribute of the resource
         :param pulumi.Input[Union['LineConductanceArgs', 'LineConductanceArgsDict']] conductance: attribute of the resource
+        :param pulumi.Input[Union['LineConductorMassArgs', 'LineConductorMassArgsDict']] conductor_mass: attribute of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LineContingencyArgs', 'LineContingencyArgsDict']]]] contingencies: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['LineCurrentRArgs', 'LineCurrentRArgsDict']]]] current_rs: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['LineCurrentArgs', 'LineCurrentArgsDict']]]] current_s: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['LineCurrentTArgs', 'LineCurrentTArgsDict']]]] current_ts: attribute of the resource
@@ -1298,9 +1468,13 @@ class Line(pulumi.CustomResource):
         :param pulumi.Input[Union['LineReferenceResistanceArgs', 'LineReferenceResistanceArgsDict']] reference_resistance: attribute of the resource
         :param pulumi.Input[Union['LineResistanceArgs', 'LineResistanceArgsDict']] resistance: attribute of the resource
         :param pulumi.Input[Union['LineSafetyMarginForPowerArgs', 'LineSafetyMarginForPowerArgsDict']] safety_margin_for_power: attribute of the resource
+        :param pulumi.Input[Union['LineSpecificHeatArgs', 'LineSpecificHeatArgsDict']] specific_heat: attribute of the resource
         :param pulumi.Input[Union['LineSusceptanceArgs', 'LineSusceptanceArgsDict']] susceptance: attribute of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LineSwitchStatusEndArgs', 'LineSwitchStatusEndArgsDict']]]] switch_status_ends: attribute of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LineSwitchStatusStartArgs', 'LineSwitchStatusStartArgsDict']]]] switch_status_starts: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['LineTagArgs', 'LineTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[Union['LineTemperatureCoeffResistanceArgs', 'LineTemperatureCoeffResistanceArgsDict']] temperature_coeff_resistance: attribute of the resource
+        :param pulumi.Input[Union['LineThermalElongationCoefArgs', 'LineThermalElongationCoefArgsDict']] thermal_elongation_coef: attribute of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['LineVoltageRArgs', 'LineVoltageRArgsDict']]]] voltage_rs: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['LineVoltageStArgs', 'LineVoltageStArgsDict']]]] voltage_sts: attribute of the resource
@@ -1317,6 +1491,8 @@ class Line(pulumi.CustomResource):
         __props__.__dict__["atmosphere"] = atmosphere
         __props__.__dict__["capacitance"] = capacitance
         __props__.__dict__["conductance"] = conductance
+        __props__.__dict__["conductor_mass"] = conductor_mass
+        __props__.__dict__["contingencies"] = contingencies
         __props__.__dict__["current_rs"] = current_rs
         __props__.__dict__["current_s"] = current_s
         __props__.__dict__["current_ts"] = current_ts
@@ -1341,9 +1517,13 @@ class Line(pulumi.CustomResource):
         __props__.__dict__["reference_resistance"] = reference_resistance
         __props__.__dict__["resistance"] = resistance
         __props__.__dict__["safety_margin_for_power"] = safety_margin_for_power
+        __props__.__dict__["specific_heat"] = specific_heat
         __props__.__dict__["susceptance"] = susceptance
+        __props__.__dict__["switch_status_ends"] = switch_status_ends
+        __props__.__dict__["switch_status_starts"] = switch_status_starts
         __props__.__dict__["tags"] = tags
         __props__.__dict__["temperature_coeff_resistance"] = temperature_coeff_resistance
+        __props__.__dict__["thermal_elongation_coef"] = thermal_elongation_coef
         __props__.__dict__["timezone"] = timezone
         __props__.__dict__["voltage_rs"] = voltage_rs
         __props__.__dict__["voltage_sts"] = voltage_sts
@@ -1405,6 +1585,22 @@ class Line(pulumi.CustomResource):
         attribute of the resource
         """
         return pulumi.get(self, "conductance")
+
+    @property
+    @pulumi.getter(name="conductorMass")
+    def conductor_mass(self) -> pulumi.Output['outputs.LineConductorMass']:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "conductor_mass")
+
+    @property
+    @pulumi.getter
+    def contingencies(self) -> pulumi.Output[Sequence['outputs.LineContingency']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "contingencies")
 
     @property
     @pulumi.getter(name="currentRs")
@@ -1599,12 +1795,36 @@ class Line(pulumi.CustomResource):
         return pulumi.get(self, "safety_margin_for_power")
 
     @property
+    @pulumi.getter(name="specificHeat")
+    def specific_heat(self) -> pulumi.Output['outputs.LineSpecificHeat']:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "specific_heat")
+
+    @property
     @pulumi.getter
     def susceptance(self) -> pulumi.Output['outputs.LineSusceptance']:
         """
         attribute of the resource
         """
         return pulumi.get(self, "susceptance")
+
+    @property
+    @pulumi.getter(name="switchStatusEnds")
+    def switch_status_ends(self) -> pulumi.Output[Sequence['outputs.LineSwitchStatusEnd']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "switch_status_ends")
+
+    @property
+    @pulumi.getter(name="switchStatusStarts")
+    def switch_status_starts(self) -> pulumi.Output[Sequence['outputs.LineSwitchStatusStart']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "switch_status_starts")
 
     @property
     @pulumi.getter
@@ -1621,6 +1841,14 @@ class Line(pulumi.CustomResource):
         attribute of the resource
         """
         return pulumi.get(self, "temperature_coeff_resistance")
+
+    @property
+    @pulumi.getter(name="thermalElongationCoef")
+    def thermal_elongation_coef(self) -> pulumi.Output['outputs.LineThermalElongationCoef']:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "thermal_elongation_coef")
 
     @property
     @pulumi.getter

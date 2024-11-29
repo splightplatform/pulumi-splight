@@ -36,10 +36,14 @@ type Generator struct {
 	Geometry pulumi.StringPtrOutput `pulumi:"geometry"`
 	// kind of the resource
 	Kinds GeneratorKindArrayOutput `pulumi:"kinds"`
+	// attribute of the resource
+	MonthlyEnergies GeneratorMonthlyEnergyArrayOutput `pulumi:"monthlyEnergies"`
 	// name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// attribute of the resource
 	ReactivePowers GeneratorReactivePowerArrayOutput `pulumi:"reactivePowers"`
+	// attribute of the resource
+	SwitchStatuses GeneratorSwitchStatusArrayOutput `pulumi:"switchStatuses"`
 	// tags of the resource
 	Tags GeneratorTagArrayOutput `pulumi:"tags"`
 	// timezone that overrides location-based timezone of the resource
@@ -93,10 +97,14 @@ type generatorState struct {
 	Geometry *string `pulumi:"geometry"`
 	// kind of the resource
 	Kinds []GeneratorKind `pulumi:"kinds"`
+	// attribute of the resource
+	MonthlyEnergies []GeneratorMonthlyEnergy `pulumi:"monthlyEnergies"`
 	// name of the resource
 	Name *string `pulumi:"name"`
 	// attribute of the resource
 	ReactivePowers []GeneratorReactivePower `pulumi:"reactivePowers"`
+	// attribute of the resource
+	SwitchStatuses []GeneratorSwitchStatus `pulumi:"switchStatuses"`
 	// tags of the resource
 	Tags []GeneratorTag `pulumi:"tags"`
 	// timezone that overrides location-based timezone of the resource
@@ -118,10 +126,14 @@ type GeneratorState struct {
 	Geometry pulumi.StringPtrInput
 	// kind of the resource
 	Kinds GeneratorKindArrayInput
+	// attribute of the resource
+	MonthlyEnergies GeneratorMonthlyEnergyArrayInput
 	// name of the resource
 	Name pulumi.StringPtrInput
 	// attribute of the resource
 	ReactivePowers GeneratorReactivePowerArrayInput
+	// attribute of the resource
+	SwitchStatuses GeneratorSwitchStatusArrayInput
 	// tags of the resource
 	Tags GeneratorTagArrayInput
 	// timezone that overrides location-based timezone of the resource
@@ -285,6 +297,11 @@ func (o GeneratorOutput) Kinds() GeneratorKindArrayOutput {
 	return o.ApplyT(func(v *Generator) GeneratorKindArrayOutput { return v.Kinds }).(GeneratorKindArrayOutput)
 }
 
+// attribute of the resource
+func (o GeneratorOutput) MonthlyEnergies() GeneratorMonthlyEnergyArrayOutput {
+	return o.ApplyT(func(v *Generator) GeneratorMonthlyEnergyArrayOutput { return v.MonthlyEnergies }).(GeneratorMonthlyEnergyArrayOutput)
+}
+
 // name of the resource
 func (o GeneratorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Generator) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -293,6 +310,11 @@ func (o GeneratorOutput) Name() pulumi.StringOutput {
 // attribute of the resource
 func (o GeneratorOutput) ReactivePowers() GeneratorReactivePowerArrayOutput {
 	return o.ApplyT(func(v *Generator) GeneratorReactivePowerArrayOutput { return v.ReactivePowers }).(GeneratorReactivePowerArrayOutput)
+}
+
+// attribute of the resource
+func (o GeneratorOutput) SwitchStatuses() GeneratorSwitchStatusArrayOutput {
+	return o.ApplyT(func(v *Generator) GeneratorSwitchStatusArrayOutput { return v.SwitchStatuses }).(GeneratorSwitchStatusArrayOutput)
 }
 
 // tags of the resource

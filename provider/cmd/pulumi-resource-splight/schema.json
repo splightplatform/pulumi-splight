@@ -442,6 +442,42 @@
                 "name"
             ]
         },
+        "splight:index/BusActivePower:BusActivePower": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
         "splight:index/BusKind:BusKind": {
             "properties": {
                 "id": {
@@ -461,7 +497,7 @@
                 "name"
             ]
         },
-        "splight:index/BusNominalVoltage:BusNominalVoltage": {
+        "splight:index/BusNominalVoltageKv:BusNominalVoltageKv": {
             "properties": {
                 "asset": {
                     "type": "string",
@@ -501,6 +537,42 @@
                         "type",
                         "unit",
                         "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/BusReactivePower:BusReactivePower": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
                     ]
                 }
             }
@@ -2939,7 +3011,79 @@
                 "name"
             ]
         },
+        "splight:index/GeneratorMonthlyEnergy:GeneratorMonthlyEnergy": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
         "splight:index/GeneratorReactivePower:GeneratorReactivePower": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/GeneratorSwitchStatus:GeneratorSwitchStatus": {
             "properties": {
                 "asset": {
                     "type": "string",
@@ -3411,6 +3555,42 @@
                 }
             }
         },
+        "splight:index/InverterSwitchStatus:InverterSwitchStatus": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
         "splight:index/InverterTag:InverterTag": {
             "properties": {
                 "id": {
@@ -3705,6 +3885,94 @@
             }
         },
         "splight:index/LineConductance:LineConductance": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/LineConductorMass:LineConductorMass": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/LineContingency:LineContingency": {
             "properties": {
                 "asset": {
                     "type": "string",
@@ -4555,7 +4823,139 @@
                 }
             }
         },
+        "splight:index/LineSpecificHeat:LineSpecificHeat": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
         "splight:index/LineSusceptance:LineSusceptance": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/LineSwitchStatusEnd:LineSwitchStatusEnd": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/LineSwitchStatusStart:LineSwitchStatusStart": {
             "properties": {
                 "asset": {
                     "type": "string",
@@ -4637,6 +5037,50 @@
                 "unit": {
                     "type": "string",
                     "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/LineThermalElongationCoef:LineThermalElongationCoef": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit\n"
                 },
                 "value": {
                     "type": "string",
@@ -4919,6 +5363,138 @@
                 "name"
             ]
         },
+        "splight:index/SegmentReferenceSag:SegmentReferenceSag": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/SegmentReferenceTemperature:SegmentReferenceTemperature": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/SegmentSpanLength:SegmentSpanLength": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
         "splight:index/SegmentTag:SegmentTag": {
             "properties": {
                 "id": {
@@ -5148,6 +5724,94 @@
                 "name"
             ]
         },
+        "splight:index/SlackLineSwitchStatusEnd:SlackLineSwitchStatusEnd": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/SlackLineSwitchStatusStart:SlackLineSwitchStatusStart": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
         "splight:index/SlackLineTag:SlackLineTag": {
             "properties": {
                 "id": {
@@ -5164,6 +5828,950 @@
                 "id",
                 "name"
             ]
+        },
+        "splight:index/TransformerActivePowerHv:TransformerActivePowerHv": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerActivePowerLoss:TransformerActivePowerLoss": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerActivePowerLv:TransformerActivePowerLv": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerCapacitance:TransformerCapacitance": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerConductance:TransformerConductance": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerContingency:TransformerContingency": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerCurrentHv:TransformerCurrentHv": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerCurrentLv:TransformerCurrentLv": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerKind:TransformerKind": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "kind id\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "kind name\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "splight:index/TransformerMaximumAllowedCurrent:TransformerMaximumAllowedCurrent": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerMaximumAllowedPower:TransformerMaximumAllowedPower": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerReactance:TransformerReactance": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerReactivePowerHv:TransformerReactivePowerHv": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerReactivePowerLoss:TransformerReactivePowerLoss": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerReactivePowerLv:TransformerReactivePowerLv": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerResistance:TransformerResistance": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerSafetyMarginForPower:TransformerSafetyMarginForPower": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerStandardType:TransformerStandardType": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerSwitchStatusHv:TransformerSwitchStatusHv": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerSwitchStatusLv:TransformerSwitchStatusLv": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerTag:TransformerTag": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "tag id\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "tag name\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "splight:index/TransformerTapPos:TransformerTapPos": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerVoltageHv:TransformerVoltageHv": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerVoltageLv:TransformerVoltageLv": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit"
+                    ]
+                }
+            }
+        },
+        "splight:index/TransformerXnOhm:TransformerXnOhm": {
+            "properties": {
+                "asset": {
+                    "type": "string",
+                    "description": "reference to the asset to be linked to\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "[String|Boolean|Number] type of the data to be ingested in this attribute\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "unit of measure\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "metadata value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asset",
+                        "id",
+                        "name",
+                        "type",
+                        "unit",
+                        "value"
+                    ]
+                }
+            }
         },
         "splight:index/getAssetKindsKind:getAssetKindsKind": {
             "properties": {
@@ -6202,6 +7810,13 @@
         "splight:index/bus:Bus": {
             "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/bus:Bus [options] splight_bus.\u003cname\u003e \u003cbus_id\u003e\n```\n\n",
             "properties": {
+                "activePowers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/BusActivePower:BusActivePower"
+                    },
+                    "description": "attribute of the resource\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "description of the resource\n"
@@ -6221,8 +7836,15 @@
                     "type": "string",
                     "description": "name of the resource\n"
                 },
-                "nominalVoltage": {
-                    "$ref": "#/types/splight:index/BusNominalVoltage:BusNominalVoltage",
+                "nominalVoltageKv": {
+                    "$ref": "#/types/splight:index/BusNominalVoltageKv:BusNominalVoltageKv",
+                    "description": "attribute of the resource\n"
+                },
+                "reactivePowers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/BusReactivePower:BusReactivePower"
+                    },
                     "description": "attribute of the resource\n"
                 },
                 "tags": {
@@ -6238,9 +7860,11 @@
                 }
             },
             "required": [
+                "activePowers",
                 "kinds",
                 "name",
-                "nominalVoltage"
+                "nominalVoltageKv",
+                "reactivePowers"
             ],
             "inputProperties": {
                 "description": {
@@ -6255,8 +7879,8 @@
                     "type": "string",
                     "description": "name of the resource\n"
                 },
-                "nominalVoltage": {
-                    "$ref": "#/types/splight:index/BusNominalVoltage:BusNominalVoltage",
+                "nominalVoltageKv": {
+                    "$ref": "#/types/splight:index/BusNominalVoltageKv:BusNominalVoltageKv",
                     "description": "attribute of the resource\n"
                 },
                 "tags": {
@@ -6272,11 +7896,18 @@
                 }
             },
             "requiredInputs": [
-                "nominalVoltage"
+                "nominalVoltageKv"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Bus resources.\n",
                 "properties": {
+                    "activePowers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/BusActivePower:BusActivePower"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "description of the resource\n"
@@ -6296,8 +7927,15 @@
                         "type": "string",
                         "description": "name of the resource\n"
                     },
-                    "nominalVoltage": {
-                        "$ref": "#/types/splight:index/BusNominalVoltage:BusNominalVoltage",
+                    "nominalVoltageKv": {
+                        "$ref": "#/types/splight:index/BusNominalVoltageKv:BusNominalVoltageKv",
+                        "description": "attribute of the resource\n"
+                    },
+                    "reactivePowers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/BusReactivePower:BusReactivePower"
+                        },
                         "description": "attribute of the resource\n"
                     },
                     "tags": {
@@ -12679,6 +14317,13 @@
                     },
                     "description": "kind of the resource\n"
                 },
+                "monthlyEnergies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/GeneratorMonthlyEnergy:GeneratorMonthlyEnergy"
+                    },
+                    "description": "attribute of the resource\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "name of the resource\n"
@@ -12687,6 +14332,13 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/splight:index/GeneratorReactivePower:GeneratorReactivePower"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "switchStatuses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/GeneratorSwitchStatus:GeneratorSwitchStatus"
                     },
                     "description": "attribute of the resource\n"
                 },
@@ -12708,8 +14360,10 @@
                 "dailyEmissionAvoideds",
                 "dailyEnergies",
                 "kinds",
+                "monthlyEnergies",
                 "name",
-                "reactivePowers"
+                "reactivePowers",
+                "switchStatuses"
             ],
             "inputProperties": {
                 "co2Coefficient": {
@@ -12786,6 +14440,13 @@
                         },
                         "description": "kind of the resource\n"
                     },
+                    "monthlyEnergies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/GeneratorMonthlyEnergy:GeneratorMonthlyEnergy"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "name of the resource\n"
@@ -12794,6 +14455,13 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/splight:index/GeneratorReactivePower:GeneratorReactivePower"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "switchStatuses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/GeneratorSwitchStatus:GeneratorSwitchStatus"
                         },
                         "description": "attribute of the resource\n"
                     },
@@ -12982,6 +14650,13 @@
                     "$ref": "#/types/splight:index/InverterSerialNumber:InverterSerialNumber",
                     "description": "attribute of the resource\n"
                 },
+                "switchStatuses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/InverterSwitchStatus:InverterSwitchStatus"
+                    },
+                    "description": "attribute of the resource\n"
+                },
                 "tags": {
                     "type": "array",
                     "items": {
@@ -13013,6 +14688,7 @@
                 "name",
                 "rawDailyEnergies",
                 "serialNumber",
+                "switchStatuses",
                 "temperatures"
             ],
             "inputProperties": {
@@ -13137,6 +14813,13 @@
                         "$ref": "#/types/splight:index/InverterSerialNumber:InverterSerialNumber",
                         "description": "attribute of the resource\n"
                     },
+                    "switchStatuses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/InverterSwitchStatus:InverterSwitchStatus"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
                     "tags": {
                         "type": "array",
                         "items": {
@@ -13197,6 +14880,17 @@
                 },
                 "conductance": {
                     "$ref": "#/types/splight:index/LineConductance:LineConductance",
+                    "description": "attribute of the resource\n"
+                },
+                "conductorMass": {
+                    "$ref": "#/types/splight:index/LineConductorMass:LineConductorMass",
+                    "description": "attribute of the resource\n"
+                },
+                "contingencies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/LineContingency:LineContingency"
+                    },
                     "description": "attribute of the resource\n"
                 },
                 "currentRs": {
@@ -13319,8 +15013,26 @@
                     "$ref": "#/types/splight:index/LineSafetyMarginForPower:LineSafetyMarginForPower",
                     "description": "attribute of the resource\n"
                 },
+                "specificHeat": {
+                    "$ref": "#/types/splight:index/LineSpecificHeat:LineSpecificHeat",
+                    "description": "attribute of the resource\n"
+                },
                 "susceptance": {
                     "$ref": "#/types/splight:index/LineSusceptance:LineSusceptance",
+                    "description": "attribute of the resource\n"
+                },
+                "switchStatusEnds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/LineSwitchStatusEnd:LineSwitchStatusEnd"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "switchStatusStarts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/LineSwitchStatusStart:LineSwitchStatusStart"
+                    },
                     "description": "attribute of the resource\n"
                 },
                 "tags": {
@@ -13332,6 +15044,10 @@
                 },
                 "temperatureCoeffResistance": {
                     "$ref": "#/types/splight:index/LineTemperatureCoeffResistance:LineTemperatureCoeffResistance",
+                    "description": "attribute of the resource\n"
+                },
+                "thermalElongationCoef": {
+                    "$ref": "#/types/splight:index/LineThermalElongationCoef:LineThermalElongationCoef",
                     "description": "attribute of the resource\n"
                 },
                 "timezone": {
@@ -13368,6 +15084,8 @@
                 "atmosphere",
                 "capacitance",
                 "conductance",
+                "conductorMass",
+                "contingencies",
                 "currents",
                 "currentRs",
                 "currentS",
@@ -13390,8 +15108,12 @@
                 "referenceResistance",
                 "resistance",
                 "safetyMarginForPower",
+                "specificHeat",
                 "susceptance",
+                "switchStatusEnds",
+                "switchStatusStarts",
                 "temperatureCoeffResistance",
+                "thermalElongationCoef",
                 "voltageRs",
                 "voltageSts",
                 "voltageTrs"
@@ -13411,6 +15133,10 @@
                 },
                 "conductance": {
                     "$ref": "#/types/splight:index/LineConductance:LineConductance",
+                    "description": "attribute of the resource\n"
+                },
+                "conductorMass": {
+                    "$ref": "#/types/splight:index/LineConductorMass:LineConductorMass",
                     "description": "attribute of the resource\n"
                 },
                 "description": {
@@ -13477,6 +15203,10 @@
                     "$ref": "#/types/splight:index/LineSafetyMarginForPower:LineSafetyMarginForPower",
                     "description": "attribute of the resource\n"
                 },
+                "specificHeat": {
+                    "$ref": "#/types/splight:index/LineSpecificHeat:LineSpecificHeat",
+                    "description": "attribute of the resource\n"
+                },
                 "susceptance": {
                     "$ref": "#/types/splight:index/LineSusceptance:LineSusceptance",
                     "description": "attribute of the resource\n"
@@ -13492,6 +15222,10 @@
                     "$ref": "#/types/splight:index/LineTemperatureCoeffResistance:LineTemperatureCoeffResistance",
                     "description": "attribute of the resource\n"
                 },
+                "thermalElongationCoef": {
+                    "$ref": "#/types/splight:index/LineThermalElongationCoef:LineThermalElongationCoef",
+                    "description": "attribute of the resource\n"
+                },
                 "timezone": {
                     "type": "string",
                     "description": "timezone that overrides location-based timezone of the resource\n"
@@ -13502,6 +15236,7 @@
                 "atmosphere",
                 "capacitance",
                 "conductance",
+                "conductorMass",
                 "diameter",
                 "emissivity",
                 "length",
@@ -13515,8 +15250,10 @@
                 "referenceResistance",
                 "resistance",
                 "safetyMarginForPower",
+                "specificHeat",
                 "susceptance",
-                "temperatureCoeffResistance"
+                "temperatureCoeffResistance",
+                "thermalElongationCoef"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Line resources.\n",
@@ -13556,6 +15293,17 @@
                     },
                     "conductance": {
                         "$ref": "#/types/splight:index/LineConductance:LineConductance",
+                        "description": "attribute of the resource\n"
+                    },
+                    "conductorMass": {
+                        "$ref": "#/types/splight:index/LineConductorMass:LineConductorMass",
+                        "description": "attribute of the resource\n"
+                    },
+                    "contingencies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/LineContingency:LineContingency"
+                        },
                         "description": "attribute of the resource\n"
                     },
                     "currentRs": {
@@ -13678,8 +15426,26 @@
                         "$ref": "#/types/splight:index/LineSafetyMarginForPower:LineSafetyMarginForPower",
                         "description": "attribute of the resource\n"
                     },
+                    "specificHeat": {
+                        "$ref": "#/types/splight:index/LineSpecificHeat:LineSpecificHeat",
+                        "description": "attribute of the resource\n"
+                    },
                     "susceptance": {
                         "$ref": "#/types/splight:index/LineSusceptance:LineSusceptance",
+                        "description": "attribute of the resource\n"
+                    },
+                    "switchStatusEnds": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/LineSwitchStatusEnd:LineSwitchStatusEnd"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "switchStatusStarts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/LineSwitchStatusStart:LineSwitchStatusStart"
+                        },
                         "description": "attribute of the resource\n"
                     },
                     "tags": {
@@ -13691,6 +15457,10 @@
                     },
                     "temperatureCoeffResistance": {
                         "$ref": "#/types/splight:index/LineTemperatureCoeffResistance:LineTemperatureCoeffResistance",
+                        "description": "attribute of the resource\n"
+                    },
+                    "thermalElongationCoef": {
+                        "$ref": "#/types/splight:index/LineThermalElongationCoef:LineThermalElongationCoef",
                         "description": "attribute of the resource\n"
                     },
                     "timezone": {
@@ -13852,6 +15622,18 @@
                     "type": "string",
                     "description": "name of the resource\n"
                 },
+                "referenceSag": {
+                    "$ref": "#/types/splight:index/SegmentReferenceSag:SegmentReferenceSag",
+                    "description": "attribute of the resource\n"
+                },
+                "referenceTemperature": {
+                    "$ref": "#/types/splight:index/SegmentReferenceTemperature:SegmentReferenceTemperature",
+                    "description": "attribute of the resource\n"
+                },
+                "spanLength": {
+                    "$ref": "#/types/splight:index/SegmentSpanLength:SegmentSpanLength",
+                    "description": "attribute of the resource\n"
+                },
                 "tags": {
                     "type": "array",
                     "items": {
@@ -13891,6 +15673,9 @@
                 "cumulativeDistance",
                 "kinds",
                 "name",
+                "referenceSag",
+                "referenceTemperature",
+                "spanLength",
                 "temperatures",
                 "windDirections",
                 "windSpeeds"
@@ -13920,6 +15705,18 @@
                     "type": "string",
                     "description": "name of the resource\n"
                 },
+                "referenceSag": {
+                    "$ref": "#/types/splight:index/SegmentReferenceSag:SegmentReferenceSag",
+                    "description": "attribute of the resource\n"
+                },
+                "referenceTemperature": {
+                    "$ref": "#/types/splight:index/SegmentReferenceTemperature:SegmentReferenceTemperature",
+                    "description": "attribute of the resource\n"
+                },
+                "spanLength": {
+                    "$ref": "#/types/splight:index/SegmentSpanLength:SegmentSpanLength",
+                    "description": "attribute of the resource\n"
+                },
                 "tags": {
                     "type": "array",
                     "items": {
@@ -13935,7 +15732,10 @@
             "requiredInputs": [
                 "altitude",
                 "azimuth",
-                "cumulativeDistance"
+                "cumulativeDistance",
+                "referenceSag",
+                "referenceTemperature",
+                "spanLength"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Segment resources.\n",
@@ -13970,6 +15770,18 @@
                     "name": {
                         "type": "string",
                         "description": "name of the resource\n"
+                    },
+                    "referenceSag": {
+                        "$ref": "#/types/splight:index/SegmentReferenceSag:SegmentReferenceSag",
+                        "description": "attribute of the resource\n"
+                    },
+                    "referenceTemperature": {
+                        "$ref": "#/types/splight:index/SegmentReferenceTemperature:SegmentReferenceTemperature",
+                        "description": "attribute of the resource\n"
+                    },
+                    "spanLength": {
+                        "$ref": "#/types/splight:index/SegmentSpanLength:SegmentSpanLength",
+                        "description": "attribute of the resource\n"
                     },
                     "tags": {
                         "type": "array",
@@ -14217,6 +16029,20 @@
                     "type": "string",
                     "description": "name of the resource\n"
                 },
+                "switchStatusEnds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/SlackLineSwitchStatusEnd:SlackLineSwitchStatusEnd"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "switchStatusStarts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/SlackLineSwitchStatusStart:SlackLineSwitchStatusStart"
+                    },
+                    "description": "attribute of the resource\n"
+                },
                 "tags": {
                     "type": "array",
                     "items": {
@@ -14231,7 +16057,9 @@
             },
             "required": [
                 "kinds",
-                "name"
+                "name",
+                "switchStatusEnds",
+                "switchStatusStarts"
             ],
             "inputProperties": {
                 "description": {
@@ -14280,6 +16108,20 @@
                         "type": "string",
                         "description": "name of the resource\n"
                     },
+                    "switchStatusEnds": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/SlackLineSwitchStatusEnd:SlackLineSwitchStatusEnd"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "switchStatusStarts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/SlackLineSwitchStatusStart:SlackLineSwitchStatusStart"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
                     "tags": {
                         "type": "array",
                         "items": {
@@ -14318,6 +16160,443 @@
                     "name": {
                         "type": "string",
                         "description": "name of the resource\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/transformer:Transformer": {
+            "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/transformer:Transformer [options] splight_transformer.\u003cname\u003e \u003ctransformer_id\u003e\n```\n\n",
+            "properties": {
+                "activePowerHvs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/TransformerActivePowerHv:TransformerActivePowerHv"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "activePowerLosses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/TransformerActivePowerLoss:TransformerActivePowerLoss"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "activePowerLvs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/TransformerActivePowerLv:TransformerActivePowerLv"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "capacitance": {
+                    "$ref": "#/types/splight:index/TransformerCapacitance:TransformerCapacitance",
+                    "description": "attribute of the resource\n"
+                },
+                "conductance": {
+                    "$ref": "#/types/splight:index/TransformerConductance:TransformerConductance",
+                    "description": "attribute of the resource\n"
+                },
+                "contingencies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/TransformerContingency:TransformerContingency"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "currentHvs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/TransformerCurrentHv:TransformerCurrentHv"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "currentLvs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/TransformerCurrentLv:TransformerCurrentLv"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "description of the resource\n"
+                },
+                "geometry": {
+                    "type": "string",
+                    "description": "geo position and shape of the resource\n"
+                },
+                "kinds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/TransformerKind:TransformerKind"
+                    },
+                    "description": "kind of the resource\n"
+                },
+                "maximumAllowedCurrent": {
+                    "$ref": "#/types/splight:index/TransformerMaximumAllowedCurrent:TransformerMaximumAllowedCurrent",
+                    "description": "attribute of the resource\n"
+                },
+                "maximumAllowedPower": {
+                    "$ref": "#/types/splight:index/TransformerMaximumAllowedPower:TransformerMaximumAllowedPower",
+                    "description": "attribute of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "reactance": {
+                    "$ref": "#/types/splight:index/TransformerReactance:TransformerReactance",
+                    "description": "attribute of the resource\n"
+                },
+                "reactivePowerHvs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/TransformerReactivePowerHv:TransformerReactivePowerHv"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "reactivePowerLosses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/TransformerReactivePowerLoss:TransformerReactivePowerLoss"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "reactivePowerLvs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/TransformerReactivePowerLv:TransformerReactivePowerLv"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "resistance": {
+                    "$ref": "#/types/splight:index/TransformerResistance:TransformerResistance",
+                    "description": "attribute of the resource\n"
+                },
+                "safetyMarginForPower": {
+                    "$ref": "#/types/splight:index/TransformerSafetyMarginForPower:TransformerSafetyMarginForPower",
+                    "description": "attribute of the resource\n"
+                },
+                "standardType": {
+                    "$ref": "#/types/splight:index/TransformerStandardType:TransformerStandardType",
+                    "description": "attribute of the resource\n"
+                },
+                "switchStatusHvs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/TransformerSwitchStatusHv:TransformerSwitchStatusHv"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "switchStatusLvs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/TransformerSwitchStatusLv:TransformerSwitchStatusLv"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/TransformerTag:TransformerTag"
+                    },
+                    "description": "tags of the resource\n"
+                },
+                "tapPos": {
+                    "$ref": "#/types/splight:index/TransformerTapPos:TransformerTapPos",
+                    "description": "attribute of the resource\n"
+                },
+                "timezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
+                },
+                "voltageHvs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/TransformerVoltageHv:TransformerVoltageHv"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "voltageLvs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/TransformerVoltageLv:TransformerVoltageLv"
+                    },
+                    "description": "attribute of the resource\n"
+                },
+                "xnOhm": {
+                    "$ref": "#/types/splight:index/TransformerXnOhm:TransformerXnOhm",
+                    "description": "attribute of the resource\n"
+                }
+            },
+            "required": [
+                "activePowerHvs",
+                "activePowerLosses",
+                "activePowerLvs",
+                "capacitance",
+                "conductance",
+                "contingencies",
+                "currentHvs",
+                "currentLvs",
+                "kinds",
+                "maximumAllowedCurrent",
+                "maximumAllowedPower",
+                "name",
+                "reactance",
+                "reactivePowerHvs",
+                "reactivePowerLosses",
+                "reactivePowerLvs",
+                "resistance",
+                "safetyMarginForPower",
+                "standardType",
+                "switchStatusHvs",
+                "switchStatusLvs",
+                "tapPos",
+                "voltageHvs",
+                "voltageLvs",
+                "xnOhm"
+            ],
+            "inputProperties": {
+                "capacitance": {
+                    "$ref": "#/types/splight:index/TransformerCapacitance:TransformerCapacitance",
+                    "description": "attribute of the resource\n"
+                },
+                "conductance": {
+                    "$ref": "#/types/splight:index/TransformerConductance:TransformerConductance",
+                    "description": "attribute of the resource\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "description of the resource\n"
+                },
+                "geometry": {
+                    "type": "string",
+                    "description": "geo position and shape of the resource\n"
+                },
+                "maximumAllowedCurrent": {
+                    "$ref": "#/types/splight:index/TransformerMaximumAllowedCurrent:TransformerMaximumAllowedCurrent",
+                    "description": "attribute of the resource\n"
+                },
+                "maximumAllowedPower": {
+                    "$ref": "#/types/splight:index/TransformerMaximumAllowedPower:TransformerMaximumAllowedPower",
+                    "description": "attribute of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "reactance": {
+                    "$ref": "#/types/splight:index/TransformerReactance:TransformerReactance",
+                    "description": "attribute of the resource\n"
+                },
+                "resistance": {
+                    "$ref": "#/types/splight:index/TransformerResistance:TransformerResistance",
+                    "description": "attribute of the resource\n"
+                },
+                "safetyMarginForPower": {
+                    "$ref": "#/types/splight:index/TransformerSafetyMarginForPower:TransformerSafetyMarginForPower",
+                    "description": "attribute of the resource\n"
+                },
+                "standardType": {
+                    "$ref": "#/types/splight:index/TransformerStandardType:TransformerStandardType",
+                    "description": "attribute of the resource\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/TransformerTag:TransformerTag"
+                    },
+                    "description": "tags of the resource\n"
+                },
+                "tapPos": {
+                    "$ref": "#/types/splight:index/TransformerTapPos:TransformerTapPos",
+                    "description": "attribute of the resource\n"
+                },
+                "timezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
+                },
+                "xnOhm": {
+                    "$ref": "#/types/splight:index/TransformerXnOhm:TransformerXnOhm",
+                    "description": "attribute of the resource\n"
+                }
+            },
+            "requiredInputs": [
+                "capacitance",
+                "conductance",
+                "maximumAllowedCurrent",
+                "maximumAllowedPower",
+                "reactance",
+                "resistance",
+                "safetyMarginForPower",
+                "standardType",
+                "tapPos",
+                "xnOhm"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Transformer resources.\n",
+                "properties": {
+                    "activePowerHvs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/TransformerActivePowerHv:TransformerActivePowerHv"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "activePowerLosses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/TransformerActivePowerLoss:TransformerActivePowerLoss"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "activePowerLvs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/TransformerActivePowerLv:TransformerActivePowerLv"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "capacitance": {
+                        "$ref": "#/types/splight:index/TransformerCapacitance:TransformerCapacitance",
+                        "description": "attribute of the resource\n"
+                    },
+                    "conductance": {
+                        "$ref": "#/types/splight:index/TransformerConductance:TransformerConductance",
+                        "description": "attribute of the resource\n"
+                    },
+                    "contingencies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/TransformerContingency:TransformerContingency"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "currentHvs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/TransformerCurrentHv:TransformerCurrentHv"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "currentLvs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/TransformerCurrentLv:TransformerCurrentLv"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "description of the resource\n"
+                    },
+                    "geometry": {
+                        "type": "string",
+                        "description": "geo position and shape of the resource\n"
+                    },
+                    "kinds": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/TransformerKind:TransformerKind"
+                        },
+                        "description": "kind of the resource\n"
+                    },
+                    "maximumAllowedCurrent": {
+                        "$ref": "#/types/splight:index/TransformerMaximumAllowedCurrent:TransformerMaximumAllowedCurrent",
+                        "description": "attribute of the resource\n"
+                    },
+                    "maximumAllowedPower": {
+                        "$ref": "#/types/splight:index/TransformerMaximumAllowedPower:TransformerMaximumAllowedPower",
+                        "description": "attribute of the resource\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "name of the resource\n"
+                    },
+                    "reactance": {
+                        "$ref": "#/types/splight:index/TransformerReactance:TransformerReactance",
+                        "description": "attribute of the resource\n"
+                    },
+                    "reactivePowerHvs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/TransformerReactivePowerHv:TransformerReactivePowerHv"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "reactivePowerLosses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/TransformerReactivePowerLoss:TransformerReactivePowerLoss"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "reactivePowerLvs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/TransformerReactivePowerLv:TransformerReactivePowerLv"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "resistance": {
+                        "$ref": "#/types/splight:index/TransformerResistance:TransformerResistance",
+                        "description": "attribute of the resource\n"
+                    },
+                    "safetyMarginForPower": {
+                        "$ref": "#/types/splight:index/TransformerSafetyMarginForPower:TransformerSafetyMarginForPower",
+                        "description": "attribute of the resource\n"
+                    },
+                    "standardType": {
+                        "$ref": "#/types/splight:index/TransformerStandardType:TransformerStandardType",
+                        "description": "attribute of the resource\n"
+                    },
+                    "switchStatusHvs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/TransformerSwitchStatusHv:TransformerSwitchStatusHv"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "switchStatusLvs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/TransformerSwitchStatusLv:TransformerSwitchStatusLv"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/TransformerTag:TransformerTag"
+                        },
+                        "description": "tags of the resource\n"
+                    },
+                    "tapPos": {
+                        "$ref": "#/types/splight:index/TransformerTapPos:TransformerTapPos",
+                        "description": "attribute of the resource\n"
+                    },
+                    "timezone": {
+                        "type": "string",
+                        "description": "timezone that overrides location-based timezone of the resource\n"
+                    },
+                    "voltageHvs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/TransformerVoltageHv:TransformerVoltageHv"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "voltageLvs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/TransformerVoltageLv:TransformerVoltageLv"
+                        },
+                        "description": "attribute of the resource\n"
+                    },
+                    "xnOhm": {
+                        "$ref": "#/types/splight:index/TransformerXnOhm:TransformerXnOhm",
+                        "description": "attribute of the resource\n"
                     }
                 },
                 "type": "object"

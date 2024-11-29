@@ -12,7 +12,7 @@ namespace Splight.Splight.Outputs
 {
 
     [OutputType]
-    public sealed class BusNominalVoltage
+    public sealed class TransformerCurrentLv
     {
         /// <summary>
         /// reference to the asset to be linked to
@@ -34,13 +34,9 @@ namespace Splight.Splight.Outputs
         /// unit of measure
         /// </summary>
         public readonly string? Unit;
-        /// <summary>
-        /// metadata value
-        /// </summary>
-        public readonly string Value;
 
         [OutputConstructor]
-        private BusNominalVoltage(
+        private TransformerCurrentLv(
             string? asset,
 
             string? id,
@@ -49,16 +45,13 @@ namespace Splight.Splight.Outputs
 
             string? type,
 
-            string? unit,
-
-            string value)
+            string? unit)
         {
             Asset = asset;
             Id = id;
             Name = name;
             Type = type;
             Unit = unit;
-            Value = value;
         }
     }
 }

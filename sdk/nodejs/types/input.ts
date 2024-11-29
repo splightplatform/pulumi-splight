@@ -224,6 +224,29 @@ export interface AssetTag {
     name: pulumi.Input<string>;
 }
 
+export interface BusActivePower {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+}
+
 export interface BusKind {
     /**
      * kind id
@@ -235,7 +258,7 @@ export interface BusKind {
     name: pulumi.Input<string>;
 }
 
-export interface BusNominalVoltage {
+export interface BusNominalVoltageKv {
     /**
      * reference to the asset to be linked to
      */
@@ -260,6 +283,29 @@ export interface BusNominalVoltage {
      * metadata value
      */
     value: pulumi.Input<string>;
+}
+
+export interface BusReactivePower {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
 }
 
 export interface BusTag {
@@ -1458,7 +1504,53 @@ export interface GeneratorKind {
     name: pulumi.Input<string>;
 }
 
+export interface GeneratorMonthlyEnergy {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+}
+
 export interface GeneratorReactivePower {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+}
+
+export interface GeneratorSwitchStatus {
     /**
      * reference to the asset to be linked to
      */
@@ -1752,6 +1844,29 @@ export interface InverterSerialNumber {
     value: pulumi.Input<string>;
 }
 
+export interface InverterSwitchStatus {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+}
+
 export interface InverterTag {
     /**
      * tag id
@@ -1937,6 +2052,60 @@ export interface LineCapacitance {
 }
 
 export interface LineConductance {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface LineConductorMass {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface LineContingency {
     /**
      * reference to the asset to be linked to
      */
@@ -2463,7 +2632,88 @@ export interface LineSafetyMarginForPower {
     value: pulumi.Input<string>;
 }
 
+export interface LineSpecificHeat {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface LineSusceptance {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface LineSwitchStatusEnd {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface LineSwitchStatusStart {
     /**
      * reference to the asset to be linked to
      */
@@ -2520,6 +2770,33 @@ export interface LineTemperatureCoeffResistance {
     type?: pulumi.Input<string>;
     /**
      * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface LineThermalElongationCoef {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit
      */
     unit?: pulumi.Input<string>;
     /**
@@ -2689,6 +2966,87 @@ export interface SegmentKind {
     name: pulumi.Input<string>;
 }
 
+export interface SegmentReferenceSag {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface SegmentReferenceTemperature {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface SegmentSpanLength {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface SegmentTag {
     /**
      * tag id
@@ -2813,6 +3171,60 @@ export interface SlackLineKind {
     name: pulumi.Input<string>;
 }
 
+export interface SlackLineSwitchStatusEnd {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface SlackLineSwitchStatusStart {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface SlackLineTag {
     /**
      * tag id
@@ -2822,4 +3234,595 @@ export interface SlackLineTag {
      * tag name
      */
     name: pulumi.Input<string>;
+}
+
+export interface TransformerActivePowerHv {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+}
+
+export interface TransformerActivePowerLoss {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+}
+
+export interface TransformerActivePowerLv {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+}
+
+export interface TransformerCapacitance {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface TransformerConductance {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface TransformerContingency {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+}
+
+export interface TransformerCurrentHv {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+}
+
+export interface TransformerCurrentLv {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+}
+
+export interface TransformerKind {
+    /**
+     * kind id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * kind name
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface TransformerMaximumAllowedCurrent {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface TransformerMaximumAllowedPower {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface TransformerReactance {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface TransformerReactivePowerHv {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+}
+
+export interface TransformerReactivePowerLoss {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+}
+
+export interface TransformerReactivePowerLv {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+}
+
+export interface TransformerResistance {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface TransformerSafetyMarginForPower {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface TransformerStandardType {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface TransformerSwitchStatusHv {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+}
+
+export interface TransformerSwitchStatusLv {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+}
+
+export interface TransformerTag {
+    /**
+     * tag id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * tag name
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface TransformerTapPos {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface TransformerVoltageHv {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+}
+
+export interface TransformerVoltageLv {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+}
+
+export interface TransformerXnOhm {
+    /**
+     * reference to the asset to be linked to
+     */
+    asset?: pulumi.Input<string>;
+    /**
+     * id of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * [String|Boolean|Number] type of the data to be ingested in this attribute
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * unit of measure
+     */
+    unit?: pulumi.Input<string>;
+    /**
+     * metadata value
+     */
+    value: pulumi.Input<string>;
 }

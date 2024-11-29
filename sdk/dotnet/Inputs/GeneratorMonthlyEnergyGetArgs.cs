@@ -11,7 +11,7 @@ using Pulumi;
 namespace Splight.Splight.Inputs
 {
 
-    public sealed class BusNominalVoltageGetArgs : global::Pulumi.ResourceArgs
+    public sealed class GeneratorMonthlyEnergyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// reference to the asset to be linked to
@@ -43,15 +43,9 @@ namespace Splight.Splight.Inputs
         [Input("unit")]
         public Input<string>? Unit { get; set; }
 
-        /// <summary>
-        /// metadata value
-        /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public BusNominalVoltageGetArgs()
+        public GeneratorMonthlyEnergyGetArgs()
         {
         }
-        public static new BusNominalVoltageGetArgs Empty => new BusNominalVoltageGetArgs();
+        public static new GeneratorMonthlyEnergyGetArgs Empty => new GeneratorMonthlyEnergyGetArgs();
     }
 }

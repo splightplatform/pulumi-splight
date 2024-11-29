@@ -47,6 +47,18 @@ namespace Splight.Splight
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Output("switchStatusEnds")]
+        public Output<ImmutableArray<Outputs.SlackLineSwitchStatusEnd>> SwitchStatusEnds { get; private set; } = null!;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Output("switchStatusStarts")]
+        public Output<ImmutableArray<Outputs.SlackLineSwitchStatusStart>> SwitchStatusStarts { get; private set; } = null!;
+
+        /// <summary>
         /// tags of the resource
         /// </summary>
         [Output("tags")]
@@ -178,6 +190,30 @@ namespace Splight.Splight
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("switchStatusEnds")]
+        private InputList<Inputs.SlackLineSwitchStatusEndGetArgs>? _switchStatusEnds;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        public InputList<Inputs.SlackLineSwitchStatusEndGetArgs> SwitchStatusEnds
+        {
+            get => _switchStatusEnds ?? (_switchStatusEnds = new InputList<Inputs.SlackLineSwitchStatusEndGetArgs>());
+            set => _switchStatusEnds = value;
+        }
+
+        [Input("switchStatusStarts")]
+        private InputList<Inputs.SlackLineSwitchStatusStartGetArgs>? _switchStatusStarts;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        public InputList<Inputs.SlackLineSwitchStatusStartGetArgs> SwitchStatusStarts
+        {
+            get => _switchStatusStarts ?? (_switchStatusStarts = new InputList<Inputs.SlackLineSwitchStatusStartGetArgs>());
+            set => _switchStatusStarts = value;
+        }
 
         [Input("tags")]
         private InputList<Inputs.SlackLineTagGetArgs>? _tags;

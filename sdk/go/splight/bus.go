@@ -22,6 +22,8 @@ import (
 type Bus struct {
 	pulumi.CustomResourceState
 
+	// attribute of the resource
+	ActivePowers BusActivePowerArrayOutput `pulumi:"activePowers"`
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// geo position and shape of the resource
@@ -31,7 +33,9 @@ type Bus struct {
 	// name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// attribute of the resource
-	NominalVoltage BusNominalVoltageOutput `pulumi:"nominalVoltage"`
+	NominalVoltageKv BusNominalVoltageKvOutput `pulumi:"nominalVoltageKv"`
+	// attribute of the resource
+	ReactivePowers BusReactivePowerArrayOutput `pulumi:"reactivePowers"`
 	// tags of the resource
 	Tags BusTagArrayOutput `pulumi:"tags"`
 	// timezone that overrides location-based timezone of the resource
@@ -45,8 +49,8 @@ func NewBus(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.NominalVoltage == nil {
-		return nil, errors.New("invalid value for required argument 'NominalVoltage'")
+	if args.NominalVoltageKv == nil {
+		return nil, errors.New("invalid value for required argument 'NominalVoltageKv'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Bus
@@ -71,6 +75,8 @@ func GetBus(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Bus resources.
 type busState struct {
+	// attribute of the resource
+	ActivePowers []BusActivePower `pulumi:"activePowers"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -80,7 +86,9 @@ type busState struct {
 	// name of the resource
 	Name *string `pulumi:"name"`
 	// attribute of the resource
-	NominalVoltage *BusNominalVoltage `pulumi:"nominalVoltage"`
+	NominalVoltageKv *BusNominalVoltageKv `pulumi:"nominalVoltageKv"`
+	// attribute of the resource
+	ReactivePowers []BusReactivePower `pulumi:"reactivePowers"`
 	// tags of the resource
 	Tags []BusTag `pulumi:"tags"`
 	// timezone that overrides location-based timezone of the resource
@@ -88,6 +96,8 @@ type busState struct {
 }
 
 type BusState struct {
+	// attribute of the resource
+	ActivePowers BusActivePowerArrayInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -97,7 +107,9 @@ type BusState struct {
 	// name of the resource
 	Name pulumi.StringPtrInput
 	// attribute of the resource
-	NominalVoltage BusNominalVoltagePtrInput
+	NominalVoltageKv BusNominalVoltageKvPtrInput
+	// attribute of the resource
+	ReactivePowers BusReactivePowerArrayInput
 	// tags of the resource
 	Tags BusTagArrayInput
 	// timezone that overrides location-based timezone of the resource
@@ -116,7 +128,7 @@ type busArgs struct {
 	// name of the resource
 	Name *string `pulumi:"name"`
 	// attribute of the resource
-	NominalVoltage BusNominalVoltage `pulumi:"nominalVoltage"`
+	NominalVoltageKv BusNominalVoltageKv `pulumi:"nominalVoltageKv"`
 	// tags of the resource
 	Tags []BusTag `pulumi:"tags"`
 	// timezone that overrides location-based timezone of the resource
@@ -132,7 +144,7 @@ type BusArgs struct {
 	// name of the resource
 	Name pulumi.StringPtrInput
 	// attribute of the resource
-	NominalVoltage BusNominalVoltageInput
+	NominalVoltageKv BusNominalVoltageKvInput
 	// tags of the resource
 	Tags BusTagArrayInput
 	// timezone that overrides location-based timezone of the resource
@@ -226,6 +238,11 @@ func (o BusOutput) ToBusOutputWithContext(ctx context.Context) BusOutput {
 	return o
 }
 
+// attribute of the resource
+func (o BusOutput) ActivePowers() BusActivePowerArrayOutput {
+	return o.ApplyT(func(v *Bus) BusActivePowerArrayOutput { return v.ActivePowers }).(BusActivePowerArrayOutput)
+}
+
 // description of the resource
 func (o BusOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Bus) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -247,8 +264,13 @@ func (o BusOutput) Name() pulumi.StringOutput {
 }
 
 // attribute of the resource
-func (o BusOutput) NominalVoltage() BusNominalVoltageOutput {
-	return o.ApplyT(func(v *Bus) BusNominalVoltageOutput { return v.NominalVoltage }).(BusNominalVoltageOutput)
+func (o BusOutput) NominalVoltageKv() BusNominalVoltageKvOutput {
+	return o.ApplyT(func(v *Bus) BusNominalVoltageKvOutput { return v.NominalVoltageKv }).(BusNominalVoltageKvOutput)
+}
+
+// attribute of the resource
+func (o BusOutput) ReactivePowers() BusReactivePowerArrayOutput {
+	return o.ApplyT(func(v *Bus) BusReactivePowerArrayOutput { return v.ReactivePowers }).(BusReactivePowerArrayOutput)
 }
 
 // tags of the resource

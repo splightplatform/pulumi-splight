@@ -44,6 +44,10 @@ export class Bus extends pulumi.CustomResource {
     }
 
     /**
+     * attribute of the resource
+     */
+    public /*out*/ readonly activePowers!: pulumi.Output<outputs.BusActivePower[]>;
+    /**
      * description of the resource
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -62,7 +66,11 @@ export class Bus extends pulumi.CustomResource {
     /**
      * attribute of the resource
      */
-    public readonly nominalVoltage!: pulumi.Output<outputs.BusNominalVoltage>;
+    public readonly nominalVoltageKv!: pulumi.Output<outputs.BusNominalVoltageKv>;
+    /**
+     * attribute of the resource
+     */
+    public /*out*/ readonly reactivePowers!: pulumi.Output<outputs.BusReactivePower[]>;
     /**
      * tags of the resource
      */
@@ -85,25 +93,29 @@ export class Bus extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BusState | undefined;
+            resourceInputs["activePowers"] = state ? state.activePowers : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["geometry"] = state ? state.geometry : undefined;
             resourceInputs["kinds"] = state ? state.kinds : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nominalVoltage"] = state ? state.nominalVoltage : undefined;
+            resourceInputs["nominalVoltageKv"] = state ? state.nominalVoltageKv : undefined;
+            resourceInputs["reactivePowers"] = state ? state.reactivePowers : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["timezone"] = state ? state.timezone : undefined;
         } else {
             const args = argsOrState as BusArgs | undefined;
-            if ((!args || args.nominalVoltage === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'nominalVoltage'");
+            if ((!args || args.nominalVoltageKv === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'nominalVoltageKv'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nominalVoltage"] = args ? args.nominalVoltage : undefined;
+            resourceInputs["nominalVoltageKv"] = args ? args.nominalVoltageKv : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["timezone"] = args ? args.timezone : undefined;
+            resourceInputs["activePowers"] = undefined /*out*/;
             resourceInputs["kinds"] = undefined /*out*/;
+            resourceInputs["reactivePowers"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Bus.__pulumiType, name, resourceInputs, opts);
@@ -114,6 +126,10 @@ export class Bus extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Bus resources.
  */
 export interface BusState {
+    /**
+     * attribute of the resource
+     */
+    activePowers?: pulumi.Input<pulumi.Input<inputs.BusActivePower>[]>;
     /**
      * description of the resource
      */
@@ -133,7 +149,11 @@ export interface BusState {
     /**
      * attribute of the resource
      */
-    nominalVoltage?: pulumi.Input<inputs.BusNominalVoltage>;
+    nominalVoltageKv?: pulumi.Input<inputs.BusNominalVoltageKv>;
+    /**
+     * attribute of the resource
+     */
+    reactivePowers?: pulumi.Input<pulumi.Input<inputs.BusReactivePower>[]>;
     /**
      * tags of the resource
      */
@@ -163,7 +183,7 @@ export interface BusArgs {
     /**
      * attribute of the resource
      */
-    nominalVoltage: pulumi.Input<inputs.BusNominalVoltage>;
+    nominalVoltageKv: pulumi.Input<inputs.BusNominalVoltageKv>;
     /**
      * tags of the resource
      */

@@ -21,7 +21,7 @@ __all__ = ['BusArgs', 'Bus']
 @pulumi.input_type
 class BusArgs:
     def __init__(__self__, *,
-                 nominal_voltage: pulumi.Input['BusNominalVoltageArgs'],
+                 nominal_voltage_kv: pulumi.Input['BusNominalVoltageKvArgs'],
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -29,14 +29,14 @@ class BusArgs:
                  timezone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Bus resource.
-        :param pulumi.Input['BusNominalVoltageArgs'] nominal_voltage: attribute of the resource
+        :param pulumi.Input['BusNominalVoltageKvArgs'] nominal_voltage_kv: attribute of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input['BusTagArgs']]] tags: tags of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
-        pulumi.set(__self__, "nominal_voltage", nominal_voltage)
+        pulumi.set(__self__, "nominal_voltage_kv", nominal_voltage_kv)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
@@ -49,16 +49,16 @@ class BusArgs:
             pulumi.set(__self__, "timezone", timezone)
 
     @property
-    @pulumi.getter(name="nominalVoltage")
-    def nominal_voltage(self) -> pulumi.Input['BusNominalVoltageArgs']:
+    @pulumi.getter(name="nominalVoltageKv")
+    def nominal_voltage_kv(self) -> pulumi.Input['BusNominalVoltageKvArgs']:
         """
         attribute of the resource
         """
-        return pulumi.get(self, "nominal_voltage")
+        return pulumi.get(self, "nominal_voltage_kv")
 
-    @nominal_voltage.setter
-    def nominal_voltage(self, value: pulumi.Input['BusNominalVoltageArgs']):
-        pulumi.set(self, "nominal_voltage", value)
+    @nominal_voltage_kv.setter
+    def nominal_voltage_kv(self, value: pulumi.Input['BusNominalVoltageKvArgs']):
+        pulumi.set(self, "nominal_voltage_kv", value)
 
     @property
     @pulumi.getter
@@ -124,23 +124,29 @@ class BusArgs:
 @pulumi.input_type
 class _BusState:
     def __init__(__self__, *,
+                 active_powers: Optional[pulumi.Input[Sequence[pulumi.Input['BusActivePowerArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  kinds: Optional[pulumi.Input[Sequence[pulumi.Input['BusKindArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 nominal_voltage: Optional[pulumi.Input['BusNominalVoltageArgs']] = None,
+                 nominal_voltage_kv: Optional[pulumi.Input['BusNominalVoltageKvArgs']] = None,
+                 reactive_powers: Optional[pulumi.Input[Sequence[pulumi.Input['BusReactivePowerArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['BusTagArgs']]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Bus resources.
+        :param pulumi.Input[Sequence[pulumi.Input['BusActivePowerArgs']]] active_powers: attribute of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[Sequence[pulumi.Input['BusKindArgs']]] kinds: kind of the resource
         :param pulumi.Input[str] name: name of the resource
-        :param pulumi.Input['BusNominalVoltageArgs'] nominal_voltage: attribute of the resource
+        :param pulumi.Input['BusNominalVoltageKvArgs'] nominal_voltage_kv: attribute of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['BusReactivePowerArgs']]] reactive_powers: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['BusTagArgs']]] tags: tags of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
+        if active_powers is not None:
+            pulumi.set(__self__, "active_powers", active_powers)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
@@ -149,12 +155,26 @@ class _BusState:
             pulumi.set(__self__, "kinds", kinds)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if nominal_voltage is not None:
-            pulumi.set(__self__, "nominal_voltage", nominal_voltage)
+        if nominal_voltage_kv is not None:
+            pulumi.set(__self__, "nominal_voltage_kv", nominal_voltage_kv)
+        if reactive_powers is not None:
+            pulumi.set(__self__, "reactive_powers", reactive_powers)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
+
+    @property
+    @pulumi.getter(name="activePowers")
+    def active_powers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BusActivePowerArgs']]]]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "active_powers")
+
+    @active_powers.setter
+    def active_powers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BusActivePowerArgs']]]]):
+        pulumi.set(self, "active_powers", value)
 
     @property
     @pulumi.getter
@@ -205,16 +225,28 @@ class _BusState:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="nominalVoltage")
-    def nominal_voltage(self) -> Optional[pulumi.Input['BusNominalVoltageArgs']]:
+    @pulumi.getter(name="nominalVoltageKv")
+    def nominal_voltage_kv(self) -> Optional[pulumi.Input['BusNominalVoltageKvArgs']]:
         """
         attribute of the resource
         """
-        return pulumi.get(self, "nominal_voltage")
+        return pulumi.get(self, "nominal_voltage_kv")
 
-    @nominal_voltage.setter
-    def nominal_voltage(self, value: Optional[pulumi.Input['BusNominalVoltageArgs']]):
-        pulumi.set(self, "nominal_voltage", value)
+    @nominal_voltage_kv.setter
+    def nominal_voltage_kv(self, value: Optional[pulumi.Input['BusNominalVoltageKvArgs']]):
+        pulumi.set(self, "nominal_voltage_kv", value)
+
+    @property
+    @pulumi.getter(name="reactivePowers")
+    def reactive_powers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BusReactivePowerArgs']]]]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "reactive_powers")
+
+    @reactive_powers.setter
+    def reactive_powers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BusReactivePowerArgs']]]]):
+        pulumi.set(self, "reactive_powers", value)
 
     @property
     @pulumi.getter
@@ -249,7 +281,7 @@ class Bus(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 nominal_voltage: Optional[pulumi.Input[Union['BusNominalVoltageArgs', 'BusNominalVoltageArgsDict']]] = None,
+                 nominal_voltage_kv: Optional[pulumi.Input[Union['BusNominalVoltageKvArgs', 'BusNominalVoltageKvArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BusTagArgs', 'BusTagArgsDict']]]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -267,7 +299,7 @@ class Bus(pulumi.CustomResource):
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
-        :param pulumi.Input[Union['BusNominalVoltageArgs', 'BusNominalVoltageArgsDict']] nominal_voltage: attribute of the resource
+        :param pulumi.Input[Union['BusNominalVoltageKvArgs', 'BusNominalVoltageKvArgsDict']] nominal_voltage_kv: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['BusTagArgs', 'BusTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
@@ -304,7 +336,7 @@ class Bus(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 nominal_voltage: Optional[pulumi.Input[Union['BusNominalVoltageArgs', 'BusNominalVoltageArgsDict']]] = None,
+                 nominal_voltage_kv: Optional[pulumi.Input[Union['BusNominalVoltageKvArgs', 'BusNominalVoltageKvArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BusTagArgs', 'BusTagArgsDict']]]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -319,12 +351,14 @@ class Bus(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["geometry"] = geometry
             __props__.__dict__["name"] = name
-            if nominal_voltage is None and not opts.urn:
-                raise TypeError("Missing required property 'nominal_voltage'")
-            __props__.__dict__["nominal_voltage"] = nominal_voltage
+            if nominal_voltage_kv is None and not opts.urn:
+                raise TypeError("Missing required property 'nominal_voltage_kv'")
+            __props__.__dict__["nominal_voltage_kv"] = nominal_voltage_kv
             __props__.__dict__["tags"] = tags
             __props__.__dict__["timezone"] = timezone
+            __props__.__dict__["active_powers"] = None
             __props__.__dict__["kinds"] = None
+            __props__.__dict__["reactive_powers"] = None
         super(Bus, __self__).__init__(
             'splight:index/bus:Bus',
             resource_name,
@@ -335,11 +369,13 @@ class Bus(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            active_powers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BusActivePowerArgs', 'BusActivePowerArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             geometry: Optional[pulumi.Input[str]] = None,
             kinds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BusKindArgs', 'BusKindArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            nominal_voltage: Optional[pulumi.Input[Union['BusNominalVoltageArgs', 'BusNominalVoltageArgsDict']]] = None,
+            nominal_voltage_kv: Optional[pulumi.Input[Union['BusNominalVoltageKvArgs', 'BusNominalVoltageKvArgsDict']]] = None,
+            reactive_powers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BusReactivePowerArgs', 'BusReactivePowerArgsDict']]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BusTagArgs', 'BusTagArgsDict']]]]] = None,
             timezone: Optional[pulumi.Input[str]] = None) -> 'Bus':
         """
@@ -349,11 +385,13 @@ class Bus(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BusActivePowerArgs', 'BusActivePowerArgsDict']]]] active_powers: attribute of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['BusKindArgs', 'BusKindArgsDict']]]] kinds: kind of the resource
         :param pulumi.Input[str] name: name of the resource
-        :param pulumi.Input[Union['BusNominalVoltageArgs', 'BusNominalVoltageArgsDict']] nominal_voltage: attribute of the resource
+        :param pulumi.Input[Union['BusNominalVoltageKvArgs', 'BusNominalVoltageKvArgsDict']] nominal_voltage_kv: attribute of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BusReactivePowerArgs', 'BusReactivePowerArgsDict']]]] reactive_powers: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['BusTagArgs', 'BusTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
@@ -361,14 +399,24 @@ class Bus(pulumi.CustomResource):
 
         __props__ = _BusState.__new__(_BusState)
 
+        __props__.__dict__["active_powers"] = active_powers
         __props__.__dict__["description"] = description
         __props__.__dict__["geometry"] = geometry
         __props__.__dict__["kinds"] = kinds
         __props__.__dict__["name"] = name
-        __props__.__dict__["nominal_voltage"] = nominal_voltage
+        __props__.__dict__["nominal_voltage_kv"] = nominal_voltage_kv
+        __props__.__dict__["reactive_powers"] = reactive_powers
         __props__.__dict__["tags"] = tags
         __props__.__dict__["timezone"] = timezone
         return Bus(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="activePowers")
+    def active_powers(self) -> pulumi.Output[Sequence['outputs.BusActivePower']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "active_powers")
 
     @property
     @pulumi.getter
@@ -403,12 +451,20 @@ class Bus(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="nominalVoltage")
-    def nominal_voltage(self) -> pulumi.Output['outputs.BusNominalVoltage']:
+    @pulumi.getter(name="nominalVoltageKv")
+    def nominal_voltage_kv(self) -> pulumi.Output['outputs.BusNominalVoltageKv']:
         """
         attribute of the resource
         """
-        return pulumi.get(self, "nominal_voltage")
+        return pulumi.get(self, "nominal_voltage_kv")
+
+    @property
+    @pulumi.getter(name="reactivePowers")
+    def reactive_powers(self) -> pulumi.Output[Sequence['outputs.BusReactivePower']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "reactive_powers")
 
     @property
     @pulumi.getter

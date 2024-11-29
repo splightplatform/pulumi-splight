@@ -11,7 +11,7 @@ using Pulumi;
 namespace Splight.Splight.Inputs
 {
 
-    public sealed class BusNominalVoltageArgs : global::Pulumi.ResourceArgs
+    public sealed class TransformerCurrentHvArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// reference to the asset to be linked to
@@ -43,15 +43,9 @@ namespace Splight.Splight.Inputs
         [Input("unit")]
         public Input<string>? Unit { get; set; }
 
-        /// <summary>
-        /// metadata value
-        /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public BusNominalVoltageArgs()
+        public TransformerCurrentHvArgs()
         {
         }
-        public static new BusNominalVoltageArgs Empty => new BusNominalVoltageArgs();
+        public static new TransformerCurrentHvArgs Empty => new TransformerCurrentHvArgs();
     }
 }

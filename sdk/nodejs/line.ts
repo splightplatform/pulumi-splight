@@ -74,6 +74,14 @@ export class Line extends pulumi.CustomResource {
     /**
      * attribute of the resource
      */
+    public readonly conductorMass!: pulumi.Output<outputs.LineConductorMass>;
+    /**
+     * attribute of the resource
+     */
+    public /*out*/ readonly contingencies!: pulumi.Output<outputs.LineContingency[]>;
+    /**
+     * attribute of the resource
+     */
     public /*out*/ readonly currentRs!: pulumi.Output<outputs.LineCurrentR[]>;
     /**
      * attribute of the resource
@@ -170,7 +178,19 @@ export class Line extends pulumi.CustomResource {
     /**
      * attribute of the resource
      */
+    public readonly specificHeat!: pulumi.Output<outputs.LineSpecificHeat>;
+    /**
+     * attribute of the resource
+     */
     public readonly susceptance!: pulumi.Output<outputs.LineSusceptance>;
+    /**
+     * attribute of the resource
+     */
+    public /*out*/ readonly switchStatusEnds!: pulumi.Output<outputs.LineSwitchStatusEnd[]>;
+    /**
+     * attribute of the resource
+     */
+    public /*out*/ readonly switchStatusStarts!: pulumi.Output<outputs.LineSwitchStatusStart[]>;
     /**
      * tags of the resource
      */
@@ -179,6 +199,10 @@ export class Line extends pulumi.CustomResource {
      * attribute of the resource
      */
     public readonly temperatureCoeffResistance!: pulumi.Output<outputs.LineTemperatureCoeffResistance>;
+    /**
+     * attribute of the resource
+     */
+    public readonly thermalElongationCoef!: pulumi.Output<outputs.LineThermalElongationCoef>;
     /**
      * timezone that overrides location-based timezone of the resource
      */
@@ -216,6 +240,8 @@ export class Line extends pulumi.CustomResource {
             resourceInputs["atmosphere"] = state ? state.atmosphere : undefined;
             resourceInputs["capacitance"] = state ? state.capacitance : undefined;
             resourceInputs["conductance"] = state ? state.conductance : undefined;
+            resourceInputs["conductorMass"] = state ? state.conductorMass : undefined;
+            resourceInputs["contingencies"] = state ? state.contingencies : undefined;
             resourceInputs["currentRs"] = state ? state.currentRs : undefined;
             resourceInputs["currentS"] = state ? state.currentS : undefined;
             resourceInputs["currentTs"] = state ? state.currentTs : undefined;
@@ -240,9 +266,13 @@ export class Line extends pulumi.CustomResource {
             resourceInputs["referenceResistance"] = state ? state.referenceResistance : undefined;
             resourceInputs["resistance"] = state ? state.resistance : undefined;
             resourceInputs["safetyMarginForPower"] = state ? state.safetyMarginForPower : undefined;
+            resourceInputs["specificHeat"] = state ? state.specificHeat : undefined;
             resourceInputs["susceptance"] = state ? state.susceptance : undefined;
+            resourceInputs["switchStatusEnds"] = state ? state.switchStatusEnds : undefined;
+            resourceInputs["switchStatusStarts"] = state ? state.switchStatusStarts : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["temperatureCoeffResistance"] = state ? state.temperatureCoeffResistance : undefined;
+            resourceInputs["thermalElongationCoef"] = state ? state.thermalElongationCoef : undefined;
             resourceInputs["timezone"] = state ? state.timezone : undefined;
             resourceInputs["voltageRs"] = state ? state.voltageRs : undefined;
             resourceInputs["voltageSts"] = state ? state.voltageSts : undefined;
@@ -260,6 +290,9 @@ export class Line extends pulumi.CustomResource {
             }
             if ((!args || args.conductance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'conductance'");
+            }
+            if ((!args || args.conductorMass === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'conductorMass'");
             }
             if ((!args || args.diameter === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'diameter'");
@@ -300,16 +333,23 @@ export class Line extends pulumi.CustomResource {
             if ((!args || args.safetyMarginForPower === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'safetyMarginForPower'");
             }
+            if ((!args || args.specificHeat === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'specificHeat'");
+            }
             if ((!args || args.susceptance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'susceptance'");
             }
             if ((!args || args.temperatureCoeffResistance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'temperatureCoeffResistance'");
             }
+            if ((!args || args.thermalElongationCoef === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'thermalElongationCoef'");
+            }
             resourceInputs["absorptivity"] = args ? args.absorptivity : undefined;
             resourceInputs["atmosphere"] = args ? args.atmosphere : undefined;
             resourceInputs["capacitance"] = args ? args.capacitance : undefined;
             resourceInputs["conductance"] = args ? args.conductance : undefined;
+            resourceInputs["conductorMass"] = args ? args.conductorMass : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diameter"] = args ? args.diameter : undefined;
             resourceInputs["emissivity"] = args ? args.emissivity : undefined;
@@ -326,13 +366,16 @@ export class Line extends pulumi.CustomResource {
             resourceInputs["referenceResistance"] = args ? args.referenceResistance : undefined;
             resourceInputs["resistance"] = args ? args.resistance : undefined;
             resourceInputs["safetyMarginForPower"] = args ? args.safetyMarginForPower : undefined;
+            resourceInputs["specificHeat"] = args ? args.specificHeat : undefined;
             resourceInputs["susceptance"] = args ? args.susceptance : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["temperatureCoeffResistance"] = args ? args.temperatureCoeffResistance : undefined;
+            resourceInputs["thermalElongationCoef"] = args ? args.thermalElongationCoef : undefined;
             resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["activePowerEnds"] = undefined /*out*/;
             resourceInputs["activePowers"] = undefined /*out*/;
             resourceInputs["ampacities"] = undefined /*out*/;
+            resourceInputs["contingencies"] = undefined /*out*/;
             resourceInputs["currentRs"] = undefined /*out*/;
             resourceInputs["currentS"] = undefined /*out*/;
             resourceInputs["currentTs"] = undefined /*out*/;
@@ -341,6 +384,8 @@ export class Line extends pulumi.CustomResource {
             resourceInputs["kinds"] = undefined /*out*/;
             resourceInputs["maxTemperatures"] = undefined /*out*/;
             resourceInputs["reactivePowers"] = undefined /*out*/;
+            resourceInputs["switchStatusEnds"] = undefined /*out*/;
+            resourceInputs["switchStatusStarts"] = undefined /*out*/;
             resourceInputs["voltageRs"] = undefined /*out*/;
             resourceInputs["voltageSts"] = undefined /*out*/;
             resourceInputs["voltageTrs"] = undefined /*out*/;
@@ -382,6 +427,14 @@ export interface LineState {
      * attribute of the resource
      */
     conductance?: pulumi.Input<inputs.LineConductance>;
+    /**
+     * attribute of the resource
+     */
+    conductorMass?: pulumi.Input<inputs.LineConductorMass>;
+    /**
+     * attribute of the resource
+     */
+    contingencies?: pulumi.Input<pulumi.Input<inputs.LineContingency>[]>;
     /**
      * attribute of the resource
      */
@@ -481,7 +534,19 @@ export interface LineState {
     /**
      * attribute of the resource
      */
+    specificHeat?: pulumi.Input<inputs.LineSpecificHeat>;
+    /**
+     * attribute of the resource
+     */
     susceptance?: pulumi.Input<inputs.LineSusceptance>;
+    /**
+     * attribute of the resource
+     */
+    switchStatusEnds?: pulumi.Input<pulumi.Input<inputs.LineSwitchStatusEnd>[]>;
+    /**
+     * attribute of the resource
+     */
+    switchStatusStarts?: pulumi.Input<pulumi.Input<inputs.LineSwitchStatusStart>[]>;
     /**
      * tags of the resource
      */
@@ -490,6 +555,10 @@ export interface LineState {
      * attribute of the resource
      */
     temperatureCoeffResistance?: pulumi.Input<inputs.LineTemperatureCoeffResistance>;
+    /**
+     * attribute of the resource
+     */
+    thermalElongationCoef?: pulumi.Input<inputs.LineThermalElongationCoef>;
     /**
      * timezone that overrides location-based timezone of the resource
      */
@@ -528,6 +597,10 @@ export interface LineArgs {
      * attribute of the resource
      */
     conductance: pulumi.Input<inputs.LineConductance>;
+    /**
+     * attribute of the resource
+     */
+    conductorMass: pulumi.Input<inputs.LineConductorMass>;
     /**
      * description of the resource
      */
@@ -595,6 +668,10 @@ export interface LineArgs {
     /**
      * attribute of the resource
      */
+    specificHeat: pulumi.Input<inputs.LineSpecificHeat>;
+    /**
+     * attribute of the resource
+     */
     susceptance: pulumi.Input<inputs.LineSusceptance>;
     /**
      * tags of the resource
@@ -604,6 +681,10 @@ export interface LineArgs {
      * attribute of the resource
      */
     temperatureCoeffResistance: pulumi.Input<inputs.LineTemperatureCoeffResistance>;
+    /**
+     * attribute of the resource
+     */
+    thermalElongationCoef: pulumi.Input<inputs.LineThermalElongationCoef>;
     /**
      * timezone that overrides location-based timezone of the resource
      */

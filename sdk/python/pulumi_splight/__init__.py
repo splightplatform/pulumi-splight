@@ -54,6 +54,7 @@ from .segment import *
 from .server import *
 from .slack_line import *
 from .tag import *
+from .transformer import *
 from ._inputs import *
 from . import outputs
 
@@ -401,6 +402,14 @@ _utilities.register(
   "fqn": "pulumi_splight",
   "classes": {
    "splight:index/tag:Tag": "Tag"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/transformer",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/transformer:Transformer": "Transformer"
   }
  }
 ]

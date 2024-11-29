@@ -37,6 +37,10 @@ type Line struct {
 	// attribute of the resource
 	Conductance LineConductanceOutput `pulumi:"conductance"`
 	// attribute of the resource
+	ConductorMass LineConductorMassOutput `pulumi:"conductorMass"`
+	// attribute of the resource
+	Contingencies LineContingencyArrayOutput `pulumi:"contingencies"`
+	// attribute of the resource
 	CurrentRs LineCurrentRArrayOutput `pulumi:"currentRs"`
 	// attribute of the resource
 	CurrentS LineCurrentArrayOutput `pulumi:"currentS"`
@@ -85,11 +89,19 @@ type Line struct {
 	// attribute of the resource
 	SafetyMarginForPower LineSafetyMarginForPowerOutput `pulumi:"safetyMarginForPower"`
 	// attribute of the resource
+	SpecificHeat LineSpecificHeatOutput `pulumi:"specificHeat"`
+	// attribute of the resource
 	Susceptance LineSusceptanceOutput `pulumi:"susceptance"`
+	// attribute of the resource
+	SwitchStatusEnds LineSwitchStatusEndArrayOutput `pulumi:"switchStatusEnds"`
+	// attribute of the resource
+	SwitchStatusStarts LineSwitchStatusStartArrayOutput `pulumi:"switchStatusStarts"`
 	// tags of the resource
 	Tags LineTagArrayOutput `pulumi:"tags"`
 	// attribute of the resource
 	TemperatureCoeffResistance LineTemperatureCoeffResistanceOutput `pulumi:"temperatureCoeffResistance"`
+	// attribute of the resource
+	ThermalElongationCoef LineThermalElongationCoefOutput `pulumi:"thermalElongationCoef"`
 	// timezone that overrides location-based timezone of the resource
 	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 	// attribute of the resource
@@ -118,6 +130,9 @@ func NewLine(ctx *pulumi.Context,
 	}
 	if args.Conductance == nil {
 		return nil, errors.New("invalid value for required argument 'Conductance'")
+	}
+	if args.ConductorMass == nil {
+		return nil, errors.New("invalid value for required argument 'ConductorMass'")
 	}
 	if args.Diameter == nil {
 		return nil, errors.New("invalid value for required argument 'Diameter'")
@@ -158,11 +173,17 @@ func NewLine(ctx *pulumi.Context,
 	if args.SafetyMarginForPower == nil {
 		return nil, errors.New("invalid value for required argument 'SafetyMarginForPower'")
 	}
+	if args.SpecificHeat == nil {
+		return nil, errors.New("invalid value for required argument 'SpecificHeat'")
+	}
 	if args.Susceptance == nil {
 		return nil, errors.New("invalid value for required argument 'Susceptance'")
 	}
 	if args.TemperatureCoeffResistance == nil {
 		return nil, errors.New("invalid value for required argument 'TemperatureCoeffResistance'")
+	}
+	if args.ThermalElongationCoef == nil {
+		return nil, errors.New("invalid value for required argument 'ThermalElongationCoef'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Line
@@ -201,6 +222,10 @@ type lineState struct {
 	Capacitance *LineCapacitance `pulumi:"capacitance"`
 	// attribute of the resource
 	Conductance *LineConductance `pulumi:"conductance"`
+	// attribute of the resource
+	ConductorMass *LineConductorMass `pulumi:"conductorMass"`
+	// attribute of the resource
+	Contingencies []LineContingency `pulumi:"contingencies"`
 	// attribute of the resource
 	CurrentRs []LineCurrentR `pulumi:"currentRs"`
 	// attribute of the resource
@@ -250,11 +275,19 @@ type lineState struct {
 	// attribute of the resource
 	SafetyMarginForPower *LineSafetyMarginForPower `pulumi:"safetyMarginForPower"`
 	// attribute of the resource
+	SpecificHeat *LineSpecificHeat `pulumi:"specificHeat"`
+	// attribute of the resource
 	Susceptance *LineSusceptance `pulumi:"susceptance"`
+	// attribute of the resource
+	SwitchStatusEnds []LineSwitchStatusEnd `pulumi:"switchStatusEnds"`
+	// attribute of the resource
+	SwitchStatusStarts []LineSwitchStatusStart `pulumi:"switchStatusStarts"`
 	// tags of the resource
 	Tags []LineTag `pulumi:"tags"`
 	// attribute of the resource
 	TemperatureCoeffResistance *LineTemperatureCoeffResistance `pulumi:"temperatureCoeffResistance"`
+	// attribute of the resource
+	ThermalElongationCoef *LineThermalElongationCoef `pulumi:"thermalElongationCoef"`
 	// timezone that overrides location-based timezone of the resource
 	Timezone *string `pulumi:"timezone"`
 	// attribute of the resource
@@ -280,6 +313,10 @@ type LineState struct {
 	Capacitance LineCapacitancePtrInput
 	// attribute of the resource
 	Conductance LineConductancePtrInput
+	// attribute of the resource
+	ConductorMass LineConductorMassPtrInput
+	// attribute of the resource
+	Contingencies LineContingencyArrayInput
 	// attribute of the resource
 	CurrentRs LineCurrentRArrayInput
 	// attribute of the resource
@@ -329,11 +366,19 @@ type LineState struct {
 	// attribute of the resource
 	SafetyMarginForPower LineSafetyMarginForPowerPtrInput
 	// attribute of the resource
+	SpecificHeat LineSpecificHeatPtrInput
+	// attribute of the resource
 	Susceptance LineSusceptancePtrInput
+	// attribute of the resource
+	SwitchStatusEnds LineSwitchStatusEndArrayInput
+	// attribute of the resource
+	SwitchStatusStarts LineSwitchStatusStartArrayInput
 	// tags of the resource
 	Tags LineTagArrayInput
 	// attribute of the resource
 	TemperatureCoeffResistance LineTemperatureCoeffResistancePtrInput
+	// attribute of the resource
+	ThermalElongationCoef LineThermalElongationCoefPtrInput
 	// timezone that overrides location-based timezone of the resource
 	Timezone pulumi.StringPtrInput
 	// attribute of the resource
@@ -357,6 +402,8 @@ type lineArgs struct {
 	Capacitance LineCapacitance `pulumi:"capacitance"`
 	// attribute of the resource
 	Conductance LineConductance `pulumi:"conductance"`
+	// attribute of the resource
+	ConductorMass LineConductorMass `pulumi:"conductorMass"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// attribute of the resource
@@ -390,11 +437,15 @@ type lineArgs struct {
 	// attribute of the resource
 	SafetyMarginForPower LineSafetyMarginForPower `pulumi:"safetyMarginForPower"`
 	// attribute of the resource
+	SpecificHeat LineSpecificHeat `pulumi:"specificHeat"`
+	// attribute of the resource
 	Susceptance LineSusceptance `pulumi:"susceptance"`
 	// tags of the resource
 	Tags []LineTag `pulumi:"tags"`
 	// attribute of the resource
 	TemperatureCoeffResistance LineTemperatureCoeffResistance `pulumi:"temperatureCoeffResistance"`
+	// attribute of the resource
+	ThermalElongationCoef LineThermalElongationCoef `pulumi:"thermalElongationCoef"`
 	// timezone that overrides location-based timezone of the resource
 	Timezone *string `pulumi:"timezone"`
 }
@@ -409,6 +460,8 @@ type LineArgs struct {
 	Capacitance LineCapacitanceInput
 	// attribute of the resource
 	Conductance LineConductanceInput
+	// attribute of the resource
+	ConductorMass LineConductorMassInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// attribute of the resource
@@ -442,11 +495,15 @@ type LineArgs struct {
 	// attribute of the resource
 	SafetyMarginForPower LineSafetyMarginForPowerInput
 	// attribute of the resource
+	SpecificHeat LineSpecificHeatInput
+	// attribute of the resource
 	Susceptance LineSusceptanceInput
 	// tags of the resource
 	Tags LineTagArrayInput
 	// attribute of the resource
 	TemperatureCoeffResistance LineTemperatureCoeffResistanceInput
+	// attribute of the resource
+	ThermalElongationCoef LineThermalElongationCoefInput
 	// timezone that overrides location-based timezone of the resource
 	Timezone pulumi.StringPtrInput
 }
@@ -574,6 +631,16 @@ func (o LineOutput) Conductance() LineConductanceOutput {
 }
 
 // attribute of the resource
+func (o LineOutput) ConductorMass() LineConductorMassOutput {
+	return o.ApplyT(func(v *Line) LineConductorMassOutput { return v.ConductorMass }).(LineConductorMassOutput)
+}
+
+// attribute of the resource
+func (o LineOutput) Contingencies() LineContingencyArrayOutput {
+	return o.ApplyT(func(v *Line) LineContingencyArrayOutput { return v.Contingencies }).(LineContingencyArrayOutput)
+}
+
+// attribute of the resource
 func (o LineOutput) CurrentRs() LineCurrentRArrayOutput {
 	return o.ApplyT(func(v *Line) LineCurrentRArrayOutput { return v.CurrentRs }).(LineCurrentRArrayOutput)
 }
@@ -694,8 +761,23 @@ func (o LineOutput) SafetyMarginForPower() LineSafetyMarginForPowerOutput {
 }
 
 // attribute of the resource
+func (o LineOutput) SpecificHeat() LineSpecificHeatOutput {
+	return o.ApplyT(func(v *Line) LineSpecificHeatOutput { return v.SpecificHeat }).(LineSpecificHeatOutput)
+}
+
+// attribute of the resource
 func (o LineOutput) Susceptance() LineSusceptanceOutput {
 	return o.ApplyT(func(v *Line) LineSusceptanceOutput { return v.Susceptance }).(LineSusceptanceOutput)
+}
+
+// attribute of the resource
+func (o LineOutput) SwitchStatusEnds() LineSwitchStatusEndArrayOutput {
+	return o.ApplyT(func(v *Line) LineSwitchStatusEndArrayOutput { return v.SwitchStatusEnds }).(LineSwitchStatusEndArrayOutput)
+}
+
+// attribute of the resource
+func (o LineOutput) SwitchStatusStarts() LineSwitchStatusStartArrayOutput {
+	return o.ApplyT(func(v *Line) LineSwitchStatusStartArrayOutput { return v.SwitchStatusStarts }).(LineSwitchStatusStartArrayOutput)
 }
 
 // tags of the resource
@@ -706,6 +788,11 @@ func (o LineOutput) Tags() LineTagArrayOutput {
 // attribute of the resource
 func (o LineOutput) TemperatureCoeffResistance() LineTemperatureCoeffResistanceOutput {
 	return o.ApplyT(func(v *Line) LineTemperatureCoeffResistanceOutput { return v.TemperatureCoeffResistance }).(LineTemperatureCoeffResistanceOutput)
+}
+
+// attribute of the resource
+func (o LineOutput) ThermalElongationCoef() LineThermalElongationCoefOutput {
+	return o.ApplyT(func(v *Line) LineThermalElongationCoefOutput { return v.ThermalElongationCoef }).(LineThermalElongationCoefOutput)
 }
 
 // timezone that overrides location-based timezone of the resource

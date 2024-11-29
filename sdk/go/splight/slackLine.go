@@ -29,6 +29,10 @@ type SlackLine struct {
 	Kinds SlackLineKindArrayOutput `pulumi:"kinds"`
 	// name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// attribute of the resource
+	SwitchStatusEnds SlackLineSwitchStatusEndArrayOutput `pulumi:"switchStatusEnds"`
+	// attribute of the resource
+	SwitchStatusStarts SlackLineSwitchStatusStartArrayOutput `pulumi:"switchStatusStarts"`
 	// tags of the resource
 	Tags SlackLineTagArrayOutput `pulumi:"tags"`
 	// timezone that overrides location-based timezone of the resource
@@ -73,6 +77,10 @@ type slackLineState struct {
 	Kinds []SlackLineKind `pulumi:"kinds"`
 	// name of the resource
 	Name *string `pulumi:"name"`
+	// attribute of the resource
+	SwitchStatusEnds []SlackLineSwitchStatusEnd `pulumi:"switchStatusEnds"`
+	// attribute of the resource
+	SwitchStatusStarts []SlackLineSwitchStatusStart `pulumi:"switchStatusStarts"`
 	// tags of the resource
 	Tags []SlackLineTag `pulumi:"tags"`
 	// timezone that overrides location-based timezone of the resource
@@ -88,6 +96,10 @@ type SlackLineState struct {
 	Kinds SlackLineKindArrayInput
 	// name of the resource
 	Name pulumi.StringPtrInput
+	// attribute of the resource
+	SwitchStatusEnds SlackLineSwitchStatusEndArrayInput
+	// attribute of the resource
+	SwitchStatusStarts SlackLineSwitchStatusStartArrayInput
 	// tags of the resource
 	Tags SlackLineTagArrayInput
 	// timezone that overrides location-based timezone of the resource
@@ -230,6 +242,16 @@ func (o SlackLineOutput) Kinds() SlackLineKindArrayOutput {
 // name of the resource
 func (o SlackLineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SlackLine) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// attribute of the resource
+func (o SlackLineOutput) SwitchStatusEnds() SlackLineSwitchStatusEndArrayOutput {
+	return o.ApplyT(func(v *SlackLine) SlackLineSwitchStatusEndArrayOutput { return v.SwitchStatusEnds }).(SlackLineSwitchStatusEndArrayOutput)
+}
+
+// attribute of the resource
+func (o SlackLineOutput) SwitchStatusStarts() SlackLineSwitchStatusStartArrayOutput {
+	return o.ApplyT(func(v *SlackLine) SlackLineSwitchStatusStartArrayOutput { return v.SwitchStatusStarts }).(SlackLineSwitchStatusStartArrayOutput)
 }
 
 // tags of the resource

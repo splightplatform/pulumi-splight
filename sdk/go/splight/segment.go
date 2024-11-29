@@ -36,6 +36,12 @@ type Segment struct {
 	Kinds SegmentKindArrayOutput `pulumi:"kinds"`
 	// name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// attribute of the resource
+	ReferenceSag SegmentReferenceSagOutput `pulumi:"referenceSag"`
+	// attribute of the resource
+	ReferenceTemperature SegmentReferenceTemperatureOutput `pulumi:"referenceTemperature"`
+	// attribute of the resource
+	SpanLength SegmentSpanLengthOutput `pulumi:"spanLength"`
 	// tags of the resource
 	Tags SegmentTagArrayOutput `pulumi:"tags"`
 	// attribute of the resource
@@ -63,6 +69,15 @@ func NewSegment(ctx *pulumi.Context,
 	}
 	if args.CumulativeDistance == nil {
 		return nil, errors.New("invalid value for required argument 'CumulativeDistance'")
+	}
+	if args.ReferenceSag == nil {
+		return nil, errors.New("invalid value for required argument 'ReferenceSag'")
+	}
+	if args.ReferenceTemperature == nil {
+		return nil, errors.New("invalid value for required argument 'ReferenceTemperature'")
+	}
+	if args.SpanLength == nil {
+		return nil, errors.New("invalid value for required argument 'SpanLength'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Segment
@@ -101,6 +116,12 @@ type segmentState struct {
 	Kinds []SegmentKind `pulumi:"kinds"`
 	// name of the resource
 	Name *string `pulumi:"name"`
+	// attribute of the resource
+	ReferenceSag *SegmentReferenceSag `pulumi:"referenceSag"`
+	// attribute of the resource
+	ReferenceTemperature *SegmentReferenceTemperature `pulumi:"referenceTemperature"`
+	// attribute of the resource
+	SpanLength *SegmentSpanLength `pulumi:"spanLength"`
 	// tags of the resource
 	Tags []SegmentTag `pulumi:"tags"`
 	// attribute of the resource
@@ -128,6 +149,12 @@ type SegmentState struct {
 	Kinds SegmentKindArrayInput
 	// name of the resource
 	Name pulumi.StringPtrInput
+	// attribute of the resource
+	ReferenceSag SegmentReferenceSagPtrInput
+	// attribute of the resource
+	ReferenceTemperature SegmentReferenceTemperaturePtrInput
+	// attribute of the resource
+	SpanLength SegmentSpanLengthPtrInput
 	// tags of the resource
 	Tags SegmentTagArrayInput
 	// attribute of the resource
@@ -157,6 +184,12 @@ type segmentArgs struct {
 	Geometry *string `pulumi:"geometry"`
 	// name of the resource
 	Name *string `pulumi:"name"`
+	// attribute of the resource
+	ReferenceSag SegmentReferenceSag `pulumi:"referenceSag"`
+	// attribute of the resource
+	ReferenceTemperature SegmentReferenceTemperature `pulumi:"referenceTemperature"`
+	// attribute of the resource
+	SpanLength SegmentSpanLength `pulumi:"spanLength"`
 	// tags of the resource
 	Tags []SegmentTag `pulumi:"tags"`
 	// timezone that overrides location-based timezone of the resource
@@ -177,6 +210,12 @@ type SegmentArgs struct {
 	Geometry pulumi.StringPtrInput
 	// name of the resource
 	Name pulumi.StringPtrInput
+	// attribute of the resource
+	ReferenceSag SegmentReferenceSagInput
+	// attribute of the resource
+	ReferenceTemperature SegmentReferenceTemperatureInput
+	// attribute of the resource
+	SpanLength SegmentSpanLengthInput
 	// tags of the resource
 	Tags SegmentTagArrayInput
 	// timezone that overrides location-based timezone of the resource
@@ -303,6 +342,21 @@ func (o SegmentOutput) Kinds() SegmentKindArrayOutput {
 // name of the resource
 func (o SegmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Segment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// attribute of the resource
+func (o SegmentOutput) ReferenceSag() SegmentReferenceSagOutput {
+	return o.ApplyT(func(v *Segment) SegmentReferenceSagOutput { return v.ReferenceSag }).(SegmentReferenceSagOutput)
+}
+
+// attribute of the resource
+func (o SegmentOutput) ReferenceTemperature() SegmentReferenceTemperatureOutput {
+	return o.ApplyT(func(v *Segment) SegmentReferenceTemperatureOutput { return v.ReferenceTemperature }).(SegmentReferenceTemperatureOutput)
+}
+
+// attribute of the resource
+func (o SegmentOutput) SpanLength() SegmentSpanLengthOutput {
+	return o.ApplyT(func(v *Segment) SegmentSpanLengthOutput { return v.SpanLength }).(SegmentSpanLengthOutput)
 }
 
 // tags of the resource

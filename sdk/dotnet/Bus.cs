@@ -23,6 +23,12 @@ namespace Splight.Splight
     public partial class Bus : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Output("activePowers")]
+        public Output<ImmutableArray<Outputs.BusActivePower>> ActivePowers { get; private set; } = null!;
+
+        /// <summary>
         /// description of the resource
         /// </summary>
         [Output("description")]
@@ -49,8 +55,14 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Output("nominalVoltage")]
-        public Output<Outputs.BusNominalVoltage> NominalVoltage { get; private set; } = null!;
+        [Output("nominalVoltageKv")]
+        public Output<Outputs.BusNominalVoltageKv> NominalVoltageKv { get; private set; } = null!;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Output("reactivePowers")]
+        public Output<ImmutableArray<Outputs.BusReactivePower>> ReactivePowers { get; private set; } = null!;
 
         /// <summary>
         /// tags of the resource
@@ -132,8 +144,8 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("nominalVoltage", required: true)]
-        public Input<Inputs.BusNominalVoltageArgs> NominalVoltage { get; set; } = null!;
+        [Input("nominalVoltageKv", required: true)]
+        public Input<Inputs.BusNominalVoltageKvArgs> NominalVoltageKv { get; set; } = null!;
 
         [Input("tags")]
         private InputList<Inputs.BusTagArgs>? _tags;
@@ -161,6 +173,18 @@ namespace Splight.Splight
 
     public sealed class BusState : global::Pulumi.ResourceArgs
     {
+        [Input("activePowers")]
+        private InputList<Inputs.BusActivePowerGetArgs>? _activePowers;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        public InputList<Inputs.BusActivePowerGetArgs> ActivePowers
+        {
+            get => _activePowers ?? (_activePowers = new InputList<Inputs.BusActivePowerGetArgs>());
+            set => _activePowers = value;
+        }
+
         /// <summary>
         /// description of the resource
         /// </summary>
@@ -194,8 +218,20 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("nominalVoltage")]
-        public Input<Inputs.BusNominalVoltageGetArgs>? NominalVoltage { get; set; }
+        [Input("nominalVoltageKv")]
+        public Input<Inputs.BusNominalVoltageKvGetArgs>? NominalVoltageKv { get; set; }
+
+        [Input("reactivePowers")]
+        private InputList<Inputs.BusReactivePowerGetArgs>? _reactivePowers;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        public InputList<Inputs.BusReactivePowerGetArgs> ReactivePowers
+        {
+            get => _reactivePowers ?? (_reactivePowers = new InputList<Inputs.BusReactivePowerGetArgs>());
+            set => _reactivePowers = value;
+        }
 
         [Input("tags")]
         private InputList<Inputs.BusTagGetArgs>? _tags;
