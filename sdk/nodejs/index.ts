@@ -250,6 +250,11 @@ export type Tag = import("./tag").Tag;
 export const Tag: typeof import("./tag").Tag = null as any;
 utilities.lazyLoad(exports, ["Tag"], () => require("./tag"));
 
+export { TransformerArgs, TransformerState } from "./transformer";
+export type Transformer = import("./transformer").Transformer;
+export const Transformer: typeof import("./transformer").Transformer = null as any;
+utilities.lazyLoad(exports, ["Transformer"], () => require("./transformer"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -348,6 +353,8 @@ const _module = {
                 return new SlackLine(name, <any>undefined, { urn })
             case "splight:index/tag:Tag":
                 return new Tag(name, <any>undefined, { urn })
+            case "splight:index/transformer:Transformer":
+                return new Transformer(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -395,6 +402,7 @@ pulumi.runtime.registerResourceModule("splight", "index/segment", _module)
 pulumi.runtime.registerResourceModule("splight", "index/server", _module)
 pulumi.runtime.registerResourceModule("splight", "index/slackLine", _module)
 pulumi.runtime.registerResourceModule("splight", "index/tag", _module)
+pulumi.runtime.registerResourceModule("splight", "index/transformer", _module)
 pulumi.runtime.registerResourcePackage("splight", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

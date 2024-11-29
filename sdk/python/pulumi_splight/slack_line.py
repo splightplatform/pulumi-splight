@@ -113,6 +113,8 @@ class _SlackLineState:
                  geometry: Optional[pulumi.Input[str]] = None,
                  kinds: Optional[pulumi.Input[Sequence[pulumi.Input['SlackLineKindArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 switch_status_ends: Optional[pulumi.Input[Sequence[pulumi.Input['SlackLineSwitchStatusEndArgs']]]] = None,
+                 switch_status_starts: Optional[pulumi.Input[Sequence[pulumi.Input['SlackLineSwitchStatusStartArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['SlackLineTagArgs']]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None):
         """
@@ -121,6 +123,8 @@ class _SlackLineState:
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[Sequence[pulumi.Input['SlackLineKindArgs']]] kinds: kind of the resource
         :param pulumi.Input[str] name: name of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['SlackLineSwitchStatusEndArgs']]] switch_status_ends: attribute of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['SlackLineSwitchStatusStartArgs']]] switch_status_starts: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['SlackLineTagArgs']]] tags: tags of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
@@ -132,6 +136,10 @@ class _SlackLineState:
             pulumi.set(__self__, "kinds", kinds)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if switch_status_ends is not None:
+            pulumi.set(__self__, "switch_status_ends", switch_status_ends)
+        if switch_status_starts is not None:
+            pulumi.set(__self__, "switch_status_starts", switch_status_starts)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if timezone is not None:
@@ -184,6 +192,30 @@ class _SlackLineState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="switchStatusEnds")
+    def switch_status_ends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SlackLineSwitchStatusEndArgs']]]]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "switch_status_ends")
+
+    @switch_status_ends.setter
+    def switch_status_ends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SlackLineSwitchStatusEndArgs']]]]):
+        pulumi.set(self, "switch_status_ends", value)
+
+    @property
+    @pulumi.getter(name="switchStatusStarts")
+    def switch_status_starts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SlackLineSwitchStatusStartArgs']]]]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "switch_status_starts")
+
+    @switch_status_starts.setter
+    def switch_status_starts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SlackLineSwitchStatusStartArgs']]]]):
+        pulumi.set(self, "switch_status_starts", value)
 
     @property
     @pulumi.getter
@@ -288,6 +320,8 @@ class SlackLine(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["timezone"] = timezone
             __props__.__dict__["kinds"] = None
+            __props__.__dict__["switch_status_ends"] = None
+            __props__.__dict__["switch_status_starts"] = None
         super(SlackLine, __self__).__init__(
             'splight:index/slackLine:SlackLine',
             resource_name,
@@ -302,6 +336,8 @@ class SlackLine(pulumi.CustomResource):
             geometry: Optional[pulumi.Input[str]] = None,
             kinds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SlackLineKindArgs', 'SlackLineKindArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            switch_status_ends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SlackLineSwitchStatusEndArgs', 'SlackLineSwitchStatusEndArgsDict']]]]] = None,
+            switch_status_starts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SlackLineSwitchStatusStartArgs', 'SlackLineSwitchStatusStartArgsDict']]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SlackLineTagArgs', 'SlackLineTagArgsDict']]]]] = None,
             timezone: Optional[pulumi.Input[str]] = None) -> 'SlackLine':
         """
@@ -315,6 +351,8 @@ class SlackLine(pulumi.CustomResource):
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['SlackLineKindArgs', 'SlackLineKindArgsDict']]]] kinds: kind of the resource
         :param pulumi.Input[str] name: name of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SlackLineSwitchStatusEndArgs', 'SlackLineSwitchStatusEndArgsDict']]]] switch_status_ends: attribute of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SlackLineSwitchStatusStartArgs', 'SlackLineSwitchStatusStartArgsDict']]]] switch_status_starts: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['SlackLineTagArgs', 'SlackLineTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
@@ -326,6 +364,8 @@ class SlackLine(pulumi.CustomResource):
         __props__.__dict__["geometry"] = geometry
         __props__.__dict__["kinds"] = kinds
         __props__.__dict__["name"] = name
+        __props__.__dict__["switch_status_ends"] = switch_status_ends
+        __props__.__dict__["switch_status_starts"] = switch_status_starts
         __props__.__dict__["tags"] = tags
         __props__.__dict__["timezone"] = timezone
         return SlackLine(resource_name, opts=opts, __props__=__props__)
@@ -361,6 +401,22 @@ class SlackLine(pulumi.CustomResource):
         name of the resource
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="switchStatusEnds")
+    def switch_status_ends(self) -> pulumi.Output[Sequence['outputs.SlackLineSwitchStatusEnd']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "switch_status_ends")
+
+    @property
+    @pulumi.getter(name="switchStatusStarts")
+    def switch_status_starts(self) -> pulumi.Output[Sequence['outputs.SlackLineSwitchStatusStart']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "switch_status_starts")
 
     @property
     @pulumi.getter

@@ -72,6 +72,18 @@ export class Segment extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * attribute of the resource
+     */
+    public readonly referenceSag!: pulumi.Output<outputs.SegmentReferenceSag>;
+    /**
+     * attribute of the resource
+     */
+    public readonly referenceTemperature!: pulumi.Output<outputs.SegmentReferenceTemperature>;
+    /**
+     * attribute of the resource
+     */
+    public readonly spanLength!: pulumi.Output<outputs.SegmentSpanLength>;
+    /**
      * tags of the resource
      */
     public readonly tags!: pulumi.Output<outputs.SegmentTag[] | undefined>;
@@ -112,6 +124,9 @@ export class Segment extends pulumi.CustomResource {
             resourceInputs["geometry"] = state ? state.geometry : undefined;
             resourceInputs["kinds"] = state ? state.kinds : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["referenceSag"] = state ? state.referenceSag : undefined;
+            resourceInputs["referenceTemperature"] = state ? state.referenceTemperature : undefined;
+            resourceInputs["spanLength"] = state ? state.spanLength : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["temperatures"] = state ? state.temperatures : undefined;
             resourceInputs["timezone"] = state ? state.timezone : undefined;
@@ -128,12 +143,24 @@ export class Segment extends pulumi.CustomResource {
             if ((!args || args.cumulativeDistance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cumulativeDistance'");
             }
+            if ((!args || args.referenceSag === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'referenceSag'");
+            }
+            if ((!args || args.referenceTemperature === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'referenceTemperature'");
+            }
+            if ((!args || args.spanLength === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'spanLength'");
+            }
             resourceInputs["altitude"] = args ? args.altitude : undefined;
             resourceInputs["azimuth"] = args ? args.azimuth : undefined;
             resourceInputs["cumulativeDistance"] = args ? args.cumulativeDistance : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["referenceSag"] = args ? args.referenceSag : undefined;
+            resourceInputs["referenceTemperature"] = args ? args.referenceTemperature : undefined;
+            resourceInputs["spanLength"] = args ? args.spanLength : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["kinds"] = undefined /*out*/;
@@ -178,6 +205,18 @@ export interface SegmentState {
      * name of the resource
      */
     name?: pulumi.Input<string>;
+    /**
+     * attribute of the resource
+     */
+    referenceSag?: pulumi.Input<inputs.SegmentReferenceSag>;
+    /**
+     * attribute of the resource
+     */
+    referenceTemperature?: pulumi.Input<inputs.SegmentReferenceTemperature>;
+    /**
+     * attribute of the resource
+     */
+    spanLength?: pulumi.Input<inputs.SegmentSpanLength>;
     /**
      * tags of the resource
      */
@@ -228,6 +267,18 @@ export interface SegmentArgs {
      * name of the resource
      */
     name?: pulumi.Input<string>;
+    /**
+     * attribute of the resource
+     */
+    referenceSag: pulumi.Input<inputs.SegmentReferenceSag>;
+    /**
+     * attribute of the resource
+     */
+    referenceTemperature: pulumi.Input<inputs.SegmentReferenceTemperature>;
+    /**
+     * attribute of the resource
+     */
+    spanLength: pulumi.Input<inputs.SegmentSpanLength>;
     /**
      * tags of the resource
      */

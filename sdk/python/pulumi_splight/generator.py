@@ -131,8 +131,10 @@ class _GeneratorState:
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  kinds: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorKindArgs']]]] = None,
+                 monthly_energies: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorMonthlyEnergyArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  reactive_powers: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorReactivePowerArgs']]]] = None,
+                 switch_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorSwitchStatusArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorTagArgs']]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None):
         """
@@ -144,8 +146,10 @@ class _GeneratorState:
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[Sequence[pulumi.Input['GeneratorKindArgs']]] kinds: kind of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['GeneratorMonthlyEnergyArgs']]] monthly_energies: attribute of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input['GeneratorReactivePowerArgs']]] reactive_powers: attribute of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['GeneratorSwitchStatusArgs']]] switch_statuses: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['GeneratorTagArgs']]] tags: tags of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
@@ -163,10 +167,14 @@ class _GeneratorState:
             pulumi.set(__self__, "geometry", geometry)
         if kinds is not None:
             pulumi.set(__self__, "kinds", kinds)
+        if monthly_energies is not None:
+            pulumi.set(__self__, "monthly_energies", monthly_energies)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if reactive_powers is not None:
             pulumi.set(__self__, "reactive_powers", reactive_powers)
+        if switch_statuses is not None:
+            pulumi.set(__self__, "switch_statuses", switch_statuses)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if timezone is not None:
@@ -257,6 +265,18 @@ class _GeneratorState:
         pulumi.set(self, "kinds", value)
 
     @property
+    @pulumi.getter(name="monthlyEnergies")
+    def monthly_energies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorMonthlyEnergyArgs']]]]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "monthly_energies")
+
+    @monthly_energies.setter
+    def monthly_energies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorMonthlyEnergyArgs']]]]):
+        pulumi.set(self, "monthly_energies", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -279,6 +299,18 @@ class _GeneratorState:
     @reactive_powers.setter
     def reactive_powers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorReactivePowerArgs']]]]):
         pulumi.set(self, "reactive_powers", value)
+
+    @property
+    @pulumi.getter(name="switchStatuses")
+    def switch_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorSwitchStatusArgs']]]]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "switch_statuses")
+
+    @switch_statuses.setter
+    def switch_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorSwitchStatusArgs']]]]):
+        pulumi.set(self, "switch_statuses", value)
 
     @property
     @pulumi.getter
@@ -392,7 +424,9 @@ class Generator(pulumi.CustomResource):
             __props__.__dict__["daily_emission_avoideds"] = None
             __props__.__dict__["daily_energies"] = None
             __props__.__dict__["kinds"] = None
+            __props__.__dict__["monthly_energies"] = None
             __props__.__dict__["reactive_powers"] = None
+            __props__.__dict__["switch_statuses"] = None
         super(Generator, __self__).__init__(
             'splight:index/generator:Generator',
             resource_name,
@@ -410,8 +444,10 @@ class Generator(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             geometry: Optional[pulumi.Input[str]] = None,
             kinds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GeneratorKindArgs', 'GeneratorKindArgsDict']]]]] = None,
+            monthly_energies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GeneratorMonthlyEnergyArgs', 'GeneratorMonthlyEnergyArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             reactive_powers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GeneratorReactivePowerArgs', 'GeneratorReactivePowerArgsDict']]]]] = None,
+            switch_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GeneratorSwitchStatusArgs', 'GeneratorSwitchStatusArgsDict']]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GeneratorTagArgs', 'GeneratorTagArgsDict']]]]] = None,
             timezone: Optional[pulumi.Input[str]] = None) -> 'Generator':
         """
@@ -428,8 +464,10 @@ class Generator(pulumi.CustomResource):
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['GeneratorKindArgs', 'GeneratorKindArgsDict']]]] kinds: kind of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GeneratorMonthlyEnergyArgs', 'GeneratorMonthlyEnergyArgsDict']]]] monthly_energies: attribute of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['GeneratorReactivePowerArgs', 'GeneratorReactivePowerArgsDict']]]] reactive_powers: attribute of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GeneratorSwitchStatusArgs', 'GeneratorSwitchStatusArgsDict']]]] switch_statuses: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['GeneratorTagArgs', 'GeneratorTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
@@ -444,8 +482,10 @@ class Generator(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["geometry"] = geometry
         __props__.__dict__["kinds"] = kinds
+        __props__.__dict__["monthly_energies"] = monthly_energies
         __props__.__dict__["name"] = name
         __props__.__dict__["reactive_powers"] = reactive_powers
+        __props__.__dict__["switch_statuses"] = switch_statuses
         __props__.__dict__["tags"] = tags
         __props__.__dict__["timezone"] = timezone
         return Generator(resource_name, opts=opts, __props__=__props__)
@@ -507,6 +547,14 @@ class Generator(pulumi.CustomResource):
         return pulumi.get(self, "kinds")
 
     @property
+    @pulumi.getter(name="monthlyEnergies")
+    def monthly_energies(self) -> pulumi.Output[Sequence['outputs.GeneratorMonthlyEnergy']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "monthly_energies")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -521,6 +569,14 @@ class Generator(pulumi.CustomResource):
         attribute of the resource
         """
         return pulumi.get(self, "reactive_powers")
+
+    @property
+    @pulumi.getter(name="switchStatuses")
+    def switch_statuses(self) -> pulumi.Output[Sequence['outputs.GeneratorSwitchStatus']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "switch_statuses")
 
     @property
     @pulumi.getter

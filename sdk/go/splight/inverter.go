@@ -48,6 +48,8 @@ type Inverter struct {
 	RawDailyEnergies InverterRawDailyEnergyArrayOutput `pulumi:"rawDailyEnergies"`
 	// attribute of the resource
 	SerialNumber InverterSerialNumberOutput `pulumi:"serialNumber"`
+	// attribute of the resource
+	SwitchStatuses InverterSwitchStatusArrayOutput `pulumi:"switchStatuses"`
 	// tags of the resource
 	Tags InverterTagArrayOutput `pulumi:"tags"`
 	// attribute of the resource
@@ -127,6 +129,8 @@ type inverterState struct {
 	RawDailyEnergies []InverterRawDailyEnergy `pulumi:"rawDailyEnergies"`
 	// attribute of the resource
 	SerialNumber *InverterSerialNumber `pulumi:"serialNumber"`
+	// attribute of the resource
+	SwitchStatuses []InverterSwitchStatus `pulumi:"switchStatuses"`
 	// tags of the resource
 	Tags []InverterTag `pulumi:"tags"`
 	// attribute of the resource
@@ -162,6 +166,8 @@ type InverterState struct {
 	RawDailyEnergies InverterRawDailyEnergyArrayInput
 	// attribute of the resource
 	SerialNumber InverterSerialNumberPtrInput
+	// attribute of the resource
+	SwitchStatuses InverterSwitchStatusArrayInput
 	// tags of the resource
 	Tags InverterTagArrayInput
 	// attribute of the resource
@@ -371,6 +377,11 @@ func (o InverterOutput) RawDailyEnergies() InverterRawDailyEnergyArrayOutput {
 // attribute of the resource
 func (o InverterOutput) SerialNumber() InverterSerialNumberOutput {
 	return o.ApplyT(func(v *Inverter) InverterSerialNumberOutput { return v.SerialNumber }).(InverterSerialNumberOutput)
+}
+
+// attribute of the resource
+func (o InverterOutput) SwitchStatuses() InverterSwitchStatusArrayOutput {
+	return o.ApplyT(func(v *Inverter) InverterSwitchStatusArrayOutput { return v.SwitchStatuses }).(InverterSwitchStatusArrayOutput)
 }
 
 // tags of the resource

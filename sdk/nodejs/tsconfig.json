@@ -65,6 +65,7 @@
         "server.ts",
         "slackLine.ts",
         "tag.ts",
+        "transformer.ts",
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",

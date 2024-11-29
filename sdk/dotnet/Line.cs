@@ -67,6 +67,18 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
+        [Output("conductorMass")]
+        public Output<Outputs.LineConductorMass> ConductorMass { get; private set; } = null!;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Output("contingencies")]
+        public Output<ImmutableArray<Outputs.LineContingency>> Contingencies { get; private set; } = null!;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
         [Output("currentRs")]
         public Output<ImmutableArray<Outputs.LineCurrentR>> CurrentRs { get; private set; } = null!;
 
@@ -211,8 +223,26 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
+        [Output("specificHeat")]
+        public Output<Outputs.LineSpecificHeat> SpecificHeat { get; private set; } = null!;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
         [Output("susceptance")]
         public Output<Outputs.LineSusceptance> Susceptance { get; private set; } = null!;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Output("switchStatusEnds")]
+        public Output<ImmutableArray<Outputs.LineSwitchStatusEnd>> SwitchStatusEnds { get; private set; } = null!;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Output("switchStatusStarts")]
+        public Output<ImmutableArray<Outputs.LineSwitchStatusStart>> SwitchStatusStarts { get; private set; } = null!;
 
         /// <summary>
         /// tags of the resource
@@ -225,6 +255,12 @@ namespace Splight.Splight
         /// </summary>
         [Output("temperatureCoeffResistance")]
         public Output<Outputs.LineTemperatureCoeffResistance> TemperatureCoeffResistance { get; private set; } = null!;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Output("thermalElongationCoef")]
+        public Output<Outputs.LineThermalElongationCoef> ThermalElongationCoef { get; private set; } = null!;
 
         /// <summary>
         /// timezone that overrides location-based timezone of the resource
@@ -320,6 +356,12 @@ namespace Splight.Splight
         /// </summary>
         [Input("conductance", required: true)]
         public Input<Inputs.LineConductanceArgs> Conductance { get; set; } = null!;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Input("conductorMass", required: true)]
+        public Input<Inputs.LineConductorMassArgs> ConductorMass { get; set; } = null!;
 
         /// <summary>
         /// description of the resource
@@ -420,6 +462,12 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
+        [Input("specificHeat", required: true)]
+        public Input<Inputs.LineSpecificHeatArgs> SpecificHeat { get; set; } = null!;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
         [Input("susceptance", required: true)]
         public Input<Inputs.LineSusceptanceArgs> Susceptance { get; set; } = null!;
 
@@ -440,6 +488,12 @@ namespace Splight.Splight
         /// </summary>
         [Input("temperatureCoeffResistance", required: true)]
         public Input<Inputs.LineTemperatureCoeffResistanceArgs> TemperatureCoeffResistance { get; set; } = null!;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Input("thermalElongationCoef", required: true)]
+        public Input<Inputs.LineThermalElongationCoefArgs> ThermalElongationCoef { get; set; } = null!;
 
         /// <summary>
         /// timezone that overrides location-based timezone of the resource
@@ -514,6 +568,24 @@ namespace Splight.Splight
         /// </summary>
         [Input("conductance")]
         public Input<Inputs.LineConductanceGetArgs>? Conductance { get; set; }
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Input("conductorMass")]
+        public Input<Inputs.LineConductorMassGetArgs>? ConductorMass { get; set; }
+
+        [Input("contingencies")]
+        private InputList<Inputs.LineContingencyGetArgs>? _contingencies;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        public InputList<Inputs.LineContingencyGetArgs> Contingencies
+        {
+            get => _contingencies ?? (_contingencies = new InputList<Inputs.LineContingencyGetArgs>());
+            set => _contingencies = value;
+        }
 
         [Input("currentRs")]
         private InputList<Inputs.LineCurrentRGetArgs>? _currentRs;
@@ -710,8 +782,38 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
+        [Input("specificHeat")]
+        public Input<Inputs.LineSpecificHeatGetArgs>? SpecificHeat { get; set; }
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
         [Input("susceptance")]
         public Input<Inputs.LineSusceptanceGetArgs>? Susceptance { get; set; }
+
+        [Input("switchStatusEnds")]
+        private InputList<Inputs.LineSwitchStatusEndGetArgs>? _switchStatusEnds;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        public InputList<Inputs.LineSwitchStatusEndGetArgs> SwitchStatusEnds
+        {
+            get => _switchStatusEnds ?? (_switchStatusEnds = new InputList<Inputs.LineSwitchStatusEndGetArgs>());
+            set => _switchStatusEnds = value;
+        }
+
+        [Input("switchStatusStarts")]
+        private InputList<Inputs.LineSwitchStatusStartGetArgs>? _switchStatusStarts;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        public InputList<Inputs.LineSwitchStatusStartGetArgs> SwitchStatusStarts
+        {
+            get => _switchStatusStarts ?? (_switchStatusStarts = new InputList<Inputs.LineSwitchStatusStartGetArgs>());
+            set => _switchStatusStarts = value;
+        }
 
         [Input("tags")]
         private InputList<Inputs.LineTagGetArgs>? _tags;
@@ -730,6 +832,12 @@ namespace Splight.Splight
         /// </summary>
         [Input("temperatureCoeffResistance")]
         public Input<Inputs.LineTemperatureCoeffResistanceGetArgs>? TemperatureCoeffResistance { get; set; }
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Input("thermalElongationCoef")]
+        public Input<Inputs.LineThermalElongationCoefGetArgs>? ThermalElongationCoef { get; set; }
 
         /// <summary>
         /// timezone that overrides location-based timezone of the resource

@@ -96,6 +96,10 @@ export class Inverter extends pulumi.CustomResource {
      */
     public readonly serialNumber!: pulumi.Output<outputs.InverterSerialNumber>;
     /**
+     * attribute of the resource
+     */
+    public /*out*/ readonly switchStatuses!: pulumi.Output<outputs.InverterSwitchStatus[]>;
+    /**
      * tags of the resource
      */
     public readonly tags!: pulumi.Output<outputs.InverterTag[] | undefined>;
@@ -134,6 +138,7 @@ export class Inverter extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["rawDailyEnergies"] = state ? state.rawDailyEnergies : undefined;
             resourceInputs["serialNumber"] = state ? state.serialNumber : undefined;
+            resourceInputs["switchStatuses"] = state ? state.switchStatuses : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["temperatures"] = state ? state.temperatures : undefined;
             resourceInputs["timezone"] = state ? state.timezone : undefined;
@@ -169,6 +174,7 @@ export class Inverter extends pulumi.CustomResource {
             resourceInputs["dailyEnergies"] = undefined /*out*/;
             resourceInputs["kinds"] = undefined /*out*/;
             resourceInputs["rawDailyEnergies"] = undefined /*out*/;
+            resourceInputs["switchStatuses"] = undefined /*out*/;
             resourceInputs["temperatures"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -232,6 +238,10 @@ export interface InverterState {
      * attribute of the resource
      */
     serialNumber?: pulumi.Input<inputs.InverterSerialNumber>;
+    /**
+     * attribute of the resource
+     */
+    switchStatuses?: pulumi.Input<pulumi.Input<inputs.InverterSwitchStatus>[]>;
     /**
      * tags of the resource
      */

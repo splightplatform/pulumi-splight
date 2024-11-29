@@ -60,6 +60,14 @@ export class SlackLine extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * attribute of the resource
+     */
+    public /*out*/ readonly switchStatusEnds!: pulumi.Output<outputs.SlackLineSwitchStatusEnd[]>;
+    /**
+     * attribute of the resource
+     */
+    public /*out*/ readonly switchStatusStarts!: pulumi.Output<outputs.SlackLineSwitchStatusStart[]>;
+    /**
      * tags of the resource
      */
     public readonly tags!: pulumi.Output<outputs.SlackLineTag[] | undefined>;
@@ -85,6 +93,8 @@ export class SlackLine extends pulumi.CustomResource {
             resourceInputs["geometry"] = state ? state.geometry : undefined;
             resourceInputs["kinds"] = state ? state.kinds : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["switchStatusEnds"] = state ? state.switchStatusEnds : undefined;
+            resourceInputs["switchStatusStarts"] = state ? state.switchStatusStarts : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["timezone"] = state ? state.timezone : undefined;
         } else {
@@ -95,6 +105,8 @@ export class SlackLine extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["kinds"] = undefined /*out*/;
+            resourceInputs["switchStatusEnds"] = undefined /*out*/;
+            resourceInputs["switchStatusStarts"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SlackLine.__pulumiType, name, resourceInputs, opts);
@@ -121,6 +133,14 @@ export interface SlackLineState {
      * name of the resource
      */
     name?: pulumi.Input<string>;
+    /**
+     * attribute of the resource
+     */
+    switchStatusEnds?: pulumi.Input<pulumi.Input<inputs.SlackLineSwitchStatusEnd>[]>;
+    /**
+     * attribute of the resource
+     */
+    switchStatusStarts?: pulumi.Input<pulumi.Input<inputs.SlackLineSwitchStatusStart>[]>;
     /**
      * tags of the resource
      */

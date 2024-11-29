@@ -197,6 +197,7 @@ class _InverterState:
                  name: Optional[pulumi.Input[str]] = None,
                  raw_daily_energies: Optional[pulumi.Input[Sequence[pulumi.Input['InverterRawDailyEnergyArgs']]]] = None,
                  serial_number: Optional[pulumi.Input['InverterSerialNumberArgs']] = None,
+                 switch_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['InverterSwitchStatusArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['InverterTagArgs']]]] = None,
                  temperatures: Optional[pulumi.Input[Sequence[pulumi.Input['InverterTemperatureArgs']]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None):
@@ -215,6 +216,7 @@ class _InverterState:
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input['InverterRawDailyEnergyArgs']]] raw_daily_energies: attribute of the resource
         :param pulumi.Input['InverterSerialNumberArgs'] serial_number: attribute of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['InverterSwitchStatusArgs']]] switch_statuses: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['InverterTagArgs']]] tags: tags of the resource
         :param pulumi.Input[Sequence[pulumi.Input['InverterTemperatureArgs']]] temperatures: attribute of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
@@ -245,6 +247,8 @@ class _InverterState:
             pulumi.set(__self__, "raw_daily_energies", raw_daily_energies)
         if serial_number is not None:
             pulumi.set(__self__, "serial_number", serial_number)
+        if switch_statuses is not None:
+            pulumi.set(__self__, "switch_statuses", switch_statuses)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if temperatures is not None:
@@ -409,6 +413,18 @@ class _InverterState:
         pulumi.set(self, "serial_number", value)
 
     @property
+    @pulumi.getter(name="switchStatuses")
+    def switch_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InverterSwitchStatusArgs']]]]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "switch_statuses")
+
+    @switch_statuses.setter
+    def switch_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InverterSwitchStatusArgs']]]]):
+        pulumi.set(self, "switch_statuses", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InverterTagArgs']]]]:
         """
@@ -557,6 +573,7 @@ class Inverter(pulumi.CustomResource):
             __props__.__dict__["daily_energies"] = None
             __props__.__dict__["kinds"] = None
             __props__.__dict__["raw_daily_energies"] = None
+            __props__.__dict__["switch_statuses"] = None
             __props__.__dict__["temperatures"] = None
         super(Inverter, __self__).__init__(
             'splight:index/inverter:Inverter',
@@ -581,6 +598,7 @@ class Inverter(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             raw_daily_energies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InverterRawDailyEnergyArgs', 'InverterRawDailyEnergyArgsDict']]]]] = None,
             serial_number: Optional[pulumi.Input[Union['InverterSerialNumberArgs', 'InverterSerialNumberArgsDict']]] = None,
+            switch_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InverterSwitchStatusArgs', 'InverterSwitchStatusArgsDict']]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InverterTagArgs', 'InverterTagArgsDict']]]]] = None,
             temperatures: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InverterTemperatureArgs', 'InverterTemperatureArgsDict']]]]] = None,
             timezone: Optional[pulumi.Input[str]] = None) -> 'Inverter':
@@ -604,6 +622,7 @@ class Inverter(pulumi.CustomResource):
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['InverterRawDailyEnergyArgs', 'InverterRawDailyEnergyArgsDict']]]] raw_daily_energies: attribute of the resource
         :param pulumi.Input[Union['InverterSerialNumberArgs', 'InverterSerialNumberArgsDict']] serial_number: attribute of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InverterSwitchStatusArgs', 'InverterSwitchStatusArgsDict']]]] switch_statuses: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['InverterTagArgs', 'InverterTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['InverterTemperatureArgs', 'InverterTemperatureArgsDict']]]] temperatures: attribute of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
@@ -625,6 +644,7 @@ class Inverter(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["raw_daily_energies"] = raw_daily_energies
         __props__.__dict__["serial_number"] = serial_number
+        __props__.__dict__["switch_statuses"] = switch_statuses
         __props__.__dict__["tags"] = tags
         __props__.__dict__["temperatures"] = temperatures
         __props__.__dict__["timezone"] = timezone
@@ -733,6 +753,14 @@ class Inverter(pulumi.CustomResource):
         attribute of the resource
         """
         return pulumi.get(self, "serial_number")
+
+    @property
+    @pulumi.getter(name="switchStatuses")
+    def switch_statuses(self) -> pulumi.Output[Sequence['outputs.InverterSwitchStatus']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "switch_statuses")
 
     @property
     @pulumi.getter

@@ -99,11 +99,17 @@
                 "current": "splight:index/bus:Bus",
                 "majorVersion": 1,
                 "fields": {
+                    "active_power": {
+                        "maxItemsOne": false
+                    },
                     "kind": {
                         "maxItemsOne": false
                     },
-                    "nominal_voltage": {
+                    "nominal_voltage_kv": {
                         "maxItemsOne": true
+                    },
+                    "reactive_power": {
+                        "maxItemsOne": false
                     },
                     "tags": {
                         "maxItemsOne": false
@@ -632,7 +638,13 @@
                     "kind": {
                         "maxItemsOne": false
                     },
+                    "monthly_energy": {
+                        "maxItemsOne": false
+                    },
                     "reactive_power": {
+                        "maxItemsOne": false
+                    },
+                    "switch_status": {
                         "maxItemsOne": false
                     },
                     "tags": {
@@ -686,6 +698,9 @@
                     "serial_number": {
                         "maxItemsOne": true
                     },
+                    "switch_status": {
+                        "maxItemsOne": false
+                    },
                     "tags": {
                         "maxItemsOne": false
                     },
@@ -718,6 +733,12 @@
                     },
                     "conductance": {
                         "maxItemsOne": true
+                    },
+                    "conductor_mass": {
+                        "maxItemsOne": true
+                    },
+                    "contingency": {
+                        "maxItemsOne": false
                     },
                     "current": {
                         "maxItemsOne": false
@@ -782,13 +803,25 @@
                     "safety_margin_for_power": {
                         "maxItemsOne": true
                     },
+                    "specific_heat": {
+                        "maxItemsOne": true
+                    },
                     "susceptance": {
                         "maxItemsOne": true
+                    },
+                    "switch_status_end": {
+                        "maxItemsOne": false
+                    },
+                    "switch_status_start": {
+                        "maxItemsOne": false
                     },
                     "tags": {
                         "maxItemsOne": false
                     },
                     "temperature_coeff_resistance": {
+                        "maxItemsOne": true
+                    },
+                    "thermal_elongation_coef": {
                         "maxItemsOne": true
                     },
                     "voltage_rs": {
@@ -825,6 +858,15 @@
                     },
                     "kind": {
                         "maxItemsOne": false
+                    },
+                    "reference_sag": {
+                        "maxItemsOne": true
+                    },
+                    "reference_temperature": {
+                        "maxItemsOne": true
+                    },
+                    "span_length": {
+                        "maxItemsOne": true
                     },
                     "tags": {
                         "maxItemsOne": false
@@ -865,6 +907,12 @@
                     "kind": {
                         "maxItemsOne": false
                     },
+                    "switch_status_end": {
+                        "maxItemsOne": false
+                    },
+                    "switch_status_start": {
+                        "maxItemsOne": false
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -873,6 +921,87 @@
             "splight_tag": {
                 "current": "splight:index/tag:Tag",
                 "majorVersion": 1
+            },
+            "splight_transformer": {
+                "current": "splight:index/transformer:Transformer",
+                "majorVersion": 1,
+                "fields": {
+                    "active_power_hv": {
+                        "maxItemsOne": false
+                    },
+                    "active_power_loss": {
+                        "maxItemsOne": false
+                    },
+                    "active_power_lv": {
+                        "maxItemsOne": false
+                    },
+                    "capacitance": {
+                        "maxItemsOne": true
+                    },
+                    "conductance": {
+                        "maxItemsOne": true
+                    },
+                    "contingency": {
+                        "maxItemsOne": false
+                    },
+                    "current_hv": {
+                        "maxItemsOne": false
+                    },
+                    "current_lv": {
+                        "maxItemsOne": false
+                    },
+                    "kind": {
+                        "maxItemsOne": false
+                    },
+                    "maximum_allowed_current": {
+                        "maxItemsOne": true
+                    },
+                    "maximum_allowed_power": {
+                        "maxItemsOne": true
+                    },
+                    "reactance": {
+                        "maxItemsOne": true
+                    },
+                    "reactive_power_hv": {
+                        "maxItemsOne": false
+                    },
+                    "reactive_power_loss": {
+                        "maxItemsOne": false
+                    },
+                    "reactive_power_lv": {
+                        "maxItemsOne": false
+                    },
+                    "resistance": {
+                        "maxItemsOne": true
+                    },
+                    "safety_margin_for_power": {
+                        "maxItemsOne": true
+                    },
+                    "standard_type": {
+                        "maxItemsOne": true
+                    },
+                    "switch_status_hv": {
+                        "maxItemsOne": false
+                    },
+                    "switch_status_lv": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "tap_pos": {
+                        "maxItemsOne": true
+                    },
+                    "voltage_hv": {
+                        "maxItemsOne": false
+                    },
+                    "voltage_lv": {
+                        "maxItemsOne": false
+                    },
+                    "xn_ohm": {
+                        "maxItemsOne": true
+                    }
+                }
             }
         },
         "datasources": {

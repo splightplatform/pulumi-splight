@@ -101,6 +101,12 @@ namespace Splight.Splight
         public Output<Outputs.InverterSerialNumber> SerialNumber { get; private set; } = null!;
 
         /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Output("switchStatuses")]
+        public Output<ImmutableArray<Outputs.InverterSwitchStatus>> SwitchStatuses { get; private set; } = null!;
+
+        /// <summary>
         /// tags of the resource
         /// </summary>
         [Output("tags")]
@@ -346,6 +352,18 @@ namespace Splight.Splight
         /// </summary>
         [Input("serialNumber")]
         public Input<Inputs.InverterSerialNumberGetArgs>? SerialNumber { get; set; }
+
+        [Input("switchStatuses")]
+        private InputList<Inputs.InverterSwitchStatusGetArgs>? _switchStatuses;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        public InputList<Inputs.InverterSwitchStatusGetArgs> SwitchStatuses
+        {
+            get => _switchStatuses ?? (_switchStatuses = new InputList<Inputs.InverterSwitchStatusGetArgs>());
+            set => _switchStatuses = value;
+        }
 
         [Input("tags")]
         private InputList<Inputs.InverterTagGetArgs>? _tags;

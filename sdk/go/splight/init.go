@@ -105,6 +105,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SlackLine{}
 	case "splight:index/tag:Tag":
 		r = &Tag{}
+	case "splight:index/transformer:Transformer":
+		r = &Transformer{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -344,6 +346,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"splight",
 		"index/tag",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/transformer",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

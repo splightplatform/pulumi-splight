@@ -65,6 +65,12 @@ namespace Splight.Splight
         public Output<ImmutableArray<Outputs.GeneratorKind>> Kinds { get; private set; } = null!;
 
         /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Output("monthlyEnergies")]
+        public Output<ImmutableArray<Outputs.GeneratorMonthlyEnergy>> MonthlyEnergies { get; private set; } = null!;
+
+        /// <summary>
         /// name of the resource
         /// </summary>
         [Output("name")]
@@ -75,6 +81,12 @@ namespace Splight.Splight
         /// </summary>
         [Output("reactivePowers")]
         public Output<ImmutableArray<Outputs.GeneratorReactivePower>> ReactivePowers { get; private set; } = null!;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        [Output("switchStatuses")]
+        public Output<ImmutableArray<Outputs.GeneratorSwitchStatus>> SwitchStatuses { get; private set; } = null!;
 
         /// <summary>
         /// tags of the resource
@@ -251,6 +263,18 @@ namespace Splight.Splight
             set => _kinds = value;
         }
 
+        [Input("monthlyEnergies")]
+        private InputList<Inputs.GeneratorMonthlyEnergyGetArgs>? _monthlyEnergies;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        public InputList<Inputs.GeneratorMonthlyEnergyGetArgs> MonthlyEnergies
+        {
+            get => _monthlyEnergies ?? (_monthlyEnergies = new InputList<Inputs.GeneratorMonthlyEnergyGetArgs>());
+            set => _monthlyEnergies = value;
+        }
+
         /// <summary>
         /// name of the resource
         /// </summary>
@@ -267,6 +291,18 @@ namespace Splight.Splight
         {
             get => _reactivePowers ?? (_reactivePowers = new InputList<Inputs.GeneratorReactivePowerGetArgs>());
             set => _reactivePowers = value;
+        }
+
+        [Input("switchStatuses")]
+        private InputList<Inputs.GeneratorSwitchStatusGetArgs>? _switchStatuses;
+
+        /// <summary>
+        /// attribute of the resource
+        /// </summary>
+        public InputList<Inputs.GeneratorSwitchStatusGetArgs> SwitchStatuses
+        {
+            get => _switchStatuses ?? (_switchStatuses = new InputList<Inputs.GeneratorSwitchStatusGetArgs>());
+            set => _switchStatuses = value;
         }
 
         [Input("tags")]

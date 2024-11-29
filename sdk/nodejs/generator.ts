@@ -72,6 +72,10 @@ export class Generator extends pulumi.CustomResource {
      */
     public /*out*/ readonly kinds!: pulumi.Output<outputs.GeneratorKind[]>;
     /**
+     * attribute of the resource
+     */
+    public /*out*/ readonly monthlyEnergies!: pulumi.Output<outputs.GeneratorMonthlyEnergy[]>;
+    /**
      * name of the resource
      */
     public readonly name!: pulumi.Output<string>;
@@ -79,6 +83,10 @@ export class Generator extends pulumi.CustomResource {
      * attribute of the resource
      */
     public /*out*/ readonly reactivePowers!: pulumi.Output<outputs.GeneratorReactivePower[]>;
+    /**
+     * attribute of the resource
+     */
+    public /*out*/ readonly switchStatuses!: pulumi.Output<outputs.GeneratorSwitchStatus[]>;
     /**
      * tags of the resource
      */
@@ -108,8 +116,10 @@ export class Generator extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["geometry"] = state ? state.geometry : undefined;
             resourceInputs["kinds"] = state ? state.kinds : undefined;
+            resourceInputs["monthlyEnergies"] = state ? state.monthlyEnergies : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["reactivePowers"] = state ? state.reactivePowers : undefined;
+            resourceInputs["switchStatuses"] = state ? state.switchStatuses : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["timezone"] = state ? state.timezone : undefined;
         } else {
@@ -127,7 +137,9 @@ export class Generator extends pulumi.CustomResource {
             resourceInputs["dailyEmissionAvoideds"] = undefined /*out*/;
             resourceInputs["dailyEnergies"] = undefined /*out*/;
             resourceInputs["kinds"] = undefined /*out*/;
+            resourceInputs["monthlyEnergies"] = undefined /*out*/;
             resourceInputs["reactivePowers"] = undefined /*out*/;
+            resourceInputs["switchStatuses"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Generator.__pulumiType, name, resourceInputs, opts);
@@ -167,6 +179,10 @@ export interface GeneratorState {
      */
     kinds?: pulumi.Input<pulumi.Input<inputs.GeneratorKind>[]>;
     /**
+     * attribute of the resource
+     */
+    monthlyEnergies?: pulumi.Input<pulumi.Input<inputs.GeneratorMonthlyEnergy>[]>;
+    /**
      * name of the resource
      */
     name?: pulumi.Input<string>;
@@ -174,6 +190,10 @@ export interface GeneratorState {
      * attribute of the resource
      */
     reactivePowers?: pulumi.Input<pulumi.Input<inputs.GeneratorReactivePower>[]>;
+    /**
+     * attribute of the resource
+     */
+    switchStatuses?: pulumi.Input<pulumi.Input<inputs.GeneratorSwitchStatus>[]>;
     /**
      * tags of the resource
      */
