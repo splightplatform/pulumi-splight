@@ -1,6 +1,6 @@
 {
     "name": "@splightplatform/pulumi-splight",
-    "version": "1.2.7",
+    "version": "1.2.8",
     "description": "A Pulumi package for creating and managing Splight resources.",
     "keywords": [
         "splightplatform",
@@ -24,7 +24,7 @@
     "pulumi": {
         "resource": true,
         "name": "splight",
-        "version": "1.2.7",
+        "version": "1.2.8",
         "server": "github://api.github.com/splightplatform"
     }
 }
