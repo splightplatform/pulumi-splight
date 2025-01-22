@@ -34,10 +34,6 @@ namespace Splight.Splight.Outputs
         /// unit of measure
         /// </summary>
         public readonly string? Unit;
-        /// <summary>
-        /// metadata value
-        /// </summary>
-        public readonly string Value;
 
         [OutputConstructor]
         private LineSwitchStatusEnd(
@@ -49,16 +45,13 @@ namespace Splight.Splight.Outputs
 
             string? type,
 
-            string? unit,
-
-            string value)
+            string? unit)
         {
             Asset = asset;
             Id = id;
             Name = name;
             Type = type;
             Unit = unit;
-            Value = value;
         }
     }
 }

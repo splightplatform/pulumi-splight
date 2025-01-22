@@ -1013,21 +1013,20 @@ class BusKind(dict):
 @pulumi.output_type
 class BusNominalVoltageKv(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -1038,14 +1037,8 @@ class BusNominalVoltageKv(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -1086,6 +1079,14 @@ class BusNominalVoltageKv(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -6474,21 +6475,20 @@ class GeneratorActivePower(dict):
 @pulumi.output_type
 class GeneratorCo2Coefficient(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -6499,14 +6499,8 @@ class GeneratorCo2Coefficient(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -6547,6 +6541,14 @@ class GeneratorCo2Coefficient(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -7204,21 +7206,20 @@ class InverterDailyEnergy(dict):
 @pulumi.output_type
 class InverterEnergyMeasurementType(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -7229,14 +7230,8 @@ class InverterEnergyMeasurementType(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -7277,6 +7272,14 @@ class InverterEnergyMeasurementType(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -7311,21 +7314,20 @@ class InverterKind(dict):
 @pulumi.output_type
 class InverterMake(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -7336,14 +7338,8 @@ class InverterMake(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -7384,26 +7380,33 @@ class InverterMake(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class InverterMaxActivePower(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -7414,14 +7417,8 @@ class InverterMaxActivePower(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -7462,26 +7459,33 @@ class InverterMaxActivePower(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class InverterModel(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -7492,14 +7496,8 @@ class InverterModel(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -7540,6 +7538,14 @@ class InverterModel(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -7612,21 +7618,20 @@ class InverterRawDailyEnergy(dict):
 @pulumi.output_type
 class InverterSerialNumber(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -7637,14 +7642,8 @@ class InverterSerialNumber(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -7685,6 +7684,14 @@ class InverterSerialNumber(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -7853,21 +7860,20 @@ class InverterTemperature(dict):
 @pulumi.output_type
 class LineAbsorptivity(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -7878,14 +7884,8 @@ class LineAbsorptivity(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -7926,6 +7926,14 @@ class LineAbsorptivity(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -8132,21 +8140,20 @@ class LineAmpacity(dict):
 @pulumi.output_type
 class LineAtmosphere(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -8157,14 +8164,8 @@ class LineAtmosphere(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -8205,26 +8206,33 @@ class LineAtmosphere(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class LineCapacitance(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -8235,14 +8243,8 @@ class LineCapacitance(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -8283,26 +8285,33 @@ class LineCapacitance(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class LineConductance(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -8313,14 +8322,8 @@ class LineConductance(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -8362,25 +8365,32 @@ class LineConductance(dict):
         """
         return pulumi.get(self, "unit")
 
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
 
 @pulumi.output_type
 class LineConductorMass(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
-        :param str unit: unit
+        :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -8391,14 +8401,8 @@ class LineConductorMass(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -8436,29 +8440,34 @@ class LineConductorMass(dict):
     @pulumi.getter
     def unit(self) -> Optional[str]:
         """
-        unit
+        unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class LineContingency(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
                  unit: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -8469,14 +8478,6 @@ class LineContingency(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
 
     @property
     @pulumi.getter
@@ -8723,21 +8724,20 @@ class LineCurrentT(dict):
 @pulumi.output_type
 class LineDiameter(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -8748,14 +8748,8 @@ class LineDiameter(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -8796,26 +8790,33 @@ class LineDiameter(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class LineEmissivity(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -8826,14 +8827,8 @@ class LineEmissivity(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -8874,6 +8869,14 @@ class LineEmissivity(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -8975,21 +8978,20 @@ class LineKind(dict):
 @pulumi.output_type
 class LineLength(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -9000,14 +9002,8 @@ class LineLength(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -9048,6 +9044,14 @@ class LineLength(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -9120,21 +9124,20 @@ class LineMaxTemperature(dict):
 @pulumi.output_type
 class LineMaximumAllowedCurrent(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -9145,14 +9148,8 @@ class LineMaximumAllowedCurrent(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -9193,26 +9190,33 @@ class LineMaximumAllowedCurrent(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class LineMaximumAllowedPower(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -9223,14 +9227,8 @@ class LineMaximumAllowedPower(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -9271,26 +9269,33 @@ class LineMaximumAllowedPower(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class LineMaximumAllowedTemperature(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -9301,14 +9306,8 @@ class LineMaximumAllowedTemperature(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -9349,26 +9348,33 @@ class LineMaximumAllowedTemperature(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class LineMaximumAllowedTemperatureLte(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -9379,14 +9385,8 @@ class LineMaximumAllowedTemperatureLte(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -9427,26 +9427,33 @@ class LineMaximumAllowedTemperatureLte(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class LineMaximumAllowedTemperatureSte(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -9457,14 +9464,8 @@ class LineMaximumAllowedTemperatureSte(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -9505,26 +9506,33 @@ class LineMaximumAllowedTemperatureSte(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class LineNumberOfConductors(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -9535,14 +9543,8 @@ class LineNumberOfConductors(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -9583,26 +9585,33 @@ class LineNumberOfConductors(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class LineReactance(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -9613,14 +9622,8 @@ class LineReactance(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -9661,6 +9664,14 @@ class LineReactance(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -9733,21 +9744,20 @@ class LineReactivePower(dict):
 @pulumi.output_type
 class LineReferenceResistance(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -9758,14 +9768,8 @@ class LineReferenceResistance(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -9806,26 +9810,33 @@ class LineReferenceResistance(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class LineResistance(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -9836,14 +9847,8 @@ class LineResistance(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -9884,26 +9889,33 @@ class LineResistance(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class LineSafetyMarginForPower(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -9914,14 +9926,8 @@ class LineSafetyMarginForPower(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -9962,26 +9968,33 @@ class LineSafetyMarginForPower(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class LineSpecificHeat(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -9992,14 +10005,8 @@ class LineSpecificHeat(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -10040,26 +10047,33 @@ class LineSpecificHeat(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class LineSusceptance(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -10070,14 +10084,8 @@ class LineSusceptance(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -10119,25 +10127,30 @@ class LineSusceptance(dict):
         """
         return pulumi.get(self, "unit")
 
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
 
 @pulumi.output_type
 class LineSwitchStatusEnd(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
                  unit: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -10148,14 +10161,6 @@ class LineSwitchStatusEnd(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
 
     @property
     @pulumi.getter
@@ -10201,21 +10206,18 @@ class LineSwitchStatusEnd(dict):
 @pulumi.output_type
 class LineSwitchStatusStart(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
                  unit: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -10226,14 +10228,6 @@ class LineSwitchStatusStart(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
 
     @property
     @pulumi.getter
@@ -10308,21 +10302,20 @@ class LineTag(dict):
 @pulumi.output_type
 class LineTemperatureCoeffResistance(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -10333,14 +10326,8 @@ class LineTemperatureCoeffResistance(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -10382,25 +10369,32 @@ class LineTemperatureCoeffResistance(dict):
         """
         return pulumi.get(self, "unit")
 
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
 
 @pulumi.output_type
 class LineThermalElongationCoef(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
-        :param str unit: unit
+        :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -10411,14 +10405,8 @@ class LineThermalElongationCoef(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -10456,9 +10444,17 @@ class LineThermalElongationCoef(dict):
     @pulumi.getter
     def unit(self) -> Optional[str]:
         """
-        unit
+        unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -10665,21 +10661,20 @@ class LineVoltageTr(dict):
 @pulumi.output_type
 class SegmentAltitude(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -10690,14 +10685,8 @@ class SegmentAltitude(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -10738,26 +10727,33 @@ class SegmentAltitude(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class SegmentAzimuth(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -10768,14 +10764,8 @@ class SegmentAzimuth(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -10816,26 +10806,33 @@ class SegmentAzimuth(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class SegmentCumulativeDistance(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -10846,14 +10843,8 @@ class SegmentCumulativeDistance(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -10894,6 +10885,14 @@ class SegmentCumulativeDistance(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -10928,21 +10927,20 @@ class SegmentKind(dict):
 @pulumi.output_type
 class SegmentReferenceSag(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -10953,14 +10951,8 @@ class SegmentReferenceSag(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -11001,26 +10993,33 @@ class SegmentReferenceSag(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class SegmentReferenceTemperature(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -11031,14 +11030,8 @@ class SegmentReferenceTemperature(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -11079,26 +11072,33 @@ class SegmentReferenceTemperature(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class SegmentSpanLength(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -11109,14 +11109,8 @@ class SegmentSpanLength(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -11157,6 +11151,14 @@ class SegmentSpanLength(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -11580,21 +11582,18 @@ class SlackLineKind(dict):
 @pulumi.output_type
 class SlackLineSwitchStatusEnd(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
                  unit: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -11605,14 +11604,6 @@ class SlackLineSwitchStatusEnd(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
 
     @property
     @pulumi.getter
@@ -11658,21 +11649,18 @@ class SlackLineSwitchStatusEnd(dict):
 @pulumi.output_type
 class SlackLineSwitchStatusStart(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
                  unit: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -11683,14 +11671,6 @@ class SlackLineSwitchStatusStart(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
 
     @property
     @pulumi.getter
@@ -11966,21 +11946,20 @@ class TransformerActivePowerLv(dict):
 @pulumi.output_type
 class TransformerCapacitance(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -11991,14 +11970,8 @@ class TransformerCapacitance(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -12039,26 +12012,33 @@ class TransformerCapacitance(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class TransformerConductance(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -12069,14 +12049,8 @@ class TransformerConductance(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -12117,6 +12091,14 @@ class TransformerConductance(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -12352,21 +12334,20 @@ class TransformerKind(dict):
 @pulumi.output_type
 class TransformerMaximumAllowedCurrent(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -12377,14 +12358,8 @@ class TransformerMaximumAllowedCurrent(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -12425,26 +12400,33 @@ class TransformerMaximumAllowedCurrent(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class TransformerMaximumAllowedPower(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -12455,14 +12437,8 @@ class TransformerMaximumAllowedPower(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -12503,26 +12479,33 @@ class TransformerMaximumAllowedPower(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class TransformerReactance(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -12533,14 +12516,8 @@ class TransformerReactance(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -12581,6 +12558,14 @@ class TransformerReactance(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -12787,21 +12772,20 @@ class TransformerReactivePowerLv(dict):
 @pulumi.output_type
 class TransformerResistance(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -12812,14 +12796,8 @@ class TransformerResistance(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -12860,26 +12838,33 @@ class TransformerResistance(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class TransformerSafetyMarginForPower(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -12890,14 +12875,8 @@ class TransformerSafetyMarginForPower(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -12938,26 +12917,33 @@ class TransformerSafetyMarginForPower(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class TransformerStandardType(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -12968,14 +12954,8 @@ class TransformerStandardType(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -13016,6 +12996,14 @@ class TransformerStandardType(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -13184,21 +13172,20 @@ class TransformerTag(dict):
 @pulumi.output_type
 class TransformerTapPos(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -13209,14 +13196,8 @@ class TransformerTapPos(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -13257,6 +13238,14 @@ class TransformerTapPos(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -13396,21 +13385,20 @@ class TransformerVoltageLv(dict):
 @pulumi.output_type
 class TransformerXnOhm(dict):
     def __init__(__self__, *,
-                 value: str,
                  asset: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  type: Optional[str] = None,
-                 unit: Optional[str] = None):
+                 unit: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str value: metadata value
         :param str asset: reference to the asset to be linked to
         :param str id: id of the resource
         :param str name: name of the resource
         :param str type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param str unit: unit of measure
+        :param str value: metadata value
         """
-        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -13421,14 +13409,8 @@ class TransformerXnOhm(dict):
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -13469,6 +13451,14 @@ class TransformerXnOhm(dict):
         unit of measure
         """
         return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

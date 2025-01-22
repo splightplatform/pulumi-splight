@@ -31,13 +31,13 @@ namespace Splight.Splight.Outputs
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// unit
+        /// unit of measure
         /// </summary>
         public readonly string? Unit;
         /// <summary>
         /// metadata value
         /// </summary>
-        public readonly string Value;
+        public readonly string? Value;
 
         [OutputConstructor]
         private LineConductorMass(
@@ -51,7 +51,7 @@ namespace Splight.Splight.Outputs
 
             string? unit,
 
-            string value)
+            string? value)
         {
             Asset = asset;
             Id = id;
