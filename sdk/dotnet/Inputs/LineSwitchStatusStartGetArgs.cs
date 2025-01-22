@@ -43,12 +43,6 @@ namespace Splight.Splight.Inputs
         [Input("unit")]
         public Input<string>? Unit { get; set; }
 
-        /// <summary>
-        /// metadata value
-        /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
         public LineSwitchStatusStartGetArgs()
         {
         }

@@ -2198,7 +2198,7 @@ type BusNominalVoltageKv struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // BusNominalVoltageKvInput is an input type that accepts BusNominalVoltageKvArgs and BusNominalVoltageKvOutput values.
@@ -2224,7 +2224,7 @@ type BusNominalVoltageKvArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (BusNominalVoltageKvArgs) ElementType() reflect.Type {
@@ -2330,8 +2330,8 @@ func (o BusNominalVoltageKvOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o BusNominalVoltageKvOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v BusNominalVoltageKv) string { return v.Value }).(pulumi.StringOutput)
+func (o BusNominalVoltageKvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BusNominalVoltageKv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type BusNominalVoltageKvPtrOutput struct{ *pulumi.OutputState }
@@ -2414,7 +2414,7 @@ func (o BusNominalVoltageKvPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12646,7 +12646,7 @@ type GeneratorCo2Coefficient struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // GeneratorCo2CoefficientInput is an input type that accepts GeneratorCo2CoefficientArgs and GeneratorCo2CoefficientOutput values.
@@ -12672,7 +12672,7 @@ type GeneratorCo2CoefficientArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (GeneratorCo2CoefficientArgs) ElementType() reflect.Type {
@@ -12778,8 +12778,8 @@ func (o GeneratorCo2CoefficientOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o GeneratorCo2CoefficientOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GeneratorCo2Coefficient) string { return v.Value }).(pulumi.StringOutput)
+func (o GeneratorCo2CoefficientOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorCo2Coefficient) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type GeneratorCo2CoefficientPtrOutput struct{ *pulumi.OutputState }
@@ -12862,7 +12862,7 @@ func (o GeneratorCo2CoefficientPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -14366,7 +14366,7 @@ type InverterEnergyMeasurementType struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // InverterEnergyMeasurementTypeInput is an input type that accepts InverterEnergyMeasurementTypeArgs and InverterEnergyMeasurementTypeOutput values.
@@ -14392,7 +14392,7 @@ type InverterEnergyMeasurementTypeArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (InverterEnergyMeasurementTypeArgs) ElementType() reflect.Type {
@@ -14498,8 +14498,8 @@ func (o InverterEnergyMeasurementTypeOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o InverterEnergyMeasurementTypeOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v InverterEnergyMeasurementType) string { return v.Value }).(pulumi.StringOutput)
+func (o InverterEnergyMeasurementTypeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InverterEnergyMeasurementType) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type InverterEnergyMeasurementTypePtrOutput struct{ *pulumi.OutputState }
@@ -14582,7 +14582,7 @@ func (o InverterEnergyMeasurementTypePtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -14704,7 +14704,7 @@ type InverterMake struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // InverterMakeInput is an input type that accepts InverterMakeArgs and InverterMakeOutput values.
@@ -14730,7 +14730,7 @@ type InverterMakeArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (InverterMakeArgs) ElementType() reflect.Type {
@@ -14836,8 +14836,8 @@ func (o InverterMakeOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o InverterMakeOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v InverterMake) string { return v.Value }).(pulumi.StringOutput)
+func (o InverterMakeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InverterMake) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type InverterMakePtrOutput struct{ *pulumi.OutputState }
@@ -14920,7 +14920,7 @@ func (o InverterMakePtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -14936,7 +14936,7 @@ type InverterMaxActivePower struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // InverterMaxActivePowerInput is an input type that accepts InverterMaxActivePowerArgs and InverterMaxActivePowerOutput values.
@@ -14962,7 +14962,7 @@ type InverterMaxActivePowerArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (InverterMaxActivePowerArgs) ElementType() reflect.Type {
@@ -15068,8 +15068,8 @@ func (o InverterMaxActivePowerOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o InverterMaxActivePowerOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v InverterMaxActivePower) string { return v.Value }).(pulumi.StringOutput)
+func (o InverterMaxActivePowerOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InverterMaxActivePower) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type InverterMaxActivePowerPtrOutput struct{ *pulumi.OutputState }
@@ -15152,7 +15152,7 @@ func (o InverterMaxActivePowerPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -15168,7 +15168,7 @@ type InverterModel struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // InverterModelInput is an input type that accepts InverterModelArgs and InverterModelOutput values.
@@ -15194,7 +15194,7 @@ type InverterModelArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (InverterModelArgs) ElementType() reflect.Type {
@@ -15300,8 +15300,8 @@ func (o InverterModelOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o InverterModelOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v InverterModel) string { return v.Value }).(pulumi.StringOutput)
+func (o InverterModelOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InverterModel) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type InverterModelPtrOutput struct{ *pulumi.OutputState }
@@ -15384,7 +15384,7 @@ func (o InverterModelPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -15533,7 +15533,7 @@ type InverterSerialNumber struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // InverterSerialNumberInput is an input type that accepts InverterSerialNumberArgs and InverterSerialNumberOutput values.
@@ -15559,7 +15559,7 @@ type InverterSerialNumberArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (InverterSerialNumberArgs) ElementType() reflect.Type {
@@ -15665,8 +15665,8 @@ func (o InverterSerialNumberOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o InverterSerialNumberOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v InverterSerialNumber) string { return v.Value }).(pulumi.StringOutput)
+func (o InverterSerialNumberOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InverterSerialNumber) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type InverterSerialNumberPtrOutput struct{ *pulumi.OutputState }
@@ -15749,7 +15749,7 @@ func (o InverterSerialNumberPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -16137,7 +16137,7 @@ type LineAbsorptivity struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineAbsorptivityInput is an input type that accepts LineAbsorptivityArgs and LineAbsorptivityOutput values.
@@ -16163,7 +16163,7 @@ type LineAbsorptivityArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineAbsorptivityArgs) ElementType() reflect.Type {
@@ -16269,8 +16269,8 @@ func (o LineAbsorptivityOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o LineAbsorptivityOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineAbsorptivity) string { return v.Value }).(pulumi.StringOutput)
+func (o LineAbsorptivityOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineAbsorptivity) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineAbsorptivityPtrOutput struct{ *pulumi.OutputState }
@@ -16353,7 +16353,7 @@ func (o LineAbsorptivityPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -16768,7 +16768,7 @@ type LineAtmosphere struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineAtmosphereInput is an input type that accepts LineAtmosphereArgs and LineAtmosphereOutput values.
@@ -16794,7 +16794,7 @@ type LineAtmosphereArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineAtmosphereArgs) ElementType() reflect.Type {
@@ -16900,8 +16900,8 @@ func (o LineAtmosphereOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o LineAtmosphereOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineAtmosphere) string { return v.Value }).(pulumi.StringOutput)
+func (o LineAtmosphereOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineAtmosphere) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineAtmospherePtrOutput struct{ *pulumi.OutputState }
@@ -16984,7 +16984,7 @@ func (o LineAtmospherePtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17000,7 +17000,7 @@ type LineCapacitance struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineCapacitanceInput is an input type that accepts LineCapacitanceArgs and LineCapacitanceOutput values.
@@ -17026,7 +17026,7 @@ type LineCapacitanceArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineCapacitanceArgs) ElementType() reflect.Type {
@@ -17132,8 +17132,8 @@ func (o LineCapacitanceOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o LineCapacitanceOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineCapacitance) string { return v.Value }).(pulumi.StringOutput)
+func (o LineCapacitanceOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineCapacitance) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineCapacitancePtrOutput struct{ *pulumi.OutputState }
@@ -17216,7 +17216,7 @@ func (o LineCapacitancePtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17232,7 +17232,7 @@ type LineConductance struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineConductanceInput is an input type that accepts LineConductanceArgs and LineConductanceOutput values.
@@ -17258,7 +17258,7 @@ type LineConductanceArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineConductanceArgs) ElementType() reflect.Type {
@@ -17364,8 +17364,8 @@ func (o LineConductanceOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o LineConductanceOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineConductance) string { return v.Value }).(pulumi.StringOutput)
+func (o LineConductanceOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineConductance) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineConductancePtrOutput struct{ *pulumi.OutputState }
@@ -17448,7 +17448,7 @@ func (o LineConductancePtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17461,10 +17461,10 @@ type LineConductorMass struct {
 	Name *string `pulumi:"name"`
 	// [String|Boolean|Number] type of the data to be ingested in this attribute
 	Type *string `pulumi:"type"`
-	// unit
+	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineConductorMassInput is an input type that accepts LineConductorMassArgs and LineConductorMassOutput values.
@@ -17487,10 +17487,10 @@ type LineConductorMassArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// [String|Boolean|Number] type of the data to be ingested in this attribute
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// unit
+	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineConductorMassArgs) ElementType() reflect.Type {
@@ -17590,14 +17590,14 @@ func (o LineConductorMassOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LineConductorMass) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// unit
+// unit of measure
 func (o LineConductorMassOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LineConductorMass) *string { return v.Unit }).(pulumi.StringPtrOutput)
 }
 
 // metadata value
-func (o LineConductorMassOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineConductorMass) string { return v.Value }).(pulumi.StringOutput)
+func (o LineConductorMassOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineConductorMass) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineConductorMassPtrOutput struct{ *pulumi.OutputState }
@@ -17664,7 +17664,7 @@ func (o LineConductorMassPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// unit
+// unit of measure
 func (o LineConductorMassPtrOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LineConductorMass) *string {
 		if v == nil {
@@ -17680,7 +17680,7 @@ func (o LineConductorMassPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17695,8 +17695,6 @@ type LineContingency struct {
 	Type *string `pulumi:"type"`
 	// unit of measure
 	Unit *string `pulumi:"unit"`
-	// metadata value
-	Value string `pulumi:"value"`
 }
 
 // LineContingencyInput is an input type that accepts LineContingencyArgs and LineContingencyOutput values.
@@ -17721,8 +17719,6 @@ type LineContingencyArgs struct {
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
-	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (LineContingencyArgs) ElementType() reflect.Type {
@@ -17799,11 +17795,6 @@ func (o LineContingencyOutput) Type() pulumi.StringPtrOutput {
 // unit of measure
 func (o LineContingencyOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LineContingency) *string { return v.Unit }).(pulumi.StringPtrOutput)
-}
-
-// metadata value
-func (o LineContingencyOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineContingency) string { return v.Value }).(pulumi.StringOutput)
 }
 
 type LineContingencyArrayOutput struct{ *pulumi.OutputState }
@@ -18237,7 +18228,7 @@ type LineDiameter struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineDiameterInput is an input type that accepts LineDiameterArgs and LineDiameterOutput values.
@@ -18263,7 +18254,7 @@ type LineDiameterArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineDiameterArgs) ElementType() reflect.Type {
@@ -18369,8 +18360,8 @@ func (o LineDiameterOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o LineDiameterOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineDiameter) string { return v.Value }).(pulumi.StringOutput)
+func (o LineDiameterOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineDiameter) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineDiameterPtrOutput struct{ *pulumi.OutputState }
@@ -18453,7 +18444,7 @@ func (o LineDiameterPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -18469,7 +18460,7 @@ type LineEmissivity struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineEmissivityInput is an input type that accepts LineEmissivityArgs and LineEmissivityOutput values.
@@ -18495,7 +18486,7 @@ type LineEmissivityArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineEmissivityArgs) ElementType() reflect.Type {
@@ -18601,8 +18592,8 @@ func (o LineEmissivityOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o LineEmissivityOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineEmissivity) string { return v.Value }).(pulumi.StringOutput)
+func (o LineEmissivityOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineEmissivity) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineEmissivityPtrOutput struct{ *pulumi.OutputState }
@@ -18685,7 +18676,7 @@ func (o LineEmissivityPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -18940,7 +18931,7 @@ type LineLength struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineLengthInput is an input type that accepts LineLengthArgs and LineLengthOutput values.
@@ -18966,7 +18957,7 @@ type LineLengthArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineLengthArgs) ElementType() reflect.Type {
@@ -19072,8 +19063,8 @@ func (o LineLengthOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o LineLengthOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineLength) string { return v.Value }).(pulumi.StringOutput)
+func (o LineLengthOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineLength) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineLengthPtrOutput struct{ *pulumi.OutputState }
@@ -19156,7 +19147,7 @@ func (o LineLengthPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19305,7 +19296,7 @@ type LineMaximumAllowedCurrent struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineMaximumAllowedCurrentInput is an input type that accepts LineMaximumAllowedCurrentArgs and LineMaximumAllowedCurrentOutput values.
@@ -19331,7 +19322,7 @@ type LineMaximumAllowedCurrentArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineMaximumAllowedCurrentArgs) ElementType() reflect.Type {
@@ -19437,8 +19428,8 @@ func (o LineMaximumAllowedCurrentOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o LineMaximumAllowedCurrentOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineMaximumAllowedCurrent) string { return v.Value }).(pulumi.StringOutput)
+func (o LineMaximumAllowedCurrentOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedCurrent) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineMaximumAllowedCurrentPtrOutput struct{ *pulumi.OutputState }
@@ -19521,7 +19512,7 @@ func (o LineMaximumAllowedCurrentPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19537,7 +19528,7 @@ type LineMaximumAllowedPower struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineMaximumAllowedPowerInput is an input type that accepts LineMaximumAllowedPowerArgs and LineMaximumAllowedPowerOutput values.
@@ -19563,7 +19554,7 @@ type LineMaximumAllowedPowerArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineMaximumAllowedPowerArgs) ElementType() reflect.Type {
@@ -19669,8 +19660,8 @@ func (o LineMaximumAllowedPowerOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o LineMaximumAllowedPowerOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineMaximumAllowedPower) string { return v.Value }).(pulumi.StringOutput)
+func (o LineMaximumAllowedPowerOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedPower) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineMaximumAllowedPowerPtrOutput struct{ *pulumi.OutputState }
@@ -19753,7 +19744,7 @@ func (o LineMaximumAllowedPowerPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19769,7 +19760,7 @@ type LineMaximumAllowedTemperature struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineMaximumAllowedTemperatureInput is an input type that accepts LineMaximumAllowedTemperatureArgs and LineMaximumAllowedTemperatureOutput values.
@@ -19795,7 +19786,7 @@ type LineMaximumAllowedTemperatureArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineMaximumAllowedTemperatureArgs) ElementType() reflect.Type {
@@ -19901,8 +19892,8 @@ func (o LineMaximumAllowedTemperatureOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o LineMaximumAllowedTemperatureOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineMaximumAllowedTemperature) string { return v.Value }).(pulumi.StringOutput)
+func (o LineMaximumAllowedTemperatureOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperature) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineMaximumAllowedTemperaturePtrOutput struct{ *pulumi.OutputState }
@@ -19985,7 +19976,7 @@ func (o LineMaximumAllowedTemperaturePtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -20001,7 +19992,7 @@ type LineMaximumAllowedTemperatureLte struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineMaximumAllowedTemperatureLteInput is an input type that accepts LineMaximumAllowedTemperatureLteArgs and LineMaximumAllowedTemperatureLteOutput values.
@@ -20027,7 +20018,7 @@ type LineMaximumAllowedTemperatureLteArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineMaximumAllowedTemperatureLteArgs) ElementType() reflect.Type {
@@ -20133,8 +20124,8 @@ func (o LineMaximumAllowedTemperatureLteOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o LineMaximumAllowedTemperatureLteOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineMaximumAllowedTemperatureLte) string { return v.Value }).(pulumi.StringOutput)
+func (o LineMaximumAllowedTemperatureLteOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperatureLte) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineMaximumAllowedTemperatureLtePtrOutput struct{ *pulumi.OutputState }
@@ -20217,7 +20208,7 @@ func (o LineMaximumAllowedTemperatureLtePtrOutput) Value() pulumi.StringPtrOutpu
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -20233,7 +20224,7 @@ type LineMaximumAllowedTemperatureSte struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineMaximumAllowedTemperatureSteInput is an input type that accepts LineMaximumAllowedTemperatureSteArgs and LineMaximumAllowedTemperatureSteOutput values.
@@ -20259,7 +20250,7 @@ type LineMaximumAllowedTemperatureSteArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineMaximumAllowedTemperatureSteArgs) ElementType() reflect.Type {
@@ -20365,8 +20356,8 @@ func (o LineMaximumAllowedTemperatureSteOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o LineMaximumAllowedTemperatureSteOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineMaximumAllowedTemperatureSte) string { return v.Value }).(pulumi.StringOutput)
+func (o LineMaximumAllowedTemperatureSteOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineMaximumAllowedTemperatureSte) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineMaximumAllowedTemperatureStePtrOutput struct{ *pulumi.OutputState }
@@ -20449,7 +20440,7 @@ func (o LineMaximumAllowedTemperatureStePtrOutput) Value() pulumi.StringPtrOutpu
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -20465,7 +20456,7 @@ type LineNumberOfConductors struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineNumberOfConductorsInput is an input type that accepts LineNumberOfConductorsArgs and LineNumberOfConductorsOutput values.
@@ -20491,7 +20482,7 @@ type LineNumberOfConductorsArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineNumberOfConductorsArgs) ElementType() reflect.Type {
@@ -20597,8 +20588,8 @@ func (o LineNumberOfConductorsOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o LineNumberOfConductorsOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineNumberOfConductors) string { return v.Value }).(pulumi.StringOutput)
+func (o LineNumberOfConductorsOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineNumberOfConductors) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineNumberOfConductorsPtrOutput struct{ *pulumi.OutputState }
@@ -20681,7 +20672,7 @@ func (o LineNumberOfConductorsPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -20697,7 +20688,7 @@ type LineReactance struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineReactanceInput is an input type that accepts LineReactanceArgs and LineReactanceOutput values.
@@ -20723,7 +20714,7 @@ type LineReactanceArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineReactanceArgs) ElementType() reflect.Type {
@@ -20829,8 +20820,8 @@ func (o LineReactanceOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o LineReactanceOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineReactance) string { return v.Value }).(pulumi.StringOutput)
+func (o LineReactanceOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineReactance) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineReactancePtrOutput struct{ *pulumi.OutputState }
@@ -20913,7 +20904,7 @@ func (o LineReactancePtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -21062,7 +21053,7 @@ type LineReferenceResistance struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineReferenceResistanceInput is an input type that accepts LineReferenceResistanceArgs and LineReferenceResistanceOutput values.
@@ -21088,7 +21079,7 @@ type LineReferenceResistanceArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineReferenceResistanceArgs) ElementType() reflect.Type {
@@ -21194,8 +21185,8 @@ func (o LineReferenceResistanceOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o LineReferenceResistanceOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineReferenceResistance) string { return v.Value }).(pulumi.StringOutput)
+func (o LineReferenceResistanceOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineReferenceResistance) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineReferenceResistancePtrOutput struct{ *pulumi.OutputState }
@@ -21278,7 +21269,7 @@ func (o LineReferenceResistancePtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -21294,7 +21285,7 @@ type LineResistance struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineResistanceInput is an input type that accepts LineResistanceArgs and LineResistanceOutput values.
@@ -21320,7 +21311,7 @@ type LineResistanceArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineResistanceArgs) ElementType() reflect.Type {
@@ -21426,8 +21417,8 @@ func (o LineResistanceOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o LineResistanceOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineResistance) string { return v.Value }).(pulumi.StringOutput)
+func (o LineResistanceOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineResistance) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineResistancePtrOutput struct{ *pulumi.OutputState }
@@ -21510,7 +21501,7 @@ func (o LineResistancePtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -21526,7 +21517,7 @@ type LineSafetyMarginForPower struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineSafetyMarginForPowerInput is an input type that accepts LineSafetyMarginForPowerArgs and LineSafetyMarginForPowerOutput values.
@@ -21552,7 +21543,7 @@ type LineSafetyMarginForPowerArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineSafetyMarginForPowerArgs) ElementType() reflect.Type {
@@ -21658,8 +21649,8 @@ func (o LineSafetyMarginForPowerOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o LineSafetyMarginForPowerOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineSafetyMarginForPower) string { return v.Value }).(pulumi.StringOutput)
+func (o LineSafetyMarginForPowerOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSafetyMarginForPower) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineSafetyMarginForPowerPtrOutput struct{ *pulumi.OutputState }
@@ -21742,7 +21733,7 @@ func (o LineSafetyMarginForPowerPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -21758,7 +21749,7 @@ type LineSpecificHeat struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineSpecificHeatInput is an input type that accepts LineSpecificHeatArgs and LineSpecificHeatOutput values.
@@ -21784,7 +21775,7 @@ type LineSpecificHeatArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineSpecificHeatArgs) ElementType() reflect.Type {
@@ -21890,8 +21881,8 @@ func (o LineSpecificHeatOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o LineSpecificHeatOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineSpecificHeat) string { return v.Value }).(pulumi.StringOutput)
+func (o LineSpecificHeatOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSpecificHeat) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineSpecificHeatPtrOutput struct{ *pulumi.OutputState }
@@ -21974,7 +21965,7 @@ func (o LineSpecificHeatPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -21990,7 +21981,7 @@ type LineSusceptance struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineSusceptanceInput is an input type that accepts LineSusceptanceArgs and LineSusceptanceOutput values.
@@ -22016,7 +22007,7 @@ type LineSusceptanceArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineSusceptanceArgs) ElementType() reflect.Type {
@@ -22122,8 +22113,8 @@ func (o LineSusceptanceOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o LineSusceptanceOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineSusceptance) string { return v.Value }).(pulumi.StringOutput)
+func (o LineSusceptanceOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineSusceptance) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineSusceptancePtrOutput struct{ *pulumi.OutputState }
@@ -22206,7 +22197,7 @@ func (o LineSusceptancePtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -22221,8 +22212,6 @@ type LineSwitchStatusEnd struct {
 	Type *string `pulumi:"type"`
 	// unit of measure
 	Unit *string `pulumi:"unit"`
-	// metadata value
-	Value string `pulumi:"value"`
 }
 
 // LineSwitchStatusEndInput is an input type that accepts LineSwitchStatusEndArgs and LineSwitchStatusEndOutput values.
@@ -22247,8 +22236,6 @@ type LineSwitchStatusEndArgs struct {
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
-	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (LineSwitchStatusEndArgs) ElementType() reflect.Type {
@@ -22327,11 +22314,6 @@ func (o LineSwitchStatusEndOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LineSwitchStatusEnd) *string { return v.Unit }).(pulumi.StringPtrOutput)
 }
 
-// metadata value
-func (o LineSwitchStatusEndOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineSwitchStatusEnd) string { return v.Value }).(pulumi.StringOutput)
-}
-
 type LineSwitchStatusEndArrayOutput struct{ *pulumi.OutputState }
 
 func (LineSwitchStatusEndArrayOutput) ElementType() reflect.Type {
@@ -22363,8 +22345,6 @@ type LineSwitchStatusStart struct {
 	Type *string `pulumi:"type"`
 	// unit of measure
 	Unit *string `pulumi:"unit"`
-	// metadata value
-	Value string `pulumi:"value"`
 }
 
 // LineSwitchStatusStartInput is an input type that accepts LineSwitchStatusStartArgs and LineSwitchStatusStartOutput values.
@@ -22389,8 +22369,6 @@ type LineSwitchStatusStartArgs struct {
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
-	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (LineSwitchStatusStartArgs) ElementType() reflect.Type {
@@ -22467,11 +22445,6 @@ func (o LineSwitchStatusStartOutput) Type() pulumi.StringPtrOutput {
 // unit of measure
 func (o LineSwitchStatusStartOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LineSwitchStatusStart) *string { return v.Unit }).(pulumi.StringPtrOutput)
-}
-
-// metadata value
-func (o LineSwitchStatusStartOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineSwitchStatusStart) string { return v.Value }).(pulumi.StringOutput)
 }
 
 type LineSwitchStatusStartArrayOutput struct{ *pulumi.OutputState }
@@ -22612,7 +22585,7 @@ type LineTemperatureCoeffResistance struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineTemperatureCoeffResistanceInput is an input type that accepts LineTemperatureCoeffResistanceArgs and LineTemperatureCoeffResistanceOutput values.
@@ -22638,7 +22611,7 @@ type LineTemperatureCoeffResistanceArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineTemperatureCoeffResistanceArgs) ElementType() reflect.Type {
@@ -22744,8 +22717,8 @@ func (o LineTemperatureCoeffResistanceOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o LineTemperatureCoeffResistanceOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineTemperatureCoeffResistance) string { return v.Value }).(pulumi.StringOutput)
+func (o LineTemperatureCoeffResistanceOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineTemperatureCoeffResistance) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineTemperatureCoeffResistancePtrOutput struct{ *pulumi.OutputState }
@@ -22828,7 +22801,7 @@ func (o LineTemperatureCoeffResistancePtrOutput) Value() pulumi.StringPtrOutput 
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -22841,10 +22814,10 @@ type LineThermalElongationCoef struct {
 	Name *string `pulumi:"name"`
 	// [String|Boolean|Number] type of the data to be ingested in this attribute
 	Type *string `pulumi:"type"`
-	// unit
+	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // LineThermalElongationCoefInput is an input type that accepts LineThermalElongationCoefArgs and LineThermalElongationCoefOutput values.
@@ -22867,10 +22840,10 @@ type LineThermalElongationCoefArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// [String|Boolean|Number] type of the data to be ingested in this attribute
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// unit
+	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LineThermalElongationCoefArgs) ElementType() reflect.Type {
@@ -22970,14 +22943,14 @@ func (o LineThermalElongationCoefOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LineThermalElongationCoef) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// unit
+// unit of measure
 func (o LineThermalElongationCoefOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LineThermalElongationCoef) *string { return v.Unit }).(pulumi.StringPtrOutput)
 }
 
 // metadata value
-func (o LineThermalElongationCoefOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LineThermalElongationCoef) string { return v.Value }).(pulumi.StringOutput)
+func (o LineThermalElongationCoefOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LineThermalElongationCoef) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type LineThermalElongationCoefPtrOutput struct{ *pulumi.OutputState }
@@ -23044,7 +23017,7 @@ func (o LineThermalElongationCoefPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// unit
+// unit of measure
 func (o LineThermalElongationCoefPtrOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LineThermalElongationCoef) *string {
 		if v == nil {
@@ -23060,7 +23033,7 @@ func (o LineThermalElongationCoefPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -23475,7 +23448,7 @@ type SegmentAltitude struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // SegmentAltitudeInput is an input type that accepts SegmentAltitudeArgs and SegmentAltitudeOutput values.
@@ -23501,7 +23474,7 @@ type SegmentAltitudeArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (SegmentAltitudeArgs) ElementType() reflect.Type {
@@ -23607,8 +23580,8 @@ func (o SegmentAltitudeOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o SegmentAltitudeOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v SegmentAltitude) string { return v.Value }).(pulumi.StringOutput)
+func (o SegmentAltitudeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentAltitude) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type SegmentAltitudePtrOutput struct{ *pulumi.OutputState }
@@ -23691,7 +23664,7 @@ func (o SegmentAltitudePtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -23707,7 +23680,7 @@ type SegmentAzimuth struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // SegmentAzimuthInput is an input type that accepts SegmentAzimuthArgs and SegmentAzimuthOutput values.
@@ -23733,7 +23706,7 @@ type SegmentAzimuthArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (SegmentAzimuthArgs) ElementType() reflect.Type {
@@ -23839,8 +23812,8 @@ func (o SegmentAzimuthOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o SegmentAzimuthOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v SegmentAzimuth) string { return v.Value }).(pulumi.StringOutput)
+func (o SegmentAzimuthOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentAzimuth) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type SegmentAzimuthPtrOutput struct{ *pulumi.OutputState }
@@ -23923,7 +23896,7 @@ func (o SegmentAzimuthPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -23939,7 +23912,7 @@ type SegmentCumulativeDistance struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // SegmentCumulativeDistanceInput is an input type that accepts SegmentCumulativeDistanceArgs and SegmentCumulativeDistanceOutput values.
@@ -23965,7 +23938,7 @@ type SegmentCumulativeDistanceArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (SegmentCumulativeDistanceArgs) ElementType() reflect.Type {
@@ -24071,8 +24044,8 @@ func (o SegmentCumulativeDistanceOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o SegmentCumulativeDistanceOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v SegmentCumulativeDistance) string { return v.Value }).(pulumi.StringOutput)
+func (o SegmentCumulativeDistanceOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentCumulativeDistance) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type SegmentCumulativeDistancePtrOutput struct{ *pulumi.OutputState }
@@ -24155,7 +24128,7 @@ func (o SegmentCumulativeDistancePtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -24277,7 +24250,7 @@ type SegmentReferenceSag struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // SegmentReferenceSagInput is an input type that accepts SegmentReferenceSagArgs and SegmentReferenceSagOutput values.
@@ -24303,7 +24276,7 @@ type SegmentReferenceSagArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (SegmentReferenceSagArgs) ElementType() reflect.Type {
@@ -24409,8 +24382,8 @@ func (o SegmentReferenceSagOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o SegmentReferenceSagOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v SegmentReferenceSag) string { return v.Value }).(pulumi.StringOutput)
+func (o SegmentReferenceSagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentReferenceSag) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type SegmentReferenceSagPtrOutput struct{ *pulumi.OutputState }
@@ -24493,7 +24466,7 @@ func (o SegmentReferenceSagPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -24509,7 +24482,7 @@ type SegmentReferenceTemperature struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // SegmentReferenceTemperatureInput is an input type that accepts SegmentReferenceTemperatureArgs and SegmentReferenceTemperatureOutput values.
@@ -24535,7 +24508,7 @@ type SegmentReferenceTemperatureArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (SegmentReferenceTemperatureArgs) ElementType() reflect.Type {
@@ -24641,8 +24614,8 @@ func (o SegmentReferenceTemperatureOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o SegmentReferenceTemperatureOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v SegmentReferenceTemperature) string { return v.Value }).(pulumi.StringOutput)
+func (o SegmentReferenceTemperatureOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentReferenceTemperature) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type SegmentReferenceTemperaturePtrOutput struct{ *pulumi.OutputState }
@@ -24725,7 +24698,7 @@ func (o SegmentReferenceTemperaturePtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -24741,7 +24714,7 @@ type SegmentSpanLength struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // SegmentSpanLengthInput is an input type that accepts SegmentSpanLengthArgs and SegmentSpanLengthOutput values.
@@ -24767,7 +24740,7 @@ type SegmentSpanLengthArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (SegmentSpanLengthArgs) ElementType() reflect.Type {
@@ -24873,8 +24846,8 @@ func (o SegmentSpanLengthOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o SegmentSpanLengthOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v SegmentSpanLength) string { return v.Value }).(pulumi.StringOutput)
+func (o SegmentSpanLengthOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SegmentSpanLength) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type SegmentSpanLengthPtrOutput struct{ *pulumi.OutputState }
@@ -24957,7 +24930,7 @@ func (o SegmentSpanLengthPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -26031,8 +26004,6 @@ type SlackLineSwitchStatusEnd struct {
 	Type *string `pulumi:"type"`
 	// unit of measure
 	Unit *string `pulumi:"unit"`
-	// metadata value
-	Value string `pulumi:"value"`
 }
 
 // SlackLineSwitchStatusEndInput is an input type that accepts SlackLineSwitchStatusEndArgs and SlackLineSwitchStatusEndOutput values.
@@ -26057,8 +26028,6 @@ type SlackLineSwitchStatusEndArgs struct {
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
-	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (SlackLineSwitchStatusEndArgs) ElementType() reflect.Type {
@@ -26137,11 +26106,6 @@ func (o SlackLineSwitchStatusEndOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SlackLineSwitchStatusEnd) *string { return v.Unit }).(pulumi.StringPtrOutput)
 }
 
-// metadata value
-func (o SlackLineSwitchStatusEndOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v SlackLineSwitchStatusEnd) string { return v.Value }).(pulumi.StringOutput)
-}
-
 type SlackLineSwitchStatusEndArrayOutput struct{ *pulumi.OutputState }
 
 func (SlackLineSwitchStatusEndArrayOutput) ElementType() reflect.Type {
@@ -26173,8 +26137,6 @@ type SlackLineSwitchStatusStart struct {
 	Type *string `pulumi:"type"`
 	// unit of measure
 	Unit *string `pulumi:"unit"`
-	// metadata value
-	Value string `pulumi:"value"`
 }
 
 // SlackLineSwitchStatusStartInput is an input type that accepts SlackLineSwitchStatusStartArgs and SlackLineSwitchStatusStartOutput values.
@@ -26199,8 +26161,6 @@ type SlackLineSwitchStatusStartArgs struct {
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
-	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (SlackLineSwitchStatusStartArgs) ElementType() reflect.Type {
@@ -26277,11 +26237,6 @@ func (o SlackLineSwitchStatusStartOutput) Type() pulumi.StringPtrOutput {
 // unit of measure
 func (o SlackLineSwitchStatusStartOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SlackLineSwitchStatusStart) *string { return v.Unit }).(pulumi.StringPtrOutput)
-}
-
-// metadata value
-func (o SlackLineSwitchStatusStartOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v SlackLineSwitchStatusStart) string { return v.Value }).(pulumi.StringOutput)
 }
 
 type SlackLineSwitchStatusStartArrayOutput struct{ *pulumi.OutputState }
@@ -26821,7 +26776,7 @@ type TransformerCapacitance struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // TransformerCapacitanceInput is an input type that accepts TransformerCapacitanceArgs and TransformerCapacitanceOutput values.
@@ -26847,7 +26802,7 @@ type TransformerCapacitanceArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (TransformerCapacitanceArgs) ElementType() reflect.Type {
@@ -26953,8 +26908,8 @@ func (o TransformerCapacitanceOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o TransformerCapacitanceOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v TransformerCapacitance) string { return v.Value }).(pulumi.StringOutput)
+func (o TransformerCapacitanceOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerCapacitance) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type TransformerCapacitancePtrOutput struct{ *pulumi.OutputState }
@@ -27037,7 +26992,7 @@ func (o TransformerCapacitancePtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27053,7 +27008,7 @@ type TransformerConductance struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // TransformerConductanceInput is an input type that accepts TransformerConductanceArgs and TransformerConductanceOutput values.
@@ -27079,7 +27034,7 @@ type TransformerConductanceArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (TransformerConductanceArgs) ElementType() reflect.Type {
@@ -27185,8 +27140,8 @@ func (o TransformerConductanceOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o TransformerConductanceOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v TransformerConductance) string { return v.Value }).(pulumi.StringOutput)
+func (o TransformerConductanceOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerConductance) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type TransformerConductancePtrOutput struct{ *pulumi.OutputState }
@@ -27269,7 +27224,7 @@ func (o TransformerConductancePtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27790,7 +27745,7 @@ type TransformerMaximumAllowedCurrent struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // TransformerMaximumAllowedCurrentInput is an input type that accepts TransformerMaximumAllowedCurrentArgs and TransformerMaximumAllowedCurrentOutput values.
@@ -27816,7 +27771,7 @@ type TransformerMaximumAllowedCurrentArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (TransformerMaximumAllowedCurrentArgs) ElementType() reflect.Type {
@@ -27922,8 +27877,8 @@ func (o TransformerMaximumAllowedCurrentOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o TransformerMaximumAllowedCurrentOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v TransformerMaximumAllowedCurrent) string { return v.Value }).(pulumi.StringOutput)
+func (o TransformerMaximumAllowedCurrentOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerMaximumAllowedCurrent) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type TransformerMaximumAllowedCurrentPtrOutput struct{ *pulumi.OutputState }
@@ -28006,7 +27961,7 @@ func (o TransformerMaximumAllowedCurrentPtrOutput) Value() pulumi.StringPtrOutpu
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -28022,7 +27977,7 @@ type TransformerMaximumAllowedPower struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // TransformerMaximumAllowedPowerInput is an input type that accepts TransformerMaximumAllowedPowerArgs and TransformerMaximumAllowedPowerOutput values.
@@ -28048,7 +28003,7 @@ type TransformerMaximumAllowedPowerArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (TransformerMaximumAllowedPowerArgs) ElementType() reflect.Type {
@@ -28154,8 +28109,8 @@ func (o TransformerMaximumAllowedPowerOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o TransformerMaximumAllowedPowerOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v TransformerMaximumAllowedPower) string { return v.Value }).(pulumi.StringOutput)
+func (o TransformerMaximumAllowedPowerOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerMaximumAllowedPower) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type TransformerMaximumAllowedPowerPtrOutput struct{ *pulumi.OutputState }
@@ -28238,7 +28193,7 @@ func (o TransformerMaximumAllowedPowerPtrOutput) Value() pulumi.StringPtrOutput 
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -28254,7 +28209,7 @@ type TransformerReactance struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // TransformerReactanceInput is an input type that accepts TransformerReactanceArgs and TransformerReactanceOutput values.
@@ -28280,7 +28235,7 @@ type TransformerReactanceArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (TransformerReactanceArgs) ElementType() reflect.Type {
@@ -28386,8 +28341,8 @@ func (o TransformerReactanceOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o TransformerReactanceOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v TransformerReactance) string { return v.Value }).(pulumi.StringOutput)
+func (o TransformerReactanceOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerReactance) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type TransformerReactancePtrOutput struct{ *pulumi.OutputState }
@@ -28470,7 +28425,7 @@ func (o TransformerReactancePtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -28885,7 +28840,7 @@ type TransformerResistance struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // TransformerResistanceInput is an input type that accepts TransformerResistanceArgs and TransformerResistanceOutput values.
@@ -28911,7 +28866,7 @@ type TransformerResistanceArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (TransformerResistanceArgs) ElementType() reflect.Type {
@@ -29017,8 +28972,8 @@ func (o TransformerResistanceOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o TransformerResistanceOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v TransformerResistance) string { return v.Value }).(pulumi.StringOutput)
+func (o TransformerResistanceOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerResistance) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type TransformerResistancePtrOutput struct{ *pulumi.OutputState }
@@ -29101,7 +29056,7 @@ func (o TransformerResistancePtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29117,7 +29072,7 @@ type TransformerSafetyMarginForPower struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // TransformerSafetyMarginForPowerInput is an input type that accepts TransformerSafetyMarginForPowerArgs and TransformerSafetyMarginForPowerOutput values.
@@ -29143,7 +29098,7 @@ type TransformerSafetyMarginForPowerArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (TransformerSafetyMarginForPowerArgs) ElementType() reflect.Type {
@@ -29249,8 +29204,8 @@ func (o TransformerSafetyMarginForPowerOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o TransformerSafetyMarginForPowerOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v TransformerSafetyMarginForPower) string { return v.Value }).(pulumi.StringOutput)
+func (o TransformerSafetyMarginForPowerOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerSafetyMarginForPower) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type TransformerSafetyMarginForPowerPtrOutput struct{ *pulumi.OutputState }
@@ -29333,7 +29288,7 @@ func (o TransformerSafetyMarginForPowerPtrOutput) Value() pulumi.StringPtrOutput
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29349,7 +29304,7 @@ type TransformerStandardType struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // TransformerStandardTypeInput is an input type that accepts TransformerStandardTypeArgs and TransformerStandardTypeOutput values.
@@ -29375,7 +29330,7 @@ type TransformerStandardTypeArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (TransformerStandardTypeArgs) ElementType() reflect.Type {
@@ -29481,8 +29436,8 @@ func (o TransformerStandardTypeOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o TransformerStandardTypeOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v TransformerStandardType) string { return v.Value }).(pulumi.StringOutput)
+func (o TransformerStandardTypeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerStandardType) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type TransformerStandardTypePtrOutput struct{ *pulumi.OutputState }
@@ -29565,7 +29520,7 @@ func (o TransformerStandardTypePtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29953,7 +29908,7 @@ type TransformerTapPos struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // TransformerTapPosInput is an input type that accepts TransformerTapPosArgs and TransformerTapPosOutput values.
@@ -29979,7 +29934,7 @@ type TransformerTapPosArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (TransformerTapPosArgs) ElementType() reflect.Type {
@@ -30085,8 +30040,8 @@ func (o TransformerTapPosOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o TransformerTapPosOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v TransformerTapPos) string { return v.Value }).(pulumi.StringOutput)
+func (o TransformerTapPosOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerTapPos) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type TransformerTapPosPtrOutput struct{ *pulumi.OutputState }
@@ -30169,7 +30124,7 @@ func (o TransformerTapPosPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -30451,7 +30406,7 @@ type TransformerXnOhm struct {
 	// unit of measure
 	Unit *string `pulumi:"unit"`
 	// metadata value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // TransformerXnOhmInput is an input type that accepts TransformerXnOhmArgs and TransformerXnOhmOutput values.
@@ -30477,7 +30432,7 @@ type TransformerXnOhmArgs struct {
 	// unit of measure
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// metadata value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (TransformerXnOhmArgs) ElementType() reflect.Type {
@@ -30583,8 +30538,8 @@ func (o TransformerXnOhmOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // metadata value
-func (o TransformerXnOhmOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v TransformerXnOhm) string { return v.Value }).(pulumi.StringOutput)
+func (o TransformerXnOhmOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformerXnOhm) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type TransformerXnOhmPtrOutput struct{ *pulumi.OutputState }
@@ -30667,7 +30622,7 @@ func (o TransformerXnOhmPtrOutput) Value() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Value
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
