@@ -25887,6 +25887,218 @@ func (o ServerTagArrayOutput) Index(i pulumi.IntInput) ServerTagOutput {
 	}).(ServerTagOutput)
 }
 
+type SlackGeneratorKind struct {
+	// kind id
+	Id string `pulumi:"id"`
+	// kind name
+	Name string `pulumi:"name"`
+}
+
+// SlackGeneratorKindInput is an input type that accepts SlackGeneratorKindArgs and SlackGeneratorKindOutput values.
+// You can construct a concrete instance of `SlackGeneratorKindInput` via:
+//
+//	SlackGeneratorKindArgs{...}
+type SlackGeneratorKindInput interface {
+	pulumi.Input
+
+	ToSlackGeneratorKindOutput() SlackGeneratorKindOutput
+	ToSlackGeneratorKindOutputWithContext(context.Context) SlackGeneratorKindOutput
+}
+
+type SlackGeneratorKindArgs struct {
+	// kind id
+	Id pulumi.StringInput `pulumi:"id"`
+	// kind name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (SlackGeneratorKindArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlackGeneratorKind)(nil)).Elem()
+}
+
+func (i SlackGeneratorKindArgs) ToSlackGeneratorKindOutput() SlackGeneratorKindOutput {
+	return i.ToSlackGeneratorKindOutputWithContext(context.Background())
+}
+
+func (i SlackGeneratorKindArgs) ToSlackGeneratorKindOutputWithContext(ctx context.Context) SlackGeneratorKindOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlackGeneratorKindOutput)
+}
+
+// SlackGeneratorKindArrayInput is an input type that accepts SlackGeneratorKindArray and SlackGeneratorKindArrayOutput values.
+// You can construct a concrete instance of `SlackGeneratorKindArrayInput` via:
+//
+//	SlackGeneratorKindArray{ SlackGeneratorKindArgs{...} }
+type SlackGeneratorKindArrayInput interface {
+	pulumi.Input
+
+	ToSlackGeneratorKindArrayOutput() SlackGeneratorKindArrayOutput
+	ToSlackGeneratorKindArrayOutputWithContext(context.Context) SlackGeneratorKindArrayOutput
+}
+
+type SlackGeneratorKindArray []SlackGeneratorKindInput
+
+func (SlackGeneratorKindArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SlackGeneratorKind)(nil)).Elem()
+}
+
+func (i SlackGeneratorKindArray) ToSlackGeneratorKindArrayOutput() SlackGeneratorKindArrayOutput {
+	return i.ToSlackGeneratorKindArrayOutputWithContext(context.Background())
+}
+
+func (i SlackGeneratorKindArray) ToSlackGeneratorKindArrayOutputWithContext(ctx context.Context) SlackGeneratorKindArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlackGeneratorKindArrayOutput)
+}
+
+type SlackGeneratorKindOutput struct{ *pulumi.OutputState }
+
+func (SlackGeneratorKindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlackGeneratorKind)(nil)).Elem()
+}
+
+func (o SlackGeneratorKindOutput) ToSlackGeneratorKindOutput() SlackGeneratorKindOutput {
+	return o
+}
+
+func (o SlackGeneratorKindOutput) ToSlackGeneratorKindOutputWithContext(ctx context.Context) SlackGeneratorKindOutput {
+	return o
+}
+
+// kind id
+func (o SlackGeneratorKindOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v SlackGeneratorKind) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// kind name
+func (o SlackGeneratorKindOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SlackGeneratorKind) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type SlackGeneratorKindArrayOutput struct{ *pulumi.OutputState }
+
+func (SlackGeneratorKindArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SlackGeneratorKind)(nil)).Elem()
+}
+
+func (o SlackGeneratorKindArrayOutput) ToSlackGeneratorKindArrayOutput() SlackGeneratorKindArrayOutput {
+	return o
+}
+
+func (o SlackGeneratorKindArrayOutput) ToSlackGeneratorKindArrayOutputWithContext(ctx context.Context) SlackGeneratorKindArrayOutput {
+	return o
+}
+
+func (o SlackGeneratorKindArrayOutput) Index(i pulumi.IntInput) SlackGeneratorKindOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SlackGeneratorKind {
+		return vs[0].([]SlackGeneratorKind)[vs[1].(int)]
+	}).(SlackGeneratorKindOutput)
+}
+
+type SlackGeneratorTag struct {
+	// tag id
+	Id string `pulumi:"id"`
+	// tag name
+	Name string `pulumi:"name"`
+}
+
+// SlackGeneratorTagInput is an input type that accepts SlackGeneratorTagArgs and SlackGeneratorTagOutput values.
+// You can construct a concrete instance of `SlackGeneratorTagInput` via:
+//
+//	SlackGeneratorTagArgs{...}
+type SlackGeneratorTagInput interface {
+	pulumi.Input
+
+	ToSlackGeneratorTagOutput() SlackGeneratorTagOutput
+	ToSlackGeneratorTagOutputWithContext(context.Context) SlackGeneratorTagOutput
+}
+
+type SlackGeneratorTagArgs struct {
+	// tag id
+	Id pulumi.StringInput `pulumi:"id"`
+	// tag name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (SlackGeneratorTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlackGeneratorTag)(nil)).Elem()
+}
+
+func (i SlackGeneratorTagArgs) ToSlackGeneratorTagOutput() SlackGeneratorTagOutput {
+	return i.ToSlackGeneratorTagOutputWithContext(context.Background())
+}
+
+func (i SlackGeneratorTagArgs) ToSlackGeneratorTagOutputWithContext(ctx context.Context) SlackGeneratorTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlackGeneratorTagOutput)
+}
+
+// SlackGeneratorTagArrayInput is an input type that accepts SlackGeneratorTagArray and SlackGeneratorTagArrayOutput values.
+// You can construct a concrete instance of `SlackGeneratorTagArrayInput` via:
+//
+//	SlackGeneratorTagArray{ SlackGeneratorTagArgs{...} }
+type SlackGeneratorTagArrayInput interface {
+	pulumi.Input
+
+	ToSlackGeneratorTagArrayOutput() SlackGeneratorTagArrayOutput
+	ToSlackGeneratorTagArrayOutputWithContext(context.Context) SlackGeneratorTagArrayOutput
+}
+
+type SlackGeneratorTagArray []SlackGeneratorTagInput
+
+func (SlackGeneratorTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SlackGeneratorTag)(nil)).Elem()
+}
+
+func (i SlackGeneratorTagArray) ToSlackGeneratorTagArrayOutput() SlackGeneratorTagArrayOutput {
+	return i.ToSlackGeneratorTagArrayOutputWithContext(context.Background())
+}
+
+func (i SlackGeneratorTagArray) ToSlackGeneratorTagArrayOutputWithContext(ctx context.Context) SlackGeneratorTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlackGeneratorTagArrayOutput)
+}
+
+type SlackGeneratorTagOutput struct{ *pulumi.OutputState }
+
+func (SlackGeneratorTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlackGeneratorTag)(nil)).Elem()
+}
+
+func (o SlackGeneratorTagOutput) ToSlackGeneratorTagOutput() SlackGeneratorTagOutput {
+	return o
+}
+
+func (o SlackGeneratorTagOutput) ToSlackGeneratorTagOutputWithContext(ctx context.Context) SlackGeneratorTagOutput {
+	return o
+}
+
+// tag id
+func (o SlackGeneratorTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v SlackGeneratorTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// tag name
+func (o SlackGeneratorTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SlackGeneratorTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type SlackGeneratorTagArrayOutput struct{ *pulumi.OutputState }
+
+func (SlackGeneratorTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SlackGeneratorTag)(nil)).Elem()
+}
+
+func (o SlackGeneratorTagArrayOutput) ToSlackGeneratorTagArrayOutput() SlackGeneratorTagArrayOutput {
+	return o
+}
+
+func (o SlackGeneratorTagArrayOutput) ToSlackGeneratorTagArrayOutputWithContext(ctx context.Context) SlackGeneratorTagArrayOutput {
+	return o
+}
+
+func (o SlackGeneratorTagArrayOutput) Index(i pulumi.IntInput) SlackGeneratorTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SlackGeneratorTag {
+		return vs[0].([]SlackGeneratorTag)[vs[1].(int)]
+	}).(SlackGeneratorTagOutput)
+}
+
 type SlackLineKind struct {
 	// kind id
 	Id string `pulumi:"id"`
@@ -31613,6 +31825,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerPortArrayInput)(nil)).Elem(), ServerPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTagInput)(nil)).Elem(), ServerTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTagArrayInput)(nil)).Elem(), ServerTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlackGeneratorKindInput)(nil)).Elem(), SlackGeneratorKindArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlackGeneratorKindArrayInput)(nil)).Elem(), SlackGeneratorKindArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlackGeneratorTagInput)(nil)).Elem(), SlackGeneratorTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlackGeneratorTagArrayInput)(nil)).Elem(), SlackGeneratorTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlackLineKindInput)(nil)).Elem(), SlackLineKindArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlackLineKindArrayInput)(nil)).Elem(), SlackLineKindArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlackLineSwitchStatusEndInput)(nil)).Elem(), SlackLineSwitchStatusEndArgs{})
@@ -32033,6 +32249,10 @@ func init() {
 	pulumi.RegisterOutputType(ServerPortArrayOutput{})
 	pulumi.RegisterOutputType(ServerTagOutput{})
 	pulumi.RegisterOutputType(ServerTagArrayOutput{})
+	pulumi.RegisterOutputType(SlackGeneratorKindOutput{})
+	pulumi.RegisterOutputType(SlackGeneratorKindArrayOutput{})
+	pulumi.RegisterOutputType(SlackGeneratorTagOutput{})
+	pulumi.RegisterOutputType(SlackGeneratorTagArrayOutput{})
 	pulumi.RegisterOutputType(SlackLineKindOutput{})
 	pulumi.RegisterOutputType(SlackLineKindArrayOutput{})
 	pulumi.RegisterOutputType(SlackLineSwitchStatusEndOutput{})

@@ -900,6 +900,18 @@
                     }
                 }
             },
+            "splight_slack_generator": {
+                "current": "splight:index/slackGenerator:SlackGenerator",
+                "majorVersion": 1,
+                "fields": {
+                    "kind": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "splight_slack_line": {
                 "current": "splight:index/slackLine:SlackLine",
                 "majorVersion": 1,

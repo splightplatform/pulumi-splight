@@ -5541,6 +5541,42 @@
                 "name"
             ]
         },
+        "splight:index/SlackGeneratorKind:SlackGeneratorKind": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "kind id\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "kind name\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "splight:index/SlackGeneratorTag:SlackGeneratorTag": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "tag id\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "tag name\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
         "splight:index/SlackLineKind:SlackLineKind": {
             "properties": {
                 "id": {
@@ -15782,6 +15818,106 @@
                     "version": {
                         "type": "string",
                         "description": "[NAME-VERSION] the version of the hub server\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "splight:index/slackGenerator:SlackGenerator": {
+            "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/slackGenerator:SlackGenerator [options] splight_slack_generator.\u003cname\u003e \u003cslack_generator_id\u003e\n```\n\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "description of the resource\n"
+                },
+                "geometry": {
+                    "type": "string",
+                    "description": "geo position and shape of the resource\n"
+                },
+                "kinds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/SlackGeneratorKind:SlackGeneratorKind"
+                    },
+                    "description": "kind of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/SlackGeneratorTag:SlackGeneratorTag"
+                    },
+                    "description": "tags of the resource\n"
+                },
+                "timezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
+                }
+            },
+            "required": [
+                "kinds",
+                "name"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "description of the resource\n"
+                },
+                "geometry": {
+                    "type": "string",
+                    "description": "geo position and shape of the resource\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the resource\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/splight:index/SlackGeneratorTag:SlackGeneratorTag"
+                    },
+                    "description": "tags of the resource\n"
+                },
+                "timezone": {
+                    "type": "string",
+                    "description": "timezone that overrides location-based timezone of the resource\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SlackGenerator resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "description of the resource\n"
+                    },
+                    "geometry": {
+                        "type": "string",
+                        "description": "geo position and shape of the resource\n"
+                    },
+                    "kinds": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/SlackGeneratorKind:SlackGeneratorKind"
+                        },
+                        "description": "kind of the resource\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "name of the resource\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/splight:index/SlackGeneratorTag:SlackGeneratorTag"
+                        },
+                        "description": "tags of the resource\n"
+                    },
+                    "timezone": {
+                        "type": "string",
+                        "description": "timezone that overrides location-based timezone of the resource\n"
                     }
                 },
                 "type": "object"

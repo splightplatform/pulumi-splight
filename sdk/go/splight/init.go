@@ -101,6 +101,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Segment{}
 	case "splight:index/server:Server":
 		r = &Server{}
+	case "splight:index/slackGenerator:SlackGenerator":
+		r = &SlackGenerator{}
 	case "splight:index/slackLine:SlackLine":
 		r = &SlackLine{}
 	case "splight:index/tag:Tag":
@@ -336,6 +338,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"splight",
 		"index/server",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"splight",
+		"index/slackGenerator",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

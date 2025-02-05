@@ -399,6 +399,10 @@ __all__ = [
     'ServerPortArgsDict',
     'ServerTagArgs',
     'ServerTagArgsDict',
+    'SlackGeneratorKindArgs',
+    'SlackGeneratorKindArgsDict',
+    'SlackGeneratorTagArgs',
+    'SlackGeneratorTagArgsDict',
     'SlackLineKindArgs',
     'SlackLineKindArgsDict',
     'SlackLineSwitchStatusEndArgs',
@@ -17664,6 +17668,106 @@ elif False:
 
 @pulumi.input_type
 class ServerTagArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: tag id
+        :param pulumi.Input[str] name: tag name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        tag name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class SlackGeneratorKindArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        kind id
+        """
+        name: pulumi.Input[str]
+        """
+        kind name
+        """
+elif False:
+    SlackGeneratorKindArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SlackGeneratorKindArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: kind id
+        :param pulumi.Input[str] name: kind name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        kind id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        kind name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class SlackGeneratorTagArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        tag id
+        """
+        name: pulumi.Input[str]
+        """
+        tag name
+        """
+elif False:
+    SlackGeneratorTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SlackGeneratorTagArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
                  name: pulumi.Input[str]):
