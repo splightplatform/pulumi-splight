@@ -208,6 +208,8 @@ __all__ = [
     'ServerEnvVar',
     'ServerPort',
     'ServerTag',
+    'SlackGeneratorKind',
+    'SlackGeneratorTag',
     'SlackLineKind',
     'SlackLineSwitchStatusEnd',
     'SlackLineSwitchStatusStart',
@@ -11523,6 +11525,64 @@ class ServerPort(dict):
 
 @pulumi.output_type
 class ServerTag(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: tag id
+        :param str name: tag name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        tag id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        tag name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class SlackGeneratorKind(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        """
+        :param str id: kind id
+        :param str name: kind name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        kind id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        kind name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class SlackGeneratorTag(dict):
     def __init__(__self__, *,
                  id: str,
                  name: str):

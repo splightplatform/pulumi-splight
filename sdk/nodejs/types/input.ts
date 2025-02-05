@@ -3148,6 +3148,28 @@ export interface ServerTag {
     name: pulumi.Input<string>;
 }
 
+export interface SlackGeneratorKind {
+    /**
+     * kind id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * kind name
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface SlackGeneratorTag {
+    /**
+     * tag id
+     */
+    id: pulumi.Input<string>;
+    /**
+     * tag name
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface SlackLineKind {
     /**
      * kind id

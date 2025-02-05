@@ -3214,6 +3214,28 @@ export interface ServerTag {
     name: string;
 }
 
+export interface SlackGeneratorKind {
+    /**
+     * kind id
+     */
+    id: string;
+    /**
+     * kind name
+     */
+    name: string;
+}
+
+export interface SlackGeneratorTag {
+    /**
+     * tag id
+     */
+    id: string;
+    /**
+     * tag name
+     */
+    name: string;
+}
+
 export interface SlackLineKind {
     /**
      * kind id

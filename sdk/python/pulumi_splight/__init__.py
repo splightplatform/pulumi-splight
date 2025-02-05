@@ -52,6 +52,7 @@ from .provider import *
 from .secret import *
 from .segment import *
 from .server import *
+from .slack_generator import *
 from .slack_line import *
 from .tag import *
 from .transformer import *
@@ -386,6 +387,14 @@ _utilities.register(
   "fqn": "pulumi_splight",
   "classes": {
    "splight:index/server:Server": "Server"
+  }
+ },
+ {
+  "pkg": "splight",
+  "mod": "index/slackGenerator",
+  "fqn": "pulumi_splight",
+  "classes": {
+   "splight:index/slackGenerator:SlackGenerator": "SlackGenerator"
   }
  },
  {

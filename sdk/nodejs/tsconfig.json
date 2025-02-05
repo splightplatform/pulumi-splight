@@ -63,6 +63,7 @@
         "secret.ts",
         "segment.ts",
         "server.ts",
+        "slackGenerator.ts",
         "slackLine.ts",
         "tag.ts",
         "transformer.ts",

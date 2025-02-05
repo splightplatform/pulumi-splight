@@ -240,6 +240,11 @@ export type Server = import("./server").Server;
 export const Server: typeof import("./server").Server = null as any;
 utilities.lazyLoad(exports, ["Server"], () => require("./server"));
 
+export { SlackGeneratorArgs, SlackGeneratorState } from "./slackGenerator";
+export type SlackGenerator = import("./slackGenerator").SlackGenerator;
+export const SlackGenerator: typeof import("./slackGenerator").SlackGenerator = null as any;
+utilities.lazyLoad(exports, ["SlackGenerator"], () => require("./slackGenerator"));
+
 export { SlackLineArgs, SlackLineState } from "./slackLine";
 export type SlackLine = import("./slackLine").SlackLine;
 export const SlackLine: typeof import("./slackLine").SlackLine = null as any;
@@ -349,6 +354,8 @@ const _module = {
                 return new Segment(name, <any>undefined, { urn })
             case "splight:index/server:Server":
                 return new Server(name, <any>undefined, { urn })
+            case "splight:index/slackGenerator:SlackGenerator":
+                return new SlackGenerator(name, <any>undefined, { urn })
             case "splight:index/slackLine:SlackLine":
                 return new SlackLine(name, <any>undefined, { urn })
             case "splight:index/tag:Tag":
@@ -400,6 +407,7 @@ pulumi.runtime.registerResourceModule("splight", "index/node", _module)
 pulumi.runtime.registerResourceModule("splight", "index/secret", _module)
 pulumi.runtime.registerResourceModule("splight", "index/segment", _module)
 pulumi.runtime.registerResourceModule("splight", "index/server", _module)
+pulumi.runtime.registerResourceModule("splight", "index/slackGenerator", _module)
 pulumi.runtime.registerResourceModule("splight", "index/slackLine", _module)
 pulumi.runtime.registerResourceModule("splight", "index/tag", _module)
 pulumi.runtime.registerResourceModule("splight", "index/transformer", _module)
