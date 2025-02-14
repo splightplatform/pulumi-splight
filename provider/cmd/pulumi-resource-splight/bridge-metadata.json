@@ -626,9 +626,6 @@
                     "active_power": {
                         "maxItemsOne": false
                     },
-                    "co2_coefficient": {
-                        "maxItemsOne": true
-                    },
                     "daily_emission_avoided": {
                         "maxItemsOne": false
                     },

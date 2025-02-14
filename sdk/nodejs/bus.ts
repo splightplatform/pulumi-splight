@@ -78,7 +78,7 @@ export class Bus extends pulumi.CustomResource {
     /**
      * timezone that overrides location-based timezone of the resource
      */
-    public readonly timezone!: pulumi.Output<string | undefined>;
+    public readonly timezone!: pulumi.Output<string>;
 
     /**
      * Create a Bus resource with the given unique name, arguments, and options.
@@ -87,7 +87,7 @@ export class Bus extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: BusArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: BusArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BusArgs | BusState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -104,9 +104,6 @@ export class Bus extends pulumi.CustomResource {
             resourceInputs["timezone"] = state ? state.timezone : undefined;
         } else {
             const args = argsOrState as BusArgs | undefined;
-            if ((!args || args.nominalVoltageKv === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'nominalVoltageKv'");
-            }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -183,7 +180,7 @@ export interface BusArgs {
     /**
      * attribute of the resource
      */
-    nominalVoltageKv: pulumi.Input<inputs.BusNominalVoltageKv>;
+    nominalVoltageKv?: pulumi.Input<inputs.BusNominalVoltageKv>;
     /**
      * tags of the resource
      */

@@ -44,13 +44,13 @@ namespace Splight.Splight
         /// attribute of the resource
         /// </summary>
         [Output("capacitance")]
-        public Output<Outputs.TransformerCapacitance> Capacitance { get; private set; } = null!;
+        public Output<Outputs.TransformerCapacitance?> Capacitance { get; private set; } = null!;
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
         [Output("conductance")]
-        public Output<Outputs.TransformerConductance> Conductance { get; private set; } = null!;
+        public Output<Outputs.TransformerConductance?> Conductance { get; private set; } = null!;
 
         /// <summary>
         /// attribute of the resource
@@ -92,13 +92,13 @@ namespace Splight.Splight
         /// attribute of the resource
         /// </summary>
         [Output("maximumAllowedCurrent")]
-        public Output<Outputs.TransformerMaximumAllowedCurrent> MaximumAllowedCurrent { get; private set; } = null!;
+        public Output<Outputs.TransformerMaximumAllowedCurrent?> MaximumAllowedCurrent { get; private set; } = null!;
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
         [Output("maximumAllowedPower")]
-        public Output<Outputs.TransformerMaximumAllowedPower> MaximumAllowedPower { get; private set; } = null!;
+        public Output<Outputs.TransformerMaximumAllowedPower?> MaximumAllowedPower { get; private set; } = null!;
 
         /// <summary>
         /// name of the resource
@@ -110,7 +110,7 @@ namespace Splight.Splight
         /// attribute of the resource
         /// </summary>
         [Output("reactance")]
-        public Output<Outputs.TransformerReactance> Reactance { get; private set; } = null!;
+        public Output<Outputs.TransformerReactance?> Reactance { get; private set; } = null!;
 
         /// <summary>
         /// attribute of the resource
@@ -134,19 +134,19 @@ namespace Splight.Splight
         /// attribute of the resource
         /// </summary>
         [Output("resistance")]
-        public Output<Outputs.TransformerResistance> Resistance { get; private set; } = null!;
+        public Output<Outputs.TransformerResistance?> Resistance { get; private set; } = null!;
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
         [Output("safetyMarginForPower")]
-        public Output<Outputs.TransformerSafetyMarginForPower> SafetyMarginForPower { get; private set; } = null!;
+        public Output<Outputs.TransformerSafetyMarginForPower?> SafetyMarginForPower { get; private set; } = null!;
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
         [Output("standardType")]
-        public Output<Outputs.TransformerStandardType> StandardType { get; private set; } = null!;
+        public Output<Outputs.TransformerStandardType?> StandardType { get; private set; } = null!;
 
         /// <summary>
         /// attribute of the resource
@@ -170,13 +170,13 @@ namespace Splight.Splight
         /// attribute of the resource
         /// </summary>
         [Output("tapPos")]
-        public Output<Outputs.TransformerTapPos> TapPos { get; private set; } = null!;
+        public Output<Outputs.TransformerTapPos?> TapPos { get; private set; } = null!;
 
         /// <summary>
         /// timezone that overrides location-based timezone of the resource
         /// </summary>
         [Output("timezone")]
-        public Output<string?> Timezone { get; private set; } = null!;
+        public Output<string> Timezone { get; private set; } = null!;
 
         /// <summary>
         /// attribute of the resource
@@ -194,7 +194,7 @@ namespace Splight.Splight
         /// attribute of the resource
         /// </summary>
         [Output("xnOhm")]
-        public Output<Outputs.TransformerXnOhm> XnOhm { get; private set; } = null!;
+        public Output<Outputs.TransformerXnOhm?> XnOhm { get; private set; } = null!;
 
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace Splight.Splight
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Transformer(string name, TransformerArgs args, CustomResourceOptions? options = null)
+        public Transformer(string name, TransformerArgs? args = null, CustomResourceOptions? options = null)
             : base("splight:index/transformer:Transformer", name, args ?? new TransformerArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -246,14 +246,14 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("capacitance", required: true)]
-        public Input<Inputs.TransformerCapacitanceArgs> Capacitance { get; set; } = null!;
+        [Input("capacitance")]
+        public Input<Inputs.TransformerCapacitanceArgs>? Capacitance { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("conductance", required: true)]
-        public Input<Inputs.TransformerConductanceArgs> Conductance { get; set; } = null!;
+        [Input("conductance")]
+        public Input<Inputs.TransformerConductanceArgs>? Conductance { get; set; }
 
         /// <summary>
         /// description of the resource
@@ -270,14 +270,14 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("maximumAllowedCurrent", required: true)]
-        public Input<Inputs.TransformerMaximumAllowedCurrentArgs> MaximumAllowedCurrent { get; set; } = null!;
+        [Input("maximumAllowedCurrent")]
+        public Input<Inputs.TransformerMaximumAllowedCurrentArgs>? MaximumAllowedCurrent { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("maximumAllowedPower", required: true)]
-        public Input<Inputs.TransformerMaximumAllowedPowerArgs> MaximumAllowedPower { get; set; } = null!;
+        [Input("maximumAllowedPower")]
+        public Input<Inputs.TransformerMaximumAllowedPowerArgs>? MaximumAllowedPower { get; set; }
 
         /// <summary>
         /// name of the resource
@@ -288,26 +288,26 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("reactance", required: true)]
-        public Input<Inputs.TransformerReactanceArgs> Reactance { get; set; } = null!;
+        [Input("reactance")]
+        public Input<Inputs.TransformerReactanceArgs>? Reactance { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("resistance", required: true)]
-        public Input<Inputs.TransformerResistanceArgs> Resistance { get; set; } = null!;
+        [Input("resistance")]
+        public Input<Inputs.TransformerResistanceArgs>? Resistance { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("safetyMarginForPower", required: true)]
-        public Input<Inputs.TransformerSafetyMarginForPowerArgs> SafetyMarginForPower { get; set; } = null!;
+        [Input("safetyMarginForPower")]
+        public Input<Inputs.TransformerSafetyMarginForPowerArgs>? SafetyMarginForPower { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("standardType", required: true)]
-        public Input<Inputs.TransformerStandardTypeArgs> StandardType { get; set; } = null!;
+        [Input("standardType")]
+        public Input<Inputs.TransformerStandardTypeArgs>? StandardType { get; set; }
 
         [Input("tags")]
         private InputList<Inputs.TransformerTagArgs>? _tags;
@@ -324,8 +324,8 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("tapPos", required: true)]
-        public Input<Inputs.TransformerTapPosArgs> TapPos { get; set; } = null!;
+        [Input("tapPos")]
+        public Input<Inputs.TransformerTapPosArgs>? TapPos { get; set; }
 
         /// <summary>
         /// timezone that overrides location-based timezone of the resource
@@ -336,8 +336,8 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("xnOhm", required: true)]
-        public Input<Inputs.TransformerXnOhmArgs> XnOhm { get; set; } = null!;
+        [Input("xnOhm")]
+        public Input<Inputs.TransformerXnOhmArgs>? XnOhm { get; set; }
 
         public TransformerArgs()
         {

@@ -49,6 +49,25 @@ namespace Splight.Splight
         /// </summary>
         public static Output<GetGridsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGridsResult>("splight:index/getGrids:getGrids", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Splight = Pulumi.Splight;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var grids = Splight.GetGrids.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGridsResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGridsResult>("splight:index/getGrids:getGrids", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

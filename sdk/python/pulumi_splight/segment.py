@@ -21,15 +21,15 @@ __all__ = ['SegmentArgs', 'Segment']
 @pulumi.input_type
 class SegmentArgs:
     def __init__(__self__, *,
-                 altitude: pulumi.Input['SegmentAltitudeArgs'],
-                 azimuth: pulumi.Input['SegmentAzimuthArgs'],
-                 cumulative_distance: pulumi.Input['SegmentCumulativeDistanceArgs'],
-                 reference_sag: pulumi.Input['SegmentReferenceSagArgs'],
-                 reference_temperature: pulumi.Input['SegmentReferenceTemperatureArgs'],
-                 span_length: pulumi.Input['SegmentSpanLengthArgs'],
+                 altitude: Optional[pulumi.Input['SegmentAltitudeArgs']] = None,
+                 azimuth: Optional[pulumi.Input['SegmentAzimuthArgs']] = None,
+                 cumulative_distance: Optional[pulumi.Input['SegmentCumulativeDistanceArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 reference_sag: Optional[pulumi.Input['SegmentReferenceSagArgs']] = None,
+                 reference_temperature: Optional[pulumi.Input['SegmentReferenceTemperatureArgs']] = None,
+                 span_length: Optional[pulumi.Input['SegmentSpanLengthArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentTagArgs']]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None):
         """
@@ -37,27 +37,33 @@ class SegmentArgs:
         :param pulumi.Input['SegmentAltitudeArgs'] altitude: attribute of the resource
         :param pulumi.Input['SegmentAzimuthArgs'] azimuth: attribute of the resource
         :param pulumi.Input['SegmentCumulativeDistanceArgs'] cumulative_distance: attribute of the resource
-        :param pulumi.Input['SegmentReferenceSagArgs'] reference_sag: attribute of the resource
-        :param pulumi.Input['SegmentReferenceTemperatureArgs'] reference_temperature: attribute of the resource
-        :param pulumi.Input['SegmentSpanLengthArgs'] span_length: attribute of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
+        :param pulumi.Input['SegmentReferenceSagArgs'] reference_sag: attribute of the resource
+        :param pulumi.Input['SegmentReferenceTemperatureArgs'] reference_temperature: attribute of the resource
+        :param pulumi.Input['SegmentSpanLengthArgs'] span_length: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['SegmentTagArgs']]] tags: tags of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
-        pulumi.set(__self__, "altitude", altitude)
-        pulumi.set(__self__, "azimuth", azimuth)
-        pulumi.set(__self__, "cumulative_distance", cumulative_distance)
-        pulumi.set(__self__, "reference_sag", reference_sag)
-        pulumi.set(__self__, "reference_temperature", reference_temperature)
-        pulumi.set(__self__, "span_length", span_length)
+        if altitude is not None:
+            pulumi.set(__self__, "altitude", altitude)
+        if azimuth is not None:
+            pulumi.set(__self__, "azimuth", azimuth)
+        if cumulative_distance is not None:
+            pulumi.set(__self__, "cumulative_distance", cumulative_distance)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
             pulumi.set(__self__, "geometry", geometry)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if reference_sag is not None:
+            pulumi.set(__self__, "reference_sag", reference_sag)
+        if reference_temperature is not None:
+            pulumi.set(__self__, "reference_temperature", reference_temperature)
+        if span_length is not None:
+            pulumi.set(__self__, "span_length", span_length)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if timezone is not None:
@@ -65,75 +71,39 @@ class SegmentArgs:
 
     @property
     @pulumi.getter
-    def altitude(self) -> pulumi.Input['SegmentAltitudeArgs']:
+    def altitude(self) -> Optional[pulumi.Input['SegmentAltitudeArgs']]:
         """
         attribute of the resource
         """
         return pulumi.get(self, "altitude")
 
     @altitude.setter
-    def altitude(self, value: pulumi.Input['SegmentAltitudeArgs']):
+    def altitude(self, value: Optional[pulumi.Input['SegmentAltitudeArgs']]):
         pulumi.set(self, "altitude", value)
 
     @property
     @pulumi.getter
-    def azimuth(self) -> pulumi.Input['SegmentAzimuthArgs']:
+    def azimuth(self) -> Optional[pulumi.Input['SegmentAzimuthArgs']]:
         """
         attribute of the resource
         """
         return pulumi.get(self, "azimuth")
 
     @azimuth.setter
-    def azimuth(self, value: pulumi.Input['SegmentAzimuthArgs']):
+    def azimuth(self, value: Optional[pulumi.Input['SegmentAzimuthArgs']]):
         pulumi.set(self, "azimuth", value)
 
     @property
     @pulumi.getter(name="cumulativeDistance")
-    def cumulative_distance(self) -> pulumi.Input['SegmentCumulativeDistanceArgs']:
+    def cumulative_distance(self) -> Optional[pulumi.Input['SegmentCumulativeDistanceArgs']]:
         """
         attribute of the resource
         """
         return pulumi.get(self, "cumulative_distance")
 
     @cumulative_distance.setter
-    def cumulative_distance(self, value: pulumi.Input['SegmentCumulativeDistanceArgs']):
+    def cumulative_distance(self, value: Optional[pulumi.Input['SegmentCumulativeDistanceArgs']]):
         pulumi.set(self, "cumulative_distance", value)
-
-    @property
-    @pulumi.getter(name="referenceSag")
-    def reference_sag(self) -> pulumi.Input['SegmentReferenceSagArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "reference_sag")
-
-    @reference_sag.setter
-    def reference_sag(self, value: pulumi.Input['SegmentReferenceSagArgs']):
-        pulumi.set(self, "reference_sag", value)
-
-    @property
-    @pulumi.getter(name="referenceTemperature")
-    def reference_temperature(self) -> pulumi.Input['SegmentReferenceTemperatureArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "reference_temperature")
-
-    @reference_temperature.setter
-    def reference_temperature(self, value: pulumi.Input['SegmentReferenceTemperatureArgs']):
-        pulumi.set(self, "reference_temperature", value)
-
-    @property
-    @pulumi.getter(name="spanLength")
-    def span_length(self) -> pulumi.Input['SegmentSpanLengthArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "span_length")
-
-    @span_length.setter
-    def span_length(self, value: pulumi.Input['SegmentSpanLengthArgs']):
-        pulumi.set(self, "span_length", value)
 
     @property
     @pulumi.getter
@@ -170,6 +140,42 @@ class SegmentArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="referenceSag")
+    def reference_sag(self) -> Optional[pulumi.Input['SegmentReferenceSagArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "reference_sag")
+
+    @reference_sag.setter
+    def reference_sag(self, value: Optional[pulumi.Input['SegmentReferenceSagArgs']]):
+        pulumi.set(self, "reference_sag", value)
+
+    @property
+    @pulumi.getter(name="referenceTemperature")
+    def reference_temperature(self) -> Optional[pulumi.Input['SegmentReferenceTemperatureArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "reference_temperature")
+
+    @reference_temperature.setter
+    def reference_temperature(self, value: Optional[pulumi.Input['SegmentReferenceTemperatureArgs']]):
+        pulumi.set(self, "reference_temperature", value)
+
+    @property
+    @pulumi.getter(name="spanLength")
+    def span_length(self) -> Optional[pulumi.Input['SegmentSpanLengthArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "span_length")
+
+    @span_length.setter
+    def span_length(self, value: Optional[pulumi.Input['SegmentSpanLengthArgs']]):
+        pulumi.set(self, "span_length", value)
 
     @property
     @pulumi.getter
@@ -488,7 +494,7 @@ class Segment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SegmentArgs,
+                 args: Optional[SegmentArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -534,26 +540,14 @@ class Segment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SegmentArgs.__new__(SegmentArgs)
 
-            if altitude is None and not opts.urn:
-                raise TypeError("Missing required property 'altitude'")
             __props__.__dict__["altitude"] = altitude
-            if azimuth is None and not opts.urn:
-                raise TypeError("Missing required property 'azimuth'")
             __props__.__dict__["azimuth"] = azimuth
-            if cumulative_distance is None and not opts.urn:
-                raise TypeError("Missing required property 'cumulative_distance'")
             __props__.__dict__["cumulative_distance"] = cumulative_distance
             __props__.__dict__["description"] = description
             __props__.__dict__["geometry"] = geometry
             __props__.__dict__["name"] = name
-            if reference_sag is None and not opts.urn:
-                raise TypeError("Missing required property 'reference_sag'")
             __props__.__dict__["reference_sag"] = reference_sag
-            if reference_temperature is None and not opts.urn:
-                raise TypeError("Missing required property 'reference_temperature'")
             __props__.__dict__["reference_temperature"] = reference_temperature
-            if span_length is None and not opts.urn:
-                raise TypeError("Missing required property 'span_length'")
             __props__.__dict__["span_length"] = span_length
             __props__.__dict__["tags"] = tags
             __props__.__dict__["timezone"] = timezone
@@ -632,7 +626,7 @@ class Segment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def altitude(self) -> pulumi.Output['outputs.SegmentAltitude']:
+    def altitude(self) -> pulumi.Output[Optional['outputs.SegmentAltitude']]:
         """
         attribute of the resource
         """
@@ -640,7 +634,7 @@ class Segment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def azimuth(self) -> pulumi.Output['outputs.SegmentAzimuth']:
+    def azimuth(self) -> pulumi.Output[Optional['outputs.SegmentAzimuth']]:
         """
         attribute of the resource
         """
@@ -648,7 +642,7 @@ class Segment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cumulativeDistance")
-    def cumulative_distance(self) -> pulumi.Output['outputs.SegmentCumulativeDistance']:
+    def cumulative_distance(self) -> pulumi.Output[Optional['outputs.SegmentCumulativeDistance']]:
         """
         attribute of the resource
         """
@@ -688,7 +682,7 @@ class Segment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="referenceSag")
-    def reference_sag(self) -> pulumi.Output['outputs.SegmentReferenceSag']:
+    def reference_sag(self) -> pulumi.Output[Optional['outputs.SegmentReferenceSag']]:
         """
         attribute of the resource
         """
@@ -696,7 +690,7 @@ class Segment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="referenceTemperature")
-    def reference_temperature(self) -> pulumi.Output['outputs.SegmentReferenceTemperature']:
+    def reference_temperature(self) -> pulumi.Output[Optional['outputs.SegmentReferenceTemperature']]:
         """
         attribute of the resource
         """
@@ -704,7 +698,7 @@ class Segment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spanLength")
-    def span_length(self) -> pulumi.Output['outputs.SegmentSpanLength']:
+    def span_length(self) -> pulumi.Output[Optional['outputs.SegmentSpanLength']]:
         """
         attribute of the resource
         """
@@ -728,7 +722,7 @@ class Segment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timezone(self) -> pulumi.Output[Optional[str]]:
+    def timezone(self) -> pulumi.Output[str]:
         """
         timezone that overrides location-based timezone of the resource
         """

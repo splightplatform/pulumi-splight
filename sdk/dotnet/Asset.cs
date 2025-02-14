@@ -32,7 +32,7 @@ namespace Splight.Splight
         /// GeoJSON GeomtryCollection
         /// </summary>
         [Output("geometry")]
-        public Output<string> Geometry { get; private set; } = null!;
+        public Output<string?> Geometry { get; private set; } = null!;
 
         /// <summary>
         /// kind of the resource
@@ -56,7 +56,7 @@ namespace Splight.Splight
         /// timezone of the resource (overriden by the location if set)
         /// </summary>
         [Output("timezone")]
-        public Output<string?> Timezone { get; private set; } = null!;
+        public Output<string> Timezone { get; private set; } = null!;
 
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Splight.Splight
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Asset(string name, AssetArgs args, CustomResourceOptions? options = null)
+        public Asset(string name, AssetArgs? args = null, CustomResourceOptions? options = null)
             : base("splight:index/asset:Asset", name, args ?? new AssetArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -114,8 +114,8 @@ namespace Splight.Splight
         /// <summary>
         /// GeoJSON GeomtryCollection
         /// </summary>
-        [Input("geometry", required: true)]
-        public Input<string> Geometry { get; set; } = null!;
+        [Input("geometry")]
+        public Input<string>? Geometry { get; set; }
 
         /// <summary>
         /// kind of the resource

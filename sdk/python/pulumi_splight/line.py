@@ -21,32 +21,32 @@ __all__ = ['LineArgs', 'Line']
 @pulumi.input_type
 class LineArgs:
     def __init__(__self__, *,
-                 absorptivity: pulumi.Input['LineAbsorptivityArgs'],
-                 atmosphere: pulumi.Input['LineAtmosphereArgs'],
-                 capacitance: pulumi.Input['LineCapacitanceArgs'],
-                 conductance: pulumi.Input['LineConductanceArgs'],
-                 conductor_mass: pulumi.Input['LineConductorMassArgs'],
-                 diameter: pulumi.Input['LineDiameterArgs'],
-                 emissivity: pulumi.Input['LineEmissivityArgs'],
-                 length: pulumi.Input['LineLengthArgs'],
-                 maximum_allowed_current: pulumi.Input['LineMaximumAllowedCurrentArgs'],
-                 maximum_allowed_power: pulumi.Input['LineMaximumAllowedPowerArgs'],
-                 maximum_allowed_temperature: pulumi.Input['LineMaximumAllowedTemperatureArgs'],
-                 maximum_allowed_temperature_lte: pulumi.Input['LineMaximumAllowedTemperatureLteArgs'],
-                 maximum_allowed_temperature_ste: pulumi.Input['LineMaximumAllowedTemperatureSteArgs'],
-                 number_of_conductors: pulumi.Input['LineNumberOfConductorsArgs'],
-                 reactance: pulumi.Input['LineReactanceArgs'],
-                 reference_resistance: pulumi.Input['LineReferenceResistanceArgs'],
-                 resistance: pulumi.Input['LineResistanceArgs'],
-                 safety_margin_for_power: pulumi.Input['LineSafetyMarginForPowerArgs'],
-                 specific_heat: pulumi.Input['LineSpecificHeatArgs'],
-                 susceptance: pulumi.Input['LineSusceptanceArgs'],
-                 temperature_coeff_resistance: pulumi.Input['LineTemperatureCoeffResistanceArgs'],
-                 thermal_elongation_coef: pulumi.Input['LineThermalElongationCoefArgs'],
+                 absorptivity: Optional[pulumi.Input['LineAbsorptivityArgs']] = None,
+                 atmosphere: Optional[pulumi.Input['LineAtmosphereArgs']] = None,
+                 capacitance: Optional[pulumi.Input['LineCapacitanceArgs']] = None,
+                 conductance: Optional[pulumi.Input['LineConductanceArgs']] = None,
+                 conductor_mass: Optional[pulumi.Input['LineConductorMassArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 diameter: Optional[pulumi.Input['LineDiameterArgs']] = None,
+                 emissivity: Optional[pulumi.Input['LineEmissivityArgs']] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
+                 length: Optional[pulumi.Input['LineLengthArgs']] = None,
+                 maximum_allowed_current: Optional[pulumi.Input['LineMaximumAllowedCurrentArgs']] = None,
+                 maximum_allowed_power: Optional[pulumi.Input['LineMaximumAllowedPowerArgs']] = None,
+                 maximum_allowed_temperature: Optional[pulumi.Input['LineMaximumAllowedTemperatureArgs']] = None,
+                 maximum_allowed_temperature_lte: Optional[pulumi.Input['LineMaximumAllowedTemperatureLteArgs']] = None,
+                 maximum_allowed_temperature_ste: Optional[pulumi.Input['LineMaximumAllowedTemperatureSteArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 number_of_conductors: Optional[pulumi.Input['LineNumberOfConductorsArgs']] = None,
+                 reactance: Optional[pulumi.Input['LineReactanceArgs']] = None,
+                 reference_resistance: Optional[pulumi.Input['LineReferenceResistanceArgs']] = None,
+                 resistance: Optional[pulumi.Input['LineResistanceArgs']] = None,
+                 safety_margin_for_power: Optional[pulumi.Input['LineSafetyMarginForPowerArgs']] = None,
+                 specific_heat: Optional[pulumi.Input['LineSpecificHeatArgs']] = None,
+                 susceptance: Optional[pulumi.Input['LineSusceptanceArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['LineTagArgs']]]] = None,
+                 temperature_coeff_resistance: Optional[pulumi.Input['LineTemperatureCoeffResistanceArgs']] = None,
+                 thermal_elongation_coef: Optional[pulumi.Input['LineThermalElongationCoefArgs']] = None,
                  timezone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Line resource.
@@ -55,14 +55,17 @@ class LineArgs:
         :param pulumi.Input['LineCapacitanceArgs'] capacitance: attribute of the resource
         :param pulumi.Input['LineConductanceArgs'] conductance: attribute of the resource
         :param pulumi.Input['LineConductorMassArgs'] conductor_mass: attribute of the resource
+        :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input['LineDiameterArgs'] diameter: attribute of the resource
         :param pulumi.Input['LineEmissivityArgs'] emissivity: attribute of the resource
+        :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input['LineLengthArgs'] length: attribute of the resource
         :param pulumi.Input['LineMaximumAllowedCurrentArgs'] maximum_allowed_current: attribute of the resource
         :param pulumi.Input['LineMaximumAllowedPowerArgs'] maximum_allowed_power: attribute of the resource
         :param pulumi.Input['LineMaximumAllowedTemperatureArgs'] maximum_allowed_temperature: attribute of the resource
         :param pulumi.Input['LineMaximumAllowedTemperatureLteArgs'] maximum_allowed_temperature_lte: attribute of the resource
         :param pulumi.Input['LineMaximumAllowedTemperatureSteArgs'] maximum_allowed_temperature_ste: attribute of the resource
+        :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input['LineNumberOfConductorsArgs'] number_of_conductors: attribute of the resource
         :param pulumi.Input['LineReactanceArgs'] reactance: attribute of the resource
         :param pulumi.Input['LineReferenceResistanceArgs'] reference_resistance: attribute of the resource
@@ -70,310 +73,125 @@ class LineArgs:
         :param pulumi.Input['LineSafetyMarginForPowerArgs'] safety_margin_for_power: attribute of the resource
         :param pulumi.Input['LineSpecificHeatArgs'] specific_heat: attribute of the resource
         :param pulumi.Input['LineSusceptanceArgs'] susceptance: attribute of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['LineTagArgs']]] tags: tags of the resource
         :param pulumi.Input['LineTemperatureCoeffResistanceArgs'] temperature_coeff_resistance: attribute of the resource
         :param pulumi.Input['LineThermalElongationCoefArgs'] thermal_elongation_coef: attribute of the resource
-        :param pulumi.Input[str] description: description of the resource
-        :param pulumi.Input[str] geometry: geo position and shape of the resource
-        :param pulumi.Input[str] name: name of the resource
-        :param pulumi.Input[Sequence[pulumi.Input['LineTagArgs']]] tags: tags of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
-        pulumi.set(__self__, "absorptivity", absorptivity)
-        pulumi.set(__self__, "atmosphere", atmosphere)
-        pulumi.set(__self__, "capacitance", capacitance)
-        pulumi.set(__self__, "conductance", conductance)
-        pulumi.set(__self__, "conductor_mass", conductor_mass)
-        pulumi.set(__self__, "diameter", diameter)
-        pulumi.set(__self__, "emissivity", emissivity)
-        pulumi.set(__self__, "length", length)
-        pulumi.set(__self__, "maximum_allowed_current", maximum_allowed_current)
-        pulumi.set(__self__, "maximum_allowed_power", maximum_allowed_power)
-        pulumi.set(__self__, "maximum_allowed_temperature", maximum_allowed_temperature)
-        pulumi.set(__self__, "maximum_allowed_temperature_lte", maximum_allowed_temperature_lte)
-        pulumi.set(__self__, "maximum_allowed_temperature_ste", maximum_allowed_temperature_ste)
-        pulumi.set(__self__, "number_of_conductors", number_of_conductors)
-        pulumi.set(__self__, "reactance", reactance)
-        pulumi.set(__self__, "reference_resistance", reference_resistance)
-        pulumi.set(__self__, "resistance", resistance)
-        pulumi.set(__self__, "safety_margin_for_power", safety_margin_for_power)
-        pulumi.set(__self__, "specific_heat", specific_heat)
-        pulumi.set(__self__, "susceptance", susceptance)
-        pulumi.set(__self__, "temperature_coeff_resistance", temperature_coeff_resistance)
-        pulumi.set(__self__, "thermal_elongation_coef", thermal_elongation_coef)
+        if absorptivity is not None:
+            pulumi.set(__self__, "absorptivity", absorptivity)
+        if atmosphere is not None:
+            pulumi.set(__self__, "atmosphere", atmosphere)
+        if capacitance is not None:
+            pulumi.set(__self__, "capacitance", capacitance)
+        if conductance is not None:
+            pulumi.set(__self__, "conductance", conductance)
+        if conductor_mass is not None:
+            pulumi.set(__self__, "conductor_mass", conductor_mass)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if diameter is not None:
+            pulumi.set(__self__, "diameter", diameter)
+        if emissivity is not None:
+            pulumi.set(__self__, "emissivity", emissivity)
         if geometry is not None:
             pulumi.set(__self__, "geometry", geometry)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if maximum_allowed_current is not None:
+            pulumi.set(__self__, "maximum_allowed_current", maximum_allowed_current)
+        if maximum_allowed_power is not None:
+            pulumi.set(__self__, "maximum_allowed_power", maximum_allowed_power)
+        if maximum_allowed_temperature is not None:
+            pulumi.set(__self__, "maximum_allowed_temperature", maximum_allowed_temperature)
+        if maximum_allowed_temperature_lte is not None:
+            pulumi.set(__self__, "maximum_allowed_temperature_lte", maximum_allowed_temperature_lte)
+        if maximum_allowed_temperature_ste is not None:
+            pulumi.set(__self__, "maximum_allowed_temperature_ste", maximum_allowed_temperature_ste)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if number_of_conductors is not None:
+            pulumi.set(__self__, "number_of_conductors", number_of_conductors)
+        if reactance is not None:
+            pulumi.set(__self__, "reactance", reactance)
+        if reference_resistance is not None:
+            pulumi.set(__self__, "reference_resistance", reference_resistance)
+        if resistance is not None:
+            pulumi.set(__self__, "resistance", resistance)
+        if safety_margin_for_power is not None:
+            pulumi.set(__self__, "safety_margin_for_power", safety_margin_for_power)
+        if specific_heat is not None:
+            pulumi.set(__self__, "specific_heat", specific_heat)
+        if susceptance is not None:
+            pulumi.set(__self__, "susceptance", susceptance)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if temperature_coeff_resistance is not None:
+            pulumi.set(__self__, "temperature_coeff_resistance", temperature_coeff_resistance)
+        if thermal_elongation_coef is not None:
+            pulumi.set(__self__, "thermal_elongation_coef", thermal_elongation_coef)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
 
     @property
     @pulumi.getter
-    def absorptivity(self) -> pulumi.Input['LineAbsorptivityArgs']:
+    def absorptivity(self) -> Optional[pulumi.Input['LineAbsorptivityArgs']]:
         """
         attribute of the resource
         """
         return pulumi.get(self, "absorptivity")
 
     @absorptivity.setter
-    def absorptivity(self, value: pulumi.Input['LineAbsorptivityArgs']):
+    def absorptivity(self, value: Optional[pulumi.Input['LineAbsorptivityArgs']]):
         pulumi.set(self, "absorptivity", value)
 
     @property
     @pulumi.getter
-    def atmosphere(self) -> pulumi.Input['LineAtmosphereArgs']:
+    def atmosphere(self) -> Optional[pulumi.Input['LineAtmosphereArgs']]:
         """
         attribute of the resource
         """
         return pulumi.get(self, "atmosphere")
 
     @atmosphere.setter
-    def atmosphere(self, value: pulumi.Input['LineAtmosphereArgs']):
+    def atmosphere(self, value: Optional[pulumi.Input['LineAtmosphereArgs']]):
         pulumi.set(self, "atmosphere", value)
 
     @property
     @pulumi.getter
-    def capacitance(self) -> pulumi.Input['LineCapacitanceArgs']:
+    def capacitance(self) -> Optional[pulumi.Input['LineCapacitanceArgs']]:
         """
         attribute of the resource
         """
         return pulumi.get(self, "capacitance")
 
     @capacitance.setter
-    def capacitance(self, value: pulumi.Input['LineCapacitanceArgs']):
+    def capacitance(self, value: Optional[pulumi.Input['LineCapacitanceArgs']]):
         pulumi.set(self, "capacitance", value)
 
     @property
     @pulumi.getter
-    def conductance(self) -> pulumi.Input['LineConductanceArgs']:
+    def conductance(self) -> Optional[pulumi.Input['LineConductanceArgs']]:
         """
         attribute of the resource
         """
         return pulumi.get(self, "conductance")
 
     @conductance.setter
-    def conductance(self, value: pulumi.Input['LineConductanceArgs']):
+    def conductance(self, value: Optional[pulumi.Input['LineConductanceArgs']]):
         pulumi.set(self, "conductance", value)
 
     @property
     @pulumi.getter(name="conductorMass")
-    def conductor_mass(self) -> pulumi.Input['LineConductorMassArgs']:
+    def conductor_mass(self) -> Optional[pulumi.Input['LineConductorMassArgs']]:
         """
         attribute of the resource
         """
         return pulumi.get(self, "conductor_mass")
 
     @conductor_mass.setter
-    def conductor_mass(self, value: pulumi.Input['LineConductorMassArgs']):
+    def conductor_mass(self, value: Optional[pulumi.Input['LineConductorMassArgs']]):
         pulumi.set(self, "conductor_mass", value)
-
-    @property
-    @pulumi.getter
-    def diameter(self) -> pulumi.Input['LineDiameterArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "diameter")
-
-    @diameter.setter
-    def diameter(self, value: pulumi.Input['LineDiameterArgs']):
-        pulumi.set(self, "diameter", value)
-
-    @property
-    @pulumi.getter
-    def emissivity(self) -> pulumi.Input['LineEmissivityArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "emissivity")
-
-    @emissivity.setter
-    def emissivity(self, value: pulumi.Input['LineEmissivityArgs']):
-        pulumi.set(self, "emissivity", value)
-
-    @property
-    @pulumi.getter
-    def length(self) -> pulumi.Input['LineLengthArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "length")
-
-    @length.setter
-    def length(self, value: pulumi.Input['LineLengthArgs']):
-        pulumi.set(self, "length", value)
-
-    @property
-    @pulumi.getter(name="maximumAllowedCurrent")
-    def maximum_allowed_current(self) -> pulumi.Input['LineMaximumAllowedCurrentArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "maximum_allowed_current")
-
-    @maximum_allowed_current.setter
-    def maximum_allowed_current(self, value: pulumi.Input['LineMaximumAllowedCurrentArgs']):
-        pulumi.set(self, "maximum_allowed_current", value)
-
-    @property
-    @pulumi.getter(name="maximumAllowedPower")
-    def maximum_allowed_power(self) -> pulumi.Input['LineMaximumAllowedPowerArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "maximum_allowed_power")
-
-    @maximum_allowed_power.setter
-    def maximum_allowed_power(self, value: pulumi.Input['LineMaximumAllowedPowerArgs']):
-        pulumi.set(self, "maximum_allowed_power", value)
-
-    @property
-    @pulumi.getter(name="maximumAllowedTemperature")
-    def maximum_allowed_temperature(self) -> pulumi.Input['LineMaximumAllowedTemperatureArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "maximum_allowed_temperature")
-
-    @maximum_allowed_temperature.setter
-    def maximum_allowed_temperature(self, value: pulumi.Input['LineMaximumAllowedTemperatureArgs']):
-        pulumi.set(self, "maximum_allowed_temperature", value)
-
-    @property
-    @pulumi.getter(name="maximumAllowedTemperatureLte")
-    def maximum_allowed_temperature_lte(self) -> pulumi.Input['LineMaximumAllowedTemperatureLteArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "maximum_allowed_temperature_lte")
-
-    @maximum_allowed_temperature_lte.setter
-    def maximum_allowed_temperature_lte(self, value: pulumi.Input['LineMaximumAllowedTemperatureLteArgs']):
-        pulumi.set(self, "maximum_allowed_temperature_lte", value)
-
-    @property
-    @pulumi.getter(name="maximumAllowedTemperatureSte")
-    def maximum_allowed_temperature_ste(self) -> pulumi.Input['LineMaximumAllowedTemperatureSteArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "maximum_allowed_temperature_ste")
-
-    @maximum_allowed_temperature_ste.setter
-    def maximum_allowed_temperature_ste(self, value: pulumi.Input['LineMaximumAllowedTemperatureSteArgs']):
-        pulumi.set(self, "maximum_allowed_temperature_ste", value)
-
-    @property
-    @pulumi.getter(name="numberOfConductors")
-    def number_of_conductors(self) -> pulumi.Input['LineNumberOfConductorsArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "number_of_conductors")
-
-    @number_of_conductors.setter
-    def number_of_conductors(self, value: pulumi.Input['LineNumberOfConductorsArgs']):
-        pulumi.set(self, "number_of_conductors", value)
-
-    @property
-    @pulumi.getter
-    def reactance(self) -> pulumi.Input['LineReactanceArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "reactance")
-
-    @reactance.setter
-    def reactance(self, value: pulumi.Input['LineReactanceArgs']):
-        pulumi.set(self, "reactance", value)
-
-    @property
-    @pulumi.getter(name="referenceResistance")
-    def reference_resistance(self) -> pulumi.Input['LineReferenceResistanceArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "reference_resistance")
-
-    @reference_resistance.setter
-    def reference_resistance(self, value: pulumi.Input['LineReferenceResistanceArgs']):
-        pulumi.set(self, "reference_resistance", value)
-
-    @property
-    @pulumi.getter
-    def resistance(self) -> pulumi.Input['LineResistanceArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "resistance")
-
-    @resistance.setter
-    def resistance(self, value: pulumi.Input['LineResistanceArgs']):
-        pulumi.set(self, "resistance", value)
-
-    @property
-    @pulumi.getter(name="safetyMarginForPower")
-    def safety_margin_for_power(self) -> pulumi.Input['LineSafetyMarginForPowerArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "safety_margin_for_power")
-
-    @safety_margin_for_power.setter
-    def safety_margin_for_power(self, value: pulumi.Input['LineSafetyMarginForPowerArgs']):
-        pulumi.set(self, "safety_margin_for_power", value)
-
-    @property
-    @pulumi.getter(name="specificHeat")
-    def specific_heat(self) -> pulumi.Input['LineSpecificHeatArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "specific_heat")
-
-    @specific_heat.setter
-    def specific_heat(self, value: pulumi.Input['LineSpecificHeatArgs']):
-        pulumi.set(self, "specific_heat", value)
-
-    @property
-    @pulumi.getter
-    def susceptance(self) -> pulumi.Input['LineSusceptanceArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "susceptance")
-
-    @susceptance.setter
-    def susceptance(self, value: pulumi.Input['LineSusceptanceArgs']):
-        pulumi.set(self, "susceptance", value)
-
-    @property
-    @pulumi.getter(name="temperatureCoeffResistance")
-    def temperature_coeff_resistance(self) -> pulumi.Input['LineTemperatureCoeffResistanceArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "temperature_coeff_resistance")
-
-    @temperature_coeff_resistance.setter
-    def temperature_coeff_resistance(self, value: pulumi.Input['LineTemperatureCoeffResistanceArgs']):
-        pulumi.set(self, "temperature_coeff_resistance", value)
-
-    @property
-    @pulumi.getter(name="thermalElongationCoef")
-    def thermal_elongation_coef(self) -> pulumi.Input['LineThermalElongationCoefArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "thermal_elongation_coef")
-
-    @thermal_elongation_coef.setter
-    def thermal_elongation_coef(self, value: pulumi.Input['LineThermalElongationCoefArgs']):
-        pulumi.set(self, "thermal_elongation_coef", value)
 
     @property
     @pulumi.getter
@@ -389,6 +207,30 @@ class LineArgs:
 
     @property
     @pulumi.getter
+    def diameter(self) -> Optional[pulumi.Input['LineDiameterArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "diameter")
+
+    @diameter.setter
+    def diameter(self, value: Optional[pulumi.Input['LineDiameterArgs']]):
+        pulumi.set(self, "diameter", value)
+
+    @property
+    @pulumi.getter
+    def emissivity(self) -> Optional[pulumi.Input['LineEmissivityArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "emissivity")
+
+    @emissivity.setter
+    def emissivity(self, value: Optional[pulumi.Input['LineEmissivityArgs']]):
+        pulumi.set(self, "emissivity", value)
+
+    @property
+    @pulumi.getter
     def geometry(self) -> Optional[pulumi.Input[str]]:
         """
         geo position and shape of the resource
@@ -398,6 +240,78 @@ class LineArgs:
     @geometry.setter
     def geometry(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "geometry", value)
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[pulumi.Input['LineLengthArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "length")
+
+    @length.setter
+    def length(self, value: Optional[pulumi.Input['LineLengthArgs']]):
+        pulumi.set(self, "length", value)
+
+    @property
+    @pulumi.getter(name="maximumAllowedCurrent")
+    def maximum_allowed_current(self) -> Optional[pulumi.Input['LineMaximumAllowedCurrentArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "maximum_allowed_current")
+
+    @maximum_allowed_current.setter
+    def maximum_allowed_current(self, value: Optional[pulumi.Input['LineMaximumAllowedCurrentArgs']]):
+        pulumi.set(self, "maximum_allowed_current", value)
+
+    @property
+    @pulumi.getter(name="maximumAllowedPower")
+    def maximum_allowed_power(self) -> Optional[pulumi.Input['LineMaximumAllowedPowerArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "maximum_allowed_power")
+
+    @maximum_allowed_power.setter
+    def maximum_allowed_power(self, value: Optional[pulumi.Input['LineMaximumAllowedPowerArgs']]):
+        pulumi.set(self, "maximum_allowed_power", value)
+
+    @property
+    @pulumi.getter(name="maximumAllowedTemperature")
+    def maximum_allowed_temperature(self) -> Optional[pulumi.Input['LineMaximumAllowedTemperatureArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "maximum_allowed_temperature")
+
+    @maximum_allowed_temperature.setter
+    def maximum_allowed_temperature(self, value: Optional[pulumi.Input['LineMaximumAllowedTemperatureArgs']]):
+        pulumi.set(self, "maximum_allowed_temperature", value)
+
+    @property
+    @pulumi.getter(name="maximumAllowedTemperatureLte")
+    def maximum_allowed_temperature_lte(self) -> Optional[pulumi.Input['LineMaximumAllowedTemperatureLteArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "maximum_allowed_temperature_lte")
+
+    @maximum_allowed_temperature_lte.setter
+    def maximum_allowed_temperature_lte(self, value: Optional[pulumi.Input['LineMaximumAllowedTemperatureLteArgs']]):
+        pulumi.set(self, "maximum_allowed_temperature_lte", value)
+
+    @property
+    @pulumi.getter(name="maximumAllowedTemperatureSte")
+    def maximum_allowed_temperature_ste(self) -> Optional[pulumi.Input['LineMaximumAllowedTemperatureSteArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "maximum_allowed_temperature_ste")
+
+    @maximum_allowed_temperature_ste.setter
+    def maximum_allowed_temperature_ste(self, value: Optional[pulumi.Input['LineMaximumAllowedTemperatureSteArgs']]):
+        pulumi.set(self, "maximum_allowed_temperature_ste", value)
 
     @property
     @pulumi.getter
@@ -412,6 +326,90 @@ class LineArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="numberOfConductors")
+    def number_of_conductors(self) -> Optional[pulumi.Input['LineNumberOfConductorsArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "number_of_conductors")
+
+    @number_of_conductors.setter
+    def number_of_conductors(self, value: Optional[pulumi.Input['LineNumberOfConductorsArgs']]):
+        pulumi.set(self, "number_of_conductors", value)
+
+    @property
+    @pulumi.getter
+    def reactance(self) -> Optional[pulumi.Input['LineReactanceArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "reactance")
+
+    @reactance.setter
+    def reactance(self, value: Optional[pulumi.Input['LineReactanceArgs']]):
+        pulumi.set(self, "reactance", value)
+
+    @property
+    @pulumi.getter(name="referenceResistance")
+    def reference_resistance(self) -> Optional[pulumi.Input['LineReferenceResistanceArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "reference_resistance")
+
+    @reference_resistance.setter
+    def reference_resistance(self, value: Optional[pulumi.Input['LineReferenceResistanceArgs']]):
+        pulumi.set(self, "reference_resistance", value)
+
+    @property
+    @pulumi.getter
+    def resistance(self) -> Optional[pulumi.Input['LineResistanceArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "resistance")
+
+    @resistance.setter
+    def resistance(self, value: Optional[pulumi.Input['LineResistanceArgs']]):
+        pulumi.set(self, "resistance", value)
+
+    @property
+    @pulumi.getter(name="safetyMarginForPower")
+    def safety_margin_for_power(self) -> Optional[pulumi.Input['LineSafetyMarginForPowerArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "safety_margin_for_power")
+
+    @safety_margin_for_power.setter
+    def safety_margin_for_power(self, value: Optional[pulumi.Input['LineSafetyMarginForPowerArgs']]):
+        pulumi.set(self, "safety_margin_for_power", value)
+
+    @property
+    @pulumi.getter(name="specificHeat")
+    def specific_heat(self) -> Optional[pulumi.Input['LineSpecificHeatArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "specific_heat")
+
+    @specific_heat.setter
+    def specific_heat(self, value: Optional[pulumi.Input['LineSpecificHeatArgs']]):
+        pulumi.set(self, "specific_heat", value)
+
+    @property
+    @pulumi.getter
+    def susceptance(self) -> Optional[pulumi.Input['LineSusceptanceArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "susceptance")
+
+    @susceptance.setter
+    def susceptance(self, value: Optional[pulumi.Input['LineSusceptanceArgs']]):
+        pulumi.set(self, "susceptance", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LineTagArgs']]]]:
         """
@@ -422,6 +420,30 @@ class LineArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LineTagArgs']]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="temperatureCoeffResistance")
+    def temperature_coeff_resistance(self) -> Optional[pulumi.Input['LineTemperatureCoeffResistanceArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "temperature_coeff_resistance")
+
+    @temperature_coeff_resistance.setter
+    def temperature_coeff_resistance(self, value: Optional[pulumi.Input['LineTemperatureCoeffResistanceArgs']]):
+        pulumi.set(self, "temperature_coeff_resistance", value)
+
+    @property
+    @pulumi.getter(name="thermalElongationCoef")
+    def thermal_elongation_coef(self) -> Optional[pulumi.Input['LineThermalElongationCoefArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "thermal_elongation_coef")
+
+    @thermal_elongation_coef.setter
+    def thermal_elongation_coef(self, value: Optional[pulumi.Input['LineThermalElongationCoefArgs']]):
+        pulumi.set(self, "thermal_elongation_coef", value)
 
     @property
     @pulumi.getter
@@ -1224,7 +1246,7 @@ class Line(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: LineArgs,
+                 args: Optional[LineArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -1286,75 +1308,31 @@ class Line(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LineArgs.__new__(LineArgs)
 
-            if absorptivity is None and not opts.urn:
-                raise TypeError("Missing required property 'absorptivity'")
             __props__.__dict__["absorptivity"] = absorptivity
-            if atmosphere is None and not opts.urn:
-                raise TypeError("Missing required property 'atmosphere'")
             __props__.__dict__["atmosphere"] = atmosphere
-            if capacitance is None and not opts.urn:
-                raise TypeError("Missing required property 'capacitance'")
             __props__.__dict__["capacitance"] = capacitance
-            if conductance is None and not opts.urn:
-                raise TypeError("Missing required property 'conductance'")
             __props__.__dict__["conductance"] = conductance
-            if conductor_mass is None and not opts.urn:
-                raise TypeError("Missing required property 'conductor_mass'")
             __props__.__dict__["conductor_mass"] = conductor_mass
             __props__.__dict__["description"] = description
-            if diameter is None and not opts.urn:
-                raise TypeError("Missing required property 'diameter'")
             __props__.__dict__["diameter"] = diameter
-            if emissivity is None and not opts.urn:
-                raise TypeError("Missing required property 'emissivity'")
             __props__.__dict__["emissivity"] = emissivity
             __props__.__dict__["geometry"] = geometry
-            if length is None and not opts.urn:
-                raise TypeError("Missing required property 'length'")
             __props__.__dict__["length"] = length
-            if maximum_allowed_current is None and not opts.urn:
-                raise TypeError("Missing required property 'maximum_allowed_current'")
             __props__.__dict__["maximum_allowed_current"] = maximum_allowed_current
-            if maximum_allowed_power is None and not opts.urn:
-                raise TypeError("Missing required property 'maximum_allowed_power'")
             __props__.__dict__["maximum_allowed_power"] = maximum_allowed_power
-            if maximum_allowed_temperature is None and not opts.urn:
-                raise TypeError("Missing required property 'maximum_allowed_temperature'")
             __props__.__dict__["maximum_allowed_temperature"] = maximum_allowed_temperature
-            if maximum_allowed_temperature_lte is None and not opts.urn:
-                raise TypeError("Missing required property 'maximum_allowed_temperature_lte'")
             __props__.__dict__["maximum_allowed_temperature_lte"] = maximum_allowed_temperature_lte
-            if maximum_allowed_temperature_ste is None and not opts.urn:
-                raise TypeError("Missing required property 'maximum_allowed_temperature_ste'")
             __props__.__dict__["maximum_allowed_temperature_ste"] = maximum_allowed_temperature_ste
             __props__.__dict__["name"] = name
-            if number_of_conductors is None and not opts.urn:
-                raise TypeError("Missing required property 'number_of_conductors'")
             __props__.__dict__["number_of_conductors"] = number_of_conductors
-            if reactance is None and not opts.urn:
-                raise TypeError("Missing required property 'reactance'")
             __props__.__dict__["reactance"] = reactance
-            if reference_resistance is None and not opts.urn:
-                raise TypeError("Missing required property 'reference_resistance'")
             __props__.__dict__["reference_resistance"] = reference_resistance
-            if resistance is None and not opts.urn:
-                raise TypeError("Missing required property 'resistance'")
             __props__.__dict__["resistance"] = resistance
-            if safety_margin_for_power is None and not opts.urn:
-                raise TypeError("Missing required property 'safety_margin_for_power'")
             __props__.__dict__["safety_margin_for_power"] = safety_margin_for_power
-            if specific_heat is None and not opts.urn:
-                raise TypeError("Missing required property 'specific_heat'")
             __props__.__dict__["specific_heat"] = specific_heat
-            if susceptance is None and not opts.urn:
-                raise TypeError("Missing required property 'susceptance'")
             __props__.__dict__["susceptance"] = susceptance
             __props__.__dict__["tags"] = tags
-            if temperature_coeff_resistance is None and not opts.urn:
-                raise TypeError("Missing required property 'temperature_coeff_resistance'")
             __props__.__dict__["temperature_coeff_resistance"] = temperature_coeff_resistance
-            if thermal_elongation_coef is None and not opts.urn:
-                raise TypeError("Missing required property 'thermal_elongation_coef'")
             __props__.__dict__["thermal_elongation_coef"] = thermal_elongation_coef
             __props__.__dict__["timezone"] = timezone
             __props__.__dict__["active_power_ends"] = None
@@ -1828,7 +1806,7 @@ class Line(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.LineTag']]]:
+    def tags(self) -> pulumi.Output[Sequence['outputs.LineTag']]:
         """
         tags of the resource
         """
@@ -1852,7 +1830,7 @@ class Line(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timezone(self) -> pulumi.Output[Optional[str]]:
+    def timezone(self) -> pulumi.Output[str]:
         """
         timezone that overrides location-based timezone of the resource
         """

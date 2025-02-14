@@ -21,104 +21,49 @@ __all__ = ['InverterArgs', 'Inverter']
 @pulumi.input_type
 class InverterArgs:
     def __init__(__self__, *,
-                 energy_measurement_type: pulumi.Input['InverterEnergyMeasurementTypeArgs'],
-                 make: pulumi.Input['InverterMakeArgs'],
-                 max_active_power: pulumi.Input['InverterMaxActivePowerArgs'],
-                 model: pulumi.Input['InverterModelArgs'],
-                 serial_number: pulumi.Input['InverterSerialNumberArgs'],
                  description: Optional[pulumi.Input[str]] = None,
+                 energy_measurement_type: Optional[pulumi.Input['InverterEnergyMeasurementTypeArgs']] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
+                 make: Optional[pulumi.Input['InverterMakeArgs']] = None,
+                 max_active_power: Optional[pulumi.Input['InverterMaxActivePowerArgs']] = None,
+                 model: Optional[pulumi.Input['InverterModelArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 serial_number: Optional[pulumi.Input['InverterSerialNumberArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['InverterTagArgs']]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Inverter resource.
+        :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input['InverterEnergyMeasurementTypeArgs'] energy_measurement_type: attribute of the resource
+        :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input['InverterMakeArgs'] make: attribute of the resource
         :param pulumi.Input['InverterMaxActivePowerArgs'] max_active_power: attribute of the resource
         :param pulumi.Input['InverterModelArgs'] model: attribute of the resource
-        :param pulumi.Input['InverterSerialNumberArgs'] serial_number: attribute of the resource
-        :param pulumi.Input[str] description: description of the resource
-        :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
+        :param pulumi.Input['InverterSerialNumberArgs'] serial_number: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['InverterTagArgs']]] tags: tags of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
-        pulumi.set(__self__, "energy_measurement_type", energy_measurement_type)
-        pulumi.set(__self__, "make", make)
-        pulumi.set(__self__, "max_active_power", max_active_power)
-        pulumi.set(__self__, "model", model)
-        pulumi.set(__self__, "serial_number", serial_number)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if energy_measurement_type is not None:
+            pulumi.set(__self__, "energy_measurement_type", energy_measurement_type)
         if geometry is not None:
             pulumi.set(__self__, "geometry", geometry)
+        if make is not None:
+            pulumi.set(__self__, "make", make)
+        if max_active_power is not None:
+            pulumi.set(__self__, "max_active_power", max_active_power)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if serial_number is not None:
+            pulumi.set(__self__, "serial_number", serial_number)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
-
-    @property
-    @pulumi.getter(name="energyMeasurementType")
-    def energy_measurement_type(self) -> pulumi.Input['InverterEnergyMeasurementTypeArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "energy_measurement_type")
-
-    @energy_measurement_type.setter
-    def energy_measurement_type(self, value: pulumi.Input['InverterEnergyMeasurementTypeArgs']):
-        pulumi.set(self, "energy_measurement_type", value)
-
-    @property
-    @pulumi.getter
-    def make(self) -> pulumi.Input['InverterMakeArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "make")
-
-    @make.setter
-    def make(self, value: pulumi.Input['InverterMakeArgs']):
-        pulumi.set(self, "make", value)
-
-    @property
-    @pulumi.getter(name="maxActivePower")
-    def max_active_power(self) -> pulumi.Input['InverterMaxActivePowerArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "max_active_power")
-
-    @max_active_power.setter
-    def max_active_power(self, value: pulumi.Input['InverterMaxActivePowerArgs']):
-        pulumi.set(self, "max_active_power", value)
-
-    @property
-    @pulumi.getter
-    def model(self) -> pulumi.Input['InverterModelArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "model")
-
-    @model.setter
-    def model(self, value: pulumi.Input['InverterModelArgs']):
-        pulumi.set(self, "model", value)
-
-    @property
-    @pulumi.getter(name="serialNumber")
-    def serial_number(self) -> pulumi.Input['InverterSerialNumberArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "serial_number")
-
-    @serial_number.setter
-    def serial_number(self, value: pulumi.Input['InverterSerialNumberArgs']):
-        pulumi.set(self, "serial_number", value)
 
     @property
     @pulumi.getter
@@ -131,6 +76,18 @@ class InverterArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="energyMeasurementType")
+    def energy_measurement_type(self) -> Optional[pulumi.Input['InverterEnergyMeasurementTypeArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "energy_measurement_type")
+
+    @energy_measurement_type.setter
+    def energy_measurement_type(self, value: Optional[pulumi.Input['InverterEnergyMeasurementTypeArgs']]):
+        pulumi.set(self, "energy_measurement_type", value)
 
     @property
     @pulumi.getter
@@ -146,6 +103,42 @@ class InverterArgs:
 
     @property
     @pulumi.getter
+    def make(self) -> Optional[pulumi.Input['InverterMakeArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "make")
+
+    @make.setter
+    def make(self, value: Optional[pulumi.Input['InverterMakeArgs']]):
+        pulumi.set(self, "make", value)
+
+    @property
+    @pulumi.getter(name="maxActivePower")
+    def max_active_power(self) -> Optional[pulumi.Input['InverterMaxActivePowerArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "max_active_power")
+
+    @max_active_power.setter
+    def max_active_power(self, value: Optional[pulumi.Input['InverterMaxActivePowerArgs']]):
+        pulumi.set(self, "max_active_power", value)
+
+    @property
+    @pulumi.getter
+    def model(self) -> Optional[pulumi.Input['InverterModelArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: Optional[pulumi.Input['InverterModelArgs']]):
+        pulumi.set(self, "model", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         name of the resource
@@ -155,6 +148,18 @@ class InverterArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="serialNumber")
+    def serial_number(self) -> Optional[pulumi.Input['InverterSerialNumberArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "serial_number")
+
+    @serial_number.setter
+    def serial_number(self, value: Optional[pulumi.Input['InverterSerialNumberArgs']]):
+        pulumi.set(self, "serial_number", value)
 
     @property
     @pulumi.getter
@@ -503,7 +508,7 @@ class Inverter(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InverterArgs,
+                 args: Optional[InverterArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -549,22 +554,12 @@ class Inverter(pulumi.CustomResource):
             __props__ = InverterArgs.__new__(InverterArgs)
 
             __props__.__dict__["description"] = description
-            if energy_measurement_type is None and not opts.urn:
-                raise TypeError("Missing required property 'energy_measurement_type'")
             __props__.__dict__["energy_measurement_type"] = energy_measurement_type
             __props__.__dict__["geometry"] = geometry
-            if make is None and not opts.urn:
-                raise TypeError("Missing required property 'make'")
             __props__.__dict__["make"] = make
-            if max_active_power is None and not opts.urn:
-                raise TypeError("Missing required property 'max_active_power'")
             __props__.__dict__["max_active_power"] = max_active_power
-            if model is None and not opts.urn:
-                raise TypeError("Missing required property 'model'")
             __props__.__dict__["model"] = model
             __props__.__dict__["name"] = name
-            if serial_number is None and not opts.urn:
-                raise TypeError("Missing required property 'serial_number'")
             __props__.__dict__["serial_number"] = serial_number
             __props__.__dict__["tags"] = tags
             __props__.__dict__["timezone"] = timezone
@@ -684,7 +679,7 @@ class Inverter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="energyMeasurementType")
-    def energy_measurement_type(self) -> pulumi.Output['outputs.InverterEnergyMeasurementType']:
+    def energy_measurement_type(self) -> pulumi.Output[Optional['outputs.InverterEnergyMeasurementType']]:
         """
         attribute of the resource
         """
@@ -708,7 +703,7 @@ class Inverter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def make(self) -> pulumi.Output['outputs.InverterMake']:
+    def make(self) -> pulumi.Output[Optional['outputs.InverterMake']]:
         """
         attribute of the resource
         """
@@ -716,7 +711,7 @@ class Inverter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxActivePower")
-    def max_active_power(self) -> pulumi.Output['outputs.InverterMaxActivePower']:
+    def max_active_power(self) -> pulumi.Output[Optional['outputs.InverterMaxActivePower']]:
         """
         attribute of the resource
         """
@@ -724,7 +719,7 @@ class Inverter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def model(self) -> pulumi.Output['outputs.InverterModel']:
+    def model(self) -> pulumi.Output[Optional['outputs.InverterModel']]:
         """
         attribute of the resource
         """
@@ -748,7 +743,7 @@ class Inverter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serialNumber")
-    def serial_number(self) -> pulumi.Output['outputs.InverterSerialNumber']:
+    def serial_number(self) -> pulumi.Output[Optional['outputs.InverterSerialNumber']]:
         """
         attribute of the resource
         """
@@ -780,7 +775,7 @@ class Inverter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timezone(self) -> pulumi.Output[Optional[str]]:
+    def timezone(self) -> pulumi.Output[str]:
         """
         timezone that overrides location-based timezone of the resource
         """

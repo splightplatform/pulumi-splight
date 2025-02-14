@@ -31,12 +31,6 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Output("co2Coefficient")]
-        public Output<Outputs.GeneratorCo2Coefficient> Co2Coefficient { get; private set; } = null!;
-
-        /// <summary>
-        /// attribute of the resource
-        /// </summary>
         [Output("dailyEmissionAvoideds")]
         public Output<ImmutableArray<Outputs.GeneratorDailyEmissionAvoided>> DailyEmissionAvoideds { get; private set; } = null!;
 
@@ -98,7 +92,7 @@ namespace Splight.Splight
         /// timezone that overrides location-based timezone of the resource
         /// </summary>
         [Output("timezone")]
-        public Output<string?> Timezone { get; private set; } = null!;
+        public Output<string> Timezone { get; private set; } = null!;
 
 
         /// <summary>
@@ -108,7 +102,7 @@ namespace Splight.Splight
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Generator(string name, GeneratorArgs args, CustomResourceOptions? options = null)
+        public Generator(string name, GeneratorArgs? args = null, CustomResourceOptions? options = null)
             : base("splight:index/generator:Generator", name, args ?? new GeneratorArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -147,12 +141,6 @@ namespace Splight.Splight
 
     public sealed class GeneratorArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// attribute of the resource
-        /// </summary>
-        [Input("co2Coefficient", required: true)]
-        public Input<Inputs.GeneratorCo2CoefficientArgs> Co2Coefficient { get; set; } = null!;
-
         /// <summary>
         /// description of the resource
         /// </summary>
@@ -208,12 +196,6 @@ namespace Splight.Splight
             get => _activePowers ?? (_activePowers = new InputList<Inputs.GeneratorActivePowerGetArgs>());
             set => _activePowers = value;
         }
-
-        /// <summary>
-        /// attribute of the resource
-        /// </summary>
-        [Input("co2Coefficient")]
-        public Input<Inputs.GeneratorCo2CoefficientGetArgs>? Co2Coefficient { get; set; }
 
         [Input("dailyEmissionAvoideds")]
         private InputList<Inputs.GeneratorDailyEmissionAvoidedGetArgs>? _dailyEmissionAvoideds;

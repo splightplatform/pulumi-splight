@@ -42,7 +42,7 @@ export interface GetAssetKindsResult {
  * const kinds = splight.getAssetKinds({});
  * ```
  */
-export function getAssetKindsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAssetKindsResult> {
+export function getAssetKindsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAssetKindsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("splight:index/getAssetKinds:getAssetKinds", {
     }, opts);

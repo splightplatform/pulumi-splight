@@ -282,7 +282,7 @@ export interface BusNominalVoltageKv {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface BusReactivePower {
@@ -1420,33 +1420,6 @@ export interface GeneratorActivePower {
     unit: string;
 }
 
-export interface GeneratorCo2Coefficient {
-    /**
-     * reference to the asset to be linked to
-     */
-    asset: string;
-    /**
-     * id of the resource
-     */
-    id: string;
-    /**
-     * name of the resource
-     */
-    name: string;
-    /**
-     * [String|Boolean|Number] type of the data to be ingested in this attribute
-     */
-    type: string;
-    /**
-     * unit of measure
-     */
-    unit: string;
-    /**
-     * metadata value
-     */
-    value?: string;
-}
-
 export interface GeneratorDailyEmissionAvoided {
     /**
      * reference to the asset to be linked to
@@ -1765,7 +1738,7 @@ export interface InverterEnergyMeasurementType {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface InverterKind {
@@ -1803,7 +1776,7 @@ export interface InverterMake {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface InverterMaxActivePower {
@@ -1830,7 +1803,7 @@ export interface InverterMaxActivePower {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface InverterModel {
@@ -1857,7 +1830,7 @@ export interface InverterModel {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface InverterRawDailyEnergy {
@@ -1907,7 +1880,7 @@ export interface InverterSerialNumber {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface InverterSwitchStatus {
@@ -1991,7 +1964,7 @@ export interface LineAbsorptivity {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineActivePower {
@@ -2087,7 +2060,7 @@ export interface LineAtmosphere {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineCapacitance {
@@ -2114,7 +2087,7 @@ export interface LineCapacitance {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineConductance {
@@ -2141,7 +2114,7 @@ export interface LineConductance {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineConductorMass {
@@ -2168,7 +2141,7 @@ export interface LineConductorMass {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineContingency {
@@ -2287,7 +2260,7 @@ export interface LineDiameter {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineEmissivity {
@@ -2314,7 +2287,7 @@ export interface LineEmissivity {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineEnergy {
@@ -2375,7 +2348,7 @@ export interface LineLength {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineMaxTemperature {
@@ -2425,7 +2398,7 @@ export interface LineMaximumAllowedCurrent {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineMaximumAllowedPower {
@@ -2452,7 +2425,7 @@ export interface LineMaximumAllowedPower {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineMaximumAllowedTemperature {
@@ -2479,7 +2452,7 @@ export interface LineMaximumAllowedTemperature {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineMaximumAllowedTemperatureLte {
@@ -2506,7 +2479,7 @@ export interface LineMaximumAllowedTemperatureLte {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineMaximumAllowedTemperatureSte {
@@ -2533,7 +2506,7 @@ export interface LineMaximumAllowedTemperatureSte {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineNumberOfConductors {
@@ -2560,7 +2533,7 @@ export interface LineNumberOfConductors {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineReactance {
@@ -2587,7 +2560,7 @@ export interface LineReactance {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineReactivePower {
@@ -2637,7 +2610,7 @@ export interface LineReferenceResistance {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineResistance {
@@ -2664,7 +2637,7 @@ export interface LineResistance {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineSafetyMarginForPower {
@@ -2691,7 +2664,7 @@ export interface LineSafetyMarginForPower {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineSpecificHeat {
@@ -2718,7 +2691,7 @@ export interface LineSpecificHeat {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineSusceptance {
@@ -2745,7 +2718,7 @@ export interface LineSusceptance {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineSwitchStatusEnd {
@@ -2829,7 +2802,7 @@ export interface LineTemperatureCoeffResistance {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineThermalElongationCoef {
@@ -2856,7 +2829,7 @@ export interface LineThermalElongationCoef {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface LineVoltageR {
@@ -2952,7 +2925,7 @@ export interface SegmentAltitude {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface SegmentAzimuth {
@@ -2979,7 +2952,7 @@ export interface SegmentAzimuth {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface SegmentCumulativeDistance {
@@ -3006,7 +2979,7 @@ export interface SegmentCumulativeDistance {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface SegmentKind {
@@ -3044,7 +3017,7 @@ export interface SegmentReferenceSag {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface SegmentReferenceTemperature {
@@ -3071,7 +3044,7 @@ export interface SegmentReferenceTemperature {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface SegmentSpanLength {
@@ -3098,7 +3071,7 @@ export interface SegmentSpanLength {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface SegmentTag {
@@ -3397,7 +3370,7 @@ export interface TransformerCapacitance {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface TransformerConductance {
@@ -3424,7 +3397,7 @@ export interface TransformerConductance {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface TransformerContingency {
@@ -3531,7 +3504,7 @@ export interface TransformerMaximumAllowedCurrent {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface TransformerMaximumAllowedPower {
@@ -3558,7 +3531,7 @@ export interface TransformerMaximumAllowedPower {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface TransformerReactance {
@@ -3585,7 +3558,7 @@ export interface TransformerReactance {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface TransformerReactivePowerHv {
@@ -3681,7 +3654,7 @@ export interface TransformerResistance {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface TransformerSafetyMarginForPower {
@@ -3708,7 +3681,7 @@ export interface TransformerSafetyMarginForPower {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface TransformerStandardType {
@@ -3735,7 +3708,7 @@ export interface TransformerStandardType {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface TransformerSwitchStatusHv {
@@ -3819,7 +3792,7 @@ export interface TransformerTapPos {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 
 export interface TransformerVoltageHv {
@@ -3892,6 +3865,6 @@ export interface TransformerXnOhm {
     /**
      * metadata value
      */
-    value?: string;
+    value: string;
 }
 

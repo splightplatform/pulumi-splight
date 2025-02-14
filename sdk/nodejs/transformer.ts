@@ -58,11 +58,11 @@ export class Transformer extends pulumi.CustomResource {
     /**
      * attribute of the resource
      */
-    public readonly capacitance!: pulumi.Output<outputs.TransformerCapacitance>;
+    public readonly capacitance!: pulumi.Output<outputs.TransformerCapacitance | undefined>;
     /**
      * attribute of the resource
      */
-    public readonly conductance!: pulumi.Output<outputs.TransformerConductance>;
+    public readonly conductance!: pulumi.Output<outputs.TransformerConductance | undefined>;
     /**
      * attribute of the resource
      */
@@ -90,11 +90,11 @@ export class Transformer extends pulumi.CustomResource {
     /**
      * attribute of the resource
      */
-    public readonly maximumAllowedCurrent!: pulumi.Output<outputs.TransformerMaximumAllowedCurrent>;
+    public readonly maximumAllowedCurrent!: pulumi.Output<outputs.TransformerMaximumAllowedCurrent | undefined>;
     /**
      * attribute of the resource
      */
-    public readonly maximumAllowedPower!: pulumi.Output<outputs.TransformerMaximumAllowedPower>;
+    public readonly maximumAllowedPower!: pulumi.Output<outputs.TransformerMaximumAllowedPower | undefined>;
     /**
      * name of the resource
      */
@@ -102,7 +102,7 @@ export class Transformer extends pulumi.CustomResource {
     /**
      * attribute of the resource
      */
-    public readonly reactance!: pulumi.Output<outputs.TransformerReactance>;
+    public readonly reactance!: pulumi.Output<outputs.TransformerReactance | undefined>;
     /**
      * attribute of the resource
      */
@@ -118,15 +118,15 @@ export class Transformer extends pulumi.CustomResource {
     /**
      * attribute of the resource
      */
-    public readonly resistance!: pulumi.Output<outputs.TransformerResistance>;
+    public readonly resistance!: pulumi.Output<outputs.TransformerResistance | undefined>;
     /**
      * attribute of the resource
      */
-    public readonly safetyMarginForPower!: pulumi.Output<outputs.TransformerSafetyMarginForPower>;
+    public readonly safetyMarginForPower!: pulumi.Output<outputs.TransformerSafetyMarginForPower | undefined>;
     /**
      * attribute of the resource
      */
-    public readonly standardType!: pulumi.Output<outputs.TransformerStandardType>;
+    public readonly standardType!: pulumi.Output<outputs.TransformerStandardType | undefined>;
     /**
      * attribute of the resource
      */
@@ -142,11 +142,11 @@ export class Transformer extends pulumi.CustomResource {
     /**
      * attribute of the resource
      */
-    public readonly tapPos!: pulumi.Output<outputs.TransformerTapPos>;
+    public readonly tapPos!: pulumi.Output<outputs.TransformerTapPos | undefined>;
     /**
      * timezone that overrides location-based timezone of the resource
      */
-    public readonly timezone!: pulumi.Output<string | undefined>;
+    public readonly timezone!: pulumi.Output<string>;
     /**
      * attribute of the resource
      */
@@ -158,7 +158,7 @@ export class Transformer extends pulumi.CustomResource {
     /**
      * attribute of the resource
      */
-    public readonly xnOhm!: pulumi.Output<outputs.TransformerXnOhm>;
+    public readonly xnOhm!: pulumi.Output<outputs.TransformerXnOhm | undefined>;
 
     /**
      * Create a Transformer resource with the given unique name, arguments, and options.
@@ -167,7 +167,7 @@ export class Transformer extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: TransformerArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: TransformerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TransformerArgs | TransformerState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -204,36 +204,6 @@ export class Transformer extends pulumi.CustomResource {
             resourceInputs["xnOhm"] = state ? state.xnOhm : undefined;
         } else {
             const args = argsOrState as TransformerArgs | undefined;
-            if ((!args || args.capacitance === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'capacitance'");
-            }
-            if ((!args || args.conductance === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'conductance'");
-            }
-            if ((!args || args.maximumAllowedCurrent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'maximumAllowedCurrent'");
-            }
-            if ((!args || args.maximumAllowedPower === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'maximumAllowedPower'");
-            }
-            if ((!args || args.reactance === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'reactance'");
-            }
-            if ((!args || args.resistance === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'resistance'");
-            }
-            if ((!args || args.safetyMarginForPower === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'safetyMarginForPower'");
-            }
-            if ((!args || args.standardType === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'standardType'");
-            }
-            if ((!args || args.tapPos === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'tapPos'");
-            }
-            if ((!args || args.xnOhm === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'xnOhm'");
-            }
             resourceInputs["capacitance"] = args ? args.capacitance : undefined;
             resourceInputs["conductance"] = args ? args.conductance : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -398,11 +368,11 @@ export interface TransformerArgs {
     /**
      * attribute of the resource
      */
-    capacitance: pulumi.Input<inputs.TransformerCapacitance>;
+    capacitance?: pulumi.Input<inputs.TransformerCapacitance>;
     /**
      * attribute of the resource
      */
-    conductance: pulumi.Input<inputs.TransformerConductance>;
+    conductance?: pulumi.Input<inputs.TransformerConductance>;
     /**
      * description of the resource
      */
@@ -414,11 +384,11 @@ export interface TransformerArgs {
     /**
      * attribute of the resource
      */
-    maximumAllowedCurrent: pulumi.Input<inputs.TransformerMaximumAllowedCurrent>;
+    maximumAllowedCurrent?: pulumi.Input<inputs.TransformerMaximumAllowedCurrent>;
     /**
      * attribute of the resource
      */
-    maximumAllowedPower: pulumi.Input<inputs.TransformerMaximumAllowedPower>;
+    maximumAllowedPower?: pulumi.Input<inputs.TransformerMaximumAllowedPower>;
     /**
      * name of the resource
      */
@@ -426,19 +396,19 @@ export interface TransformerArgs {
     /**
      * attribute of the resource
      */
-    reactance: pulumi.Input<inputs.TransformerReactance>;
+    reactance?: pulumi.Input<inputs.TransformerReactance>;
     /**
      * attribute of the resource
      */
-    resistance: pulumi.Input<inputs.TransformerResistance>;
+    resistance?: pulumi.Input<inputs.TransformerResistance>;
     /**
      * attribute of the resource
      */
-    safetyMarginForPower: pulumi.Input<inputs.TransformerSafetyMarginForPower>;
+    safetyMarginForPower?: pulumi.Input<inputs.TransformerSafetyMarginForPower>;
     /**
      * attribute of the resource
      */
-    standardType: pulumi.Input<inputs.TransformerStandardType>;
+    standardType?: pulumi.Input<inputs.TransformerStandardType>;
     /**
      * tags of the resource
      */
@@ -446,7 +416,7 @@ export interface TransformerArgs {
     /**
      * attribute of the resource
      */
-    tapPos: pulumi.Input<inputs.TransformerTapPos>;
+    tapPos?: pulumi.Input<inputs.TransformerTapPos>;
     /**
      * timezone that overrides location-based timezone of the resource
      */
@@ -454,5 +424,5 @@ export interface TransformerArgs {
     /**
      * attribute of the resource
      */
-    xnOhm: pulumi.Input<inputs.TransformerXnOhm>;
+    xnOhm?: pulumi.Input<inputs.TransformerXnOhm>;
 }

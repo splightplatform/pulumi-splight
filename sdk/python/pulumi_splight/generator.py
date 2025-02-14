@@ -21,7 +21,6 @@ __all__ = ['GeneratorArgs', 'Generator']
 @pulumi.input_type
 class GeneratorArgs:
     def __init__(__self__, *,
-                 co2_coefficient: pulumi.Input['GeneratorCo2CoefficientArgs'],
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -29,14 +28,12 @@ class GeneratorArgs:
                  timezone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Generator resource.
-        :param pulumi.Input['GeneratorCo2CoefficientArgs'] co2_coefficient: attribute of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input['GeneratorTagArgs']]] tags: tags of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
-        pulumi.set(__self__, "co2_coefficient", co2_coefficient)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
@@ -47,18 +44,6 @@ class GeneratorArgs:
             pulumi.set(__self__, "tags", tags)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
-
-    @property
-    @pulumi.getter(name="co2Coefficient")
-    def co2_coefficient(self) -> pulumi.Input['GeneratorCo2CoefficientArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "co2_coefficient")
-
-    @co2_coefficient.setter
-    def co2_coefficient(self, value: pulumi.Input['GeneratorCo2CoefficientArgs']):
-        pulumi.set(self, "co2_coefficient", value)
 
     @property
     @pulumi.getter
@@ -125,7 +110,6 @@ class GeneratorArgs:
 class _GeneratorState:
     def __init__(__self__, *,
                  active_powers: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorActivePowerArgs']]]] = None,
-                 co2_coefficient: Optional[pulumi.Input['GeneratorCo2CoefficientArgs']] = None,
                  daily_emission_avoideds: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorDailyEmissionAvoidedArgs']]]] = None,
                  daily_energies: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorDailyEnergyArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -140,7 +124,6 @@ class _GeneratorState:
         """
         Input properties used for looking up and filtering Generator resources.
         :param pulumi.Input[Sequence[pulumi.Input['GeneratorActivePowerArgs']]] active_powers: attribute of the resource
-        :param pulumi.Input['GeneratorCo2CoefficientArgs'] co2_coefficient: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['GeneratorDailyEmissionAvoidedArgs']]] daily_emission_avoideds: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['GeneratorDailyEnergyArgs']]] daily_energies: attribute of the resource
         :param pulumi.Input[str] description: description of the resource
@@ -155,8 +138,6 @@ class _GeneratorState:
         """
         if active_powers is not None:
             pulumi.set(__self__, "active_powers", active_powers)
-        if co2_coefficient is not None:
-            pulumi.set(__self__, "co2_coefficient", co2_coefficient)
         if daily_emission_avoideds is not None:
             pulumi.set(__self__, "daily_emission_avoideds", daily_emission_avoideds)
         if daily_energies is not None:
@@ -191,18 +172,6 @@ class _GeneratorState:
     @active_powers.setter
     def active_powers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorActivePowerArgs']]]]):
         pulumi.set(self, "active_powers", value)
-
-    @property
-    @pulumi.getter(name="co2Coefficient")
-    def co2_coefficient(self) -> Optional[pulumi.Input['GeneratorCo2CoefficientArgs']]:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "co2_coefficient")
-
-    @co2_coefficient.setter
-    def co2_coefficient(self, value: Optional[pulumi.Input['GeneratorCo2CoefficientArgs']]):
-        pulumi.set(self, "co2_coefficient", value)
 
     @property
     @pulumi.getter(name="dailyEmissionAvoideds")
@@ -342,7 +311,6 @@ class Generator(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 co2_coefficient: Optional[pulumi.Input[Union['GeneratorCo2CoefficientArgs', 'GeneratorCo2CoefficientArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -360,7 +328,6 @@ class Generator(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['GeneratorCo2CoefficientArgs', 'GeneratorCo2CoefficientArgsDict']] co2_coefficient: attribute of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
@@ -371,7 +338,7 @@ class Generator(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: GeneratorArgs,
+                 args: Optional[GeneratorArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -397,7 +364,6 @@ class Generator(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 co2_coefficient: Optional[pulumi.Input[Union['GeneratorCo2CoefficientArgs', 'GeneratorCo2CoefficientArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -412,9 +378,6 @@ class Generator(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GeneratorArgs.__new__(GeneratorArgs)
 
-            if co2_coefficient is None and not opts.urn:
-                raise TypeError("Missing required property 'co2_coefficient'")
-            __props__.__dict__["co2_coefficient"] = co2_coefficient
             __props__.__dict__["description"] = description
             __props__.__dict__["geometry"] = geometry
             __props__.__dict__["name"] = name
@@ -438,7 +401,6 @@ class Generator(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             active_powers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GeneratorActivePowerArgs', 'GeneratorActivePowerArgsDict']]]]] = None,
-            co2_coefficient: Optional[pulumi.Input[Union['GeneratorCo2CoefficientArgs', 'GeneratorCo2CoefficientArgsDict']]] = None,
             daily_emission_avoideds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GeneratorDailyEmissionAvoidedArgs', 'GeneratorDailyEmissionAvoidedArgsDict']]]]] = None,
             daily_energies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GeneratorDailyEnergyArgs', 'GeneratorDailyEnergyArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -458,7 +420,6 @@ class Generator(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GeneratorActivePowerArgs', 'GeneratorActivePowerArgsDict']]]] active_powers: attribute of the resource
-        :param pulumi.Input[Union['GeneratorCo2CoefficientArgs', 'GeneratorCo2CoefficientArgsDict']] co2_coefficient: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['GeneratorDailyEmissionAvoidedArgs', 'GeneratorDailyEmissionAvoidedArgsDict']]]] daily_emission_avoideds: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['GeneratorDailyEnergyArgs', 'GeneratorDailyEnergyArgsDict']]]] daily_energies: attribute of the resource
         :param pulumi.Input[str] description: description of the resource
@@ -476,7 +437,6 @@ class Generator(pulumi.CustomResource):
         __props__ = _GeneratorState.__new__(_GeneratorState)
 
         __props__.__dict__["active_powers"] = active_powers
-        __props__.__dict__["co2_coefficient"] = co2_coefficient
         __props__.__dict__["daily_emission_avoideds"] = daily_emission_avoideds
         __props__.__dict__["daily_energies"] = daily_energies
         __props__.__dict__["description"] = description
@@ -497,14 +457,6 @@ class Generator(pulumi.CustomResource):
         attribute of the resource
         """
         return pulumi.get(self, "active_powers")
-
-    @property
-    @pulumi.getter(name="co2Coefficient")
-    def co2_coefficient(self) -> pulumi.Output['outputs.GeneratorCo2Coefficient']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "co2_coefficient")
 
     @property
     @pulumi.getter(name="dailyEmissionAvoideds")
@@ -588,7 +540,7 @@ class Generator(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timezone(self) -> pulumi.Output[Optional[str]]:
+    def timezone(self) -> pulumi.Output[str]:
         """
         timezone that overrides location-based timezone of the resource
         """

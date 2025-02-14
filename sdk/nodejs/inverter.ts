@@ -62,7 +62,7 @@ export class Inverter extends pulumi.CustomResource {
     /**
      * attribute of the resource
      */
-    public readonly energyMeasurementType!: pulumi.Output<outputs.InverterEnergyMeasurementType>;
+    public readonly energyMeasurementType!: pulumi.Output<outputs.InverterEnergyMeasurementType | undefined>;
     /**
      * geo position and shape of the resource
      */
@@ -74,15 +74,15 @@ export class Inverter extends pulumi.CustomResource {
     /**
      * attribute of the resource
      */
-    public readonly make!: pulumi.Output<outputs.InverterMake>;
+    public readonly make!: pulumi.Output<outputs.InverterMake | undefined>;
     /**
      * attribute of the resource
      */
-    public readonly maxActivePower!: pulumi.Output<outputs.InverterMaxActivePower>;
+    public readonly maxActivePower!: pulumi.Output<outputs.InverterMaxActivePower | undefined>;
     /**
      * attribute of the resource
      */
-    public readonly model!: pulumi.Output<outputs.InverterModel>;
+    public readonly model!: pulumi.Output<outputs.InverterModel | undefined>;
     /**
      * name of the resource
      */
@@ -94,7 +94,7 @@ export class Inverter extends pulumi.CustomResource {
     /**
      * attribute of the resource
      */
-    public readonly serialNumber!: pulumi.Output<outputs.InverterSerialNumber>;
+    public readonly serialNumber!: pulumi.Output<outputs.InverterSerialNumber | undefined>;
     /**
      * attribute of the resource
      */
@@ -110,7 +110,7 @@ export class Inverter extends pulumi.CustomResource {
     /**
      * timezone that overrides location-based timezone of the resource
      */
-    public readonly timezone!: pulumi.Output<string | undefined>;
+    public readonly timezone!: pulumi.Output<string>;
 
     /**
      * Create a Inverter resource with the given unique name, arguments, and options.
@@ -119,7 +119,7 @@ export class Inverter extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: InverterArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: InverterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InverterArgs | InverterState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -144,21 +144,6 @@ export class Inverter extends pulumi.CustomResource {
             resourceInputs["timezone"] = state ? state.timezone : undefined;
         } else {
             const args = argsOrState as InverterArgs | undefined;
-            if ((!args || args.energyMeasurementType === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'energyMeasurementType'");
-            }
-            if ((!args || args.make === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'make'");
-            }
-            if ((!args || args.maxActivePower === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'maxActivePower'");
-            }
-            if ((!args || args.model === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'model'");
-            }
-            if ((!args || args.serialNumber === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serialNumber'");
-            }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["energyMeasurementType"] = args ? args.energyMeasurementType : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
@@ -267,7 +252,7 @@ export interface InverterArgs {
     /**
      * attribute of the resource
      */
-    energyMeasurementType: pulumi.Input<inputs.InverterEnergyMeasurementType>;
+    energyMeasurementType?: pulumi.Input<inputs.InverterEnergyMeasurementType>;
     /**
      * geo position and shape of the resource
      */
@@ -275,15 +260,15 @@ export interface InverterArgs {
     /**
      * attribute of the resource
      */
-    make: pulumi.Input<inputs.InverterMake>;
+    make?: pulumi.Input<inputs.InverterMake>;
     /**
      * attribute of the resource
      */
-    maxActivePower: pulumi.Input<inputs.InverterMaxActivePower>;
+    maxActivePower?: pulumi.Input<inputs.InverterMaxActivePower>;
     /**
      * attribute of the resource
      */
-    model: pulumi.Input<inputs.InverterModel>;
+    model?: pulumi.Input<inputs.InverterModel>;
     /**
      * name of the resource
      */
@@ -291,7 +276,7 @@ export interface InverterArgs {
     /**
      * attribute of the resource
      */
-    serialNumber: pulumi.Input<inputs.InverterSerialNumber>;
+    serialNumber?: pulumi.Input<inputs.InverterSerialNumber>;
     /**
      * tags of the resource
      */

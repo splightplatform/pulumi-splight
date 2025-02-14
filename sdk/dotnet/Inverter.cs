@@ -50,7 +50,7 @@ namespace Splight.Splight
         /// attribute of the resource
         /// </summary>
         [Output("energyMeasurementType")]
-        public Output<Outputs.InverterEnergyMeasurementType> EnergyMeasurementType { get; private set; } = null!;
+        public Output<Outputs.InverterEnergyMeasurementType?> EnergyMeasurementType { get; private set; } = null!;
 
         /// <summary>
         /// geo position and shape of the resource
@@ -68,19 +68,19 @@ namespace Splight.Splight
         /// attribute of the resource
         /// </summary>
         [Output("make")]
-        public Output<Outputs.InverterMake> Make { get; private set; } = null!;
+        public Output<Outputs.InverterMake?> Make { get; private set; } = null!;
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
         [Output("maxActivePower")]
-        public Output<Outputs.InverterMaxActivePower> MaxActivePower { get; private set; } = null!;
+        public Output<Outputs.InverterMaxActivePower?> MaxActivePower { get; private set; } = null!;
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
         [Output("model")]
-        public Output<Outputs.InverterModel> Model { get; private set; } = null!;
+        public Output<Outputs.InverterModel?> Model { get; private set; } = null!;
 
         /// <summary>
         /// name of the resource
@@ -98,7 +98,7 @@ namespace Splight.Splight
         /// attribute of the resource
         /// </summary>
         [Output("serialNumber")]
-        public Output<Outputs.InverterSerialNumber> SerialNumber { get; private set; } = null!;
+        public Output<Outputs.InverterSerialNumber?> SerialNumber { get; private set; } = null!;
 
         /// <summary>
         /// attribute of the resource
@@ -122,7 +122,7 @@ namespace Splight.Splight
         /// timezone that overrides location-based timezone of the resource
         /// </summary>
         [Output("timezone")]
-        public Output<string?> Timezone { get; private set; } = null!;
+        public Output<string> Timezone { get; private set; } = null!;
 
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Splight.Splight
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Inverter(string name, InverterArgs args, CustomResourceOptions? options = null)
+        public Inverter(string name, InverterArgs? args = null, CustomResourceOptions? options = null)
             : base("splight:index/inverter:Inverter", name, args ?? new InverterArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -180,8 +180,8 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("energyMeasurementType", required: true)]
-        public Input<Inputs.InverterEnergyMeasurementTypeArgs> EnergyMeasurementType { get; set; } = null!;
+        [Input("energyMeasurementType")]
+        public Input<Inputs.InverterEnergyMeasurementTypeArgs>? EnergyMeasurementType { get; set; }
 
         /// <summary>
         /// geo position and shape of the resource
@@ -192,20 +192,20 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("make", required: true)]
-        public Input<Inputs.InverterMakeArgs> Make { get; set; } = null!;
+        [Input("make")]
+        public Input<Inputs.InverterMakeArgs>? Make { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("maxActivePower", required: true)]
-        public Input<Inputs.InverterMaxActivePowerArgs> MaxActivePower { get; set; } = null!;
+        [Input("maxActivePower")]
+        public Input<Inputs.InverterMaxActivePowerArgs>? MaxActivePower { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("model", required: true)]
-        public Input<Inputs.InverterModelArgs> Model { get; set; } = null!;
+        [Input("model")]
+        public Input<Inputs.InverterModelArgs>? Model { get; set; }
 
         /// <summary>
         /// name of the resource
@@ -216,8 +216,8 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("serialNumber", required: true)]
-        public Input<Inputs.InverterSerialNumberArgs> SerialNumber { get; set; } = null!;
+        [Input("serialNumber")]
+        public Input<Inputs.InverterSerialNumberArgs>? SerialNumber { get; set; }
 
         [Input("tags")]
         private InputList<Inputs.InverterTagArgs>? _tags;

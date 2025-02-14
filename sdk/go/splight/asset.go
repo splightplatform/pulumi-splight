@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/splightplatform/pulumi-splight/sdk/go/splight/internal"
 )
@@ -25,7 +24,7 @@ type Asset struct {
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// GeoJSON GeomtryCollection
-	Geometry pulumi.StringOutput `pulumi:"geometry"`
+	Geometry pulumi.StringPtrOutput `pulumi:"geometry"`
 	// kind of the resource
 	Kind AssetKindPtrOutput `pulumi:"kind"`
 	// name of the resource
@@ -33,19 +32,16 @@ type Asset struct {
 	// tags of the resource
 	Tags AssetTagArrayOutput `pulumi:"tags"`
 	// timezone of the resource (overriden by the location if set)
-	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
+	Timezone pulumi.StringOutput `pulumi:"timezone"`
 }
 
 // NewAsset registers a new resource with the given unique name, arguments, and options.
 func NewAsset(ctx *pulumi.Context,
 	name string, args *AssetArgs, opts ...pulumi.ResourceOption) (*Asset, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &AssetArgs{}
 	}
 
-	if args.Geometry == nil {
-		return nil, errors.New("invalid value for required argument 'Geometry'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Asset
 	err := ctx.RegisterResource("splight:index/asset:Asset", name, args, &resource, opts...)
@@ -106,7 +102,7 @@ type assetArgs struct {
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// GeoJSON GeomtryCollection
-	Geometry string `pulumi:"geometry"`
+	Geometry *string `pulumi:"geometry"`
 	// kind of the resource
 	Kind *AssetKind `pulumi:"kind"`
 	// name of the resource
@@ -122,7 +118,7 @@ type AssetArgs struct {
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// GeoJSON GeomtryCollection
-	Geometry pulumi.StringInput
+	Geometry pulumi.StringPtrInput
 	// kind of the resource
 	Kind AssetKindPtrInput
 	// name of the resource
@@ -226,8 +222,8 @@ func (o AssetOutput) Description() pulumi.StringPtrOutput {
 }
 
 // GeoJSON GeomtryCollection
-func (o AssetOutput) Geometry() pulumi.StringOutput {
-	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.Geometry }).(pulumi.StringOutput)
+func (o AssetOutput) Geometry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringPtrOutput { return v.Geometry }).(pulumi.StringPtrOutput)
 }
 
 // kind of the resource
@@ -246,8 +242,8 @@ func (o AssetOutput) Tags() AssetTagArrayOutput {
 }
 
 // timezone of the resource (overriden by the location if set)
-func (o AssetOutput) Timezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Asset) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+func (o AssetOutput) Timezone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
 }
 
 type AssetArrayOutput struct{ *pulumi.OutputState }

@@ -194,7 +194,7 @@ export class Line extends pulumi.CustomResource {
     /**
      * tags of the resource
      */
-    public readonly tags!: pulumi.Output<outputs.LineTag[] | undefined>;
+    public readonly tags!: pulumi.Output<outputs.LineTag[]>;
     /**
      * attribute of the resource
      */
@@ -206,7 +206,7 @@ export class Line extends pulumi.CustomResource {
     /**
      * timezone that overrides location-based timezone of the resource
      */
-    public readonly timezone!: pulumi.Output<string | undefined>;
+    public readonly timezone!: pulumi.Output<string>;
     /**
      * attribute of the resource
      */
@@ -227,7 +227,7 @@ export class Line extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: LineArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: LineArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LineArgs | LineState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -279,72 +279,6 @@ export class Line extends pulumi.CustomResource {
             resourceInputs["voltageTrs"] = state ? state.voltageTrs : undefined;
         } else {
             const args = argsOrState as LineArgs | undefined;
-            if ((!args || args.absorptivity === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'absorptivity'");
-            }
-            if ((!args || args.atmosphere === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'atmosphere'");
-            }
-            if ((!args || args.capacitance === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'capacitance'");
-            }
-            if ((!args || args.conductance === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'conductance'");
-            }
-            if ((!args || args.conductorMass === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'conductorMass'");
-            }
-            if ((!args || args.diameter === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'diameter'");
-            }
-            if ((!args || args.emissivity === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'emissivity'");
-            }
-            if ((!args || args.length === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'length'");
-            }
-            if ((!args || args.maximumAllowedCurrent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'maximumAllowedCurrent'");
-            }
-            if ((!args || args.maximumAllowedPower === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'maximumAllowedPower'");
-            }
-            if ((!args || args.maximumAllowedTemperature === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'maximumAllowedTemperature'");
-            }
-            if ((!args || args.maximumAllowedTemperatureLte === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'maximumAllowedTemperatureLte'");
-            }
-            if ((!args || args.maximumAllowedTemperatureSte === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'maximumAllowedTemperatureSte'");
-            }
-            if ((!args || args.numberOfConductors === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'numberOfConductors'");
-            }
-            if ((!args || args.reactance === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'reactance'");
-            }
-            if ((!args || args.referenceResistance === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'referenceResistance'");
-            }
-            if ((!args || args.resistance === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'resistance'");
-            }
-            if ((!args || args.safetyMarginForPower === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'safetyMarginForPower'");
-            }
-            if ((!args || args.specificHeat === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'specificHeat'");
-            }
-            if ((!args || args.susceptance === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'susceptance'");
-            }
-            if ((!args || args.temperatureCoeffResistance === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'temperatureCoeffResistance'");
-            }
-            if ((!args || args.thermalElongationCoef === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'thermalElongationCoef'");
-            }
             resourceInputs["absorptivity"] = args ? args.absorptivity : undefined;
             resourceInputs["atmosphere"] = args ? args.atmosphere : undefined;
             resourceInputs["capacitance"] = args ? args.capacitance : undefined;
@@ -584,23 +518,23 @@ export interface LineArgs {
     /**
      * attribute of the resource
      */
-    absorptivity: pulumi.Input<inputs.LineAbsorptivity>;
+    absorptivity?: pulumi.Input<inputs.LineAbsorptivity>;
     /**
      * attribute of the resource
      */
-    atmosphere: pulumi.Input<inputs.LineAtmosphere>;
+    atmosphere?: pulumi.Input<inputs.LineAtmosphere>;
     /**
      * attribute of the resource
      */
-    capacitance: pulumi.Input<inputs.LineCapacitance>;
+    capacitance?: pulumi.Input<inputs.LineCapacitance>;
     /**
      * attribute of the resource
      */
-    conductance: pulumi.Input<inputs.LineConductance>;
+    conductance?: pulumi.Input<inputs.LineConductance>;
     /**
      * attribute of the resource
      */
-    conductorMass: pulumi.Input<inputs.LineConductorMass>;
+    conductorMass?: pulumi.Input<inputs.LineConductorMass>;
     /**
      * description of the resource
      */
@@ -608,11 +542,11 @@ export interface LineArgs {
     /**
      * attribute of the resource
      */
-    diameter: pulumi.Input<inputs.LineDiameter>;
+    diameter?: pulumi.Input<inputs.LineDiameter>;
     /**
      * attribute of the resource
      */
-    emissivity: pulumi.Input<inputs.LineEmissivity>;
+    emissivity?: pulumi.Input<inputs.LineEmissivity>;
     /**
      * geo position and shape of the resource
      */
@@ -620,27 +554,27 @@ export interface LineArgs {
     /**
      * attribute of the resource
      */
-    length: pulumi.Input<inputs.LineLength>;
+    length?: pulumi.Input<inputs.LineLength>;
     /**
      * attribute of the resource
      */
-    maximumAllowedCurrent: pulumi.Input<inputs.LineMaximumAllowedCurrent>;
+    maximumAllowedCurrent?: pulumi.Input<inputs.LineMaximumAllowedCurrent>;
     /**
      * attribute of the resource
      */
-    maximumAllowedPower: pulumi.Input<inputs.LineMaximumAllowedPower>;
+    maximumAllowedPower?: pulumi.Input<inputs.LineMaximumAllowedPower>;
     /**
      * attribute of the resource
      */
-    maximumAllowedTemperature: pulumi.Input<inputs.LineMaximumAllowedTemperature>;
+    maximumAllowedTemperature?: pulumi.Input<inputs.LineMaximumAllowedTemperature>;
     /**
      * attribute of the resource
      */
-    maximumAllowedTemperatureLte: pulumi.Input<inputs.LineMaximumAllowedTemperatureLte>;
+    maximumAllowedTemperatureLte?: pulumi.Input<inputs.LineMaximumAllowedTemperatureLte>;
     /**
      * attribute of the resource
      */
-    maximumAllowedTemperatureSte: pulumi.Input<inputs.LineMaximumAllowedTemperatureSte>;
+    maximumAllowedTemperatureSte?: pulumi.Input<inputs.LineMaximumAllowedTemperatureSte>;
     /**
      * name of the resource
      */
@@ -648,31 +582,31 @@ export interface LineArgs {
     /**
      * attribute of the resource
      */
-    numberOfConductors: pulumi.Input<inputs.LineNumberOfConductors>;
+    numberOfConductors?: pulumi.Input<inputs.LineNumberOfConductors>;
     /**
      * attribute of the resource
      */
-    reactance: pulumi.Input<inputs.LineReactance>;
+    reactance?: pulumi.Input<inputs.LineReactance>;
     /**
      * attribute of the resource
      */
-    referenceResistance: pulumi.Input<inputs.LineReferenceResistance>;
+    referenceResistance?: pulumi.Input<inputs.LineReferenceResistance>;
     /**
      * attribute of the resource
      */
-    resistance: pulumi.Input<inputs.LineResistance>;
+    resistance?: pulumi.Input<inputs.LineResistance>;
     /**
      * attribute of the resource
      */
-    safetyMarginForPower: pulumi.Input<inputs.LineSafetyMarginForPower>;
+    safetyMarginForPower?: pulumi.Input<inputs.LineSafetyMarginForPower>;
     /**
      * attribute of the resource
      */
-    specificHeat: pulumi.Input<inputs.LineSpecificHeat>;
+    specificHeat?: pulumi.Input<inputs.LineSpecificHeat>;
     /**
      * attribute of the resource
      */
-    susceptance: pulumi.Input<inputs.LineSusceptance>;
+    susceptance?: pulumi.Input<inputs.LineSusceptance>;
     /**
      * tags of the resource
      */
@@ -680,11 +614,11 @@ export interface LineArgs {
     /**
      * attribute of the resource
      */
-    temperatureCoeffResistance: pulumi.Input<inputs.LineTemperatureCoeffResistance>;
+    temperatureCoeffResistance?: pulumi.Input<inputs.LineTemperatureCoeffResistance>;
     /**
      * attribute of the resource
      */
-    thermalElongationCoef: pulumi.Input<inputs.LineThermalElongationCoef>;
+    thermalElongationCoef?: pulumi.Input<inputs.LineThermalElongationCoef>;
     /**
      * timezone that overrides location-based timezone of the resource
      */

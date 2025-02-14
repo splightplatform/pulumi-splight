@@ -74,7 +74,7 @@ namespace Splight.Splight
         /// timezone that overrides location-based timezone of the resource
         /// </summary>
         [Output("timezone")]
-        public Output<string?> Timezone { get; private set; } = null!;
+        public Output<string> Timezone { get; private set; } = null!;
 
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Splight.Splight
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Bus(string name, BusArgs args, CustomResourceOptions? options = null)
+        public Bus(string name, BusArgs? args = null, CustomResourceOptions? options = null)
             : base("splight:index/bus:Bus", name, args ?? new BusArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -144,8 +144,8 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("nominalVoltageKv", required: true)]
-        public Input<Inputs.BusNominalVoltageKvArgs> NominalVoltageKv { get; set; } = null!;
+        [Input("nominalVoltageKv")]
+        public Input<Inputs.BusNominalVoltageKvArgs>? NominalVoltageKv { get; set; }
 
         [Input("tags")]
         private InputList<Inputs.BusTagArgs>? _tags;

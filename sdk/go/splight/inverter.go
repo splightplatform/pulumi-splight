@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/splightplatform/pulumi-splight/sdk/go/splight/internal"
 )
@@ -31,23 +30,23 @@ type Inverter struct {
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// attribute of the resource
-	EnergyMeasurementType InverterEnergyMeasurementTypeOutput `pulumi:"energyMeasurementType"`
+	EnergyMeasurementType InverterEnergyMeasurementTypePtrOutput `pulumi:"energyMeasurementType"`
 	// geo position and shape of the resource
 	Geometry pulumi.StringPtrOutput `pulumi:"geometry"`
 	// kind of the resource
 	Kinds InverterKindArrayOutput `pulumi:"kinds"`
 	// attribute of the resource
-	Make InverterMakeOutput `pulumi:"make"`
+	Make InverterMakePtrOutput `pulumi:"make"`
 	// attribute of the resource
-	MaxActivePower InverterMaxActivePowerOutput `pulumi:"maxActivePower"`
+	MaxActivePower InverterMaxActivePowerPtrOutput `pulumi:"maxActivePower"`
 	// attribute of the resource
-	Model InverterModelOutput `pulumi:"model"`
+	Model InverterModelPtrOutput `pulumi:"model"`
 	// name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// attribute of the resource
 	RawDailyEnergies InverterRawDailyEnergyArrayOutput `pulumi:"rawDailyEnergies"`
 	// attribute of the resource
-	SerialNumber InverterSerialNumberOutput `pulumi:"serialNumber"`
+	SerialNumber InverterSerialNumberPtrOutput `pulumi:"serialNumber"`
 	// attribute of the resource
 	SwitchStatuses InverterSwitchStatusArrayOutput `pulumi:"switchStatuses"`
 	// tags of the resource
@@ -55,31 +54,16 @@ type Inverter struct {
 	// attribute of the resource
 	Temperatures InverterTemperatureArrayOutput `pulumi:"temperatures"`
 	// timezone that overrides location-based timezone of the resource
-	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
+	Timezone pulumi.StringOutput `pulumi:"timezone"`
 }
 
 // NewInverter registers a new resource with the given unique name, arguments, and options.
 func NewInverter(ctx *pulumi.Context,
 	name string, args *InverterArgs, opts ...pulumi.ResourceOption) (*Inverter, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &InverterArgs{}
 	}
 
-	if args.EnergyMeasurementType == nil {
-		return nil, errors.New("invalid value for required argument 'EnergyMeasurementType'")
-	}
-	if args.Make == nil {
-		return nil, errors.New("invalid value for required argument 'Make'")
-	}
-	if args.MaxActivePower == nil {
-		return nil, errors.New("invalid value for required argument 'MaxActivePower'")
-	}
-	if args.Model == nil {
-		return nil, errors.New("invalid value for required argument 'Model'")
-	}
-	if args.SerialNumber == nil {
-		return nil, errors.New("invalid value for required argument 'SerialNumber'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Inverter
 	err := ctx.RegisterResource("splight:index/inverter:Inverter", name, args, &resource, opts...)
@@ -184,19 +168,19 @@ type inverterArgs struct {
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// attribute of the resource
-	EnergyMeasurementType InverterEnergyMeasurementType `pulumi:"energyMeasurementType"`
+	EnergyMeasurementType *InverterEnergyMeasurementType `pulumi:"energyMeasurementType"`
 	// geo position and shape of the resource
 	Geometry *string `pulumi:"geometry"`
 	// attribute of the resource
-	Make InverterMake `pulumi:"make"`
+	Make *InverterMake `pulumi:"make"`
 	// attribute of the resource
-	MaxActivePower InverterMaxActivePower `pulumi:"maxActivePower"`
+	MaxActivePower *InverterMaxActivePower `pulumi:"maxActivePower"`
 	// attribute of the resource
-	Model InverterModel `pulumi:"model"`
+	Model *InverterModel `pulumi:"model"`
 	// name of the resource
 	Name *string `pulumi:"name"`
 	// attribute of the resource
-	SerialNumber InverterSerialNumber `pulumi:"serialNumber"`
+	SerialNumber *InverterSerialNumber `pulumi:"serialNumber"`
 	// tags of the resource
 	Tags []InverterTag `pulumi:"tags"`
 	// timezone that overrides location-based timezone of the resource
@@ -208,19 +192,19 @@ type InverterArgs struct {
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// attribute of the resource
-	EnergyMeasurementType InverterEnergyMeasurementTypeInput
+	EnergyMeasurementType InverterEnergyMeasurementTypePtrInput
 	// geo position and shape of the resource
 	Geometry pulumi.StringPtrInput
 	// attribute of the resource
-	Make InverterMakeInput
+	Make InverterMakePtrInput
 	// attribute of the resource
-	MaxActivePower InverterMaxActivePowerInput
+	MaxActivePower InverterMaxActivePowerPtrInput
 	// attribute of the resource
-	Model InverterModelInput
+	Model InverterModelPtrInput
 	// name of the resource
 	Name pulumi.StringPtrInput
 	// attribute of the resource
-	SerialNumber InverterSerialNumberInput
+	SerialNumber InverterSerialNumberPtrInput
 	// tags of the resource
 	Tags InverterTagArrayInput
 	// timezone that overrides location-based timezone of the resource
@@ -335,8 +319,8 @@ func (o InverterOutput) Description() pulumi.StringPtrOutput {
 }
 
 // attribute of the resource
-func (o InverterOutput) EnergyMeasurementType() InverterEnergyMeasurementTypeOutput {
-	return o.ApplyT(func(v *Inverter) InverterEnergyMeasurementTypeOutput { return v.EnergyMeasurementType }).(InverterEnergyMeasurementTypeOutput)
+func (o InverterOutput) EnergyMeasurementType() InverterEnergyMeasurementTypePtrOutput {
+	return o.ApplyT(func(v *Inverter) InverterEnergyMeasurementTypePtrOutput { return v.EnergyMeasurementType }).(InverterEnergyMeasurementTypePtrOutput)
 }
 
 // geo position and shape of the resource
@@ -350,18 +334,18 @@ func (o InverterOutput) Kinds() InverterKindArrayOutput {
 }
 
 // attribute of the resource
-func (o InverterOutput) Make() InverterMakeOutput {
-	return o.ApplyT(func(v *Inverter) InverterMakeOutput { return v.Make }).(InverterMakeOutput)
+func (o InverterOutput) Make() InverterMakePtrOutput {
+	return o.ApplyT(func(v *Inverter) InverterMakePtrOutput { return v.Make }).(InverterMakePtrOutput)
 }
 
 // attribute of the resource
-func (o InverterOutput) MaxActivePower() InverterMaxActivePowerOutput {
-	return o.ApplyT(func(v *Inverter) InverterMaxActivePowerOutput { return v.MaxActivePower }).(InverterMaxActivePowerOutput)
+func (o InverterOutput) MaxActivePower() InverterMaxActivePowerPtrOutput {
+	return o.ApplyT(func(v *Inverter) InverterMaxActivePowerPtrOutput { return v.MaxActivePower }).(InverterMaxActivePowerPtrOutput)
 }
 
 // attribute of the resource
-func (o InverterOutput) Model() InverterModelOutput {
-	return o.ApplyT(func(v *Inverter) InverterModelOutput { return v.Model }).(InverterModelOutput)
+func (o InverterOutput) Model() InverterModelPtrOutput {
+	return o.ApplyT(func(v *Inverter) InverterModelPtrOutput { return v.Model }).(InverterModelPtrOutput)
 }
 
 // name of the resource
@@ -375,8 +359,8 @@ func (o InverterOutput) RawDailyEnergies() InverterRawDailyEnergyArrayOutput {
 }
 
 // attribute of the resource
-func (o InverterOutput) SerialNumber() InverterSerialNumberOutput {
-	return o.ApplyT(func(v *Inverter) InverterSerialNumberOutput { return v.SerialNumber }).(InverterSerialNumberOutput)
+func (o InverterOutput) SerialNumber() InverterSerialNumberPtrOutput {
+	return o.ApplyT(func(v *Inverter) InverterSerialNumberPtrOutput { return v.SerialNumber }).(InverterSerialNumberPtrOutput)
 }
 
 // attribute of the resource
@@ -395,8 +379,8 @@ func (o InverterOutput) Temperatures() InverterTemperatureArrayOutput {
 }
 
 // timezone that overrides location-based timezone of the resource
-func (o InverterOutput) Timezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Inverter) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+func (o InverterOutput) Timezone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Inverter) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
 }
 
 type InverterArrayOutput struct{ *pulumi.OutputState }

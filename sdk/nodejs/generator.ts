@@ -50,10 +50,6 @@ export class Generator extends pulumi.CustomResource {
     /**
      * attribute of the resource
      */
-    public readonly co2Coefficient!: pulumi.Output<outputs.GeneratorCo2Coefficient>;
-    /**
-     * attribute of the resource
-     */
     public /*out*/ readonly dailyEmissionAvoideds!: pulumi.Output<outputs.GeneratorDailyEmissionAvoided[]>;
     /**
      * attribute of the resource
@@ -94,7 +90,7 @@ export class Generator extends pulumi.CustomResource {
     /**
      * timezone that overrides location-based timezone of the resource
      */
-    public readonly timezone!: pulumi.Output<string | undefined>;
+    public readonly timezone!: pulumi.Output<string>;
 
     /**
      * Create a Generator resource with the given unique name, arguments, and options.
@@ -103,14 +99,13 @@ export class Generator extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: GeneratorArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: GeneratorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GeneratorArgs | GeneratorState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GeneratorState | undefined;
             resourceInputs["activePowers"] = state ? state.activePowers : undefined;
-            resourceInputs["co2Coefficient"] = state ? state.co2Coefficient : undefined;
             resourceInputs["dailyEmissionAvoideds"] = state ? state.dailyEmissionAvoideds : undefined;
             resourceInputs["dailyEnergies"] = state ? state.dailyEnergies : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -124,10 +119,6 @@ export class Generator extends pulumi.CustomResource {
             resourceInputs["timezone"] = state ? state.timezone : undefined;
         } else {
             const args = argsOrState as GeneratorArgs | undefined;
-            if ((!args || args.co2Coefficient === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'co2Coefficient'");
-            }
-            resourceInputs["co2Coefficient"] = args ? args.co2Coefficient : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -154,10 +145,6 @@ export interface GeneratorState {
      * attribute of the resource
      */
     activePowers?: pulumi.Input<pulumi.Input<inputs.GeneratorActivePower>[]>;
-    /**
-     * attribute of the resource
-     */
-    co2Coefficient?: pulumi.Input<inputs.GeneratorCo2Coefficient>;
     /**
      * attribute of the resource
      */
@@ -208,10 +195,6 @@ export interface GeneratorState {
  * The set of arguments for constructing a Generator resource.
  */
 export interface GeneratorArgs {
-    /**
-     * attribute of the resource
-     */
-    co2Coefficient: pulumi.Input<inputs.GeneratorCo2Coefficient>;
     /**
      * description of the resource
      */

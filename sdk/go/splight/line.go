@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/splightplatform/pulumi-splight/sdk/go/splight/internal"
 )
@@ -103,7 +102,7 @@ type Line struct {
 	// attribute of the resource
 	ThermalElongationCoef LineThermalElongationCoefOutput `pulumi:"thermalElongationCoef"`
 	// timezone that overrides location-based timezone of the resource
-	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
+	Timezone pulumi.StringOutput `pulumi:"timezone"`
 	// attribute of the resource
 	VoltageRs LineVoltageRArrayOutput `pulumi:"voltageRs"`
 	// attribute of the resource
@@ -116,75 +115,9 @@ type Line struct {
 func NewLine(ctx *pulumi.Context,
 	name string, args *LineArgs, opts ...pulumi.ResourceOption) (*Line, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &LineArgs{}
 	}
 
-	if args.Absorptivity == nil {
-		return nil, errors.New("invalid value for required argument 'Absorptivity'")
-	}
-	if args.Atmosphere == nil {
-		return nil, errors.New("invalid value for required argument 'Atmosphere'")
-	}
-	if args.Capacitance == nil {
-		return nil, errors.New("invalid value for required argument 'Capacitance'")
-	}
-	if args.Conductance == nil {
-		return nil, errors.New("invalid value for required argument 'Conductance'")
-	}
-	if args.ConductorMass == nil {
-		return nil, errors.New("invalid value for required argument 'ConductorMass'")
-	}
-	if args.Diameter == nil {
-		return nil, errors.New("invalid value for required argument 'Diameter'")
-	}
-	if args.Emissivity == nil {
-		return nil, errors.New("invalid value for required argument 'Emissivity'")
-	}
-	if args.Length == nil {
-		return nil, errors.New("invalid value for required argument 'Length'")
-	}
-	if args.MaximumAllowedCurrent == nil {
-		return nil, errors.New("invalid value for required argument 'MaximumAllowedCurrent'")
-	}
-	if args.MaximumAllowedPower == nil {
-		return nil, errors.New("invalid value for required argument 'MaximumAllowedPower'")
-	}
-	if args.MaximumAllowedTemperature == nil {
-		return nil, errors.New("invalid value for required argument 'MaximumAllowedTemperature'")
-	}
-	if args.MaximumAllowedTemperatureLte == nil {
-		return nil, errors.New("invalid value for required argument 'MaximumAllowedTemperatureLte'")
-	}
-	if args.MaximumAllowedTemperatureSte == nil {
-		return nil, errors.New("invalid value for required argument 'MaximumAllowedTemperatureSte'")
-	}
-	if args.NumberOfConductors == nil {
-		return nil, errors.New("invalid value for required argument 'NumberOfConductors'")
-	}
-	if args.Reactance == nil {
-		return nil, errors.New("invalid value for required argument 'Reactance'")
-	}
-	if args.ReferenceResistance == nil {
-		return nil, errors.New("invalid value for required argument 'ReferenceResistance'")
-	}
-	if args.Resistance == nil {
-		return nil, errors.New("invalid value for required argument 'Resistance'")
-	}
-	if args.SafetyMarginForPower == nil {
-		return nil, errors.New("invalid value for required argument 'SafetyMarginForPower'")
-	}
-	if args.SpecificHeat == nil {
-		return nil, errors.New("invalid value for required argument 'SpecificHeat'")
-	}
-	if args.Susceptance == nil {
-		return nil, errors.New("invalid value for required argument 'Susceptance'")
-	}
-	if args.TemperatureCoeffResistance == nil {
-		return nil, errors.New("invalid value for required argument 'TemperatureCoeffResistance'")
-	}
-	if args.ThermalElongationCoef == nil {
-		return nil, errors.New("invalid value for required argument 'ThermalElongationCoef'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Line
 	err := ctx.RegisterResource("splight:index/line:Line", name, args, &resource, opts...)
@@ -395,57 +328,57 @@ func (LineState) ElementType() reflect.Type {
 
 type lineArgs struct {
 	// attribute of the resource
-	Absorptivity LineAbsorptivity `pulumi:"absorptivity"`
+	Absorptivity *LineAbsorptivity `pulumi:"absorptivity"`
 	// attribute of the resource
-	Atmosphere LineAtmosphere `pulumi:"atmosphere"`
+	Atmosphere *LineAtmosphere `pulumi:"atmosphere"`
 	// attribute of the resource
-	Capacitance LineCapacitance `pulumi:"capacitance"`
+	Capacitance *LineCapacitance `pulumi:"capacitance"`
 	// attribute of the resource
-	Conductance LineConductance `pulumi:"conductance"`
+	Conductance *LineConductance `pulumi:"conductance"`
 	// attribute of the resource
-	ConductorMass LineConductorMass `pulumi:"conductorMass"`
+	ConductorMass *LineConductorMass `pulumi:"conductorMass"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// attribute of the resource
-	Diameter LineDiameter `pulumi:"diameter"`
+	Diameter *LineDiameter `pulumi:"diameter"`
 	// attribute of the resource
-	Emissivity LineEmissivity `pulumi:"emissivity"`
+	Emissivity *LineEmissivity `pulumi:"emissivity"`
 	// geo position and shape of the resource
 	Geometry *string `pulumi:"geometry"`
 	// attribute of the resource
-	Length LineLength `pulumi:"length"`
+	Length *LineLength `pulumi:"length"`
 	// attribute of the resource
-	MaximumAllowedCurrent LineMaximumAllowedCurrent `pulumi:"maximumAllowedCurrent"`
+	MaximumAllowedCurrent *LineMaximumAllowedCurrent `pulumi:"maximumAllowedCurrent"`
 	// attribute of the resource
-	MaximumAllowedPower LineMaximumAllowedPower `pulumi:"maximumAllowedPower"`
+	MaximumAllowedPower *LineMaximumAllowedPower `pulumi:"maximumAllowedPower"`
 	// attribute of the resource
-	MaximumAllowedTemperature LineMaximumAllowedTemperature `pulumi:"maximumAllowedTemperature"`
+	MaximumAllowedTemperature *LineMaximumAllowedTemperature `pulumi:"maximumAllowedTemperature"`
 	// attribute of the resource
-	MaximumAllowedTemperatureLte LineMaximumAllowedTemperatureLte `pulumi:"maximumAllowedTemperatureLte"`
+	MaximumAllowedTemperatureLte *LineMaximumAllowedTemperatureLte `pulumi:"maximumAllowedTemperatureLte"`
 	// attribute of the resource
-	MaximumAllowedTemperatureSte LineMaximumAllowedTemperatureSte `pulumi:"maximumAllowedTemperatureSte"`
+	MaximumAllowedTemperatureSte *LineMaximumAllowedTemperatureSte `pulumi:"maximumAllowedTemperatureSte"`
 	// name of the resource
 	Name *string `pulumi:"name"`
 	// attribute of the resource
-	NumberOfConductors LineNumberOfConductors `pulumi:"numberOfConductors"`
+	NumberOfConductors *LineNumberOfConductors `pulumi:"numberOfConductors"`
 	// attribute of the resource
-	Reactance LineReactance `pulumi:"reactance"`
+	Reactance *LineReactance `pulumi:"reactance"`
 	// attribute of the resource
-	ReferenceResistance LineReferenceResistance `pulumi:"referenceResistance"`
+	ReferenceResistance *LineReferenceResistance `pulumi:"referenceResistance"`
 	// attribute of the resource
-	Resistance LineResistance `pulumi:"resistance"`
+	Resistance *LineResistance `pulumi:"resistance"`
 	// attribute of the resource
-	SafetyMarginForPower LineSafetyMarginForPower `pulumi:"safetyMarginForPower"`
+	SafetyMarginForPower *LineSafetyMarginForPower `pulumi:"safetyMarginForPower"`
 	// attribute of the resource
-	SpecificHeat LineSpecificHeat `pulumi:"specificHeat"`
+	SpecificHeat *LineSpecificHeat `pulumi:"specificHeat"`
 	// attribute of the resource
-	Susceptance LineSusceptance `pulumi:"susceptance"`
+	Susceptance *LineSusceptance `pulumi:"susceptance"`
 	// tags of the resource
 	Tags []LineTag `pulumi:"tags"`
 	// attribute of the resource
-	TemperatureCoeffResistance LineTemperatureCoeffResistance `pulumi:"temperatureCoeffResistance"`
+	TemperatureCoeffResistance *LineTemperatureCoeffResistance `pulumi:"temperatureCoeffResistance"`
 	// attribute of the resource
-	ThermalElongationCoef LineThermalElongationCoef `pulumi:"thermalElongationCoef"`
+	ThermalElongationCoef *LineThermalElongationCoef `pulumi:"thermalElongationCoef"`
 	// timezone that overrides location-based timezone of the resource
 	Timezone *string `pulumi:"timezone"`
 }
@@ -453,57 +386,57 @@ type lineArgs struct {
 // The set of arguments for constructing a Line resource.
 type LineArgs struct {
 	// attribute of the resource
-	Absorptivity LineAbsorptivityInput
+	Absorptivity LineAbsorptivityPtrInput
 	// attribute of the resource
-	Atmosphere LineAtmosphereInput
+	Atmosphere LineAtmospherePtrInput
 	// attribute of the resource
-	Capacitance LineCapacitanceInput
+	Capacitance LineCapacitancePtrInput
 	// attribute of the resource
-	Conductance LineConductanceInput
+	Conductance LineConductancePtrInput
 	// attribute of the resource
-	ConductorMass LineConductorMassInput
+	ConductorMass LineConductorMassPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// attribute of the resource
-	Diameter LineDiameterInput
+	Diameter LineDiameterPtrInput
 	// attribute of the resource
-	Emissivity LineEmissivityInput
+	Emissivity LineEmissivityPtrInput
 	// geo position and shape of the resource
 	Geometry pulumi.StringPtrInput
 	// attribute of the resource
-	Length LineLengthInput
+	Length LineLengthPtrInput
 	// attribute of the resource
-	MaximumAllowedCurrent LineMaximumAllowedCurrentInput
+	MaximumAllowedCurrent LineMaximumAllowedCurrentPtrInput
 	// attribute of the resource
-	MaximumAllowedPower LineMaximumAllowedPowerInput
+	MaximumAllowedPower LineMaximumAllowedPowerPtrInput
 	// attribute of the resource
-	MaximumAllowedTemperature LineMaximumAllowedTemperatureInput
+	MaximumAllowedTemperature LineMaximumAllowedTemperaturePtrInput
 	// attribute of the resource
-	MaximumAllowedTemperatureLte LineMaximumAllowedTemperatureLteInput
+	MaximumAllowedTemperatureLte LineMaximumAllowedTemperatureLtePtrInput
 	// attribute of the resource
-	MaximumAllowedTemperatureSte LineMaximumAllowedTemperatureSteInput
+	MaximumAllowedTemperatureSte LineMaximumAllowedTemperatureStePtrInput
 	// name of the resource
 	Name pulumi.StringPtrInput
 	// attribute of the resource
-	NumberOfConductors LineNumberOfConductorsInput
+	NumberOfConductors LineNumberOfConductorsPtrInput
 	// attribute of the resource
-	Reactance LineReactanceInput
+	Reactance LineReactancePtrInput
 	// attribute of the resource
-	ReferenceResistance LineReferenceResistanceInput
+	ReferenceResistance LineReferenceResistancePtrInput
 	// attribute of the resource
-	Resistance LineResistanceInput
+	Resistance LineResistancePtrInput
 	// attribute of the resource
-	SafetyMarginForPower LineSafetyMarginForPowerInput
+	SafetyMarginForPower LineSafetyMarginForPowerPtrInput
 	// attribute of the resource
-	SpecificHeat LineSpecificHeatInput
+	SpecificHeat LineSpecificHeatPtrInput
 	// attribute of the resource
-	Susceptance LineSusceptanceInput
+	Susceptance LineSusceptancePtrInput
 	// tags of the resource
 	Tags LineTagArrayInput
 	// attribute of the resource
-	TemperatureCoeffResistance LineTemperatureCoeffResistanceInput
+	TemperatureCoeffResistance LineTemperatureCoeffResistancePtrInput
 	// attribute of the resource
-	ThermalElongationCoef LineThermalElongationCoefInput
+	ThermalElongationCoef LineThermalElongationCoefPtrInput
 	// timezone that overrides location-based timezone of the resource
 	Timezone pulumi.StringPtrInput
 }
@@ -796,8 +729,8 @@ func (o LineOutput) ThermalElongationCoef() LineThermalElongationCoefOutput {
 }
 
 // timezone that overrides location-based timezone of the resource
-func (o LineOutput) Timezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Line) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+func (o LineOutput) Timezone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Line) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
 }
 
 // attribute of the resource
