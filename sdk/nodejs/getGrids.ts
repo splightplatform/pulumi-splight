@@ -42,7 +42,7 @@ export interface GetGridsResult {
  * const grids = splight.getGrids({});
  * ```
  */
-export function getGridsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGridsResult> {
+export function getGridsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetGridsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("splight:index/getGrids:getGrids", {
     }, opts);

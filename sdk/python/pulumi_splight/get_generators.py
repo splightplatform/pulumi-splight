@@ -77,7 +77,7 @@ def get_generators(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetG
     return AwaitableGetGeneratorsResult(
         id=pulumi.get(__ret__, 'id'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_generators_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGeneratorsResult]:
+def get_generators_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGeneratorsResult]:
     """
     ## Example Usage
 
@@ -89,7 +89,7 @@ def get_generators_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.Invo
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('splight:index/getGenerators:getGenerators', __args__, opts=opts, typ=GetGeneratorsResult)
     return __ret__.apply(lambda __response__: GetGeneratorsResult(
         id=pulumi.get(__response__, 'id'),

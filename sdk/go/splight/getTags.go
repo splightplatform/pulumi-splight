@@ -53,8 +53,18 @@ type GetTagsResult struct {
 
 func GetTagsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetTagsResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetTagsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("splight:index/getTags:getTags", nil, GetTagsResultOutput{}, options).(GetTagsResultOutput), nil
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetTagsResult
+		secret, err := ctx.InvokePackageRaw("splight:index/getTags:getTags", nil, &rv, "", opts...)
+		if err != nil {
+			return GetTagsResultOutput{}, err
+		}
+
+		output := pulumi.ToOutput(rv).(GetTagsResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetTagsResultOutput), nil
+		}
+		return output, nil
 	}).(GetTagsResultOutput)
 }
 
