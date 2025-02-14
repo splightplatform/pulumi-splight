@@ -37,7 +37,7 @@ namespace Splight.Splight.Outputs
         /// <summary>
         /// metadata value
         /// </summary>
-        public readonly string? Value;
+        public readonly string Value;
 
         [OutputConstructor]
         private LineCapacitance(
@@ -51,7 +51,7 @@ namespace Splight.Splight.Outputs
 
             string? unit,
 
-            string? value)
+            string value)
         {
             Asset = asset;
             Id = id;

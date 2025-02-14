@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/splightplatform/pulumi-splight/sdk/go/splight/internal"
 )
@@ -39,19 +38,16 @@ type Bus struct {
 	// tags of the resource
 	Tags BusTagArrayOutput `pulumi:"tags"`
 	// timezone that overrides location-based timezone of the resource
-	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
+	Timezone pulumi.StringOutput `pulumi:"timezone"`
 }
 
 // NewBus registers a new resource with the given unique name, arguments, and options.
 func NewBus(ctx *pulumi.Context,
 	name string, args *BusArgs, opts ...pulumi.ResourceOption) (*Bus, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &BusArgs{}
 	}
 
-	if args.NominalVoltageKv == nil {
-		return nil, errors.New("invalid value for required argument 'NominalVoltageKv'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Bus
 	err := ctx.RegisterResource("splight:index/bus:Bus", name, args, &resource, opts...)
@@ -128,7 +124,7 @@ type busArgs struct {
 	// name of the resource
 	Name *string `pulumi:"name"`
 	// attribute of the resource
-	NominalVoltageKv BusNominalVoltageKv `pulumi:"nominalVoltageKv"`
+	NominalVoltageKv *BusNominalVoltageKv `pulumi:"nominalVoltageKv"`
 	// tags of the resource
 	Tags []BusTag `pulumi:"tags"`
 	// timezone that overrides location-based timezone of the resource
@@ -144,7 +140,7 @@ type BusArgs struct {
 	// name of the resource
 	Name pulumi.StringPtrInput
 	// attribute of the resource
-	NominalVoltageKv BusNominalVoltageKvInput
+	NominalVoltageKv BusNominalVoltageKvPtrInput
 	// tags of the resource
 	Tags BusTagArrayInput
 	// timezone that overrides location-based timezone of the resource
@@ -279,8 +275,8 @@ func (o BusOutput) Tags() BusTagArrayOutput {
 }
 
 // timezone that overrides location-based timezone of the resource
-func (o BusOutput) Timezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Bus) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+func (o BusOutput) Timezone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bus) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
 }
 
 type BusArrayOutput struct{ *pulumi.OutputState }

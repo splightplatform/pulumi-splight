@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/splightplatform/pulumi-splight/sdk/go/splight/internal"
 )
@@ -29,9 +28,9 @@ type Transformer struct {
 	// attribute of the resource
 	ActivePowerLvs TransformerActivePowerLvArrayOutput `pulumi:"activePowerLvs"`
 	// attribute of the resource
-	Capacitance TransformerCapacitanceOutput `pulumi:"capacitance"`
+	Capacitance TransformerCapacitancePtrOutput `pulumi:"capacitance"`
 	// attribute of the resource
-	Conductance TransformerConductanceOutput `pulumi:"conductance"`
+	Conductance TransformerConductancePtrOutput `pulumi:"conductance"`
 	// attribute of the resource
 	Contingencies TransformerContingencyArrayOutput `pulumi:"contingencies"`
 	// attribute of the resource
@@ -45,13 +44,13 @@ type Transformer struct {
 	// kind of the resource
 	Kinds TransformerKindArrayOutput `pulumi:"kinds"`
 	// attribute of the resource
-	MaximumAllowedCurrent TransformerMaximumAllowedCurrentOutput `pulumi:"maximumAllowedCurrent"`
+	MaximumAllowedCurrent TransformerMaximumAllowedCurrentPtrOutput `pulumi:"maximumAllowedCurrent"`
 	// attribute of the resource
-	MaximumAllowedPower TransformerMaximumAllowedPowerOutput `pulumi:"maximumAllowedPower"`
+	MaximumAllowedPower TransformerMaximumAllowedPowerPtrOutput `pulumi:"maximumAllowedPower"`
 	// name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// attribute of the resource
-	Reactance TransformerReactanceOutput `pulumi:"reactance"`
+	Reactance TransformerReactancePtrOutput `pulumi:"reactance"`
 	// attribute of the resource
 	ReactivePowerHvs TransformerReactivePowerHvArrayOutput `pulumi:"reactivePowerHvs"`
 	// attribute of the resource
@@ -59,11 +58,11 @@ type Transformer struct {
 	// attribute of the resource
 	ReactivePowerLvs TransformerReactivePowerLvArrayOutput `pulumi:"reactivePowerLvs"`
 	// attribute of the resource
-	Resistance TransformerResistanceOutput `pulumi:"resistance"`
+	Resistance TransformerResistancePtrOutput `pulumi:"resistance"`
 	// attribute of the resource
-	SafetyMarginForPower TransformerSafetyMarginForPowerOutput `pulumi:"safetyMarginForPower"`
+	SafetyMarginForPower TransformerSafetyMarginForPowerPtrOutput `pulumi:"safetyMarginForPower"`
 	// attribute of the resource
-	StandardType TransformerStandardTypeOutput `pulumi:"standardType"`
+	StandardType TransformerStandardTypePtrOutput `pulumi:"standardType"`
 	// attribute of the resource
 	SwitchStatusHvs TransformerSwitchStatusHvArrayOutput `pulumi:"switchStatusHvs"`
 	// attribute of the resource
@@ -71,54 +70,24 @@ type Transformer struct {
 	// tags of the resource
 	Tags TransformerTagArrayOutput `pulumi:"tags"`
 	// attribute of the resource
-	TapPos TransformerTapPosOutput `pulumi:"tapPos"`
+	TapPos TransformerTapPosPtrOutput `pulumi:"tapPos"`
 	// timezone that overrides location-based timezone of the resource
-	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
+	Timezone pulumi.StringOutput `pulumi:"timezone"`
 	// attribute of the resource
 	VoltageHvs TransformerVoltageHvArrayOutput `pulumi:"voltageHvs"`
 	// attribute of the resource
 	VoltageLvs TransformerVoltageLvArrayOutput `pulumi:"voltageLvs"`
 	// attribute of the resource
-	XnOhm TransformerXnOhmOutput `pulumi:"xnOhm"`
+	XnOhm TransformerXnOhmPtrOutput `pulumi:"xnOhm"`
 }
 
 // NewTransformer registers a new resource with the given unique name, arguments, and options.
 func NewTransformer(ctx *pulumi.Context,
 	name string, args *TransformerArgs, opts ...pulumi.ResourceOption) (*Transformer, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &TransformerArgs{}
 	}
 
-	if args.Capacitance == nil {
-		return nil, errors.New("invalid value for required argument 'Capacitance'")
-	}
-	if args.Conductance == nil {
-		return nil, errors.New("invalid value for required argument 'Conductance'")
-	}
-	if args.MaximumAllowedCurrent == nil {
-		return nil, errors.New("invalid value for required argument 'MaximumAllowedCurrent'")
-	}
-	if args.MaximumAllowedPower == nil {
-		return nil, errors.New("invalid value for required argument 'MaximumAllowedPower'")
-	}
-	if args.Reactance == nil {
-		return nil, errors.New("invalid value for required argument 'Reactance'")
-	}
-	if args.Resistance == nil {
-		return nil, errors.New("invalid value for required argument 'Resistance'")
-	}
-	if args.SafetyMarginForPower == nil {
-		return nil, errors.New("invalid value for required argument 'SafetyMarginForPower'")
-	}
-	if args.StandardType == nil {
-		return nil, errors.New("invalid value for required argument 'StandardType'")
-	}
-	if args.TapPos == nil {
-		return nil, errors.New("invalid value for required argument 'TapPos'")
-	}
-	if args.XnOhm == nil {
-		return nil, errors.New("invalid value for required argument 'XnOhm'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Transformer
 	err := ctx.RegisterResource("splight:index/transformer:Transformer", name, args, &resource, opts...)
@@ -269,69 +238,69 @@ func (TransformerState) ElementType() reflect.Type {
 
 type transformerArgs struct {
 	// attribute of the resource
-	Capacitance TransformerCapacitance `pulumi:"capacitance"`
+	Capacitance *TransformerCapacitance `pulumi:"capacitance"`
 	// attribute of the resource
-	Conductance TransformerConductance `pulumi:"conductance"`
+	Conductance *TransformerConductance `pulumi:"conductance"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
 	Geometry *string `pulumi:"geometry"`
 	// attribute of the resource
-	MaximumAllowedCurrent TransformerMaximumAllowedCurrent `pulumi:"maximumAllowedCurrent"`
+	MaximumAllowedCurrent *TransformerMaximumAllowedCurrent `pulumi:"maximumAllowedCurrent"`
 	// attribute of the resource
-	MaximumAllowedPower TransformerMaximumAllowedPower `pulumi:"maximumAllowedPower"`
+	MaximumAllowedPower *TransformerMaximumAllowedPower `pulumi:"maximumAllowedPower"`
 	// name of the resource
 	Name *string `pulumi:"name"`
 	// attribute of the resource
-	Reactance TransformerReactance `pulumi:"reactance"`
+	Reactance *TransformerReactance `pulumi:"reactance"`
 	// attribute of the resource
-	Resistance TransformerResistance `pulumi:"resistance"`
+	Resistance *TransformerResistance `pulumi:"resistance"`
 	// attribute of the resource
-	SafetyMarginForPower TransformerSafetyMarginForPower `pulumi:"safetyMarginForPower"`
+	SafetyMarginForPower *TransformerSafetyMarginForPower `pulumi:"safetyMarginForPower"`
 	// attribute of the resource
-	StandardType TransformerStandardType `pulumi:"standardType"`
+	StandardType *TransformerStandardType `pulumi:"standardType"`
 	// tags of the resource
 	Tags []TransformerTag `pulumi:"tags"`
 	// attribute of the resource
-	TapPos TransformerTapPos `pulumi:"tapPos"`
+	TapPos *TransformerTapPos `pulumi:"tapPos"`
 	// timezone that overrides location-based timezone of the resource
 	Timezone *string `pulumi:"timezone"`
 	// attribute of the resource
-	XnOhm TransformerXnOhm `pulumi:"xnOhm"`
+	XnOhm *TransformerXnOhm `pulumi:"xnOhm"`
 }
 
 // The set of arguments for constructing a Transformer resource.
 type TransformerArgs struct {
 	// attribute of the resource
-	Capacitance TransformerCapacitanceInput
+	Capacitance TransformerCapacitancePtrInput
 	// attribute of the resource
-	Conductance TransformerConductanceInput
+	Conductance TransformerConductancePtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
 	Geometry pulumi.StringPtrInput
 	// attribute of the resource
-	MaximumAllowedCurrent TransformerMaximumAllowedCurrentInput
+	MaximumAllowedCurrent TransformerMaximumAllowedCurrentPtrInput
 	// attribute of the resource
-	MaximumAllowedPower TransformerMaximumAllowedPowerInput
+	MaximumAllowedPower TransformerMaximumAllowedPowerPtrInput
 	// name of the resource
 	Name pulumi.StringPtrInput
 	// attribute of the resource
-	Reactance TransformerReactanceInput
+	Reactance TransformerReactancePtrInput
 	// attribute of the resource
-	Resistance TransformerResistanceInput
+	Resistance TransformerResistancePtrInput
 	// attribute of the resource
-	SafetyMarginForPower TransformerSafetyMarginForPowerInput
+	SafetyMarginForPower TransformerSafetyMarginForPowerPtrInput
 	// attribute of the resource
-	StandardType TransformerStandardTypeInput
+	StandardType TransformerStandardTypePtrInput
 	// tags of the resource
 	Tags TransformerTagArrayInput
 	// attribute of the resource
-	TapPos TransformerTapPosInput
+	TapPos TransformerTapPosPtrInput
 	// timezone that overrides location-based timezone of the resource
 	Timezone pulumi.StringPtrInput
 	// attribute of the resource
-	XnOhm TransformerXnOhmInput
+	XnOhm TransformerXnOhmPtrInput
 }
 
 func (TransformerArgs) ElementType() reflect.Type {
@@ -437,13 +406,13 @@ func (o TransformerOutput) ActivePowerLvs() TransformerActivePowerLvArrayOutput 
 }
 
 // attribute of the resource
-func (o TransformerOutput) Capacitance() TransformerCapacitanceOutput {
-	return o.ApplyT(func(v *Transformer) TransformerCapacitanceOutput { return v.Capacitance }).(TransformerCapacitanceOutput)
+func (o TransformerOutput) Capacitance() TransformerCapacitancePtrOutput {
+	return o.ApplyT(func(v *Transformer) TransformerCapacitancePtrOutput { return v.Capacitance }).(TransformerCapacitancePtrOutput)
 }
 
 // attribute of the resource
-func (o TransformerOutput) Conductance() TransformerConductanceOutput {
-	return o.ApplyT(func(v *Transformer) TransformerConductanceOutput { return v.Conductance }).(TransformerConductanceOutput)
+func (o TransformerOutput) Conductance() TransformerConductancePtrOutput {
+	return o.ApplyT(func(v *Transformer) TransformerConductancePtrOutput { return v.Conductance }).(TransformerConductancePtrOutput)
 }
 
 // attribute of the resource
@@ -477,13 +446,13 @@ func (o TransformerOutput) Kinds() TransformerKindArrayOutput {
 }
 
 // attribute of the resource
-func (o TransformerOutput) MaximumAllowedCurrent() TransformerMaximumAllowedCurrentOutput {
-	return o.ApplyT(func(v *Transformer) TransformerMaximumAllowedCurrentOutput { return v.MaximumAllowedCurrent }).(TransformerMaximumAllowedCurrentOutput)
+func (o TransformerOutput) MaximumAllowedCurrent() TransformerMaximumAllowedCurrentPtrOutput {
+	return o.ApplyT(func(v *Transformer) TransformerMaximumAllowedCurrentPtrOutput { return v.MaximumAllowedCurrent }).(TransformerMaximumAllowedCurrentPtrOutput)
 }
 
 // attribute of the resource
-func (o TransformerOutput) MaximumAllowedPower() TransformerMaximumAllowedPowerOutput {
-	return o.ApplyT(func(v *Transformer) TransformerMaximumAllowedPowerOutput { return v.MaximumAllowedPower }).(TransformerMaximumAllowedPowerOutput)
+func (o TransformerOutput) MaximumAllowedPower() TransformerMaximumAllowedPowerPtrOutput {
+	return o.ApplyT(func(v *Transformer) TransformerMaximumAllowedPowerPtrOutput { return v.MaximumAllowedPower }).(TransformerMaximumAllowedPowerPtrOutput)
 }
 
 // name of the resource
@@ -492,8 +461,8 @@ func (o TransformerOutput) Name() pulumi.StringOutput {
 }
 
 // attribute of the resource
-func (o TransformerOutput) Reactance() TransformerReactanceOutput {
-	return o.ApplyT(func(v *Transformer) TransformerReactanceOutput { return v.Reactance }).(TransformerReactanceOutput)
+func (o TransformerOutput) Reactance() TransformerReactancePtrOutput {
+	return o.ApplyT(func(v *Transformer) TransformerReactancePtrOutput { return v.Reactance }).(TransformerReactancePtrOutput)
 }
 
 // attribute of the resource
@@ -512,18 +481,18 @@ func (o TransformerOutput) ReactivePowerLvs() TransformerReactivePowerLvArrayOut
 }
 
 // attribute of the resource
-func (o TransformerOutput) Resistance() TransformerResistanceOutput {
-	return o.ApplyT(func(v *Transformer) TransformerResistanceOutput { return v.Resistance }).(TransformerResistanceOutput)
+func (o TransformerOutput) Resistance() TransformerResistancePtrOutput {
+	return o.ApplyT(func(v *Transformer) TransformerResistancePtrOutput { return v.Resistance }).(TransformerResistancePtrOutput)
 }
 
 // attribute of the resource
-func (o TransformerOutput) SafetyMarginForPower() TransformerSafetyMarginForPowerOutput {
-	return o.ApplyT(func(v *Transformer) TransformerSafetyMarginForPowerOutput { return v.SafetyMarginForPower }).(TransformerSafetyMarginForPowerOutput)
+func (o TransformerOutput) SafetyMarginForPower() TransformerSafetyMarginForPowerPtrOutput {
+	return o.ApplyT(func(v *Transformer) TransformerSafetyMarginForPowerPtrOutput { return v.SafetyMarginForPower }).(TransformerSafetyMarginForPowerPtrOutput)
 }
 
 // attribute of the resource
-func (o TransformerOutput) StandardType() TransformerStandardTypeOutput {
-	return o.ApplyT(func(v *Transformer) TransformerStandardTypeOutput { return v.StandardType }).(TransformerStandardTypeOutput)
+func (o TransformerOutput) StandardType() TransformerStandardTypePtrOutput {
+	return o.ApplyT(func(v *Transformer) TransformerStandardTypePtrOutput { return v.StandardType }).(TransformerStandardTypePtrOutput)
 }
 
 // attribute of the resource
@@ -542,13 +511,13 @@ func (o TransformerOutput) Tags() TransformerTagArrayOutput {
 }
 
 // attribute of the resource
-func (o TransformerOutput) TapPos() TransformerTapPosOutput {
-	return o.ApplyT(func(v *Transformer) TransformerTapPosOutput { return v.TapPos }).(TransformerTapPosOutput)
+func (o TransformerOutput) TapPos() TransformerTapPosPtrOutput {
+	return o.ApplyT(func(v *Transformer) TransformerTapPosPtrOutput { return v.TapPos }).(TransformerTapPosPtrOutput)
 }
 
 // timezone that overrides location-based timezone of the resource
-func (o TransformerOutput) Timezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Transformer) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+func (o TransformerOutput) Timezone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Transformer) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
 }
 
 // attribute of the resource
@@ -562,8 +531,8 @@ func (o TransformerOutput) VoltageLvs() TransformerVoltageLvArrayOutput {
 }
 
 // attribute of the resource
-func (o TransformerOutput) XnOhm() TransformerXnOhmOutput {
-	return o.ApplyT(func(v *Transformer) TransformerXnOhmOutput { return v.XnOhm }).(TransformerXnOhmOutput)
+func (o TransformerOutput) XnOhm() TransformerXnOhmPtrOutput {
+	return o.ApplyT(func(v *Transformer) TransformerXnOhmPtrOutput { return v.XnOhm }).(TransformerXnOhmPtrOutput)
 }
 
 type TransformerArrayOutput struct{ *pulumi.OutputState }

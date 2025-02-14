@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/splightplatform/pulumi-splight/sdk/go/splight/internal"
 )
@@ -23,11 +22,11 @@ type Segment struct {
 	pulumi.CustomResourceState
 
 	// attribute of the resource
-	Altitude SegmentAltitudeOutput `pulumi:"altitude"`
+	Altitude SegmentAltitudePtrOutput `pulumi:"altitude"`
 	// attribute of the resource
-	Azimuth SegmentAzimuthOutput `pulumi:"azimuth"`
+	Azimuth SegmentAzimuthPtrOutput `pulumi:"azimuth"`
 	// attribute of the resource
-	CumulativeDistance SegmentCumulativeDistanceOutput `pulumi:"cumulativeDistance"`
+	CumulativeDistance SegmentCumulativeDistancePtrOutput `pulumi:"cumulativeDistance"`
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// geo position and shape of the resource
@@ -37,17 +36,17 @@ type Segment struct {
 	// name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// attribute of the resource
-	ReferenceSag SegmentReferenceSagOutput `pulumi:"referenceSag"`
+	ReferenceSag SegmentReferenceSagPtrOutput `pulumi:"referenceSag"`
 	// attribute of the resource
-	ReferenceTemperature SegmentReferenceTemperatureOutput `pulumi:"referenceTemperature"`
+	ReferenceTemperature SegmentReferenceTemperaturePtrOutput `pulumi:"referenceTemperature"`
 	// attribute of the resource
-	SpanLength SegmentSpanLengthOutput `pulumi:"spanLength"`
+	SpanLength SegmentSpanLengthPtrOutput `pulumi:"spanLength"`
 	// tags of the resource
 	Tags SegmentTagArrayOutput `pulumi:"tags"`
 	// attribute of the resource
 	Temperatures SegmentTemperatureArrayOutput `pulumi:"temperatures"`
 	// timezone that overrides location-based timezone of the resource
-	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
+	Timezone pulumi.StringOutput `pulumi:"timezone"`
 	// attribute of the resource
 	WindDirections SegmentWindDirectionArrayOutput `pulumi:"windDirections"`
 	// attribute of the resource
@@ -58,27 +57,9 @@ type Segment struct {
 func NewSegment(ctx *pulumi.Context,
 	name string, args *SegmentArgs, opts ...pulumi.ResourceOption) (*Segment, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &SegmentArgs{}
 	}
 
-	if args.Altitude == nil {
-		return nil, errors.New("invalid value for required argument 'Altitude'")
-	}
-	if args.Azimuth == nil {
-		return nil, errors.New("invalid value for required argument 'Azimuth'")
-	}
-	if args.CumulativeDistance == nil {
-		return nil, errors.New("invalid value for required argument 'CumulativeDistance'")
-	}
-	if args.ReferenceSag == nil {
-		return nil, errors.New("invalid value for required argument 'ReferenceSag'")
-	}
-	if args.ReferenceTemperature == nil {
-		return nil, errors.New("invalid value for required argument 'ReferenceTemperature'")
-	}
-	if args.SpanLength == nil {
-		return nil, errors.New("invalid value for required argument 'SpanLength'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Segment
 	err := ctx.RegisterResource("splight:index/segment:Segment", name, args, &resource, opts...)
@@ -173,11 +154,11 @@ func (SegmentState) ElementType() reflect.Type {
 
 type segmentArgs struct {
 	// attribute of the resource
-	Altitude SegmentAltitude `pulumi:"altitude"`
+	Altitude *SegmentAltitude `pulumi:"altitude"`
 	// attribute of the resource
-	Azimuth SegmentAzimuth `pulumi:"azimuth"`
+	Azimuth *SegmentAzimuth `pulumi:"azimuth"`
 	// attribute of the resource
-	CumulativeDistance SegmentCumulativeDistance `pulumi:"cumulativeDistance"`
+	CumulativeDistance *SegmentCumulativeDistance `pulumi:"cumulativeDistance"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -185,11 +166,11 @@ type segmentArgs struct {
 	// name of the resource
 	Name *string `pulumi:"name"`
 	// attribute of the resource
-	ReferenceSag SegmentReferenceSag `pulumi:"referenceSag"`
+	ReferenceSag *SegmentReferenceSag `pulumi:"referenceSag"`
 	// attribute of the resource
-	ReferenceTemperature SegmentReferenceTemperature `pulumi:"referenceTemperature"`
+	ReferenceTemperature *SegmentReferenceTemperature `pulumi:"referenceTemperature"`
 	// attribute of the resource
-	SpanLength SegmentSpanLength `pulumi:"spanLength"`
+	SpanLength *SegmentSpanLength `pulumi:"spanLength"`
 	// tags of the resource
 	Tags []SegmentTag `pulumi:"tags"`
 	// timezone that overrides location-based timezone of the resource
@@ -199,11 +180,11 @@ type segmentArgs struct {
 // The set of arguments for constructing a Segment resource.
 type SegmentArgs struct {
 	// attribute of the resource
-	Altitude SegmentAltitudeInput
+	Altitude SegmentAltitudePtrInput
 	// attribute of the resource
-	Azimuth SegmentAzimuthInput
+	Azimuth SegmentAzimuthPtrInput
 	// attribute of the resource
-	CumulativeDistance SegmentCumulativeDistanceInput
+	CumulativeDistance SegmentCumulativeDistancePtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -211,11 +192,11 @@ type SegmentArgs struct {
 	// name of the resource
 	Name pulumi.StringPtrInput
 	// attribute of the resource
-	ReferenceSag SegmentReferenceSagInput
+	ReferenceSag SegmentReferenceSagPtrInput
 	// attribute of the resource
-	ReferenceTemperature SegmentReferenceTemperatureInput
+	ReferenceTemperature SegmentReferenceTemperaturePtrInput
 	// attribute of the resource
-	SpanLength SegmentSpanLengthInput
+	SpanLength SegmentSpanLengthPtrInput
 	// tags of the resource
 	Tags SegmentTagArrayInput
 	// timezone that overrides location-based timezone of the resource
@@ -310,18 +291,18 @@ func (o SegmentOutput) ToSegmentOutputWithContext(ctx context.Context) SegmentOu
 }
 
 // attribute of the resource
-func (o SegmentOutput) Altitude() SegmentAltitudeOutput {
-	return o.ApplyT(func(v *Segment) SegmentAltitudeOutput { return v.Altitude }).(SegmentAltitudeOutput)
+func (o SegmentOutput) Altitude() SegmentAltitudePtrOutput {
+	return o.ApplyT(func(v *Segment) SegmentAltitudePtrOutput { return v.Altitude }).(SegmentAltitudePtrOutput)
 }
 
 // attribute of the resource
-func (o SegmentOutput) Azimuth() SegmentAzimuthOutput {
-	return o.ApplyT(func(v *Segment) SegmentAzimuthOutput { return v.Azimuth }).(SegmentAzimuthOutput)
+func (o SegmentOutput) Azimuth() SegmentAzimuthPtrOutput {
+	return o.ApplyT(func(v *Segment) SegmentAzimuthPtrOutput { return v.Azimuth }).(SegmentAzimuthPtrOutput)
 }
 
 // attribute of the resource
-func (o SegmentOutput) CumulativeDistance() SegmentCumulativeDistanceOutput {
-	return o.ApplyT(func(v *Segment) SegmentCumulativeDistanceOutput { return v.CumulativeDistance }).(SegmentCumulativeDistanceOutput)
+func (o SegmentOutput) CumulativeDistance() SegmentCumulativeDistancePtrOutput {
+	return o.ApplyT(func(v *Segment) SegmentCumulativeDistancePtrOutput { return v.CumulativeDistance }).(SegmentCumulativeDistancePtrOutput)
 }
 
 // description of the resource
@@ -345,18 +326,18 @@ func (o SegmentOutput) Name() pulumi.StringOutput {
 }
 
 // attribute of the resource
-func (o SegmentOutput) ReferenceSag() SegmentReferenceSagOutput {
-	return o.ApplyT(func(v *Segment) SegmentReferenceSagOutput { return v.ReferenceSag }).(SegmentReferenceSagOutput)
+func (o SegmentOutput) ReferenceSag() SegmentReferenceSagPtrOutput {
+	return o.ApplyT(func(v *Segment) SegmentReferenceSagPtrOutput { return v.ReferenceSag }).(SegmentReferenceSagPtrOutput)
 }
 
 // attribute of the resource
-func (o SegmentOutput) ReferenceTemperature() SegmentReferenceTemperatureOutput {
-	return o.ApplyT(func(v *Segment) SegmentReferenceTemperatureOutput { return v.ReferenceTemperature }).(SegmentReferenceTemperatureOutput)
+func (o SegmentOutput) ReferenceTemperature() SegmentReferenceTemperaturePtrOutput {
+	return o.ApplyT(func(v *Segment) SegmentReferenceTemperaturePtrOutput { return v.ReferenceTemperature }).(SegmentReferenceTemperaturePtrOutput)
 }
 
 // attribute of the resource
-func (o SegmentOutput) SpanLength() SegmentSpanLengthOutput {
-	return o.ApplyT(func(v *Segment) SegmentSpanLengthOutput { return v.SpanLength }).(SegmentSpanLengthOutput)
+func (o SegmentOutput) SpanLength() SegmentSpanLengthPtrOutput {
+	return o.ApplyT(func(v *Segment) SegmentSpanLengthPtrOutput { return v.SpanLength }).(SegmentSpanLengthPtrOutput)
 }
 
 // tags of the resource
@@ -370,8 +351,8 @@ func (o SegmentOutput) Temperatures() SegmentTemperatureArrayOutput {
 }
 
 // timezone that overrides location-based timezone of the resource
-func (o SegmentOutput) Timezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Segment) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+func (o SegmentOutput) Timezone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Segment) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
 }
 
 // attribute of the resource

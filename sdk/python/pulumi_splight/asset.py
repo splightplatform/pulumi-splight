@@ -21,24 +21,25 @@ __all__ = ['AssetArgs', 'Asset']
 @pulumi.input_type
 class AssetArgs:
     def __init__(__self__, *,
-                 geometry: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 geometry: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input['AssetKindArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['AssetTagArgs']]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Asset resource.
-        :param pulumi.Input[str] geometry: GeoJSON GeomtryCollection
         :param pulumi.Input[str] description: description of the resource
+        :param pulumi.Input[str] geometry: GeoJSON GeomtryCollection
         :param pulumi.Input['AssetKindArgs'] kind: kind of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input['AssetTagArgs']]] tags: tags of the resource
         :param pulumi.Input[str] timezone: timezone of the resource (overriden by the location if set)
         """
-        pulumi.set(__self__, "geometry", geometry)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if geometry is not None:
+            pulumi.set(__self__, "geometry", geometry)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if name is not None:
@@ -47,18 +48,6 @@ class AssetArgs:
             pulumi.set(__self__, "tags", tags)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
-
-    @property
-    @pulumi.getter
-    def geometry(self) -> pulumi.Input[str]:
-        """
-        GeoJSON GeomtryCollection
-        """
-        return pulumi.get(self, "geometry")
-
-    @geometry.setter
-    def geometry(self, value: pulumi.Input[str]):
-        pulumi.set(self, "geometry", value)
 
     @property
     @pulumi.getter
@@ -71,6 +60,18 @@ class AssetArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def geometry(self) -> Optional[pulumi.Input[str]]:
+        """
+        GeoJSON GeomtryCollection
+        """
+        return pulumi.get(self, "geometry")
+
+    @geometry.setter
+    def geometry(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "geometry", value)
 
     @property
     @pulumi.getter
@@ -259,7 +260,7 @@ class Asset(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AssetArgs,
+                 args: Optional[AssetArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -301,8 +302,6 @@ class Asset(pulumi.CustomResource):
             __props__ = AssetArgs.__new__(AssetArgs)
 
             __props__.__dict__["description"] = description
-            if geometry is None and not opts.urn:
-                raise TypeError("Missing required property 'geometry'")
             __props__.__dict__["geometry"] = geometry
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
@@ -360,7 +359,7 @@ class Asset(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def geometry(self) -> pulumi.Output[str]:
+    def geometry(self) -> pulumi.Output[Optional[str]]:
         """
         GeoJSON GeomtryCollection
         """
@@ -392,7 +391,7 @@ class Asset(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timezone(self) -> pulumi.Output[Optional[str]]:
+    def timezone(self) -> pulumi.Output[str]:
         """
         timezone of the resource (overriden by the location if set)
         """

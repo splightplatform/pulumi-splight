@@ -53,18 +53,8 @@ type GetGeneratorsResult struct {
 
 func GetGeneratorsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetGeneratorsResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetGeneratorsResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetGeneratorsResult
-		secret, err := ctx.InvokePackageRaw("splight:index/getGenerators:getGenerators", nil, &rv, "", opts...)
-		if err != nil {
-			return GetGeneratorsResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetGeneratorsResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetGeneratorsResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("splight:index/getGenerators:getGenerators", nil, GetGeneratorsResultOutput{}, options).(GetGeneratorsResultOutput), nil
 	}).(GetGeneratorsResultOutput)
 }
 

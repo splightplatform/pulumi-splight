@@ -266,7 +266,7 @@ namespace Splight.Splight
         /// timezone that overrides location-based timezone of the resource
         /// </summary>
         [Output("timezone")]
-        public Output<string?> Timezone { get; private set; } = null!;
+        public Output<string> Timezone { get; private set; } = null!;
 
         /// <summary>
         /// attribute of the resource
@@ -294,7 +294,7 @@ namespace Splight.Splight
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Line(string name, LineArgs args, CustomResourceOptions? options = null)
+        public Line(string name, LineArgs? args = null, CustomResourceOptions? options = null)
             : base("splight:index/line:Line", name, args ?? new LineArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -336,32 +336,32 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("absorptivity", required: true)]
-        public Input<Inputs.LineAbsorptivityArgs> Absorptivity { get; set; } = null!;
+        [Input("absorptivity")]
+        public Input<Inputs.LineAbsorptivityArgs>? Absorptivity { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("atmosphere", required: true)]
-        public Input<Inputs.LineAtmosphereArgs> Atmosphere { get; set; } = null!;
+        [Input("atmosphere")]
+        public Input<Inputs.LineAtmosphereArgs>? Atmosphere { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("capacitance", required: true)]
-        public Input<Inputs.LineCapacitanceArgs> Capacitance { get; set; } = null!;
+        [Input("capacitance")]
+        public Input<Inputs.LineCapacitanceArgs>? Capacitance { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("conductance", required: true)]
-        public Input<Inputs.LineConductanceArgs> Conductance { get; set; } = null!;
+        [Input("conductance")]
+        public Input<Inputs.LineConductanceArgs>? Conductance { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("conductorMass", required: true)]
-        public Input<Inputs.LineConductorMassArgs> ConductorMass { get; set; } = null!;
+        [Input("conductorMass")]
+        public Input<Inputs.LineConductorMassArgs>? ConductorMass { get; set; }
 
         /// <summary>
         /// description of the resource
@@ -372,14 +372,14 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("diameter", required: true)]
-        public Input<Inputs.LineDiameterArgs> Diameter { get; set; } = null!;
+        [Input("diameter")]
+        public Input<Inputs.LineDiameterArgs>? Diameter { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("emissivity", required: true)]
-        public Input<Inputs.LineEmissivityArgs> Emissivity { get; set; } = null!;
+        [Input("emissivity")]
+        public Input<Inputs.LineEmissivityArgs>? Emissivity { get; set; }
 
         /// <summary>
         /// geo position and shape of the resource
@@ -390,38 +390,38 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("length", required: true)]
-        public Input<Inputs.LineLengthArgs> Length { get; set; } = null!;
+        [Input("length")]
+        public Input<Inputs.LineLengthArgs>? Length { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("maximumAllowedCurrent", required: true)]
-        public Input<Inputs.LineMaximumAllowedCurrentArgs> MaximumAllowedCurrent { get; set; } = null!;
+        [Input("maximumAllowedCurrent")]
+        public Input<Inputs.LineMaximumAllowedCurrentArgs>? MaximumAllowedCurrent { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("maximumAllowedPower", required: true)]
-        public Input<Inputs.LineMaximumAllowedPowerArgs> MaximumAllowedPower { get; set; } = null!;
+        [Input("maximumAllowedPower")]
+        public Input<Inputs.LineMaximumAllowedPowerArgs>? MaximumAllowedPower { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("maximumAllowedTemperature", required: true)]
-        public Input<Inputs.LineMaximumAllowedTemperatureArgs> MaximumAllowedTemperature { get; set; } = null!;
+        [Input("maximumAllowedTemperature")]
+        public Input<Inputs.LineMaximumAllowedTemperatureArgs>? MaximumAllowedTemperature { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("maximumAllowedTemperatureLte", required: true)]
-        public Input<Inputs.LineMaximumAllowedTemperatureLteArgs> MaximumAllowedTemperatureLte { get; set; } = null!;
+        [Input("maximumAllowedTemperatureLte")]
+        public Input<Inputs.LineMaximumAllowedTemperatureLteArgs>? MaximumAllowedTemperatureLte { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("maximumAllowedTemperatureSte", required: true)]
-        public Input<Inputs.LineMaximumAllowedTemperatureSteArgs> MaximumAllowedTemperatureSte { get; set; } = null!;
+        [Input("maximumAllowedTemperatureSte")]
+        public Input<Inputs.LineMaximumAllowedTemperatureSteArgs>? MaximumAllowedTemperatureSte { get; set; }
 
         /// <summary>
         /// name of the resource
@@ -432,44 +432,44 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("numberOfConductors", required: true)]
-        public Input<Inputs.LineNumberOfConductorsArgs> NumberOfConductors { get; set; } = null!;
+        [Input("numberOfConductors")]
+        public Input<Inputs.LineNumberOfConductorsArgs>? NumberOfConductors { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("reactance", required: true)]
-        public Input<Inputs.LineReactanceArgs> Reactance { get; set; } = null!;
+        [Input("reactance")]
+        public Input<Inputs.LineReactanceArgs>? Reactance { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("referenceResistance", required: true)]
-        public Input<Inputs.LineReferenceResistanceArgs> ReferenceResistance { get; set; } = null!;
+        [Input("referenceResistance")]
+        public Input<Inputs.LineReferenceResistanceArgs>? ReferenceResistance { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("resistance", required: true)]
-        public Input<Inputs.LineResistanceArgs> Resistance { get; set; } = null!;
+        [Input("resistance")]
+        public Input<Inputs.LineResistanceArgs>? Resistance { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("safetyMarginForPower", required: true)]
-        public Input<Inputs.LineSafetyMarginForPowerArgs> SafetyMarginForPower { get; set; } = null!;
+        [Input("safetyMarginForPower")]
+        public Input<Inputs.LineSafetyMarginForPowerArgs>? SafetyMarginForPower { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("specificHeat", required: true)]
-        public Input<Inputs.LineSpecificHeatArgs> SpecificHeat { get; set; } = null!;
+        [Input("specificHeat")]
+        public Input<Inputs.LineSpecificHeatArgs>? SpecificHeat { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("susceptance", required: true)]
-        public Input<Inputs.LineSusceptanceArgs> Susceptance { get; set; } = null!;
+        [Input("susceptance")]
+        public Input<Inputs.LineSusceptanceArgs>? Susceptance { get; set; }
 
         [Input("tags")]
         private InputList<Inputs.LineTagArgs>? _tags;
@@ -486,14 +486,14 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("temperatureCoeffResistance", required: true)]
-        public Input<Inputs.LineTemperatureCoeffResistanceArgs> TemperatureCoeffResistance { get; set; } = null!;
+        [Input("temperatureCoeffResistance")]
+        public Input<Inputs.LineTemperatureCoeffResistanceArgs>? TemperatureCoeffResistance { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("thermalElongationCoef", required: true)]
-        public Input<Inputs.LineThermalElongationCoefArgs> ThermalElongationCoef { get; set; } = null!;
+        [Input("thermalElongationCoef")]
+        public Input<Inputs.LineThermalElongationCoefArgs>? ThermalElongationCoef { get; set; }
 
         /// <summary>
         /// timezone that overrides location-based timezone of the resource

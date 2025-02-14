@@ -21,179 +21,93 @@ __all__ = ['TransformerArgs', 'Transformer']
 @pulumi.input_type
 class TransformerArgs:
     def __init__(__self__, *,
-                 capacitance: pulumi.Input['TransformerCapacitanceArgs'],
-                 conductance: pulumi.Input['TransformerConductanceArgs'],
-                 maximum_allowed_current: pulumi.Input['TransformerMaximumAllowedCurrentArgs'],
-                 maximum_allowed_power: pulumi.Input['TransformerMaximumAllowedPowerArgs'],
-                 reactance: pulumi.Input['TransformerReactanceArgs'],
-                 resistance: pulumi.Input['TransformerResistanceArgs'],
-                 safety_margin_for_power: pulumi.Input['TransformerSafetyMarginForPowerArgs'],
-                 standard_type: pulumi.Input['TransformerStandardTypeArgs'],
-                 tap_pos: pulumi.Input['TransformerTapPosArgs'],
-                 xn_ohm: pulumi.Input['TransformerXnOhmArgs'],
+                 capacitance: Optional[pulumi.Input['TransformerCapacitanceArgs']] = None,
+                 conductance: Optional[pulumi.Input['TransformerConductanceArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
+                 maximum_allowed_current: Optional[pulumi.Input['TransformerMaximumAllowedCurrentArgs']] = None,
+                 maximum_allowed_power: Optional[pulumi.Input['TransformerMaximumAllowedPowerArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 reactance: Optional[pulumi.Input['TransformerReactanceArgs']] = None,
+                 resistance: Optional[pulumi.Input['TransformerResistanceArgs']] = None,
+                 safety_margin_for_power: Optional[pulumi.Input['TransformerSafetyMarginForPowerArgs']] = None,
+                 standard_type: Optional[pulumi.Input['TransformerStandardTypeArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['TransformerTagArgs']]]] = None,
-                 timezone: Optional[pulumi.Input[str]] = None):
+                 tap_pos: Optional[pulumi.Input['TransformerTapPosArgs']] = None,
+                 timezone: Optional[pulumi.Input[str]] = None,
+                 xn_ohm: Optional[pulumi.Input['TransformerXnOhmArgs']] = None):
         """
         The set of arguments for constructing a Transformer resource.
         :param pulumi.Input['TransformerCapacitanceArgs'] capacitance: attribute of the resource
         :param pulumi.Input['TransformerConductanceArgs'] conductance: attribute of the resource
+        :param pulumi.Input[str] description: description of the resource
+        :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input['TransformerMaximumAllowedCurrentArgs'] maximum_allowed_current: attribute of the resource
         :param pulumi.Input['TransformerMaximumAllowedPowerArgs'] maximum_allowed_power: attribute of the resource
+        :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input['TransformerReactanceArgs'] reactance: attribute of the resource
         :param pulumi.Input['TransformerResistanceArgs'] resistance: attribute of the resource
         :param pulumi.Input['TransformerSafetyMarginForPowerArgs'] safety_margin_for_power: attribute of the resource
         :param pulumi.Input['TransformerStandardTypeArgs'] standard_type: attribute of the resource
-        :param pulumi.Input['TransformerTapPosArgs'] tap_pos: attribute of the resource
-        :param pulumi.Input['TransformerXnOhmArgs'] xn_ohm: attribute of the resource
-        :param pulumi.Input[str] description: description of the resource
-        :param pulumi.Input[str] geometry: geo position and shape of the resource
-        :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input['TransformerTagArgs']]] tags: tags of the resource
+        :param pulumi.Input['TransformerTapPosArgs'] tap_pos: attribute of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
+        :param pulumi.Input['TransformerXnOhmArgs'] xn_ohm: attribute of the resource
         """
-        pulumi.set(__self__, "capacitance", capacitance)
-        pulumi.set(__self__, "conductance", conductance)
-        pulumi.set(__self__, "maximum_allowed_current", maximum_allowed_current)
-        pulumi.set(__self__, "maximum_allowed_power", maximum_allowed_power)
-        pulumi.set(__self__, "reactance", reactance)
-        pulumi.set(__self__, "resistance", resistance)
-        pulumi.set(__self__, "safety_margin_for_power", safety_margin_for_power)
-        pulumi.set(__self__, "standard_type", standard_type)
-        pulumi.set(__self__, "tap_pos", tap_pos)
-        pulumi.set(__self__, "xn_ohm", xn_ohm)
+        if capacitance is not None:
+            pulumi.set(__self__, "capacitance", capacitance)
+        if conductance is not None:
+            pulumi.set(__self__, "conductance", conductance)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
             pulumi.set(__self__, "geometry", geometry)
+        if maximum_allowed_current is not None:
+            pulumi.set(__self__, "maximum_allowed_current", maximum_allowed_current)
+        if maximum_allowed_power is not None:
+            pulumi.set(__self__, "maximum_allowed_power", maximum_allowed_power)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if reactance is not None:
+            pulumi.set(__self__, "reactance", reactance)
+        if resistance is not None:
+            pulumi.set(__self__, "resistance", resistance)
+        if safety_margin_for_power is not None:
+            pulumi.set(__self__, "safety_margin_for_power", safety_margin_for_power)
+        if standard_type is not None:
+            pulumi.set(__self__, "standard_type", standard_type)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tap_pos is not None:
+            pulumi.set(__self__, "tap_pos", tap_pos)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
+        if xn_ohm is not None:
+            pulumi.set(__self__, "xn_ohm", xn_ohm)
 
     @property
     @pulumi.getter
-    def capacitance(self) -> pulumi.Input['TransformerCapacitanceArgs']:
+    def capacitance(self) -> Optional[pulumi.Input['TransformerCapacitanceArgs']]:
         """
         attribute of the resource
         """
         return pulumi.get(self, "capacitance")
 
     @capacitance.setter
-    def capacitance(self, value: pulumi.Input['TransformerCapacitanceArgs']):
+    def capacitance(self, value: Optional[pulumi.Input['TransformerCapacitanceArgs']]):
         pulumi.set(self, "capacitance", value)
 
     @property
     @pulumi.getter
-    def conductance(self) -> pulumi.Input['TransformerConductanceArgs']:
+    def conductance(self) -> Optional[pulumi.Input['TransformerConductanceArgs']]:
         """
         attribute of the resource
         """
         return pulumi.get(self, "conductance")
 
     @conductance.setter
-    def conductance(self, value: pulumi.Input['TransformerConductanceArgs']):
+    def conductance(self, value: Optional[pulumi.Input['TransformerConductanceArgs']]):
         pulumi.set(self, "conductance", value)
-
-    @property
-    @pulumi.getter(name="maximumAllowedCurrent")
-    def maximum_allowed_current(self) -> pulumi.Input['TransformerMaximumAllowedCurrentArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "maximum_allowed_current")
-
-    @maximum_allowed_current.setter
-    def maximum_allowed_current(self, value: pulumi.Input['TransformerMaximumAllowedCurrentArgs']):
-        pulumi.set(self, "maximum_allowed_current", value)
-
-    @property
-    @pulumi.getter(name="maximumAllowedPower")
-    def maximum_allowed_power(self) -> pulumi.Input['TransformerMaximumAllowedPowerArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "maximum_allowed_power")
-
-    @maximum_allowed_power.setter
-    def maximum_allowed_power(self, value: pulumi.Input['TransformerMaximumAllowedPowerArgs']):
-        pulumi.set(self, "maximum_allowed_power", value)
-
-    @property
-    @pulumi.getter
-    def reactance(self) -> pulumi.Input['TransformerReactanceArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "reactance")
-
-    @reactance.setter
-    def reactance(self, value: pulumi.Input['TransformerReactanceArgs']):
-        pulumi.set(self, "reactance", value)
-
-    @property
-    @pulumi.getter
-    def resistance(self) -> pulumi.Input['TransformerResistanceArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "resistance")
-
-    @resistance.setter
-    def resistance(self, value: pulumi.Input['TransformerResistanceArgs']):
-        pulumi.set(self, "resistance", value)
-
-    @property
-    @pulumi.getter(name="safetyMarginForPower")
-    def safety_margin_for_power(self) -> pulumi.Input['TransformerSafetyMarginForPowerArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "safety_margin_for_power")
-
-    @safety_margin_for_power.setter
-    def safety_margin_for_power(self, value: pulumi.Input['TransformerSafetyMarginForPowerArgs']):
-        pulumi.set(self, "safety_margin_for_power", value)
-
-    @property
-    @pulumi.getter(name="standardType")
-    def standard_type(self) -> pulumi.Input['TransformerStandardTypeArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "standard_type")
-
-    @standard_type.setter
-    def standard_type(self, value: pulumi.Input['TransformerStandardTypeArgs']):
-        pulumi.set(self, "standard_type", value)
-
-    @property
-    @pulumi.getter(name="tapPos")
-    def tap_pos(self) -> pulumi.Input['TransformerTapPosArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "tap_pos")
-
-    @tap_pos.setter
-    def tap_pos(self, value: pulumi.Input['TransformerTapPosArgs']):
-        pulumi.set(self, "tap_pos", value)
-
-    @property
-    @pulumi.getter(name="xnOhm")
-    def xn_ohm(self) -> pulumi.Input['TransformerXnOhmArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "xn_ohm")
-
-    @xn_ohm.setter
-    def xn_ohm(self, value: pulumi.Input['TransformerXnOhmArgs']):
-        pulumi.set(self, "xn_ohm", value)
 
     @property
     @pulumi.getter
@@ -220,6 +134,30 @@ class TransformerArgs:
         pulumi.set(self, "geometry", value)
 
     @property
+    @pulumi.getter(name="maximumAllowedCurrent")
+    def maximum_allowed_current(self) -> Optional[pulumi.Input['TransformerMaximumAllowedCurrentArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "maximum_allowed_current")
+
+    @maximum_allowed_current.setter
+    def maximum_allowed_current(self, value: Optional[pulumi.Input['TransformerMaximumAllowedCurrentArgs']]):
+        pulumi.set(self, "maximum_allowed_current", value)
+
+    @property
+    @pulumi.getter(name="maximumAllowedPower")
+    def maximum_allowed_power(self) -> Optional[pulumi.Input['TransformerMaximumAllowedPowerArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "maximum_allowed_power")
+
+    @maximum_allowed_power.setter
+    def maximum_allowed_power(self, value: Optional[pulumi.Input['TransformerMaximumAllowedPowerArgs']]):
+        pulumi.set(self, "maximum_allowed_power", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -230,6 +168,54 @@ class TransformerArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def reactance(self) -> Optional[pulumi.Input['TransformerReactanceArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "reactance")
+
+    @reactance.setter
+    def reactance(self, value: Optional[pulumi.Input['TransformerReactanceArgs']]):
+        pulumi.set(self, "reactance", value)
+
+    @property
+    @pulumi.getter
+    def resistance(self) -> Optional[pulumi.Input['TransformerResistanceArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "resistance")
+
+    @resistance.setter
+    def resistance(self, value: Optional[pulumi.Input['TransformerResistanceArgs']]):
+        pulumi.set(self, "resistance", value)
+
+    @property
+    @pulumi.getter(name="safetyMarginForPower")
+    def safety_margin_for_power(self) -> Optional[pulumi.Input['TransformerSafetyMarginForPowerArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "safety_margin_for_power")
+
+    @safety_margin_for_power.setter
+    def safety_margin_for_power(self, value: Optional[pulumi.Input['TransformerSafetyMarginForPowerArgs']]):
+        pulumi.set(self, "safety_margin_for_power", value)
+
+    @property
+    @pulumi.getter(name="standardType")
+    def standard_type(self) -> Optional[pulumi.Input['TransformerStandardTypeArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "standard_type")
+
+    @standard_type.setter
+    def standard_type(self, value: Optional[pulumi.Input['TransformerStandardTypeArgs']]):
+        pulumi.set(self, "standard_type", value)
 
     @property
     @pulumi.getter
@@ -244,6 +230,18 @@ class TransformerArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="tapPos")
+    def tap_pos(self) -> Optional[pulumi.Input['TransformerTapPosArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "tap_pos")
+
+    @tap_pos.setter
+    def tap_pos(self, value: Optional[pulumi.Input['TransformerTapPosArgs']]):
+        pulumi.set(self, "tap_pos", value)
+
+    @property
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
@@ -254,6 +252,18 @@ class TransformerArgs:
     @timezone.setter
     def timezone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "timezone", value)
+
+    @property
+    @pulumi.getter(name="xnOhm")
+    def xn_ohm(self) -> Optional[pulumi.Input['TransformerXnOhmArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "xn_ohm")
+
+    @xn_ohm.setter
+    def xn_ohm(self, value: Optional[pulumi.Input['TransformerXnOhmArgs']]):
+        pulumi.set(self, "xn_ohm", value)
 
 
 @pulumi.input_type
@@ -780,7 +790,7 @@ class Transformer(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TransformerArgs,
+                 args: Optional[TransformerArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -830,40 +840,20 @@ class Transformer(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TransformerArgs.__new__(TransformerArgs)
 
-            if capacitance is None and not opts.urn:
-                raise TypeError("Missing required property 'capacitance'")
             __props__.__dict__["capacitance"] = capacitance
-            if conductance is None and not opts.urn:
-                raise TypeError("Missing required property 'conductance'")
             __props__.__dict__["conductance"] = conductance
             __props__.__dict__["description"] = description
             __props__.__dict__["geometry"] = geometry
-            if maximum_allowed_current is None and not opts.urn:
-                raise TypeError("Missing required property 'maximum_allowed_current'")
             __props__.__dict__["maximum_allowed_current"] = maximum_allowed_current
-            if maximum_allowed_power is None and not opts.urn:
-                raise TypeError("Missing required property 'maximum_allowed_power'")
             __props__.__dict__["maximum_allowed_power"] = maximum_allowed_power
             __props__.__dict__["name"] = name
-            if reactance is None and not opts.urn:
-                raise TypeError("Missing required property 'reactance'")
             __props__.__dict__["reactance"] = reactance
-            if resistance is None and not opts.urn:
-                raise TypeError("Missing required property 'resistance'")
             __props__.__dict__["resistance"] = resistance
-            if safety_margin_for_power is None and not opts.urn:
-                raise TypeError("Missing required property 'safety_margin_for_power'")
             __props__.__dict__["safety_margin_for_power"] = safety_margin_for_power
-            if standard_type is None and not opts.urn:
-                raise TypeError("Missing required property 'standard_type'")
             __props__.__dict__["standard_type"] = standard_type
             __props__.__dict__["tags"] = tags
-            if tap_pos is None and not opts.urn:
-                raise TypeError("Missing required property 'tap_pos'")
             __props__.__dict__["tap_pos"] = tap_pos
             __props__.__dict__["timezone"] = timezone
-            if xn_ohm is None and not opts.urn:
-                raise TypeError("Missing required property 'xn_ohm'")
             __props__.__dict__["xn_ohm"] = xn_ohm
             __props__.__dict__["active_power_hvs"] = None
             __props__.__dict__["active_power_losses"] = None
@@ -1016,7 +1006,7 @@ class Transformer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def capacitance(self) -> pulumi.Output['outputs.TransformerCapacitance']:
+    def capacitance(self) -> pulumi.Output[Optional['outputs.TransformerCapacitance']]:
         """
         attribute of the resource
         """
@@ -1024,7 +1014,7 @@ class Transformer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def conductance(self) -> pulumi.Output['outputs.TransformerConductance']:
+    def conductance(self) -> pulumi.Output[Optional['outputs.TransformerConductance']]:
         """
         attribute of the resource
         """
@@ -1080,7 +1070,7 @@ class Transformer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maximumAllowedCurrent")
-    def maximum_allowed_current(self) -> pulumi.Output['outputs.TransformerMaximumAllowedCurrent']:
+    def maximum_allowed_current(self) -> pulumi.Output[Optional['outputs.TransformerMaximumAllowedCurrent']]:
         """
         attribute of the resource
         """
@@ -1088,7 +1078,7 @@ class Transformer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maximumAllowedPower")
-    def maximum_allowed_power(self) -> pulumi.Output['outputs.TransformerMaximumAllowedPower']:
+    def maximum_allowed_power(self) -> pulumi.Output[Optional['outputs.TransformerMaximumAllowedPower']]:
         """
         attribute of the resource
         """
@@ -1104,7 +1094,7 @@ class Transformer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def reactance(self) -> pulumi.Output['outputs.TransformerReactance']:
+    def reactance(self) -> pulumi.Output[Optional['outputs.TransformerReactance']]:
         """
         attribute of the resource
         """
@@ -1136,7 +1126,7 @@ class Transformer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def resistance(self) -> pulumi.Output['outputs.TransformerResistance']:
+    def resistance(self) -> pulumi.Output[Optional['outputs.TransformerResistance']]:
         """
         attribute of the resource
         """
@@ -1144,7 +1134,7 @@ class Transformer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="safetyMarginForPower")
-    def safety_margin_for_power(self) -> pulumi.Output['outputs.TransformerSafetyMarginForPower']:
+    def safety_margin_for_power(self) -> pulumi.Output[Optional['outputs.TransformerSafetyMarginForPower']]:
         """
         attribute of the resource
         """
@@ -1152,7 +1142,7 @@ class Transformer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="standardType")
-    def standard_type(self) -> pulumi.Output['outputs.TransformerStandardType']:
+    def standard_type(self) -> pulumi.Output[Optional['outputs.TransformerStandardType']]:
         """
         attribute of the resource
         """
@@ -1184,7 +1174,7 @@ class Transformer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tapPos")
-    def tap_pos(self) -> pulumi.Output['outputs.TransformerTapPos']:
+    def tap_pos(self) -> pulumi.Output[Optional['outputs.TransformerTapPos']]:
         """
         attribute of the resource
         """
@@ -1192,7 +1182,7 @@ class Transformer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timezone(self) -> pulumi.Output[Optional[str]]:
+    def timezone(self) -> pulumi.Output[str]:
         """
         timezone that overrides location-based timezone of the resource
         """
@@ -1216,7 +1206,7 @@ class Transformer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="xnOhm")
-    def xn_ohm(self) -> pulumi.Output['outputs.TransformerXnOhm']:
+    def xn_ohm(self) -> pulumi.Output[Optional['outputs.TransformerXnOhm']]:
         """
         attribute of the resource
         """

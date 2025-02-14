@@ -46,8 +46,8 @@ namespace Splight.Splight.Inputs
         /// <summary>
         /// metadata value
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
 
         public SegmentReferenceSagArgs()
         {

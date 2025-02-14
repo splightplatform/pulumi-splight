@@ -53,18 +53,8 @@ type GetAssetKindsResult struct {
 
 func GetAssetKindsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAssetKindsResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetAssetKindsResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetAssetKindsResult
-		secret, err := ctx.InvokePackageRaw("splight:index/getAssetKinds:getAssetKinds", nil, &rv, "", opts...)
-		if err != nil {
-			return GetAssetKindsResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetAssetKindsResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetAssetKindsResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("splight:index/getAssetKinds:getAssetKinds", nil, GetAssetKindsResultOutput{}, options).(GetAssetKindsResultOutput), nil
 	}).(GetAssetKindsResultOutput)
 }
 

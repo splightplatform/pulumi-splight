@@ -53,18 +53,8 @@ type GetGridsResult struct {
 
 func GetGridsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetGridsResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetGridsResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetGridsResult
-		secret, err := ctx.InvokePackageRaw("splight:index/getGrids:getGrids", nil, &rv, "", opts...)
-		if err != nil {
-			return GetGridsResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetGridsResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetGridsResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("splight:index/getGrids:getGrids", nil, GetGridsResultOutput{}, options).(GetGridsResultOutput), nil
 	}).(GetGridsResultOutput)
 }
 

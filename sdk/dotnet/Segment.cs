@@ -26,19 +26,19 @@ namespace Splight.Splight
         /// attribute of the resource
         /// </summary>
         [Output("altitude")]
-        public Output<Outputs.SegmentAltitude> Altitude { get; private set; } = null!;
+        public Output<Outputs.SegmentAltitude?> Altitude { get; private set; } = null!;
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
         [Output("azimuth")]
-        public Output<Outputs.SegmentAzimuth> Azimuth { get; private set; } = null!;
+        public Output<Outputs.SegmentAzimuth?> Azimuth { get; private set; } = null!;
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
         [Output("cumulativeDistance")]
-        public Output<Outputs.SegmentCumulativeDistance> CumulativeDistance { get; private set; } = null!;
+        public Output<Outputs.SegmentCumulativeDistance?> CumulativeDistance { get; private set; } = null!;
 
         /// <summary>
         /// description of the resource
@@ -68,19 +68,19 @@ namespace Splight.Splight
         /// attribute of the resource
         /// </summary>
         [Output("referenceSag")]
-        public Output<Outputs.SegmentReferenceSag> ReferenceSag { get; private set; } = null!;
+        public Output<Outputs.SegmentReferenceSag?> ReferenceSag { get; private set; } = null!;
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
         [Output("referenceTemperature")]
-        public Output<Outputs.SegmentReferenceTemperature> ReferenceTemperature { get; private set; } = null!;
+        public Output<Outputs.SegmentReferenceTemperature?> ReferenceTemperature { get; private set; } = null!;
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
         [Output("spanLength")]
-        public Output<Outputs.SegmentSpanLength> SpanLength { get; private set; } = null!;
+        public Output<Outputs.SegmentSpanLength?> SpanLength { get; private set; } = null!;
 
         /// <summary>
         /// tags of the resource
@@ -98,7 +98,7 @@ namespace Splight.Splight
         /// timezone that overrides location-based timezone of the resource
         /// </summary>
         [Output("timezone")]
-        public Output<string?> Timezone { get; private set; } = null!;
+        public Output<string> Timezone { get; private set; } = null!;
 
         /// <summary>
         /// attribute of the resource
@@ -120,7 +120,7 @@ namespace Splight.Splight
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Segment(string name, SegmentArgs args, CustomResourceOptions? options = null)
+        public Segment(string name, SegmentArgs? args = null, CustomResourceOptions? options = null)
             : base("splight:index/segment:Segment", name, args ?? new SegmentArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -162,20 +162,20 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("altitude", required: true)]
-        public Input<Inputs.SegmentAltitudeArgs> Altitude { get; set; } = null!;
+        [Input("altitude")]
+        public Input<Inputs.SegmentAltitudeArgs>? Altitude { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("azimuth", required: true)]
-        public Input<Inputs.SegmentAzimuthArgs> Azimuth { get; set; } = null!;
+        [Input("azimuth")]
+        public Input<Inputs.SegmentAzimuthArgs>? Azimuth { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("cumulativeDistance", required: true)]
-        public Input<Inputs.SegmentCumulativeDistanceArgs> CumulativeDistance { get; set; } = null!;
+        [Input("cumulativeDistance")]
+        public Input<Inputs.SegmentCumulativeDistanceArgs>? CumulativeDistance { get; set; }
 
         /// <summary>
         /// description of the resource
@@ -198,20 +198,20 @@ namespace Splight.Splight
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("referenceSag", required: true)]
-        public Input<Inputs.SegmentReferenceSagArgs> ReferenceSag { get; set; } = null!;
+        [Input("referenceSag")]
+        public Input<Inputs.SegmentReferenceSagArgs>? ReferenceSag { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("referenceTemperature", required: true)]
-        public Input<Inputs.SegmentReferenceTemperatureArgs> ReferenceTemperature { get; set; } = null!;
+        [Input("referenceTemperature")]
+        public Input<Inputs.SegmentReferenceTemperatureArgs>? ReferenceTemperature { get; set; }
 
         /// <summary>
         /// attribute of the resource
         /// </summary>
-        [Input("spanLength", required: true)]
-        public Input<Inputs.SegmentSpanLengthArgs> SpanLength { get; set; } = null!;
+        [Input("spanLength")]
+        public Input<Inputs.SegmentSpanLengthArgs>? SpanLength { get; set; }
 
         [Input("tags")]
         private InputList<Inputs.SegmentTagArgs>? _tags;

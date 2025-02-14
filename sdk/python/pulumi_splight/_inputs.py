@@ -245,8 +245,6 @@ __all__ = [
     'FunctionTargetAttributeArgsDict',
     'GeneratorActivePowerArgs',
     'GeneratorActivePowerArgsDict',
-    'GeneratorCo2CoefficientArgs',
-    'GeneratorCo2CoefficientArgsDict',
     'GeneratorDailyEmissionAvoidedArgs',
     'GeneratorDailyEmissionAvoidedArgsDict',
     'GeneratorDailyEnergyArgs',
@@ -1695,6 +1693,10 @@ class BusKindArgs:
 
 if not MYPY:
     class BusNominalVoltageKvArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -1715,30 +1717,27 @@ if not MYPY:
         """
         unit of measure
         """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
-        """
 elif False:
     BusNominalVoltageKvArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BusNominalVoltageKvArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -1749,8 +1748,18 @@ class BusNominalVoltageKvArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -1811,18 +1820,6 @@ class BusNominalVoltageKvArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -9227,138 +9224,6 @@ class GeneratorActivePowerArgs:
 
 
 if not MYPY:
-    class GeneratorCo2CoefficientArgsDict(TypedDict):
-        asset: NotRequired[pulumi.Input[str]]
-        """
-        reference to the asset to be linked to
-        """
-        id: NotRequired[pulumi.Input[str]]
-        """
-        id of the resource
-        """
-        name: NotRequired[pulumi.Input[str]]
-        """
-        name of the resource
-        """
-        type: NotRequired[pulumi.Input[str]]
-        """
-        [String|Boolean|Number] type of the data to be ingested in this attribute
-        """
-        unit: NotRequired[pulumi.Input[str]]
-        """
-        unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
-        """
-elif False:
-    GeneratorCo2CoefficientArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GeneratorCo2CoefficientArgs:
-    def __init__(__self__, *,
-                 asset: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] asset: reference to the asset to be linked to
-        :param pulumi.Input[str] id: id of the resource
-        :param pulumi.Input[str] name: name of the resource
-        :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
-        :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
-        """
-        if asset is not None:
-            pulumi.set(__self__, "asset", asset)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if unit is not None:
-            pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def asset(self) -> Optional[pulumi.Input[str]]:
-        """
-        reference to the asset to be linked to
-        """
-        return pulumi.get(self, "asset")
-
-    @asset.setter
-    def asset(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "asset", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        id of the resource
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        name of the resource
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        [String|Boolean|Number] type of the data to be ingested in this attribute
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter
-    def unit(self) -> Optional[pulumi.Input[str]]:
-        """
-        unit of measure
-        """
-        return pulumi.get(self, "unit")
-
-    @unit.setter
-    def unit(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "unit", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
-
-if not MYPY:
     class GeneratorDailyEmissionAvoidedArgsDict(TypedDict):
         asset: NotRequired[pulumi.Input[str]]
         """
@@ -10456,6 +10321,10 @@ class InverterDailyEnergyArgs:
 
 if not MYPY:
     class InverterEnergyMeasurementTypeArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -10476,30 +10345,27 @@ if not MYPY:
         """
         unit of measure
         """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
-        """
 elif False:
     InverterEnergyMeasurementTypeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InverterEnergyMeasurementTypeArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -10510,8 +10376,18 @@ class InverterEnergyMeasurementTypeArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -10572,18 +10448,6 @@ class InverterEnergyMeasurementTypeArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -10638,6 +10502,10 @@ class InverterKindArgs:
 
 if not MYPY:
     class InverterMakeArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -10657,10 +10525,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     InverterMakeArgsDict: TypeAlias = Mapping[str, Any]
@@ -10668,20 +10532,21 @@ elif False:
 @pulumi.input_type
 class InverterMakeArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -10692,8 +10557,18 @@ class InverterMakeArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -10755,21 +10630,13 @@ class InverterMakeArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class InverterMaxActivePowerArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -10789,10 +10656,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     InverterMaxActivePowerArgsDict: TypeAlias = Mapping[str, Any]
@@ -10800,20 +10663,21 @@ elif False:
 @pulumi.input_type
 class InverterMaxActivePowerArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -10824,8 +10688,18 @@ class InverterMaxActivePowerArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -10887,21 +10761,13 @@ class InverterMaxActivePowerArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class InverterModelArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -10922,30 +10788,27 @@ if not MYPY:
         """
         unit of measure
         """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
-        """
 elif False:
     InverterModelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InverterModelArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -10956,8 +10819,18 @@ class InverterModelArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -11018,18 +10891,6 @@ class InverterModelArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -11146,6 +11007,10 @@ class InverterRawDailyEnergyArgs:
 
 if not MYPY:
     class InverterSerialNumberArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -11166,30 +11031,27 @@ if not MYPY:
         """
         unit of measure
         """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
-        """
 elif False:
     InverterSerialNumberArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InverterSerialNumberArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -11200,8 +11062,18 @@ class InverterSerialNumberArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -11262,18 +11134,6 @@ class InverterSerialNumberArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -11552,6 +11412,10 @@ class InverterTemperatureArgs:
 
 if not MYPY:
     class LineAbsorptivityArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -11572,30 +11436,27 @@ if not MYPY:
         """
         unit of measure
         """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
-        """
 elif False:
     LineAbsorptivityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineAbsorptivityArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -11606,8 +11467,18 @@ class LineAbsorptivityArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -11668,18 +11539,6 @@ class LineAbsorptivityArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -12020,6 +11879,10 @@ class LineAmpacityArgs:
 
 if not MYPY:
     class LineAtmosphereArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -12039,10 +11902,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     LineAtmosphereArgsDict: TypeAlias = Mapping[str, Any]
@@ -12050,20 +11909,21 @@ elif False:
 @pulumi.input_type
 class LineAtmosphereArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -12074,8 +11934,18 @@ class LineAtmosphereArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -12137,21 +12007,13 @@ class LineAtmosphereArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class LineCapacitanceArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -12171,10 +12033,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     LineCapacitanceArgsDict: TypeAlias = Mapping[str, Any]
@@ -12182,20 +12040,21 @@ elif False:
 @pulumi.input_type
 class LineCapacitanceArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -12206,8 +12065,18 @@ class LineCapacitanceArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -12269,21 +12138,13 @@ class LineCapacitanceArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class LineConductanceArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -12303,10 +12164,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     LineConductanceArgsDict: TypeAlias = Mapping[str, Any]
@@ -12314,20 +12171,21 @@ elif False:
 @pulumi.input_type
 class LineConductanceArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -12338,8 +12196,18 @@ class LineConductanceArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -12401,21 +12269,13 @@ class LineConductanceArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class LineConductorMassArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -12436,30 +12296,27 @@ if not MYPY:
         """
         unit of measure
         """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
-        """
 elif False:
     LineConductorMassArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineConductorMassArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -12470,8 +12327,18 @@ class LineConductorMassArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -12532,18 +12399,6 @@ class LineConductorMassArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -12996,6 +12851,10 @@ class LineCurrentTArgs:
 
 if not MYPY:
     class LineDiameterArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -13015,10 +12874,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     LineDiameterArgsDict: TypeAlias = Mapping[str, Any]
@@ -13026,20 +12881,21 @@ elif False:
 @pulumi.input_type
 class LineDiameterArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -13050,8 +12906,18 @@ class LineDiameterArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -13113,21 +12979,13 @@ class LineDiameterArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class LineEmissivityArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -13148,30 +13006,27 @@ if not MYPY:
         """
         unit of measure
         """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
-        """
 elif False:
     LineEmissivityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineEmissivityArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -13182,8 +13037,18 @@ class LineEmissivityArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -13244,18 +13109,6 @@ class LineEmissivityArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -13422,6 +13275,10 @@ class LineKindArgs:
 
 if not MYPY:
     class LineLengthArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -13442,30 +13299,27 @@ if not MYPY:
         """
         unit of measure
         """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
-        """
 elif False:
     LineLengthArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineLengthArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -13476,8 +13330,18 @@ class LineLengthArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -13538,18 +13402,6 @@ class LineLengthArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -13666,6 +13518,10 @@ class LineMaxTemperatureArgs:
 
 if not MYPY:
     class LineMaximumAllowedCurrentArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -13685,10 +13541,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     LineMaximumAllowedCurrentArgsDict: TypeAlias = Mapping[str, Any]
@@ -13696,20 +13548,21 @@ elif False:
 @pulumi.input_type
 class LineMaximumAllowedCurrentArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -13720,8 +13573,18 @@ class LineMaximumAllowedCurrentArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -13783,21 +13646,13 @@ class LineMaximumAllowedCurrentArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class LineMaximumAllowedPowerArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -13817,10 +13672,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     LineMaximumAllowedPowerArgsDict: TypeAlias = Mapping[str, Any]
@@ -13828,20 +13679,21 @@ elif False:
 @pulumi.input_type
 class LineMaximumAllowedPowerArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -13852,8 +13704,18 @@ class LineMaximumAllowedPowerArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -13915,21 +13777,13 @@ class LineMaximumAllowedPowerArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class LineMaximumAllowedTemperatureArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -13949,10 +13803,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     LineMaximumAllowedTemperatureArgsDict: TypeAlias = Mapping[str, Any]
@@ -13960,20 +13810,21 @@ elif False:
 @pulumi.input_type
 class LineMaximumAllowedTemperatureArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -13984,8 +13835,18 @@ class LineMaximumAllowedTemperatureArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -14047,21 +13908,13 @@ class LineMaximumAllowedTemperatureArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class LineMaximumAllowedTemperatureLteArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -14081,10 +13934,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     LineMaximumAllowedTemperatureLteArgsDict: TypeAlias = Mapping[str, Any]
@@ -14092,20 +13941,21 @@ elif False:
 @pulumi.input_type
 class LineMaximumAllowedTemperatureLteArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -14116,8 +13966,18 @@ class LineMaximumAllowedTemperatureLteArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -14179,21 +14039,13 @@ class LineMaximumAllowedTemperatureLteArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class LineMaximumAllowedTemperatureSteArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -14213,10 +14065,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     LineMaximumAllowedTemperatureSteArgsDict: TypeAlias = Mapping[str, Any]
@@ -14224,20 +14072,21 @@ elif False:
 @pulumi.input_type
 class LineMaximumAllowedTemperatureSteArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -14248,8 +14097,18 @@ class LineMaximumAllowedTemperatureSteArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -14311,21 +14170,13 @@ class LineMaximumAllowedTemperatureSteArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class LineNumberOfConductorsArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -14345,10 +14196,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     LineNumberOfConductorsArgsDict: TypeAlias = Mapping[str, Any]
@@ -14356,20 +14203,21 @@ elif False:
 @pulumi.input_type
 class LineNumberOfConductorsArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -14380,8 +14228,18 @@ class LineNumberOfConductorsArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -14443,21 +14301,13 @@ class LineNumberOfConductorsArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class LineReactanceArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -14478,30 +14328,27 @@ if not MYPY:
         """
         unit of measure
         """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
-        """
 elif False:
     LineReactanceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineReactanceArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -14512,8 +14359,18 @@ class LineReactanceArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -14574,18 +14431,6 @@ class LineReactanceArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -14702,6 +14547,10 @@ class LineReactivePowerArgs:
 
 if not MYPY:
     class LineReferenceResistanceArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -14721,10 +14570,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     LineReferenceResistanceArgsDict: TypeAlias = Mapping[str, Any]
@@ -14732,20 +14577,21 @@ elif False:
 @pulumi.input_type
 class LineReferenceResistanceArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -14756,8 +14602,18 @@ class LineReferenceResistanceArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -14819,21 +14675,13 @@ class LineReferenceResistanceArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class LineResistanceArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -14853,10 +14701,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     LineResistanceArgsDict: TypeAlias = Mapping[str, Any]
@@ -14864,20 +14708,21 @@ elif False:
 @pulumi.input_type
 class LineResistanceArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -14888,8 +14733,18 @@ class LineResistanceArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -14951,21 +14806,13 @@ class LineResistanceArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class LineSafetyMarginForPowerArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -14985,10 +14832,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     LineSafetyMarginForPowerArgsDict: TypeAlias = Mapping[str, Any]
@@ -14996,20 +14839,21 @@ elif False:
 @pulumi.input_type
 class LineSafetyMarginForPowerArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -15020,8 +14864,18 @@ class LineSafetyMarginForPowerArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -15083,21 +14937,13 @@ class LineSafetyMarginForPowerArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class LineSpecificHeatArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -15117,10 +14963,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     LineSpecificHeatArgsDict: TypeAlias = Mapping[str, Any]
@@ -15128,20 +14970,21 @@ elif False:
 @pulumi.input_type
 class LineSpecificHeatArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -15152,8 +14995,18 @@ class LineSpecificHeatArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -15215,21 +15068,13 @@ class LineSpecificHeatArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class LineSusceptanceArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -15250,30 +15095,27 @@ if not MYPY:
         """
         unit of measure
         """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
-        """
 elif False:
     LineSusceptanceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineSusceptanceArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -15284,8 +15126,18 @@ class LineSusceptanceArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -15346,18 +15198,6 @@ class LineSusceptanceArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -15636,6 +15476,10 @@ class LineTagArgs:
 
 if not MYPY:
     class LineTemperatureCoeffResistanceArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -15655,10 +15499,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     LineTemperatureCoeffResistanceArgsDict: TypeAlias = Mapping[str, Any]
@@ -15666,20 +15506,21 @@ elif False:
 @pulumi.input_type
 class LineTemperatureCoeffResistanceArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -15690,8 +15531,18 @@ class LineTemperatureCoeffResistanceArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -15753,21 +15604,13 @@ class LineTemperatureCoeffResistanceArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class LineThermalElongationCoefArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -15788,30 +15631,27 @@ if not MYPY:
         """
         unit of measure
         """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
-        """
 elif False:
     LineThermalElongationCoefArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LineThermalElongationCoefArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -15822,8 +15662,18 @@ class LineThermalElongationCoefArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -15884,18 +15734,6 @@ class LineThermalElongationCoefArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -16236,6 +16074,10 @@ class LineVoltageTrArgs:
 
 if not MYPY:
     class SegmentAltitudeArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -16255,10 +16097,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     SegmentAltitudeArgsDict: TypeAlias = Mapping[str, Any]
@@ -16266,20 +16104,21 @@ elif False:
 @pulumi.input_type
 class SegmentAltitudeArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -16290,8 +16129,18 @@ class SegmentAltitudeArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -16353,21 +16202,13 @@ class SegmentAltitudeArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class SegmentAzimuthArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -16387,10 +16228,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     SegmentAzimuthArgsDict: TypeAlias = Mapping[str, Any]
@@ -16398,20 +16235,21 @@ elif False:
 @pulumi.input_type
 class SegmentAzimuthArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -16422,8 +16260,18 @@ class SegmentAzimuthArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -16485,21 +16333,13 @@ class SegmentAzimuthArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class SegmentCumulativeDistanceArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -16520,30 +16360,27 @@ if not MYPY:
         """
         unit of measure
         """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
-        """
 elif False:
     SegmentCumulativeDistanceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SegmentCumulativeDistanceArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -16554,8 +16391,18 @@ class SegmentCumulativeDistanceArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -16616,18 +16463,6 @@ class SegmentCumulativeDistanceArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -16682,6 +16517,10 @@ class SegmentKindArgs:
 
 if not MYPY:
     class SegmentReferenceSagArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -16701,10 +16540,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     SegmentReferenceSagArgsDict: TypeAlias = Mapping[str, Any]
@@ -16712,20 +16547,21 @@ elif False:
 @pulumi.input_type
 class SegmentReferenceSagArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -16736,8 +16572,18 @@ class SegmentReferenceSagArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -16799,21 +16645,13 @@ class SegmentReferenceSagArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class SegmentReferenceTemperatureArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -16833,10 +16671,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     SegmentReferenceTemperatureArgsDict: TypeAlias = Mapping[str, Any]
@@ -16844,20 +16678,21 @@ elif False:
 @pulumi.input_type
 class SegmentReferenceTemperatureArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -16868,8 +16703,18 @@ class SegmentReferenceTemperatureArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -16931,21 +16776,13 @@ class SegmentReferenceTemperatureArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class SegmentSpanLengthArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -16966,30 +16803,27 @@ if not MYPY:
         """
         unit of measure
         """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
-        """
 elif False:
     SegmentSpanLengthArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SegmentSpanLengthArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -17000,8 +16834,18 @@ class SegmentSpanLengthArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -17062,18 +16906,6 @@ class SegmentSpanLengthArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -18465,6 +18297,10 @@ class TransformerActivePowerLvArgs:
 
 if not MYPY:
     class TransformerCapacitanceArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -18484,10 +18320,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     TransformerCapacitanceArgsDict: TypeAlias = Mapping[str, Any]
@@ -18495,20 +18327,21 @@ elif False:
 @pulumi.input_type
 class TransformerCapacitanceArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -18519,8 +18352,18 @@ class TransformerCapacitanceArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -18582,21 +18425,13 @@ class TransformerCapacitanceArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class TransformerConductanceArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -18617,30 +18452,27 @@ if not MYPY:
         """
         unit of measure
         """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
-        """
 elif False:
     TransformerConductanceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TransformerConductanceArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -18651,8 +18483,18 @@ class TransformerConductanceArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -18713,18 +18555,6 @@ class TransformerConductanceArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -19115,6 +18945,10 @@ class TransformerKindArgs:
 
 if not MYPY:
     class TransformerMaximumAllowedCurrentArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -19134,10 +18968,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     TransformerMaximumAllowedCurrentArgsDict: TypeAlias = Mapping[str, Any]
@@ -19145,20 +18975,21 @@ elif False:
 @pulumi.input_type
 class TransformerMaximumAllowedCurrentArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -19169,8 +19000,18 @@ class TransformerMaximumAllowedCurrentArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -19232,21 +19073,13 @@ class TransformerMaximumAllowedCurrentArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class TransformerMaximumAllowedPowerArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -19266,10 +19099,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     TransformerMaximumAllowedPowerArgsDict: TypeAlias = Mapping[str, Any]
@@ -19277,20 +19106,21 @@ elif False:
 @pulumi.input_type
 class TransformerMaximumAllowedPowerArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -19301,8 +19131,18 @@ class TransformerMaximumAllowedPowerArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -19364,21 +19204,13 @@ class TransformerMaximumAllowedPowerArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class TransformerReactanceArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -19399,30 +19231,27 @@ if not MYPY:
         """
         unit of measure
         """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
-        """
 elif False:
     TransformerReactanceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TransformerReactanceArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -19433,8 +19262,18 @@ class TransformerReactanceArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -19495,18 +19334,6 @@ class TransformerReactanceArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -19847,6 +19674,10 @@ class TransformerReactivePowerLvArgs:
 
 if not MYPY:
     class TransformerResistanceArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -19866,10 +19697,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     TransformerResistanceArgsDict: TypeAlias = Mapping[str, Any]
@@ -19877,20 +19704,21 @@ elif False:
 @pulumi.input_type
 class TransformerResistanceArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -19901,8 +19729,18 @@ class TransformerResistanceArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -19964,21 +19802,13 @@ class TransformerResistanceArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class TransformerSafetyMarginForPowerArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -19998,10 +19828,6 @@ if not MYPY:
         unit: NotRequired[pulumi.Input[str]]
         """
         unit of measure
-        """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
         """
 elif False:
     TransformerSafetyMarginForPowerArgsDict: TypeAlias = Mapping[str, Any]
@@ -20009,20 +19835,21 @@ elif False:
 @pulumi.input_type
 class TransformerSafetyMarginForPowerArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -20033,8 +19860,18 @@ class TransformerSafetyMarginForPowerArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -20096,21 +19933,13 @@ class TransformerSafetyMarginForPowerArgs:
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
 
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
 
 if not MYPY:
     class TransformerStandardTypeArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -20131,30 +19960,27 @@ if not MYPY:
         """
         unit of measure
         """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
-        """
 elif False:
     TransformerStandardTypeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TransformerStandardTypeArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -20165,8 +19991,18 @@ class TransformerStandardTypeArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -20227,18 +20063,6 @@ class TransformerStandardTypeArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -20517,6 +20341,10 @@ class TransformerTagArgs:
 
 if not MYPY:
     class TransformerTapPosArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -20537,30 +20365,27 @@ if not MYPY:
         """
         unit of measure
         """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
-        """
 elif False:
     TransformerTapPosArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TransformerTapPosArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -20571,8 +20396,18 @@ class TransformerTapPosArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -20633,18 +20468,6 @@ class TransformerTapPosArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -20873,6 +20696,10 @@ class TransformerVoltageLvArgs:
 
 if not MYPY:
     class TransformerXnOhmArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        metadata value
+        """
         asset: NotRequired[pulumi.Input[str]]
         """
         reference to the asset to be linked to
@@ -20893,30 +20720,27 @@ if not MYPY:
         """
         unit of measure
         """
-        value: NotRequired[pulumi.Input[str]]
-        """
-        metadata value
-        """
 elif False:
     TransformerXnOhmArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TransformerXnOhmArgs:
     def __init__(__self__, *,
+                 value: pulumi.Input[str],
                  asset: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 unit: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] value: metadata value
         :param pulumi.Input[str] asset: reference to the asset to be linked to
         :param pulumi.Input[str] id: id of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[str] type: [String|Boolean|Number] type of the data to be ingested in this attribute
         :param pulumi.Input[str] unit: unit of measure
-        :param pulumi.Input[str] value: metadata value
         """
+        pulumi.set(__self__, "value", value)
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
         if id is not None:
@@ -20927,8 +20751,18 @@ class TransformerXnOhmArgs:
             pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        metadata value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
@@ -20989,17 +20823,5 @@ class TransformerXnOhmArgs:
     @unit.setter
     def unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "unit", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        metadata value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 

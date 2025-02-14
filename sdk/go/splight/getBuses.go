@@ -53,18 +53,8 @@ type GetBusesResult struct {
 
 func GetBusesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetBusesResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetBusesResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetBusesResult
-		secret, err := ctx.InvokePackageRaw("splight:index/getBuses:getBuses", nil, &rv, "", opts...)
-		if err != nil {
-			return GetBusesResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetBusesResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetBusesResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("splight:index/getBuses:getBuses", nil, GetBusesResultOutput{}, options).(GetBusesResultOutput), nil
 	}).(GetBusesResultOutput)
 }
 

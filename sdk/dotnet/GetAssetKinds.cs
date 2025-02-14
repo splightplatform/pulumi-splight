@@ -49,6 +49,25 @@ namespace Splight.Splight
         /// </summary>
         public static Output<GetAssetKindsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAssetKindsResult>("splight:index/getAssetKinds:getAssetKinds", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Splight = Pulumi.Splight;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var kinds = Splight.GetAssetKinds.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAssetKindsResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAssetKindsResult>("splight:index/getAssetKinds:getAssetKinds", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

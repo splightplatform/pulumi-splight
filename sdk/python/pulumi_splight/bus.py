@@ -21,44 +21,33 @@ __all__ = ['BusArgs', 'Bus']
 @pulumi.input_type
 class BusArgs:
     def __init__(__self__, *,
-                 nominal_voltage_kv: pulumi.Input['BusNominalVoltageKvArgs'],
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 nominal_voltage_kv: Optional[pulumi.Input['BusNominalVoltageKvArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['BusTagArgs']]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Bus resource.
-        :param pulumi.Input['BusNominalVoltageKvArgs'] nominal_voltage_kv: attribute of the resource
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
+        :param pulumi.Input['BusNominalVoltageKvArgs'] nominal_voltage_kv: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['BusTagArgs']]] tags: tags of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
-        pulumi.set(__self__, "nominal_voltage_kv", nominal_voltage_kv)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
             pulumi.set(__self__, "geometry", geometry)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if nominal_voltage_kv is not None:
+            pulumi.set(__self__, "nominal_voltage_kv", nominal_voltage_kv)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
-
-    @property
-    @pulumi.getter(name="nominalVoltageKv")
-    def nominal_voltage_kv(self) -> pulumi.Input['BusNominalVoltageKvArgs']:
-        """
-        attribute of the resource
-        """
-        return pulumi.get(self, "nominal_voltage_kv")
-
-    @nominal_voltage_kv.setter
-    def nominal_voltage_kv(self, value: pulumi.Input['BusNominalVoltageKvArgs']):
-        pulumi.set(self, "nominal_voltage_kv", value)
 
     @property
     @pulumi.getter
@@ -95,6 +84,18 @@ class BusArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nominalVoltageKv")
+    def nominal_voltage_kv(self) -> Optional[pulumi.Input['BusNominalVoltageKvArgs']]:
+        """
+        attribute of the resource
+        """
+        return pulumi.get(self, "nominal_voltage_kv")
+
+    @nominal_voltage_kv.setter
+    def nominal_voltage_kv(self, value: Optional[pulumi.Input['BusNominalVoltageKvArgs']]):
+        pulumi.set(self, "nominal_voltage_kv", value)
 
     @property
     @pulumi.getter
@@ -307,7 +308,7 @@ class Bus(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BusArgs,
+                 args: Optional[BusArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -351,8 +352,6 @@ class Bus(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["geometry"] = geometry
             __props__.__dict__["name"] = name
-            if nominal_voltage_kv is None and not opts.urn:
-                raise TypeError("Missing required property 'nominal_voltage_kv'")
             __props__.__dict__["nominal_voltage_kv"] = nominal_voltage_kv
             __props__.__dict__["tags"] = tags
             __props__.__dict__["timezone"] = timezone
@@ -476,7 +475,7 @@ class Bus(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timezone(self) -> pulumi.Output[Optional[str]]:
+    def timezone(self) -> pulumi.Output[str]:
         """
         timezone that overrides location-based timezone of the resource
         """

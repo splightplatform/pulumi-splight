@@ -36,7 +36,7 @@ type SlackLine struct {
 	// tags of the resource
 	Tags SlackLineTagArrayOutput `pulumi:"tags"`
 	// timezone that overrides location-based timezone of the resource
-	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
+	Timezone pulumi.StringOutput `pulumi:"timezone"`
 }
 
 // NewSlackLine registers a new resource with the given unique name, arguments, and options.
@@ -260,8 +260,8 @@ func (o SlackLineOutput) Tags() SlackLineTagArrayOutput {
 }
 
 // timezone that overrides location-based timezone of the resource
-func (o SlackLineOutput) Timezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SlackLine) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+func (o SlackLineOutput) Timezone() pulumi.StringOutput {
+	return o.ApplyT(func(v *SlackLine) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
 }
 
 type SlackLineArrayOutput struct{ *pulumi.OutputState }

@@ -50,7 +50,7 @@ export class Asset extends pulumi.CustomResource {
     /**
      * GeoJSON GeomtryCollection
      */
-    public readonly geometry!: pulumi.Output<string>;
+    public readonly geometry!: pulumi.Output<string | undefined>;
     /**
      * kind of the resource
      */
@@ -66,7 +66,7 @@ export class Asset extends pulumi.CustomResource {
     /**
      * timezone of the resource (overriden by the location if set)
      */
-    public readonly timezone!: pulumi.Output<string | undefined>;
+    public readonly timezone!: pulumi.Output<string>;
 
     /**
      * Create a Asset resource with the given unique name, arguments, and options.
@@ -75,7 +75,7 @@ export class Asset extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AssetArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: AssetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AssetArgs | AssetState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -89,9 +89,6 @@ export class Asset extends pulumi.CustomResource {
             resourceInputs["timezone"] = state ? state.timezone : undefined;
         } else {
             const args = argsOrState as AssetArgs | undefined;
-            if ((!args || args.geometry === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'geometry'");
-            }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
@@ -145,7 +142,7 @@ export interface AssetArgs {
     /**
      * GeoJSON GeomtryCollection
      */
-    geometry: pulumi.Input<string>;
+    geometry?: pulumi.Input<string>;
     /**
      * kind of the resource
      */

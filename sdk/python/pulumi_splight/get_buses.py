@@ -77,7 +77,7 @@ def get_buses(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBusesR
     return AwaitableGetBusesResult(
         id=pulumi.get(__ret__, 'id'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_buses_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBusesResult]:
+def get_buses_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBusesResult]:
     """
     ## Example Usage
 
@@ -89,7 +89,7 @@ def get_buses_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Outp
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('splight:index/getBuses:getBuses', __args__, opts=opts, typ=GetBusesResult)
     return __ret__.apply(lambda __response__: GetBusesResult(
         id=pulumi.get(__response__, 'id'),

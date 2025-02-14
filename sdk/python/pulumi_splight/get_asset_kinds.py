@@ -77,7 +77,7 @@ def get_asset_kinds(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGet
     return AwaitableGetAssetKindsResult(
         id=pulumi.get(__ret__, 'id'),
         kinds=pulumi.get(__ret__, 'kinds'))
-def get_asset_kinds_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAssetKindsResult]:
+def get_asset_kinds_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAssetKindsResult]:
     """
     ## Example Usage
 
@@ -89,7 +89,7 @@ def get_asset_kinds_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulum
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('splight:index/getAssetKinds:getAssetKinds', __args__, opts=opts, typ=GetAssetKindsResult)
     return __ret__.apply(lambda __response__: GetAssetKindsResult(
         id=pulumi.get(__response__, 'id'),

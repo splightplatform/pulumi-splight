@@ -282,7 +282,7 @@ export interface BusNominalVoltageKv {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface BusReactivePower {
@@ -1420,33 +1420,6 @@ export interface GeneratorActivePower {
     unit?: pulumi.Input<string>;
 }
 
-export interface GeneratorCo2Coefficient {
-    /**
-     * reference to the asset to be linked to
-     */
-    asset?: pulumi.Input<string>;
-    /**
-     * id of the resource
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * name of the resource
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * [String|Boolean|Number] type of the data to be ingested in this attribute
-     */
-    type?: pulumi.Input<string>;
-    /**
-     * unit of measure
-     */
-    unit?: pulumi.Input<string>;
-    /**
-     * metadata value
-     */
-    value?: pulumi.Input<string>;
-}
-
 export interface GeneratorDailyEmissionAvoided {
     /**
      * reference to the asset to be linked to
@@ -1699,7 +1672,7 @@ export interface InverterEnergyMeasurementType {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface InverterKind {
@@ -1737,7 +1710,7 @@ export interface InverterMake {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface InverterMaxActivePower {
@@ -1764,7 +1737,7 @@ export interface InverterMaxActivePower {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface InverterModel {
@@ -1791,7 +1764,7 @@ export interface InverterModel {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface InverterRawDailyEnergy {
@@ -1841,7 +1814,7 @@ export interface InverterSerialNumber {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface InverterSwitchStatus {
@@ -1925,7 +1898,7 @@ export interface LineAbsorptivity {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineActivePower {
@@ -2021,7 +1994,7 @@ export interface LineAtmosphere {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineCapacitance {
@@ -2048,7 +2021,7 @@ export interface LineCapacitance {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineConductance {
@@ -2075,7 +2048,7 @@ export interface LineConductance {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineConductorMass {
@@ -2102,7 +2075,7 @@ export interface LineConductorMass {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineContingency {
@@ -2221,7 +2194,7 @@ export interface LineDiameter {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineEmissivity {
@@ -2248,7 +2221,7 @@ export interface LineEmissivity {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineEnergy {
@@ -2309,7 +2282,7 @@ export interface LineLength {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineMaxTemperature {
@@ -2359,7 +2332,7 @@ export interface LineMaximumAllowedCurrent {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineMaximumAllowedPower {
@@ -2386,7 +2359,7 @@ export interface LineMaximumAllowedPower {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineMaximumAllowedTemperature {
@@ -2413,7 +2386,7 @@ export interface LineMaximumAllowedTemperature {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineMaximumAllowedTemperatureLte {
@@ -2440,7 +2413,7 @@ export interface LineMaximumAllowedTemperatureLte {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineMaximumAllowedTemperatureSte {
@@ -2467,7 +2440,7 @@ export interface LineMaximumAllowedTemperatureSte {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineNumberOfConductors {
@@ -2494,7 +2467,7 @@ export interface LineNumberOfConductors {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineReactance {
@@ -2521,7 +2494,7 @@ export interface LineReactance {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineReactivePower {
@@ -2571,7 +2544,7 @@ export interface LineReferenceResistance {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineResistance {
@@ -2598,7 +2571,7 @@ export interface LineResistance {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineSafetyMarginForPower {
@@ -2625,7 +2598,7 @@ export interface LineSafetyMarginForPower {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineSpecificHeat {
@@ -2652,7 +2625,7 @@ export interface LineSpecificHeat {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineSusceptance {
@@ -2679,7 +2652,7 @@ export interface LineSusceptance {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineSwitchStatusEnd {
@@ -2763,7 +2736,7 @@ export interface LineTemperatureCoeffResistance {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineThermalElongationCoef {
@@ -2790,7 +2763,7 @@ export interface LineThermalElongationCoef {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface LineVoltageR {
@@ -2886,7 +2859,7 @@ export interface SegmentAltitude {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface SegmentAzimuth {
@@ -2913,7 +2886,7 @@ export interface SegmentAzimuth {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface SegmentCumulativeDistance {
@@ -2940,7 +2913,7 @@ export interface SegmentCumulativeDistance {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface SegmentKind {
@@ -2978,7 +2951,7 @@ export interface SegmentReferenceSag {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface SegmentReferenceTemperature {
@@ -3005,7 +2978,7 @@ export interface SegmentReferenceTemperature {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface SegmentSpanLength {
@@ -3032,7 +3005,7 @@ export interface SegmentSpanLength {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface SegmentTag {
@@ -3331,7 +3304,7 @@ export interface TransformerCapacitance {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface TransformerConductance {
@@ -3358,7 +3331,7 @@ export interface TransformerConductance {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface TransformerContingency {
@@ -3465,7 +3438,7 @@ export interface TransformerMaximumAllowedCurrent {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface TransformerMaximumAllowedPower {
@@ -3492,7 +3465,7 @@ export interface TransformerMaximumAllowedPower {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface TransformerReactance {
@@ -3519,7 +3492,7 @@ export interface TransformerReactance {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface TransformerReactivePowerHv {
@@ -3615,7 +3588,7 @@ export interface TransformerResistance {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface TransformerSafetyMarginForPower {
@@ -3642,7 +3615,7 @@ export interface TransformerSafetyMarginForPower {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface TransformerStandardType {
@@ -3669,7 +3642,7 @@ export interface TransformerStandardType {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface TransformerSwitchStatusHv {
@@ -3753,7 +3726,7 @@ export interface TransformerTapPos {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface TransformerVoltageHv {
@@ -3826,5 +3799,5 @@ export interface TransformerXnOhm {
     /**
      * metadata value
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }

@@ -947,7 +947,7 @@ class DashboardBargaugeChart(pulumi.CustomResource):
                     },
                     "query_plain": pulumi.Output.json_dumps([
                         {
-                            "_match": {
+                            "$match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test1.id,
                             },
@@ -982,7 +982,7 @@ class DashboardBargaugeChart(pulumi.CustomResource):
                     "type": "EXPRESSION",
                     "query_plain": "",
                     "expression_plain": json.dumps({
-                        "_function": {
+                        "$function": {
                             "body": "function ($A) { return $A/50 }",
                             "args": ["$A"],
                             "lang": "js",
@@ -1106,7 +1106,7 @@ class DashboardBargaugeChart(pulumi.CustomResource):
                     },
                     "query_plain": pulumi.Output.json_dumps([
                         {
-                            "_match": {
+                            "$match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test1.id,
                             },
@@ -1141,7 +1141,7 @@ class DashboardBargaugeChart(pulumi.CustomResource):
                     "type": "EXPRESSION",
                     "query_plain": "",
                     "expression_plain": json.dumps({
-                        "_function": {
+                        "$function": {
                             "body": "function ($A) { return $A/50 }",
                             "args": ["$A"],
                             "lang": "js",

@@ -913,7 +913,7 @@ class DashboardCommandlistChart(pulumi.CustomResource):
                     },
                     "query_plain": pulumi.Output.json_dumps([
                         {
-                            "_match": {
+                            "$match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test1.id,
                             },
@@ -957,7 +957,7 @@ class DashboardCommandlistChart(pulumi.CustomResource):
                     },
                     "query_plain": pulumi.Output.json_dumps([
                         {
-                            "_match": {
+                            "$match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test2.id,
                             },
@@ -1099,7 +1099,7 @@ class DashboardCommandlistChart(pulumi.CustomResource):
                     },
                     "query_plain": pulumi.Output.json_dumps([
                         {
-                            "_match": {
+                            "$match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test1.id,
                             },
@@ -1143,7 +1143,7 @@ class DashboardCommandlistChart(pulumi.CustomResource):
                     },
                     "query_plain": pulumi.Output.json_dumps([
                         {
-                            "_match": {
+                            "$match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test2.id,
                             },

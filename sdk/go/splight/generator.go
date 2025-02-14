@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/splightplatform/pulumi-splight/sdk/go/splight/internal"
 )
@@ -24,8 +23,6 @@ type Generator struct {
 
 	// attribute of the resource
 	ActivePowers GeneratorActivePowerArrayOutput `pulumi:"activePowers"`
-	// attribute of the resource
-	Co2Coefficient GeneratorCo2CoefficientOutput `pulumi:"co2Coefficient"`
 	// attribute of the resource
 	DailyEmissionAvoideds GeneratorDailyEmissionAvoidedArrayOutput `pulumi:"dailyEmissionAvoideds"`
 	// attribute of the resource
@@ -47,19 +44,16 @@ type Generator struct {
 	// tags of the resource
 	Tags GeneratorTagArrayOutput `pulumi:"tags"`
 	// timezone that overrides location-based timezone of the resource
-	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
+	Timezone pulumi.StringOutput `pulumi:"timezone"`
 }
 
 // NewGenerator registers a new resource with the given unique name, arguments, and options.
 func NewGenerator(ctx *pulumi.Context,
 	name string, args *GeneratorArgs, opts ...pulumi.ResourceOption) (*Generator, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &GeneratorArgs{}
 	}
 
-	if args.Co2Coefficient == nil {
-		return nil, errors.New("invalid value for required argument 'Co2Coefficient'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Generator
 	err := ctx.RegisterResource("splight:index/generator:Generator", name, args, &resource, opts...)
@@ -85,8 +79,6 @@ func GetGenerator(ctx *pulumi.Context,
 type generatorState struct {
 	// attribute of the resource
 	ActivePowers []GeneratorActivePower `pulumi:"activePowers"`
-	// attribute of the resource
-	Co2Coefficient *GeneratorCo2Coefficient `pulumi:"co2Coefficient"`
 	// attribute of the resource
 	DailyEmissionAvoideds []GeneratorDailyEmissionAvoided `pulumi:"dailyEmissionAvoideds"`
 	// attribute of the resource
@@ -114,8 +106,6 @@ type generatorState struct {
 type GeneratorState struct {
 	// attribute of the resource
 	ActivePowers GeneratorActivePowerArrayInput
-	// attribute of the resource
-	Co2Coefficient GeneratorCo2CoefficientPtrInput
 	// attribute of the resource
 	DailyEmissionAvoideds GeneratorDailyEmissionAvoidedArrayInput
 	// attribute of the resource
@@ -145,8 +135,6 @@ func (GeneratorState) ElementType() reflect.Type {
 }
 
 type generatorArgs struct {
-	// attribute of the resource
-	Co2Coefficient GeneratorCo2Coefficient `pulumi:"co2Coefficient"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -161,8 +149,6 @@ type generatorArgs struct {
 
 // The set of arguments for constructing a Generator resource.
 type GeneratorArgs struct {
-	// attribute of the resource
-	Co2Coefficient GeneratorCo2CoefficientInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -268,11 +254,6 @@ func (o GeneratorOutput) ActivePowers() GeneratorActivePowerArrayOutput {
 }
 
 // attribute of the resource
-func (o GeneratorOutput) Co2Coefficient() GeneratorCo2CoefficientOutput {
-	return o.ApplyT(func(v *Generator) GeneratorCo2CoefficientOutput { return v.Co2Coefficient }).(GeneratorCo2CoefficientOutput)
-}
-
-// attribute of the resource
 func (o GeneratorOutput) DailyEmissionAvoideds() GeneratorDailyEmissionAvoidedArrayOutput {
 	return o.ApplyT(func(v *Generator) GeneratorDailyEmissionAvoidedArrayOutput { return v.DailyEmissionAvoideds }).(GeneratorDailyEmissionAvoidedArrayOutput)
 }
@@ -323,8 +304,8 @@ func (o GeneratorOutput) Tags() GeneratorTagArrayOutput {
 }
 
 // timezone that overrides location-based timezone of the resource
-func (o GeneratorOutput) Timezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Generator) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+func (o GeneratorOutput) Timezone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Generator) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
 }
 
 type GeneratorArrayOutput struct{ *pulumi.OutputState }

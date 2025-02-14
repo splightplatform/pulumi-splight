@@ -46,15 +46,15 @@ export class Segment extends pulumi.CustomResource {
     /**
      * attribute of the resource
      */
-    public readonly altitude!: pulumi.Output<outputs.SegmentAltitude>;
+    public readonly altitude!: pulumi.Output<outputs.SegmentAltitude | undefined>;
     /**
      * attribute of the resource
      */
-    public readonly azimuth!: pulumi.Output<outputs.SegmentAzimuth>;
+    public readonly azimuth!: pulumi.Output<outputs.SegmentAzimuth | undefined>;
     /**
      * attribute of the resource
      */
-    public readonly cumulativeDistance!: pulumi.Output<outputs.SegmentCumulativeDistance>;
+    public readonly cumulativeDistance!: pulumi.Output<outputs.SegmentCumulativeDistance | undefined>;
     /**
      * description of the resource
      */
@@ -74,15 +74,15 @@ export class Segment extends pulumi.CustomResource {
     /**
      * attribute of the resource
      */
-    public readonly referenceSag!: pulumi.Output<outputs.SegmentReferenceSag>;
+    public readonly referenceSag!: pulumi.Output<outputs.SegmentReferenceSag | undefined>;
     /**
      * attribute of the resource
      */
-    public readonly referenceTemperature!: pulumi.Output<outputs.SegmentReferenceTemperature>;
+    public readonly referenceTemperature!: pulumi.Output<outputs.SegmentReferenceTemperature | undefined>;
     /**
      * attribute of the resource
      */
-    public readonly spanLength!: pulumi.Output<outputs.SegmentSpanLength>;
+    public readonly spanLength!: pulumi.Output<outputs.SegmentSpanLength | undefined>;
     /**
      * tags of the resource
      */
@@ -94,7 +94,7 @@ export class Segment extends pulumi.CustomResource {
     /**
      * timezone that overrides location-based timezone of the resource
      */
-    public readonly timezone!: pulumi.Output<string | undefined>;
+    public readonly timezone!: pulumi.Output<string>;
     /**
      * attribute of the resource
      */
@@ -111,7 +111,7 @@ export class Segment extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SegmentArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: SegmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SegmentArgs | SegmentState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -134,24 +134,6 @@ export class Segment extends pulumi.CustomResource {
             resourceInputs["windSpeeds"] = state ? state.windSpeeds : undefined;
         } else {
             const args = argsOrState as SegmentArgs | undefined;
-            if ((!args || args.altitude === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'altitude'");
-            }
-            if ((!args || args.azimuth === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'azimuth'");
-            }
-            if ((!args || args.cumulativeDistance === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'cumulativeDistance'");
-            }
-            if ((!args || args.referenceSag === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'referenceSag'");
-            }
-            if ((!args || args.referenceTemperature === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'referenceTemperature'");
-            }
-            if ((!args || args.spanLength === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'spanLength'");
-            }
             resourceInputs["altitude"] = args ? args.altitude : undefined;
             resourceInputs["azimuth"] = args ? args.azimuth : undefined;
             resourceInputs["cumulativeDistance"] = args ? args.cumulativeDistance : undefined;
@@ -246,15 +228,15 @@ export interface SegmentArgs {
     /**
      * attribute of the resource
      */
-    altitude: pulumi.Input<inputs.SegmentAltitude>;
+    altitude?: pulumi.Input<inputs.SegmentAltitude>;
     /**
      * attribute of the resource
      */
-    azimuth: pulumi.Input<inputs.SegmentAzimuth>;
+    azimuth?: pulumi.Input<inputs.SegmentAzimuth>;
     /**
      * attribute of the resource
      */
-    cumulativeDistance: pulumi.Input<inputs.SegmentCumulativeDistance>;
+    cumulativeDistance?: pulumi.Input<inputs.SegmentCumulativeDistance>;
     /**
      * description of the resource
      */
@@ -270,15 +252,15 @@ export interface SegmentArgs {
     /**
      * attribute of the resource
      */
-    referenceSag: pulumi.Input<inputs.SegmentReferenceSag>;
+    referenceSag?: pulumi.Input<inputs.SegmentReferenceSag>;
     /**
      * attribute of the resource
      */
-    referenceTemperature: pulumi.Input<inputs.SegmentReferenceTemperature>;
+    referenceTemperature?: pulumi.Input<inputs.SegmentReferenceTemperature>;
     /**
      * attribute of the resource
      */
-    spanLength: pulumi.Input<inputs.SegmentSpanLength>;
+    spanLength?: pulumi.Input<inputs.SegmentSpanLength>;
     /**
      * tags of the resource
      */
