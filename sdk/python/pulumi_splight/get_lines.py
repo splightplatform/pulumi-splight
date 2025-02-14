@@ -77,7 +77,7 @@ def get_lines(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLinesR
     return AwaitableGetLinesResult(
         id=pulumi.get(__ret__, 'id'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_lines_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLinesResult]:
+def get_lines_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLinesResult]:
     """
     ## Example Usage
 
@@ -89,7 +89,7 @@ def get_lines_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOut
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('splight:index/getLines:getLines', __args__, opts=opts, typ=GetLinesResult)
     return __ret__.apply(lambda __response__: GetLinesResult(
         id=pulumi.get(__response__, 'id'),

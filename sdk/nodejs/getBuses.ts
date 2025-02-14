@@ -42,7 +42,7 @@ export interface GetBusesResult {
  * const buses = splight.getBuses({});
  * ```
  */
-export function getBusesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBusesResult> {
+export function getBusesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetBusesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("splight:index/getBuses:getBuses", {
     }, opts);

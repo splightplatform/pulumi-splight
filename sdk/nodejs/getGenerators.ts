@@ -42,7 +42,7 @@ export interface GetGeneratorsResult {
  * const generators = splight.getGenerators({});
  * ```
  */
-export function getGeneratorsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGeneratorsResult> {
+export function getGeneratorsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetGeneratorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("splight:index/getGenerators:getGenerators", {
     }, opts);

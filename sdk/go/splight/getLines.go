@@ -53,8 +53,18 @@ type GetLinesResult struct {
 
 func GetLinesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetLinesResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetLinesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("splight:index/getLines:getLines", nil, GetLinesResultOutput{}, options).(GetLinesResultOutput), nil
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetLinesResult
+		secret, err := ctx.InvokePackageRaw("splight:index/getLines:getLines", nil, &rv, "", opts...)
+		if err != nil {
+			return GetLinesResultOutput{}, err
+		}
+
+		output := pulumi.ToOutput(rv).(GetLinesResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetLinesResultOutput), nil
+		}
+		return output, nil
 	}).(GetLinesResultOutput)
 }
 

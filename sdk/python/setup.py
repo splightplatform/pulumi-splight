@@ -8,7 +8,7 @@ from setuptools.command.install import install
 from subprocess import check_call
 
 
-VERSION = "1.2.11"
+VERSION = "1.2.13"
 def readme():
     try:
         with open('README.md', encoding='utf-8') as f:
@@ -18,7 +18,7 @@ def readme():
 
 
 setup(name='pulumi_splight',
-      python_requires='>=3.9',
+      python_requires='>=3.8',
       version=VERSION,
       description="A Pulumi package for creating and managing Splight resources.",
       long_description=readme(),

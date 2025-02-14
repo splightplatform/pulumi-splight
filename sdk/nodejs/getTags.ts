@@ -42,7 +42,7 @@ export interface GetTagsResult {
  * const tags = splight.getTags({});
  * ```
  */
-export function getTagsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTagsResult> {
+export function getTagsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetTagsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("splight:index/getTags:getTags", {
     }, opts);

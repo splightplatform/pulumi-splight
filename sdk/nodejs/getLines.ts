@@ -42,7 +42,7 @@ export interface GetLinesResult {
  * const lines = splight.getLines({});
  * ```
  */
-export function getLinesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLinesResult> {
+export function getLinesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetLinesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("splight:index/getLines:getLines", {
     }, opts);

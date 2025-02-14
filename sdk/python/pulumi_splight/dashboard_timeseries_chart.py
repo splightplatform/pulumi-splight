@@ -1219,7 +1219,7 @@ class DashboardTimeseriesChart(pulumi.CustomResource):
                     },
                     "query_plain": pulumi.Output.json_dumps([
                         {
-                            "$match": {
+                            "_match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test1.id,
                             },
@@ -1263,7 +1263,7 @@ class DashboardTimeseriesChart(pulumi.CustomResource):
                     },
                     "query_plain": pulumi.Output.json_dumps([
                         {
-                            "$match": {
+                            "_match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test2.id,
                             },
@@ -1423,7 +1423,7 @@ class DashboardTimeseriesChart(pulumi.CustomResource):
                     },
                     "query_plain": pulumi.Output.json_dumps([
                         {
-                            "$match": {
+                            "_match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test1.id,
                             },
@@ -1467,7 +1467,7 @@ class DashboardTimeseriesChart(pulumi.CustomResource):
                     },
                     "query_plain": pulumi.Output.json_dumps([
                         {
-                            "$match": {
+                            "_match": {
                                 "asset": asset_test.id,
                                 "attribute": attribute_test2.id,
                             },
