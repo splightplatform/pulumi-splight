@@ -21,29 +21,49 @@ __all__ = ['ExternalGridArgs', 'ExternalGrid']
 @pulumi.input_type
 class ExternalGridArgs:
     def __init__(__self__, *,
+                 bus: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
+                 grid: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalGridTagArgs']]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ExternalGrid resource.
+        :param pulumi.Input[str] bus: id of the related Bus object
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
+        :param pulumi.Input[str] grid: id of the related Grid object
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input['ExternalGridTagArgs']]] tags: tags of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
+        if bus is not None:
+            pulumi.set(__self__, "bus", bus)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
             pulumi.set(__self__, "geometry", geometry)
+        if grid is not None:
+            pulumi.set(__self__, "grid", grid)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
+
+    @property
+    @pulumi.getter
+    def bus(self) -> Optional[pulumi.Input[str]]:
+        """
+        id of the related Bus object
+        """
+        return pulumi.get(self, "bus")
+
+    @bus.setter
+    def bus(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bus", value)
 
     @property
     @pulumi.getter
@@ -68,6 +88,18 @@ class ExternalGridArgs:
     @geometry.setter
     def geometry(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "geometry", value)
+
+    @property
+    @pulumi.getter
+    def grid(self) -> Optional[pulumi.Input[str]]:
+        """
+        id of the related Grid object
+        """
+        return pulumi.get(self, "grid")
+
+    @grid.setter
+    def grid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "grid", value)
 
     @property
     @pulumi.getter
@@ -109,25 +141,33 @@ class ExternalGridArgs:
 @pulumi.input_type
 class _ExternalGridState:
     def __init__(__self__, *,
+                 bus: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
+                 grid: Optional[pulumi.Input[str]] = None,
                  kinds: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalGridKindArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalGridTagArgs']]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ExternalGrid resources.
+        :param pulumi.Input[str] bus: id of the related Bus object
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
+        :param pulumi.Input[str] grid: id of the related Grid object
         :param pulumi.Input[Sequence[pulumi.Input['ExternalGridKindArgs']]] kinds: kind of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input['ExternalGridTagArgs']]] tags: tags of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
+        if bus is not None:
+            pulumi.set(__self__, "bus", bus)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
             pulumi.set(__self__, "geometry", geometry)
+        if grid is not None:
+            pulumi.set(__self__, "grid", grid)
         if kinds is not None:
             pulumi.set(__self__, "kinds", kinds)
         if name is not None:
@@ -136,6 +176,18 @@ class _ExternalGridState:
             pulumi.set(__self__, "tags", tags)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
+
+    @property
+    @pulumi.getter
+    def bus(self) -> Optional[pulumi.Input[str]]:
+        """
+        id of the related Bus object
+        """
+        return pulumi.get(self, "bus")
+
+    @bus.setter
+    def bus(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bus", value)
 
     @property
     @pulumi.getter
@@ -160,6 +212,18 @@ class _ExternalGridState:
     @geometry.setter
     def geometry(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "geometry", value)
+
+    @property
+    @pulumi.getter
+    def grid(self) -> Optional[pulumi.Input[str]]:
+        """
+        id of the related Grid object
+        """
+        return pulumi.get(self, "grid")
+
+    @grid.setter
+    def grid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "grid", value)
 
     @property
     @pulumi.getter
@@ -215,8 +279,10 @@ class ExternalGrid(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bus: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
+                 grid: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalGridTagArgs', 'ExternalGridTagArgsDict']]]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
@@ -232,8 +298,10 @@ class ExternalGrid(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] bus: id of the related Bus object
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
+        :param pulumi.Input[str] grid: id of the related Grid object
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalGridTagArgs', 'ExternalGridTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
@@ -268,8 +336,10 @@ class ExternalGrid(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bus: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
+                 grid: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalGridTagArgs', 'ExternalGridTagArgsDict']]]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
@@ -282,8 +352,10 @@ class ExternalGrid(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ExternalGridArgs.__new__(ExternalGridArgs)
 
+            __props__.__dict__["bus"] = bus
             __props__.__dict__["description"] = description
             __props__.__dict__["geometry"] = geometry
+            __props__.__dict__["grid"] = grid
             __props__.__dict__["name"] = name
             __props__.__dict__["tags"] = tags
             __props__.__dict__["timezone"] = timezone
@@ -298,8 +370,10 @@ class ExternalGrid(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            bus: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             geometry: Optional[pulumi.Input[str]] = None,
+            grid: Optional[pulumi.Input[str]] = None,
             kinds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalGridKindArgs', 'ExternalGridKindArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalGridTagArgs', 'ExternalGridTagArgsDict']]]]] = None,
@@ -311,8 +385,10 @@ class ExternalGrid(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] bus: id of the related Bus object
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
+        :param pulumi.Input[str] grid: id of the related Grid object
         :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalGridKindArgs', 'ExternalGridKindArgsDict']]]] kinds: kind of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalGridTagArgs', 'ExternalGridTagArgsDict']]]] tags: tags of the resource
@@ -322,13 +398,23 @@ class ExternalGrid(pulumi.CustomResource):
 
         __props__ = _ExternalGridState.__new__(_ExternalGridState)
 
+        __props__.__dict__["bus"] = bus
         __props__.__dict__["description"] = description
         __props__.__dict__["geometry"] = geometry
+        __props__.__dict__["grid"] = grid
         __props__.__dict__["kinds"] = kinds
         __props__.__dict__["name"] = name
         __props__.__dict__["tags"] = tags
         __props__.__dict__["timezone"] = timezone
         return ExternalGrid(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def bus(self) -> pulumi.Output[Optional[str]]:
+        """
+        id of the related Bus object
+        """
+        return pulumi.get(self, "bus")
 
     @property
     @pulumi.getter
@@ -345,6 +431,14 @@ class ExternalGrid(pulumi.CustomResource):
         geo position and shape of the resource
         """
         return pulumi.get(self, "geometry")
+
+    @property
+    @pulumi.getter
+    def grid(self) -> pulumi.Output[Optional[str]]:
+        """
+        id of the related Grid object
+        """
+        return pulumi.get(self, "grid")
 
     @property
     @pulumi.getter
@@ -372,7 +466,7 @@ class ExternalGrid(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timezone(self) -> pulumi.Output[Optional[str]]:
+    def timezone(self) -> pulumi.Output[str]:
         """
         timezone that overrides location-based timezone of the resource
         """

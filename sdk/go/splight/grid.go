@@ -32,7 +32,7 @@ type Grid struct {
 	// tags of the resource
 	Tags GridTagArrayOutput `pulumi:"tags"`
 	// timezone that overrides location-based timezone of the resource
-	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
+	Timezone pulumi.StringOutput `pulumi:"timezone"`
 }
 
 // NewGrid registers a new resource with the given unique name, arguments, and options.
@@ -238,8 +238,8 @@ func (o GridOutput) Tags() GridTagArrayOutput {
 }
 
 // timezone that overrides location-based timezone of the resource
-func (o GridOutput) Timezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Grid) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+func (o GridOutput) Timezone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Grid) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
 }
 
 type GridArrayOutput struct{ *pulumi.OutputState }

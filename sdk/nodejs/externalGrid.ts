@@ -44,6 +44,10 @@ export class ExternalGrid extends pulumi.CustomResource {
     }
 
     /**
+     * id of the related Bus object
+     */
+    public readonly bus!: pulumi.Output<string | undefined>;
+    /**
      * description of the resource
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -51,6 +55,10 @@ export class ExternalGrid extends pulumi.CustomResource {
      * geo position and shape of the resource
      */
     public readonly geometry!: pulumi.Output<string | undefined>;
+    /**
+     * id of the related Grid object
+     */
+    public readonly grid!: pulumi.Output<string | undefined>;
     /**
      * kind of the resource
      */
@@ -66,7 +74,7 @@ export class ExternalGrid extends pulumi.CustomResource {
     /**
      * timezone that overrides location-based timezone of the resource
      */
-    public readonly timezone!: pulumi.Output<string | undefined>;
+    public readonly timezone!: pulumi.Output<string>;
 
     /**
      * Create a ExternalGrid resource with the given unique name, arguments, and options.
@@ -81,16 +89,20 @@ export class ExternalGrid extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExternalGridState | undefined;
+            resourceInputs["bus"] = state ? state.bus : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["geometry"] = state ? state.geometry : undefined;
+            resourceInputs["grid"] = state ? state.grid : undefined;
             resourceInputs["kinds"] = state ? state.kinds : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["timezone"] = state ? state.timezone : undefined;
         } else {
             const args = argsOrState as ExternalGridArgs | undefined;
+            resourceInputs["bus"] = args ? args.bus : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
+            resourceInputs["grid"] = args ? args.grid : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["timezone"] = args ? args.timezone : undefined;
@@ -106,6 +118,10 @@ export class ExternalGrid extends pulumi.CustomResource {
  */
 export interface ExternalGridState {
     /**
+     * id of the related Bus object
+     */
+    bus?: pulumi.Input<string>;
+    /**
      * description of the resource
      */
     description?: pulumi.Input<string>;
@@ -113,6 +129,10 @@ export interface ExternalGridState {
      * geo position and shape of the resource
      */
     geometry?: pulumi.Input<string>;
+    /**
+     * id of the related Grid object
+     */
+    grid?: pulumi.Input<string>;
     /**
      * kind of the resource
      */
@@ -136,6 +156,10 @@ export interface ExternalGridState {
  */
 export interface ExternalGridArgs {
     /**
+     * id of the related Bus object
+     */
+    bus?: pulumi.Input<string>;
+    /**
      * description of the resource
      */
     description?: pulumi.Input<string>;
@@ -143,6 +167,10 @@ export interface ExternalGridArgs {
      * geo position and shape of the resource
      */
     geometry?: pulumi.Input<string>;
+    /**
+     * id of the related Grid object
+     */
+    grid?: pulumi.Input<string>;
     /**
      * name of the resource
      */
