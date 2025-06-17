@@ -32,7 +32,7 @@ type SlackGenerator struct {
 	// tags of the resource
 	Tags SlackGeneratorTagArrayOutput `pulumi:"tags"`
 	// timezone that overrides location-based timezone of the resource
-	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
+	Timezone pulumi.StringOutput `pulumi:"timezone"`
 }
 
 // NewSlackGenerator registers a new resource with the given unique name, arguments, and options.
@@ -238,8 +238,8 @@ func (o SlackGeneratorOutput) Tags() SlackGeneratorTagArrayOutput {
 }
 
 // timezone that overrides location-based timezone of the resource
-func (o SlackGeneratorOutput) Timezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SlackGenerator) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+func (o SlackGeneratorOutput) Timezone() pulumi.StringOutput {
+	return o.ApplyT(func(v *SlackGenerator) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
 }
 
 type SlackGeneratorArrayOutput struct{ *pulumi.OutputState }

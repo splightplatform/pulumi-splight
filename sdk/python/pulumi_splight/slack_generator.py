@@ -372,7 +372,7 @@ class SlackGenerator(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timezone(self) -> pulumi.Output[Optional[str]]:
+    def timezone(self) -> pulumi.Output[str]:
         """
         timezone that overrides location-based timezone of the resource
         """

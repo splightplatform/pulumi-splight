@@ -23,6 +23,12 @@ namespace Splight.Splight
     public partial class ExternalGrid : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// id of the related Bus object
+        /// </summary>
+        [Output("bus")]
+        public Output<string?> Bus { get; private set; } = null!;
+
+        /// <summary>
         /// description of the resource
         /// </summary>
         [Output("description")]
@@ -33,6 +39,12 @@ namespace Splight.Splight
         /// </summary>
         [Output("geometry")]
         public Output<string?> Geometry { get; private set; } = null!;
+
+        /// <summary>
+        /// id of the related Grid object
+        /// </summary>
+        [Output("grid")]
+        public Output<string?> Grid { get; private set; } = null!;
 
         /// <summary>
         /// kind of the resource
@@ -56,7 +68,7 @@ namespace Splight.Splight
         /// timezone that overrides location-based timezone of the resource
         /// </summary>
         [Output("timezone")]
-        public Output<string?> Timezone { get; private set; } = null!;
+        public Output<string> Timezone { get; private set; } = null!;
 
 
         /// <summary>
@@ -106,6 +118,12 @@ namespace Splight.Splight
     public sealed class ExternalGridArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// id of the related Bus object
+        /// </summary>
+        [Input("bus")]
+        public Input<string>? Bus { get; set; }
+
+        /// <summary>
         /// description of the resource
         /// </summary>
         [Input("description")]
@@ -116,6 +134,12 @@ namespace Splight.Splight
         /// </summary>
         [Input("geometry")]
         public Input<string>? Geometry { get; set; }
+
+        /// <summary>
+        /// id of the related Grid object
+        /// </summary>
+        [Input("grid")]
+        public Input<string>? Grid { get; set; }
 
         /// <summary>
         /// name of the resource
@@ -150,6 +174,12 @@ namespace Splight.Splight
     public sealed class ExternalGridState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// id of the related Bus object
+        /// </summary>
+        [Input("bus")]
+        public Input<string>? Bus { get; set; }
+
+        /// <summary>
         /// description of the resource
         /// </summary>
         [Input("description")]
@@ -160,6 +190,12 @@ namespace Splight.Splight
         /// </summary>
         [Input("geometry")]
         public Input<string>? Geometry { get; set; }
+
+        /// <summary>
+        /// id of the related Grid object
+        /// </summary>
+        [Input("grid")]
+        public Input<string>? Grid { get; set; }
 
         [Input("kinds")]
         private InputList<Inputs.ExternalGridKindGetArgs>? _kinds;

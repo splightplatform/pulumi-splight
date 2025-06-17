@@ -66,7 +66,7 @@ export class SlackGenerator extends pulumi.CustomResource {
     /**
      * timezone that overrides location-based timezone of the resource
      */
-    public readonly timezone!: pulumi.Output<string | undefined>;
+    public readonly timezone!: pulumi.Output<string>;
 
     /**
      * Create a SlackGenerator resource with the given unique name, arguments, and options.

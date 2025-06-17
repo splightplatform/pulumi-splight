@@ -13707,6 +13707,10 @@
         "splight:index/externalGrid:ExternalGrid": {
             "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import splight:index/externalGrid:ExternalGrid [options] splight_external_grid.\u003cname\u003e \u003cexternal_grid_id\u003e\n```\n\n",
             "properties": {
+                "bus": {
+                    "type": "string",
+                    "description": "id of the related Bus object\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "description of the resource\n"
@@ -13714,6 +13718,10 @@
                 "geometry": {
                     "type": "string",
                     "description": "geo position and shape of the resource\n"
+                },
+                "grid": {
+                    "type": "string",
+                    "description": "id of the related Grid object\n"
                 },
                 "kinds": {
                     "type": "array",
@@ -13740,9 +13748,14 @@
             },
             "required": [
                 "kinds",
-                "name"
+                "name",
+                "timezone"
             ],
             "inputProperties": {
+                "bus": {
+                    "type": "string",
+                    "description": "id of the related Bus object\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "description of the resource\n"
@@ -13750,6 +13763,10 @@
                 "geometry": {
                     "type": "string",
                     "description": "geo position and shape of the resource\n"
+                },
+                "grid": {
+                    "type": "string",
+                    "description": "id of the related Grid object\n"
                 },
                 "name": {
                     "type": "string",
@@ -13770,6 +13787,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ExternalGrid resources.\n",
                 "properties": {
+                    "bus": {
+                        "type": "string",
+                        "description": "id of the related Bus object\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "description of the resource\n"
@@ -13777,6 +13798,10 @@
                     "geometry": {
                         "type": "string",
                         "description": "geo position and shape of the resource\n"
+                    },
+                    "grid": {
+                        "type": "string",
+                        "description": "id of the related Grid object\n"
                     },
                     "kinds": {
                         "type": "array",
@@ -14448,7 +14473,8 @@
             },
             "required": [
                 "kinds",
-                "name"
+                "name",
+                "timezone"
             ],
             "inputProperties": {
                 "description": {
@@ -15929,7 +15955,8 @@
             },
             "required": [
                 "kinds",
-                "name"
+                "name",
+                "timezone"
             ],
             "inputProperties": {
                 "description": {

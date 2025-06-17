@@ -1,14 +1,14 @@
 module github.com/splightplatform/pulumi-splight/provider
 
-go 1.22.0
+go 1.24.2
 
-toolchain go1.22.2
+toolchain go1.24.4
 
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240229143312-4f60ee4e2975
 
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.91.1
-	github.com/splightplatform/terraform-provider-splight v1.2.13
+	github.com/splightplatform/terraform-provider-splight v1.2.15
 )
 
 require (
@@ -172,7 +172,7 @@ require (
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
-	github.com/rogpeppe/go-internal v1.13.1 // indirect
+	github.com/rogpeppe/go-internal v1.13.2-0.20241226121412-a5dc8ff20d0a // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/ryanuber/go-glob v1.0.0 // indirect
 	github.com/sabhiram/go-gitignore v0.0.0-20210923224102-525f6e181f06 // indirect
@@ -184,8 +184,8 @@ require (
 	github.com/skeema/knownhosts v1.3.0 // indirect
 	github.com/spf13/afero v1.9.5 // indirect
 	github.com/spf13/cast v1.5.0 // indirect
-	github.com/spf13/cobra v1.8.1 // indirect
-	github.com/spf13/pflag v1.0.5 // indirect
+	github.com/spf13/cobra v1.9.1 // indirect
+	github.com/spf13/pflag v1.0.6 // indirect
 	github.com/stretchr/testify v1.10.0 // indirect
 	github.com/teekennedy/goldmark-markdown v0.3.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
@@ -210,17 +210,17 @@ require (
 	go.uber.org/atomic v1.11.0 // indirect
 	gocloud.dev v0.37.0 // indirect
 	gocloud.dev/secrets/hashivault v0.37.0 // indirect
-	golang.org/x/crypto v0.31.0 // indirect
+	golang.org/x/crypto v0.39.0 // indirect
 	golang.org/x/exp v0.0.0-20240909161429-701f63a606c0 // indirect
-	golang.org/x/mod v0.21.0 // indirect
-	golang.org/x/net v0.33.0 // indirect
+	golang.org/x/mod v0.25.0 // indirect
+	golang.org/x/net v0.41.0 // indirect
 	golang.org/x/oauth2 v0.22.0 // indirect
-	golang.org/x/sync v0.10.0 // indirect
-	golang.org/x/sys v0.28.0 // indirect
-	golang.org/x/term v0.27.0 // indirect
-	golang.org/x/text v0.21.0 // indirect
+	golang.org/x/sync v0.15.0 // indirect
+	golang.org/x/sys v0.33.0 // indirect
+	golang.org/x/term v0.32.0 // indirect
+	golang.org/x/text v0.26.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
-	golang.org/x/tools v0.25.0 // indirect
+	golang.org/x/tools v0.34.1-0.20250610180157-87f68886ec5f // indirect
 	golang.org/x/xerrors v0.0.0-20231012003039-104605ab7028 // indirect
 	google.golang.org/api v0.169.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
