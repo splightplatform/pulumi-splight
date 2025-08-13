@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * ```sh
  * $ pulumi import splight:index/line:Line [options] splight_line.<name> <line_id>
  * ```
@@ -95,6 +97,10 @@ export class Line extends pulumi.CustomResource {
      * attribute of the resource
      */
     public /*out*/ readonly currents!: pulumi.Output<outputs.LineCurrent[]>;
+    /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    public readonly customTimezone!: pulumi.Output<string | undefined>;
     /**
      * description of the resource
      */
@@ -204,9 +210,9 @@ export class Line extends pulumi.CustomResource {
      */
     public readonly thermalElongationCoef!: pulumi.Output<outputs.LineThermalElongationCoef>;
     /**
-     * timezone that overrides location-based timezone of the resource
+     * timezone of the resource (set by the geo-location)
      */
-    public readonly timezone!: pulumi.Output<string>;
+    public /*out*/ readonly timezone!: pulumi.Output<string>;
     /**
      * attribute of the resource
      */
@@ -246,6 +252,7 @@ export class Line extends pulumi.CustomResource {
             resourceInputs["currentS"] = state ? state.currentS : undefined;
             resourceInputs["currentTs"] = state ? state.currentTs : undefined;
             resourceInputs["currents"] = state ? state.currents : undefined;
+            resourceInputs["customTimezone"] = state ? state.customTimezone : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["diameter"] = state ? state.diameter : undefined;
             resourceInputs["emissivity"] = state ? state.emissivity : undefined;
@@ -284,6 +291,7 @@ export class Line extends pulumi.CustomResource {
             resourceInputs["capacitance"] = args ? args.capacitance : undefined;
             resourceInputs["conductance"] = args ? args.conductance : undefined;
             resourceInputs["conductorMass"] = args ? args.conductorMass : undefined;
+            resourceInputs["customTimezone"] = args ? args.customTimezone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diameter"] = args ? args.diameter : undefined;
             resourceInputs["emissivity"] = args ? args.emissivity : undefined;
@@ -305,7 +313,6 @@ export class Line extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["temperatureCoeffResistance"] = args ? args.temperatureCoeffResistance : undefined;
             resourceInputs["thermalElongationCoef"] = args ? args.thermalElongationCoef : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["activePowerEnds"] = undefined /*out*/;
             resourceInputs["activePowers"] = undefined /*out*/;
             resourceInputs["ampacities"] = undefined /*out*/;
@@ -320,6 +327,7 @@ export class Line extends pulumi.CustomResource {
             resourceInputs["reactivePowers"] = undefined /*out*/;
             resourceInputs["switchStatusEnds"] = undefined /*out*/;
             resourceInputs["switchStatusStarts"] = undefined /*out*/;
+            resourceInputs["timezone"] = undefined /*out*/;
             resourceInputs["voltageRs"] = undefined /*out*/;
             resourceInputs["voltageSts"] = undefined /*out*/;
             resourceInputs["voltageTrs"] = undefined /*out*/;
@@ -385,6 +393,10 @@ export interface LineState {
      * attribute of the resource
      */
     currents?: pulumi.Input<pulumi.Input<inputs.LineCurrent>[]>;
+    /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */
@@ -494,7 +506,7 @@ export interface LineState {
      */
     thermalElongationCoef?: pulumi.Input<inputs.LineThermalElongationCoef>;
     /**
-     * timezone that overrides location-based timezone of the resource
+     * timezone of the resource (set by the geo-location)
      */
     timezone?: pulumi.Input<string>;
     /**
@@ -535,6 +547,10 @@ export interface LineArgs {
      * attribute of the resource
      */
     conductorMass?: pulumi.Input<inputs.LineConductorMass>;
+    /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */
@@ -619,8 +635,4 @@ export interface LineArgs {
      * attribute of the resource
      */
     thermalElongationCoef?: pulumi.Input<inputs.LineThermalElongationCoef>;
-    /**
-     * timezone that overrides location-based timezone of the resource
-     */
-    timezone?: pulumi.Input<string>;
 }

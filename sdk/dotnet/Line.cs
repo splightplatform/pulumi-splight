@@ -15,6 +15,8 @@ namespace Splight.Splight
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// ```sh
     /// $ pulumi import splight:index/line:Line [options] splight_line.&lt;name&gt; &lt;line_id&gt;
     /// ```
@@ -99,6 +101,12 @@ namespace Splight.Splight
         /// </summary>
         [Output("currents")]
         public Output<ImmutableArray<Outputs.LineCurrent>> Currents { get; private set; } = null!;
+
+        /// <summary>
+        /// custom timezone to use instead of the one computed from the geo-location
+        /// </summary>
+        [Output("customTimezone")]
+        public Output<string?> CustomTimezone { get; private set; } = null!;
 
         /// <summary>
         /// description of the resource
@@ -263,7 +271,7 @@ namespace Splight.Splight
         public Output<Outputs.LineThermalElongationCoef> ThermalElongationCoef { get; private set; } = null!;
 
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
+        /// timezone of the resource (set by the geo-location)
         /// </summary>
         [Output("timezone")]
         public Output<string> Timezone { get; private set; } = null!;
@@ -362,6 +370,12 @@ namespace Splight.Splight
         /// </summary>
         [Input("conductorMass")]
         public Input<Inputs.LineConductorMassArgs>? ConductorMass { get; set; }
+
+        /// <summary>
+        /// custom timezone to use instead of the one computed from the geo-location
+        /// </summary>
+        [Input("customTimezone")]
+        public Input<string>? CustomTimezone { get; set; }
 
         /// <summary>
         /// description of the resource
@@ -494,12 +508,6 @@ namespace Splight.Splight
         /// </summary>
         [Input("thermalElongationCoef")]
         public Input<Inputs.LineThermalElongationCoefArgs>? ThermalElongationCoef { get; set; }
-
-        /// <summary>
-        /// timezone that overrides location-based timezone of the resource
-        /// </summary>
-        [Input("timezone")]
-        public Input<string>? Timezone { get; set; }
 
         public LineArgs()
         {
@@ -634,6 +642,12 @@ namespace Splight.Splight
             get => _currents ?? (_currents = new InputList<Inputs.LineCurrentGetArgs>());
             set => _currents = value;
         }
+
+        /// <summary>
+        /// custom timezone to use instead of the one computed from the geo-location
+        /// </summary>
+        [Input("customTimezone")]
+        public Input<string>? CustomTimezone { get; set; }
 
         /// <summary>
         /// description of the resource
@@ -840,7 +854,7 @@ namespace Splight.Splight
         public Input<Inputs.LineThermalElongationCoefGetArgs>? ThermalElongationCoef { get; set; }
 
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
+        /// timezone of the resource (set by the geo-location)
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }

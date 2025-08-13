@@ -16,6 +16,8 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // ```sh
 // $ pulumi import splight:index/algorithm:Algorithm [options] splight_algorithm.<name> <algorithm_id>
 // ```

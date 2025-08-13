@@ -15,6 +15,8 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // ```sh
 // $ pulumi import splight:index/transformer:Transformer [options] splight_transformer.<name> <transformer_id>
 // ```
@@ -37,6 +39,8 @@ type Transformer struct {
 	CurrentHvs TransformerCurrentHvArrayOutput `pulumi:"currentHvs"`
 	// attribute of the resource
 	CurrentLvs TransformerCurrentLvArrayOutput `pulumi:"currentLvs"`
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone pulumi.StringPtrOutput `pulumi:"customTimezone"`
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// geo position and shape of the resource
@@ -71,7 +75,7 @@ type Transformer struct {
 	Tags TransformerTagArrayOutput `pulumi:"tags"`
 	// attribute of the resource
 	TapPos TransformerTapPosPtrOutput `pulumi:"tapPos"`
-	// timezone that overrides location-based timezone of the resource
+	// timezone of the resource (set by the geo-location)
 	Timezone pulumi.StringOutput `pulumi:"timezone"`
 	// attribute of the resource
 	VoltageHvs TransformerVoltageHvArrayOutput `pulumi:"voltageHvs"`
@@ -127,6 +131,8 @@ type transformerState struct {
 	CurrentHvs []TransformerCurrentHv `pulumi:"currentHvs"`
 	// attribute of the resource
 	CurrentLvs []TransformerCurrentLv `pulumi:"currentLvs"`
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -161,7 +167,7 @@ type transformerState struct {
 	Tags []TransformerTag `pulumi:"tags"`
 	// attribute of the resource
 	TapPos *TransformerTapPos `pulumi:"tapPos"`
-	// timezone that overrides location-based timezone of the resource
+	// timezone of the resource (set by the geo-location)
 	Timezone *string `pulumi:"timezone"`
 	// attribute of the resource
 	VoltageHvs []TransformerVoltageHv `pulumi:"voltageHvs"`
@@ -188,6 +194,8 @@ type TransformerState struct {
 	CurrentHvs TransformerCurrentHvArrayInput
 	// attribute of the resource
 	CurrentLvs TransformerCurrentLvArrayInput
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -222,7 +230,7 @@ type TransformerState struct {
 	Tags TransformerTagArrayInput
 	// attribute of the resource
 	TapPos TransformerTapPosPtrInput
-	// timezone that overrides location-based timezone of the resource
+	// timezone of the resource (set by the geo-location)
 	Timezone pulumi.StringPtrInput
 	// attribute of the resource
 	VoltageHvs TransformerVoltageHvArrayInput
@@ -241,6 +249,8 @@ type transformerArgs struct {
 	Capacitance *TransformerCapacitance `pulumi:"capacitance"`
 	// attribute of the resource
 	Conductance *TransformerConductance `pulumi:"conductance"`
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -263,8 +273,6 @@ type transformerArgs struct {
 	Tags []TransformerTag `pulumi:"tags"`
 	// attribute of the resource
 	TapPos *TransformerTapPos `pulumi:"tapPos"`
-	// timezone that overrides location-based timezone of the resource
-	Timezone *string `pulumi:"timezone"`
 	// attribute of the resource
 	XnOhm *TransformerXnOhm `pulumi:"xnOhm"`
 }
@@ -275,6 +283,8 @@ type TransformerArgs struct {
 	Capacitance TransformerCapacitancePtrInput
 	// attribute of the resource
 	Conductance TransformerConductancePtrInput
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -297,8 +307,6 @@ type TransformerArgs struct {
 	Tags TransformerTagArrayInput
 	// attribute of the resource
 	TapPos TransformerTapPosPtrInput
-	// timezone that overrides location-based timezone of the resource
-	Timezone pulumi.StringPtrInput
 	// attribute of the resource
 	XnOhm TransformerXnOhmPtrInput
 }
@@ -430,6 +438,11 @@ func (o TransformerOutput) CurrentLvs() TransformerCurrentLvArrayOutput {
 	return o.ApplyT(func(v *Transformer) TransformerCurrentLvArrayOutput { return v.CurrentLvs }).(TransformerCurrentLvArrayOutput)
 }
 
+// custom timezone to use instead of the one computed from the geo-location
+func (o TransformerOutput) CustomTimezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Transformer) pulumi.StringPtrOutput { return v.CustomTimezone }).(pulumi.StringPtrOutput)
+}
+
 // description of the resource
 func (o TransformerOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Transformer) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -515,7 +528,7 @@ func (o TransformerOutput) TapPos() TransformerTapPosPtrOutput {
 	return o.ApplyT(func(v *Transformer) TransformerTapPosPtrOutput { return v.TapPos }).(TransformerTapPosPtrOutput)
 }
 
-// timezone that overrides location-based timezone of the resource
+// timezone of the resource (set by the geo-location)
 func (o TransformerOutput) Timezone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Transformer) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
 }

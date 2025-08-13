@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const myAsset = new splight.Asset("myAsset", {
  *     description: "My Asset Description",
- *     timezone: "America/Los_Angeles",
+ *     customTimezone: "America/Los_Angeles",
  *     geometry: JSON.stringify({
  *         type: "GeometryCollection",
  *         geometries: [{
@@ -56,6 +56,8 @@ import * as utilities from "./utilities";
  * ```
  *
  * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
  *
  * ```sh
  * $ pulumi import splight:index/command:Command [options] splight_command.<name> <command_id>

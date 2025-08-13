@@ -15,6 +15,8 @@ namespace Splight.Splight
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// ```sh
     /// $ pulumi import splight:index/inverter:Inverter [options] splight_inverter.&lt;name&gt; &lt;inverter_id&gt;
     /// ```
@@ -33,6 +35,12 @@ namespace Splight.Splight
         /// </summary>
         [Output("activePowers")]
         public Output<ImmutableArray<Outputs.InverterActivePower>> ActivePowers { get; private set; } = null!;
+
+        /// <summary>
+        /// custom timezone to use instead of the one computed from the geo-location
+        /// </summary>
+        [Output("customTimezone")]
+        public Output<string?> CustomTimezone { get; private set; } = null!;
 
         /// <summary>
         /// attribute of the resource
@@ -119,7 +127,7 @@ namespace Splight.Splight
         public Output<ImmutableArray<Outputs.InverterTemperature>> Temperatures { get; private set; } = null!;
 
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
+        /// timezone of the resource (set by the geo-location)
         /// </summary>
         [Output("timezone")]
         public Output<string> Timezone { get; private set; } = null!;
@@ -171,6 +179,12 @@ namespace Splight.Splight
 
     public sealed class InverterArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// custom timezone to use instead of the one computed from the geo-location
+        /// </summary>
+        [Input("customTimezone")]
+        public Input<string>? CustomTimezone { get; set; }
+
         /// <summary>
         /// description of the resource
         /// </summary>
@@ -231,12 +245,6 @@ namespace Splight.Splight
             set => _tags = value;
         }
 
-        /// <summary>
-        /// timezone that overrides location-based timezone of the resource
-        /// </summary>
-        [Input("timezone")]
-        public Input<string>? Timezone { get; set; }
-
         public InverterArgs()
         {
         }
@@ -268,6 +276,12 @@ namespace Splight.Splight
             get => _activePowers ?? (_activePowers = new InputList<Inputs.InverterActivePowerGetArgs>());
             set => _activePowers = value;
         }
+
+        /// <summary>
+        /// custom timezone to use instead of the one computed from the geo-location
+        /// </summary>
+        [Input("customTimezone")]
+        public Input<string>? CustomTimezone { get; set; }
 
         [Input("dailyEnergies")]
         private InputList<Inputs.InverterDailyEnergyGetArgs>? _dailyEnergies;
@@ -390,7 +404,7 @@ namespace Splight.Splight
         }
 
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
+        /// timezone of the resource (set by the geo-location)
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }

@@ -15,12 +15,16 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // ```sh
 // $ pulumi import splight:index/grid:Grid [options] splight_grid.<name> <grid_id>
 // ```
 type Grid struct {
 	pulumi.CustomResourceState
 
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone pulumi.StringPtrOutput `pulumi:"customTimezone"`
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// geo position and shape of the resource
@@ -31,7 +35,7 @@ type Grid struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// tags of the resource
 	Tags GridTagArrayOutput `pulumi:"tags"`
-	// timezone that overrides location-based timezone of the resource
+	// timezone of the resource (set by the geo-location)
 	Timezone pulumi.StringOutput `pulumi:"timezone"`
 }
 
@@ -65,6 +69,8 @@ func GetGrid(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Grid resources.
 type gridState struct {
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -75,11 +81,13 @@ type gridState struct {
 	Name *string `pulumi:"name"`
 	// tags of the resource
 	Tags []GridTag `pulumi:"tags"`
-	// timezone that overrides location-based timezone of the resource
+	// timezone of the resource (set by the geo-location)
 	Timezone *string `pulumi:"timezone"`
 }
 
 type GridState struct {
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -90,7 +98,7 @@ type GridState struct {
 	Name pulumi.StringPtrInput
 	// tags of the resource
 	Tags GridTagArrayInput
-	// timezone that overrides location-based timezone of the resource
+	// timezone of the resource (set by the geo-location)
 	Timezone pulumi.StringPtrInput
 }
 
@@ -99,6 +107,8 @@ func (GridState) ElementType() reflect.Type {
 }
 
 type gridArgs struct {
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -107,12 +117,12 @@ type gridArgs struct {
 	Name *string `pulumi:"name"`
 	// tags of the resource
 	Tags []GridTag `pulumi:"tags"`
-	// timezone that overrides location-based timezone of the resource
-	Timezone *string `pulumi:"timezone"`
 }
 
 // The set of arguments for constructing a Grid resource.
 type GridArgs struct {
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -121,8 +131,6 @@ type GridArgs struct {
 	Name pulumi.StringPtrInput
 	// tags of the resource
 	Tags GridTagArrayInput
-	// timezone that overrides location-based timezone of the resource
-	Timezone pulumi.StringPtrInput
 }
 
 func (GridArgs) ElementType() reflect.Type {
@@ -212,6 +220,11 @@ func (o GridOutput) ToGridOutputWithContext(ctx context.Context) GridOutput {
 	return o
 }
 
+// custom timezone to use instead of the one computed from the geo-location
+func (o GridOutput) CustomTimezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Grid) pulumi.StringPtrOutput { return v.CustomTimezone }).(pulumi.StringPtrOutput)
+}
+
 // description of the resource
 func (o GridOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Grid) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -237,7 +250,7 @@ func (o GridOutput) Tags() GridTagArrayOutput {
 	return o.ApplyT(func(v *Grid) GridTagArrayOutput { return v.Tags }).(GridTagArrayOutput)
 }
 
-// timezone that overrides location-based timezone of the resource
+// timezone of the resource (set by the geo-location)
 func (o GridOutput) Timezone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Grid) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
 }

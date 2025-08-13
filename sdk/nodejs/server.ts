@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * ```sh
  * $ pulumi import splight:index/server:Server [options] splight_server.<name> <server_id>
  * ```

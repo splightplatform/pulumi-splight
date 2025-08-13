@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * ```sh
  * $ pulumi import splight:index/asset:Asset [options] splight_asset.<name> <asset_id>
  * ```
@@ -44,6 +46,10 @@ export class Asset extends pulumi.CustomResource {
     }
 
     /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    public readonly customTimezone!: pulumi.Output<string | undefined>;
+    /**
      * description of the resource
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -64,9 +70,9 @@ export class Asset extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<outputs.AssetTag[] | undefined>;
     /**
-     * timezone of the resource (overriden by the location if set)
+     * timezone of the resource (set by the geo-location)
      */
-    public readonly timezone!: pulumi.Output<string>;
+    public /*out*/ readonly timezone!: pulumi.Output<string>;
 
     /**
      * Create a Asset resource with the given unique name, arguments, and options.
@@ -81,6 +87,7 @@ export class Asset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AssetState | undefined;
+            resourceInputs["customTimezone"] = state ? state.customTimezone : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["geometry"] = state ? state.geometry : undefined;
             resourceInputs["kind"] = state ? state.kind : undefined;
@@ -89,12 +96,13 @@ export class Asset extends pulumi.CustomResource {
             resourceInputs["timezone"] = state ? state.timezone : undefined;
         } else {
             const args = argsOrState as AssetArgs | undefined;
+            resourceInputs["customTimezone"] = args ? args.customTimezone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
+            resourceInputs["timezone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Asset.__pulumiType, name, resourceInputs, opts);
@@ -106,6 +114,10 @@ export class Asset extends pulumi.CustomResource {
  */
 export interface AssetState {
     /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    customTimezone?: pulumi.Input<string>;
+    /**
      * description of the resource
      */
     description?: pulumi.Input<string>;
@@ -126,7 +138,7 @@ export interface AssetState {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.AssetTag>[]>;
     /**
-     * timezone of the resource (overriden by the location if set)
+     * timezone of the resource (set by the geo-location)
      */
     timezone?: pulumi.Input<string>;
 }
@@ -136,6 +148,10 @@ export interface AssetState {
  */
 export interface AssetArgs {
     /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    customTimezone?: pulumi.Input<string>;
+    /**
      * description of the resource
      */
     description?: pulumi.Input<string>;
@@ -155,8 +171,4 @@ export interface AssetArgs {
      * tags of the resource
      */
     tags?: pulumi.Input<pulumi.Input<inputs.AssetTag>[]>;
-    /**
-     * timezone of the resource (overriden by the location if set)
-     */
-    timezone?: pulumi.Input<string>;
 }

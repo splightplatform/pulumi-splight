@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * ```sh
  * $ pulumi import splight:index/grid:Grid [options] splight_grid.<name> <grid_id>
  * ```
@@ -44,6 +46,10 @@ export class Grid extends pulumi.CustomResource {
     }
 
     /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    public readonly customTimezone!: pulumi.Output<string | undefined>;
+    /**
      * description of the resource
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -64,9 +70,9 @@ export class Grid extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<outputs.GridTag[] | undefined>;
     /**
-     * timezone that overrides location-based timezone of the resource
+     * timezone of the resource (set by the geo-location)
      */
-    public readonly timezone!: pulumi.Output<string>;
+    public /*out*/ readonly timezone!: pulumi.Output<string>;
 
     /**
      * Create a Grid resource with the given unique name, arguments, and options.
@@ -81,6 +87,7 @@ export class Grid extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GridState | undefined;
+            resourceInputs["customTimezone"] = state ? state.customTimezone : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["geometry"] = state ? state.geometry : undefined;
             resourceInputs["kinds"] = state ? state.kinds : undefined;
@@ -89,12 +96,13 @@ export class Grid extends pulumi.CustomResource {
             resourceInputs["timezone"] = state ? state.timezone : undefined;
         } else {
             const args = argsOrState as GridArgs | undefined;
+            resourceInputs["customTimezone"] = args ? args.customTimezone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["kinds"] = undefined /*out*/;
+            resourceInputs["timezone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Grid.__pulumiType, name, resourceInputs, opts);
@@ -105,6 +113,10 @@ export class Grid extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Grid resources.
  */
 export interface GridState {
+    /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */
@@ -126,7 +138,7 @@ export interface GridState {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.GridTag>[]>;
     /**
-     * timezone that overrides location-based timezone of the resource
+     * timezone of the resource (set by the geo-location)
      */
     timezone?: pulumi.Input<string>;
 }
@@ -135,6 +147,10 @@ export interface GridState {
  * The set of arguments for constructing a Grid resource.
  */
 export interface GridArgs {
+    /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */
@@ -151,8 +167,4 @@ export interface GridArgs {
      * tags of the resource
      */
     tags?: pulumi.Input<pulumi.Input<inputs.GridTag>[]>;
-    /**
-     * timezone that overrides location-based timezone of the resource
-     */
-    timezone?: pulumi.Input<string>;
 }

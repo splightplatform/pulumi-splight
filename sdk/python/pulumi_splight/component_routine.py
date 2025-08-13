@@ -274,6 +274,8 @@ class ComponentRoutine(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         ```sh
         $ pulumi import splight:index/componentRoutine:ComponentRoutine [options] splight_component_routine.<name> <component_routine_id>
         ```
@@ -298,6 +300,8 @@ class ComponentRoutine(pulumi.CustomResource):
         ## Example Usage
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/componentRoutine:ComponentRoutine [options] splight_component_routine.<name> <component_routine_id>

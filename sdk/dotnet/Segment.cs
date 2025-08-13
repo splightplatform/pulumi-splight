@@ -15,6 +15,8 @@ namespace Splight.Splight
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// ```sh
     /// $ pulumi import splight:index/segment:Segment [options] splight_segment.&lt;name&gt; &lt;segment_id&gt;
     /// ```
@@ -39,6 +41,12 @@ namespace Splight.Splight
         /// </summary>
         [Output("cumulativeDistance")]
         public Output<Outputs.SegmentCumulativeDistance?> CumulativeDistance { get; private set; } = null!;
+
+        /// <summary>
+        /// custom timezone to use instead of the one computed from the geo-location
+        /// </summary>
+        [Output("customTimezone")]
+        public Output<string?> CustomTimezone { get; private set; } = null!;
 
         /// <summary>
         /// description of the resource
@@ -95,7 +103,7 @@ namespace Splight.Splight
         public Output<ImmutableArray<Outputs.SegmentTemperature>> Temperatures { get; private set; } = null!;
 
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
+        /// timezone of the resource (set by the geo-location)
         /// </summary>
         [Output("timezone")]
         public Output<string> Timezone { get; private set; } = null!;
@@ -178,6 +186,12 @@ namespace Splight.Splight
         public Input<Inputs.SegmentCumulativeDistanceArgs>? CumulativeDistance { get; set; }
 
         /// <summary>
+        /// custom timezone to use instead of the one computed from the geo-location
+        /// </summary>
+        [Input("customTimezone")]
+        public Input<string>? CustomTimezone { get; set; }
+
+        /// <summary>
         /// description of the resource
         /// </summary>
         [Input("description")]
@@ -225,12 +239,6 @@ namespace Splight.Splight
             set => _tags = value;
         }
 
-        /// <summary>
-        /// timezone that overrides location-based timezone of the resource
-        /// </summary>
-        [Input("timezone")]
-        public Input<string>? Timezone { get; set; }
-
         public SegmentArgs()
         {
         }
@@ -256,6 +264,12 @@ namespace Splight.Splight
         /// </summary>
         [Input("cumulativeDistance")]
         public Input<Inputs.SegmentCumulativeDistanceGetArgs>? CumulativeDistance { get; set; }
+
+        /// <summary>
+        /// custom timezone to use instead of the one computed from the geo-location
+        /// </summary>
+        [Input("customTimezone")]
+        public Input<string>? CustomTimezone { get; set; }
 
         /// <summary>
         /// description of the resource
@@ -330,7 +344,7 @@ namespace Splight.Splight
         }
 
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
+        /// timezone of the resource (set by the geo-location)
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }

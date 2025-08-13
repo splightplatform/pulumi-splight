@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const assetTest = new splight.Asset("assetTest", {
  *     description: "Created with Terraform",
- *     timezone: "America/Los_Angeles",
+ *     customTimezone: "America/Los_Angeles",
  *     geometry: JSON.stringify({
  *         type: "GeometryCollection",
  *         geometries: [],
@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  *     unit: "seconds",
  *     asset: assetTest.id,
  * });
- * const dashboardTest = new splight.Dashboard("dashboardTest", {relatedAssets: []});
+ * const dashboardTest = new splight.Dashboard("dashboardTest", {});
  * const dashboardTabTest = new splight.DashboardTab("dashboardTabTest", {
  *     order: 0,
  *     dashboard: dashboardTest.id,
@@ -159,6 +159,8 @@ import * as utilities from "./utilities";
  * ```
  *
  * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
  *
  * ```sh
  * $ pulumi import splight:index/dashboardAssetlistChart:DashboardAssetlistChart [options] splight_dashboard_assetlist_chart.<name> <dashboard_chart_id>

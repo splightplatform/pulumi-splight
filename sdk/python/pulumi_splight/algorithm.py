@@ -341,6 +341,8 @@ class Algorithm(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         ```sh
         $ pulumi import splight:index/algorithm:Algorithm [options] splight_algorithm.<name> <algorithm_id>
         ```
@@ -367,6 +369,8 @@ class Algorithm(pulumi.CustomResource):
         ## Example Usage
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/algorithm:Algorithm [options] splight_algorithm.<name> <algorithm_id>

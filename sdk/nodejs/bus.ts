@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * ```sh
  * $ pulumi import splight:index/bus:Bus [options] splight_bus.<name> <bus_id>
  * ```
@@ -48,6 +50,10 @@ export class Bus extends pulumi.CustomResource {
      */
     public /*out*/ readonly activePowers!: pulumi.Output<outputs.BusActivePower[]>;
     /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    public readonly customTimezone!: pulumi.Output<string | undefined>;
+    /**
      * description of the resource
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -76,9 +82,9 @@ export class Bus extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<outputs.BusTag[] | undefined>;
     /**
-     * timezone that overrides location-based timezone of the resource
+     * timezone of the resource (set by the geo-location)
      */
-    public readonly timezone!: pulumi.Output<string>;
+    public /*out*/ readonly timezone!: pulumi.Output<string>;
 
     /**
      * Create a Bus resource with the given unique name, arguments, and options.
@@ -94,6 +100,7 @@ export class Bus extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as BusState | undefined;
             resourceInputs["activePowers"] = state ? state.activePowers : undefined;
+            resourceInputs["customTimezone"] = state ? state.customTimezone : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["geometry"] = state ? state.geometry : undefined;
             resourceInputs["kinds"] = state ? state.kinds : undefined;
@@ -104,15 +111,16 @@ export class Bus extends pulumi.CustomResource {
             resourceInputs["timezone"] = state ? state.timezone : undefined;
         } else {
             const args = argsOrState as BusArgs | undefined;
+            resourceInputs["customTimezone"] = args ? args.customTimezone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nominalVoltageKv"] = args ? args.nominalVoltageKv : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["activePowers"] = undefined /*out*/;
             resourceInputs["kinds"] = undefined /*out*/;
             resourceInputs["reactivePowers"] = undefined /*out*/;
+            resourceInputs["timezone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Bus.__pulumiType, name, resourceInputs, opts);
@@ -127,6 +135,10 @@ export interface BusState {
      * attribute of the resource
      */
     activePowers?: pulumi.Input<pulumi.Input<inputs.BusActivePower>[]>;
+    /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */
@@ -156,7 +168,7 @@ export interface BusState {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.BusTag>[]>;
     /**
-     * timezone that overrides location-based timezone of the resource
+     * timezone of the resource (set by the geo-location)
      */
     timezone?: pulumi.Input<string>;
 }
@@ -165,6 +177,10 @@ export interface BusState {
  * The set of arguments for constructing a Bus resource.
  */
 export interface BusArgs {
+    /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */
@@ -185,8 +201,4 @@ export interface BusArgs {
      * tags of the resource
      */
     tags?: pulumi.Input<pulumi.Input<inputs.BusTag>[]>;
-    /**
-     * timezone that overrides location-based timezone of the resource
-     */
-    timezone?: pulumi.Input<string>;
 }

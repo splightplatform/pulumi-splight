@@ -15,6 +15,8 @@ namespace Splight.Splight
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// ```sh
     /// $ pulumi import splight:index/connector:Connector [options] splight_connector.&lt;name&gt; &lt;connector_id&gt;
     /// ```

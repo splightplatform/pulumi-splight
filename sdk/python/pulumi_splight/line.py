@@ -26,6 +26,7 @@ class LineArgs:
                  capacitance: Optional[pulumi.Input['LineCapacitanceArgs']] = None,
                  conductance: Optional[pulumi.Input['LineConductanceArgs']] = None,
                  conductor_mass: Optional[pulumi.Input['LineConductorMassArgs']] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  diameter: Optional[pulumi.Input['LineDiameterArgs']] = None,
                  emissivity: Optional[pulumi.Input['LineEmissivityArgs']] = None,
@@ -46,8 +47,7 @@ class LineArgs:
                  susceptance: Optional[pulumi.Input['LineSusceptanceArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['LineTagArgs']]]] = None,
                  temperature_coeff_resistance: Optional[pulumi.Input['LineTemperatureCoeffResistanceArgs']] = None,
-                 thermal_elongation_coef: Optional[pulumi.Input['LineThermalElongationCoefArgs']] = None,
-                 timezone: Optional[pulumi.Input[str]] = None):
+                 thermal_elongation_coef: Optional[pulumi.Input['LineThermalElongationCoefArgs']] = None):
         """
         The set of arguments for constructing a Line resource.
         :param pulumi.Input['LineAbsorptivityArgs'] absorptivity: attribute of the resource
@@ -55,6 +55,7 @@ class LineArgs:
         :param pulumi.Input['LineCapacitanceArgs'] capacitance: attribute of the resource
         :param pulumi.Input['LineConductanceArgs'] conductance: attribute of the resource
         :param pulumi.Input['LineConductorMassArgs'] conductor_mass: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: custom timezone to use instead of the one computed from the geo-location
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input['LineDiameterArgs'] diameter: attribute of the resource
         :param pulumi.Input['LineEmissivityArgs'] emissivity: attribute of the resource
@@ -76,7 +77,6 @@ class LineArgs:
         :param pulumi.Input[Sequence[pulumi.Input['LineTagArgs']]] tags: tags of the resource
         :param pulumi.Input['LineTemperatureCoeffResistanceArgs'] temperature_coeff_resistance: attribute of the resource
         :param pulumi.Input['LineThermalElongationCoefArgs'] thermal_elongation_coef: attribute of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
         if absorptivity is not None:
             pulumi.set(__self__, "absorptivity", absorptivity)
@@ -88,6 +88,8 @@ class LineArgs:
             pulumi.set(__self__, "conductance", conductance)
         if conductor_mass is not None:
             pulumi.set(__self__, "conductor_mass", conductor_mass)
+        if custom_timezone is not None:
+            pulumi.set(__self__, "custom_timezone", custom_timezone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if diameter is not None:
@@ -130,8 +132,6 @@ class LineArgs:
             pulumi.set(__self__, "temperature_coeff_resistance", temperature_coeff_resistance)
         if thermal_elongation_coef is not None:
             pulumi.set(__self__, "thermal_elongation_coef", thermal_elongation_coef)
-        if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
 
     @property
     @pulumi.getter
@@ -192,6 +192,18 @@ class LineArgs:
     @conductor_mass.setter
     def conductor_mass(self, value: Optional[pulumi.Input['LineConductorMassArgs']]):
         pulumi.set(self, "conductor_mass", value)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        custom timezone to use instead of the one computed from the geo-location
+        """
+        return pulumi.get(self, "custom_timezone")
+
+    @custom_timezone.setter
+    def custom_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_timezone", value)
 
     @property
     @pulumi.getter
@@ -445,18 +457,6 @@ class LineArgs:
     def thermal_elongation_coef(self, value: Optional[pulumi.Input['LineThermalElongationCoefArgs']]):
         pulumi.set(self, "thermal_elongation_coef", value)
 
-    @property
-    @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[str]]:
-        """
-        timezone that overrides location-based timezone of the resource
-        """
-        return pulumi.get(self, "timezone")
-
-    @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "timezone", value)
-
 
 @pulumi.input_type
 class _LineState:
@@ -474,6 +474,7 @@ class _LineState:
                  current_s: Optional[pulumi.Input[Sequence[pulumi.Input['LineCurrentArgs']]]] = None,
                  current_ts: Optional[pulumi.Input[Sequence[pulumi.Input['LineCurrentTArgs']]]] = None,
                  currents: Optional[pulumi.Input[Sequence[pulumi.Input['LineCurrentArgs']]]] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  diameter: Optional[pulumi.Input['LineDiameterArgs']] = None,
                  emissivity: Optional[pulumi.Input['LineEmissivityArgs']] = None,
@@ -520,6 +521,7 @@ class _LineState:
         :param pulumi.Input[Sequence[pulumi.Input['LineCurrentArgs']]] current_s: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['LineCurrentTArgs']]] current_ts: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['LineCurrentArgs']]] currents: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: custom timezone to use instead of the one computed from the geo-location
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input['LineDiameterArgs'] diameter: attribute of the resource
         :param pulumi.Input['LineEmissivityArgs'] emissivity: attribute of the resource
@@ -547,7 +549,7 @@ class _LineState:
         :param pulumi.Input[Sequence[pulumi.Input['LineTagArgs']]] tags: tags of the resource
         :param pulumi.Input['LineTemperatureCoeffResistanceArgs'] temperature_coeff_resistance: attribute of the resource
         :param pulumi.Input['LineThermalElongationCoefArgs'] thermal_elongation_coef: attribute of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
+        :param pulumi.Input[str] timezone: timezone of the resource (set by the geo-location)
         :param pulumi.Input[Sequence[pulumi.Input['LineVoltageRArgs']]] voltage_rs: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['LineVoltageStArgs']]] voltage_sts: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['LineVoltageTrArgs']]] voltage_trs: attribute of the resource
@@ -578,6 +580,8 @@ class _LineState:
             pulumi.set(__self__, "current_ts", current_ts)
         if currents is not None:
             pulumi.set(__self__, "currents", currents)
+        if custom_timezone is not None:
+            pulumi.set(__self__, "custom_timezone", custom_timezone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if diameter is not None:
@@ -796,6 +800,18 @@ class _LineState:
     @currents.setter
     def currents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LineCurrentArgs']]]]):
         pulumi.set(self, "currents", value)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        custom timezone to use instead of the one computed from the geo-location
+        """
+        return pulumi.get(self, "custom_timezone")
+
+    @custom_timezone.setter
+    def custom_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_timezone", value)
 
     @property
     @pulumi.getter
@@ -1125,7 +1141,7 @@ class _LineState:
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
-        timezone that overrides location-based timezone of the resource
+        timezone of the resource (set by the geo-location)
         """
         return pulumi.get(self, "timezone")
 
@@ -1180,6 +1196,7 @@ class Line(pulumi.CustomResource):
                  capacitance: Optional[pulumi.Input[Union['LineCapacitanceArgs', 'LineCapacitanceArgsDict']]] = None,
                  conductance: Optional[pulumi.Input[Union['LineConductanceArgs', 'LineConductanceArgsDict']]] = None,
                  conductor_mass: Optional[pulumi.Input[Union['LineConductorMassArgs', 'LineConductorMassArgsDict']]] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  diameter: Optional[pulumi.Input[Union['LineDiameterArgs', 'LineDiameterArgsDict']]] = None,
                  emissivity: Optional[pulumi.Input[Union['LineEmissivityArgs', 'LineEmissivityArgsDict']]] = None,
@@ -1201,12 +1218,13 @@ class Line(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineTagArgs', 'LineTagArgsDict']]]]] = None,
                  temperature_coeff_resistance: Optional[pulumi.Input[Union['LineTemperatureCoeffResistanceArgs', 'LineTemperatureCoeffResistanceArgsDict']]] = None,
                  thermal_elongation_coef: Optional[pulumi.Input[Union['LineThermalElongationCoefArgs', 'LineThermalElongationCoefArgsDict']]] = None,
-                 timezone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Example Usage
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/line:Line [options] splight_line.<name> <line_id>
@@ -1219,6 +1237,7 @@ class Line(pulumi.CustomResource):
         :param pulumi.Input[Union['LineCapacitanceArgs', 'LineCapacitanceArgsDict']] capacitance: attribute of the resource
         :param pulumi.Input[Union['LineConductanceArgs', 'LineConductanceArgsDict']] conductance: attribute of the resource
         :param pulumi.Input[Union['LineConductorMassArgs', 'LineConductorMassArgsDict']] conductor_mass: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: custom timezone to use instead of the one computed from the geo-location
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[Union['LineDiameterArgs', 'LineDiameterArgsDict']] diameter: attribute of the resource
         :param pulumi.Input[Union['LineEmissivityArgs', 'LineEmissivityArgsDict']] emissivity: attribute of the resource
@@ -1240,7 +1259,6 @@ class Line(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['LineTagArgs', 'LineTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[Union['LineTemperatureCoeffResistanceArgs', 'LineTemperatureCoeffResistanceArgsDict']] temperature_coeff_resistance: attribute of the resource
         :param pulumi.Input[Union['LineThermalElongationCoefArgs', 'LineThermalElongationCoefArgsDict']] thermal_elongation_coef: attribute of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
         ...
     @overload
@@ -1252,6 +1270,8 @@ class Line(pulumi.CustomResource):
         ## Example Usage
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/line:Line [options] splight_line.<name> <line_id>
@@ -1277,6 +1297,7 @@ class Line(pulumi.CustomResource):
                  capacitance: Optional[pulumi.Input[Union['LineCapacitanceArgs', 'LineCapacitanceArgsDict']]] = None,
                  conductance: Optional[pulumi.Input[Union['LineConductanceArgs', 'LineConductanceArgsDict']]] = None,
                  conductor_mass: Optional[pulumi.Input[Union['LineConductorMassArgs', 'LineConductorMassArgsDict']]] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  diameter: Optional[pulumi.Input[Union['LineDiameterArgs', 'LineDiameterArgsDict']]] = None,
                  emissivity: Optional[pulumi.Input[Union['LineEmissivityArgs', 'LineEmissivityArgsDict']]] = None,
@@ -1298,7 +1319,6 @@ class Line(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineTagArgs', 'LineTagArgsDict']]]]] = None,
                  temperature_coeff_resistance: Optional[pulumi.Input[Union['LineTemperatureCoeffResistanceArgs', 'LineTemperatureCoeffResistanceArgsDict']]] = None,
                  thermal_elongation_coef: Optional[pulumi.Input[Union['LineThermalElongationCoefArgs', 'LineThermalElongationCoefArgsDict']]] = None,
-                 timezone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1313,6 +1333,7 @@ class Line(pulumi.CustomResource):
             __props__.__dict__["capacitance"] = capacitance
             __props__.__dict__["conductance"] = conductance
             __props__.__dict__["conductor_mass"] = conductor_mass
+            __props__.__dict__["custom_timezone"] = custom_timezone
             __props__.__dict__["description"] = description
             __props__.__dict__["diameter"] = diameter
             __props__.__dict__["emissivity"] = emissivity
@@ -1334,7 +1355,6 @@ class Line(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["temperature_coeff_resistance"] = temperature_coeff_resistance
             __props__.__dict__["thermal_elongation_coef"] = thermal_elongation_coef
-            __props__.__dict__["timezone"] = timezone
             __props__.__dict__["active_power_ends"] = None
             __props__.__dict__["active_powers"] = None
             __props__.__dict__["ampacities"] = None
@@ -1349,6 +1369,7 @@ class Line(pulumi.CustomResource):
             __props__.__dict__["reactive_powers"] = None
             __props__.__dict__["switch_status_ends"] = None
             __props__.__dict__["switch_status_starts"] = None
+            __props__.__dict__["timezone"] = None
             __props__.__dict__["voltage_rs"] = None
             __props__.__dict__["voltage_sts"] = None
             __props__.__dict__["voltage_trs"] = None
@@ -1375,6 +1396,7 @@ class Line(pulumi.CustomResource):
             current_s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineCurrentArgs', 'LineCurrentArgsDict']]]]] = None,
             current_ts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineCurrentTArgs', 'LineCurrentTArgsDict']]]]] = None,
             currents: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LineCurrentArgs', 'LineCurrentArgsDict']]]]] = None,
+            custom_timezone: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             diameter: Optional[pulumi.Input[Union['LineDiameterArgs', 'LineDiameterArgsDict']]] = None,
             emissivity: Optional[pulumi.Input[Union['LineEmissivityArgs', 'LineEmissivityArgsDict']]] = None,
@@ -1426,6 +1448,7 @@ class Line(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['LineCurrentArgs', 'LineCurrentArgsDict']]]] current_s: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['LineCurrentTArgs', 'LineCurrentTArgsDict']]]] current_ts: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['LineCurrentArgs', 'LineCurrentArgsDict']]]] currents: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: custom timezone to use instead of the one computed from the geo-location
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[Union['LineDiameterArgs', 'LineDiameterArgsDict']] diameter: attribute of the resource
         :param pulumi.Input[Union['LineEmissivityArgs', 'LineEmissivityArgsDict']] emissivity: attribute of the resource
@@ -1453,7 +1476,7 @@ class Line(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['LineTagArgs', 'LineTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[Union['LineTemperatureCoeffResistanceArgs', 'LineTemperatureCoeffResistanceArgsDict']] temperature_coeff_resistance: attribute of the resource
         :param pulumi.Input[Union['LineThermalElongationCoefArgs', 'LineThermalElongationCoefArgsDict']] thermal_elongation_coef: attribute of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
+        :param pulumi.Input[str] timezone: timezone of the resource (set by the geo-location)
         :param pulumi.Input[Sequence[pulumi.Input[Union['LineVoltageRArgs', 'LineVoltageRArgsDict']]]] voltage_rs: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['LineVoltageStArgs', 'LineVoltageStArgsDict']]]] voltage_sts: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['LineVoltageTrArgs', 'LineVoltageTrArgsDict']]]] voltage_trs: attribute of the resource
@@ -1475,6 +1498,7 @@ class Line(pulumi.CustomResource):
         __props__.__dict__["current_s"] = current_s
         __props__.__dict__["current_ts"] = current_ts
         __props__.__dict__["currents"] = currents
+        __props__.__dict__["custom_timezone"] = custom_timezone
         __props__.__dict__["description"] = description
         __props__.__dict__["diameter"] = diameter
         __props__.__dict__["emissivity"] = emissivity
@@ -1611,6 +1635,14 @@ class Line(pulumi.CustomResource):
         attribute of the resource
         """
         return pulumi.get(self, "currents")
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> pulumi.Output[Optional[str]]:
+        """
+        custom timezone to use instead of the one computed from the geo-location
+        """
+        return pulumi.get(self, "custom_timezone")
 
     @property
     @pulumi.getter
@@ -1832,7 +1864,7 @@ class Line(pulumi.CustomResource):
     @pulumi.getter
     def timezone(self) -> pulumi.Output[str]:
         """
-        timezone that overrides location-based timezone of the resource
+        timezone of the resource (set by the geo-location)
         """
         return pulumi.get(self, "timezone")
 

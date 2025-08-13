@@ -40,6 +40,8 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // ```sh
 // $ pulumi import splight:index/secret:Secret [options] splight_secret.<name> <secret_id>
 // ```

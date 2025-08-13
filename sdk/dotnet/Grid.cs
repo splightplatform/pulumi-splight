@@ -15,6 +15,8 @@ namespace Splight.Splight
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// ```sh
     /// $ pulumi import splight:index/grid:Grid [options] splight_grid.&lt;name&gt; &lt;grid_id&gt;
     /// ```
@@ -22,6 +24,12 @@ namespace Splight.Splight
     [SplightResourceType("splight:index/grid:Grid")]
     public partial class Grid : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// custom timezone to use instead of the one computed from the geo-location
+        /// </summary>
+        [Output("customTimezone")]
+        public Output<string?> CustomTimezone { get; private set; } = null!;
+
         /// <summary>
         /// description of the resource
         /// </summary>
@@ -53,7 +61,7 @@ namespace Splight.Splight
         public Output<ImmutableArray<Outputs.GridTag>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
+        /// timezone of the resource (set by the geo-location)
         /// </summary>
         [Output("timezone")]
         public Output<string> Timezone { get; private set; } = null!;
@@ -106,6 +114,12 @@ namespace Splight.Splight
     public sealed class GridArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// custom timezone to use instead of the one computed from the geo-location
+        /// </summary>
+        [Input("customTimezone")]
+        public Input<string>? CustomTimezone { get; set; }
+
+        /// <summary>
         /// description of the resource
         /// </summary>
         [Input("description")]
@@ -135,12 +149,6 @@ namespace Splight.Splight
             set => _tags = value;
         }
 
-        /// <summary>
-        /// timezone that overrides location-based timezone of the resource
-        /// </summary>
-        [Input("timezone")]
-        public Input<string>? Timezone { get; set; }
-
         public GridArgs()
         {
         }
@@ -149,6 +157,12 @@ namespace Splight.Splight
 
     public sealed class GridState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// custom timezone to use instead of the one computed from the geo-location
+        /// </summary>
+        [Input("customTimezone")]
+        public Input<string>? CustomTimezone { get; set; }
+
         /// <summary>
         /// description of the resource
         /// </summary>
@@ -192,7 +206,7 @@ namespace Splight.Splight
         }
 
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
+        /// timezone of the resource (set by the geo-location)
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }

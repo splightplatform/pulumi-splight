@@ -45,9 +45,9 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			myAsset, err := splight.NewAsset(ctx, "myAsset", &splight.AssetArgs{
-//				Description: pulumi.String("My Asset Description"),
-//				Timezone:    pulumi.String("America/Los_Angeles"),
-//				Geometry:    pulumi.String(json0),
+//				Description:    pulumi.String("My Asset Description"),
+//				CustomTimezone: pulumi.String("America/Los_Angeles"),
+//				Geometry:       pulumi.String(json0),
 //			})
 //			if err != nil {
 //				return err
@@ -73,6 +73,8 @@ import (
 // ```
 //
 // ## Import
+//
+// The `pulumi import` command can be used, for example:
 //
 // ```sh
 // $ pulumi import splight:index/assetMetadata:AssetMetadata [options] splight_asset_metadata.<name> <asset_metadata_id>

@@ -31,6 +31,8 @@ namespace Splight.Splight
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// ```sh
     /// $ pulumi import splight:index/node:Node [options] splight_node.&lt;name&gt; &lt;node_id&gt;
     /// ```

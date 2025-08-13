@@ -599,6 +599,8 @@ class Function(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         ```sh
         $ pulumi import splight:index/function:Function [options] splight_function.<name> <function_id>
         ```
@@ -633,6 +635,8 @@ class Function(pulumi.CustomResource):
         ## Example Usage
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/function:Function [options] splight_function.<name> <function_id>

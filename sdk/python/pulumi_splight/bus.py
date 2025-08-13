@@ -21,21 +21,23 @@ __all__ = ['BusArgs', 'Bus']
 @pulumi.input_type
 class BusArgs:
     def __init__(__self__, *,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nominal_voltage_kv: Optional[pulumi.Input['BusNominalVoltageKvArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['BusTagArgs']]]] = None,
-                 timezone: Optional[pulumi.Input[str]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['BusTagArgs']]]] = None):
         """
         The set of arguments for constructing a Bus resource.
+        :param pulumi.Input[str] custom_timezone: custom timezone to use instead of the one computed from the geo-location
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input['BusNominalVoltageKvArgs'] nominal_voltage_kv: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['BusTagArgs']]] tags: tags of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
+        if custom_timezone is not None:
+            pulumi.set(__self__, "custom_timezone", custom_timezone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
@@ -46,8 +48,18 @@ class BusArgs:
             pulumi.set(__self__, "nominal_voltage_kv", nominal_voltage_kv)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        custom timezone to use instead of the one computed from the geo-location
+        """
+        return pulumi.get(self, "custom_timezone")
+
+    @custom_timezone.setter
+    def custom_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_timezone", value)
 
     @property
     @pulumi.getter
@@ -109,23 +121,12 @@ class BusArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BusTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
-    @property
-    @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[str]]:
-        """
-        timezone that overrides location-based timezone of the resource
-        """
-        return pulumi.get(self, "timezone")
-
-    @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "timezone", value)
-
 
 @pulumi.input_type
 class _BusState:
     def __init__(__self__, *,
                  active_powers: Optional[pulumi.Input[Sequence[pulumi.Input['BusActivePowerArgs']]]] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  kinds: Optional[pulumi.Input[Sequence[pulumi.Input['BusKindArgs']]]] = None,
@@ -137,6 +138,7 @@ class _BusState:
         """
         Input properties used for looking up and filtering Bus resources.
         :param pulumi.Input[Sequence[pulumi.Input['BusActivePowerArgs']]] active_powers: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: custom timezone to use instead of the one computed from the geo-location
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[Sequence[pulumi.Input['BusKindArgs']]] kinds: kind of the resource
@@ -144,10 +146,12 @@ class _BusState:
         :param pulumi.Input['BusNominalVoltageKvArgs'] nominal_voltage_kv: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['BusReactivePowerArgs']]] reactive_powers: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['BusTagArgs']]] tags: tags of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
+        :param pulumi.Input[str] timezone: timezone of the resource (set by the geo-location)
         """
         if active_powers is not None:
             pulumi.set(__self__, "active_powers", active_powers)
+        if custom_timezone is not None:
+            pulumi.set(__self__, "custom_timezone", custom_timezone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
@@ -176,6 +180,18 @@ class _BusState:
     @active_powers.setter
     def active_powers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BusActivePowerArgs']]]]):
         pulumi.set(self, "active_powers", value)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        custom timezone to use instead of the one computed from the geo-location
+        """
+        return pulumi.get(self, "custom_timezone")
+
+    @custom_timezone.setter
+    def custom_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_timezone", value)
 
     @property
     @pulumi.getter
@@ -265,7 +281,7 @@ class _BusState:
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
-        timezone that overrides location-based timezone of the resource
+        timezone of the resource (set by the geo-location)
         """
         return pulumi.get(self, "timezone")
 
@@ -279,17 +295,19 @@ class Bus(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nominal_voltage_kv: Optional[pulumi.Input[Union['BusNominalVoltageKvArgs', 'BusNominalVoltageKvArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BusTagArgs', 'BusTagArgsDict']]]]] = None,
-                 timezone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Example Usage
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/bus:Bus [options] splight_bus.<name> <bus_id>
@@ -297,12 +315,12 @@ class Bus(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] custom_timezone: custom timezone to use instead of the one computed from the geo-location
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Union['BusNominalVoltageKvArgs', 'BusNominalVoltageKvArgsDict']] nominal_voltage_kv: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['BusTagArgs', 'BusTagArgsDict']]]] tags: tags of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
         ...
     @overload
@@ -314,6 +332,8 @@ class Bus(pulumi.CustomResource):
         ## Example Usage
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/bus:Bus [options] splight_bus.<name> <bus_id>
@@ -334,12 +354,12 @@ class Bus(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nominal_voltage_kv: Optional[pulumi.Input[Union['BusNominalVoltageKvArgs', 'BusNominalVoltageKvArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BusTagArgs', 'BusTagArgsDict']]]]] = None,
-                 timezone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -349,15 +369,16 @@ class Bus(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BusArgs.__new__(BusArgs)
 
+            __props__.__dict__["custom_timezone"] = custom_timezone
             __props__.__dict__["description"] = description
             __props__.__dict__["geometry"] = geometry
             __props__.__dict__["name"] = name
             __props__.__dict__["nominal_voltage_kv"] = nominal_voltage_kv
             __props__.__dict__["tags"] = tags
-            __props__.__dict__["timezone"] = timezone
             __props__.__dict__["active_powers"] = None
             __props__.__dict__["kinds"] = None
             __props__.__dict__["reactive_powers"] = None
+            __props__.__dict__["timezone"] = None
         super(Bus, __self__).__init__(
             'splight:index/bus:Bus',
             resource_name,
@@ -369,6 +390,7 @@ class Bus(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             active_powers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BusActivePowerArgs', 'BusActivePowerArgsDict']]]]] = None,
+            custom_timezone: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             geometry: Optional[pulumi.Input[str]] = None,
             kinds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BusKindArgs', 'BusKindArgsDict']]]]] = None,
@@ -385,6 +407,7 @@ class Bus(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BusActivePowerArgs', 'BusActivePowerArgsDict']]]] active_powers: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: custom timezone to use instead of the one computed from the geo-location
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['BusKindArgs', 'BusKindArgsDict']]]] kinds: kind of the resource
@@ -392,13 +415,14 @@ class Bus(pulumi.CustomResource):
         :param pulumi.Input[Union['BusNominalVoltageKvArgs', 'BusNominalVoltageKvArgsDict']] nominal_voltage_kv: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['BusReactivePowerArgs', 'BusReactivePowerArgsDict']]]] reactive_powers: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['BusTagArgs', 'BusTagArgsDict']]]] tags: tags of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
+        :param pulumi.Input[str] timezone: timezone of the resource (set by the geo-location)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _BusState.__new__(_BusState)
 
         __props__.__dict__["active_powers"] = active_powers
+        __props__.__dict__["custom_timezone"] = custom_timezone
         __props__.__dict__["description"] = description
         __props__.__dict__["geometry"] = geometry
         __props__.__dict__["kinds"] = kinds
@@ -416,6 +440,14 @@ class Bus(pulumi.CustomResource):
         attribute of the resource
         """
         return pulumi.get(self, "active_powers")
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> pulumi.Output[Optional[str]]:
+        """
+        custom timezone to use instead of the one computed from the geo-location
+        """
+        return pulumi.get(self, "custom_timezone")
 
     @property
     @pulumi.getter
@@ -477,7 +509,7 @@ class Bus(pulumi.CustomResource):
     @pulumi.getter
     def timezone(self) -> pulumi.Output[str]:
         """
-        timezone that overrides location-based timezone of the resource
+        timezone of the resource (set by the geo-location)
         """
         return pulumi.get(self, "timezone")
 

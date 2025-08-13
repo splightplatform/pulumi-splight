@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * ```sh
  * $ pulumi import splight:index/segment:Segment [options] splight_segment.<name> <segment_id>
  * ```
@@ -56,6 +58,10 @@ export class Segment extends pulumi.CustomResource {
      */
     public readonly cumulativeDistance!: pulumi.Output<outputs.SegmentCumulativeDistance | undefined>;
     /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    public readonly customTimezone!: pulumi.Output<string | undefined>;
+    /**
      * description of the resource
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -92,9 +98,9 @@ export class Segment extends pulumi.CustomResource {
      */
     public /*out*/ readonly temperatures!: pulumi.Output<outputs.SegmentTemperature[]>;
     /**
-     * timezone that overrides location-based timezone of the resource
+     * timezone of the resource (set by the geo-location)
      */
-    public readonly timezone!: pulumi.Output<string>;
+    public /*out*/ readonly timezone!: pulumi.Output<string>;
     /**
      * attribute of the resource
      */
@@ -120,6 +126,7 @@ export class Segment extends pulumi.CustomResource {
             resourceInputs["altitude"] = state ? state.altitude : undefined;
             resourceInputs["azimuth"] = state ? state.azimuth : undefined;
             resourceInputs["cumulativeDistance"] = state ? state.cumulativeDistance : undefined;
+            resourceInputs["customTimezone"] = state ? state.customTimezone : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["geometry"] = state ? state.geometry : undefined;
             resourceInputs["kinds"] = state ? state.kinds : undefined;
@@ -137,6 +144,7 @@ export class Segment extends pulumi.CustomResource {
             resourceInputs["altitude"] = args ? args.altitude : undefined;
             resourceInputs["azimuth"] = args ? args.azimuth : undefined;
             resourceInputs["cumulativeDistance"] = args ? args.cumulativeDistance : undefined;
+            resourceInputs["customTimezone"] = args ? args.customTimezone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -144,9 +152,9 @@ export class Segment extends pulumi.CustomResource {
             resourceInputs["referenceTemperature"] = args ? args.referenceTemperature : undefined;
             resourceInputs["spanLength"] = args ? args.spanLength : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["kinds"] = undefined /*out*/;
             resourceInputs["temperatures"] = undefined /*out*/;
+            resourceInputs["timezone"] = undefined /*out*/;
             resourceInputs["windDirections"] = undefined /*out*/;
             resourceInputs["windSpeeds"] = undefined /*out*/;
         }
@@ -171,6 +179,10 @@ export interface SegmentState {
      * attribute of the resource
      */
     cumulativeDistance?: pulumi.Input<inputs.SegmentCumulativeDistance>;
+    /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */
@@ -208,7 +220,7 @@ export interface SegmentState {
      */
     temperatures?: pulumi.Input<pulumi.Input<inputs.SegmentTemperature>[]>;
     /**
-     * timezone that overrides location-based timezone of the resource
+     * timezone of the resource (set by the geo-location)
      */
     timezone?: pulumi.Input<string>;
     /**
@@ -238,6 +250,10 @@ export interface SegmentArgs {
      */
     cumulativeDistance?: pulumi.Input<inputs.SegmentCumulativeDistance>;
     /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    customTimezone?: pulumi.Input<string>;
+    /**
      * description of the resource
      */
     description?: pulumi.Input<string>;
@@ -265,8 +281,4 @@ export interface SegmentArgs {
      * tags of the resource
      */
     tags?: pulumi.Input<pulumi.Input<inputs.SegmentTag>[]>;
-    /**
-     * timezone that overrides location-based timezone of the resource
-     */
-    timezone?: pulumi.Input<string>;
 }

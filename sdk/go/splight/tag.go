@@ -37,6 +37,8 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // ```sh
 // $ pulumi import splight:index/tag:Tag [options] splight_tag.<name> <tag_id>
 // ```
