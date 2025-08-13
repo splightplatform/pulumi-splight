@@ -23,6 +23,7 @@ class TransformerArgs:
     def __init__(__self__, *,
                  capacitance: Optional[pulumi.Input['TransformerCapacitanceArgs']] = None,
                  conductance: Optional[pulumi.Input['TransformerConductanceArgs']] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  maximum_allowed_current: Optional[pulumi.Input['TransformerMaximumAllowedCurrentArgs']] = None,
@@ -34,12 +35,12 @@ class TransformerArgs:
                  standard_type: Optional[pulumi.Input['TransformerStandardTypeArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['TransformerTagArgs']]]] = None,
                  tap_pos: Optional[pulumi.Input['TransformerTapPosArgs']] = None,
-                 timezone: Optional[pulumi.Input[str]] = None,
                  xn_ohm: Optional[pulumi.Input['TransformerXnOhmArgs']] = None):
         """
         The set of arguments for constructing a Transformer resource.
         :param pulumi.Input['TransformerCapacitanceArgs'] capacitance: attribute of the resource
         :param pulumi.Input['TransformerConductanceArgs'] conductance: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: custom timezone to use instead of the one computed from the geo-location
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input['TransformerMaximumAllowedCurrentArgs'] maximum_allowed_current: attribute of the resource
@@ -51,13 +52,14 @@ class TransformerArgs:
         :param pulumi.Input['TransformerStandardTypeArgs'] standard_type: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['TransformerTagArgs']]] tags: tags of the resource
         :param pulumi.Input['TransformerTapPosArgs'] tap_pos: attribute of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input['TransformerXnOhmArgs'] xn_ohm: attribute of the resource
         """
         if capacitance is not None:
             pulumi.set(__self__, "capacitance", capacitance)
         if conductance is not None:
             pulumi.set(__self__, "conductance", conductance)
+        if custom_timezone is not None:
+            pulumi.set(__self__, "custom_timezone", custom_timezone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
@@ -80,8 +82,6 @@ class TransformerArgs:
             pulumi.set(__self__, "tags", tags)
         if tap_pos is not None:
             pulumi.set(__self__, "tap_pos", tap_pos)
-        if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
         if xn_ohm is not None:
             pulumi.set(__self__, "xn_ohm", xn_ohm)
 
@@ -108,6 +108,18 @@ class TransformerArgs:
     @conductance.setter
     def conductance(self, value: Optional[pulumi.Input['TransformerConductanceArgs']]):
         pulumi.set(self, "conductance", value)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        custom timezone to use instead of the one computed from the geo-location
+        """
+        return pulumi.get(self, "custom_timezone")
+
+    @custom_timezone.setter
+    def custom_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_timezone", value)
 
     @property
     @pulumi.getter
@@ -242,18 +254,6 @@ class TransformerArgs:
         pulumi.set(self, "tap_pos", value)
 
     @property
-    @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[str]]:
-        """
-        timezone that overrides location-based timezone of the resource
-        """
-        return pulumi.get(self, "timezone")
-
-    @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "timezone", value)
-
-    @property
     @pulumi.getter(name="xnOhm")
     def xn_ohm(self) -> Optional[pulumi.Input['TransformerXnOhmArgs']]:
         """
@@ -277,6 +277,7 @@ class _TransformerState:
                  contingencies: Optional[pulumi.Input[Sequence[pulumi.Input['TransformerContingencyArgs']]]] = None,
                  current_hvs: Optional[pulumi.Input[Sequence[pulumi.Input['TransformerCurrentHvArgs']]]] = None,
                  current_lvs: Optional[pulumi.Input[Sequence[pulumi.Input['TransformerCurrentLvArgs']]]] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  kinds: Optional[pulumi.Input[Sequence[pulumi.Input['TransformerKindArgs']]]] = None,
@@ -308,6 +309,7 @@ class _TransformerState:
         :param pulumi.Input[Sequence[pulumi.Input['TransformerContingencyArgs']]] contingencies: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['TransformerCurrentHvArgs']]] current_hvs: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['TransformerCurrentLvArgs']]] current_lvs: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: custom timezone to use instead of the one computed from the geo-location
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[Sequence[pulumi.Input['TransformerKindArgs']]] kinds: kind of the resource
@@ -325,7 +327,7 @@ class _TransformerState:
         :param pulumi.Input[Sequence[pulumi.Input['TransformerSwitchStatusLvArgs']]] switch_status_lvs: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['TransformerTagArgs']]] tags: tags of the resource
         :param pulumi.Input['TransformerTapPosArgs'] tap_pos: attribute of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
+        :param pulumi.Input[str] timezone: timezone of the resource (set by the geo-location)
         :param pulumi.Input[Sequence[pulumi.Input['TransformerVoltageHvArgs']]] voltage_hvs: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['TransformerVoltageLvArgs']]] voltage_lvs: attribute of the resource
         :param pulumi.Input['TransformerXnOhmArgs'] xn_ohm: attribute of the resource
@@ -346,6 +348,8 @@ class _TransformerState:
             pulumi.set(__self__, "current_hvs", current_hvs)
         if current_lvs is not None:
             pulumi.set(__self__, "current_lvs", current_lvs)
+        if custom_timezone is not None:
+            pulumi.set(__self__, "custom_timezone", custom_timezone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
@@ -484,6 +488,18 @@ class _TransformerState:
     @current_lvs.setter
     def current_lvs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TransformerCurrentLvArgs']]]]):
         pulumi.set(self, "current_lvs", value)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        custom timezone to use instead of the one computed from the geo-location
+        """
+        return pulumi.get(self, "custom_timezone")
+
+    @custom_timezone.setter
+    def custom_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_timezone", value)
 
     @property
     @pulumi.getter
@@ -693,7 +709,7 @@ class _TransformerState:
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
-        timezone that overrides location-based timezone of the resource
+        timezone of the resource (set by the geo-location)
         """
         return pulumi.get(self, "timezone")
 
@@ -745,6 +761,7 @@ class Transformer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacitance: Optional[pulumi.Input[Union['TransformerCapacitanceArgs', 'TransformerCapacitanceArgsDict']]] = None,
                  conductance: Optional[pulumi.Input[Union['TransformerConductanceArgs', 'TransformerConductanceArgsDict']]] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  maximum_allowed_current: Optional[pulumi.Input[Union['TransformerMaximumAllowedCurrentArgs', 'TransformerMaximumAllowedCurrentArgsDict']]] = None,
@@ -756,13 +773,14 @@ class Transformer(pulumi.CustomResource):
                  standard_type: Optional[pulumi.Input[Union['TransformerStandardTypeArgs', 'TransformerStandardTypeArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransformerTagArgs', 'TransformerTagArgsDict']]]]] = None,
                  tap_pos: Optional[pulumi.Input[Union['TransformerTapPosArgs', 'TransformerTapPosArgsDict']]] = None,
-                 timezone: Optional[pulumi.Input[str]] = None,
                  xn_ohm: Optional[pulumi.Input[Union['TransformerXnOhmArgs', 'TransformerXnOhmArgsDict']]] = None,
                  __props__=None):
         """
         ## Example Usage
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/transformer:Transformer [options] splight_transformer.<name> <transformer_id>
@@ -772,6 +790,7 @@ class Transformer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['TransformerCapacitanceArgs', 'TransformerCapacitanceArgsDict']] capacitance: attribute of the resource
         :param pulumi.Input[Union['TransformerConductanceArgs', 'TransformerConductanceArgsDict']] conductance: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: custom timezone to use instead of the one computed from the geo-location
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[Union['TransformerMaximumAllowedCurrentArgs', 'TransformerMaximumAllowedCurrentArgsDict']] maximum_allowed_current: attribute of the resource
@@ -783,7 +802,6 @@ class Transformer(pulumi.CustomResource):
         :param pulumi.Input[Union['TransformerStandardTypeArgs', 'TransformerStandardTypeArgsDict']] standard_type: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['TransformerTagArgs', 'TransformerTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[Union['TransformerTapPosArgs', 'TransformerTapPosArgsDict']] tap_pos: attribute of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         :param pulumi.Input[Union['TransformerXnOhmArgs', 'TransformerXnOhmArgsDict']] xn_ohm: attribute of the resource
         """
         ...
@@ -796,6 +814,8 @@ class Transformer(pulumi.CustomResource):
         ## Example Usage
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/transformer:Transformer [options] splight_transformer.<name> <transformer_id>
@@ -818,6 +838,7 @@ class Transformer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacitance: Optional[pulumi.Input[Union['TransformerCapacitanceArgs', 'TransformerCapacitanceArgsDict']]] = None,
                  conductance: Optional[pulumi.Input[Union['TransformerConductanceArgs', 'TransformerConductanceArgsDict']]] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  maximum_allowed_current: Optional[pulumi.Input[Union['TransformerMaximumAllowedCurrentArgs', 'TransformerMaximumAllowedCurrentArgsDict']]] = None,
@@ -829,7 +850,6 @@ class Transformer(pulumi.CustomResource):
                  standard_type: Optional[pulumi.Input[Union['TransformerStandardTypeArgs', 'TransformerStandardTypeArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransformerTagArgs', 'TransformerTagArgsDict']]]]] = None,
                  tap_pos: Optional[pulumi.Input[Union['TransformerTapPosArgs', 'TransformerTapPosArgsDict']]] = None,
-                 timezone: Optional[pulumi.Input[str]] = None,
                  xn_ohm: Optional[pulumi.Input[Union['TransformerXnOhmArgs', 'TransformerXnOhmArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -842,6 +862,7 @@ class Transformer(pulumi.CustomResource):
 
             __props__.__dict__["capacitance"] = capacitance
             __props__.__dict__["conductance"] = conductance
+            __props__.__dict__["custom_timezone"] = custom_timezone
             __props__.__dict__["description"] = description
             __props__.__dict__["geometry"] = geometry
             __props__.__dict__["maximum_allowed_current"] = maximum_allowed_current
@@ -853,7 +874,6 @@ class Transformer(pulumi.CustomResource):
             __props__.__dict__["standard_type"] = standard_type
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tap_pos"] = tap_pos
-            __props__.__dict__["timezone"] = timezone
             __props__.__dict__["xn_ohm"] = xn_ohm
             __props__.__dict__["active_power_hvs"] = None
             __props__.__dict__["active_power_losses"] = None
@@ -867,6 +887,7 @@ class Transformer(pulumi.CustomResource):
             __props__.__dict__["reactive_power_lvs"] = None
             __props__.__dict__["switch_status_hvs"] = None
             __props__.__dict__["switch_status_lvs"] = None
+            __props__.__dict__["timezone"] = None
             __props__.__dict__["voltage_hvs"] = None
             __props__.__dict__["voltage_lvs"] = None
         super(Transformer, __self__).__init__(
@@ -887,6 +908,7 @@ class Transformer(pulumi.CustomResource):
             contingencies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransformerContingencyArgs', 'TransformerContingencyArgsDict']]]]] = None,
             current_hvs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransformerCurrentHvArgs', 'TransformerCurrentHvArgsDict']]]]] = None,
             current_lvs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransformerCurrentLvArgs', 'TransformerCurrentLvArgsDict']]]]] = None,
+            custom_timezone: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             geometry: Optional[pulumi.Input[str]] = None,
             kinds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransformerKindArgs', 'TransformerKindArgsDict']]]]] = None,
@@ -923,6 +945,7 @@ class Transformer(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['TransformerContingencyArgs', 'TransformerContingencyArgsDict']]]] contingencies: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['TransformerCurrentHvArgs', 'TransformerCurrentHvArgsDict']]]] current_hvs: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['TransformerCurrentLvArgs', 'TransformerCurrentLvArgsDict']]]] current_lvs: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: custom timezone to use instead of the one computed from the geo-location
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['TransformerKindArgs', 'TransformerKindArgsDict']]]] kinds: kind of the resource
@@ -940,7 +963,7 @@ class Transformer(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['TransformerSwitchStatusLvArgs', 'TransformerSwitchStatusLvArgsDict']]]] switch_status_lvs: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['TransformerTagArgs', 'TransformerTagArgsDict']]]] tags: tags of the resource
         :param pulumi.Input[Union['TransformerTapPosArgs', 'TransformerTapPosArgsDict']] tap_pos: attribute of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
+        :param pulumi.Input[str] timezone: timezone of the resource (set by the geo-location)
         :param pulumi.Input[Sequence[pulumi.Input[Union['TransformerVoltageHvArgs', 'TransformerVoltageHvArgsDict']]]] voltage_hvs: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['TransformerVoltageLvArgs', 'TransformerVoltageLvArgsDict']]]] voltage_lvs: attribute of the resource
         :param pulumi.Input[Union['TransformerXnOhmArgs', 'TransformerXnOhmArgsDict']] xn_ohm: attribute of the resource
@@ -957,6 +980,7 @@ class Transformer(pulumi.CustomResource):
         __props__.__dict__["contingencies"] = contingencies
         __props__.__dict__["current_hvs"] = current_hvs
         __props__.__dict__["current_lvs"] = current_lvs
+        __props__.__dict__["custom_timezone"] = custom_timezone
         __props__.__dict__["description"] = description
         __props__.__dict__["geometry"] = geometry
         __props__.__dict__["kinds"] = kinds
@@ -1043,6 +1067,14 @@ class Transformer(pulumi.CustomResource):
         attribute of the resource
         """
         return pulumi.get(self, "current_lvs")
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> pulumi.Output[Optional[str]]:
+        """
+        custom timezone to use instead of the one computed from the geo-location
+        """
+        return pulumi.get(self, "custom_timezone")
 
     @property
     @pulumi.getter
@@ -1184,7 +1216,7 @@ class Transformer(pulumi.CustomResource):
     @pulumi.getter
     def timezone(self) -> pulumi.Output[str]:
         """
-        timezone that overrides location-based timezone of the resource
+        timezone of the resource (set by the geo-location)
         """
         return pulumi.get(self, "timezone")
 

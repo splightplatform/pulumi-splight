@@ -15,6 +15,8 @@ namespace Splight.Splight
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// ```sh
     /// $ pulumi import splight:index/transformer:Transformer [options] splight_transformer.&lt;name&gt; &lt;transformer_id&gt;
     /// ```
@@ -69,6 +71,12 @@ namespace Splight.Splight
         /// </summary>
         [Output("currentLvs")]
         public Output<ImmutableArray<Outputs.TransformerCurrentLv>> CurrentLvs { get; private set; } = null!;
+
+        /// <summary>
+        /// custom timezone to use instead of the one computed from the geo-location
+        /// </summary>
+        [Output("customTimezone")]
+        public Output<string?> CustomTimezone { get; private set; } = null!;
 
         /// <summary>
         /// description of the resource
@@ -173,7 +181,7 @@ namespace Splight.Splight
         public Output<Outputs.TransformerTapPos?> TapPos { get; private set; } = null!;
 
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
+        /// timezone of the resource (set by the geo-location)
         /// </summary>
         [Output("timezone")]
         public Output<string> Timezone { get; private set; } = null!;
@@ -256,6 +264,12 @@ namespace Splight.Splight
         public Input<Inputs.TransformerConductanceArgs>? Conductance { get; set; }
 
         /// <summary>
+        /// custom timezone to use instead of the one computed from the geo-location
+        /// </summary>
+        [Input("customTimezone")]
+        public Input<string>? CustomTimezone { get; set; }
+
+        /// <summary>
         /// description of the resource
         /// </summary>
         [Input("description")]
@@ -326,12 +340,6 @@ namespace Splight.Splight
         /// </summary>
         [Input("tapPos")]
         public Input<Inputs.TransformerTapPosArgs>? TapPos { get; set; }
-
-        /// <summary>
-        /// timezone that overrides location-based timezone of the resource
-        /// </summary>
-        [Input("timezone")]
-        public Input<string>? Timezone { get; set; }
 
         /// <summary>
         /// attribute of the resource
@@ -430,6 +438,12 @@ namespace Splight.Splight
             get => _currentLvs ?? (_currentLvs = new InputList<Inputs.TransformerCurrentLvGetArgs>());
             set => _currentLvs = value;
         }
+
+        /// <summary>
+        /// custom timezone to use instead of the one computed from the geo-location
+        /// </summary>
+        [Input("customTimezone")]
+        public Input<string>? CustomTimezone { get; set; }
 
         /// <summary>
         /// description of the resource
@@ -576,7 +590,7 @@ namespace Splight.Splight
         public Input<Inputs.TransformerTapPosGetArgs>? TapPos { get; set; }
 
         /// <summary>
-        /// timezone that overrides location-based timezone of the resource
+        /// timezone of the resource (set by the geo-location)
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }

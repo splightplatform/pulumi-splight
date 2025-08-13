@@ -177,6 +177,8 @@ class Dashboard(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         ```sh
         $ pulumi import splight:index/dashboard:Dashboard [options] splight_dashboard.<name> <dashboard_id>
         ```
@@ -198,6 +200,8 @@ class Dashboard(pulumi.CustomResource):
         ## Example Usage
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/dashboard:Dashboard [options] splight_dashboard.<name> <dashboard_id>

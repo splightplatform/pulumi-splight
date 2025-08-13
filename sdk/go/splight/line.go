@@ -15,6 +15,8 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // ```sh
 // $ pulumi import splight:index/line:Line [options] splight_line.<name> <line_id>
 // ```
@@ -47,6 +49,8 @@ type Line struct {
 	CurrentTs LineCurrentTArrayOutput `pulumi:"currentTs"`
 	// attribute of the resource
 	Currents LineCurrentArrayOutput `pulumi:"currents"`
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone pulumi.StringPtrOutput `pulumi:"customTimezone"`
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// attribute of the resource
@@ -101,7 +105,7 @@ type Line struct {
 	TemperatureCoeffResistance LineTemperatureCoeffResistanceOutput `pulumi:"temperatureCoeffResistance"`
 	// attribute of the resource
 	ThermalElongationCoef LineThermalElongationCoefOutput `pulumi:"thermalElongationCoef"`
-	// timezone that overrides location-based timezone of the resource
+	// timezone of the resource (set by the geo-location)
 	Timezone pulumi.StringOutput `pulumi:"timezone"`
 	// attribute of the resource
 	VoltageRs LineVoltageRArrayOutput `pulumi:"voltageRs"`
@@ -167,6 +171,8 @@ type lineState struct {
 	CurrentTs []LineCurrentT `pulumi:"currentTs"`
 	// attribute of the resource
 	Currents []LineCurrent `pulumi:"currents"`
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// attribute of the resource
@@ -221,7 +227,7 @@ type lineState struct {
 	TemperatureCoeffResistance *LineTemperatureCoeffResistance `pulumi:"temperatureCoeffResistance"`
 	// attribute of the resource
 	ThermalElongationCoef *LineThermalElongationCoef `pulumi:"thermalElongationCoef"`
-	// timezone that overrides location-based timezone of the resource
+	// timezone of the resource (set by the geo-location)
 	Timezone *string `pulumi:"timezone"`
 	// attribute of the resource
 	VoltageRs []LineVoltageR `pulumi:"voltageRs"`
@@ -258,6 +264,8 @@ type LineState struct {
 	CurrentTs LineCurrentTArrayInput
 	// attribute of the resource
 	Currents LineCurrentArrayInput
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// attribute of the resource
@@ -312,7 +320,7 @@ type LineState struct {
 	TemperatureCoeffResistance LineTemperatureCoeffResistancePtrInput
 	// attribute of the resource
 	ThermalElongationCoef LineThermalElongationCoefPtrInput
-	// timezone that overrides location-based timezone of the resource
+	// timezone of the resource (set by the geo-location)
 	Timezone pulumi.StringPtrInput
 	// attribute of the resource
 	VoltageRs LineVoltageRArrayInput
@@ -337,6 +345,8 @@ type lineArgs struct {
 	Conductance *LineConductance `pulumi:"conductance"`
 	// attribute of the resource
 	ConductorMass *LineConductorMass `pulumi:"conductorMass"`
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// attribute of the resource
@@ -379,8 +389,6 @@ type lineArgs struct {
 	TemperatureCoeffResistance *LineTemperatureCoeffResistance `pulumi:"temperatureCoeffResistance"`
 	// attribute of the resource
 	ThermalElongationCoef *LineThermalElongationCoef `pulumi:"thermalElongationCoef"`
-	// timezone that overrides location-based timezone of the resource
-	Timezone *string `pulumi:"timezone"`
 }
 
 // The set of arguments for constructing a Line resource.
@@ -395,6 +403,8 @@ type LineArgs struct {
 	Conductance LineConductancePtrInput
 	// attribute of the resource
 	ConductorMass LineConductorMassPtrInput
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// attribute of the resource
@@ -437,8 +447,6 @@ type LineArgs struct {
 	TemperatureCoeffResistance LineTemperatureCoeffResistancePtrInput
 	// attribute of the resource
 	ThermalElongationCoef LineThermalElongationCoefPtrInput
-	// timezone that overrides location-based timezone of the resource
-	Timezone pulumi.StringPtrInput
 }
 
 func (LineArgs) ElementType() reflect.Type {
@@ -593,6 +601,11 @@ func (o LineOutput) Currents() LineCurrentArrayOutput {
 	return o.ApplyT(func(v *Line) LineCurrentArrayOutput { return v.Currents }).(LineCurrentArrayOutput)
 }
 
+// custom timezone to use instead of the one computed from the geo-location
+func (o LineOutput) CustomTimezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Line) pulumi.StringPtrOutput { return v.CustomTimezone }).(pulumi.StringPtrOutput)
+}
+
 // description of the resource
 func (o LineOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Line) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -728,7 +741,7 @@ func (o LineOutput) ThermalElongationCoef() LineThermalElongationCoefOutput {
 	return o.ApplyT(func(v *Line) LineThermalElongationCoefOutput { return v.ThermalElongationCoef }).(LineThermalElongationCoefOutput)
 }
 
-// timezone that overrides location-based timezone of the resource
+// timezone of the resource (set by the geo-location)
 func (o LineOutput) Timezone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Line) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
 }

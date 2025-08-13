@@ -15,12 +15,16 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // ```sh
 // $ pulumi import splight:index/asset:Asset [options] splight_asset.<name> <asset_id>
 // ```
 type Asset struct {
 	pulumi.CustomResourceState
 
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone pulumi.StringPtrOutput `pulumi:"customTimezone"`
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// GeoJSON GeomtryCollection
@@ -31,7 +35,7 @@ type Asset struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// tags of the resource
 	Tags AssetTagArrayOutput `pulumi:"tags"`
-	// timezone of the resource (overriden by the location if set)
+	// timezone of the resource (set by the geo-location)
 	Timezone pulumi.StringOutput `pulumi:"timezone"`
 }
 
@@ -65,6 +69,8 @@ func GetAsset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Asset resources.
 type assetState struct {
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// GeoJSON GeomtryCollection
@@ -75,11 +81,13 @@ type assetState struct {
 	Name *string `pulumi:"name"`
 	// tags of the resource
 	Tags []AssetTag `pulumi:"tags"`
-	// timezone of the resource (overriden by the location if set)
+	// timezone of the resource (set by the geo-location)
 	Timezone *string `pulumi:"timezone"`
 }
 
 type AssetState struct {
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// GeoJSON GeomtryCollection
@@ -90,7 +98,7 @@ type AssetState struct {
 	Name pulumi.StringPtrInput
 	// tags of the resource
 	Tags AssetTagArrayInput
-	// timezone of the resource (overriden by the location if set)
+	// timezone of the resource (set by the geo-location)
 	Timezone pulumi.StringPtrInput
 }
 
@@ -99,6 +107,8 @@ func (AssetState) ElementType() reflect.Type {
 }
 
 type assetArgs struct {
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// GeoJSON GeomtryCollection
@@ -109,12 +119,12 @@ type assetArgs struct {
 	Name *string `pulumi:"name"`
 	// tags of the resource
 	Tags []AssetTag `pulumi:"tags"`
-	// timezone of the resource (overriden by the location if set)
-	Timezone *string `pulumi:"timezone"`
 }
 
 // The set of arguments for constructing a Asset resource.
 type AssetArgs struct {
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// GeoJSON GeomtryCollection
@@ -125,8 +135,6 @@ type AssetArgs struct {
 	Name pulumi.StringPtrInput
 	// tags of the resource
 	Tags AssetTagArrayInput
-	// timezone of the resource (overriden by the location if set)
-	Timezone pulumi.StringPtrInput
 }
 
 func (AssetArgs) ElementType() reflect.Type {
@@ -216,6 +224,11 @@ func (o AssetOutput) ToAssetOutputWithContext(ctx context.Context) AssetOutput {
 	return o
 }
 
+// custom timezone to use instead of the one computed from the geo-location
+func (o AssetOutput) CustomTimezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringPtrOutput { return v.CustomTimezone }).(pulumi.StringPtrOutput)
+}
+
 // description of the resource
 func (o AssetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -241,7 +254,7 @@ func (o AssetOutput) Tags() AssetTagArrayOutput {
 	return o.ApplyT(func(v *Asset) AssetTagArrayOutput { return v.Tags }).(AssetTagArrayOutput)
 }
 
-// timezone of the resource (overriden by the location if set)
+// timezone of the resource (set by the geo-location)
 func (o AssetOutput) Timezone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
 }

@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * ```sh
  * $ pulumi import splight:index/transformer:Transformer [options] splight_transformer.<name> <transformer_id>
  * ```
@@ -75,6 +77,10 @@ export class Transformer extends pulumi.CustomResource {
      * attribute of the resource
      */
     public /*out*/ readonly currentLvs!: pulumi.Output<outputs.TransformerCurrentLv[]>;
+    /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    public readonly customTimezone!: pulumi.Output<string | undefined>;
     /**
      * description of the resource
      */
@@ -144,9 +150,9 @@ export class Transformer extends pulumi.CustomResource {
      */
     public readonly tapPos!: pulumi.Output<outputs.TransformerTapPos | undefined>;
     /**
-     * timezone that overrides location-based timezone of the resource
+     * timezone of the resource (set by the geo-location)
      */
-    public readonly timezone!: pulumi.Output<string>;
+    public /*out*/ readonly timezone!: pulumi.Output<string>;
     /**
      * attribute of the resource
      */
@@ -181,6 +187,7 @@ export class Transformer extends pulumi.CustomResource {
             resourceInputs["contingencies"] = state ? state.contingencies : undefined;
             resourceInputs["currentHvs"] = state ? state.currentHvs : undefined;
             resourceInputs["currentLvs"] = state ? state.currentLvs : undefined;
+            resourceInputs["customTimezone"] = state ? state.customTimezone : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["geometry"] = state ? state.geometry : undefined;
             resourceInputs["kinds"] = state ? state.kinds : undefined;
@@ -206,6 +213,7 @@ export class Transformer extends pulumi.CustomResource {
             const args = argsOrState as TransformerArgs | undefined;
             resourceInputs["capacitance"] = args ? args.capacitance : undefined;
             resourceInputs["conductance"] = args ? args.conductance : undefined;
+            resourceInputs["customTimezone"] = args ? args.customTimezone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
             resourceInputs["maximumAllowedCurrent"] = args ? args.maximumAllowedCurrent : undefined;
@@ -217,7 +225,6 @@ export class Transformer extends pulumi.CustomResource {
             resourceInputs["standardType"] = args ? args.standardType : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tapPos"] = args ? args.tapPos : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["xnOhm"] = args ? args.xnOhm : undefined;
             resourceInputs["activePowerHvs"] = undefined /*out*/;
             resourceInputs["activePowerLosses"] = undefined /*out*/;
@@ -231,6 +238,7 @@ export class Transformer extends pulumi.CustomResource {
             resourceInputs["reactivePowerLvs"] = undefined /*out*/;
             resourceInputs["switchStatusHvs"] = undefined /*out*/;
             resourceInputs["switchStatusLvs"] = undefined /*out*/;
+            resourceInputs["timezone"] = undefined /*out*/;
             resourceInputs["voltageHvs"] = undefined /*out*/;
             resourceInputs["voltageLvs"] = undefined /*out*/;
         }
@@ -275,6 +283,10 @@ export interface TransformerState {
      * attribute of the resource
      */
     currentLvs?: pulumi.Input<pulumi.Input<inputs.TransformerCurrentLv>[]>;
+    /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */
@@ -344,7 +356,7 @@ export interface TransformerState {
      */
     tapPos?: pulumi.Input<inputs.TransformerTapPos>;
     /**
-     * timezone that overrides location-based timezone of the resource
+     * timezone of the resource (set by the geo-location)
      */
     timezone?: pulumi.Input<string>;
     /**
@@ -373,6 +385,10 @@ export interface TransformerArgs {
      * attribute of the resource
      */
     conductance?: pulumi.Input<inputs.TransformerConductance>;
+    /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */
@@ -417,10 +433,6 @@ export interface TransformerArgs {
      * attribute of the resource
      */
     tapPos?: pulumi.Input<inputs.TransformerTapPos>;
-    /**
-     * timezone that overrides location-based timezone of the resource
-     */
-    timezone?: pulumi.Input<string>;
     /**
      * attribute of the resource
      */

@@ -15,6 +15,8 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // ```sh
 // $ pulumi import splight:index/bus:Bus [options] splight_bus.<name> <bus_id>
 // ```
@@ -23,6 +25,8 @@ type Bus struct {
 
 	// attribute of the resource
 	ActivePowers BusActivePowerArrayOutput `pulumi:"activePowers"`
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone pulumi.StringPtrOutput `pulumi:"customTimezone"`
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// geo position and shape of the resource
@@ -37,7 +41,7 @@ type Bus struct {
 	ReactivePowers BusReactivePowerArrayOutput `pulumi:"reactivePowers"`
 	// tags of the resource
 	Tags BusTagArrayOutput `pulumi:"tags"`
-	// timezone that overrides location-based timezone of the resource
+	// timezone of the resource (set by the geo-location)
 	Timezone pulumi.StringOutput `pulumi:"timezone"`
 }
 
@@ -73,6 +77,8 @@ func GetBus(ctx *pulumi.Context,
 type busState struct {
 	// attribute of the resource
 	ActivePowers []BusActivePower `pulumi:"activePowers"`
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -87,13 +93,15 @@ type busState struct {
 	ReactivePowers []BusReactivePower `pulumi:"reactivePowers"`
 	// tags of the resource
 	Tags []BusTag `pulumi:"tags"`
-	// timezone that overrides location-based timezone of the resource
+	// timezone of the resource (set by the geo-location)
 	Timezone *string `pulumi:"timezone"`
 }
 
 type BusState struct {
 	// attribute of the resource
 	ActivePowers BusActivePowerArrayInput
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -108,7 +116,7 @@ type BusState struct {
 	ReactivePowers BusReactivePowerArrayInput
 	// tags of the resource
 	Tags BusTagArrayInput
-	// timezone that overrides location-based timezone of the resource
+	// timezone of the resource (set by the geo-location)
 	Timezone pulumi.StringPtrInput
 }
 
@@ -117,6 +125,8 @@ func (BusState) ElementType() reflect.Type {
 }
 
 type busArgs struct {
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -127,12 +137,12 @@ type busArgs struct {
 	NominalVoltageKv *BusNominalVoltageKv `pulumi:"nominalVoltageKv"`
 	// tags of the resource
 	Tags []BusTag `pulumi:"tags"`
-	// timezone that overrides location-based timezone of the resource
-	Timezone *string `pulumi:"timezone"`
 }
 
 // The set of arguments for constructing a Bus resource.
 type BusArgs struct {
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -143,8 +153,6 @@ type BusArgs struct {
 	NominalVoltageKv BusNominalVoltageKvPtrInput
 	// tags of the resource
 	Tags BusTagArrayInput
-	// timezone that overrides location-based timezone of the resource
-	Timezone pulumi.StringPtrInput
 }
 
 func (BusArgs) ElementType() reflect.Type {
@@ -239,6 +247,11 @@ func (o BusOutput) ActivePowers() BusActivePowerArrayOutput {
 	return o.ApplyT(func(v *Bus) BusActivePowerArrayOutput { return v.ActivePowers }).(BusActivePowerArrayOutput)
 }
 
+// custom timezone to use instead of the one computed from the geo-location
+func (o BusOutput) CustomTimezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Bus) pulumi.StringPtrOutput { return v.CustomTimezone }).(pulumi.StringPtrOutput)
+}
+
 // description of the resource
 func (o BusOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Bus) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -274,7 +287,7 @@ func (o BusOutput) Tags() BusTagArrayOutput {
 	return o.ApplyT(func(v *Bus) BusTagArrayOutput { return v.Tags }).(BusTagArrayOutput)
 }
 
-// timezone that overrides location-based timezone of the resource
+// timezone of the resource (set by the geo-location)
 func (o BusOutput) Timezone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bus) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
 }

@@ -1028,7 +1028,7 @@ class DashboardHistogramChart(pulumi.CustomResource):
 
         asset_test = splight.Asset("assetTest",
             description="Created with Terraform",
-            timezone="America/Los_Angeles",
+            custom_timezone="America/Los_Angeles",
             geometry=json.dumps({
                 "type": "GeometryCollection",
                 "geometries": [],
@@ -1041,7 +1041,7 @@ class DashboardHistogramChart(pulumi.CustomResource):
             type="Number",
             unit="seconds",
             asset=asset_test.id)
-        dashboard_test = splight.Dashboard("dashboardTest", related_assets=[])
+        dashboard_test = splight.Dashboard("dashboardTest")
         dashboard_tab_test = splight.DashboardTab("dashboardTabTest",
             order=0,
             dashboard=dashboard_test.id)
@@ -1171,6 +1171,8 @@ class DashboardHistogramChart(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/dashboardHistogramChart:DashboardHistogramChart [options] splight_dashboard_histogram_chart.<name> <dashboard_chart_id>
@@ -1224,7 +1226,7 @@ class DashboardHistogramChart(pulumi.CustomResource):
 
         asset_test = splight.Asset("assetTest",
             description="Created with Terraform",
-            timezone="America/Los_Angeles",
+            custom_timezone="America/Los_Angeles",
             geometry=json.dumps({
                 "type": "GeometryCollection",
                 "geometries": [],
@@ -1237,7 +1239,7 @@ class DashboardHistogramChart(pulumi.CustomResource):
             type="Number",
             unit="seconds",
             asset=asset_test.id)
-        dashboard_test = splight.Dashboard("dashboardTest", related_assets=[])
+        dashboard_test = splight.Dashboard("dashboardTest")
         dashboard_tab_test = splight.DashboardTab("dashboardTabTest",
             order=0,
             dashboard=dashboard_test.id)
@@ -1367,6 +1369,8 @@ class DashboardHistogramChart(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/dashboardHistogramChart:DashboardHistogramChart [options] splight_dashboard_histogram_chart.<name> <dashboard_chart_id>

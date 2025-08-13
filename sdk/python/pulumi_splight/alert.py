@@ -688,6 +688,8 @@ class Alert(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         ```sh
         $ pulumi import splight:index/alert:Alert [options] splight_alert.<name> <alert_id>
         ```
@@ -724,6 +726,8 @@ class Alert(pulumi.CustomResource):
         ## Example Usage
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/alert:Alert [options] splight_alert.<name> <alert_id>

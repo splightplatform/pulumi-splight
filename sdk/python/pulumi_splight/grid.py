@@ -21,19 +21,21 @@ __all__ = ['GridArgs', 'Grid']
 @pulumi.input_type
 class GridArgs:
     def __init__(__self__, *,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['GridTagArgs']]]] = None,
-                 timezone: Optional[pulumi.Input[str]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['GridTagArgs']]]] = None):
         """
         The set of arguments for constructing a Grid resource.
+        :param pulumi.Input[str] custom_timezone: custom timezone to use instead of the one computed from the geo-location
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input['GridTagArgs']]] tags: tags of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
+        if custom_timezone is not None:
+            pulumi.set(__self__, "custom_timezone", custom_timezone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
@@ -42,8 +44,18 @@ class GridArgs:
             pulumi.set(__self__, "name", name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        custom timezone to use instead of the one computed from the geo-location
+        """
+        return pulumi.get(self, "custom_timezone")
+
+    @custom_timezone.setter
+    def custom_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_timezone", value)
 
     @property
     @pulumi.getter
@@ -93,22 +105,11 @@ class GridArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GridTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
-    @property
-    @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[str]]:
-        """
-        timezone that overrides location-based timezone of the resource
-        """
-        return pulumi.get(self, "timezone")
-
-    @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "timezone", value)
-
 
 @pulumi.input_type
 class _GridState:
     def __init__(__self__, *,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  kinds: Optional[pulumi.Input[Sequence[pulumi.Input['GridKindArgs']]]] = None,
@@ -117,13 +118,16 @@ class _GridState:
                  timezone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Grid resources.
+        :param pulumi.Input[str] custom_timezone: custom timezone to use instead of the one computed from the geo-location
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[Sequence[pulumi.Input['GridKindArgs']]] kinds: kind of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input['GridTagArgs']]] tags: tags of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
+        :param pulumi.Input[str] timezone: timezone of the resource (set by the geo-location)
         """
+        if custom_timezone is not None:
+            pulumi.set(__self__, "custom_timezone", custom_timezone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
@@ -136,6 +140,18 @@ class _GridState:
             pulumi.set(__self__, "tags", tags)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        custom timezone to use instead of the one computed from the geo-location
+        """
+        return pulumi.get(self, "custom_timezone")
+
+    @custom_timezone.setter
+    def custom_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_timezone", value)
 
     @property
     @pulumi.getter
@@ -201,7 +217,7 @@ class _GridState:
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
-        timezone that overrides location-based timezone of the resource
+        timezone of the resource (set by the geo-location)
         """
         return pulumi.get(self, "timezone")
 
@@ -215,16 +231,18 @@ class Grid(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GridTagArgs', 'GridTagArgsDict']]]]] = None,
-                 timezone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Example Usage
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/grid:Grid [options] splight_grid.<name> <grid_id>
@@ -232,11 +250,11 @@ class Grid(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] custom_timezone: custom timezone to use instead of the one computed from the geo-location
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['GridTagArgs', 'GridTagArgsDict']]]] tags: tags of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
         ...
     @overload
@@ -248,6 +266,8 @@ class Grid(pulumi.CustomResource):
         ## Example Usage
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/grid:Grid [options] splight_grid.<name> <grid_id>
@@ -268,11 +288,11 @@ class Grid(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GridTagArgs', 'GridTagArgsDict']]]]] = None,
-                 timezone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -282,12 +302,13 @@ class Grid(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GridArgs.__new__(GridArgs)
 
+            __props__.__dict__["custom_timezone"] = custom_timezone
             __props__.__dict__["description"] = description
             __props__.__dict__["geometry"] = geometry
             __props__.__dict__["name"] = name
             __props__.__dict__["tags"] = tags
-            __props__.__dict__["timezone"] = timezone
             __props__.__dict__["kinds"] = None
+            __props__.__dict__["timezone"] = None
         super(Grid, __self__).__init__(
             'splight:index/grid:Grid',
             resource_name,
@@ -298,6 +319,7 @@ class Grid(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            custom_timezone: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             geometry: Optional[pulumi.Input[str]] = None,
             kinds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GridKindArgs', 'GridKindArgsDict']]]]] = None,
@@ -311,17 +333,19 @@ class Grid(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] custom_timezone: custom timezone to use instead of the one computed from the geo-location
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['GridKindArgs', 'GridKindArgsDict']]]] kinds: kind of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['GridTagArgs', 'GridTagArgsDict']]]] tags: tags of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
+        :param pulumi.Input[str] timezone: timezone of the resource (set by the geo-location)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _GridState.__new__(_GridState)
 
+        __props__.__dict__["custom_timezone"] = custom_timezone
         __props__.__dict__["description"] = description
         __props__.__dict__["geometry"] = geometry
         __props__.__dict__["kinds"] = kinds
@@ -329,6 +353,14 @@ class Grid(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["timezone"] = timezone
         return Grid(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> pulumi.Output[Optional[str]]:
+        """
+        custom timezone to use instead of the one computed from the geo-location
+        """
+        return pulumi.get(self, "custom_timezone")
 
     @property
     @pulumi.getter
@@ -374,7 +406,7 @@ class Grid(pulumi.CustomResource):
     @pulumi.getter
     def timezone(self) -> pulumi.Output[str]:
         """
-        timezone that overrides location-based timezone of the resource
+        timezone of the resource (set by the geo-location)
         """
         return pulumi.get(self, "timezone")
 

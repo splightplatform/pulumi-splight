@@ -15,6 +15,8 @@ namespace Splight.Splight
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// ```sh
     /// $ pulumi import splight:index/alert:Alert [options] splight_alert.&lt;name&gt; &lt;alert_id&gt;
     /// ```

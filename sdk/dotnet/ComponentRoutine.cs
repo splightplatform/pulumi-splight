@@ -15,6 +15,8 @@ namespace Splight.Splight
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// ```sh
     /// $ pulumi import splight:index/componentRoutine:ComponentRoutine [options] splight_component_routine.&lt;name&gt; &lt;component_routine_id&gt;
     /// ```

@@ -21,19 +21,21 @@ __all__ = ['GeneratorArgs', 'Generator']
 @pulumi.input_type
 class GeneratorArgs:
     def __init__(__self__, *,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorTagArgs']]]] = None,
-                 timezone: Optional[pulumi.Input[str]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorTagArgs']]]] = None):
         """
         The set of arguments for constructing a Generator resource.
+        :param pulumi.Input[str] custom_timezone: custom timezone to use instead of the one computed from the geo-location
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input['GeneratorTagArgs']]] tags: tags of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
+        if custom_timezone is not None:
+            pulumi.set(__self__, "custom_timezone", custom_timezone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if geometry is not None:
@@ -42,8 +44,18 @@ class GeneratorArgs:
             pulumi.set(__self__, "name", name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        custom timezone to use instead of the one computed from the geo-location
+        """
+        return pulumi.get(self, "custom_timezone")
+
+    @custom_timezone.setter
+    def custom_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_timezone", value)
 
     @property
     @pulumi.getter
@@ -93,23 +105,12 @@ class GeneratorArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
-    @property
-    @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[str]]:
-        """
-        timezone that overrides location-based timezone of the resource
-        """
-        return pulumi.get(self, "timezone")
-
-    @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "timezone", value)
-
 
 @pulumi.input_type
 class _GeneratorState:
     def __init__(__self__, *,
                  active_powers: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorActivePowerArgs']]]] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  daily_emission_avoideds: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorDailyEmissionAvoidedArgs']]]] = None,
                  daily_energies: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorDailyEnergyArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -124,6 +125,7 @@ class _GeneratorState:
         """
         Input properties used for looking up and filtering Generator resources.
         :param pulumi.Input[Sequence[pulumi.Input['GeneratorActivePowerArgs']]] active_powers: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: custom timezone to use instead of the one computed from the geo-location
         :param pulumi.Input[Sequence[pulumi.Input['GeneratorDailyEmissionAvoidedArgs']]] daily_emission_avoideds: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['GeneratorDailyEnergyArgs']]] daily_energies: attribute of the resource
         :param pulumi.Input[str] description: description of the resource
@@ -134,10 +136,12 @@ class _GeneratorState:
         :param pulumi.Input[Sequence[pulumi.Input['GeneratorReactivePowerArgs']]] reactive_powers: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['GeneratorSwitchStatusArgs']]] switch_statuses: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input['GeneratorTagArgs']]] tags: tags of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
+        :param pulumi.Input[str] timezone: timezone of the resource (set by the geo-location)
         """
         if active_powers is not None:
             pulumi.set(__self__, "active_powers", active_powers)
+        if custom_timezone is not None:
+            pulumi.set(__self__, "custom_timezone", custom_timezone)
         if daily_emission_avoideds is not None:
             pulumi.set(__self__, "daily_emission_avoideds", daily_emission_avoideds)
         if daily_energies is not None:
@@ -172,6 +176,18 @@ class _GeneratorState:
     @active_powers.setter
     def active_powers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorActivePowerArgs']]]]):
         pulumi.set(self, "active_powers", value)
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        custom timezone to use instead of the one computed from the geo-location
+        """
+        return pulumi.get(self, "custom_timezone")
+
+    @custom_timezone.setter
+    def custom_timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_timezone", value)
 
     @property
     @pulumi.getter(name="dailyEmissionAvoideds")
@@ -297,7 +313,7 @@ class _GeneratorState:
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
-        timezone that overrides location-based timezone of the resource
+        timezone of the resource (set by the geo-location)
         """
         return pulumi.get(self, "timezone")
 
@@ -311,16 +327,18 @@ class Generator(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GeneratorTagArgs', 'GeneratorTagArgsDict']]]]] = None,
-                 timezone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Example Usage
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/generator:Generator [options] splight_generator.<name> <generator_id>
@@ -328,11 +346,11 @@ class Generator(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] custom_timezone: custom timezone to use instead of the one computed from the geo-location
         :param pulumi.Input[str] description: description of the resource
         :param pulumi.Input[str] geometry: geo position and shape of the resource
         :param pulumi.Input[str] name: name of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['GeneratorTagArgs', 'GeneratorTagArgsDict']]]] tags: tags of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
         """
         ...
     @overload
@@ -344,6 +362,8 @@ class Generator(pulumi.CustomResource):
         ## Example Usage
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/generator:Generator [options] splight_generator.<name> <generator_id>
@@ -364,11 +384,11 @@ class Generator(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_timezone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  geometry: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GeneratorTagArgs', 'GeneratorTagArgsDict']]]]] = None,
-                 timezone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -378,11 +398,11 @@ class Generator(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GeneratorArgs.__new__(GeneratorArgs)
 
+            __props__.__dict__["custom_timezone"] = custom_timezone
             __props__.__dict__["description"] = description
             __props__.__dict__["geometry"] = geometry
             __props__.__dict__["name"] = name
             __props__.__dict__["tags"] = tags
-            __props__.__dict__["timezone"] = timezone
             __props__.__dict__["active_powers"] = None
             __props__.__dict__["daily_emission_avoideds"] = None
             __props__.__dict__["daily_energies"] = None
@@ -390,6 +410,7 @@ class Generator(pulumi.CustomResource):
             __props__.__dict__["monthly_energies"] = None
             __props__.__dict__["reactive_powers"] = None
             __props__.__dict__["switch_statuses"] = None
+            __props__.__dict__["timezone"] = None
         super(Generator, __self__).__init__(
             'splight:index/generator:Generator',
             resource_name,
@@ -401,6 +422,7 @@ class Generator(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             active_powers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GeneratorActivePowerArgs', 'GeneratorActivePowerArgsDict']]]]] = None,
+            custom_timezone: Optional[pulumi.Input[str]] = None,
             daily_emission_avoideds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GeneratorDailyEmissionAvoidedArgs', 'GeneratorDailyEmissionAvoidedArgsDict']]]]] = None,
             daily_energies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GeneratorDailyEnergyArgs', 'GeneratorDailyEnergyArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -420,6 +442,7 @@ class Generator(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GeneratorActivePowerArgs', 'GeneratorActivePowerArgsDict']]]] active_powers: attribute of the resource
+        :param pulumi.Input[str] custom_timezone: custom timezone to use instead of the one computed from the geo-location
         :param pulumi.Input[Sequence[pulumi.Input[Union['GeneratorDailyEmissionAvoidedArgs', 'GeneratorDailyEmissionAvoidedArgsDict']]]] daily_emission_avoideds: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['GeneratorDailyEnergyArgs', 'GeneratorDailyEnergyArgsDict']]]] daily_energies: attribute of the resource
         :param pulumi.Input[str] description: description of the resource
@@ -430,13 +453,14 @@ class Generator(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['GeneratorReactivePowerArgs', 'GeneratorReactivePowerArgsDict']]]] reactive_powers: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['GeneratorSwitchStatusArgs', 'GeneratorSwitchStatusArgsDict']]]] switch_statuses: attribute of the resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['GeneratorTagArgs', 'GeneratorTagArgsDict']]]] tags: tags of the resource
-        :param pulumi.Input[str] timezone: timezone that overrides location-based timezone of the resource
+        :param pulumi.Input[str] timezone: timezone of the resource (set by the geo-location)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _GeneratorState.__new__(_GeneratorState)
 
         __props__.__dict__["active_powers"] = active_powers
+        __props__.__dict__["custom_timezone"] = custom_timezone
         __props__.__dict__["daily_emission_avoideds"] = daily_emission_avoideds
         __props__.__dict__["daily_energies"] = daily_energies
         __props__.__dict__["description"] = description
@@ -457,6 +481,14 @@ class Generator(pulumi.CustomResource):
         attribute of the resource
         """
         return pulumi.get(self, "active_powers")
+
+    @property
+    @pulumi.getter(name="customTimezone")
+    def custom_timezone(self) -> pulumi.Output[Optional[str]]:
+        """
+        custom timezone to use instead of the one computed from the geo-location
+        """
+        return pulumi.get(self, "custom_timezone")
 
     @property
     @pulumi.getter(name="dailyEmissionAvoideds")
@@ -542,7 +574,7 @@ class Generator(pulumi.CustomResource):
     @pulumi.getter
     def timezone(self) -> pulumi.Output[str]:
         """
-        timezone that overrides location-based timezone of the resource
+        timezone of the resource (set by the geo-location)
         """
         return pulumi.get(self, "timezone")
 

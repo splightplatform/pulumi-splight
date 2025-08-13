@@ -178,7 +178,7 @@ class AssetAttribute(pulumi.CustomResource):
 
         my_asset = splight.Asset("myAsset",
             description="My Asset Description",
-            timezone="America/Los_Angeles",
+            custom_timezone="America/Los_Angeles",
             geometry=json.dumps({
                 "type": "GeometryCollection",
                 "geometries": [{
@@ -196,6 +196,8 @@ class AssetAttribute(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/assetAttribute:AssetAttribute [options] splight_asset_attribute.<name> <asset_attribute_id>
@@ -224,7 +226,7 @@ class AssetAttribute(pulumi.CustomResource):
 
         my_asset = splight.Asset("myAsset",
             description="My Asset Description",
-            timezone="America/Los_Angeles",
+            custom_timezone="America/Los_Angeles",
             geometry=json.dumps({
                 "type": "GeometryCollection",
                 "geometries": [{
@@ -242,6 +244,8 @@ class AssetAttribute(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/assetAttribute:AssetAttribute [options] splight_asset_attribute.<name> <asset_attribute_id>

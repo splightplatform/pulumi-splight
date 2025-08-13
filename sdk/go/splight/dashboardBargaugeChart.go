@@ -37,9 +37,9 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			assetTest, err := splight.NewAsset(ctx, "assetTest", &splight.AssetArgs{
-//				Description: pulumi.String("Created with Terraform"),
-//				Timezone:    pulumi.String("America/Los_Angeles"),
-//				Geometry:    pulumi.String(json0),
+//				Description:    pulumi.String("Created with Terraform"),
+//				CustomTimezone: pulumi.String("America/Los_Angeles"),
+//				Geometry:       pulumi.String(json0),
 //			})
 //			if err != nil {
 //				return err
@@ -60,9 +60,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			dashboardTest, err := splight.NewDashboard(ctx, "dashboardTest", &splight.DashboardArgs{
-//				RelatedAssets: splight.DashboardRelatedAssetArray{},
-//			})
+//			dashboardTest, err := splight.NewDashboard(ctx, "dashboardTest", nil)
 //			if err != nil {
 //				return err
 //			}
@@ -195,6 +193,8 @@ import (
 // ```
 //
 // ## Import
+//
+// The `pulumi import` command can be used, for example:
 //
 // ```sh
 // $ pulumi import splight:index/dashboardBargaugeChart:DashboardBargaugeChart [options] splight_dashboard_bargauge_chart.<name> <dashboard_chart_id>

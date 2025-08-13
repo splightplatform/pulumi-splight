@@ -15,6 +15,8 @@ namespace Splight.Splight
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// ```sh
     /// $ pulumi import splight:index/dashboardTab:DashboardTab [options] splight_dashboard_tab.&lt;name&gt; &lt;dashboard_tab_id&gt;
     /// ```

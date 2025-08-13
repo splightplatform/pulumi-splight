@@ -117,6 +117,8 @@ class FileFolder(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         ```sh
         $ pulumi import splight:index/fileFolder:FileFolder [options] splight_file_folder.<name> <file_folder_id>
         ```
@@ -144,6 +146,8 @@ class FileFolder(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/fileFolder:FileFolder [options] splight_file_folder.<name> <file_folder_id>

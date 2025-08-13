@@ -25,7 +25,7 @@ namespace Splight.Splight
     ///     var myAsset = new Splight.Asset("myAsset", new()
     ///     {
     ///         Description = "My Asset Description",
-    ///         Timezone = "America/Los_Angeles",
+    ///         CustomTimezone = "America/Los_Angeles",
     ///         Geometry = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
     ///             ["type"] = "GeometryCollection",
@@ -56,6 +56,8 @@ namespace Splight.Splight
     /// ```
     /// 
     /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
     /// 
     /// ```sh
     /// $ pulumi import splight:index/assetMetadata:AssetMetadata [options] splight_asset_metadata.&lt;name&gt; &lt;asset_metadata_id&gt;

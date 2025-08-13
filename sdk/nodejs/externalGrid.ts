@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * ```sh
  * $ pulumi import splight:index/externalGrid:ExternalGrid [options] splight_external_grid.<name> <external_grid_id>
  * ```
@@ -48,6 +50,10 @@ export class ExternalGrid extends pulumi.CustomResource {
      */
     public readonly bus!: pulumi.Output<string | undefined>;
     /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    public readonly customTimezone!: pulumi.Output<string | undefined>;
+    /**
      * description of the resource
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -72,9 +78,9 @@ export class ExternalGrid extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<outputs.ExternalGridTag[] | undefined>;
     /**
-     * timezone that overrides location-based timezone of the resource
+     * timezone of the resource (set by the geo-location)
      */
-    public readonly timezone!: pulumi.Output<string>;
+    public /*out*/ readonly timezone!: pulumi.Output<string>;
 
     /**
      * Create a ExternalGrid resource with the given unique name, arguments, and options.
@@ -90,6 +96,7 @@ export class ExternalGrid extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ExternalGridState | undefined;
             resourceInputs["bus"] = state ? state.bus : undefined;
+            resourceInputs["customTimezone"] = state ? state.customTimezone : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["geometry"] = state ? state.geometry : undefined;
             resourceInputs["grid"] = state ? state.grid : undefined;
@@ -100,13 +107,14 @@ export class ExternalGrid extends pulumi.CustomResource {
         } else {
             const args = argsOrState as ExternalGridArgs | undefined;
             resourceInputs["bus"] = args ? args.bus : undefined;
+            resourceInputs["customTimezone"] = args ? args.customTimezone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
             resourceInputs["grid"] = args ? args.grid : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["kinds"] = undefined /*out*/;
+            resourceInputs["timezone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ExternalGrid.__pulumiType, name, resourceInputs, opts);
@@ -121,6 +129,10 @@ export interface ExternalGridState {
      * id of the related Bus object
      */
     bus?: pulumi.Input<string>;
+    /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */
@@ -146,7 +158,7 @@ export interface ExternalGridState {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ExternalGridTag>[]>;
     /**
-     * timezone that overrides location-based timezone of the resource
+     * timezone of the resource (set by the geo-location)
      */
     timezone?: pulumi.Input<string>;
 }
@@ -159,6 +171,10 @@ export interface ExternalGridArgs {
      * id of the related Bus object
      */
     bus?: pulumi.Input<string>;
+    /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */
@@ -179,8 +195,4 @@ export interface ExternalGridArgs {
      * tags of the resource
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ExternalGridTag>[]>;
-    /**
-     * timezone that overrides location-based timezone of the resource
-     */
-    timezone?: pulumi.Input<string>;
 }

@@ -15,6 +15,8 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // ```sh
 // $ pulumi import splight:index/dashboard:Dashboard [options] splight_dashboard.<name> <dashboard_id>
 // ```

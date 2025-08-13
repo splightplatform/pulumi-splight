@@ -15,12 +15,16 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // ```sh
 // $ pulumi import splight:index/slackGenerator:SlackGenerator [options] splight_slack_generator.<name> <slack_generator_id>
 // ```
 type SlackGenerator struct {
 	pulumi.CustomResourceState
 
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone pulumi.StringPtrOutput `pulumi:"customTimezone"`
 	// description of the resource
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// geo position and shape of the resource
@@ -31,7 +35,7 @@ type SlackGenerator struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// tags of the resource
 	Tags SlackGeneratorTagArrayOutput `pulumi:"tags"`
-	// timezone that overrides location-based timezone of the resource
+	// timezone of the resource (set by the geo-location)
 	Timezone pulumi.StringOutput `pulumi:"timezone"`
 }
 
@@ -65,6 +69,8 @@ func GetSlackGenerator(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SlackGenerator resources.
 type slackGeneratorState struct {
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -75,11 +81,13 @@ type slackGeneratorState struct {
 	Name *string `pulumi:"name"`
 	// tags of the resource
 	Tags []SlackGeneratorTag `pulumi:"tags"`
-	// timezone that overrides location-based timezone of the resource
+	// timezone of the resource (set by the geo-location)
 	Timezone *string `pulumi:"timezone"`
 }
 
 type SlackGeneratorState struct {
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -90,7 +98,7 @@ type SlackGeneratorState struct {
 	Name pulumi.StringPtrInput
 	// tags of the resource
 	Tags SlackGeneratorTagArrayInput
-	// timezone that overrides location-based timezone of the resource
+	// timezone of the resource (set by the geo-location)
 	Timezone pulumi.StringPtrInput
 }
 
@@ -99,6 +107,8 @@ func (SlackGeneratorState) ElementType() reflect.Type {
 }
 
 type slackGeneratorArgs struct {
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone *string `pulumi:"customTimezone"`
 	// description of the resource
 	Description *string `pulumi:"description"`
 	// geo position and shape of the resource
@@ -107,12 +117,12 @@ type slackGeneratorArgs struct {
 	Name *string `pulumi:"name"`
 	// tags of the resource
 	Tags []SlackGeneratorTag `pulumi:"tags"`
-	// timezone that overrides location-based timezone of the resource
-	Timezone *string `pulumi:"timezone"`
 }
 
 // The set of arguments for constructing a SlackGenerator resource.
 type SlackGeneratorArgs struct {
+	// custom timezone to use instead of the one computed from the geo-location
+	CustomTimezone pulumi.StringPtrInput
 	// description of the resource
 	Description pulumi.StringPtrInput
 	// geo position and shape of the resource
@@ -121,8 +131,6 @@ type SlackGeneratorArgs struct {
 	Name pulumi.StringPtrInput
 	// tags of the resource
 	Tags SlackGeneratorTagArrayInput
-	// timezone that overrides location-based timezone of the resource
-	Timezone pulumi.StringPtrInput
 }
 
 func (SlackGeneratorArgs) ElementType() reflect.Type {
@@ -212,6 +220,11 @@ func (o SlackGeneratorOutput) ToSlackGeneratorOutputWithContext(ctx context.Cont
 	return o
 }
 
+// custom timezone to use instead of the one computed from the geo-location
+func (o SlackGeneratorOutput) CustomTimezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SlackGenerator) pulumi.StringPtrOutput { return v.CustomTimezone }).(pulumi.StringPtrOutput)
+}
+
 // description of the resource
 func (o SlackGeneratorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SlackGenerator) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -237,7 +250,7 @@ func (o SlackGeneratorOutput) Tags() SlackGeneratorTagArrayOutput {
 	return o.ApplyT(func(v *SlackGenerator) SlackGeneratorTagArrayOutput { return v.Tags }).(SlackGeneratorTagArrayOutput)
 }
 
-// timezone that overrides location-based timezone of the resource
+// timezone of the resource (set by the geo-location)
 func (o SlackGeneratorOutput) Timezone() pulumi.StringOutput {
 	return o.ApplyT(func(v *SlackGenerator) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
 }

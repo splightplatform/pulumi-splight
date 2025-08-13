@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * ```sh
  * $ pulumi import splight:index/inverter:Inverter [options] splight_inverter.<name> <inverter_id>
  * ```
@@ -51,6 +53,10 @@ export class Inverter extends pulumi.CustomResource {
      * attribute of the resource
      */
     public /*out*/ readonly activePowers!: pulumi.Output<outputs.InverterActivePower[]>;
+    /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    public readonly customTimezone!: pulumi.Output<string | undefined>;
     /**
      * attribute of the resource
      */
@@ -108,9 +114,9 @@ export class Inverter extends pulumi.CustomResource {
      */
     public /*out*/ readonly temperatures!: pulumi.Output<outputs.InverterTemperature[]>;
     /**
-     * timezone that overrides location-based timezone of the resource
+     * timezone of the resource (set by the geo-location)
      */
-    public readonly timezone!: pulumi.Output<string>;
+    public /*out*/ readonly timezone!: pulumi.Output<string>;
 
     /**
      * Create a Inverter resource with the given unique name, arguments, and options.
@@ -127,6 +133,7 @@ export class Inverter extends pulumi.CustomResource {
             const state = argsOrState as InverterState | undefined;
             resourceInputs["accumulatedEnergies"] = state ? state.accumulatedEnergies : undefined;
             resourceInputs["activePowers"] = state ? state.activePowers : undefined;
+            resourceInputs["customTimezone"] = state ? state.customTimezone : undefined;
             resourceInputs["dailyEnergies"] = state ? state.dailyEnergies : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["energyMeasurementType"] = state ? state.energyMeasurementType : undefined;
@@ -144,6 +151,7 @@ export class Inverter extends pulumi.CustomResource {
             resourceInputs["timezone"] = state ? state.timezone : undefined;
         } else {
             const args = argsOrState as InverterArgs | undefined;
+            resourceInputs["customTimezone"] = args ? args.customTimezone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["energyMeasurementType"] = args ? args.energyMeasurementType : undefined;
             resourceInputs["geometry"] = args ? args.geometry : undefined;
@@ -153,7 +161,6 @@ export class Inverter extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["serialNumber"] = args ? args.serialNumber : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["accumulatedEnergies"] = undefined /*out*/;
             resourceInputs["activePowers"] = undefined /*out*/;
             resourceInputs["dailyEnergies"] = undefined /*out*/;
@@ -161,6 +168,7 @@ export class Inverter extends pulumi.CustomResource {
             resourceInputs["rawDailyEnergies"] = undefined /*out*/;
             resourceInputs["switchStatuses"] = undefined /*out*/;
             resourceInputs["temperatures"] = undefined /*out*/;
+            resourceInputs["timezone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Inverter.__pulumiType, name, resourceInputs, opts);
@@ -179,6 +187,10 @@ export interface InverterState {
      * attribute of the resource
      */
     activePowers?: pulumi.Input<pulumi.Input<inputs.InverterActivePower>[]>;
+    /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * attribute of the resource
      */
@@ -236,7 +248,7 @@ export interface InverterState {
      */
     temperatures?: pulumi.Input<pulumi.Input<inputs.InverterTemperature>[]>;
     /**
-     * timezone that overrides location-based timezone of the resource
+     * timezone of the resource (set by the geo-location)
      */
     timezone?: pulumi.Input<string>;
 }
@@ -245,6 +257,10 @@ export interface InverterState {
  * The set of arguments for constructing a Inverter resource.
  */
 export interface InverterArgs {
+    /**
+     * custom timezone to use instead of the one computed from the geo-location
+     */
+    customTimezone?: pulumi.Input<string>;
     /**
      * description of the resource
      */
@@ -281,8 +297,4 @@ export interface InverterArgs {
      * tags of the resource
      */
     tags?: pulumi.Input<pulumi.Input<inputs.InverterTag>[]>;
-    /**
-     * timezone that overrides location-based timezone of the resource
-     */
-    timezone?: pulumi.Input<string>;
 }

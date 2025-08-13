@@ -15,6 +15,8 @@ namespace Splight.Splight
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// ```sh
     /// $ pulumi import splight:index/asset:Asset [options] splight_asset.&lt;name&gt; &lt;asset_id&gt;
     /// ```
@@ -22,6 +24,12 @@ namespace Splight.Splight
     [SplightResourceType("splight:index/asset:Asset")]
     public partial class Asset : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// custom timezone to use instead of the one computed from the geo-location
+        /// </summary>
+        [Output("customTimezone")]
+        public Output<string?> CustomTimezone { get; private set; } = null!;
+
         /// <summary>
         /// description of the resource
         /// </summary>
@@ -53,7 +61,7 @@ namespace Splight.Splight
         public Output<ImmutableArray<Outputs.AssetTag>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// timezone of the resource (overriden by the location if set)
+        /// timezone of the resource (set by the geo-location)
         /// </summary>
         [Output("timezone")]
         public Output<string> Timezone { get; private set; } = null!;
@@ -106,6 +114,12 @@ namespace Splight.Splight
     public sealed class AssetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// custom timezone to use instead of the one computed from the geo-location
+        /// </summary>
+        [Input("customTimezone")]
+        public Input<string>? CustomTimezone { get; set; }
+
+        /// <summary>
         /// description of the resource
         /// </summary>
         [Input("description")]
@@ -141,12 +155,6 @@ namespace Splight.Splight
             set => _tags = value;
         }
 
-        /// <summary>
-        /// timezone of the resource (overriden by the location if set)
-        /// </summary>
-        [Input("timezone")]
-        public Input<string>? Timezone { get; set; }
-
         public AssetArgs()
         {
         }
@@ -155,6 +163,12 @@ namespace Splight.Splight
 
     public sealed class AssetState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// custom timezone to use instead of the one computed from the geo-location
+        /// </summary>
+        [Input("customTimezone")]
+        public Input<string>? CustomTimezone { get; set; }
+
         /// <summary>
         /// description of the resource
         /// </summary>
@@ -192,7 +206,7 @@ namespace Splight.Splight
         }
 
         /// <summary>
-        /// timezone of the resource (overriden by the location if set)
+        /// timezone of the resource (set by the geo-location)
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }

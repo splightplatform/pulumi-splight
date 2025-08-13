@@ -341,6 +341,8 @@ class Connector(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         ```sh
         $ pulumi import splight:index/connector:Connector [options] splight_connector.<name> <connector_id>
         ```
@@ -367,6 +369,8 @@ class Connector(pulumi.CustomResource):
         ## Example Usage
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import splight:index/connector:Connector [options] splight_connector.<name> <connector_id>

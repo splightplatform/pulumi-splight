@@ -25,7 +25,7 @@ namespace Splight.Splight
     ///     var assetTest = new Splight.Asset("assetTest", new()
     ///     {
     ///         Description = "Created with Terraform",
-    ///         Timezone = "America/Los_Angeles",
+    ///         CustomTimezone = "America/Los_Angeles",
     ///         Geometry = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
     ///             ["type"] = "GeometryCollection",
@@ -49,10 +49,7 @@ namespace Splight.Splight
     ///         Asset = assetTest.Id,
     ///     });
     /// 
-    ///     var dashboardTest = new Splight.Dashboard("dashboardTest", new()
-    ///     {
-    ///         RelatedAssets = new[] {},
-    ///     });
+    ///     var dashboardTest = new Splight.Dashboard("dashboardTest");
     /// 
     ///     var dashboardTabTest = new Splight.DashboardTab("dashboardTabTest", new()
     ///     {
@@ -226,6 +223,8 @@ namespace Splight.Splight
     /// ```
     /// 
     /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
     /// 
     /// ```sh
     /// $ pulumi import splight:index/dashboardAssetlistChart:DashboardAssetlistChart [options] splight_dashboard_assetlist_chart.&lt;name&gt; &lt;dashboard_chart_id&gt;

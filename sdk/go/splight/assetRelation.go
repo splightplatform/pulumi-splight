@@ -16,6 +16,8 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // ```sh
 // $ pulumi import splight:index/assetRelation:AssetRelation [options] splight_relation.<name> <relation_id>
 // ```
